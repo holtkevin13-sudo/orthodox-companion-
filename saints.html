@@ -717,72 +717,88 @@ function updateCounts(){
 // ── Saint of the Day ──────────────────────────────────────────
 async function loadSaintOfTheDay(){
   var today = new Date();
-  var mo = String(today.getMonth()+1).padStart(2,'0');
-  var da = String(today.getDate()).padStart(2,'0');
-  var mmdd = mo + '-' + da;
-  var displayDate = today.toLocaleDateString('en-US',{month:'long',day:'numeric'});
+  var dateStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+  var displayDate = today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
 
-  // ── Step 1: Try to load today's saints from the liturgical calendar data ──
+  // ── Load calendar engine data ──────────────────────────────
   var calSaints = [];
-  try {
-    var res = await fetch('lectionary-full.json');
-    if (res.ok) {
-      var lect = await res.json();
-      var dayData = lect.fixed && lect.fixed[mmdd];
-      if (dayData && Array.isArray(dayData.saints_feasts) && dayData.saints_feasts.length) {
-        calSaints = dayData.saints_feasts;
+  var calSummary = '';
+  var calSeason = '';
+  if (typeof OrthodoxCalendar !== 'undefined') {
+    try {
+      await OrthodoxCalendar.init();
+      var day = OrthodoxCalendar.getDay(dateStr);
+      if (day) {
+        calSaints  = day.saints_feasts || [];
+        calSummary = day.summary || '';
+        calSeason  = day.liturgical_season || '';
       }
-    }
-  } catch(e) {}
-
-  // ── Step 2: Try to match a calendar saint against our detailed SAINTS array ──
-  var matched = null;
-  for (var i = 0; i < calSaints.length; i++) {
-    var calName = calSaints[i].toLowerCase();
-    var found = SAINTS.find(function(s){
-      return calName.includes(s.name.toLowerCase().split(' ').pop()) // last name match
-          || s.name.toLowerCase().includes(calName.split(' ')[0]);   // first word match
-    });
-    if (found) { matched = found; break; }
+    } catch(e) {}
   }
 
-  // ── Step 3: If matched a known saint, show full profile ──
+  // ── Filter to actual saint names (drop liturgical markers) ──
+  var markerWords = ['forefeast','afterfeast','apodosis','leavetaking','synaxis',
+    'sunday','saturday','monday','tuesday','wednesday','thursday','friday',
+    'week','fast','feast','nativity','theophany','transfiguration','pentecost',
+    'pascha','dormition','ascension','annunciation','elevation','triodion',
+    'commemoration','council','ecumenical'];
+
+  function isActualSaint(name){
+    var nl = name.toLowerCase();
+    return !markerWords.some(function(m){ return nl.startsWith(m) || nl.includes('of '+m); });
+  }
+
+  var saintNames = calSaints.filter(isActualSaint);
+
+  // ── Try to match first saint against full profiles ──────────
+  var matched = null;
+  for (var i = 0; i < saintNames.length; i++) {
+    var calName = saintNames[i].toLowerCase();
+    var found = SAINTS.find(function(s){
+      var sn = s.name.toLowerCase();
+      // Match if the profile name appears in the calendar name or vice versa
+      return calName.includes(sn) || sn.includes(calName.split(',')[0].trim());
+    });
+    if (found){ matched = found; break; }
+  }
+
+  // ── Case 1: Matched a full profile ─────────────────────────
   if (matched) {
     currentSaint = matched;
     document.getElementById('sotdName').textContent = matched.name;
-    document.getElementById('sotdFeast').textContent = displayDate + '  ·  Feast Day: ' + matched.feastDay;
-    document.getElementById('sotdBio').textContent = matched.bio.split('\n\n')[0].slice(0, 220) + '\u2026';
+    document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
+    document.getElementById('sotdBio').textContent = matched.bio.split('\n\n')[0].slice(0,220) + '\u2026';
     document.getElementById('sotdBtn').style.display = 'inline-block';
+    document.getElementById('sotdBtn').textContent = 'Read Full Profile \u2192';
     document.getElementById('sotdBtn').onclick = function(){ openSaint(matched); };
     return;
   }
 
-  // ── Step 4: Calendar saint exists but no full profile yet — show name from ICS ──
-  if (calSaints.length > 0) {
-    // Filter out liturgical markers to surface an actual saint name
-    var saintName = calSaints.find(function(s){
-      var sl = s.toLowerCase();
-      return !sl.includes('forefeast') && !sl.includes('afterfeast') && !sl.includes('apodosis')
-          && !sl.includes('sunday') && !sl.includes('saturday') && !sl.includes('monday');
-    }) || calSaints[0];
-    document.getElementById('sotdName').textContent = saintName;
-    document.getElementById('sotdFeast').textContent = displayDate;
-    document.getElementById('sotdBio').textContent = 'Full profile coming soon. Ask the Companion about this saint for more.';
+  // ── Case 2: Calendar saints exist but no full profile ───────
+  if (saintNames.length > 0) {
+    var primaryName = saintNames[0];
+    // Show all today's saints as a list
+    var allNamesDisplay = saintNames.slice(0,3).join('  ·  ');
+    document.getElementById('sotdName').textContent = primaryName;
+    document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
+    document.getElementById('sotdBio').textContent = saintNames.length > 1
+      ? 'Also commemorated today: ' + saintNames.slice(1,3).join(', ') + '. Full profiles coming soon.'
+      : 'Full profile coming soon. Ask the Companion to learn about this saint.';
     document.getElementById('sotdBtn').style.display = 'inline-block';
     document.getElementById('sotdBtn').textContent = 'Ask the Companion \u2192';
     document.getElementById('sotdBtn').onclick = function(){
-      window.location.href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + saintName);
+      window.location.href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + primaryName);
     };
     return;
   }
 
-  // ── Step 5: No calendar data — rotate through known saints deterministically ──
+  // ── Case 3: No calendar data — rotate known profiles ────────
   var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
   var saint = SAINTS[dayOfYear % SAINTS.length];
   currentSaint = saint;
   document.getElementById('sotdName').textContent = saint.name;
   document.getElementById('sotdFeast').textContent = 'Feast Day: ' + saint.feastDay;
-  document.getElementById('sotdBio').textContent = saint.bio.split('\n\n')[0].slice(0, 220) + '\u2026';
+  document.getElementById('sotdBio').textContent = saint.bio.split('\n\n')[0].slice(0,220) + '\u2026';
   document.getElementById('sotdBtn').style.display = 'inline-block';
   document.getElementById('sotdBtn').textContent = 'Read Full Profile \u2192';
   document.getElementById('sotdBtn').onclick = function(){ openSaint(saint); };
@@ -987,10 +1003,9 @@ function initFadeIn(){
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
   updateCounts();
-  loadSaintOfTheDay();
+  loadSaintOfTheDay();   // async — uses calendar engine
   initFadeIn();
 
-  // Check URL for category param
   var params = new URLSearchParams(window.location.search);
   var cat = params.get('cat');
   if(cat && CATEGORIES[cat]){
@@ -1002,6 +1017,10 @@ document.addEventListener('DOMContentLoaded', function(){
     if(s) setTimeout(function(){ openSaint(s); }, 200);
   }
 });
+</script>
+
+<!-- Calendar engine — powers Saint of the Day from the liturgical calendar -->
+<script src="calendar-engine-v2.js"></script>
 </script>
 </body>
 </html>
