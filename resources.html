@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Resources — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="theme-color" content="#0A1628"/>
+<meta name="description" content="Curated Orthodox Christian resources — books, podcasts, websites, Ancient Faith Radio, Church documents, and Orthodox stores."/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
+.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;font-size:1rem;}
+.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
+.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
+.nav-drawer-footer{padding:16px 28px 0;}
+/* Page */
+.page-hero{margin-top:var(--nav-h);padding:40px 24px 32px;background:linear-gradient(180deg,rgba(27,58,107,0.2),transparent);border-bottom:1px solid rgba(201,168,76,0.1);}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;}
+/* Filter tabs */
+.filter-bar{max-width:1040px;margin:0 auto;padding:20px 24px 0;display:flex;gap:6px;flex-wrap:wrap;}
+.filter-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;padding:7px 14px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.filter-btn:hover{border-color:var(--border);color:var(--text-dim);}
+.filter-btn.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+/* Level badges */
+.level-beginner{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid rgba(90,180,90,0.4);color:rgba(140,220,140,0.9);background:rgba(58,106,58,0.12);}
+.level-intermediate{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid rgba(180,180,60,0.4);color:rgba(220,220,120,0.9);background:rgba(106,106,26,0.12);}
+.level-advanced{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid rgba(180,90,60,0.4);color:rgba(220,140,100,0.9);background:rgba(106,58,26,0.12);}
+/* Resource grid */
+.resources-body{max-width:1040px;margin:0 auto;padding:24px 24px 60px;}
+.resources-section{margin-bottom:40px;}
+.resources-section-title{font-family:'Cinzel',serif;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid rgba(42,90,156,0.2);}
+.resources-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.res-card{background:rgba(15,32,53,0.55);border:1px solid var(--border-dim);border-radius:4px;padding:18px 18px 14px;display:flex;flex-direction:column;gap:8px;transition:border-color 0.2s,transform 0.2s;}
+.res-card:hover{border-color:var(--border);transform:translateY(-1px);}
+.res-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;}
+.res-card-name{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text);letter-spacing:0.04em;line-height:1.3;}
+.res-card-desc{font-size:0.84rem;color:var(--text-dim);font-style:italic;line-height:1.65;flex:1;}
+.res-card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:8px;border-top:1px solid rgba(42,90,156,0.15);}
+.res-card-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;border:1px solid var(--border-dim);border-radius:2px;padding:4px 10px;transition:all 0.2s;}
+.res-card-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.empty-msg{padding:40px;text-align:center;color:var(--text-muted);font-style:italic;}
+@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}.resources-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.resources-grid{grid-template-columns:1fr;}.resources-body{padding:16px 16px 40px;}.page-hero{padding:28px 16px 20px;}.filter-bar{padding:14px 16px 0;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="saints.html">Saints</a></li>
+    <li><a href="topics.html">Topics</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="fasting.html">Fasting</a></li>
+    <li><a href="resources.html" class="active">Resources</a></li><li><a href="blog.html">Blog</a></li><li><a href="new-to-orthodoxy.html">New Here?</a></li><li><a href="chatbot.html">Companion AI</a></li>
+  </ul>
+  <div class="nav-right"><button class="nav-search-btn" onclick="openSearch()">&#9901;</button><a href="account.html" class="nav-login-btn">Sign In</a></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
+  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
+</div>
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
+  <div style="width:100%;max-width:640px;padding:0 20px;">
+    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
+      <span style="color:var(--text-muted);">&#9901;</span>
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;"/>
+      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Resources</div>
+    <h1 class="page-title">Resources</h1>
+    <p class="page-desc">Curated Orthodox resources — quality over quantity. Books, podcasts, websites, and more, organized by level and category.</p>
+  </div>
+</div>
+
+<div class="filter-bar" id="filterBar"></div>
+<div class="resources-body" id="resourcesBody"></div>
+
+<script>
+"use strict";
+var CATS = [
+  { id:'all',       name:'All Resources' },
+  { id:'books',     name:'Books' },
+  { id:'podcasts',  name:'Podcasts & Video' },
+  { id:'websites',  name:'Websites' },
+  { id:'radio',     name:'Ancient Faith Radio' },
+  { id:'documents', name:'Church Documents' },
+  { id:'stores',    name:'Orthodox Stores' },
+];
+
+// ══════════════════════════════════════════════════════════
+// RESOURCES DATA
+// Add new resources here. level: 'beginner' | 'intermediate' | 'advanced'
+// ══════════════════════════════════════════════════════════
+var RESOURCES = [
+  // Books
+  { id:'orthodoxy-penult', cat:'books', level:'beginner', name:'The Orthodox Church', desc:'Metropolitan Kallistos Ware\'s classic introduction to Orthodox history, theology, and worship. The single best starting point for any inquirer.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary Press' },
+  { id:'orthodox-way', cat:'books', level:'intermediate', name:'The Orthodox Way', desc:'A deeper companion to the first — Metropolitan Ware\'s exploration of Orthodox theology through the lens of the spiritual life.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary Press' },
+  { id:'on-incarnation', cat:'books', level:'beginner', name:'On the Incarnation', desc:'St. Athanasius\'s masterpiece — brief, accessible, and profound. C.S. Lewis called it one of the most important books he ever read.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary Press' },
+  { id:'ladder', cat:'books', level:'intermediate', name:'The Ladder of Divine Ascent', desc:'St. John Climacus\'s guide to the thirty steps of the spiritual life. Read aloud in Orthodox monasteries throughout Great Lent.', url:'https://holymonastery.com', publisher:'Holy Transfiguration Monastery' },
+  { id:'arena', cat:'books', level:'intermediate', name:'The Arena', desc:'Bishop Ignatius Brianchaninov\'s classic guide to the Orthodox spiritual life, drawn from the Philokalia tradition.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary Press' },
+  { id:'philokalia', cat:'books', level:'advanced', name:'The Philokalia (4 vols.)', desc:'The treasury of Orthodox mystical theology — writings on prayer, nepsis, and theosis from the 4th–15th centuries. Translated by Ware & Palmer.', url:'https://www.amazon.com', publisher:'Faber & Faber' },
+  { id:'confessions-augustine', cat:'books', level:'beginner', name:'Confessions — St. Augustine', desc:'One of the most beautiful spiritual autobiographies ever written. Though Augustine is not Orthodox in the strict sense, the Confessions is deeply formative.', url:'https://www.amazon.com', publisher:'Various editions' },
+  { id:'way-pilgrim', cat:'books', level:'beginner', name:'The Way of a Pilgrim', desc:'A 19th-century Russian classic about a wandering pilgrim who learns to pray the Jesus Prayer without ceasing. Beloved by beginners and veterans alike.', url:'https://www.amazon.com', publisher:'Various editions' },
+  { id:'orthodox-spirituality', cat:'books', level:'intermediate', name:'Orthodox Spirituality', desc:'A clear and warm introduction to the inner life of Orthodox Christianity by a monk of the Eastern Church.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary Press' },
+  // Podcasts & Video
+  { id:'ancient-faith-podcast', cat:'podcasts', level:'beginner', name:'Ancient Faith Radio Podcasts', desc:'Hundreds of podcasts on every aspect of Orthodox faith and life — perfect for commutes, workouts, or quiet listening.', url:'https://www.ancientfaith.com', publisher:'Ancient Faith Ministries' },
+  { id:'faithfully-podcast', cat:'podcasts', level:'beginner', name:'Faithfully Orthodox Podcast', desc:'Warm, accessible conversations on Orthodoxy for inquirers, catechumens, and the newly received.', url:'https://www.ancientfaith.com', publisher:'Ancient Faith Ministries' },
+  { id:'search-meaning', cat:'podcasts', level:'beginner', name:'In Search of Meaning', desc:'Fr. Deacon Nicholas Denysenko explores the Orthodox faith for those who are searching.', url:'https://www.ancientfaith.com', publisher:'Ancient Faith Ministries' },
+  { id:'oca-youtube', cat:'podcasts', level:'beginner', name:'OCA YouTube Channel', desc:'Lectures, liturgies, and instructional videos on the Orthodox faith from the Orthodox Church in America.', url:'https://www.youtube.com/@OCANews', publisher:'Orthodox Church in America' },
+  { id:'goarch-youtube', cat:'podcasts', level:'beginner', name:'Greek Orthodox Archdiocese YouTube', desc:'Divine Liturgies, Great Vespers, feast day services, and educational content from the Greek Orthodox Archdiocese.', url:'https://www.youtube.com/@GoarchOrg', publisher:'Greek Orthodox Archdiocese' },
+  // Websites
+  { id:'orthodoxwiki', cat:'websites', level:'beginner', name:'OrthodoxWiki', desc:'The comprehensive online encyclopedia of the Orthodox Church — saints, theology, history, jurisdictions, and liturgical life.', url:'https://orthodoxwiki.org', publisher:'OrthodoxWiki' },
+  { id:'goarch-website', cat:'websites', level:'beginner', name:'Greek Orthodox Archdiocese of America', desc:'Official website of the Greek Orthodox Archdiocese — news, liturgical resources, parish locator, and catechetical materials.', url:'https://www.goarch.org', publisher:'Greek Orthodox Archdiocese' },
+  { id:'oca-website', cat:'websites', level:'beginner', name:'Orthodox Church in America', desc:'The OCA\'s official site — excellent liturgical calendar, saints database, and theological resources.', url:'https://www.oca.org', publisher:'OCA' },
+  { id:'pravmir', cat:'websites', level:'intermediate', name:'Pravmir', desc:'An excellent English-language Orthodox journal with articles on theology, spirituality, and church life.', url:'https://www.pravmir.com', publisher:'Pravmir' },
+  { id:'newadvent', cat:'websites', level:'advanced', name:'New Advent Fathers', desc:'The Church Fathers online — a massive collection of patristic texts, primarily from the NPNF series. Invaluable for research.', url:'https://www.newadvent.org/fathers/', publisher:'New Advent' },
+  { id:'holy-cross', cat:'websites', level:'advanced', name:'Holy Cross Orthodox Press', desc:'Academic and theological publications from Holy Cross Greek Orthodox School of Theology.', url:'https://www.hchc.edu/holycrosspress', publisher:'Holy Cross' },
+  // Ancient Faith Radio
+  { id:'afr-main', cat:'radio', level:'beginner', name:'Ancient Faith Radio', desc:'24/7 Orthodox Christian radio — Divine Liturgies, Akathist hymns, podcasts, and lectures. The most accessible Orthodox audio resource in English.', url:'https://www.ancientfaith.com/radio', publisher:'Ancient Faith Ministries' },
+  { id:'afr-chanting', cat:'radio', level:'beginner', name:'AFR Byzantine Chanting', desc:'A dedicated stream of Byzantine liturgical chanting — a prayerful background for reading, work, or study.', url:'https://www.ancientfaith.com', publisher:'Ancient Faith Ministries' },
+  { id:'afr-orthros', cat:'radio', level:'intermediate', name:'Daily Orthros & Vespers', desc:'Daily recordings of Orthros (Matins) and Hesperinos (Vespers) to pray the daily offices even without a local monastery.', url:'https://www.ancientfaith.com', publisher:'Ancient Faith Ministries' },
+  // Church Documents
+  { id:'nicene-creed', cat:'documents', level:'beginner', name:'The Nicene-Constantinopolitan Creed', desc:'The Symbol of Faith defined at the First (325) and Second (381) Ecumenical Councils — the foundational statement of Orthodox belief.', url:'https://www.goarch.org/nicene-creed', publisher:'Ecumenical Councils' },
+  { id:'canons-councils', cat:'documents', level:'advanced', name:'Canons of the Ecumenical Councils', desc:'The disciplinary canons of the Seven Ecumenical Councils — the foundational church law of Orthodoxy.', url:'https://orthodoxwiki.org/Canons', publisher:'The Holy Councils' },
+  { id:'catechism-oca', cat:'documents', level:'beginner', name:'The Orthodox Faith (Fr. Thomas Hopko)', desc:'Four-volume catechism covering doctrine, worship, Bible, and spirituality. The standard catechetical resource of the OCA.', url:'https://www.oca.org/orthodoxy/the-orthodox-faith', publisher:'OCA' },
+  { id:'confession-dositheus', cat:'documents', level:'advanced', name:'Confession of Dositheus (1672)', desc:'The Synod of Jerusalem\'s confession of Orthodox faith, issued in response to Cyril Lucaris\'s Calvinist-influenced articles.', url:'https://orthodoxwiki.org/Confession_of_Dositheus', publisher:'Synod of Jerusalem' },
+  // Stores
+  { id:'svs-press', cat:'stores', level:'beginner', name:'St. Vladimir\'s Seminary Press', desc:'The premier English-language publisher of Orthodox theology and spirituality. Essential for building an Orthodox library.', url:'https://svspress.com', publisher:'St. Vladimir\'s Seminary' },
+  { id:'holy-apostles', cat:'stores', level:'beginner', name:'Holy Apostles Convent Bookstore', desc:'A wide selection of Orthodox books, icons, prayer ropes, and devotional items.', url:'https://www.holyapostlesconvent.org', publisher:'Holy Apostles Convent' },
+  { id:'antiochian-store', cat:'stores', level:'beginner', name:'Antiochian Archdiocese Store', desc:'Books, icons, and liturgical items from the Antiochian Orthodox Christian Archdiocese of North America.', url:'https://store.antiochian.org', publisher:'Antiochian Archdiocese' },
+  { id:'orthodox-marketplace', cat:'stores', level:'beginner', name:'Orthodox Marketplace', desc:'Icons, prayer ropes (chotki), incense, liturgical items, and books for the home and parish.', url:'https://www.amazon.com', publisher:'Various' },
+];
+
+var currentCat = 'all';
+var drawerOpen = false;
+
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
+document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
+function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
+function closeSearch(){document.getElementById('search-overlay').style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch();});
+document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
+
+function buildFilterBar(){
+  var html=CATS.map(function(c){
+    return '<button class="filter-btn'+(c.id===currentCat?' active':'')+'" onclick="selectCat(\''+c.id+'\')">'+c.name+'</button>';
+  }).join('');
+  document.getElementById('filterBar').innerHTML=html;
+}
+
+function selectCat(id){
+  currentCat=id;
+  buildFilterBar();
+  renderResources();
+}
+
+function levelBadge(level){
+  if(level==='beginner') return '<span class="level-beginner">Beginner</span>';
+  if(level==='intermediate') return '<span class="level-intermediate">Intermediate</span>';
+  if(level==='advanced') return '<span class="level-advanced">Advanced</span>';
+  return '';
+}
+
+function renderResources(){
+  var filtered=RESOURCES.filter(function(r){return currentCat==='all'||r.cat===currentCat;});
+  if(!filtered.length){document.getElementById('resourcesBody').innerHTML='<div class="empty-msg">No resources in this category yet.</div>';return;}
+  // Group by category
+  var groups={};
+  filtered.forEach(function(r){
+    if(!groups[r.cat])groups[r.cat]=[];
+    groups[r.cat].push(r);
+  });
+  var catOrder=['books','podcasts','websites','radio','documents','stores'];
+  var html='';
+  catOrder.forEach(function(cat){
+    if(!groups[cat]||!groups[cat].length)return;
+    var catName=CATS.find(function(c){return c.id===cat;});
+    html+='<div class="resources-section">';
+    html+='<div class="resources-section-title">'+(catName?catName.name:cat)+'</div>';
+    html+='<div class="resources-grid">';
+    groups[cat].forEach(function(r){
+      html+='<div class="res-card">';
+      html+='<div class="res-card-top"><div class="res-card-name">'+r.name+'</div>'+levelBadge(r.level)+'</div>';
+      html+='<div class="res-card-desc">'+r.desc+'</div>';
+      html+='<div class="res-card-footer">';
+      html+='<span style="font-size:0.74rem;color:var(--text-muted);font-style:italic;">'+r.publisher+'</span>';
+      html+='<a href="'+r.url+'" target="_blank" rel="noopener" class="res-card-link">Visit &#8599;</a>';
+      html+='</div></div>';
+    });
+    html+='</div></div>';
+  });
+  document.getElementById('resourcesBody').innerHTML=html;
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  buildFilterBar();
+  renderResources();
+  var params=new URLSearchParams(window.location.search);
+  var cat=params.get('cat');
+  if(cat){selectCat(cat);}
+});
+</script>
+</body>
+</html>

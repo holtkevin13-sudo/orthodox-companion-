@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Glossary — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="theme-color" content="#0A1628"/>
+<meta name="description" content="The Orthodox lexicon — Greek and English theological terms explained, with definitions, related terms, and links throughout the site."/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
+.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;font-size:1rem;}
+.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
+.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
+.nav-drawer-footer{padding:16px 28px 0;}
+/* Page */
+.page-hero{margin-top:var(--nav-h);padding:40px 24px 32px;background:linear-gradient(180deg,rgba(27,58,107,0.2),transparent);border-bottom:1px solid rgba(201,168,76,0.1);}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:600px;margin-bottom:20px;}
+/* Search */
+.glossary-search-wrap{display:flex;gap:12px;align-items:center;max-width:520px;}
+.glossary-search{flex:1;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:1rem;padding:10px 16px;outline:none;transition:border-color 0.2s;}
+.glossary-search:focus{border-color:var(--gold-dim);}
+.glossary-search::placeholder{color:var(--text-muted);font-style:italic;}
+/* Alpha bar */
+.alpha-bar{max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;flex-wrap:wrap;gap:3px;border-bottom:1px solid rgba(42,90,156,0.12);}
+.alpha-btn{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--text-muted);background:transparent;border:none;cursor:pointer;padding:4px 8px;border-radius:2px;transition:all 0.15s;}
+.alpha-btn:hover,.alpha-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.1);}
+.alpha-btn.has-entries{color:var(--text-dim);}
+/* Glossary body */
+.glossary-body{max-width:1040px;margin:0 auto;padding:20px 24px 60px;}
+.alpha-section{margin-bottom:8px;}
+.alpha-heading{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold);letter-spacing:0.1em;padding:16px 0 10px;border-bottom:1px solid rgba(201,168,76,0.2);margin-bottom:8px;}
+.term-card{background:rgba(15,32,53,0.45);border:1px solid var(--border-dim);border-radius:3px;margin-bottom:6px;overflow:hidden;transition:border-color 0.2s;}
+.term-card:hover{border-color:var(--border);}
+.term-card.open{border-color:var(--gold-dim);}
+.term-header{display:flex;align-items:baseline;gap:12px;padding:14px 18px;cursor:pointer;justify-content:space-between;}
+.term-name{font-family:'Cinzel',serif;font-size:0.96rem;color:var(--text);letter-spacing:0.04em;}
+.term-greek{font-size:1rem;color:var(--gold-light);font-style:italic;margin-left:4px;}
+.term-translit{font-size:0.8rem;color:var(--text-muted);font-style:italic;}
+.term-arrow{color:var(--text-muted);font-size:0.8rem;transition:transform 0.2s;flex-shrink:0;}
+.term-card.open .term-arrow{transform:rotate(90deg);}
+.term-body{display:none;padding:0 18px 16px;}
+.term-card.open .term-body{display:block;}
+.term-definition{font-size:0.96rem;color:var(--text-dim);line-height:1.85;margin-bottom:12px;}
+.term-related{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.term-related-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:4px;}
+.related-tag{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:2px 8px;cursor:pointer;transition:all 0.15s;background:transparent;}
+.related-tag:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.empty-msg{padding:40px;text-align:center;color:var(--text-muted);font-style:italic;}
+@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}}
+@media(max-width:600px){.glossary-body{padding:16px 16px 40px;}.page-hero{padding:28px 16px 20px;}.alpha-bar{padding:10px 16px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="saints.html">Saints</a></li>
+    <li><a href="topics.html">Topics</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="fasting.html">Fasting</a></li>
+    <li><a href="resources.html">Resources</a></li><li><a href="blog.html">Blog</a></li><li><a href="new-to-orthodoxy.html">New Here?</a></li><li><a href="chatbot.html">Companion AI</a></li>
+  </ul>
+  <div class="nav-right"><button class="nav-search-btn" onclick="openSearch()">&#9901;</button><a href="account.html" class="nav-login-btn">Sign In</a></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
+  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
+</div>
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
+  <div style="width:100%;max-width:640px;padding:0 20px;">
+    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
+      <span style="color:var(--text-muted);">&#9901;</span>
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;"/>
+      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Glossary</div>
+    <h1 class="page-title">Glossary &amp; Lexicon</h1>
+    <p class="page-desc">Orthodox theological terms in Greek and English — defined, cross-referenced, and linked throughout the site.</p>
+    <div class="glossary-search-wrap">
+      <input class="glossary-search" type="text" id="glossarySearch" placeholder="Search terms&#8230;" oninput="filterTerms(this.value)" autocomplete="off"/>
+    </div>
+  </div>
+</div>
+
+<div class="alpha-bar" id="alphaBar"></div>
+<div class="glossary-body" id="glossaryBody"></div>
+
+<script>
+"use strict";
+// ══════════════════════════════════════════════════════════
+// GLOSSARY DATA
+// Add new terms here. Everything else updates automatically.
+// Fields: id, english, greek, translit, definition, related[]
+// ══════════════════════════════════════════════════════════
+var TERMS = [
+  { id:'agape', english:'Agape', greek:'Ἀγάπη', translit:'agápē', definition:'Divine, unconditional love — the highest form of love in Christian theology. Agape is the love of God for humanity and the love that Christians are called to have for one another. St. John Chrysostom teaches that agape is not merely an emotion but a choice and an act of will, oriented toward the good of the other regardless of feeling.', related:['theosis','kenosis','philanthropia'] },
+  { id:'akathist', english:'Akathist', greek:'Ἀκάθιστος', translit:'Akáthistos', definition:'A liturgical hymn of praise sung standing (the Greek means "not sitting"). The most famous Akathist is the Akathist Hymn to the Theotokos, composed in the 6th or 7th century and sung each Friday of Great Lent, culminating on the Saturday of the 5th week. Many Akathists have been composed to Christ, the Theotokos, and various saints.', related:['theotokos','lent'] },
+  { id:'anaphora', english:'Anaphora', greek:'Ἀναφορά', translit:'Anaphorá', definition:'The central Eucharistic prayer of the Divine Liturgy, during which the bread and wine are consecrated and offered to God. The word means "offering" or "carrying up." The two Anaphoras used in the Orthodox Church are those of St. John Chrysostom (most Sundays) and St. Basil the Great (ten times per year, including the Sundays of Great Lent).', related:['eucharist','divine-liturgy','epiclesis'] },
+  { id:'apatheia', english:'Apatheia', greek:'Ἀπάθεια', translit:'Apátheia', definition:'Not "apathy" in the modern sense, but the freedom from disordered passions — a state of inner stillness, clarity, and equilibrium achieved through ascetic struggle and God\'s grace. Apatheia is not the absence of feeling but the purification of feeling so that love (agape) can operate freely. St. Maximus the Confessor teaches that apatheia is the foundation upon which agape is built.', related:['passions','logismoi','nepsis','theosis','agape'] },
+  { id:'apostolic-succession', english:'Apostolic Succession', greek:'Ἀποστολικὴ Διαδοχή', translit:'Apostolikē Diadochē', definition:'The unbroken chain of episcopal ordination tracing back through the centuries to the Apostles themselves. Each Orthodox bishop has been ordained by bishops who were themselves ordained in a continuous line reaching back to the Apostolic Church. Apostolic Succession guarantees the authenticity and continuity of the Church\'s sacramental life.', related:['episcopate','holy-orders','church'] },
+  { id:'catechumen', english:'Catechumen', greek:'Κατηχούμενος', translit:'Katēchoúmenos', definition:'One who is receiving instruction in the Orthodox faith in preparation for Holy Baptism and reception into the Church. The catechumenate is a period of formation — typically one to three years — during which the inquirer is taught the faith, participates in part of the Divine Liturgy (until the Liturgy of the Faithful), and prepares for Chrismation and Holy Communion.', related:['baptism','chrismation','eucharist','mystagogia'] },
+  { id:'chrismation', english:'Chrismation', greek:'Χρίσμα', translit:'Chrísma', definition:'The Sacrament (Holy Mystery) in which the newly baptized is anointed with the Holy Myron (consecrated oil) and sealed with the gift of the Holy Spirit. Chrismation immediately follows Baptism in the Orthodox Church and corresponds to Confirmation in Western Christianity. It is the personal Pentecost of each believer — the reception of the Holy Spirit that enables the fullness of the Christian life.', related:['baptism','holy-spirit','eucharist','sacraments'] },
+  { id:'deification', english:'Deification', greek:'Θέωσις', translit:'Théōsis', definition:'See Theosis.', related:['theosis'] },
+  { id:'doxology', english:'Doxology', greek:'Δοξολογία', translit:'Doxología', definition:'A liturgical formula of praise to the Holy Trinity. The Great Doxology ("Glory to God in the Highest") is sung at Orthros (Matins). The Lesser Doxology ("Glory to the Father, and to the Son, and to the Holy Spirit") punctuates every Orthodox service. All Orthodox worship is, in its essence, an act of doxology — the praise and glorification of the Triune God.', related:['divine-liturgy','trinity','orthros'] },
+  { id:'economy', english:'Economy', greek:'Οἰκονομία', translit:'Oikonomía', definition:'In theology, the "economy" (oikonomia) refers to God\'s plan of salvation — the whole of His providential activity from creation through the Incarnation to the final restoration of all things. It also refers to the pastoral principle of flexibility in applying Church canons for the spiritual benefit of the faithful, balanced against the principle of akribeia (strict exactness).', related:['incarnation','salvation','theosis'] },
+  { id:'epiclesis', english:'Epiclesis', greek:'Ἐπίκλησις', translit:'Epíklēsis', definition:'The prayer in the Eucharistic Anaphora in which the bishop or priest invokes the Holy Spirit upon the bread and wine, asking God to transform them into the Body and Blood of Christ. The Epiclesis is the moment in the Orthodox understanding at which the transformation of the gifts occurs, in distinction from the Western understanding which places the moment of consecration at the Words of Institution.', related:['anaphora','eucharist','holy-spirit'] },
+  { id:'epitrachilion', english:'Epitrachilion', greek:'Ἐπιτραχήλιον', translit:'Epitrachḗlion', definition:'The stole worn by Orthodox priests and bishops around the neck, hanging down the front. It is the vestment of the priesthood — a priest may not celebrate any sacrament without it. It symbolizes the grace of the priesthood and the yoke of Christ. The word means "that which is around the neck."', related:['holy-orders','sacraments'] },
+  { id:'eschatology', english:'Eschatology', greek:'Ἐσχατολογία', translit:'Eschatología', definition:'The theology of last things — death, judgment, heaven, hell, the General Resurrection, and the Kingdom of God. Orthodox eschatology is characterized by hope: the final word of God is not condemnation but transformation. The emphasis is on the restoration of all things in Christ (apokatastasis) and the eternal Kingdom as the fullness of theosis for the redeemed.', related:['resurrection','theosis','death'] },
+  { id:'eucharist', english:'Eucharist', greek:'Εὐχαριστία', translit:'Eucharistía', definition:'The central Sacrament of the Orthodox Church — the Holy Communion of the Body and Blood of Christ. The word means "thanksgiving." In Orthodox theology, the Eucharist is not merely a symbol or a memorial but the true Body and Blood of the Lord Jesus Christ under the forms of bread and wine. Every aspect of Orthodox worship and life is oriented toward the Eucharist.', related:['divine-liturgy','anaphora','epiclesis','theosis'] },
+  { id:'hesychasm', english:'Hesychasm', greek:'Ἡσυχασμός', translit:'Hēsychasmós', definition:'The tradition of inner stillness (hesychia) and contemplative prayer at the heart of Orthodox monasticism. Hesychasm is characterized by the practice of the Jesus Prayer, breath control, attention of the mind in the heart, and the quest for the vision of the uncreated divine light. St. Gregory Palamas defended hesychasm against the attacks of Barlaam the Calabrian in the 14th century, establishing the distinction between the divine essence and the divine energies as the theological foundation of the hesychast tradition.', related:['nepsis','jesus-prayer','apatheia','theosis','divine-energies','palamas'] },
+  { id:'holy-orders', english:'Holy Orders', greek:'Ἱερωσύνη', translit:'Hierōsýnē', definition:'The Sacrament by which men are ordained to the ranks of the diaconate, presbyterate, and episcopate. In Orthodoxy, Holy Orders are conferred through the laying on of hands by a bishop with the invocation of the Holy Spirit (cheirotonia). Only bishops may ordain, and they do so as the successors of the Apostles.', related:['apostolic-succession','episcopate','deacon'] },
+  { id:'hypostasis', english:'Hypostasis', greek:'Ὑπόστασις', translit:'Hypóstasis', definition:'Person. A key term in Trinitarian and Christological theology. The Holy Trinity is one essence (ousia) in three hypostases (persons): Father, Son, and Holy Spirit. Christ is one hypostasis (person) with two natures (divine and human). The concept was defined with precision at the First and Fourth Ecumenical Councils and has been foundational to Orthodox theology ever since.', related:['trinity','incarnation','ousia','person'] },
+  { id:'icon', english:'Icon', greek:'Εἰκόν', translit:'Eikón', definition:'A sacred image of Christ, the Theotokos, the saints, or events of sacred history used in Orthodox worship. Icons are not merely religious art but windows into the Kingdom of Heaven — the theology of which was defended at the Seventh Ecumenical Council (787). The proper veneration (proskynesis) of icons is directed not to the material image but to the person depicted, in accordance with the Incarnation of the Son of God.', related:['incarnation','veneration','saint','theotokos'] },
+  { id:'incarnation', english:'Incarnation', greek:'Ἐνσάρκωσις', translit:'Ensárkōsis', definition:'The becoming-flesh of the eternal Son of God in Jesus Christ — the central mystery of the Christian faith. "The Word became flesh and dwelt among us" (John 1:14). At the Annunciation, the Son of God took to Himself a full human nature (body, soul, and will) from the Virgin Mary, while remaining fully God. The Incarnation is the foundation of all Orthodox theology, especially the theology of icons, the sacraments, and theosis.', related:['theotokos','theosis','icon','eucharist'] },
+  { id:'jesus-prayer', english:'Jesus Prayer', greek:'Εὐχὴ τοῦ Ἰησοῦ', translit:'Evchī toū Iēsoū', definition:'"Lord Jesus Christ, Son of God, have mercy on me, a sinner." The prayer of the heart, given to the Church through the Desert Fathers and systematized in the hesychast tradition. The Jesus Prayer unites the name of Christ, the confession of His divinity and sonship, and the cry of the penitent. It is designed to be prayed repeatedly until it becomes the constant background of the soul\'s activity.', related:['hesychasm','nepsis','apatheia','heart'] },
+  { id:'kenosis', english:'Kenosis', greek:'Κένωσις', translit:'Kénōsis', definition:'Self-emptying. From Philippians 2:7 — "He emptied Himself, taking the form of a servant." The kenosis of the Son of God refers to His voluntary self-limitation in becoming human — not surrendering His divinity, but veiling its glory for our sake. Kenosis is also a spiritual principle for the Christian: the emptying of self as a precondition for being filled with God.', related:['incarnation','theosis','humility'] },
+  { id:'logismoi', english:'Logismoi', greek:'Λογισμοί', translit:'Logismoí', definition:'Thoughts — specifically, the intrusive thoughts or tempting thoughts that arise in the mind as the first movement of the passions. The Desert Fathers developed a sophisticated analysis of the logismoi, identifying eight chief categories (from which the Western list of seven deadly sins derives). The primary weapon against the logismoi is nepsis (watchfulness) and the Jesus Prayer.', related:['passions','nepsis','apatheia','eight-thoughts'] },
+  { id:'metanoia', english:'Metanoia', greek:'Μετάνοια', translit:'Metánoia', definition:'Repentance — but far more than merely sorrow for sin. Metanoia literally means "change of mind" or "change of nous" — a fundamental reorientation of the whole person toward God. True metanoia involves not only contrition but a genuine transformation of the way one thinks, desires, and lives. It is not a one-time event but the ongoing posture of the Christian life.', related:['nous','theosis','confession','passions'] },
+  { id:'myron', english:'Holy Myron', greek:'Ἅγιον Μύρον', translit:'Hágion Mýron', definition:'The consecrated oil of Chrismation, blessed only by a Patriarch. The Holy Myron is composed of olive oil blended with many fragrant herbs and spices — a recipe that symbolizes the fullness of the gifts of the Holy Spirit. It is used in the Sacrament of Chrismation and in the consecration of churches and altars.', related:['chrismation','holy-spirit','sacraments'] },
+  { id:'nepsis', english:'Nepsis', greek:'Νῆψις', translit:'Nḗpsis', definition:'Sobriety, watchfulness, attention. The fundamental disposition of the hesychast — a continuous, undistracted attention of the mind guarding the heart against the logismoi (intrusive thoughts). The Philokalia is largely a collection of neptic writings. St. Hesychios of Sinai writes: "Sobriety is a spiritual method which, if sedulously practiced over a long period, completely frees us with God\'s help from sinful actions, words and thoughts."', related:['hesychasm','logismoi','apatheia','jesus-prayer','philokalia'] },
+  { id:'nous', english:'Nous', greek:'Νοῦς', translit:'Noūs', definition:'The highest faculty of the human person — often translated "intellect" or "mind," but more precisely the organ of direct spiritual perception. The nous is the eye of the soul, capable of beholding God directly in the hesychast tradition. Through the Fall, the nous has become darkened and scattered; through ascetic struggle, prayer, and the grace of the Holy Spirit, it is progressively purified and restored.', related:['nepsis','hesychasm','theosis','heart','metanoia'] },
+  { id:'oikonomia', english:'Oikonomia', greek:'Οἰκονομία', translit:'Oikonomía', definition:'See Economy.', related:['economy'] },
+  { id:'orthros', english:'Orthros', greek:'Ὄρθρος', translit:'Órthos', definition:'Matins — the morning liturgical office of the Orthodox Church. Orthros is the longest and richest of the daily offices, celebrated in the early morning hours before the Divine Liturgy. It includes the reading of psalms, canons (poetic compositions on the odes of Scripture), kathismata, and on Sundays the Resurrection Canon and the singing of the Eothinon (Resurrection Gospel).', related:['divine-liturgy','hesperinos','liturgy-of-hours'] },
+  { id:'parousia', english:'Parousia', greek:'Παρουσία', translit:'Parousía', definition:'The Second Coming of Christ — the return of the Lord Jesus Christ in glory at the end of the age. The Parousia will be accompanied by the General Resurrection, the Last Judgment, and the final establishment of the Kingdom of God. Orthodox eschatology emphasizes the Parousia not as a catastrophe to be feared but as the fulfillment of all history and the ultimate consummation of theosis.', related:['eschatology','resurrection','kingdom-of-god'] },
+  { id:'passions', english:'Passions', greek:'Πάθη', translit:'Páthē', definition:'The disordered desires and tendencies of fallen human nature that draw the soul away from God. The classic list of eight passions (from Evagrius and Cassian) includes: gluttony, lust, avarice, sadness, anger, acedia (spiritual torpor), vainglory, and pride. The passions are not evil in themselves — they are corrupted forms of natural energies — but must be purified and redirected toward God through ascetic struggle.', related:['logismoi','apatheia','nepsis','metanoia'] },
+  { id:'philokalia', english:'Philokalia', greek:'Φιλοκαλία', translit:'Philokalía', definition:'A collection of writings from the 4th through 15th centuries on the practice of the hesychast life — prayer, nepsis, and theosis. The title means "love of the beautiful" (kalos). Compiled by St. Nikodimos of the Holy Mountain and St. Makarios of Corinth and published in Venice in 1782, the Philokalia has been one of the most influential texts in Orthodox spirituality. It includes writings of Evagrios, Hesychios, Maximos, Gregory Palamas, and many others.', related:['hesychasm','nepsis','theosis','nous','jesus-prayer'] },
+  { id:'proskynesis', english:'Proskynesis', greek:'Προσκύνησις', translit:'Proskýnēsis', definition:'Veneration — the act of bowing or prostrating before an icon, the Cross, or relics. The Seventh Ecumenical Council (787) distinguished between proskynesis (veneration) offered to icons and latreia (worship) offered to God alone, thus defining the Orthodox theology of icons. Veneration is not worship of the image or the saint but an honor directed through the image to the person depicted.', related:['icon','latreia','seventh-council'] },
+  { id:'sacraments', english:'Holy Mysteries', greek:'Ἅγια Μυστήρια', translit:'Hágia Mystḗria', definition:'The seven Sacraments of the Orthodox Church through which divine grace is communicated to the faithful: Baptism, Chrismation, Holy Eucharist, Confession, Holy Orders, Holy Matrimony, and Holy Unction. The Orthodox prefer the term "Holy Mysteries" (Mysteria) to "Sacraments" to emphasize their character as mysterious encounters with the living God, not merely ritual acts.', related:['baptism','chrismation','eucharist','confession','holy-orders'] },
+  { id:'synaxis', english:'Synaxis', greek:'Σύναξις', translit:'Sýnaxis', definition:'An assembly or gathering for worship. In liturgical usage, a Synaxis is celebrated the day after a major feast to honor those most closely associated with the feast — e.g., the Synaxis of the Theotokos (Dec 26, day after Nativity), the Synaxis of St. John the Baptist (Jan 7, day after Theophany).', related:['divine-liturgy','theotokos'] },
+  { id:'theosis', english:'Theosis', greek:'Θέωσις', translit:'Théōsis', definition:'Deification — the process by which human beings become partakers of the divine nature (2 Peter 1:4) through grace. Theosis is the goal and destiny of human existence in Orthodox theology. St. Athanasius states it perfectly: "God became man so that man might become God." Theosis does not mean becoming God by nature (that would be the heresy of pantheism) but participating in the uncreated divine energies through grace, while God\'s essence remains forever beyond all participation.', related:['divine-energies','hesychasm','philokalia','incarnation','apatheia','agape'] },
+  { id:'theotokos', english:'Theotokos', greek:'Θεοτόκος', translit:'Theotókos', definition:'"God-bearer" or "Mother of God." The title of the Virgin Mary defined at the Third Ecumenical Council at Ephesus (431) against the Nestorian position that she was merely Christotokos ("Christ-bearer"). The title Theotokos guards the unity of the person of Christ — since the child she bore is the eternal Son of God, she is rightly called "Mother of God." She is the supreme intercessor and is commemorated in every service of the Orthodox Church.', related:['incarnation','icon','proskynesis','akathist'] },
+  { id:'trisagion', english:'Trisagion', greek:'Τρισάγιον', translit:'Trísagion', definition:'"Holy God, Holy Mighty, Holy Immortal, have mercy on us" — the thrice-holy prayer at the beginning of every Orthodox service. The prayer is rooted in the vision of Isaiah (Isaiah 6:3, "Holy, holy, holy is the Lord of Hosts") and has been a part of Orthodox worship since at least the 5th century. It is sung three times as an act of praise to the Holy Trinity.', related:['trinity','divine-liturgy','doxology'] },
+];
+
+// ── Nav ───────────────────────────────────────────────────────
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
+document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
+function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
+function closeSearch(){document.getElementById('search-overlay').style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch();});
+document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
+
+// ── Render ────────────────────────────────────────────────────
+var currentFilter = '';
+
+function filterTerms(q){
+  currentFilter = q.toLowerCase().trim();
+  renderGlossary();
+}
+
+function renderGlossary(){
+  var terms = TERMS.slice().sort(function(a,b){return a.english.localeCompare(b.english);});
+  if(currentFilter){
+    terms = terms.filter(function(t){
+      return t.english.toLowerCase().includes(currentFilter)
+        || t.greek.toLowerCase().includes(currentFilter)
+        || t.translit.toLowerCase().includes(currentFilter)
+        || t.definition.toLowerCase().includes(currentFilter);
+    });
+  }
+
+  // Build alpha sections
+  var sections = {};
+  terms.forEach(function(t){
+    var l = t.english[0].toUpperCase();
+    if(!sections[l]) sections[l]=[];
+    sections[l].push(t);
+  });
+
+  var letters = Object.keys(sections).sort();
+  var html = '';
+  if(!terms.length){ html='<div class="empty-msg">No terms found for \u201C'+currentFilter+'\u201D.</div>'; }
+  else {
+    letters.forEach(function(l){
+      html += '<div class="alpha-section" id="gl-'+l+'">';
+      html += '<div class="alpha-heading">'+l+'</div>';
+      sections[l].forEach(function(t){
+        html += '<div class="term-card" id="term-'+t.id+'">';
+        html += '<div class="term-header" onclick="toggleTerm(\''+t.id+'\')">';
+        html += '<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">';
+        html += '<span class="term-name">'+t.english+'</span>';
+        if(t.greek) html += '<span class="term-greek">'+t.greek+'</span>';
+        if(t.translit) html += '<span class="term-translit">('+t.translit+')</span>';
+        html += '</div><span class="term-arrow">&#8250;</span></div>';
+        html += '<div class="term-body">';
+        html += '<div class="term-definition">'+t.definition+'</div>';
+        if(t.related && t.related.length){
+          html += '<div class="term-related-label">Related Terms</div>';
+          html += '<div class="term-related">';
+          t.related.forEach(function(r){
+            var rel = TERMS.find(function(x){return x.id===r;});
+            var label = rel ? rel.english : r;
+            html += '<span class="related-tag" onclick="jumpToTerm(\''+r+'\')">'+label+'</span>';
+          });
+          html += '</div>';
+        }
+        html += '</div></div>';
+      });
+      html += '</div>';
+    });
+  }
+  document.getElementById('glossaryBody').innerHTML = html;
+  buildAlphaBar(letters);
+}
+
+function buildAlphaBar(activeLetters){
+  var all = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  var html = all.map(function(l){
+    var has = activeLetters.includes(l);
+    return '<button class="alpha-btn'+(has?' has-entries':'')+'" '+(has?'onclick="scrollToLetter(\''+l+\')"':'disabled')+'>'+l+'</button>';
+  }).join('');
+  document.getElementById('alphaBar').innerHTML = html;
+}
+
+function scrollToLetter(l){
+  var el = document.getElementById('gl-'+l);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function toggleTerm(id){
+  var card = document.getElementById('term-'+id);
+  if(card) card.classList.toggle('open');
+}
+
+function jumpToTerm(id){
+  document.getElementById('glossarySearch').value = '';
+  currentFilter = '';
+  renderGlossary();
+  setTimeout(function(){
+    var el = document.getElementById('term-'+id);
+    if(el){ el.classList.add('open'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+  }, 100);
+}
+
+// ── Init ──────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function(){
+  renderGlossary();
+  // Check URL hash for direct link to term
+  var hash = window.location.hash.replace('#','');
+  if(hash){
+    setTimeout(function(){
+      var el = document.getElementById('term-'+hash);
+      if(el){ el.classList.add('open'); el.scrollIntoView({behavior:'smooth',block:'center'}); }
+    }, 200);
+  }
+});
+</script>
+</body>
+</html>

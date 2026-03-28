@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fasting Guide — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="theme-color" content="#0A1628"/>
+<meta name="description" content="The Orthodox Christian fasting guide — theology, rules, the four fasting seasons, and a full annual fasting calendar."/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
+  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
+  --border:#2A5A9C;--border-dim:#1A3A5C;
+  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
+  --nav-h:68px;
+  --fast-strict:#3A6A3A;--fast-wine:#6A5A1A;--fast-fish:#1A4A6A;--fast-free:#6A4A1A;
+}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
+.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;font-size:1rem;transition:all 0.2s;}
+.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
+.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
+.nav-drawer-footer{padding:16px 28px 0;}
+/* Page */
+.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;background:linear-gradient(180deg,rgba(27,58,107,0.22),transparent);border-bottom:1px solid rgba(201,168,76,0.12);text-align:center;}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:14px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-icon{font-size:2.4rem;color:var(--gold-dim);margin-bottom:12px;display:block;}
+.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:10px;}
+.page-intro{font-size:1.05rem;color:var(--text-dim);font-style:italic;line-height:1.9;max-width:640px;margin:0 auto;}
+/* Content */
+.content{max-width:860px;margin:0 auto;padding:40px 24px 60px;}
+.section{margin-bottom:48px;}
+.section-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:6px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.18);}
+.section-subtitle{font-size:0.85rem;color:var(--text-muted);font-style:italic;margin-bottom:20px;}
+.prose{font-size:1rem;color:var(--text-dim);line-height:1.9;margin-bottom:16px;}
+.prose:last-child{margin-bottom:0;}
+/* Quote block */
+.quote-block{background:rgba(27,58,107,0.28);border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:18px 22px;margin:20px 0;}
+.quote-text{font-size:1rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:8px;}
+.quote-attr{font-family:'Cinzel',serif;font-size:0.65rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
+/* Fast legend */
+.fast-legend{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;}
+.fast-pill{display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--text-dim);padding:5px 12px;border-radius:20px;border:1px solid;}
+.fast-pill.strict{border-color:#5A8A5A;background:rgba(58,106,58,0.15);}
+.fast-pill.wine{border-color:#8A7A2A;background:rgba(106,90,26,0.15);}
+.fast-pill.fish{border-color:#2A5A8A;background:rgba(26,74,106,0.15);}
+.fast-pill.free{border-color:#8A6A1A;background:rgba(106,74,26,0.15);}
+.fast-pill.none{border-color:var(--border-dim);background:rgba(27,58,107,0.1);}
+.fast-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.fast-dot.strict{background:#5A8A5A;}
+.fast-dot.wine{background:#8A7A2A;}
+.fast-dot.fish{background:#2A5A8A;}
+.fast-dot.free{background:#9A8A2A;}
+.fast-dot.none{background:var(--border-dim);}
+/* Rules grid */
+.rules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.rule-card{background:rgba(15,32,53,0.55);border:1px solid var(--border-dim);border-radius:4px;padding:18px 20px;}
+.rule-card-title{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold-light);letter-spacing:0.05em;margin-bottom:8px;}
+.rule-card-body{font-size:0.88rem;color:var(--text-dim);line-height:1.75;}
+.rule-card-body li{margin-left:16px;margin-bottom:4px;}
+/* Season cards */
+.seasons-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.season-card{background:linear-gradient(160deg,rgba(15,32,53,0.7),rgba(27,58,107,0.3));border:1px solid var(--border-dim);border-radius:4px;padding:20px;border-left:3px solid var(--gold-dim);}
+.season-name{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.season-dates{font-size:0.75rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:0.06em;margin-bottom:10px;}
+.season-rule{font-size:0.88rem;color:var(--text-dim);line-height:1.7;}
+/* Annual calendar */
+.annual-cal{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.month-block{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;}
+.month-name{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);padding:7px 10px;background:rgba(0,0,0,0.2);border-bottom:1px solid var(--border-dim);}
+.month-days{padding:6px;display:flex;flex-wrap:wrap;gap:2px;}
+.day-dot{width:14px;height:14px;border-radius:2px;font-size:0.5rem;display:flex;align-items:center;justify-content:center;cursor:default;position:relative;}
+.day-dot.strict{background:rgba(58,106,58,0.6);}
+.day-dot.wine{background:rgba(106,90,26,0.5);}
+.day-dot.fish{background:rgba(26,74,106,0.5);}
+.day-dot.free{background:rgba(201,168,76,0.25);}
+.day-dot.none{background:rgba(27,58,107,0.15);}
+.day-dot.empty{background:transparent;}
+/* Jurisdiction note */
+.jurisdiction-note{background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;padding:16px 20px;font-size:0.88rem;color:var(--text-dim);line-height:1.7;font-style:italic;}
+.jurisdiction-note strong{color:var(--text);font-style:normal;}
+/* Glossary tags */
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+.glossary-tag{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:3px 10px;text-decoration:none;transition:all 0.2s;}
+.glossary-tag:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.blog-link{display:inline-block;margin-top:20px;font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 20px;text-decoration:none;background:rgba(201,168,76,0.08);transition:all 0.2s;}
+.blog-link:hover{background:rgba(201,168,76,0.2);}
+@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}.rules-grid,.seasons-grid{grid-template-columns:1fr;}.annual-cal{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:600px){.annual-cal{grid-template-columns:repeat(2,1fr);}.content{padding:28px 16px 40px;}.page-hero{padding:32px 16px 24px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="saints.html">Saints</a></li>
+    <li><a href="topics.html">Topics</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="fasting.html" class="active">Fasting</a></li>
+    <li><a href="resources.html">Resources</a></li><li><a href="blog.html">Blog</a></li><li><a href="new-to-orthodoxy.html">New Here?</a></li><li><a href="chatbot.html">Companion AI</a></li>
+  </ul>
+  <div class="nav-right"><button class="nav-search-btn" onclick="openSearch()">&#9901;</button><a href="account.html" class="nav-login-btn">Sign In</a></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
+  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
+</div>
+<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
+  <div style="width:100%;max-width:640px;padding:0 20px;">
+    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
+      <span style="color:var(--text-muted);">&#9901;</span>
+      <input type="text" id="searchInput" placeholder="Search..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;"/>
+      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
+    </div>
+  </div>
+</div>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Fasting Guide</div>
+  <span class="page-icon">&#127807;</span>
+  <h1 class="page-title">The Fasting Guide</h1>
+  <p class="page-intro">Fasting is the oldest spiritual discipline of the Church — not a burden, but a gift. Through the fasting of the body, we awaken the hunger of the soul and open ourselves to the grace of God.</p>
+</div>
+
+<div class="content">
+
+  <!-- Theology -->
+  <div class="section">
+    <h2 class="section-title">The Theology of Fasting</h2>
+    <p class="prose">Orthodox fasting is not a diet. It is an act of worship — a bodily prayer offered to God in imitation of Christ, who Himself fasted forty days in the wilderness. The Church has always understood the body and soul as one united person, and fasting is the training of the whole person in self-mastery and dependence on God.</p>
+    <p class="prose">The purpose of fasting is threefold: to subdue the passions of the body, to express repentance before God, and to free the mind and heart for prayer. The Fathers consistently teach that fasting without prayer and almsgiving is an empty exercise — the three must go together.</p>
+    <div class="quote-block">
+      <div class="quote-text">"Fasting is the food of prayer, the nourishment of the soul, the teacher of temperance. It is the companion of watchfulness, the enemy of the passions, the intercessor for sins, the armour of the saints."</div>
+      <div class="quote-attr">&mdash; St. John Chrysostom</div>
+    </div>
+    <p class="prose">Orthodox fasting traditionally means abstaining from meat, fish, dairy, wine, and oil. The degree of strictness varies by the day and season, and the Church has always been understanding of those whose health requires modification.</p>
+  </div>
+
+  <!-- Fasting Key -->
+  <div class="section">
+    <h2 class="section-title">Fasting Rules at a Glance</h2>
+    <div class="fast-legend">
+      <div class="fast-pill strict"><div class="fast-dot strict"></div>Strict Fast — no meat, fish, dairy, wine, or oil</div>
+      <div class="fast-pill wine"><div class="fast-dot wine"></div>Wine &amp; Oil Allowed — no meat, fish, or dairy</div>
+      <div class="fast-pill fish"><div class="fast-dot fish"></div>Fish Allowed — no meat or dairy</div>
+      <div class="fast-pill free"><div class="fast-dot free"></div>Fast Free — no fasting restrictions</div>
+      <div class="fast-pill none"><div class="fast-dot none"></div>No Fast — ordinary days</div>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <div class="rule-card-title">&#9670; Wednesday &amp; Friday Rule</div>
+        <div class="rule-card-body">Every Wednesday and Friday throughout the year is a fasting day (Strict Fast), commemorating the betrayal and crucifixion of our Lord. Exceptions apply on great feast days, the week after Pascha, and other designated fast-free periods.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-card-title">&#9670; Great Lent (Mon–Fri)</div>
+        <div class="rule-card-body">The most strict fasting of the year. Weekdays: Strict Fast. Saturdays &amp; Sundays: Wine and Oil. The first week and Holy Week are especially strict. Presanctified Liturgy on Wednesday and Friday evenings.</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-card-title">&#9670; Fish, Wine &amp; Oil Allowances</div>
+        <div class="rule-card-body">Fish is allowed on: Annunciation (Mar 25), Palm Sunday, and certain feast days that fall during fasting seasons. Wine and oil are allowed on Saturdays and Sundays during most fasting seasons (except Holy Week).</div>
+      </div>
+      <div class="rule-card">
+        <div class="rule-card-title">&#9670; Strict Fast Days</div>
+        <div class="rule-card-body">Beyond the four seasons, certain individual days require strict fasting: Beheading of John the Baptist (Aug 29), Exaltation of the Holy Cross (Sep 14), and the Eve of Theophany (Jan 5) — even if they fall on Saturday or Sunday.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Four Seasons -->
+  <div class="section">
+    <h2 class="section-title">The Four Fasting Seasons</h2>
+    <p class="section-subtitle">The Orthodox Church observes four extended fasting seasons throughout the year.</p>
+    <div class="seasons-grid">
+      <div class="season-card">
+        <div class="season-name">Great Lent</div>
+        <div class="season-dates">Clean Monday &rarr; Holy Saturday &nbsp;&bull;&nbsp; 48 Days</div>
+        <div class="season-rule">The great fast before Pascha. The strictest and most ancient of the four seasons. Abstinence from meat, fish, dairy, wine, and oil on weekdays. Sundays are more relaxed — wine and oil permitted. Holy Week is the most strict of the year.</div>
+      </div>
+      <div class="season-card">
+        <div class="season-name">Apostles Fast</div>
+        <div class="season-dates">All Saints Monday &rarr; June 28 &nbsp;&bull;&nbsp; Variable Length</div>
+        <div class="season-rule">Begins the Monday after All Saints Sunday (first Sunday after Pentecost) and ends on the eve of the feast of Sts. Peter and Paul (June 28). Length varies from 8 to 42 days depending on when Pascha falls. Moderate fast — fish, wine, and oil permitted on most days.</div>
+      </div>
+      <div class="season-card">
+        <div class="season-name">Dormition Fast</div>
+        <div class="season-dates">August 1&ndash;14 &nbsp;&bull;&nbsp; 14 Days</div>
+        <div class="season-rule">The fast before the Dormition of the Theotokos (August 15). A strict but short fast — similar in character to Great Lent. Fish is permitted only on the Transfiguration (August 6). Observed with particular devotion by Greek Orthodox faithful.</div>
+      </div>
+      <div class="season-card">
+        <div class="season-name">Nativity Fast</div>
+        <div class="season-dates">November 15 &rarr; December 24 &nbsp;&bull;&nbsp; 40 Days</div>
+        <div class="season-rule">The forty-day fast before the Nativity of Christ. Less strict than Great Lent — fish, wine, and oil are permitted on most days until December 20, after which the fast intensifies. The final week (Dec 20–24) mirrors the strictness of Holy Week.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Annual Calendar Visual -->
+  <div class="section">
+    <h2 class="section-title">Annual Fasting Calendar</h2>
+    <p class="section-subtitle">A visual overview of fasting days throughout the year. Moveable feasts (Pascha, Apostles Fast) shift each year.</p>
+    <div class="annual-cal" id="annualCal"></div>
+    <div class="fast-legend" style="margin-top:14px;">
+      <div class="fast-pill strict"><div class="fast-dot strict"></div>Strict Fast</div>
+      <div class="fast-pill wine"><div class="fast-dot wine"></div>Wine &amp; Oil</div>
+      <div class="fast-pill fish"><div class="fast-dot fish"></div>Fish Allowed</div>
+      <div class="fast-pill free"><div class="fast-dot free"></div>Fast Free</div>
+    </div>
+  </div>
+
+  <!-- Jurisdiction variations -->
+  <div class="section">
+    <h2 class="section-title">Jurisdiction Variations</h2>
+    <div class="jurisdiction-note">
+      <strong>Note:</strong> Fasting practices vary between Orthodox jurisdictions. The Greek Orthodox (Ecumenical Patriarchate) observes the rules presented here. The OCA (Orthodox Church in America), Antiochian, Serbian, and Russian traditions follow similar principles but may differ in specific allowances — particularly regarding fish on certain days and the strictness of the Apostles Fast. <strong>Always follow the guidance of your own priest and bishop.</strong> The rules on this page reflect Greek Orthodox (New Calendar) practice.
+    </div>
+  </div>
+
+  <!-- Tags -->
+  <div class="section">
+    <h2 class="section-title">Related Topics</h2>
+    <div class="tag-row">
+      <a href="glossary.html#nepsis" class="glossary-tag">Nepsis</a>
+      <a href="glossary.html#metanoia" class="glossary-tag">Metanoia</a>
+      <a href="glossary.html#asceticism" class="glossary-tag">Asceticism</a>
+      <a href="glossary.html#theosis" class="glossary-tag">Theosis</a>
+      <a href="glossary.html#apatheia" class="glossary-tag">Apatheia</a>
+      <a href="glossary.html#logismoi" class="glossary-tag">Logismoi</a>
+    </div>
+    <a href="blog.html?cat=meal-plans" class="blog-link">&#127807; Lenten Meal Plans &amp; Recipes &rarr;</a>
+  </div>
+
+</div>
+
+<script>
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
+document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
+function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
+function closeSearch(){document.getElementById('search-overlay').style.display='none';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSearch();});
+document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
+
+// Annual calendar visual
+function buildAnnualCal(){
+  var MONTH_NAMES=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var year=new Date().getFullYear();
+  var html='';
+  for(var m=0;m<12;m++){
+    var daysInMonth=new Date(year,m+1,0).getDate();
+    var firstDay=new Date(year,m,1).getDay();
+    html+='<div class="month-block"><div class="month-name">'+MONTH_NAMES[m]+'</div><div class="month-days">';
+    for(var i=0;i<firstDay;i++) html+='<div class="day-dot empty"></div>';
+    for(var d=1;d<=daysInMonth;d++){
+      var cls=getDayFast(year,m,d);
+      html+='<div class="day-dot '+cls+'" title="'+MONTH_NAMES[m]+' '+d+'"></div>';
+    }
+    html+='</div></div>';
+  }
+  document.getElementById('annualCal').innerHTML=html;
+}
+
+function getDayFast(year,month,day){
+  var d=new Date(year,month,day);
+  var dow=d.getDay();
+  var mo=month+1,da=day;
+  // Fast free weeks
+  var brightWeekStart=new Date(year,0,1); // placeholder — would use engine
+  // Fixed strict fast days
+  if(mo===8&&da===29) return 'strict'; // Beheading of Baptist
+  if(mo===9&&da===14) return 'strict'; // Exaltation of Cross
+  if(mo===1&&da===5)  return 'strict'; // Eve of Theophany
+  // Dormition fast Aug 1-14
+  if(mo===8&&da>=1&&da<=14){
+    if(da===6) return 'fish'; // Transfiguration
+    if(dow===0||dow===6) return 'wine';
+    return 'strict';
+  }
+  // Nativity fast Nov 15 - Dec 24
+  if((mo===11&&da>=15)||(mo===12&&da<=24)){
+    if(da>=20&&mo===12){
+      if(dow===0) return 'wine';
+      return 'strict';
+    }
+    if(dow===3||dow===5) return 'strict';
+    return 'wine';
+  }
+  // Nativity season Dec 25 - Jan 4
+  if((mo===12&&da>=25)||(mo===1&&da<=4)) return 'free';
+  // Theophany Jan 6
+  if(mo===1&&da===6) return 'free';
+  // Wed/Fri baseline
+  if(dow===3||dow===5) return 'strict';
+  return 'none';
+}
+
+buildAnnualCal();
+</script>
+</body>
+</html>
