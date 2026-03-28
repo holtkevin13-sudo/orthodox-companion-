@@ -179,7 +179,9 @@ nav{
 .audience-tag{
   font-family:'Cinzel',serif;font-size:0.63rem;letter-spacing:0.1em;text-transform:uppercase;
   color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:5px 14px;
+  transition:border-color 0.2s,color 0.2s,background 0.2s;
 }
+.audience-tag:hover{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.06);}
 
 /* ── Ornament Divider ───────────────────────────────────────── */
 .ornament-divider{display:flex;align-items:center;gap:16px;max-width:860px;margin:0 auto;padding:0 24px;}
@@ -448,9 +450,9 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
   </div>
 
   <div class="audience-tags">
-    <span class="audience-tag">🌱 Catechumens</span>
-    <span class="audience-tag">🚪 Newcomers</span>
-    <span class="audience-tag">✝️ Lifelong Orthodox</span>
+    <a href="new-to-orthodoxy.html" class="audience-tag" style="text-decoration:none;cursor:pointer;">🌱 Catechumens</a>
+    <a href="new-to-orthodoxy.html#newcomers" class="audience-tag" style="text-decoration:none;cursor:pointer;">🚪 Newcomers</a>
+    <a href="topics.html" class="audience-tag" style="text-decoration:none;cursor:pointer;">✝️ Lifelong Orthodox</a>
   </div>
 </section>
 
@@ -759,15 +761,115 @@ async function loadLiturgicalDay() {
   var now = new Date();
   var today = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
   var displayDate = new Date(today + 'T12:00:00').toLocaleDateString('en-US', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
+
+  // Use the calendar engine (lectionary-full.json) — same data powering calendar.html
+  if (typeof OrthodoxCalendar !== 'undefined') {
+    try {
+      await OrthodoxCalendar.init();
+      var day = OrthodoxCalendar.getDay(today);
+      if (day) { renderLiturgicalDayFromEngine(day, displayDate); return; }
+    } catch(e) {}
+  }
+
+  // Fallback: try the legacy API proxy
   var data = null;
   try {
     var res = await fetch(ANTHROPIC_API, {
-      method:'POST',headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
-      body:JSON.stringify({_proxy:'api',_path:'/day/'+today})
+      method:'POST', headers:{'Content-Type':'application/json','X-API-Key':API_KEY},
+      body: JSON.stringify({_proxy:'api', _path:'/day/'+today})
     });
     if (res.ok) data = await res.json();
   } catch(e) {}
   renderLiturgicalDay(data, displayDate);
+}
+
+function renderLiturgicalDayFromEngine(day, displayDate) {
+  var card = document.getElementById('ldayCard');
+
+  // Season strip
+  if (day.liturgical_season) {
+    var strip = document.getElementById('seasonStrip');
+    strip.textContent = 'We are in the season of ' + day.liturgical_season;
+    strip.classList.add('visible');
+  }
+
+  // Parse saints vs feasts from the saints_feasts array
+  var allSaints = day.saints_feasts || [];
+  var feastMarkers = ['annunciation','nativity','theophany','transfiguration','pentecost','pascha',
+    'palm sunday','dormition','ascension','presentation','elevation','cross','theotokos','circumcision',
+    'forefeast','afterfeast','apodosis','leavetaking'];
+  var feasts  = allSaints.filter(function(n){ return feastMarkers.some(function(m){ return n.toLowerCase().includes(m); }); });
+  var saints  = allSaints.filter(function(n){ return !feastMarkers.some(function(m){ return n.toLowerCase().includes(m); }); });
+
+  // Primary title — prefer sunday_name or summary from engine, fall back to first feast
+  var primaryTitle = day.sunday_name || day.summary || feasts[0] || allSaints[0] || 'Ordinary Day';
+
+  // Fasting
+  var fastLabel = day.fasting || 'No Restriction';
+  var fastIcon = '🍞';
+  if (fastLabel === 'Strict Fast')   { fastIcon = '🌿'; }
+  else if (fastLabel === 'Fast Free'){ fastIcon = '✨'; }
+  else if (fastLabel === 'Wine and Oil' || fastLabel === 'Fish Allowed'){ fastIcon = '🌿'; }
+  else if (fastLabel === 'No Restriction'){ fastLabel = 'No Fast'; }
+
+  var html = '<div class="lday-header">';
+  html += '<span class="lday-cross" style="font-family:Segoe UI Symbol,Apple Symbols,serif;font-style:normal;">☦&#xFE0E;</span>';
+  html += '<div><div class="lday-date">'+displayDate+'</div><div class="lday-feast">'+primaryTitle+'</div></div>';
+  html += '</div>';
+
+  // Chips
+  html += '<div class="lday-chips">';
+  if (day.liturgical_season) html += '<span class="lday-chip">📅 '+day.liturgical_season+'</span>';
+  html += '<span class="lday-chip">'+fastIcon+' '+fastLabel+'</span>';
+  if (day.feast_rank === 'Great Feast') html += '<span class="lday-chip" style="border-color:rgba(201,168,76,0.4);color:var(--gold-light);">✦ Great Feast</span>';
+  html += '</div>';
+
+  html += '<div class="lday-body">';
+
+  // Feasts column
+  if (feasts.length > 0) {
+    html += '<div class="lday-col"><div class="lday-col-title">✝ Feasts</div><div class="lday-col-value">';
+    feasts.slice(0,4).forEach(function(f){ html += '<div style="margin-bottom:5px;">'+f+'</div>'; });
+    html += '</div></div>';
+  }
+
+  // Saints column
+  if (saints.length > 0) {
+    html += '<div class="lday-col"><div class="lday-col-title">☩ Saints</div><div class="lday-col-value">';
+    saints.slice(0,5).forEach(function(s){ html += '<div style="margin-bottom:4px;">☩ '+s+'</div>'; });
+    if (saints.length > 5) html += '<div style="color:var(--text-muted);font-size:0.78rem;margin-top:3px;">+'+(saints.length-5)+' more</div>';
+    html += '</div></div>';
+  }
+
+  // Readings column
+  var readings = [];
+  if (day.matins_ref)  readings.push({type:'Matins', ref:day.matins_ref});
+  if (day.epistle_ref) readings.push({type:'Epistle', ref:day.epistle_ref});
+  if (day.gospel_ref)  readings.push({type:'Gospel',  ref:day.gospel_ref});
+
+  if (readings.length > 0) {
+    html += '<div class="lday-col"><div class="lday-col-title">📖 Readings</div><div class="lday-col-value" style="display:flex;flex-direction:column;gap:7px;">';
+    readings.forEach(function(r){
+      var url = 'https://www.biblegateway.com/passage/?search='+encodeURIComponent(r.ref)+'&version=NKJV';
+      html += '<button class="lday-reading-btn" onclick="openReadingModal(\''+esc(r.ref)+'\',\''+esc(r.type)+'\',\''+esc(url)+'\')"> ';
+      html += '<span style="font-family:Cinzel,serif;font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;">'+r.type+'</span> '+r.ref;
+      html += '</button>';
+    });
+    html += '</div></div>';
+  }
+
+  // If truly empty
+  if (!feasts.length && !saints.length && !readings.length) {
+    html += '<div class="lday-col" style="grid-column:1/-1"><div class="lday-col-value" style="color:var(--text-muted);font-style:italic;">'+primaryTitle+'<br/><a href="calendar.html" style="color:var(--text-muted);font-size:0.82rem;">View the full liturgical calendar →</a></div></div>';
+  }
+
+  html += '</div>';
+  html += '<div class="lday-footer">';
+  html += '<span style="font-size:0.76rem;color:var(--text-muted);font-style:italic;">New Calendar · Revised Julian</span>';
+  html += '<a href="calendar.html" class="lday-more-link">Full Liturgical Calendar →</a>';
+  html += '</div>';
+
+  card.innerHTML = html;
 }
 
 function renderLiturgicalDay(data, displayDate) {
@@ -873,9 +975,12 @@ function initFadeIn() {
 document.addEventListener('DOMContentLoaded', function() {
   renderQuote();
   resetQTimer();
-  loadLiturgicalDay();
+  loadLiturgicalDay();   // engine init happens inside this
   initFadeIn();
 });
 </script>
+
+<!-- Calendar engine powers the liturgical day card -->
+<script src="calendar-engine-v2.js"></script>
 </body>
 </html>
