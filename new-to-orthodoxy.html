@@ -688,21 +688,25 @@ function buildParishLinks(query) {
     { name:'Orthodox Church in America (OCA)',    desc:'Autocephalous — English-primary parishes', url:'https://www.oca.org/parishes/find' },
     { name:'Antiochian Orthodox Archdiocese',     desc:'Patriarchate of Antioch — many convert parishes', url:'https://www.antiochian.org/parishes' },
     { name:'ROCOR',                               desc:'Russian Orthodox Church Outside Russia', url:'https://www.roca.org/parishes' },
-    { name:'All Orthodox Parishes (orthodox.net)',desc:'Multi-jurisdiction North American directory', url:'https://www.orthodox.net/parishes/?search='+enc },
-    { name:'Search on Google Maps',               desc:'Orthodox church near '+query, url:'https://www.google.com/maps/search/Orthodox+church+near+'+enc },
+    { name:'All Orthodox Parishes (orthodox.net)', desc:'Multi-jurisdiction North American directory', url:'https://www.orthodox.net/parishes/?search=' + enc },
+    { name:'Search on Google Maps',               desc:'Orthodox churches near ' + query, url:'https://www.google.com/maps/search/Orthodox+church+near+' + enc },
   ];
-  var html = links.map(function(l){
-    return '<a href="'+l.url+'" target="_blank" rel="noopener" '
-      +'style="display:flex;align-items:center;gap:10px;padding:10px 14px;'
-      +'background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;'
-      +'text-decoration:none;margin-bottom:2px;" '
-      +'onmouseover="this.style.borderColor='#8A6A28'" onmouseout="this.style.borderColor='#1A3A5C'">'
-      +'<div style="flex:1;">'
-      +'<div style="font-family:Cinzel,serif;font-size:0.82rem;color:#F0E6CC;margin-bottom:2px;">'+l.name+'</div>'
-      +'<div style="font-size:0.74rem;color:#4A7AB8;font-style:italic;">'+l.desc+'</div>'
-      +'</div><span style="color:#4A7AB8;">&#8599;</span></a>';
-  }).join('');
-  document.getElementById('parish-links').innerHTML = html;
+  var container = document.getElementById('parish-links');
+  container.innerHTML = '';
+  links.forEach(function(l) {
+    var a = document.createElement('a');
+    a.href = l.url;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.style.cssText = 'display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(27,58,107,0.2);border:1px solid #1A3A5C;border-radius:3px;text-decoration:none;margin-bottom:4px;transition:border-color 0.2s;';
+    a.onmouseover = function(){ this.style.borderColor='#8A6A28'; };
+    a.onmouseout  = function(){ this.style.borderColor='#1A3A5C'; };
+    a.innerHTML = '<div style="flex:1;">'
+      + '<div style="font-family:Cinzel,serif;font-size:0.82rem;color:#F0E6CC;margin-bottom:2px;">' + l.name + '</div>'
+      + '<div style="font-size:0.74rem;color:#4A7AB8;font-style:italic;">' + l.desc + '</div>'
+      + '</div><span style="color:#4A7AB8;">&#8599;</span>';
+    container.appendChild(a);
+  });
   document.getElementById('parish-results').style.display = 'block';
   document.getElementById('parish-status').style.display = 'none';
 }
