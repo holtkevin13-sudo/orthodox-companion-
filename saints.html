@@ -398,6 +398,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   </div>
 </div>
 
+<!-- Calendar engine loads first so SOTD can use it immediately -->
+<script src="calendar-engine-v2.js"></script>
 <script>
 "use strict";
 
@@ -736,16 +738,19 @@ async function loadSaintOfTheDay(){
     } catch(e) {}
   }
 
-  // ── Filter to actual saint names (drop liturgical markers) ──
+  // ── Filter to actual saint names (drop liturgical day markers) ──
   var markerWords = ['forefeast','afterfeast','apodosis','leavetaking','synaxis',
     'sunday','saturday','monday','tuesday','wednesday','thursday','friday',
-    'week','fast','feast','nativity','theophany','transfiguration','pentecost',
-    'pascha','dormition','ascension','annunciation','elevation','triodion',
-    'commemoration','council','ecumenical'];
+    'lent','bright week','triodion','akathist','lazarus','cheesefare','meatfare',
+    'publican','prodigal','judgment','forgiveness','all souls','all saints',
+    'thomas sunday','mid-pentecost','clean monday','holy week',
+    'nativity of our lord','theophany','transfiguration','pentecost','pascha',
+    'dormition','ascension','annunciation','elevation','ecumenical council'];
 
   function isActualSaint(name){
     var nl = name.toLowerCase();
-    return !markerWords.some(function(m){ return nl.startsWith(m) || nl.includes('of '+m); });
+    // Reject if ANY marker word appears anywhere in the name
+    return !markerWords.some(function(m){ return nl.includes(m); });
   }
 
   var saintNames = calSaints.filter(isActualSaint);
@@ -1018,9 +1023,6 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 </script>
-
-<!-- Calendar engine — powers Saint of the Day from the liturgical calendar -->
-<script src="calendar-engine-v2.js"></script>
 </script>
 </body>
 </html>
