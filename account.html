@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Account — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="theme-color" content="#0A1628"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover{color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
+.nav-drawer-footer{padding:16px 28px 0;}
+
+/* ── Auth screens ───────────────────────────────────────── */
+.auth-wrap{margin-top:var(--nav-h);min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;justify-content:center;padding:40px 24px;}
+.auth-box{background:linear-gradient(160deg,var(--dark),rgba(27,58,107,0.4));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:420px;padding:36px;}
+.auth-cross{font-size:32px;color:var(--gold-dim);text-align:center;display:block;margin-bottom:16px;font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
+.auth-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold-light);letter-spacing:0.08em;text-align:center;margin-bottom:6px;}
+.auth-subtitle{font-size:0.88rem;color:var(--text-muted);font-style:italic;text-align:center;margin-bottom:28px;line-height:1.6;}
+.auth-tabs{display:flex;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;margin-bottom:24px;}
+.auth-tab{flex:1;font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;padding:9px;text-align:center;cursor:pointer;background:transparent;border:none;color:var(--text-muted);transition:all 0.2s;}
+.auth-tab.active{background:rgba(201,168,76,0.1);color:var(--gold-light);}
+.auth-form{display:flex;flex-direction:column;gap:14px;}
+.auth-field{display:flex;flex-direction:column;gap:5px;}
+.auth-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+.auth-input{background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:10px 14px;outline:none;transition:border-color 0.2s;}
+.auth-input:focus{border-color:var(--gold-dim);}
+.auth-input::placeholder{color:var(--text-muted);font-style:italic;}
+.auth-remember{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-muted);cursor:pointer;}
+.auth-remember input{accent-color:var(--gold);}
+.auth-btn{font-family:'Cinzel',serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-light);background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid var(--gold-dim);border-radius:2px;padding:12px;cursor:pointer;transition:all 0.2s;margin-top:4px;}
+.auth-btn:hover{background:rgba(201,168,76,0.28);}
+.auth-divider{display:flex;align-items:center;gap:12px;margin:4px 0;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;border-top:1px solid rgba(42,90,156,0.3);}
+.auth-divider-text{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;}
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-dim);font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;}
+.social-btn:hover{border-color:var(--border);color:var(--text);}
+.social-btns{display:flex;gap:8px;}
+.social-btns .social-btn{flex:1;}
+.auth-footer-text{font-size:0.78rem;color:var(--text-muted);text-align:center;margin-top:16px;font-style:italic;}
+.auth-error{background:rgba(139,32,32,0.15);border:1px solid rgba(139,32,32,0.3);border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#D08080;display:none;}
+.auth-error.show{display:block;}
+.auth-success{background:rgba(58,106,58,0.15);border:1px solid rgba(58,106,58,0.3);border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#8ACA8A;display:none;}
+.auth-success.show{display:block;}
+
+/* ── Dashboard ───────────────────────────────────────────── */
+#dashboard{display:none;margin-top:var(--nav-h);}
+.dash-header{background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(10,22,40,0.9));border-bottom:1px solid rgba(201,168,76,0.15);padding:28px 24px;}
+.dash-header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:20px;}
+.dash-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--panel),var(--deep));border:2px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-light);flex-shrink:0;}
+.dash-user-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.dash-user-sub{font-size:0.82rem;color:var(--text-muted);font-style:italic;}
+.dash-sub-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;margin-left:8px;}
+.dash-sub-badge.free{border:1px solid var(--border-dim);color:var(--text-muted);}
+.dash-sub-badge.premium{border:1px solid var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.dash-signout{margin-left:auto;font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;}
+.dash-signout:hover{border-color:var(--border);color:var(--text-dim);}
+/* Tabs */
+.dash-tabs{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:0;border-bottom:1px solid rgba(42,90,156,0.2);}
+.dash-tab{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;padding:14px 18px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
+.dash-tab:hover{color:var(--text-dim);}
+.dash-tab.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+/* Tab content */
+.dash-body{max-width:960px;margin:0 auto;padding:28px 24px 60px;}
+.dash-section{display:none;}
+.dash-section.active{display:block;}
+.dash-section-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.12);}
+/* Bookmark / Journal items */
+.item-list{display:flex;flex-direction:column;gap:8px;}
+.item-card{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:3px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:border-color 0.2s;}
+.item-card:hover{border-color:var(--border);}
+.item-type-badge{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold);border:1px solid rgba(201,168,76,0.25);border-radius:2px;padding:2px 6px;flex-shrink:0;margin-top:2px;}
+.item-body{flex:1;}
+.item-title{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text);letter-spacing:0.04em;margin-bottom:3px;}
+.item-meta{font-size:0.76rem;color:var(--text-muted);font-style:italic;}
+.item-actions{display:flex;gap:6px;flex-shrink:0;}
+.item-btn{font-family:'Cinzel',serif;font-size:0.56rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:3px 8px;cursor:pointer;transition:all 0.2s;}
+.item-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.item-empty{padding:32px;text-align:center;color:var(--text-muted);font-style:italic;font-size:0.9rem;}
+/* Journal entry */
+.journal-compose{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:3px;padding:16px;margin-bottom:16px;}
+.journal-compose-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;}
+.journal-textarea{width:100%;background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:10px 14px;outline:none;resize:vertical;min-height:100px;transition:border-color 0.2s;}
+.journal-textarea:focus{border-color:var(--gold-dim);}
+.journal-compose-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px;}
+.journal-cat-select{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);font-family:'Cinzel',serif;font-size:0.62rem;padding:6px 10px;outline:none;cursor:pointer;}
+.journal-save-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 16px;cursor:pointer;transition:all 0.2s;}
+.journal-save-btn:hover{background:rgba(201,168,76,0.2);}
+/* Fasting log */
+.fast-log-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px;}
+.fast-log-day{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:2px;padding:6px 4px;text-align:center;cursor:pointer;transition:all 0.15s;}
+.fast-log-day:hover{border-color:var(--border);}
+.fast-log-day.fasted{background:rgba(58,106,58,0.25);border-color:#5A8A5A;}
+.fast-log-date{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);}
+.fast-log-num{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text-dim);font-weight:600;}
+.fast-log-day.fasted .fast-log-num{color:#8ACA8A;}
+/* Settings */
+.settings-group{margin-bottom:24px;}
+.settings-group-title{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;}
+.settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.1);}
+.settings-row:last-child{border-bottom:none;}
+.settings-row-label{font-size:0.9rem;color:var(--text-dim);}
+.settings-row-sublabel{font-size:0.76rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.settings-input{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.9rem;padding:6px 12px;outline:none;width:220px;transition:border-color 0.2s;}
+.settings-input:focus{border-color:var(--gold-dim);}
+.settings-save-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 16px;cursor:pointer;transition:all 0.2s;margin-top:12px;}
+.settings-save-btn:hover{background:rgba(201,168,76,0.2);}
+/* Upgrade banner */
+.upgrade-banner{background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
+.upgrade-text{}
+.upgrade-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.upgrade-desc{font-size:0.84rem;color:var(--text-muted);font-style:italic;}
+.upgrade-btn{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 20px;background:rgba(201,168,76,0.12);cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.upgrade-btn:hover{background:rgba(201,168,76,0.25);}
+@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.dash-tabs{overflow-x:auto;}.fast-log-grid{grid-template-columns:repeat(7,1fr);}.settings-input{width:160px;}}
+@media(max-width:600px){.auth-box{padding:24px 18px;}.dash-header{padding:20px 16px;}.dash-body{padding:20px 16px 40px;}.dash-tabs{padding:0 16px;}.fast-log-grid{grid-template-columns:repeat(5,1fr);}.upgrade-banner{flex-direction:column;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li><li><a href="calendar.html">Calendar</a></li><li><a href="saints.html">Saints</a></li>
+    <li><a href="topics.html">Topics</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="fasting.html">Fasting</a></li>
+    <li><a href="resources.html">Resources</a></li><li><a href="blog.html">Blog</a></li><li><a href="chatbot.html">Companion AI</a></li>
+  </ul>
+  <div class="nav-right"></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
+  <div class="nav-drawer-footer"></div>
+</div>
+
+<!-- AUTH SCREEN -->
+<div class="auth-wrap" id="authScreen">
+  <div class="auth-box">
+    <span class="auth-cross">&#9766;&#65038;</span>
+    <div class="auth-title">Orthodox Companion</div>
+    <div class="auth-subtitle">Sign in to save your progress, bookmark content, keep a journal, and unlock deeper study tools.</div>
+
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
+      <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create Account</button>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="form-signin">
+      <div class="auth-form">
+        <div class="auth-field">
+          <label class="auth-label">Email Address</label>
+          <input class="auth-input" type="email" id="signin-email" placeholder="your@email.com" autocomplete="email"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="signin-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password"/>
+        </div>
+        <label class="auth-remember"><input type="checkbox" id="signin-remember" checked/> Remember me</label>
+        <div class="auth-error" id="signin-error"></div>
+        <button class="auth-btn" onclick="signIn()">Sign In</button>
+      </div>
+      <div class="auth-divider" style="margin-top:18px;"><span class="auth-divider-text">or continue with</span></div>
+      <div class="social-btns" style="margin-top:10px;">
+        <button class="social-btn" onclick="socialSignIn('google')">&#9654; Google</button>
+        <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
+      </div>
+      <div class="auth-footer-text"><a href="#" onclick="switchTab('signup');return false;" style="color:var(--text-muted);">Don&rsquo;t have an account? Create one free &rarr;</a></div>
+    </div>
+
+    <!-- Sign Up Form -->
+    <div id="form-signup" style="display:none;">
+      <div class="auth-form">
+        <div class="auth-field">
+          <label class="auth-label">Display Name</label>
+          <input class="auth-input" type="text" id="signup-name" placeholder="Your name" autocomplete="name"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Email Address</label>
+          <input class="auth-input" type="email" id="signup-email" placeholder="your@email.com" autocomplete="email"/>
+        </div>
+        <div class="auth-field">
+          <label class="auth-label">Password</label>
+          <input class="auth-input" type="password" id="signup-password" placeholder="At least 8 characters" autocomplete="new-password"/>
+        </div>
+        <div class="auth-error" id="signup-error"></div>
+        <div class="auth-success" id="signup-success"></div>
+        <button class="auth-btn" onclick="signUp()">Create Free Account</button>
+      </div>
+      <div class="auth-divider" style="margin-top:18px;"><span class="auth-divider-text">or continue with</span></div>
+      <div class="social-btns" style="margin-top:10px;">
+        <button class="social-btn" onclick="socialSignIn('google')">&#9654; Google</button>
+        <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
+      </div>
+      <div class="auth-footer-text" style="font-size:0.74rem;line-height:1.6;">By creating an account you agree to our terms. Your data is never sold. Orthodox Companion is ad-free and always will be.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="dash-header">
+    <div class="dash-header-inner">
+      <div class="dash-avatar" id="dashAvatar">&#9766;</div>
+      <div>
+        <div class="dash-user-name" id="dashName">Welcome</div>
+        <div class="dash-user-sub">
+          <span id="dashEmail" style="font-size:0.82rem;color:var(--text-muted);font-style:italic;"></span>
+          <span class="dash-sub-badge free" id="dashBadge">Free</span>
+        </div>
+      </div>
+      <button class="dash-signout" onclick="signOut()">Sign Out</button>
+    </div>
+  </div>
+
+  <div class="dash-tabs">
+    <button class="dash-tab active" onclick="switchDash('bookmarks')">Bookmarks</button>
+    <button class="dash-tab" onclick="switchDash('journal')">Journal</button>
+    <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
+    <button class="dash-tab" onclick="switchDash('settings')">Settings</button>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- Bookmarks -->
+    <div class="dash-section active" id="dash-bookmarks">
+      <div class="upgrade-banner" id="upgradeBookmarks" style="display:none;">
+        <div class="upgrade-text">
+          <div class="upgrade-title">Unlock Full Study Mode</div>
+          <div class="upgrade-desc">Upgrade to access all three Companion AI modes, unlimited bookmarks, and the full journal history.</div>
+        </div>
+        <button class="upgrade-btn">Upgrade to Premium</button>
+      </div>
+      <div class="dash-section-title">Saved Bookmarks</div>
+      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;" id="bookmarkFilters">
+        <button class="item-btn" onclick="filterBookmarks('all')" style="padding:5px 12px;">All</button>
+        <button class="item-btn" onclick="filterBookmarks('saint')">Saints</button>
+        <button class="item-btn" onclick="filterBookmarks('prayer')">Prayers</button>
+        <button class="item-btn" onclick="filterBookmarks('topic')">Topics</button>
+        <button class="item-btn" onclick="filterBookmarks('blog')">Blog</button>
+      </div>
+      <div class="item-list" id="bookmarkList"></div>
+    </div>
+
+    <!-- Journal -->
+    <div class="dash-section" id="dash-journal">
+      <div class="dash-section-title">Prayer Journal</div>
+      <div class="journal-compose">
+        <div class="journal-compose-label">New Entry</div>
+        <textarea class="journal-textarea" id="journalText" placeholder="Write a prayer, reflection, or note from your reading today&#8230;"></textarea>
+        <div class="journal-compose-footer">
+          <select class="journal-cat-select" id="journalCat">
+            <option value="reflection">Reflection</option>
+            <option value="prayer">Personal Prayer</option>
+            <option value="gratitude">Gratitude</option>
+            <option value="struggle">Struggle</option>
+            <option value="reading">From Reading</option>
+          </select>
+          <button class="journal-save-btn" onclick="saveJournal()">Save Entry</button>
+        </div>
+      </div>
+      <div class="item-list" id="journalList"></div>
+    </div>
+
+    <!-- Fasting Log -->
+    <div class="dash-section" id="dash-fasting">
+      <div class="dash-section-title">Fasting Log</div>
+      <p style="font-size:0.9rem;color:var(--text-muted);font-style:italic;margin-bottom:18px;line-height:1.7;">Tap any day to mark it as fasted. Your log is saved locally and helps you build consistency in the discipline of fasting.</p>
+      <div class="fast-log-grid" id="fastLogGrid"></div>
+      <div style="display:flex;gap:10px;font-size:0.8rem;color:var(--text-muted);">
+        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(58,106,58,0.4);border:1px solid #5A8A5A;"></div> Fasted</div>
+        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);"></div> Not logged</div>
+      </div>
+      <div style="margin-top:20px;padding:14px 16px;background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;">
+        <div style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:4px;">This Month</div>
+        <div style="font-size:0.88rem;color:var(--text-dim);font-style:italic;" id="fastStats">Loading&#8230;</div>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div class="dash-section" id="dash-settings">
+      <div class="dash-section-title">Account Settings</div>
+      <div class="settings-group">
+        <div class="settings-group-title">Profile</div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Display Name</div></div>
+          <input class="settings-input" type="text" id="settings-name" placeholder="Your name"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Email Address</div></div>
+          <input class="settings-input" type="email" id="settings-email" placeholder="your@email.com"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">New Password</div><div class="settings-row-sublabel">Leave blank to keep current password</div></div>
+          <input class="settings-input" type="password" id="settings-password" placeholder="New password"/>
+        </div>
+        <button class="settings-save-btn" onclick="saveSettings()">Save Changes</button>
+      </div>
+      <div class="settings-group">
+        <div class="settings-group-title">Subscription</div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Current Plan</div><div class="settings-row-sublabel" id="planDesc">Free — 3 Companion AI questions per session</div></div>
+          <button class="upgrade-btn" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);cursor:pointer;" onclick="alert('Premium subscriptions coming soon!')">Upgrade</button>
+        </div>
+      </div>
+      <div class="settings-group">
+        <div class="settings-group-title">Notifications</div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Saint of the Day</div><div class="settings-row-sublabel">Daily email with the saint&rsquo;s feast and brief life</div></div>
+          <input type="checkbox" id="notif-saint" style="accent-color:var(--gold);width:18px;height:18px;cursor:pointer;"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Fasting Reminders</div><div class="settings-row-sublabel">Reminder on Wednesday and Friday mornings</div></div>
+          <input type="checkbox" id="notif-fast" style="accent-color:var(--gold);width:18px;height:18px;cursor:pointer;"/>
+        </div>
+      </div>
+      <div class="settings-group">
+        <div class="settings-group-title">Danger Zone</div>
+        <div class="settings-row">
+          <div><div class="settings-row-label">Sign Out Everywhere</div></div>
+          <button class="item-btn" onclick="signOut()" style="padding:6px 14px;">Sign Out</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+"use strict";
+// ══════════════════════════════════════════════════════════
+// SUPABASE CONFIGURATION
+// Replace these with your actual Supabase project credentials.
+// ══════════════════════════════════════════════════════════
+var SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+var SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+
+// ── Simple session management (localStorage until Supabase wired) ──
+var currentUser = null;
+
+function getStoredUser(){
+  try{ return JSON.parse(localStorage.getItem('oc_user')||'null'); }catch(e){return null;}
+}
+function storeUser(user){
+  try{ localStorage.setItem('oc_user', JSON.stringify(user)); }catch(e){}
+}
+function clearUser(){
+  try{ localStorage.removeItem('oc_user'); }catch(e){}
+}
+
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
+document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
+
+// ── Auth tabs ────────────────────────────────────────────
+function switchTab(tab){
+  document.getElementById('form-signin').style.display = tab==='signin'?'':'none';
+  document.getElementById('form-signup').style.display = tab==='signup'?'':'none';
+  document.getElementById('tab-signin').classList.toggle('active', tab==='signin');
+  document.getElementById('tab-signup').classList.toggle('active', tab==='signup');
+}
+
+// ── Auth functions (wire to Supabase) ────────────────────
+function signIn(){
+  var email = document.getElementById('signin-email').value.trim();
+  var pass  = document.getElementById('signin-password').value;
+  var err   = document.getElementById('signin-error');
+  err.classList.remove('show');
+  if(!email||!pass){ err.textContent='Please enter your email and password.'; err.classList.add('show'); return; }
+
+  // ── Supabase auth (replace this block when Supabase is connected) ──
+  // supabase.auth.signInWithPassword({email, password: pass}).then(function({data, error}){
+  //   if(error){ err.textContent = error.message; err.classList.add('show'); return; }
+  //   onAuthSuccess(data.user);
+  // });
+
+  // Placeholder: simulate sign-in for UI testing
+  var user = { id: 'demo', name: email.split('@')[0], email: email, plan: 'free' };
+  storeUser(user);
+  onAuthSuccess(user);
+}
+
+function signUp(){
+  var name  = document.getElementById('signup-name').value.trim();
+  var email = document.getElementById('signup-email').value.trim();
+  var pass  = document.getElementById('signup-password').value;
+  var err   = document.getElementById('signup-error');
+  var succ  = document.getElementById('signup-success');
+  err.classList.remove('show'); succ.classList.remove('show');
+  if(!name||!email||!pass){ err.textContent='Please fill in all fields.'; err.classList.add('show'); return; }
+  if(pass.length<8){ err.textContent='Password must be at least 8 characters.'; err.classList.add('show'); return; }
+
+  // ── Supabase auth (replace when connected) ──
+  // supabase.auth.signUp({email, password: pass, options:{data:{display_name: name}}})
+  //   .then(function({data, error}){
+  //     if(error){ err.textContent=error.message; err.classList.add('show'); return; }
+  //     succ.textContent='Account created! Please check your email to confirm.';
+  //     succ.classList.add('show');
+  //   });
+
+  // Placeholder: simulate signup
+  var user = { id: 'demo', name: name, email: email, plan: 'free' };
+  storeUser(user);
+  onAuthSuccess(user);
+}
+
+function socialSignIn(provider){
+  // ── Supabase OAuth (replace when connected) ──
+  // supabase.auth.signInWithOAuth({provider: provider, options:{redirectTo: window.location.origin+'/account.html'}});
+  alert('Social sign-in coming soon — Supabase OAuth will be wired here.');
+}
+
+function signOut(){
+  clearUser();
+  currentUser = null;
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('authScreen').style.display='flex';
+}
+
+function onAuthSuccess(user){
+  currentUser = user;
+  document.getElementById('authScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('dashName').textContent = user.name || 'Welcome';
+  document.getElementById('dashEmail').textContent = user.email || '';
+  document.getElementById('dashAvatar').textContent = (user.name||'U')[0].toUpperCase();
+  var badge = document.getElementById('dashBadge');
+  badge.textContent = user.plan==='premium' ? 'Premium' : 'Free';
+  badge.className = 'dash-sub-badge '+(user.plan==='premium'?'premium':'free');
+  document.getElementById('settings-name').value = user.name||'';
+  document.getElementById('settings-email').value = user.email||'';
+  loadBookmarks();
+  loadJournal();
+  buildFastLog();
+}
+
+// ── Dashboard tabs ────────────────────────────────────────
+function switchDash(id){
+  document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('dash-'+id).classList.add('active');
+  var tabs=document.querySelectorAll('.dash-tab');
+  var order=['bookmarks','journal','fasting','settings'];
+  tabs[order.indexOf(id)].classList.add('active');
+}
+
+// ── Bookmarks ─────────────────────────────────────────────
+function getBookmarks(){ try{return JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');}catch(e){return[];} }
+function saveBookmarks(arr){ try{localStorage.setItem('oc_bookmarks',JSON.stringify(arr));}catch(e){} }
+
+function loadBookmarks(filter){
+  filter=filter||'all';
+  var bms=getBookmarks();
+  var list=document.getElementById('bookmarkList');
+  if(filter!=='all') bms=bms.filter(function(b){return b.type===filter;});
+  if(!bms.length){ list.innerHTML='<div class="item-empty">No bookmarks yet. Tap the save button on any saint, prayer, or topic.</div>'; return; }
+  list.innerHTML=bms.map(function(b,i){
+    return '<div class="item-card"><span class="item-type-badge">'+b.type+'</span>'
+      +'<div class="item-body"><div class="item-title">'+b.title+'</div><div class="item-meta">'+b.date+'</div></div>'
+      +'<div class="item-actions"><a href="'+b.url+'" class="item-btn">View</a>'
+      +'<button class="item-btn" onclick="removeBookmark('+i+')">Remove</button></div></div>';
+  }).join('');
+}
+function filterBookmarks(f){ loadBookmarks(f); }
+function removeBookmark(i){ var bms=getBookmarks(); bms.splice(i,1); saveBookmarks(bms); loadBookmarks(); }
+
+// ── Journal ───────────────────────────────────────────────
+function getJournal(){ try{return JSON.parse(localStorage.getItem('oc_journal')||'[]');}catch(e){return[];} }
+function saveJournalData(arr){ try{localStorage.setItem('oc_journal',JSON.stringify(arr));}catch(e){} }
+
+function saveJournal(){
+  var text=document.getElementById('journalText').value.trim();
+  if(!text)return;
+  var cat=document.getElementById('journalCat').value;
+  var entries=getJournal();
+  entries.unshift({text:text,cat:cat,date:new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})});
+  if(entries.length>200)entries=entries.slice(0,200);
+  saveJournalData(entries);
+  document.getElementById('journalText').value='';
+  loadJournal();
+}
+function loadJournal(){
+  var entries=getJournal();
+  var list=document.getElementById('journalList');
+  if(!entries.length){ list.innerHTML='<div class="item-empty">No journal entries yet. Write a prayer, reflection, or note from your reading.</div>'; return; }
+  list.innerHTML=entries.map(function(e,i){
+    return '<div class="item-card"><span class="item-type-badge">'+e.cat+'</span>'
+      +'<div class="item-body"><div class="item-title" style="font-family:\'EB Garamond\',serif;font-size:0.9rem;font-weight:400;font-style:italic;color:var(--text-dim);">'+e.text.slice(0,140)+(e.text.length>140?'&hellip;':'')+'</div>'
+      +'<div class="item-meta">'+e.date+'</div></div>'
+      +'<div class="item-actions"><button class="item-btn" onclick="deleteJournal('+i+')">Delete</button></div></div>';
+  }).join('');
+}
+function deleteJournal(i){ var j=getJournal(); j.splice(i,1); saveJournalData(j); loadJournal(); }
+
+// ── Fasting Log ───────────────────────────────────────────
+function getFastLog(){ try{return JSON.parse(localStorage.getItem('oc_fastlog')||'{}');}catch(e){return{};} }
+function saveFastLog(obj){ try{localStorage.setItem('oc_fastlog',JSON.stringify(obj));}catch(e){} }
+
+function buildFastLog(){
+  var now=new Date();
+  var y=now.getFullYear(),m=now.getMonth();
+  var daysInMonth=new Date(y,m+1,0).getDate();
+  var firstDay=new Date(y,m,1).getDay();
+  var log=getFastLog();
+  var grid=document.getElementById('fastLogGrid');
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DAYS=['S','M','T','W','T','F','S'];
+
+  var html='';
+  // Day headers
+  DAYS.forEach(function(d){ html+='<div style="text-align:center;font-family:Cinzel,serif;font-size:0.55rem;color:var(--text-muted);padding-bottom:4px;">'+d+'</div>'; });
+  // Empty cells
+  for(var i=0;i<firstDay;i++) html+='<div></div>';
+  // Days
+  for(var d=1;d<=daysInMonth;d++){
+    var key=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var fasted=log[key];
+    html+='<div class="fast-log-day'+(fasted?' fasted':'')+'" onclick="toggleFast(\''+key+'\')"><div class="fast-log-date">'+DAYS[new Date(y,m,d).getDay()]+'</div><div class="fast-log-num">'+d+'</div></div>';
+  }
+  grid.innerHTML=html;
+
+  // Stats
+  var fastedCount=Object.keys(log).filter(function(k){return k.startsWith(y+'-'+String(m+1).padStart(2,'0'))&&log[k];}).length;
+  document.getElementById('fastStats').textContent=fastedCount+' day'+(fastedCount!==1?'s':'')+' fasted in '+MONTHS[m]+'. Keep going &mdash; the Fathers say fasting and prayer go hand in hand.';
+}
+function toggleFast(key){
+  var log=getFastLog();
+  log[key]=!log[key];
+  if(!log[key])delete log[key];
+  saveFastLog(log);
+  buildFastLog();
+}
+
+// ── Settings ──────────────────────────────────────────────
+function saveSettings(){
+  var name=document.getElementById('settings-name').value.trim();
+  var email=document.getElementById('settings-email').value.trim();
+  if(currentUser){
+    currentUser.name=name;
+    currentUser.email=email;
+    storeUser(currentUser);
+    document.getElementById('dashName').textContent=name;
+    document.getElementById('dashEmail').textContent=email;
+    document.getElementById('dashAvatar').textContent=(name||'U')[0].toUpperCase();
+    alert('Settings saved!');
+  }
+  // Wire to Supabase: supabase.auth.updateUser({email, data:{display_name:name}})
+}
+
+// ── Init ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){
+  var user=getStoredUser();
+  if(user){ onAuthSuccess(user); }
+  // Wire to Supabase: supabase.auth.getUser().then(function({data:{user}}){ if(user) onAuthSuccess(user); });
+});
+</script>
+</body>
+</html>
