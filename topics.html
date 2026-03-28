@@ -95,13 +95,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .tm-quote-text{font-size:0.96rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:8px;}
 .tm-quote-attr{font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
 .tm-deeper-title{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:12px;padding-top:20px;border-top:1px solid rgba(201,168,76,0.12);}
-.tm-deeper-links{display:flex;flex-direction:column;gap:8px;}
-.tm-deeper-link{display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;text-decoration:none;transition:border-color 0.2s,background 0.2s;}
-.tm-deeper-link:hover{border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
-.tm-deeper-link-text{flex:1;}
-.tm-deeper-link-name{font-size:0.88rem;color:var(--text);line-height:1.3;}
-.tm-deeper-link-source{font-size:0.74rem;color:var(--text-muted);font-style:italic;}
-.tm-deeper-arrow{color:var(--text-muted);font-size:0.8rem;flex-shrink:0;}
+.tm-deeper-box{background:rgba(27,58,107,0.18);border:1px solid var(--border-dim);border-radius:3px;padding:14px 18px;display:flex;flex-direction:column;gap:6px;}
+.tm-deeper-item{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid rgba(42,90,156,0.12);}
+.tm-deeper-item:last-child{border-bottom:none;padding-bottom:0;}
+.tm-deeper-cross{color:var(--gold-dim);font-size:0.78rem;flex-shrink:0;}
+.tm-deeper-ref{font-size:0.9rem;color:var(--text-dim);line-height:1.5;font-style:italic;}
+.tm-deeper-author{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.06em;white-space:nowrap;flex-shrink:0;}
 .tm-footer{padding:13px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.15);}
 .tm-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
 .tm-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
@@ -199,33 +198,36 @@ var TOPICS = [
    quote:'"The Word of God became man so that you also may learn from man how man may become God."', attr:'St. Clement of Alexandria',
    tags:['salvation','divine energies','grace'],
    deeper:[
-     {name:'On the Incarnation — St. Athanasius', source:'SVS Press', url:'https://svspress.com'},
-     {name:'Theosis on OrthodoxWiki', source:'OrthodoxWiki', url:'https://orthodoxwiki.org/Theosis'},
-     {name:'The Mystical Theology of the Eastern Church — V. Lossky', source:'SVS Press', url:'https://svspress.com'},
+     {author:'St. Clement of Alexandria', work:'Exhortation to the Greeks'},
+     {author:'St. Athanasius the Great', work:'On the Incarnation'},
+     {author:'St. Maximus the Confessor', work:'Ambigua — On the Difficult Passages of Gregory the Theologian'},
    ]},
   {id:'trinity', cat:'theology', title:'The Holy Trinity', subtitle:'One God in three Persons',
    summary:'Orthodox theology confesses one God existing eternally as three Persons (hypostases): Father, Son, and Holy Spirit. This is not three gods (tritheism) nor one God wearing three masks (Sabellianism) but the mystery of perfect unity-in-distinction. The theological vocabulary was defined at the First and Second Ecumenical Councils (Nicaea 325, Constantinople 381).',
    quote:'"The Holy Trinity is three hypostases in one ousia — three Persons in one Nature. The Father is neither the Son nor the Spirit; the Son is neither the Father nor the Spirit; the Spirit is neither the Father nor the Son."', attr:'St. Gregory the Theologian, Theological Orations',
    tags:['hypostasis','ousia','councils'],
    deeper:[
-     {name:'Five Theological Orations — St. Gregory Nazianzen', source:'NPNF Series II, Vol. VII', url:'https://www.newadvent.org/fathers/3102.htm'},
-     {name:'On the Holy Spirit — St. Basil the Great', source:'NPNF Series II, Vol. VIII', url:'https://www.newadvent.org/fathers/3202.htm'},
+     {author:'St. Gregory the Theologian', work:'Five Theological Orations (Orations 27–31)'},
+     {author:'St. Basil the Great', work:'On the Holy Spirit'},
+     {author:'St. John of Damascus', work:'An Exact Exposition of the Orthodox Faith, Book I'},
    ]},
   {id:'incarnation', cat:'theology', title:'The Incarnation', subtitle:'The Word became flesh',
    summary:'The Incarnation is the central mystery of the Christian faith: the eternal Son of God took to Himself a full human nature — body, soul, and will — from the Virgin Mary, remaining fully God while becoming fully man. This is the basis of Orthodox iconography, the theology of theosis, and the reality of the Sacraments.',
    quote:'"He became what we are so that He might make us what He is."', attr:'St. Irenaeus of Lyon, Against Heresies',
    tags:['theotokos','christology','icon'],
    deeper:[
-     {name:'On the Incarnation — St. Athanasius', source:'SVS Press', url:'https://svspress.com'},
-     {name:'Against Heresies — St. Irenaeus', source:'ANF Vol. I', url:'https://www.newadvent.org/fathers/0103.htm'},
+     {author:'St. Athanasius the Great', work:'On the Incarnation of the Word'},
+     {author:'St. Irenaeus of Lyon', work:'Against Heresies, Book III'},
+     {author:'St. Cyril of Alexandria', work:'On the Unity of Christ'},
    ]},
   {id:'scripture-tradition', cat:'theology', title:'Scripture & Holy Tradition', subtitle:'One river of revelation',
    summary:'Orthodox Christianity does not separate Scripture from Tradition as if they were two different sources. Scripture is the written part of the one Holy Tradition of the Church — which includes also the Creeds, the Canons of the Ecumenical Councils, the liturgical texts, the lives of the saints, and the writings of the Holy Fathers. The Church does not derive its authority from Scripture alone; Scripture itself was written within the Church and is properly interpreted only within the Church.',
    quote:'"The Holy Scriptures are not to be interpreted privately; they belong to the Church and are understood through the Church."', attr:'St. Hilary of Poitiers',
    tags:['scripture','tradition','councils'],
    deeper:[
-     {name:'The Bible and the Holy Fathers for Orthodox — OCA', source:'OCA', url:'https://www.oca.org'},
-     {name:'Orthodoxy and the Bible — Fr. Thomas Hopko', source:'Ancient Faith', url:'https://www.ancientfaith.com'},
+     {author:'St. Basil the Great', work:'On the Holy Spirit, Chapter 27 — On Holy Tradition'},
+     {author:'St. Vincent of Lérins', work:'Commonitory — On the Rule of Faith'},
+     {author:'St. John of Damascus', work:'Against Those Who Attack the Holy Icons, Oration I'},
    ]},
   // Sacraments
   {id:'baptism', cat:'sacraments', title:'Holy Baptism', subtitle:'Death and resurrection in Christ',
@@ -233,16 +235,18 @@ var TOPICS = [
    quote:'"Baptism is not merely a washing but a dying and a rising. It is not a bath but a new birth."', attr:'St. John Chrysostom, Baptismal Homilies',
    tags:['chrismation','eucharist','new birth'],
    deeper:[
-     {name:'Baptismal Instructions — St. John Chrysostom', source:'ACW Series', url:'https://www.amazon.com'},
-     {name:'On Baptism — Tertullian', source:'ANF Vol. III', url:'https://www.newadvent.org/fathers/0321.htm'},
+     {author:'St. John Chrysostom', work:'Baptismal Instructions (Catecheses)'},
+     {author:'St. Cyril of Jerusalem', work:'Mystagogical Catecheses, Lectures II–III'},
+     {author:'Tertullian', work:'On Baptism'},
    ]},
   {id:'eucharist-topic', cat:'sacraments', title:'The Holy Eucharist', subtitle:'The Body and Blood of Christ',
    summary:'The Eucharist is the center of Orthodox Christian life — the culmination of every Divine Liturgy and the Sacrament that most fully unites the faithful with Christ. The bread and wine are transformed by the Holy Spirit into the true Body and Blood of the Lord Jesus Christ. This is not a metaphor or a memorial but a mystery of the Church\'s faith from the beginning.',
    quote:'"I am the living bread which came down from heaven. Whoever eats of this bread will live forever."', attr:'Our Lord Jesus Christ, John 6:51',
    tags:['divine liturgy','anaphora','epiclesis'],
    deeper:[
-     {name:'On the Holy Eucharist — The Orthodox Faith (Hopko)', source:'OCA', url:'https://www.oca.org'},
-     {name:'The Mystagogy — St. Maximus the Confessor', source:'SVS Press', url:'https://svspress.com'},
+     {author:'St. John Chrysostom', work:'Homilies on the Gospel of John, Homily 46'},
+     {author:'St. Cyril of Jerusalem', work:'Mystagogical Catecheses, Lectures IV–V'},
+     {author:'St. Maximus the Confessor', work:'The Mystagogy'},
    ]},
   // Liturgical Life
   {id:'divine-liturgy', cat:'liturgical', title:'The Divine Liturgy', subtitle:'Heaven on earth',
@@ -250,33 +254,37 @@ var TOPICS = [
    quote:'"When you see the Liturgy performed, think that you are in heaven and that the angels are ministering with you."', attr:'St. John Chrysostom',
    tags:['anaphora','eucharist','liturgy'],
    deeper:[
-     {name:'The Divine Liturgy of St. John Chrysostom', source:'GOARCH', url:'https://www.goarch.org'},
-     {name:'The Mystagogy of the Church — Fr. Alexander Schmemann', source:'SVS Press', url:'https://svspress.com'},
+     {author:'St. Maximus the Confessor', work:'The Mystagogy — Commentary on the Divine Liturgy'},
+     {author:'St. Nicholas Cabasilas', work:'A Commentary on the Divine Liturgy'},
+     {author:'St. Germanos of Constantinople', work:'On the Divine Liturgy'},
    ]},
   {id:'great-lent', cat:'liturgical', title:'Great Lent', subtitle:'The spring of the soul',
-   summary:'Great Lent is the forty-eight day fasting season before Holy Pascha — the most intense period of spiritual struggle, repentance, and preparation in the Orthodox year. It begins with Clean Monday and unfolds through the five Sundays of Lent (Orthodoxy, Palamas, Holy Cross, Climacus, Mary of Egypt), Lazarus Saturday, and Holy Week. The fasting of the body, the increase of prayer, and the reading of the Great Canon of St. Andrew of Crete are the primary disciplines of the season.',
+   summary:'Great Lent is the forty-eight day fasting season before Holy Pascha — the most intense period of spiritual struggle, repentance, and preparation in the Orthodox year. It begins with Clean Monday and unfolds through the five Sundays of Lent (Orthodoxy, Palamas, Holy Cross, Climacus, Mary of Egypt), Lazarus Saturday, and Holy Week.',
    quote:'"Let us observe the fast not only by refraining from foods, but by becoming strangers to all the things of this life."', attr:'St. John Chrysostom',
    tags:['fasting','triodion','pascha'],
    deeper:[
-     {name:'Great Lent — Fr. Alexander Schmemann', source:'SVS Press', url:'https://svspress.com'},
-     {name:'The Lenten Triodion', source:'Faber & Faber', url:'https://www.amazon.com'},
+     {author:'St. John Chrysostom', work:'Homilies on Fasting'},
+     {author:'St. Andrew of Crete', work:'The Great Canon of Repentance'},
+     {author:'St. Basil the Great', work:'On Fasting, Homily I'},
    ]},
   // Church History
   {id:'ecumenical-councils', cat:'history', title:'The Seven Ecumenical Councils', subtitle:'The pillars of Orthodox doctrine',
-   summary:'The Seven Ecumenical Councils, held between 325 and 787 AD, are the supreme doctrinal authority of the Orthodox Church alongside Holy Scripture. They defined the Orthodox faith on the Trinity (Nicaea I, Constantinople I), the Incarnation (Ephesus, Chalcedon, Constantinople II, Constantinople III), and the veneration of icons (Nicaea II). Their decrees are considered infallible and binding on all Orthodox Christians.',
+   summary:'The Seven Ecumenical Councils, held between 325 and 787 AD, are the supreme doctrinal authority of the Orthodox Church alongside Holy Scripture. They defined the Orthodox faith on the Trinity (Nicaea I, Constantinople I), the Incarnation (Ephesus, Chalcedon, Constantinople II, Constantinople III), and the veneration of icons (Nicaea II).',
    quote:'"The decrees of the Councils are not merely human documents — they are the witness of the Holy Spirit speaking through the whole Church."', attr:'St. Maximus the Confessor',
    tags:['councils','doctrine','tradition'],
    deeper:[
-     {name:'The Seven Ecumenical Councils — NPNF Series II, Vol. XIV', source:'NPNF', url:'https://www.newadvent.org'},
-     {name:'The Councils of the Church — OrthodoxWiki', source:'OrthodoxWiki', url:'https://orthodoxwiki.org/Ecumenical_Councils'},
+     {author:'St. Athanasius the Great', work:'On the Council of Nicaea (De Decretis)'},
+     {author:'St. John of Damascus', work:'Against the Iconoclasts — Defense of the Holy Icons'},
+     {author:'St. Maximus the Confessor', work:'Opuscula Theologica et Polemica'},
    ]},
   {id:'great-schism', cat:'history', title:'The Great Schism (1054)', subtitle:'East and West divide',
    summary:'The Great Schism of 1054 was the formal separation of the Eastern Orthodox Church from the Church of Rome. Its causes were both theological (the Filioque controversy, papal primacy claims) and cultural (growing estrangement between Greek East and Latin West). Orthodox theology understands the Schism not as a mutual separation but as Rome\'s departure from the ancient conciliar ecclesiology of the undivided Church.',
    quote:'"The Church is not a monarchy but a symphony — many bishops, one faith, one Eucharist."', attr:'St. Cyprian of Carthage (principle)',
    tags:['filioque','rome','papacy'],
    deeper:[
-     {name:'The Orthodox Church — Metropolitan Kallistos Ware', source:'SVS Press', url:'https://svspress.com'},
-     {name:'The Great Schism — OrthodoxWiki', source:'OrthodoxWiki', url:'https://orthodoxwiki.org/Great_Schism'},
+     {author:'Patriarch Photios the Great', work:'Encyclical to the Eastern Patriarchs (867)'},
+     {author:'St. Mark of Ephesus', work:'Encyclical Letter from Florence'},
+     {author:'St. Gregory Palamas', work:'Apodictic Treatises on the Procession of the Holy Spirit'},
    ]},
   // Spiritual Life
   {id:'prayer-topic', cat:'spiritual', title:'The Life of Prayer', subtitle:'The soul\'s conversation with God',
@@ -284,16 +292,18 @@ var TOPICS = [
    quote:'"Prayer is the place of refuge for every worry, a foundation for cheerfulness, a source of constant happiness."', attr:'St. John Chrysostom',
    tags:['jesus prayer','hesychasm','nepsis'],
    deeper:[
-     {name:'The Philokalia Vol. 1 — Ware & Palmer', source:'Faber & Faber', url:'https://www.amazon.com'},
-     {name:'The Power of the Name — Metropolitan Kallistos Ware', source:'SLG Press', url:'https://www.amazon.com'},
+     {author:'St. Hesychios of Sinai', work:'On Watchfulness and Holiness (Philokalia, Vol. I)'},
+     {author:'St. John Climacus', work:'The Ladder of Divine Ascent, Step 28 — On Prayer'},
+     {author:'St. Gregory of Sinai', work:'On Stillness and the Two Ways of Prayer (Philokalia, Vol. IV)'},
    ]},
   {id:'repentance', cat:'spiritual', title:'Repentance & Confession', subtitle:'The second baptism',
-   summary:'Metanoia — repentance — is not merely sorrow for sin but a fundamental reorientation of the whole person toward God. The Holy Mystery of Confession is the sacramental expression of this metanoia, in which the penitent confesses before God in the presence of a priest-witness and receives absolution. The Fathers call Confession the "second baptism" — a restoration of the grace received at the font.',
+   summary:'Metanoia — repentance — is not merely sorrow for sin but a fundamental reorientation of the whole person toward God. The Holy Mystery of Confession is the sacramental expression of this metanoia, in which the penitent confesses before God in the presence of a priest-witness and receives absolution. The Fathers call Confession the "second baptism."',
    quote:'"The beginning of repentance is the beginning of salvation."', attr:'St. John Climacus, The Ladder of Divine Ascent',
    tags:['metanoia','confession','passions'],
    deeper:[
-     {name:'Repentance and Confession — Fr. Thomas Hopko', source:'OCA', url:'https://www.oca.org'},
-     {name:'The Ladder of Divine Ascent — St. John Climacus', source:'Holy Transfiguration Monastery', url:'https://holymonastery.com'},
+     {author:'St. John Climacus', work:'The Ladder of Divine Ascent, Steps 4–5'},
+     {author:'St. Symeon the New Theologian', work:'The Discourses, Discourse IV — On Repentance'},
+     {author:'St. John Chrysostom', work:'On Repentance and Compunction'},
    ]},
   // For Inquirers
   {id:'becoming-orthodox', cat:'inquirers', title:'Becoming Orthodox', subtitle:'The journey into the Church',
@@ -301,34 +311,37 @@ var TOPICS = [
    quote:'"Come and see."', attr:'St. Philip the Apostle to Nathanael, John 1:46',
    tags:['catechumen','baptism','chrismation'],
    deeper:[
-     {name:'Becoming Orthodox — Peter Gillquist', source:'Conciliar Press', url:'https://www.amazon.com'},
-     {name:'Welcome to the Orthodox Church — Frederica Mathewes-Green', source:'Paraclete Press', url:'https://www.amazon.com'},
+     {author:'St. Cyril of Jerusalem', work:'Procatechesis — Address to Those About to Be Illumined'},
+     {author:'St. John Chrysostom', work:'Baptismal Instructions, Instruction I'},
+     {author:'St. Theodore the Studite', work:'On the Reception of Converts'},
    ]},
   {id:'ortho-vs-western', cat:'inquirers', title:'Orthodoxy & Western Christianity', subtitle:'What makes Orthodoxy distinct',
-   summary:'Orthodox Christianity is not a "version" of Western Christianity but a distinct expression of the ancient undivided Church. Key differences from Roman Catholicism and Protestantism include: the rejection of Papal infallibility and universal jurisdiction; the theology of theosis vs. juridical salvation; the understanding of original sin (ancestral sin rather than inherited guilt); the Filioque in the Creed; and the role of Holy Tradition alongside Scripture.',
+   summary:'Orthodox Christianity is not a "version" of Western Christianity but a distinct expression of the ancient undivided Church. Key differences include the rejection of Papal infallibility, the theology of theosis vs. juridical salvation, the understanding of ancestral sin, the Filioque in the Creed, and the role of Holy Tradition alongside Scripture.',
    quote:'"We have not changed. We hold the faith of the ancient Church."', attr:'Patriarch Bartholomew I',
    tags:['filioque','theosis','ancestral sin'],
    deeper:[
-     {name:'The Orthodox Church — Metropolitan Kallistos Ware', source:'SVS Press', url:'https://svspress.com'},
-     {name:'Orthodoxy and Heterodoxy — Fr. Andrew Stephen Damick', source:'Conciliar Press', url:'https://www.amazon.com'},
+     {author:'Patriarch Photios the Great', work:'Mystagogy of the Holy Spirit'},
+     {author:'St. Mark of Ephesus', work:'Syllogistic Chapters Against the Latins'},
+     {author:'St. Gregory Palamas', work:'Topics of Natural and Theological Science, Chapter 109'},
    ]},
   // Church Fathers
   {id:'three-hierarchs', cat:'fathers', title:'The Three Holy Hierarchs', subtitle:'Basil, Gregory, and John',
-   summary:'The Three Holy Hierarchs — St. Basil the Great, St. Gregory the Theologian, and St. John Chrysostom — are the supreme theologians of the Greek patristic tradition. Their feast is celebrated together on January 30. Basil organized monasticism and defended the Holy Trinity; Gregory delivered the Theological Orations that defined Trinitarian doctrine; John preached with incomparable brilliance and fearless courage.',
+   summary:'The Three Holy Hierarchs — St. Basil the Great, St. Gregory the Theologian, and St. John Chrysostom — are the supreme theologians of the Greek patristic tradition, celebrated together on January 30. Basil organized monasticism and defended the Holy Trinity; Gregory delivered the Theological Orations; John preached with incomparable brilliance and fearless courage.',
    quote:'"These three great luminaries have illumined the whole world by their teachings."', attr:'Synaxarion for January 30',
    tags:['basil','gregory','chrysostom'],
    deeper:[
-     {name:'Basil the Great: A Study in Fourth Century Social Theology', source:'SVS Press', url:'https://svspress.com'},
-     {name:'Five Theological Orations — St. Gregory Nazianzen', source:'NPNF', url:'https://www.newadvent.org/fathers/3102.htm'},
+     {author:'St. Basil the Great', work:'On the Holy Spirit — Address to Amphilochius'},
+     {author:'St. Gregory the Theologian', work:'Theological Orations (Orations 27–31)'},
+     {author:'St. John Chrysostom', work:'On the Priesthood (De Sacerdotio)'},
    ]},
   {id:'desert-fathers-topic', cat:'fathers', title:'The Desert Fathers', subtitle:'Antony, Pachomius, and the great ascetics',
-   summary:'The Desert Fathers were the monks of Egypt, Palestine, and Syria in the 3rd–5th centuries who fled the cities to pursue God in silence and austerity. From St. Antony the Great — the father of monasticism — to the great communities of Pachomius and Shenoute, their spiritual insights were collected in the Apophthegmata Patrum (Sayings of the Desert Fathers) and the Lausiac History.',
+   summary:'The Desert Fathers were the monks of Egypt, Palestine, and Syria in the 3rd–5th centuries who fled the cities to pursue God in silence and austerity. From St. Antony the Great — the father of monasticism — to the great communities of Pachomius, their spiritual insights were collected in the Apophthegmata Patrum (Sayings of the Desert Fathers).',
    quote:'"Abba, give me a word." "Go, sit in your cell, and your cell will teach you everything."', attr:'Abba Moses, Sayings of the Desert Fathers',
    tags:['monasticism','nepsis','prayer'],
    deeper:[
-     {name:'The Sayings of the Desert Fathers', source:'Cistercian Publications', url:'https://www.amazon.com'},
-     {name:'Life of Antony — St. Athanasius', source:'NPNF Series II, Vol. IV', url:'https://www.newadvent.org/fathers/2811.htm'},
-     {name:'The Lausiac History — Palladios', source:'ACW Series', url:'https://www.amazon.com'},
+     {author:'St. Athanasios the Great', work:'Life of Antony the Great'},
+     {author:'Various Desert Fathers', work:'Apophthegmata Patrum — Sayings of the Desert Fathers'},
+     {author:'Palladios of Galatia', work:'The Lausiac History'},
    ]},
 ];
 
@@ -411,12 +424,13 @@ function openTopic(id){
   }
   if(t.deeper&&t.deeper.length){
     html+='<div class="tm-deeper-title">Go Deeper</div>';
-    html+='<div class="tm-deeper-links">';
+    html+='<div class="tm-deeper-box">';
     t.deeper.forEach(function(d){
-      html+='<a href="'+d.url+'" target="_blank" rel="noopener" class="tm-deeper-link">';
-      html+='<div class="tm-deeper-link-text"><div class="tm-deeper-link-name">'+d.name+'</div>';
-      html+='<div class="tm-deeper-link-source">'+d.source+'</div></div>';
-      html+='<span class="tm-deeper-arrow">&#8599;</span></a>';
+      html+='<div class="tm-deeper-item">';
+      html+='<span class="tm-deeper-cross">&#9766;</span>';
+      html+='<span class="tm-deeper-ref">'+d.work+'</span>';
+      html+='<span class="tm-deeper-author">&mdash; '+d.author+'</span>';
+      html+='</div>';
     });
     html+='</div>';
   }
