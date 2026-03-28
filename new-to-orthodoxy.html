@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>New to Orthodoxy — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="manifest" href="manifest.json"/>
+<meta name="theme-color" content="#0A1628"/>
+<meta name="description" content="New to Orthodox Christianity? Start here — learn what Orthodoxy is, what to expect at a service, how to find a church, and where to begin your journey."/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* ── Reset & Base ────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{
+  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
+  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--panel-light:#2A4A7A;
+  --border:#2A5A9C;--border-dim:#1A3A5C;
+  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
+  --nav-h:68px;
+}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* ── NAV ────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
+.nav-cross{font-size:28px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.4);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;letter-spacing:0.04em;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
+.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
+.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;transition:all 0.2s;font-size:1rem;}
+.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
+.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+.nav-login-btn:hover{background:rgba(201,168,76,0.2);border-color:var(--gold);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
+.nav-drawer-footer{padding:16px 28px 0;display:flex;gap:10px;}
+
+/* ── Search Overlay ─────────────────────────────────────────── */
+#search-overlay{display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;}
+#search-overlay.open{display:flex;}
+.search-box{width:100%;max-width:640px;padding:0 20px;}
+.search-input-wrap{display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;}
+.search-input-wrap input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.15rem;caret-color:var(--gold);}
+.search-input-wrap input::placeholder{color:var(--text-muted);font-style:italic;}
+.search-close{background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;padding:0;}
+.search-hint{font-size:0.75rem;color:var(--text-muted);font-style:italic;margin-top:12px;text-align:center;letter-spacing:0.04em;}
+
+/* ── Page Header ────────────────────────────────────────────── */
+.page-header{
+  margin-top:var(--nav-h);
+  background:linear-gradient(180deg,rgba(27,58,107,0.2) 0%,transparent 100%);
+  border-bottom:1px solid rgba(201,168,76,0.1);
+  padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden;
+}
+.page-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 0%,rgba(201,168,76,0.06) 0%,transparent 70%);pointer-events:none;}
+.page-header-cross{font-size:36px;color:var(--gold);display:block;margin-bottom:18px;font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;text-shadow:0 0 28px rgba(201,168,76,0.35);animation:glowPulse 4.5s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{text-shadow:0 0 28px rgba(201,168,76,0.3);}50%{text-shadow:0 0 48px rgba(201,168,76,0.55),0 0 80px rgba(201,168,76,0.1);}}
+.page-header-title{font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:700;color:var(--gold-light);letter-spacing:0.1em;margin-bottom:12px;}
+.page-header-desc{font-size:1.1rem;color:var(--text-dim);font-style:italic;max-width:580px;margin:0 auto;line-height:1.9;}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.breadcrumb{max-width:1040px;margin:0 auto;padding:14px 24px 0;display:flex;align-items:center;gap:7px;}
+.breadcrumb a{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb-sep{color:var(--border);font-size:0.65rem;}
+.breadcrumb-current{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);}
+
+/* ── Ornament Divider ───────────────────────────────────────── */
+.ornament-divider{display:flex;align-items:center;gap:16px;max-width:860px;margin:0 auto;padding:0 24px;}
+.ornament-divider::before,.ornament-divider::after{content:'';flex:1;border-top:1px solid rgba(42,90,156,0.35);}
+.ornament-divider-text{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.18em;white-space:nowrap;}
+
+/* ── Sections ───────────────────────────────────────────────── */
+.section{padding:52px 24px;}
+.section-inner{max-width:860px;margin:0 auto;}
+.section-label{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:6px;}
+.section-title{font-family:'Cinzel',serif;font-size:1.35rem;font-weight:600;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:14px;}
+
+/* ── Journey Steps ──────────────────────────────────────────── */
+.journey-step{
+  background:linear-gradient(160deg,var(--dark),rgba(27,58,107,0.22));
+  border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);
+  border-radius:4px;padding:28px 30px;margin-bottom:20px;
+  transition:border-color 0.22s,box-shadow 0.2s;
+}
+.journey-step:hover{border-color:var(--border);box-shadow:0 6px 24px rgba(0,0,0,0.28);}
+.journey-step-num{font-family:'Cinzel',serif;font-size:0.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:8px;}
+.journey-step-title{font-family:'Cinzel',serif;font-size:1.05rem;color:var(--gold-light);letter-spacing:0.05em;margin-bottom:12px;font-weight:600;}
+.journey-step-body{font-size:1rem;color:var(--text-dim);line-height:1.88;}
+.journey-step-body p{margin-bottom:10px;}
+.journey-step-body p:last-child{margin-bottom:0;}
+.journey-step-link{
+  display:inline-block;margin-top:14px;
+  font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;
+  padding:7px 16px;text-decoration:none;background:rgba(201,168,76,0.08);transition:all 0.2s;
+}
+.journey-step-link:hover{background:rgba(201,168,76,0.18);}
+
+/* ── Difference Grid ─────────────────────────────────────────── */
+.diff-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.diff-card{background:rgba(27,58,107,0.18);border:1px solid var(--border-dim);border-radius:4px;padding:20px;}
+.diff-card-title{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--gold);letter-spacing:0.06em;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.diff-card-body{font-size:0.9rem;color:var(--text-dim);line-height:1.78;font-style:italic;}
+
+/* ── Daily Life Grid ─────────────────────────────────────────── */
+.life-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;}
+.life-card{background:rgba(27,58,107,0.16);border:1px solid var(--border-dim);border-radius:4px;padding:18px 18px 16px;text-align:center;}
+.life-icon{font-size:1.6rem;display:block;margin-bottom:8px;}
+.life-title{font-family:'Cinzel',serif;font-size:0.76rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:6px;}
+.life-desc{font-size:0.84rem;color:var(--text-dim);font-style:italic;line-height:1.65;}
+
+/* ── FAQ ────────────────────────────────────────────────────── */
+.faq-list{display:flex;flex-direction:column;gap:4px;}
+.faq-item{background:var(--dark);border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;}
+.faq-question{
+  width:100%;background:transparent;border:none;text-align:left;cursor:pointer;
+  padding:17px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-family:'Cinzel',serif;font-size:0.84rem;color:var(--text);letter-spacing:0.04em;
+  transition:color 0.2s;
+}
+.faq-question:hover{color:var(--gold-light);}
+.faq-question.open{color:var(--gold-light);}
+.faq-chevron{font-size:0.7rem;color:var(--text-muted);transition:transform 0.25s;flex-shrink:0;}
+.faq-question.open .faq-chevron{transform:rotate(180deg);}
+.faq-answer{
+  max-height:0;overflow:hidden;transition:max-height 0.32s ease,padding 0.25s ease;
+  font-size:0.97rem;color:var(--text-dim);line-height:1.85;
+  padding:0 22px;border-top:0 solid transparent;
+}
+.faq-answer.open{max-height:400px;padding:14px 22px 20px;border-top:1px solid rgba(42,90,156,0.2);}
+
+/* ── Start Here Box ─────────────────────────────────────────── */
+.start-here{
+  background:linear-gradient(160deg,rgba(27,58,107,0.35),rgba(10,22,40,0.7));
+  border:1px solid rgba(201,168,76,0.2);border-top:3px solid var(--gold-dim);
+  border-radius:4px;padding:32px 34px;
+}
+.start-here-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.07em;margin-bottom:6px;}
+.start-here-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.78;margin-bottom:22px;}
+.start-res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.start-res-card{background:rgba(15,32,53,0.7);border:1px solid var(--border-dim);border-radius:3px;padding:14px 16px;text-decoration:none;display:block;transition:border-color 0.2s,transform 0.18s;}
+.start-res-card:hover{border-color:var(--gold-dim);transform:translateY(-1px);}
+.start-res-name{font-family:'Cinzel',serif;font-size:0.75rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:4px;}
+.start-res-author{font-size:0.78rem;color:var(--text-muted);font-style:italic;}
+
+/* ── Author Note ────────────────────────────────────────────── */
+.author-note{
+  background:rgba(27,58,107,0.14);border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);border-radius:3px;padding:26px 28px;
+}
+.author-note-header{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.author-icon{font-size:1.4rem;}
+.author-label{font-family:'Cinzel',serif;font-size:0.7rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.1em;}
+.author-name{font-family:'Cinzel',serif;font-size:0.78rem;color:var(--text);letter-spacing:0.04em;}
+.author-note-body{font-size:1rem;color:var(--text-dim);line-height:1.88;font-style:italic;}
+
+/* ── CTA Banner ─────────────────────────────────────────────── */
+.cta-banner{
+  background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(10,22,40,0.85));
+  border-top:1px solid rgba(201,168,76,0.14);border-bottom:1px solid rgba(201,168,76,0.14);
+  text-align:center;padding:52px 24px;
+}
+.cta-cross{font-size:26px;color:var(--gold-dim);display:block;margin-bottom:14px;font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
+.cta-title{font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:10px;}
+.cta-desc{font-size:1rem;color:var(--text-dim);font-style:italic;max-width:480px;margin:0 auto 24px;line-height:1.85;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-btn-primary{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:11px 26px;text-decoration:none;background:rgba(201,168,76,0.1);transition:all 0.2s;}
+.cta-btn-primary:hover{background:rgba(201,168,76,0.22);}
+.cta-btn-secondary{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:11px 26px;text-decoration:none;transition:all 0.2s;}
+.cta-btn-secondary:hover{border-color:var(--border);color:var(--text-dim);}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40px 24px 28px;}
+.footer-inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;}
+.footer-cross-icon{font-size:20px;color:var(--gold-dim);display:inline-block;margin-bottom:7px;font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
+.footer-brand p{font-size:0.82rem;color:var(--text-muted);font-style:italic;line-height:1.7;max-width:240px;}
+.footer-brand h3{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:5px;}
+.footer-col-title{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.footer-col a{display:block;font-size:0.82rem;color:var(--text-dim);text-decoration:none;padding:3px 0;transition:color 0.2s;font-style:italic;}
+.footer-col a:hover{color:var(--gold-light);}
+.footer-bottom{max-width:1040px;margin:26px auto 0;padding-top:18px;border-top:1px solid rgba(42,90,156,0.18);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-copy{font-size:0.7rem;color:var(--text-muted);font-style:italic;}
+.footer-doxology{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.12em;color:rgba(74,122,184,0.45);text-transform:uppercase;}
+
+/* ── Fade-in ────────────────────────────────────────────────── */
+.fade-in{opacity:0;transform:translateY(14px);transition:opacity 0.55s ease,transform 0.55s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .nav-right .nav-login-btn{display:none;}
+  .diff-grid{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .footer-brand{grid-column:1/-1;}
+}
+@media(max-width:600px){
+  .page-header{padding:38px 16px 32px;}
+  .section{padding:36px 16px;}
+  .journey-step{padding:22px 20px;}
+  .start-here{padding:22px 20px;}
+  .author-note{padding:20px 18px;}
+  .breadcrumb{padding:10px 16px 0;}
+  .life-grid{grid-template-columns:1fr 1fr;}
+  .footer-inner{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ NAVIGATION ══════════════════════════════════════════════════════════ -->
+<nav>
+  <a href="index.html" class="nav-brand">
+    <span class="nav-cross">☦&#xFE0E;</span>
+    <div>
+      <div class="nav-title">Orthodox Companion</div>
+      <div class="nav-subtitle">orthodoxcompanion.com</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="calendar.html">Calendar</a></li>
+    <li><a href="saints.html">Saints</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="prayer.html">Prayer</a></li>
+    <li><a href="fasting.html">Fasting</a></li>
+    <li><a href="resources.html">Resources</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="new-to-orthodoxy.html" class="active">New Here?</a></li>
+    <li><a href="chatbot.html">Companion AI</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-search-btn" onclick="openSearch()" aria-label="Search">⌕</button>
+    <a href="account.html" class="nav-login-btn">Sign In</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="saints.html">Saints</a>
+  <a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer</a>
+  <a href="fasting.html">Fasting</a>
+  <a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a>
+  <a href="new-to-orthodoxy.html">New Here?</a>
+  <a href="chatbot.html">Companion AI</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="about.html">About</a>
+  <div class="nav-drawer-footer">
+    <a href="account.html" class="nav-login-btn">Sign In</a>
+  </div>
+</div>
+
+<!-- Search Overlay -->
+<div id="search-overlay">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <span style="color:var(--text-muted);font-size:1.1rem;">⌕</span>
+      <input type="text" id="searchInput" placeholder="Search saints, feasts, prayers…" autocomplete="off"/>
+      <button class="search-close" onclick="closeSearch()" aria-label="Close search">✕</button>
+    </div>
+    <div class="search-hint">Press Esc to close · Try "Theotokos", "fasting", "Holy Week"</div>
+  </div>
+</div>
+
+<!-- ══ PAGE HEADER ══════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <span class="page-header-cross">☦&#xFE0E;</span>
+  <h1 class="page-header-title">Welcome. You Are Not Lost.</h1>
+  <p class="page-header-desc">Whether you wandered in from curiosity, a friend's invitation, or a quiet hunger for something ancient and true — this page is for you. Take your time. There is no rush here.</p>
+</div>
+
+<!-- Breadcrumb -->
+<div style="background:rgba(27,58,107,0.08);border-bottom:1px solid rgba(42,90,156,0.12);">
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">New to Orthodoxy</span>
+  </div>
+</div>
+
+<!-- ══ SECTION 1: WHAT IS ORTHODOX CHRISTIANITY ════════════════════════════ -->
+<section class="section" style="background:linear-gradient(180deg,rgba(27,58,107,0.1),transparent);">
+  <div class="section-inner">
+    <div class="section-label">Step One</div>
+    <h2 class="section-title">What Is Orthodox Christianity?</h2>
+
+    <div class="journey-step fade-in">
+      <div class="journey-step-num">The Ancient Church</div>
+      <div class="journey-step-title">The Church That Has Always Been</div>
+      <div class="journey-step-body">
+        <p>Orthodox Christianity is the faith of the Apostles, preserved and lived continuously for over two thousand years. It is not a movement, a denomination, or a reform — it is the original Church established by Jesus Christ, maintained through an unbroken succession of bishops from the Apostles to the present day.</p>
+        <p>The word <em>orthodox</em> comes from the Greek <em>orthos</em> (right, correct) and <em>doxa</em> (glory, worship, belief). Orthodoxy is therefore both right belief and right worship — the two are inseparable. What the Church believes, it also prays. What it prays, it believes.</p>
+        <p>The Orthodox Church encompasses dozens of distinct traditions — Greek, Russian, Antiochian, Serbian, Romanian, OCA, and more — each with its own liturgical customs and language, but sharing one faith, one baptism, and full sacramental communion with one another.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ SECTION 2: WHAT MAKES IT DIFFERENT ══════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Step Two</div>
+    <h2 class="section-title">What Makes It Different?</h2>
+    <p style="font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.85;margin-bottom:24px;">If you're coming from a Western Christian background — Catholic, Protestant, Evangelical, or none — you will notice differences. Here are some of the most significant.</p>
+
+    <div class="diff-grid">
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">☩ Theosis, Not Merely Forgiveness</div>
+        <div class="diff-card-body">The goal of the Christian life in Orthodoxy is <em>theosis</em> — union with God, participation in the divine nature. Salvation is not only legal pardon but genuine transformation into the likeness of God.</div>
+      </div>
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">📖 Scripture Within Tradition</div>
+        <div class="diff-card-body">The Bible is the Church's book, read and interpreted within the living Tradition — the Fathers, the Councils, the liturgy. Scripture and Holy Tradition are not competing authorities; they are one life.</div>
+      </div>
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">🕯️ The Mystery of Worship</div>
+        <div class="diff-card-body">Orthodox worship is ancient, embodied, and mystical. Incense, icons, chanting, prostrations — the whole person worships, not only the mind. The Divine Liturgy is heaven on earth, not a performance or a program.</div>
+      </div>
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">🗓️ A Liturgical Life</div>
+        <div class="diff-card-body">The Orthodox calendar sanctifies all of time — fasting seasons, feasts, saints' days, and daily prayer structure the year and the day. Faith is not Sunday morning alone; it is a whole way of life.</div>
+      </div>
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">🙏 Prayer Without Ceasing</div>
+        <div class="diff-card-body">The Jesus Prayer — "Lord Jesus Christ, Son of God, have mercy on me, a sinner" — is the heartbeat of Orthodox spiritual practice. The goal is unceasing inner prayer, the purification and illumination of the heart.</div>
+      </div>
+      <div class="diff-card fade-in">
+        <div class="diff-card-title">🏛️ Conciliar Authority</div>
+        <div class="diff-card-body">The Church is governed by councils of bishops, not a single pope or founding reformer. Doctrine is defined by the Seven Ecumenical Councils, received by the whole Church across generations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ SECTION 3: DAILY ORTHODOX LIFE ══════════════════════════════════════ -->
+<section class="section" style="background:linear-gradient(180deg,rgba(15,32,53,0.4),transparent);">
+  <div class="section-inner">
+    <div class="section-label">Step Three</div>
+    <h2 class="section-title">What Does Orthodox Life Look Like Day to Day?</h2>
+    <p style="font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.85;margin-bottom:24px;">Orthodox Christianity is not a set of beliefs you hold privately. It is a life you live — in the home, in the body, in the rhythms of the day and the year.</p>
+
+    <div class="life-grid">
+      <div class="life-card fade-in">
+        <span class="life-icon">🌅</span>
+        <div class="life-title">Morning Prayers</div>
+        <div class="life-desc">The day begins with the Morning Prayer Rule — a set of prescribed prayers offered to God before the business of life begins.</div>
+      </div>
+      <div class="life-card fade-in">
+        <span class="life-icon">📿</span>
+        <div class="life-title">The Jesus Prayer</div>
+        <div class="life-desc">Many Orthodox Christians pray the Jesus Prayer throughout the day, using a prayer rope (chotki) to count repetitions and keep the heart attentive.</div>
+      </div>
+      <div class="life-card fade-in">
+        <span class="life-icon">✝️</span>
+        <div class="life-title">Sunday Liturgy</div>
+        <div class="life-desc">The Divine Liturgy on Sunday is the summit of the week. The faithful receive Holy Communion having prepared through prayer, fasting, and confession.</div>
+      </div>
+      <div class="life-card fade-in">
+        <span class="life-icon">🌿</span>
+        <div class="life-title">Fasting</div>
+        <div class="life-desc">Orthodox Christians fast on Wednesdays and Fridays and during four major fasting seasons, abstaining from meat, dairy, and oil according to the canons.</div>
+      </div>
+      <div class="life-card fade-in">
+        <span class="life-icon">🖼️</span>
+        <div class="life-title">Icons at Home</div>
+        <div class="life-desc">A dedicated "icon corner" in the home — a small place of prayer with icons, a candle, and incense — makes the home a little church.</div>
+      </div>
+      <div class="life-card fade-in">
+        <span class="life-icon">🕯️</span>
+        <div class="life-title">Vespers & Vigils</div>
+        <div class="life-desc">Evening services mark the close of the day. Great Vespers on Saturday evening is the beginning of Sunday's celebration, continuing the ancient pattern of prayer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ SECTION 4: FIND A CHURCH ════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Step Four</div>
+    <h2 class="section-title">How Do I Find a Church?</h2>
+
+    <div class="journey-step fade-in">
+      <div class="journey-step-num">Your Next Step</div>
+      <div class="journey-step-title">Visit a Parish Near You</div>
+      <div class="journey-step-body">
+        <p>No website, podcast, or book can substitute for the experience of attending a Divine Liturgy. The faith is lived in community, in the presence of Christ among His people. The next and most important step is simply to go.</p>
+        <p>Orthodox parishes exist across most of North America and throughout the world. Jurisdictions include the Greek Orthodox Archdiocese (GOARCH), the Orthodox Church in America (OCA), the Antiochian Orthodox Archdiocese (AOCA), the Russian Orthodox Church Outside of Russia (ROCOR), and many others — all in full communion, sharing one faith.</p>
+        <p>Use the parish locator below to find a congregation near you. When you arrive, introduce yourself. Every parish has seen newcomers before. You will be welcomed.</p>
+      </div>
+      <a href="https://www.orthodox.net/parishes/" target="_blank" rel="noopener" class="journey-step-link">Find a Parish Near You ↗</a>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ FAQ ════════════════════════════════════════════════════════════════ -->
+<section class="section" style="background:linear-gradient(180deg,rgba(15,32,53,0.3),transparent);">
+  <div class="section-inner">
+    <div class="section-label">Common Questions</div>
+    <h2 class="section-title">Frequently Asked Questions</h2>
+
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ START HERE RESOURCES ════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Step Five</div>
+    <h2 class="section-title" style="margin-bottom:20px;">Where Do I Start Learning?</h2>
+    <div class="start-here fade-in">
+      <div class="start-here-title">Curated "Start Here" Resources</div>
+      <div class="start-here-desc">These are the books and podcasts we most often recommend to people at the beginning of the journey. Quality over quantity — start with one, finish it, and let it lead you to the next.</div>
+      <div class="start-res-grid" id="startHereGrid"></div>
+      <div style="margin-top:18px;">
+        <a href="resources.html" style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;border:1px solid var(--border-dim);border-radius:2px;padding:8px 18px;display:inline-block;transition:all 0.2s;">View All Resources →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ornament-divider"><span class="ornament-divider-text">☩</span></div>
+
+<!-- ══ AUTHOR NOTE ═════════════════════════════════════════════════════════ -->
+<section class="section" style="background:rgba(15,32,53,0.3);">
+  <div class="section-inner">
+    <div class="author-note fade-in">
+      <div class="author-note-header">
+        <span class="author-icon">✉️</span>
+        <div>
+          <div class="author-label">A Personal Note</div>
+          <div class="author-name">From the Author of Orthodox Companion</div>
+        </div>
+      </div>
+      <div class="author-note-body">
+        <p>I built this site because I know what it feels like to stand at the threshold — drawn by something you cannot fully name, unsure whether you belong, uncertain where to begin. The Orthodox Church is ancient, vast, and at first glance, a little overwhelming. Icons. Incense. Candles. A liturgy that feels like it comes from another world. Because it does.</p>
+        <p>Orthodox Companion exists to be a gentle companion for that journey — not to replace the parish, the priest, or the community, but to help you find your footing, answer your questions, and walk with you until you do. Whether you become Orthodox, or simply learn from her tradition, I hope you find what you are looking for here. May God guide your seeking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA BANNER ══════════════════════════════════════════════════════════ -->
+<div class="cta-banner">
+  <span class="cta-cross">☦&#xFE0E;</span>
+  <h2 class="cta-title">Ready to Go Deeper?</h2>
+  <p class="cta-desc">The Companion AI is an Orthodox-focused assistant that can answer your questions at any hour, guide you through topics, and help you navigate the Tradition.</p>
+  <div class="cta-btns">
+    <a href="chatbot.html" class="cta-btn-primary">Talk to the Companion AI</a>
+    <a href="resources.html" class="cta-btn-secondary">Browse All Resources</a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-cross-icon">☦&#xFE0E;</span>
+      <h3>Orthodox Companion</h3>
+      <p>A catechetical and devotional resource for catechumens, seekers, and lifelong Orthodox faithful.</p>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Explore</div>
+      <a href="calendar.html">Liturgical Calendar</a>
+      <a href="saints.html">Saints</a>
+      <a href="prayer.html">Prayer</a>
+      <a href="fasting.html">Fasting</a>
+      <a href="topics.html">Topics</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Learn</div>
+      <a href="resources.html">Resources</a>
+      <a href="blog.html">Blog</a>
+      <a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="chatbot.html">Companion AI</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Site</div>
+      <a href="about.html">About</a>
+      <a href="account.html">Sign In</a>
+      <a href="mailto:hello@orthodoxcompanion.com">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Orthodox Companion · orthodoxcompanion.com</span>
+    <span class="footer-doxology">Glory to God for All Things</span>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════
+   FAQ DATA — add new items here
+═══════════════════════════════════════════════════════════════ */
+var FAQS = [
+  {
+    q: "Can I attend a Divine Liturgy as a non-Orthodox visitor?",
+    a: "Yes, absolutely. The Divine Liturgy is a public worship service and non-Orthodox visitors are warmly welcomed to attend. You will not be turned away at the door. The entire service will be offered before you, though you will be asked not to receive Holy Communion (see below). Many inquirers attend for months or even years before making a decision about Orthodoxy — and this is perfectly appropriate."
+  },
+  {
+    q: "Can I receive Holy Communion as a non-Orthodox visitor?",
+    a: "No — Holy Communion in the Orthodox Church is reserved for baptized and chrismated Orthodox Christians who have prepared through fasting, prayer, and recent confession. This is not a rejection of visitors, but a reflection of what the Eucharist means: it is the fullness of union with the Church, not a gesture of welcome to those still outside her. Guests are invited to receive blessed bread (antidoron) at the end of the service as a sign of fellowship."
+  },
+  {
+    q: "How long does it take to become Orthodox?",
+    a: "There is no fixed timeline. The period of catechesis — formal instruction and preparation — varies widely by jurisdiction and parish, typically ranging from six months to two years. The process is shaped by your readiness, your spiritual development, and the guidance of the priest. Orthodoxy does not rush anyone. The journey itself is part of the formation."
+  },
+  {
+    q: "Do I need to be baptized again if I was baptized in another Christian tradition?",
+    a: "It depends. Practices vary by jurisdiction. Some Orthodox jurisdictions receive converts through chrismation alone (anointing with holy oil), recognizing their prior baptism. Others baptize all converts. Some receive converts on a case-by-case basis depending on the nature of their prior baptism. Your priest will guide you through this discernment. There is no universal rule — only pastoral wisdom applied to each person's situation."
+  },
+  {
+    q: "What should I wear to an Orthodox service?",
+    a: "Modest, respectful clothing is expected. Women traditionally cover their heads in many parishes (a scarf or veil), though practices vary. Men remove hats upon entering. The general principle is to dress as you would for a solemn, sacred occasion — not a performance, but a meeting with God. When in doubt, err on the side of modesty and you will not go wrong. No one will turn you away for clothing."
+  },
+  {
+    q: "Is Orthodoxy the same as Greek or Russian Orthodox?",
+    a: "Greek Orthodox, Russian Orthodox, Antiochian Orthodox, Serbian Orthodox, and OCA (Orthodox Church in America) are all Orthodox — they share the same faith, the same sacraments, and full communion with one another. The differences are primarily cultural, linguistic, and administrative, not theological or doctrinal. An Orthodox church in Greece and an Orthodox church in Russia are the same Church in any sense that matters. The Orthodox Church is one, holy, catholic, and apostolic — expressed through many peoples and tongues."
+  },
+  {
+    q: "Is it hard to follow the Orthodox service if I don't know the language?",
+    a: "Most Orthodox parishes in North America serve in English, or offer bilingual services. The liturgical texts are widely available in print and online. Many parishes provide service books for visitors. The first few liturgies may feel unfamiliar — the movement, the chanting, the sequence — but the experience itself communicates even before the words are understood. Attend, observe, and let the worship speak. Understanding deepens with time."
+  },
+  {
+    q: "Do I need to fast before attending a service?",
+    a: "If you plan to receive Holy Communion, Orthodox Christians fast from midnight (or more traditionally, from the evening prior) before the Liturgy. As a visitor not receiving Communion, you are not bound by this rule. However, the spirit of fasting before entering the Temple is a beautiful Orthodox practice — it cultivates attentiveness, sobriety, and readiness to meet God. It is always appropriate to fast, even when not strictly required."
+  }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   START HERE RESOURCES — curated beginner picks
+═══════════════════════════════════════════════════════════════ */
+var START_RESOURCES = [
+  { name: 'The Orthodox Church', author: 'Metropolitan Kallistos Ware', link: 'https://www.amazon.com/Orthodox-Church-Timothy-Ware/dp/0140146563' },
+  { name: 'For the Life of the World', author: 'Fr. Alexander Schmemann', link: 'https://store.ancientfaith.com/for-the-life-of-the-world/' },
+  { name: 'On the Incarnation', author: 'St. Athanasius the Great', link: 'https://www.newadvent.org/fathers/2802.htm' },
+  { name: 'Ancient Faith Radio', author: 'Dozens of Orthodox podcasts', link: 'https://www.ancientfaith.com/radio' },
+  { name: 'Beginning to Pray', author: 'Metropolitan Anthony Bloom', link: 'https://www.amazon.com/Beginning-Pray-Anthony-Bloom/dp/0809120755' },
+  { name: 'OrthodoxWiki', author: 'Online encyclopedia', link: 'https://orthodoxwiki.org' }
+];
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER FAQ
+═══════════════════════════════════════════════════════════════ */
+function renderFAQ() {
+  var list = document.getElementById('faqList');
+  list.innerHTML = '';
+  FAQS.forEach(function(item, i) {
+    var div = document.createElement('div');
+    div.className = 'faq-item';
+    div.innerHTML =
+      '<button class="faq-question" onclick="toggleFAQ(this)" aria-expanded="false">' +
+      item.q +
+      '<span class="faq-chevron">▼</span>' +
+      '</button>' +
+      '<div class="faq-answer">' + item.a + '</div>';
+    list.appendChild(div);
+  });
+}
+
+function toggleFAQ(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = btn.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-question').forEach(function(b){
+    b.classList.remove('open');
+    b.setAttribute('aria-expanded','false');
+    b.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) {
+    btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    answer.classList.add('open');
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   RENDER START HERE
+═══════════════════════════════════════════════════════════════ */
+function renderStartHere() {
+  var grid = document.getElementById('startHereGrid');
+  grid.innerHTML = '';
+  START_RESOURCES.forEach(function(r) {
+    var a = document.createElement('a');
+    a.href = r.link;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.className = 'start-res-card';
+    a.innerHTML = '<div class="start-res-name">'+r.name+'</div><div class="start-res-author">'+r.author+'</div>';
+    grid.appendChild(a);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════════════ */
+function toggleDrawer() {
+  var d = document.getElementById('navDrawer');
+  var h = document.getElementById('hamburger');
+  d.classList.toggle('open');
+  h.classList.toggle('open');
+}
+function openSearch() {
+  document.getElementById('search-overlay').classList.add('open');
+  setTimeout(function(){ document.getElementById('searchInput').focus(); }, 80);
+}
+function closeSearch() {
+  document.getElementById('search-overlay').classList.remove('open');
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeSearch(); });
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL FADE-IN
+═══════════════════════════════════════════════════════════════ */
+function initFadeIn() {
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
+    });
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════════════════════ */
+document.addEventListener('DOMContentLoaded', function(){
+  renderFAQ();
+  renderStartHere();
+  initFadeIn();
+});
+</script>
+</body>
+</html>
