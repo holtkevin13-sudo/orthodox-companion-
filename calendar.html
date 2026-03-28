@@ -153,6 +153,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 </style>
 </head>
 <body>
+
+<!-- NAV -->
 <nav>
   <a href="index.html" class="nav-brand">
     <span class="nav-cross">&#9766;&#65038;</span>
@@ -178,13 +180,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <span></span><span></span><span></span>
   </button>
 </nav>
+
+<!-- Mobile Drawer -->
 <div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a>
-  <a href="topics.html">Topics</a><a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a>
-  <a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="glossary.html">Glossary</a>
-  <a href="new-to-orthodoxy.html">New to Orthodoxy</a><a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
+  <a href="index.html">Home</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="saints.html">Saints</a>
+  <a href="topics.html">Topics</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="resources.html">Resources</a>
+  <a href="blog.html">Blog</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="new-to-orthodoxy.html">New to Orthodoxy</a>
+  <a href="chatbot.html">Companion AI</a>
+  <a href="about.html">About</a>
+  <div class="nav-drawer-footer">
+    <a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a>
+  </div>
 </div>
+
+<!-- Search Overlay -->
 <div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
   <div style="width:100%;max-width:640px;padding:0 20px;">
     <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
@@ -195,12 +211,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <p style="font-size:0.75rem;color:var(--text-muted);font-style:italic;margin-top:12px;text-align:center;">Press Enter to search &nbsp;&#183;&nbsp; Esc to close</p>
   </div>
 </div>
+
+<!-- Season Strip -->
 <div class="season-strip" id="seasonStrip"></div>
+
+<!-- Page Header -->
 <div class="page-top">
   <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Liturgical Calendar</div>
   <h1 class="page-title">Liturgical Calendar</h1>
-  <p class="page-desc">Feasts, fasts, saints' days, and readings for every day of the Orthodox year &mdash; New Calendar (Revised Julian)</p>
+  <p class="page-desc">Feasts, fasts, saints&#8217; days, and readings for every day of the Orthodox year &mdash; New Calendar (Revised Julian)</p>
 </div>
+
+<!-- Controls -->
 <div class="cal-controls">
   <button class="cal-nav-btn" onclick="changeMonth(-1)">&#8249;</button>
   <div class="cal-month-label" id="monthLabel"></div>
@@ -217,6 +239,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   <div class="legend-item"><div class="legend-dot strict"></div>Strict Fast</div>
   <div class="legend-item"><div class="legend-dot free"></div>Fast Free</div>
 </div>
+
+<!-- Calendar Body -->
 <div class="cal-outer" id="calOuter">
   <div id="view-month">
     <div class="cal-weekdays">
@@ -228,6 +252,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   <div id="view-week" style="display:none;"><div class="week-grid" id="weekGrid"></div></div>
   <div id="view-day" style="display:none;padding:20px 0;"></div>
 </div>
+
+<!-- Day Panel -->
 <div class="day-panel" id="dayPanel">
   <div class="dp-header">
     <div><div class="dp-date" id="dp-date">Select a day</div><div class="dp-feast" id="dp-feast">&mdash;</div></div>
@@ -236,6 +262,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   <div class="dp-body" id="dp-body"><div class="dp-loading">Select a day to see details.</div></div>
   <div class="dp-footer"><a href="chatbot.html" class="dp-companion-btn">&#9766; Ask the Companion about this day</a></div>
 </div>
+
+<!-- Reading Modal -->
 <div id="reading-modal">
   <div class="rm-box">
     <div class="rm-header">
@@ -249,7 +277,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     </div>
   </div>
 </div>
-<script src="calendar-engine.js"></script>
+
+<!-- ✦ Calendar Engine v2 — revolving, works for any year ✦ -->
+<script src="calendar-engine-v2.js"></script>
 <script>
 "use strict";
 var today=new Date();today.setHours(0,0,0,0);
@@ -261,6 +291,8 @@ function pad(n){return String(n).padStart(2,'0');}
 function ds(y,m,d){return y+'-'+pad(m+1)+'-'+pad(d);}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function isToday(y,m,d){return y===today.getFullYear()&&m===today.getMonth()&&d===today.getDate();}
+
+// Nav
 var drawerOpen=false;
 function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
 document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
@@ -268,19 +300,43 @@ function openSearch(){document.getElementById('search-overlay').style.display='f
 function closeSearch(){document.getElementById('search-overlay').style.display='none';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSearch();if(panelOpen)closePanel();}});
 document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
-function fastPip(f){if(!f||f==='No Restriction')return '';if(f==='Strict Fast')return '<div class="cal-fast-pip strict"></div>';if(f==='Fast Free')return '<div class="cal-fast-pip free"></div>';return '<div class="cal-fast-pip fish"></div>';}
-function fastChip(f){if(!f)return '';if(f==='Strict Fast')return 'strict';if(f==='Fast Free')return 'free';return '';}
+
+// Fast indicators
+function fastPip(f){
+  if(!f||f==='No Restriction')return '';
+  if(f==='Strict Fast')return '<div class="cal-fast-pip strict"></div>';
+  if(f==='Fast Free')return '<div class="cal-fast-pip free"></div>';
+  return '<div class="cal-fast-pip fish"></div>';
+}
+function fastChip(f){
+  if(!f)return '';
+  if(f==='Strict Fast')return 'strict';
+  if(f==='Fast Free')return 'free';
+  return '';
+}
+
+// Month view
 function renderMonth(){
   var y=viewDate.getFullYear(),m=viewDate.getMonth();
   document.getElementById('monthLabel').textContent=MONTHS[m]+' '+y;
   var todayData=OrthodoxCalendar.getDay(OrthodoxCalendar.today());
-  if(todayData&&todayData.liturgical_season){var s=document.getElementById('seasonStrip');s.textContent='We are in the season of '+todayData.liturgical_season;s.classList.add('visible');}
-  var firstDay=new Date(y,m,1).getDay(),daysInMonth=new Date(y,m+1,0).getDate(),prevDays=new Date(y,m,0).getDate();
+  if(todayData&&todayData.liturgical_season){
+    var s=document.getElementById('seasonStrip');
+    s.textContent='We are in the season of '+todayData.liturgical_season;
+    s.classList.add('visible');
+  }
+  var firstDay=new Date(y,m,1).getDay();
+  var daysInMonth=new Date(y,m+1,0).getDate();
+  var prevDays=new Date(y,m,0).getDate();
   var html='';
-  for(var i=firstDay-1;i>=0;i--) html+='<div class="cal-day other-month"><div class="cal-day-num">'+(prevDays-i)+'</div></div>';
+  for(var i=firstDay-1;i>=0;i--)
+    html+='<div class="cal-day other-month"><div class="cal-day-num">'+(prevDays-i)+'</div></div>';
   for(var d=1;d<=daysInMonth;d++){
-    var dateStr=ds(y,m,d),data=OrthodoxCalendar.getDay(dateStr);
-    var isTod=isToday(y,m,d),isSel=selDate===dateStr,isSun=new Date(y,m,d).getDay()===0,isGreat=data&&data.feast_rank==='Great Feast';
+    var dateStr=ds(y,m,d);
+    var data=OrthodoxCalendar.getDay(dateStr);
+    var isTod=isToday(y,m,d),isSel=selDate===dateStr;
+    var isSun=new Date(y,m,d).getDay()===0;
+    var isGreat=data&&data.feast_rank==='Great Feast';
     var cls='cal-day'+(isTod?' today':'')+(isSel?' selected':'')+(isSun?' cal-day-sunday':'')+(isGreat?' great-feast':'');
     var feast=data?esc(data.summary||''):'';
     var saints=data?(data.saints_feasts||[]).filter(function(s){return s!==data.summary;}).slice(0,2).map(esc).join(' \xb7 '):'';
@@ -292,22 +348,30 @@ function renderMonth(){
     html+='</div>';
   }
   var total=firstDay+daysInMonth,rows=Math.ceil(total/7),filler=rows*7-total;
-  for(var f=1;f<=filler;f++) html+='<div class="cal-day other-month"><div class="cal-day-num">'+f+'</div></div>';
+  for(var f=1;f<=filler;f++)
+    html+='<div class="cal-day other-month"><div class="cal-day-num">'+f+'</div></div>';
   document.getElementById('calGrid').innerHTML=html;
 }
+
+// Week view
 function renderWeek(){
   var anchor=selDate?new Date(selDate+'T12:00:00'):new Date(viewDate.getFullYear(),viewDate.getMonth(),1);
   var sunday=new Date(anchor);sunday.setDate(anchor.getDate()-anchor.getDay());
   var weekDays=OrthodoxCalendar.getWeek(ds(sunday.getFullYear(),sunday.getMonth(),sunday.getDate()));
   var endSat=new Date(sunday);endSat.setDate(sunday.getDate()+6);
-  document.getElementById('monthLabel').textContent=MONTHS[sunday.getMonth()]+' '+sunday.getDate()+' \u2013 '+(sunday.getMonth()!==endSat.getMonth()?MONTHS[endSat.getMonth()]+' ':'')+endSat.getDate()+', '+endSat.getFullYear();
+  document.getElementById('monthLabel').textContent=
+    MONTHS[sunday.getMonth()]+' '+sunday.getDate()+' \u2013 '+
+    (sunday.getMonth()!==endSat.getMonth()?MONTHS[endSat.getMonth()]+' ':'')+
+    endSat.getDate()+', '+endSat.getFullYear();
   var html='';
   weekDays.forEach(function(data){
-    var d=new Date(data.date+'T12:00:00');
-    var isTod=data.date===OrthodoxCalendar.today(),isSel=data.date===selDate,isGreat=data.feast_rank==='Great Feast';
+    var d=new Date(data.dateStr+'T12:00:00');
+    var isTod=data.dateStr===OrthodoxCalendar.today();
+    var isSel=data.dateStr===selDate;
+    var isGreat=data.feast_rank==='Great Feast';
     var cls='week-row'+(isTod?' today':'')+(isSel?' selected':'')+(isGreat?' great-feast':'');
     var saints=(data.saints_feasts||[]).filter(function(s){return s!==data.summary;}).slice(0,3).join(' \xb7 ');
-    html+='<div class="'+cls+'" onclick="selectDay(\''+data.date+'\')">';
+    html+='<div class="'+cls+'" onclick="selectDay(\''+data.dateStr+'\')">';
     html+='<div class="week-date-col"><div class="week-dow">'+DOW[d.getDay()].slice(0,3)+'</div><div class="week-num">'+d.getDate()+'</div></div>';
     html+='<div class="week-content"><div class="week-feast">'+esc(data.summary||'')+'</div>';
     if(saints)html+='<div class="week-saints">'+esc(saints)+'</div>';
@@ -316,12 +380,17 @@ function renderWeek(){
   });
   document.getElementById('weekGrid').innerHTML=html;
 }
+
+// Day view
 function renderDayView(){
-  var dateStr=selDate||OrthodoxCalendar.today(),data=OrthodoxCalendar.getDay(dateStr);
+  var dateStr=selDate||OrthodoxCalendar.today();
+  var data=OrthodoxCalendar.getDay(dateStr);
   var d=new Date(dateStr+'T12:00:00');
   document.getElementById('monthLabel').textContent=DOW[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
   document.getElementById('view-day').innerHTML='<div style="max-width:640px;margin:0 auto;padding:0 24px;">'+buildPanelHTML(data,dateStr)+'</div>';
 }
+
+// Panel HTML builder
 function buildPanelHTML(data,dateStr){
   if(!data)return '<div class="dp-loading">No liturgical data for this day.</div>';
   var html='<div class="dp-section"><div class="dp-chip-row">';
@@ -331,22 +400,40 @@ function buildPanelHTML(data,dateStr){
   if(data.is_sunday&&data.sunday_name)html+='<span class="dp-chip">'+esc(data.sunday_name)+'</span>';
   html+='</div></div>';
   var saints=(data.saints_feasts||[]).filter(function(s){return s!==data.summary;});
-  if(saints.length){html+='<div class="dp-section"><div class="dp-section-title">Saints &amp; Feasts</div>';saints.forEach(function(s){html+='<div class="dp-saint-item">\u2629 '+esc(s)+'</div>';});html+='</div>';}
+  if(saints.length){
+    html+='<div class="dp-section"><div class="dp-section-title">Saints &amp; Feasts</div>';
+    saints.forEach(function(s){html+='<div class="dp-saint-item">\u2629 '+esc(s)+'</div>';});
+    html+='</div>';
+  }
   var readings=[];
-  if(data.matins_ref)readings.push({type:'Matins Gospel',ref:data.matins_ref});
-  if(data.epistle_ref)readings.push({type:'Epistle',ref:data.epistle_ref});
-  if(data.gospel_ref)readings.push({type:'Gospel',ref:data.gospel_ref});
+  if(data.matins_ref)readings.push({type:'Matins Gospel',ref:data.matins_ref,text:data.matins_text});
+  if(data.epistle_ref)readings.push({type:'Epistle',ref:data.epistle_ref,text:data.epistle_text});
+  if(data.gospel_ref)readings.push({type:'Gospel',ref:data.gospel_ref,text:data.gospel_text});
   if(readings.length){
     html+='<div class="dp-section"><div class="dp-section-title">Readings</div>';
     readings.forEach(function(r){
       var bUrl='https://www.biblegateway.com/passage/?search='+encodeURIComponent(r.ref)+'&version=NKJV';
-      html+='<button class="dp-reading-btn" onclick="openReading(\''+dateStr+'\',\''+r.type.replace(/'/g,"\\'")+'\',\''+r.ref.replace(/'/g,"\\'")+'\',\''+bUrl+'\')"><span class="dp-reading-type">'+esc(r.type)+'</span><span class="dp-ref">'+esc(r.ref)+'</span></button>';
+      html+='<button class="dp-reading-btn" onclick="openReading(\''+esc(r.type)+'\',\''+esc(r.ref)+'\',\''+esc(r.text)+'\',\''+esc(bUrl)+'\')">';
+      html+='<span class="dp-reading-type">'+esc(r.type)+'</span>';
+      html+='<span class="dp-ref">'+esc(r.ref)+'</span>';
+      html+='</button>';
     });
     html+='</div>';
   }
-  if(data.pascha_year){html+='<div class="dp-section" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(42,90,156,0.15);"><div class="dp-section-title">This Year\'s Pascha</div><div style="font-size:0.86rem;color:var(--text-dim);font-style:italic;">'+new Date(data.pascha_year+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+'</div></div>';}
+  if(data.pascha_year){
+    html+='<div class="dp-section" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(42,90,156,0.15);">';
+    html+='<div class="dp-section-title">This Year\'s Pascha</div>';
+    html+='<div style="font-size:0.86rem;color:var(--text-dim);font-style:italic;">';
+    html+=new Date(data.pascha_year+'T12:00:00').toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+    html+='</div></div>';
+  }
+  if(data.matins_num){
+    html+='<div style="font-size:0.7rem;color:var(--text-muted);font-family:Cinzel,serif;letter-spacing:0.06em;margin-top:8px;">Eothinon '+data.matins_num+' &mdash; Resurrection Gospel</div>';
+  }
   return html;
 }
+
+// Select a day
 function selectDay(dateStr){
   selDate=dateStr;
   if(curView==='month')renderMonth();
@@ -354,8 +441,11 @@ function selectDay(dateStr){
   else renderDayView();
   openPanel(dateStr);
 }
+
+// Open side panel
 function openPanel(dateStr){
-  var data=OrthodoxCalendar.getDay(dateStr),d=new Date(dateStr+'T12:00:00');
+  var data=OrthodoxCalendar.getDay(dateStr);
+  var d=new Date(dateStr+'T12:00:00');
   document.getElementById('dp-date').textContent=DOW[d.getDay()]+', '+MONTHS[d.getMonth()]+' '+d.getDate()+', '+d.getFullYear();
   document.getElementById('dp-feast').textContent=(data&&data.summary)||'\u2014';
   document.getElementById('dp-body').innerHTML=buildPanelHTML(data,dateStr);
@@ -363,44 +453,72 @@ function openPanel(dateStr){
   document.getElementById('calOuter').classList.add('panel-open');
   panelOpen=true;
 }
+
 function closePanel(){
   document.getElementById('dayPanel').classList.remove('open');
   document.getElementById('calOuter').classList.remove('panel-open');
   panelOpen=false;selDate=null;
   renderCurrent();
 }
-var _readingCache={};
-async function openReading(dateStr,type,ref,bibleUrl){
+
+// Reading modal
+function openReading(type,ref,text,bibleUrl){
   document.getElementById('rm-title').textContent=type+' Reading';
   document.getElementById('rm-ref').textContent=ref;
-  document.getElementById('rm-text').innerHTML='<div class="rm-loading">Loading reading\u2026</div>';
   document.getElementById('rm-full-link').href=bibleUrl;
+  var rmText=document.getElementById('rm-text');
+  if(text&&text.trim()){
+    var paras=text.split(/\n{2,}/).filter(Boolean);
+    rmText.innerHTML=paras.map(function(p){return '<p style="margin-bottom:14px;">'+esc(p)+'</p>';}).join('');
+  } else {
+    rmText.innerHTML='<p style="color:var(--text-muted);font-style:italic;">Full text not available for this reading. Click the link below to read it at BibleGateway.</p>';
+  }
   document.getElementById('reading-modal').classList.add('open');
-  var key=dateStr+'|'+type;
-  if(_readingCache[key]){document.getElementById('rm-text').innerHTML='<p>'+esc(_readingCache[key])+'</p>';return;}
-  var fullDay=await OrthodoxCalendar.getDayWithReadings(dateStr);
-  var text='';
-  if(type==='Epistle')text=(fullDay&&fullDay.epistle_text)||'';
-  else if(type==='Gospel')text=(fullDay&&fullDay.gospel_text)||'';
-  else if(type==='Matins Gospel')text=(fullDay&&fullDay.matins_text)||'';
-  if(text){_readingCache[key]=text;var paras=text.split(/\n{2,}/).filter(Boolean);document.getElementById('rm-text').innerHTML=paras.map(function(p){return '<p style="margin-bottom:14px;">'+esc(p)+'</p>';}).join('');}
-  else document.getElementById('rm-text').innerHTML='<p style="color:var(--text-muted);font-style:italic;">Full text not available. Click the link below to read at BibleGateway.</p>';
 }
 function closeReadingModal(){document.getElementById('reading-modal').classList.remove('open');}
 document.getElementById('reading-modal').addEventListener('click',function(e){if(e.target===this)closeReadingModal();});
+
+// View management
 function setView(v){
   curView=v;
-  ['month','week','day'].forEach(function(n){document.getElementById('view-'+n).style.display=n===v?'':'none';document.getElementById('btn-'+n).classList.toggle('active',n===v);});
+  ['month','week','day'].forEach(function(n){
+    document.getElementById('view-'+n).style.display=n===v?'':'none';
+    document.getElementById('btn-'+n).classList.toggle('active',n===v);
+  });
   renderCurrent();
 }
-function renderCurrent(){if(curView==='month')renderMonth();else if(curView==='week')renderWeek();else renderDayView();}
+function renderCurrent(){
+  if(curView==='month')renderMonth();
+  else if(curView==='week')renderWeek();
+  else renderDayView();
+}
+
+// Navigation
 function changeMonth(dir){
-  if(curView==='month'){viewDate.setMonth(viewDate.getMonth()+dir);}
-  else if(curView==='week'){var a=selDate?new Date(selDate+'T12:00:00'):new Date(viewDate);a.setDate(a.getDate()+dir*7);selDate=ds(a.getFullYear(),a.getMonth(),a.getDate());viewDate=new Date(a.getFullYear(),a.getMonth(),1);}
-  else{var a2=selDate?new Date(selDate+'T12:00:00'):new Date(viewDate);a2.setDate(a2.getDate()+dir);selDate=ds(a2.getFullYear(),a2.getMonth(),a2.getDate());viewDate=new Date(a2.getFullYear(),a2.getMonth(),1);}
+  if(curView==='month'){
+    viewDate.setMonth(viewDate.getMonth()+dir);
+  } else if(curView==='week'){
+    var a=selDate?new Date(selDate+'T12:00:00'):new Date(viewDate);
+    a.setDate(a.getDate()+dir*7);
+    selDate=ds(a.getFullYear(),a.getMonth(),a.getDate());
+    viewDate=new Date(a.getFullYear(),a.getMonth(),1);
+  } else {
+    var a2=selDate?new Date(selDate+'T12:00:00'):new Date(viewDate);
+    a2.setDate(a2.getDate()+dir);
+    selDate=ds(a2.getFullYear(),a2.getMonth(),a2.getDate());
+    viewDate=new Date(a2.getFullYear(),a2.getMonth(),1);
+  }
   renderCurrent();
 }
-function goToday(){var t=new Date();viewDate=new Date(t.getFullYear(),t.getMonth(),1);selDate=OrthodoxCalendar.today();renderCurrent();if(curView!=='day')openPanel(selDate);}
+function goToday(){
+  var t=new Date();
+  viewDate=new Date(t.getFullYear(),t.getMonth(),1);
+  selDate=OrthodoxCalendar.today();
+  renderCurrent();
+  if(curView!=='day')openPanel(selDate);
+}
+
+// Init
 OrthodoxCalendar.init().then(function(){
   renderMonth();
   var todayStr=OrthodoxCalendar.today();
