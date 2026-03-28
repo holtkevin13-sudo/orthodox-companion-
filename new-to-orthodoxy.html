@@ -415,34 +415,30 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
       <div class="journey-step-body">
         <p>No website, podcast, or book can substitute for the experience of attending a Divine Liturgy. The faith is lived in community, in the presence of Christ among His people. The next and most important step is simply to go.</p>
         <p>Orthodox parishes exist across most of North America and throughout the world. Jurisdictions include the Greek Orthodox Archdiocese (GOARCH), the Orthodox Church in America (OCA), the Antiochian Orthodox Archdiocese (AOCA), the Russian Orthodox Church Outside of Russia (ROCOR), and many others — all in full communion, sharing one faith.</p>
-        <p>Use the locator below to find a congregation near you. When you arrive, introduce yourself. Every parish has seen newcomers before. You will be welcomed.</p>
+        <p>Use the parish locator below to find a congregation near you. When you arrive, introduce yourself. Every parish has seen newcomers before. You will be welcomed.</p>
       </div>
+      <a href="https://www.orthodox.net/parishes/" target="_blank" rel="noopener" class="journey-step-link" style="display:none;">Find a Parish Near You</a>
 
-      <!-- Parish Locator -->
+      <!-- ── Parish Locator ── -->
       <div id="parish-locator" style="margin-top:20px;border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;background:rgba(15,32,53,0.5);">
-        <!-- Search bar -->
-        <div style="padding:16px 20px;border-bottom:1px solid rgba(42,90,156,0.2);display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-          <input type="text" id="parish-zip" placeholder="Enter city, state or zip code&hellip;"
-            style="flex:1;min-width:200px;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:9px 14px;outline:none;"
+        <div style="padding:14px 20px;border-bottom:1px solid rgba(42,90,156,0.2);display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+          <input type="text" id="parish-zip" placeholder="Enter city, state, or zip code…"
+            style="flex:1;min-width:180px;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:9px 14px;outline:none;"
             onkeydown="if(event.key==='Enter')searchParish()"/>
           <button onclick="searchParish()"
-            style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 18px;cursor:pointer;white-space:nowrap;">
+            style="font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 16px;cursor:pointer;white-space:nowrap;">
             Search
           </button>
           <button onclick="useMyLocation()"
-            style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:9px 14px;cursor:pointer;white-space:nowrap;">
+            style="font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:9px 14px;cursor:pointer;white-space:nowrap;">
             &#9655; Use My Location
           </button>
         </div>
-        <!-- Status message -->
-        <div id="parish-status" style="display:none;padding:10px 20px;font-size:0.84rem;color:var(--text-muted);font-style:italic;border-bottom:1px solid rgba(42,90,156,0.15);animation:fadePulse 2s ease-in-out infinite;"></div>
-        <!-- Results: jurisdiction links -->
+        <div id="parish-status" style="display:none;padding:10px 20px;font-size:0.84rem;color:var(--text-muted);font-style:italic;border-bottom:1px solid rgba(42,90,156,0.15);"></div>
         <div id="parish-results" style="display:none;padding:16px 20px;">
-          <div style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;">Search by Jurisdiction</div>
+          <div style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;">Find by Jurisdiction</div>
           <div style="display:flex;flex-direction:column;gap:8px;" id="parish-links"></div>
-          <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(42,90,156,0.15);font-size:0.78rem;color:var(--text-muted);font-style:italic;line-height:1.6;">
-            All jurisdictions listed share the same Orthodox faith and are in full communion with one another. Any Orthodox parish will welcome you.
-          </div>
+          <div style="margin-top:12px;font-size:0.78rem;color:var(--text-muted);font-style:italic;line-height:1.6;">All jurisdictions share the same Orthodox faith and are in full communion with one another.</div>
         </div>
       </div>
     </div>
@@ -539,7 +535,7 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
       <div class="footer-col-title">Site</div>
       <a href="about.html">About</a>
       <a href="account.html">Sign In</a>
-      <a href="/cdn-cgi/l/email-protection#e48c8188888ba48b96908c8b808b9c878b8994858a8d8b8aca878b89">Contact</a>
+      <a href="/cdn-cgi/l/email-protection#721a171e1e1d321d00061a1d161d0a111d1f02131c1b1d1c5c111d1f">Contact</a>
     </div>
   </div>
   <div class="footer-bottom">
@@ -548,127 +544,7 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
-
-/* ═══════════════════════════════════════════════════════════════
-   PARISH LOCATOR
-═══════════════════════════════════════════════════════════════ */
-function buildParishLinks(query) {
-  var encoded = encodeURIComponent(query);
-  var links = [
-    {
-      name: 'Greek Orthodox Archdiocese (GOARCH)',
-      desc: 'Ecumenical Patriarchate — New Calendar',
-      url: 'https://www.goarch.org/parishes?city=' + encoded,
-      fallback: 'https://www.goarch.org/parishes'
-    },
-    {
-      name: 'Orthodox Church in America (OCA)',
-      desc: 'Autocephalous — English-primary parishes',
-      url: 'https://www.oca.org/parishes/find?city=' + encoded,
-      fallback: 'https://www.oca.org/parishes/find'
-    },
-    {
-      name: 'Antiochian Orthodox Archdiocese',
-      desc: 'Patriarchate of Antioch — many convert parishes',
-      url: 'https://www.antiochian.org/parishes?search=' + encoded,
-      fallback: 'https://www.antiochian.org/parishes'
-    },
-    {
-      name: 'ROCOR — Russian Orthodox Church Outside Russia',
-      desc: 'Moscow Patriarchate in the diaspora',
-      url: 'https://www.roca.org/parishes',
-      fallback: 'https://www.roca.org/parishes'
-    },
-    {
-      name: 'All Orthodox Parishes (orthodox.net)',
-      desc: 'Multi-jurisdiction directory across North America',
-      url: 'https://www.orthodox.net/parishes/?search=' + encoded,
-      fallback: 'https://www.orthodox.net/parishes/'
-    },
-    {
-      name: 'Find on Google Maps',
-      desc: 'Search "Orthodox church near ' + query + '"',
-      url: 'https://www.google.com/maps/search/Orthodox+church+near+' + encoded,
-      fallback: 'https://www.google.com/maps/search/Orthodox+church+near+me'
-    },
-  ];
-
-  var html = links.map(function(l) {
-    return '<a href="' + l.url + '" target="_blank" rel="noopener" '
-      + 'style="display:flex;align-items:center;gap:12px;padding:10px 14px;'
-      + 'background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;'
-      + 'text-decoration:none;transition:border-color 0.2s,background 0.2s;"'
-      + ' onmouseover="this.style.borderColor='var(--gold-dim)';this.style.background='rgba(201,168,76,0.05)'"'
-      + ' onmouseout="this.style.borderColor='var(--border-dim)';this.style.background='rgba(27,58,107,0.2)'">'
-      + '<div style="flex:1;">'
-      + '<div style="font-family:Cinzel,serif;font-size:0.82rem;color:var(--text);letter-spacing:0.04em;margin-bottom:2px;">' + l.name + '</div>'
-      + '<div style="font-size:0.76rem;color:var(--text-muted);font-style:italic;">' + l.desc + '</div>'
-      + '</div>'
-      + '<span style="color:var(--text-muted);font-size:0.8rem;flex-shrink:0;">&#8599;</span>'
-      + '</a>';
-  }).join('');
-
-  document.getElementById('parish-links').innerHTML = html;
-  document.getElementById('parish-results').style.display = 'block';
-  document.getElementById('parish-status').style.display = 'none';
-}
-
-function searchParish() {
-  var q = document.getElementById('parish-zip').value.trim();
-  if (!q) {
-    document.getElementById('parish-zip').focus();
-    return;
-  }
-  var status = document.getElementById('parish-status');
-  status.textContent = 'Searching for parishes near ' + q + '...';
-  status.style.display = 'block';
-  setTimeout(function() { buildParishLinks(q); }, 400);
-}
-
-function useMyLocation() {
-  if (!navigator.geolocation) {
-    alert('Geolocation is not supported by your browser. Please enter your city or zip code.');
-    return;
-  }
-  var status = document.getElementById('parish-status');
-  status.textContent = 'Finding your location...';
-  status.style.display = 'block';
-  document.getElementById('parish-results').style.display = 'none';
-
-  navigator.geolocation.getCurrentPosition(
-    function(pos) {
-      var lat = pos.coords.latitude.toFixed(4);
-      var lng = pos.coords.longitude.toFixed(4);
-      // Reverse geocode using a free API to get city name for display
-      fetch('https://nominatim.openstreetmap.org/reverse?lat=' + lat + '&lon=' + lng + '&format=json')
-        .then(function(r) { return r.json(); })
-        .then(function(data) {
-          var city = (data.address && (data.address.city || data.address.town || data.address.village || data.address.county)) || 'your location';
-          document.getElementById('parish-zip').value = city;
-          buildParishLinks(city);
-        })
-        .catch(function() {
-          // If reverse geocode fails, just use coordinates
-          var q = lat + ',' + lng;
-          document.getElementById('parish-zip').value = 'Near me';
-          buildParishLinks('near me');
-        });
-    },
-    function(err) {
-      status.textContent = '';
-      status.style.display = 'none';
-      var msg = err.code === 1
-        ? 'Location access was denied. Please enter your city or zip code instead.'
-        : 'Could not determine your location. Please enter your city or zip code.';
-      alert(msg);
-      document.getElementById('parish-zip').focus();
-    },
-    { timeout: 8000, enableHighAccuracy: false }
-  );
-}
-
-</script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ═══════════════════════════════════════════════════════════════
    FAQ DATA — add new items here
 ═══════════════════════════════════════════════════════════════ */
@@ -804,3 +680,67 @@ function initFadeIn() {
 /* ═══════════════════════════════════════════════════════════════
    INIT
 ══════════════════════════════════════════════════════════�
+// ── Parish Locator ───────────────────────────────────────────
+function buildParishLinks(query) {
+  var enc = encodeURIComponent(query);
+  var links = [
+    { name:'Greek Orthodox Archdiocese (GOARCH)', desc:'Ecumenical Patriarchate — New Calendar', url:'https://www.goarch.org/parishes' },
+    { name:'Orthodox Church in America (OCA)',    desc:'Autocephalous — English-primary parishes', url:'https://www.oca.org/parishes/find' },
+    { name:'Antiochian Orthodox Archdiocese',     desc:'Patriarchate of Antioch — many convert parishes', url:'https://www.antiochian.org/parishes' },
+    { name:'ROCOR',                               desc:'Russian Orthodox Church Outside Russia', url:'https://www.roca.org/parishes' },
+    { name:'All Orthodox Parishes (orthodox.net)',desc:'Multi-jurisdiction North American directory', url:'https://www.orthodox.net/parishes/?search='+enc },
+    { name:'Search on Google Maps',               desc:'Orthodox church near '+query, url:'https://www.google.com/maps/search/Orthodox+church+near+'+enc },
+  ];
+  var html = links.map(function(l){
+    return '<a href="'+l.url+'" target="_blank" rel="noopener" '
+      +'style="display:flex;align-items:center;gap:10px;padding:10px 14px;'
+      +'background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;'
+      +'text-decoration:none;margin-bottom:2px;" '
+      +'onmouseover="this.style.borderColor='#8A6A28'" onmouseout="this.style.borderColor='#1A3A5C'">'
+      +'<div style="flex:1;">'
+      +'<div style="font-family:Cinzel,serif;font-size:0.82rem;color:#F0E6CC;margin-bottom:2px;">'+l.name+'</div>'
+      +'<div style="font-size:0.74rem;color:#4A7AB8;font-style:italic;">'+l.desc+'</div>'
+      +'</div><span style="color:#4A7AB8;">&#8599;</span></a>';
+  }).join('');
+  document.getElementById('parish-links').innerHTML = html;
+  document.getElementById('parish-results').style.display = 'block';
+  document.getElementById('parish-status').style.display = 'none';
+}
+
+function searchParish() {
+  var q = document.getElementById('parish-zip').value.trim();
+  if (!q) { document.getElementById('parish-zip').focus(); return; }
+  document.getElementById('parish-status').textContent = 'Searching for parishes near ' + q + '…';
+  document.getElementById('parish-status').style.display = 'block';
+  document.getElementById('parish-results').style.display = 'none';
+  setTimeout(function(){ buildParishLinks(q); }, 350);
+}
+
+function useMyLocation() {
+  if (!navigator.geolocation) { alert('Geolocation not supported. Please enter your city or zip code.'); return; }
+  var status = document.getElementById('parish-status');
+  status.textContent = 'Finding your location…';
+  status.style.display = 'block';
+  document.getElementById('parish-results').style.display = 'none';
+  navigator.geolocation.getCurrentPosition(
+    function(pos) {
+      fetch('https://nominatim.openstreetmap.org/reverse?lat='+pos.coords.latitude+'&lon='+pos.coords.longitude+'&format=json')
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          var city = (d.address && (d.address.city||d.address.town||d.address.village||d.address.county)) || 'my location';
+          document.getElementById('parish-zip').value = city;
+          buildParishLinks(city);
+        }).catch(function(){ buildParishLinks('near me'); });
+    },
+    function(err){
+      status.style.display = 'none';
+      alert(err.code===1 ? 'Location access denied. Please enter your city or zip code.' : 'Could not get your location. Please enter it manually.');
+      document.getElementById('parish-zip').focus();
+    },
+    { timeout: 8000 }
+  );
+}
+
+</script>
+</body>
+</html>
