@@ -1357,11 +1357,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- Calendar engine powers the liturgical day card -->
-<script src="calendar-engine-v2.js"></script>
+
+
+
+
+
+
+
+
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
-// <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+// Anti-flash: inline script in <head> sets data-theme before render
 
 /* ── Theme + Nav + Account JS ───────────────────────── */
 // Theme
