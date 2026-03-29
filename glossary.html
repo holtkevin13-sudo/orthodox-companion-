@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script></script>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Glossary & Lexicon — Orthodox Companion</title>
@@ -34,8 +34,8 @@
 .nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
 
 *{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);}
-[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);--hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;}
+[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);--hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;}
 body{font-family:"EB Garamond",Georgia,serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
 nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
 [data-theme="light"] nav{background:rgba(245,237,216,0.97);}
@@ -76,10 +76,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .breadcrumb a{color:var(--text-muted);text-decoration:none;}
 .breadcrumb a:hover{color:var(--gold-light);}
 .breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.page-hero{margin-top:var(--nav-h);background:var(--hero-bg);padding:40px 24px 32px;border-bottom:2px solid var(--gold-dim);}
 .page-hero-inner{max-width:1040px;margin:0 auto;}
-.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
-.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:640px;}
+.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--hero-text);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--hero-sub);font-style:italic;line-height:1.7;max-width:640px;}
 .content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
 @media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}}
 @media(max-width:600px){.content,.page-hero{padding-left:16px;padding-right:16px;}.page-title{font-size:1.4rem;}}
@@ -96,7 +96,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .tab-btn:hover{color:var(--text-dim);}
 .alpha-bar{max-width:1040px;margin:0 auto;padding:10px 24px;display:flex;flex-wrap:wrap;gap:3px;border-bottom:1px solid rgba(42,90,156,0.12);}
 .alpha-btn{font-family:"Cinzel",serif;font-size:0.65rem;color:var(--text-muted);background:transparent;border:none;cursor:pointer;padding:4px 8px;border-radius:2px;transition:all 0.15s;}
-.alpha-btn.active,:hover{color:var(--gold-light);background:rgba(201,168,76,0.1);}
+.alpha-btn.active,.alpha-btn:hover{color:var(--gold-light);background:rgba(201,168,76,0.1);}
 .alpha-btn.has{color:var(--text-dim);}
 .glossary-body{max-width:1040px;margin:0 auto;padding:16px 24px 60px;}
 .alpha-section{margin-bottom:4px;}
