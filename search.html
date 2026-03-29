@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Search — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="theme-color" content="#0A1628"/>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="Search Orthodox Companion — topics, saints, feasts, glossary, and more."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -181,114 +181,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
-/* Search hero */
-.search-hero{margin-top:var(--nav-h);padding:48px 24px 32px;background:linear-gradient(180deg,rgba(27,58,107,0.2),transparent);border-bottom:1px solid rgba(201,168,76,0.1);text-align:center;}
-.search-hero h1{font-family:'Cinzel',serif;font-size:1.5rem;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:20px;}
-.search-bar-wrap{max-width:600px;margin:0 auto;display:flex;gap:0;border:1px solid var(--border);border-radius:3px;overflow:hidden;background:rgba(27,58,107,0.4);}
-.search-bar-input{flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;padding:14px 18px;caret-color:var(--gold);}
-.search-bar-input::placeholder{color:var(--text-muted);font-style:italic;}
-.search-bar-btn{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:none;border-left:1px solid var(--border);padding:0 20px;cursor:pointer;transition:background 0.2s;white-space:nowrap;}
-.search-bar-btn:hover{background:rgba(201,168,76,0.2);}
-/* Filters */
-.search-controls{max-width:860px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-.filter-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);}
-.filter-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--border-dim);border-radius:20px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
-.filter-btn:hover{border-color:var(--border);color:var(--text-dim);}
-.filter-btn.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.result-count{margin-left:auto;font-size:0.8rem;color:var(--text-muted);font-style:italic;}
-/* Results */
-.search-body{max-width:860px;margin:0 auto;padding:0 24px 60px;}
-.result-item{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid rgba(42,90,156,0.15);cursor:pointer;transition:background 0.15s;border-radius:3px;}
-.result-item:hover{background:rgba(27,58,107,0.15);}
-.result-item:last-child{border-bottom:none;}
-.result-icon{width:40px;height:40px;flex-shrink:0;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;margin-top:2px;}
-.result-body{flex:1;}
-.result-type{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;}
-.result-title{font-family:'Cinzel',serif;font-size:0.96rem;color:var(--text);letter-spacing:0.04em;margin-bottom:5px;line-height:1.3;}
-.result-title mark{background:rgba(201,168,76,0.2);color:var(--gold-light);border-radius:2px;padding:0 2px;}
-.result-excerpt{font-size:0.88rem;color:var(--text-dim);line-height:1.65;font-style:italic;}
-.result-excerpt mark{background:rgba(201,168,76,0.15);color:var(--gold-light);border-radius:2px;padding:0 2px;}
-.result-arrow{color:var(--text-muted);font-size:0.9rem;flex-shrink:0;align-self:center;}
-/* States */
-.state-empty{padding:60px 24px;text-align:center;max-width:500px;margin:0 auto;}
-.state-empty-icon{font-size:2.5rem;color:var(--gold-dim);margin-bottom:16px;display:block;font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-.state-empty-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:8px;}
-.state-empty-desc{font-size:0.9rem;color:var(--text-muted);font-style:italic;line-height:1.7;margin-bottom:20px;}
-.did-you-mean{font-size:0.88rem;color:var(--text-muted);margin-bottom:16px;}
-.did-you-mean a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3);}
-.suggestion-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.suggestion-chip{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:5px 12px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
-.suggestion-chip:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.state-initial{padding:60px 24px;text-align:center;}
-.state-initial-icon{font-size:2.5rem;color:var(--gold-dim);margin-bottom:14px;display:block;font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}}
-@media(max-width:600px){.search-hero{padding:32px 16px 24px;}.search-controls,.search-body{padding-left:16px;padding-right:16px;}}
-
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
+.search-wrap{max-width:760px;margin:0 auto;padding:32px 24px 60px;}
+.search-bar-wrap{display:flex;gap:0;margin-bottom:28px;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;}
+.search-bar{flex:1;background:rgba(27,58,107,0.3);border:none;color:var(--text);font-family:"EB Garamond",serif;font-size:1.05rem;padding:14px 18px;outline:none;}
+[data-theme="light"] .search-bar{background:rgba(212,188,150,0.3);}
+.search-bar::placeholder{color:var(--text-muted);font-style:italic;}
+.search-btn{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.12);border:none;border-left:1px solid var(--border-dim);padding:0 20px;cursor:pointer;transition:background 0.2s;}
+.search-btn:hover{background:rgba(201,168,76,0.25);}
+.search-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px;}
+.search-filter{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.search-filter.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.search-results{display:flex;flex-direction:column;gap:8px;}
+.search-result{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 18px;cursor:pointer;transition:border-color 0.2s;text-decoration:none;display:block;}
+.search-result:hover{border-color:var(--gold-dim);}
+.sr-type{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:5px;}
+.sr-title{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--text);letter-spacing:0.04em;margin-bottom:4px;}
+.sr-excerpt{font-size:0.84rem;color:var(--text-muted);font-style:italic;line-height:1.6;}
+.search-empty{padding:48px;text-align:center;color:var(--text-muted);font-style:italic;}
+.search-suggestions{margin-bottom:28px;}
+.suggestions-title{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:12px;}
+.suggestion-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);border:1px solid var(--border-dim);border-radius:2px;padding:5px 12px;cursor:pointer;transition:all 0.2s;background:transparent;}
+.chip:hover{border-color:var(--gold-dim);color:var(--gold-light);}
 
 </style>
 </head>
@@ -385,277 +299,46 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-<div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Search</div>
+    <h1 class="page-title">Search</h1>
+    <p class="page-desc">Search across topics, saints, feasts, glossary terms, and pages.</p>
   </div>
 </div>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
-  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
-  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
-  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
-</div>
-
-<div class="search-hero">
-  <h1>Search Orthodox Companion</h1>
+<div class="search-wrap">
   <div class="search-bar-wrap">
-    <input class="search-bar-input" type="text" id="mainSearch" placeholder="Search saints, prayers, feasts, topics, glossary terms&#8230;" autocomplete="off"/>
-    <button class="search-bar-btn" onclick="doSearch()">Search</button>
+    <input class="search-bar" type="text" id="searchInput" placeholder="Search topics, saints, feasts, prayers, glossary..." autocomplete="off" onkeydown="if(event.key==='Enter')doSearch()"/>
+    <button class="search-btn" onclick="doSearch()">Search</button>
   </div>
-</div>
-
-<div class="search-controls" id="searchControls" style="display:none;">
-  <span class="filter-label">Filter:</span>
-  <button class="filter-btn active" id="filter-all" onclick="setFilter('all')">All</button>
-  <button class="filter-btn" id="filter-saint" onclick="setFilter('saint')">Saints</button>
-  <button class="filter-btn" id="filter-prayer" onclick="setFilter('prayer')">Prayers</button>
-  <button class="filter-btn" id="filter-topic" onclick="setFilter('topic')">Topics</button>
-  <button class="filter-btn" id="filter-glossary" onclick="setFilter('glossary')">Glossary</button>
-  <button class="filter-btn" id="filter-feast" onclick="setFilter('feast')">Feasts</button>
-  <button class="filter-btn" id="filter-blog" onclick="setFilter('blog')">Blog</button>
-  <span class="result-count" id="resultCount"></span>
-</div>
-
-<div class="search-body" id="searchBody">
-  <div class="state-initial">
-    <span class="state-initial-icon">&#9766;&#65038;</span>
-    <div style="font-family:'Cinzel',serif;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.06em;margin-bottom:8px;">Search the entire site</div>
-    <div style="font-size:0.88rem;color:var(--text-muted);font-style:italic;line-height:1.7;max-width:420px;margin:0 auto 24px;">Saints, prayers, theological topics, glossary terms, feast days, blog posts — all in one place.</div>
+  <div class="search-filters">
+    <button class="search-filter active" data-filter="all" onclick="setFilter('all',this)">All</button>
+    <button class="search-filter" data-filter="topics" onclick="setFilter('topics',this)">Topics</button>
+    <button class="search-filter" data-filter="saints" onclick="setFilter('saints',this)">Saints</button>
+    <button class="search-filter" data-filter="feasts" onclick="setFilter('feasts',this)">Feasts</button>
+    <button class="search-filter" data-filter="glossary" onclick="setFilter('glossary',this)">Glossary</button>
+  </div>
+  <div class="search-suggestions" id="searchSuggestions">
+    <div class="suggestions-title">Browse</div>
     <div class="suggestion-chips">
-      <span class="suggestion-chip" onclick="runSearch('Theosis')">Theosis</span>
-      <span class="suggestion-chip" onclick="runSearch('Jesus Prayer')">Jesus Prayer</span>
-      <span class="suggestion-chip" onclick="runSearch('Pascha')">Pascha</span>
-      <span class="suggestion-chip" onclick="runSearch('Fasting')">Fasting</span>
-      <span class="suggestion-chip" onclick="runSearch('John Chrysostom')">John Chrysostom</span>
-      <span class="suggestion-chip" onclick="runSearch('Theotokos')">Theotokos</span>
-      <span class="suggestion-chip" onclick="runSearch('Holy Trinity')">Holy Trinity</span>
-      <span class="suggestion-chip" onclick="runSearch('Confession')">Confession</span>
+      <span class="chip" onclick="searchFor('theosis')">Theosis</span>
+      <span class="chip" onclick="searchFor('Holy Trinity')">Holy Trinity</span>
+      <span class="chip" onclick="searchFor('fasting')">Fasting</span>
+      <span class="chip" onclick="searchFor('theotokos')">Theotokos</span>
+      <span class="chip" onclick="searchFor('hesychasm')">Hesychasm</span>
+      <span class="chip" onclick="searchFor('Pascha')">Pascha</span>
+      <span class="chip" onclick="searchFor('John Chrysostom')">John Chrysostom</span>
+      <span class="chip" onclick="searchFor('incarnation')">Incarnation</span>
+      <span class="chip" onclick="searchFor('soteriology')">Soteriology</span>
+      <span class="chip" onclick="searchFor('prayer')">Prayer</span>
     </div>
   </div>
+  <div class="search-results" id="searchResults"></div>
 </div>
-
-<script>
-"use strict";
-
-// ══════════════════════════════════════════════════════════
-// SEARCH INDEX — content from across the site
-// Add entries here as new content is created.
-// type: saint | prayer | topic | glossary | feast | blog
-// ══════════════════════════════════════════════════════════
-var INDEX = [
-  // Saints
-  {type:'saint', title:'John Chrysostom', excerpt:'Archbishop of Constantinople, Doctor of the Church, author of the Divine Liturgy. His Paschal Homily is read at every Pascha.', url:'saints.html?saint=john-chrysostom', icon:'&#9766;&#65038;', tags:'chrysostom archbishop bishop father preacher golden mouth'},
-  {type:'saint', title:'Basil the Great', excerpt:'Archbishop of Caesarea, one of the Three Holy Hierarchs. Author of the Divine Liturgy of St. Basil and the monastic rule.', url:'saints.html?saint=basil-the-great', icon:'&#9766;&#65038;', tags:'basil bishop father hierarch cappadocia'},
-  {type:'saint', title:'Gregory the Theologian', excerpt:'Archbishop of Constantinople, author of the Five Theological Orations that defined Trinitarian doctrine.', url:'saints.html?saint=gregory-nazianzen', icon:'&#9766;&#65038;', tags:'gregory theologian orations trinity cappadocia'},
-  {type:'saint', title:'Athanasius the Great', excerpt:'"Athanasius contra mundum" — defender of Nicene Orthodoxy against Arianism. Author of On the Incarnation.', url:'saints.html?saint=athanasius', icon:'&#9766;&#65038;', tags:'athanasius alexandria arian incarnation'},
-  {type:'saint', title:'Seraphim of Sarov', excerpt:'The great Russian staretz. "Acquire a peaceful spirit, and around you thousands will be saved."', url:'saints.html?saint=seraphim-of-sarov', icon:'&#9766;&#65038;', tags:'seraphim sarov russia monk staretz holy spirit'},
-  {type:'saint', title:'Mary Magdalene', excerpt:'Equal to the Apostles, first witness of the Resurrection of Christ. Apostle to the Apostles.', url:'saints.html?saint=mary-magdalene', icon:'&#9766;&#65038;', tags:'mary magdalene resurrection apostle myrrh bearing woman'},
-  {type:'saint', title:'Nicholas of Myra', excerpt:'The Great Wonderworker. Patron of children, sailors, and the falsely accused. His relics are in Bari, Italy.', url:'saints.html?saint=nicholas-of-myra', icon:'&#9766;&#65038;', tags:'nicholas myra wonderworker children sailors bishop'},
-  {type:'saint', title:'Antony the Great', excerpt:'Father of Christian monasticism. Spent decades in the Egyptian desert fighting demons and seeking God.', url:'saints.html?saint=antony-the-great', icon:'&#9766;&#65038;', tags:'antony egypt monastery desert father monk'},
-  {type:'saint', title:'Paul the Apostle', excerpt:'Apostle to the Gentiles. Author of fourteen epistles of the New Testament. Martyred in Rome.', url:'saints.html?saint=paul-apostle', icon:'&#9766;&#65038;', tags:'paul apostle epistles gentiles missionary'},
-  {type:'saint', title:'The Most Holy Theotokos', excerpt:'Mother of God, Ever-Virgin Mary. Venerated above all the saints. Commemorated on many feasts throughout the year.', url:'saints.html?saint=mary-theotokos', icon:'&#9766;&#65038;', tags:'theotokos mary mother god virgin dormition annunciation'},
-  {type:'saint', title:'John Climacus', excerpt:'Author of The Ladder of Divine Ascent. Abbot of the Monastery of St. Catherine at Sinai.', url:'saints.html?saint=john-climacus', icon:'&#9766;&#65038;', tags:'john climacus ladder sinai monk abbot'},
-  {type:'saint', title:'Maximus the Confessor', excerpt:'The last great patristic theologian. Defender of the two wills of Christ. Tongue and hand cut off for the faith.', url:'saints.html?saint=maximus-confessor', icon:'&#9766;&#65038;', tags:'maximus confessor theology will divine energies philokalia'},
-  // Prayers
-  {type:'prayer', title:'The Jesus Prayer', excerpt:'"Lord Jesus Christ, Son of God, have mercy on me, a sinner." The prayer of the heart from the hesychast tradition.', url:'prayer.html?prayer=jesus-prayer', icon:'&#127541;', tags:'jesus prayer heart hesychasm nepsis philokalia'},
-  {type:'prayer', title:'The Trisagion Prayers', excerpt:'"Holy God, Holy Mighty, Holy Immortal, have mercy on us." Opens every Orthodox prayer rule.', url:'prayer.html?prayer=trisagion', icon:'&#127541;', tags:'trisagion holy trinity prayer morning'},
-  {type:'prayer', title:'Morning Prayers', excerpt:'The traditional morning prayer rule of the Orthodox Church — beginning each day with the praise of God.', url:'prayer.html?cat=morning', icon:'&#127541;', tags:'morning prayer rule orthodox'},
-  {type:'prayer', title:'Evening Prayers', excerpt:'Closing the day with thanksgiving, supplication, and the entrusting of the soul to God.', url:'prayer.html?cat=evening', icon:'&#127541;', tags:'evening prayer vespers night'},
-  {type:'prayer', title:'Theotoke Parthene (Hail Mary)', excerpt:'The Orthodox Hail Mary — "Theotokos and Virgin, rejoice! Mary, full of grace, the Lord is with thee."', url:'prayer.html?prayer=theotoke-parthene', icon:'&#127541;', tags:'theotokos hail mary annunciation prayer'},
-  {type:'prayer', title:'It is Truly Meet (Axion Estin)', excerpt:'The great hymn to the Theotokos sung in every Divine Liturgy. Given by an angel on Mount Athos.', url:'prayer.html?prayer=it-is-truly-meet', icon:'&#127541;', tags:'axion estin theotokos divine liturgy athos'},
-  {type:'prayer', title:'Prayer Before Confession', excerpt:'Preparation for the Holy Mystery of Confession — a prayer of contrition and resolve.', url:'prayer.html?prayer=before-confession', icon:'&#127541;', tags:'confession repentance metanoia preparation'},
-  {type:'prayer', title:'Prayer for the Departed', excerpt:'"Give rest, O Lord, to the souls of Your servants." Ancient intercession for the faithful dead.', url:'prayer.html?prayer=prayer-departed', icon:'&#127541;', tags:'departed dead soul rest resurrection memorial'},
-  // Topics
-  {type:'topic', title:'Theosis — Deification', excerpt:'The goal of human existence — participation in the divine nature through grace. "God became man so that man might become God."', url:'topics.html?topic=theosis', icon:'&#10022;', tags:'theosis deification salvation grace divine energies'},
-  {type:'topic', title:'The Holy Trinity', excerpt:'One God in three Persons — Father, Son, and Holy Spirit. Defined at the First and Second Ecumenical Councils.', url:'topics.html?topic=trinity', icon:'&#10022;', tags:'trinity father son holy spirit council nicaea'},
-  {type:'topic', title:'The Incarnation', excerpt:'The Word became flesh — the Son of God took a full human nature from the Virgin Mary.', url:'topics.html?topic=incarnation', icon:'&#10022;', tags:'incarnation christology theotokos word flesh'},
-  {type:'topic', title:'The Holy Eucharist', excerpt:'The Body and Blood of Christ — the center of Orthodox life and the fulfillment of the Divine Liturgy.', url:'topics.html?topic=eucharist-topic', icon:'&#10022;', tags:'eucharist communion body blood liturgy'},
-  {type:'topic', title:'Holy Baptism', excerpt:'Death and resurrection in Christ — the door into the Church and the beginning of the new life.', url:'topics.html?topic=baptism', icon:'&#10022;', tags:'baptism immersion church born again chrismation'},
-  {type:'topic', title:'The Divine Liturgy', excerpt:'Heaven on earth — the central act of Orthodox worship, the offering of the Eucharist to God.', url:'topics.html?topic=divine-liturgy', icon:'&#10022;', tags:'divine liturgy eucharist worship sunday chrysostom basil'},
-  {type:'topic', title:'Great Lent', excerpt:'The forty-eight day fasting season before Pascha — the spring of the soul.', url:'topics.html?topic=great-lent', icon:'&#10022;', tags:'great lent fasting triodion lenten pascha'},
-  {type:'topic', title:'Repentance & Confession', excerpt:'Metanoia — the second baptism. The Holy Mystery of Confession and the path of inner transformation.', url:'topics.html?topic=repentance', icon:'&#10022;', tags:'repentance confession metanoia sin forgiveness'},
-  {type:'topic', title:'The Seven Ecumenical Councils', excerpt:'The pillars of Orthodox doctrine — seven councils between 325 and 787 AD defining the faith.', url:'topics.html?topic=ecumenical-councils', icon:'&#10022;', tags:'councils nicaea chalcedon ecumenical doctrine'},
-  {type:'topic', title:'The Life of Prayer', excerpt:'Prayer is not asking God for things but the orientation of the whole person toward God.', url:'topics.html?topic=prayer-topic', icon:'&#10022;', tags:'prayer hesychasm jesus prayer philokalia contemplation'},
-  {type:'topic', title:'Becoming Orthodox', excerpt:'The journey into the Church — inquiry, catechumenate, and reception through Baptism and Chrismation.', url:'topics.html?topic=becoming-orthodox', icon:'&#10022;', tags:'convert inquiry catechumen reception orthodox'},
-  // Glossary
-  {type:'glossary', title:'Theosis (Θέωσις)', excerpt:'Deification — the process by which human beings become partakers of the divine nature through grace.', url:'glossary.html#theosis', icon:'&#913;', tags:'theosis deification divine nature grace'},
-  {type:'glossary', title:'Nepsis (Νῆψις)', excerpt:'Sobriety and watchfulness — the fundamental disposition of the hesychast, guarding the heart against disordered thoughts.', url:'glossary.html#nepsis', icon:'&#913;', tags:'nepsis watchfulness sobriety prayer hesychasm'},
-  {type:'glossary', title:'Metanoia (Μετάνοια)', excerpt:'Repentance — not merely sorrow, but a fundamental reorientation of the whole person toward God.', url:'glossary.html#metanoia', icon:'&#913;', tags:'metanoia repentance change of mind conversion'},
-  {type:'glossary', title:'Theotokos (Θεοτόκος)', excerpt:'"God-bearer" or "Mother of God" — the title of the Virgin Mary defined at Ephesus in 431.', url:'glossary.html#theotokos', icon:'&#913;', tags:'theotokos mother of god mary virgin ephesus'},
-  {type:'glossary', title:'Eucharist (Εὐχαριστία)', excerpt:'The central Sacrament — the true Body and Blood of Christ, the culmination of the Divine Liturgy.', url:'glossary.html#eucharist', icon:'&#913;', tags:'eucharist thanksgiving body blood liturgy sacrament'},
-  {type:'glossary', title:'Hesychasm (Ἡσυχασμός)', excerpt:'The tradition of inner stillness and contemplative prayer at the heart of Orthodox monasticism.', url:'glossary.html#hesychasm', icon:'&#913;', tags:'hesychasm prayer stillness palamas philokalia'},
-  {type:'glossary', title:'Apatheia (Ἀπάθεια)', excerpt:'Freedom from disordered passions — inner stillness and clarity, the foundation of agape.', url:'glossary.html#apatheia', icon:'&#913;', tags:'apatheia passions freedom clarity maximus'},
-  {type:'glossary', title:'Nous (Νοῦς)', excerpt:'The highest faculty of the human person — the eye of the soul, capable of beholding God directly.', url:'glossary.html#nous', icon:'&#913;', tags:'nous intellect mind soul perception hesychasm'},
-  {type:'glossary', title:'Agape (Ἀγάπη)', excerpt:'Divine, unconditional love — the highest form of love, the fruit of theosis.', url:'glossary.html#agape', icon:'&#913;', tags:'agape love divine charity god'},
-  {type:'glossary', title:'Icon (Εἰκόν)', excerpt:'A sacred image of Christ, the Theotokos, or the saints — a window into the Kingdom of Heaven.', url:'glossary.html#icon', icon:'&#913;', tags:'icon image veneration incarnation seventh council'},
-  // Feasts
-  {type:'feast', title:'Holy Pascha', excerpt:'The Feast of Feasts — the Resurrection of our Lord Jesus Christ. The center of the Orthodox liturgical year.', url:'calendar.html', icon:'&#9829;', tags:'pascha easter resurrection feast'},
-  {type:'feast', title:'The Nativity of Christ', excerpt:'The Feast of the Incarnation — the birth of our Lord Jesus Christ. December 25.', url:'calendar.html', icon:'&#9829;', tags:'nativity christmas incarnation december 25'},
-  {type:'feast', title:'Theophany (Epiphany)', excerpt:'The Baptism of our Lord Jesus Christ in the Jordan. January 6. Great Blessing of Waters.', url:'calendar.html', icon:'&#9829;', tags:'theophany epiphany baptism jordan january 6'},
-  {type:'feast', title:'Dormition of the Theotokos', excerpt:'The falling asleep and glorification of the Most Holy Theotokos. August 15. The summer Pascha.', url:'calendar.html', icon:'&#9829;', tags:'dormition theotokos assumption august 15'},
-  {type:'feast', title:'Transfiguration of Christ', excerpt:'The manifestation of Christ\'s divine glory on Mount Tabor. August 6. Uncreated light.', url:'calendar.html', icon:'&#9829;', tags:'transfiguration tabor light divine august 6'},
-  {type:'feast', title:'Annunciation of the Theotokos', excerpt:'The Archangel Gabriel\'s greeting to the Virgin Mary and her fiat. March 25. Nine months before Nativity.', url:'calendar.html', icon:'&#9829;', tags:'annunciation gabriel theotokos incarnation march 25'},
-  // Blog
-  {type:'blog', title:'What the Church Fathers Teach About Theosis', excerpt:'Deification — union with God — is the heart of Orthodox soteriology. A tour through Athanasius, Maximus, and Gregory Palamas.', url:'blog.html', icon:'&#9998;', tags:'theosis deification church fathers blog'},
-  {type:'blog', title:'A Week of Lenten Meals: Simple, Nourishing, Orthodox', excerpt:'Practical lenten recipes and a full week meal plan for the fasting seasons — Mediterranean-inspired.', url:'blog.html', icon:'&#9998;', tags:'lenten fasting meal plan recipes blog'},
-  {type:'blog', title:'How to Begin the Jesus Prayer', excerpt:'The most ancient Christian prayer and how to make it the foundation of your inner life.', url:'blog.html', icon:'&#9998;', tags:'jesus prayer prayer hesychasm spiritual life blog'},
-];
-
-// Spelling suggestions map (common misspellings)
-var SUGGESTIONS = {
-  'theosis':     'theosis',
-  'theiosis':    'theosis',
-  'theossis':    'theosis',
-  'pascha':      'pascha',
-  'pasha':       'pascha',
-  'easter':      'pascha',
-  'chrysostom':  'John Chrysostom',
-  'chrisostom':  'John Chrysostom',
-  'theotokos':   'Theotokos',
-  'theotocos':   'Theotokos',
-  'hesychasm':   'hesychasm',
-  'hessychasm':  'hesychasm',
-  'eucharist':   'Eucharist',
-  'eukarist':    'Eucharist',
-  'baptism':     'Baptism',
-  'metanoia':    'metanoia',
-  'methanoia':   'metanoia',
-};
-
-var currentQuery = '';
-var currentFilter = 'all';
-var drawerOpen = false;
-
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
-document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-
-document.getElementById('mainSearch').addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
-
-function doSearch(){
-  var q=document.getElementById('mainSearch').value.trim();
-  if(!q)return;
-  currentQuery=q;
-  currentFilter='all';
-  renderResults();
-  // Update URL
-  var url=new URL(window.location.href);
-  url.searchParams.set('q',q);
-  window.history.pushState({},'',url);
-}
-
-function runSearch(q){
-  document.getElementById('mainSearch').value=q;
-  currentQuery=q;
-  currentFilter='all';
-  renderResults();
-}
-
-function setFilter(f){
-  currentFilter=f;
-  ['all','saint','prayer','topic','glossary','feast','blog'].forEach(function(id){
-    document.getElementById('filter-'+id).classList.toggle('active',id===f);
-  });
-  renderResults();
-}
-
-function highlight(text,q){
-  if(!q)return text;
-  var safe=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-  return text.replace(new RegExp('('+safe+')','gi'),'<mark>$1</mark>');
-}
-
-function getSpellSuggestion(q){
-  var lq=q.toLowerCase();
-  if(SUGGESTIONS[lq])return SUGGESTIONS[lq];
-  // Fuzzy: find any suggestion key that the query is close to
-  var keys=Object.keys(SUGGESTIONS);
-  for(var i=0;i<keys.length;i++){
-    if(keys[i].startsWith(lq.slice(0,4))&&keys[i]!==lq)return SUGGESTIONS[keys[i]];
-  }
-  return null;
-}
-
-function renderResults(){
-  var q=currentQuery.toLowerCase();
-  var body=document.getElementById('searchBody');
-  var controls=document.getElementById('searchControls');
-  controls.style.display='flex';
-
-  var results=INDEX.filter(function(item){
-    if(currentFilter!=='all'&&item.type!==currentFilter)return false;
-    return item.title.toLowerCase().includes(q)
-      || item.excerpt.toLowerCase().includes(q)
-      || item.tags.toLowerCase().includes(q);
-  });
-
-  document.getElementById('resultCount').textContent=results.length+' result'+(results.length!==1?'s':'');
-
-  if(!results.length){
-    var suggestion=getSpellSuggestion(currentQuery);
-    body.innerHTML='<div class="state-empty">'
-      +'<span class="state-empty-icon">&#9766;&#65038;</span>'
-      +'<div class="state-empty-title">No results for &ldquo;'+currentQuery+'&rdquo;</div>'
-      +'<div class="state-empty-desc">Try different keywords, or browse by category below.</div>'
-      +(suggestion?'<div class="did-you-mean">Did you mean: <a href="#" onclick="runSearch(\''+suggestion+'\');return false;">'+suggestion+'</a>?</div>':'')
-      +'<div class="suggestion-chips">'
-      +'<a href="saints.html" class="suggestion-chip">Browse Saints</a>'
-      +'<a href="prayer.html" class="suggestion-chip">Browse Prayers</a>'
-      +'<a href="topics.html" class="suggestion-chip">Browse Topics</a>'
-      +'<a href="glossary.html" class="suggestion-chip">Browse Glossary</a>'
-      +'</div></div>';
-    return;
-  }
-
-  var typeOrder=['saint','prayer','topic','glossary','feast','blog'];
-  // Sort by relevance (title match first, then excerpt)
-  results.sort(function(a,b){
-    var aTitle=a.title.toLowerCase().includes(q)?0:1;
-    var bTitle=b.title.toLowerCase().includes(q)?0:1;
-    if(aTitle!==bTitle)return aTitle-bTitle;
-    return typeOrder.indexOf(a.type)-typeOrder.indexOf(b.type);
-  });
-
-  var html='';
-  results.forEach(function(item){
-    html+='<a href="'+item.url+'" class="result-item" style="text-decoration:none;">';
-    html+='<div class="result-icon">'+item.icon+'</div>';
-    html+='<div class="result-body">';
-    html+='<div class="result-type">'+item.type+'</div>';
-    html+='<div class="result-title">'+highlight(item.title,currentQuery)+'</div>';
-    html+='<div class="result-excerpt">'+highlight(item.excerpt,currentQuery)+'</div>';
-    html+='</div>';
-    html+='<span class="result-arrow">&#8250;</span>';
-    html+='</a>';
-  });
-  body.innerHTML=html;
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  var params=new URLSearchParams(window.location.search);
-  var q=params.get('q');
-  if(q){
-    document.getElementById('mainSearch').value=q;
-    currentQuery=q;
-    renderResults();
-  }
-});
-</script>
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
-// <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+// Anti-flash: inline script in <head> sets data-theme before render
 
 /* ── Theme + Nav + Account JS ───────────────────────── */
 // Theme
@@ -749,6 +432,81 @@ document.addEventListener('DOMContentLoaded',function(){
     },200);
   }
 });
+
+</script>
+<script>
+
+var INDEX = [
+  {type:'topic',    title:'Theosis',          url:'topics.html?topic=theosis',         excerpt:'The Orthodox doctrine of deification — the process by which the faithful come to participate in the divine nature.'},
+  {type:'topic',    title:'Holy Trinity',      url:'topics.html?topic=trinity',          excerpt:'The foundational Christian doctrine: one God in three Persons — Father, Son, and Holy Spirit.'},
+  {type:'topic',    title:'Incarnation',       url:'topics.html?topic=incarnation',      excerpt:'The eternal Son of God taking human flesh in the womb of the Theotokos.'},
+  {type:'topic',    title:'Soteriology',       url:'topics.html',                        excerpt:'The Orthodox theology of salvation — theosis, atonement, and the healing of human nature.'},
+  {type:'topic',    title:'Hesychasm',         url:'topics.html?topic=hesychasm',        excerpt:'The Orthodox tradition of interior prayer and stillness, defended by St. Gregory Palamas.'},
+  {type:'topic',    title:'Theotokos',         url:'topics.html?topic=theotokos',        excerpt:'The title of the Virgin Mary meaning God-bearer — defined at the Council of Ephesus in 431.'},
+  {type:'saint',    title:'St. John Chrysostom', url:'saints.html?saint=john_chrysostom', excerpt:'Archbishop of Constantinople, one of the Three Holy Hierarchs. Feast: November 13.'},
+  {type:'saint',    title:'St. Seraphim of Sarov', url:'saints.html?saint=seraphim_of_sarov', excerpt:'Russian monastic and wonderworker. Feast: January 2.'},
+  {type:'saint',    title:'St. Mary Magdalene', url:'saints.html?saint=mary_magdalene',  excerpt:'Equal to the Apostles and Myrrhbearer. Feast: July 22.'},
+  {type:'feast',    title:'Holy Pascha',       url:'feasts.html',                        excerpt:'The Feast of Feasts — the Resurrection of Christ. The central celebration of the Orthodox year.'},
+  {type:'feast',    title:'Theophany',         url:'feasts.html',                        excerpt:'The Baptism of Christ and the revelation of the Holy Trinity. January 6/19.'},
+  {type:'feast',    title:'Transfiguration',   url:'feasts.html',                        excerpt:'The glorification of Christ on Mount Tabor before His three disciples. August 6/19.'},
+  {type:'glossary', title:'Theosis',           url:'glossary.html#term-theosis',         excerpt:'Greek: deification. The process of participating in the divine energies.'},
+  {type:'glossary', title:'Hesychia',          url:'glossary.html#term-hesychia',        excerpt:'Greek: stillness, silence. The interior stillness cultivated in Orthodox prayer.'},
+  {type:'glossary', title:'Nepsis',            url:'glossary.html#term-nepsis',          excerpt:'Greek: watchfulness. The vigilant attention to thoughts in the Orthodox ascetical tradition.'},
+  {type:'glossary', title:'Kenosis',           url:'glossary.html#term-kenosis',         excerpt:'Greek: self-emptying. The condescension of the Son of God in taking human flesh.'},
+  {type:'glossary', title:'Oikonomia',         url:'glossary.html#term-oikonomia',       excerpt:'Greek: economy, dispensation. The plan of God for the salvation of humanity.'},
+  {type:'glossary', title:'Logos',             url:'glossary.html#term-logos',           excerpt:'Greek: word, reason. The Second Person of the Holy Trinity who became incarnate.'},
+  {type:'page',     title:'Liturgical Calendar', url:'calendar.html',                   excerpt:'Daily saints, feast days, fasting rules, and Scripture readings.'},
+  {type:'page',     title:'Church Fathers',    url:'church-fathers.html',                excerpt:'The great theological minds of the patristic era — from Ignatius to Gregory Palamas.'},
+  {type:'page',     title:'Reading Plans',     url:'reading-plans.html',                 excerpt:'Bible reading plans for daily Orthodox Scripture reading.'},
+  {type:'page',     title:'Fasting Guide',     url:'fasting.html',                       excerpt:'The Orthodox fasting calendar and theology of fasting.'},
+  {type:'page',     title:'Prayer Corner',     url:'prayer.html',                        excerpt:'Morning, evening, and seasonal prayers of the Orthodox tradition.'},
+];
+
+var currentFilter = 'all';
+var currentQuery  = '';
+
+function setFilter(f, btn) {
+  currentFilter = f;
+  document.querySelectorAll('.search-filter').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  if (currentQuery) doSearch();
+}
+
+function searchFor(q) {
+  document.getElementById('searchInput').value = q;
+  doSearch();
+}
+
+function doSearch() {
+  var q = document.getElementById('searchInput').value.trim().toLowerCase();
+  currentQuery = q;
+  var sugg = document.getElementById('searchSuggestions');
+  var results = document.getElementById('searchResults');
+  if (!q) { sugg.style.display = ''; results.innerHTML = ''; return; }
+  sugg.style.display = 'none';
+  var filtered = INDEX.filter(function(item) {
+    if (currentFilter !== 'all' && item.type !== currentFilter) return false;
+    return item.title.toLowerCase().includes(q) || item.excerpt.toLowerCase().includes(q);
+  });
+  if (!filtered.length) {
+    results.innerHTML = '<div class="search-empty">No results for &ldquo;' + q + '&rdquo;.<br>Try the <a href="topics.html" style="color:var(--gold-light);">Topics</a> or <a href="glossary.html" style="color:var(--gold-light);">Glossary</a> pages.</div>';
+    return;
+  }
+  results.innerHTML = filtered.map(function(item) {
+    return '<a href="' + item.url + '" class="search-result">' +
+      '<div class="sr-type">' + item.type + '</div>' +
+      '<div class="sr-title">' + item.title + '</div>' +
+      '<div class="sr-excerpt">' + item.excerpt + '</div>' +
+      '</a>';
+  }).join('');
+}
+
+// Handle URL query param
+(function() {
+  var p = new URLSearchParams(window.location.search);
+  var q = p.get('q');
+  if (q) { document.getElementById('searchInput').value = q; doSearch(); }
+})();
 
 </script>
 </body>
