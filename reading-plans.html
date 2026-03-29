@@ -196,7 +196,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .plan-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:22px 20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:8px;border-top:3px solid var(--gold-dim);}
 .plan-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
 .plan-card.active{border-top-color:var(--gold);border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
-.plan-icon{font-size:1.8rem;}
+
 .plan-name{font-family:"Cinzel",serif;font-size:0.88rem;color:var(--gold-light);letter-spacing:0.04em;font-weight:600;}
 .plan-duration{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
 .plan-desc{font-size:0.84rem;color:var(--text-dim);line-height:1.65;font-style:italic;}
@@ -545,7 +545,7 @@ function renderPlans() {
     var daysRead = Object.keys(planLog).length;
     var pct = Math.min(Math.round(daysRead / p.total * 100), 100);
     html += '<div class="plan-card' + (isActive ? ' active' : '') + '">';
-    html += '<div class="plan-icon">' + p.icon + '</div>';
+
     html += '<div class="plan-name">' + p.name + '</div>';
     html += '<div class="plan-duration">' + p.duration + '</div>';
     html += '<div class="plan-desc">' + p.desc + '</div>';
