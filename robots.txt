@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://orthodoxcompanion.com/sitemap.xml
+
+# Block crawling of account and auth pages
+Disallow: /account.html
+Disallow: /api/
