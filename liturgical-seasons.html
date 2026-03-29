@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Liturgical Seasons — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="description" content="The twelve liturgical seasons of the Orthodox year — Great Lent, Bright Week, Pentecostarion, Nativity Fast, and more."/>
-<script>(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="The twelve liturgical seasons of the Orthodox Church — Great Lent, Bright Week, Pentecostarion, Nativity Fast, and more."/>
+<meta property="og:title" content="Liturgical Seasons — Orthodox Companion"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/liturgical-seasons.html"/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -182,76 +183,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);}
-[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);}
-body{font-family:"EB Garamond",Georgia,serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-[data-theme="light"] nav{background:rgba(245,237,216,0.97);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:"Cinzel",serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:"▾";font-size:0.45rem;opacity:0.55;margin-left:1px;}
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.theme-toggle{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;}
-.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
-.nav-ai-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:"Cinzel",serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;}
-.nav-drawer a{display:block;font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-.breadcrumb{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold-light);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;border-bottom:1px solid rgba(201,168,76,0.12);}
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
-.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:640px;}
-.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}}
-@media(max-width:600px){.content,.page-hero{padding-left:16px;padding-right:16px;}.page-title{font-size:1.4rem;}}
-
-.seasons-intro{max-width:660px;font-size:0.96rem;color:var(--text-dim);line-height:1.9;font-style:italic;margin-bottom:36px;}
 .season-wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
-.season-card{
-  background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;
-  padding:22px 20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;
-  display:flex;flex-direction:column;gap:8px;border-top:3px solid transparent;
-}
+.season-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:22px 20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:8px;border-top:3px solid transparent;}
 .season-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
-.season-card-icon{font-size:1.6rem;margin-bottom:2px;}
 .season-card-name{font-family:"Cinzel",serif;font-size:0.88rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;}
 .season-card-fasting{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
 .season-card-desc{font-size:0.84rem;color:var(--text-dim);line-height:1.65;font-style:italic;}
 #season-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 #season-modal.open{display:flex;}
-.sm2-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:600px;margin:auto;animation:fadeUp 0.3s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.sm2-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);display:flex;align-items:center;gap:14px;}
-.sm2-icon{font-size:2rem;}
+.sm2-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:600px;margin:auto;}
+.sm2-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);}
 .sm2-title{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;}
 .sm2-fast{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-top:4px;}
 .sm2-body{padding:22px 26px;}
@@ -264,11 +205,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .sm2-close:hover{color:var(--gold-light);}
 @media(max-width:768px){.season-wheel{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.season-wheel{grid-template-columns:1fr;}}
+
 </style>
-<meta property="og:title" content="Liturgical Seasons — Orthodox Companion"/>
-<meta property="og:description" content="The twelve liturgical seasons of the Orthodox year — Great Lent, Bright Week, Pentecostarion, Nativity Fast, and more."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://orthodoxcompanion.com/liturgical-seasons.html"/>
 </head>
 <body>
 <nav id="mainNav">
@@ -363,36 +301,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-
-
-<a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
-  <a href="new-to-orthodoxy.html#parish-locator">Parish Finder</a>
-  <a href="new-to-orthodoxy.html#faq">FAQ</a>
-  <a href="about.html">About</a>
-  <div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="church-fathers.html">Church Fathers</a>
-  <a href="feasts.html">Feasts</a>
-  <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="reading-plans.html">Reading Plans</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="topics.html">Study</a><span>&#8250;</span>Liturgical Seasons</div>
     <h1 class="page-title">Liturgical Seasons</h1>
-    <p class="page-desc">The Orthodox year is not a flat repetition of months — it is a sacred spiral, carrying the faithful deeper each year into the mysteries of Christ. Twelve seasons structure the year, each with its own character, fasting rule, and theological focus.</p>
+    <p class="page-desc">The Orthodox year is a sacred spiral — twelve seasons structure the year, each with its own character, fasting rule, and theological focus.</p>
   </div>
 </div>
 <div class="content">
@@ -401,8 +314,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 <div id="season-modal">
   <div class="sm2-box">
     <div class="sm2-header">
-      <div class="sm2-icon" id="sm2-icon"></div>
-      <div><div class="sm2-title" id="sm2-title"></div><div class="sm2-fast" id="sm2-fast"></div></div>
+      <div class="sm2-title" id="sm2-title"></div>
+      <div class="sm2-fast" id="sm2-fast"></div>
     </div>
     <div class="sm2-body">
       <div class="sm2-desc" id="sm2-desc"></div>
@@ -412,54 +325,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   </div>
 </div>
 <script>
-
-var drawerOpen=false;
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById("navDrawer").classList.toggle("open",drawerOpen);document.getElementById("hamburger").classList.toggle("open",drawerOpen);}
-document.addEventListener("click",function(e){if(drawerOpen&&!e.target.closest("nav")&&!e.target.closest(".nav-drawer")){drawerOpen=false;document.getElementById("navDrawer").classList.remove("open");document.getElementById("hamburger").classList.remove("open");}});
-function toggleTheme(){var c=document.documentElement.getAttribute("data-theme")||"dark";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("oc_theme",n);var b=document.getElementById("themeToggle");if(b)b.textContent=n==="light"?"🌙":"☀";}
-(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);var b=document.getElementById("themeToggle");if(b)b.textContent=t==="light"?"🌙":"☀";})();
-
-var SEASONS = [{"id": "great_lent", "label": "Great Lent", "description": "The forty-day pre-Paschal fast beginning on Clean Monday \u2014 a season of intensified repentance, fasting, prayer, and almsgiving, culminating in Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The final week before Pascha, from Lazarus Saturday through Holy Saturday \u2014 the most solemn week of the Orthodox liturgical year."}, {"id": "pascha_bright_week", "label": "Bright Week", "description": "The week immediately following Pascha, entirely fast-free \u2014 a prolonged celebration of the Resurrection in which the Royal Doors remain open throughout."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season spanning fifty days from Pascha through Holy Pentecost \u2014 a period of sustained joy during which the Triodion is replaced by the Pentecostarion."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following Pentecost and All Saints Sunday, continuing until the Triodion begins \u2014 the ordinary liturgical cycle governed by the eight tones."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "The forty-day fast from November 15 through December 24, preparing the faithful for the Nativity of Christ \u2014 sometimes called the Advent fast or the Philip's Fast."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal period from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration."}, {"id": "apostles_fast", "label": "Apostles' Fast", "description": "The variable-length fast beginning the Monday after All Saints Sunday and ending June 28 \u2014 preparation for the feast of the Holy Apostles Peter and Paul."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "The two-week fast from August 1\u201314, preparing for the Dormition of the Theotokos on August 15 \u2014 the most intense of the summer fasts."}, {"id": "ordinary_time", "label": "Ordinary Time", "description": "Periods outside the major fasts and festal seasons \u2014 governed by the weekly cycle of the eight tones and the Menaion commemorations."}, {"id": "triodion", "label": "Triodion", "description": "The three-week preparatory period before Great Lent, beginning with the Sunday of the Publican and Pharisee \u2014 encompassing the Sundays of the Prodigal Son, the Last Judgment, and Forgiveness Sunday."}, {"id": "fast_free_week", "label": "Fast-Free Week", "description": "The week of the Publican and Pharisee \u2014 a liturgically mandated fast-free period within the Triodion, recalling that self-righteous fasting profits nothing without humility."}];
-var META = {"great_lent": {"color": "#5A8A5A", "icon": "&#127807;", "fasting": "Strict Fast"}, "holy_week": {"color": "#8A3A3A", "icon": "&#10013;", "fasting": "Strictest Fast"}, "pascha_bright_week": {"color": "#C9A84C", "icon": "&#9830;", "fasting": "Fast Free"}, "pentecostarion": {"color": "#4A7AB8", "icon": "&#9745;", "fasting": "No Fast"}, "after_pentecost": {"color": "#6A6A9A", "icon": "&#9670;", "fasting": "Wed & Fri"}, "nativity_fast": {"color": "#5A6A8A", "icon": "&#11088;", "fasting": "Moderate Fast"}, "nativity_season": {"color": "#C9A84C", "icon": "&#9733;", "fasting": "Fast Free"}, "apostles_fast": {"color": "#6A8A6A", "icon": "&#9764;", "fasting": "Moderate Fast"}, "dormition_fast": {"color": "#7A5A8A", "icon": "&#9733;", "fasting": "Strict Fast"}, "ordinary_time": {"color": "#4A6A9A", "icon": "&#9866;", "fasting": "Wed & Fri only"}, "triodion": {"color": "#8A6A3A", "icon": "&#9792;", "fasting": "Preparatory"}, "fast_free_week": {"color": "#9A8A2A", "icon": "&#10038;", "fasting": "Fast Free"}};
-
-function openSeason(id){
-  var s = SEASONS.find(function(x){return x.id===id;});
-  var m = META[id] || {};
-  if(!s) return;
-  document.getElementById("sm2-icon").innerHTML = m.icon||"&#9766;";
-  document.getElementById("sm2-title").textContent = s.label;
-  document.getElementById("sm2-fast").textContent = "Fasting: " + (m.fasting||"See Church calendar");
-  document.getElementById("sm2-desc").textContent = s.description;
-  var links = "<a href=\"calendar.html\" class=\"sm2-link\">&#128197; View in Calendar</a>";
-  links += "<a href=\"fasting.html\" class=\"sm2-link\">&#127807; Fasting Guide</a>";
-  links += "<a href=\"chatbot.html?q=Tell me about the " + encodeURIComponent(s.label) + " season\" class=\"sm2-link\">&#9766; Ask Companion</a>";
-  document.getElementById("sm2-links").innerHTML = links;
-  document.getElementById("season-modal").classList.add("open");
-}
-function closeModal(){document.getElementById("season-modal").classList.remove("open");}
-document.getElementById("season-modal").addEventListener("click",function(e){if(e.target===this)closeModal();});
-document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
-
-function render(){
-  var html = "";
-  SEASONS.forEach(function(s){
-    var m = META[s.id] || {};
-    var color = m.color || "#4A7AB8";
-    html += "<div class=\"season-card\" style=\"border-top-color:" + color + "\" onclick=\"openSeason(\'" + s.id + "\')\">";
-    html += "<div class=\"season-card-icon\">" + (m.icon||"☩") + "</div>";
-    html += "<div class=\"season-card-name\">" + s.label + "</div>";
-    html += "<div class=\"season-card-fasting\">" + (m.fasting||"") + "</div>";
-    html += "<div class=\"season-card-desc\">" + s.description.substring(0,140) + "&hellip;</div>";
-    html += "</div>";
-  });
-  document.getElementById("seasonWheel").innerHTML = html;
-}
-document.addEventListener("DOMContentLoaded", render);
-</script>
-<script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
-// <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+// Anti-flash: inline script in <head> sets data-theme before render
 
 /* ── Theme + Nav + Account JS ───────────────────────── */
 // Theme
@@ -553,6 +421,51 @@ document.addEventListener('DOMContentLoaded',function(){
     },200);
   }
 });
+
+</script>
+
+<script>
+
+var SEASONS = [{"id": "great_lent", "label": "Great Lent", "description": "The forty-day pre-Paschal fast beginning on Clean Monday \u2014 a season of intensified repentance, fasting, prayer, and almsgiving, culminating in Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The final week before Pascha, from Lazarus Saturday through Holy Saturday \u2014 the most solemn week of the Orthodox liturgical year."}, {"id": "pascha_bright_week", "label": "Bright Week", "description": "The week immediately following Pascha, entirely fast-free \u2014 a prolonged celebration of the Resurrection in which the Royal Doors remain open throughout."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season spanning fifty days from Pascha through Holy Pentecost \u2014 a period of sustained joy during which the Triodion is replaced by the Pentecostarion."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following Pentecost and All Saints Sunday, continuing until the Triodion begins \u2014 the ordinary liturgical cycle governed by the eight tones."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "The forty-day fast from November 15 through December 24, preparing the faithful for the Nativity of Christ \u2014 sometimes called the Advent fast or the Philip's Fast."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal period from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration."}, {"id": "apostles_fast", "label": "Apostles' Fast", "description": "The variable-length fast beginning the Monday after All Saints Sunday and ending June 28 \u2014 preparation for the feast of the Holy Apostles Peter and Paul."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "The two-week fast from August 1\u201314, preparing for the Dormition of the Theotokos on August 15 \u2014 the most intense of the summer fasts."}, {"id": "ordinary_time", "label": "Ordinary Time", "description": "Periods outside the major fasts and festal seasons \u2014 governed by the weekly cycle of the eight tones and the Menaion commemorations."}, {"id": "triodion", "label": "Triodion", "description": "The three-week preparatory period before Great Lent, beginning with the Sunday of the Publican and Pharisee \u2014 encompassing the Sundays of the Prodigal Son, the Last Judgment, and Forgiveness Sunday."}, {"id": "fast_free_week", "label": "Fast-Free Week", "description": "The week of the Publican and Pharisee \u2014 a liturgically mandated fast-free period within the Triodion, recalling that self-righteous fasting profits nothing without humility."}];
+var META = {"great_lent": {"color": "#5A8A5A", "fasting": "Strict Fast"}, "holy_week": {"color": "#8A3A3A", "fasting": "Strictest Fast"}, "pascha_bright_week": {"color": "#C9A84C", "fasting": "Fast Free"}, "pentecostarion": {"color": "#4A7AB8", "fasting": "No fasting"}, "after_pentecost": {"color": "#6A6A9A", "fasting": "Wed & Fri"}, "nativity_fast": {"color": "#5A6A8A", "fasting": "Moderate Fast"}, "nativity_season": {"color": "#C9A84C", "fasting": "Fast Free"}, "apostles_fast": {"color": "#6A8A6A", "fasting": "Moderate Fast"}, "dormition_fast": {"color": "#7A5A8A", "fasting": "Strict Fast"}, "ordinary_time": {"color": "#4A6A9A", "fasting": "Wed & Fri only"}, "triodion": {"color": "#8A6A3A", "fasting": "Preparatory"}, "fast_free_week": {"color": "#9A8A2A", "fasting": "Fast Free"}};
+
+function openSeason(id) {
+  var s = null;
+  for (var i = 0; i < SEASONS.length; i++) { if (SEASONS[i].id === id) { s = SEASONS[i]; break; } }
+  var m = META[id] || {};
+  if (!s) return;
+  document.getElementById('sm2-title').textContent = s.label;
+  document.getElementById('sm2-fast').textContent = 'Fasting: ' + (m.fasting || 'See Church calendar');
+  document.getElementById('sm2-desc').textContent = s.description;
+  document.getElementById('sm2-links').innerHTML =
+    '<a href="calendar.html" class="sm2-link">Liturgical Calendar</a>' +
+    '<a href="fasting.html" class="sm2-link">Fasting Guide</a>' +
+    '<a href="chatbot.html?q=' + encodeURIComponent('Tell me about the ' + s.label + ' season') + '" class="sm2-link">Ask Companion</a>';
+  document.getElementById('season-modal').classList.add('open');
+}
+function closeModal() { document.getElementById('season-modal').classList.remove('open'); }
+document.getElementById('season-modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+function render() {
+  var html = '';
+  for (var i = 0; i < SEASONS.length; i++) {
+    var s = SEASONS[i];
+    var m = META[s.id] || {};
+    html += '<div class="season-card" style="border-top-color:' + (m.color || '#4A7AB8') + '" data-id="' + s.id + '">';
+    html += '<div class="season-card-name">' + s.label + '</div>';
+    html += '<div class="season-card-fasting">' + (m.fasting || '') + '</div>';
+    html += '<div class="season-card-desc">' + s.description.substring(0, 140) + '&hellip;</div>';
+    html += '</div>';
+  }
+  var el = document.getElementById('seasonWheel');
+  el.innerHTML = html;
+  el.addEventListener('click', function(e) {
+    var card = e.target.closest('.season-card');
+    if (card) openSeason(card.dataset.id);
+  });
+}
+document.addEventListener('DOMContentLoaded', render);
 
 </script>
 </body>
