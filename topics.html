@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<script>
-(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
-</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Topics & Study — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="theme-color" content="#0A1628"/>
-<meta name="description" content="Orthodox Christian theology, sacraments, liturgical life, church history, and the spiritual life — explored through patristic sources."/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Topics & Doctrine — Orthodox Companion</title>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="207 Orthodox theological topics across 15 categories — from Triadology to Eschatology, connected to the Greek lexicon and Church Fathers."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -185,268 +181,80 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;font-size:1rem;transition:all 0.2s;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
-/* Page */
-.page-hero{margin-top:var(--nav-h);padding:40px 24px 32px;background:linear-gradient(180deg,rgba(27,58,107,0.2),transparent);border-bottom:1px solid rgba(201,168,76,0.1);}
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold-light);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
-.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;}
-/* Category grid */
-.cat-section{max-width:1040px;margin:0 auto;padding:28px 24px 0;}
-.cat-section-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);margin-bottom:14px;}
+/* ── Topics page styles ── */
+.topics-wrap{max-width:1100px;margin:0 auto;padding:24px 24px 60px;}
+.topics-search-row{display:flex;gap:10px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.topics-search{flex:1;min-width:200px;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:1rem;padding:10px 16px;outline:none;transition:border-color 0.2s;}
+[data-theme="light"] .topics-search{background:rgba(212,188,150,0.4);}
+.topics-search:focus{border-color:var(--gold-dim);}
+.topics-search::placeholder{color:var(--text-muted);font-style:italic;}
+.view-toggle{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:2px;overflow:hidden;}
+.view-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;padding:8px 12px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.view-btn.active{background:rgba(201,168,76,0.15);color:var(--gold-light);}
+
+/* ── Category grid view ── */
 .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px;}
-.cat-card{background:linear-gradient(160deg,rgba(15,32,53,0.8),rgba(27,58,107,0.3));border:1px solid var(--border-dim);border-radius:4px;padding:20px 16px;cursor:pointer;transition:border-color 0.25s,transform 0.2s;position:relative;overflow:hidden;}
-.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.05),transparent);opacity:0;transition:opacity 0.3s;}
-.cat-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
-.cat-card:hover::before{opacity:1;}
-.cat-card.active{border-color:var(--gold);background:rgba(201,168,76,0.08);}
-.cat-icon{font-size:1.4rem;margin-bottom:8px;display:block;}
-.cat-name{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;margin-bottom:4px;}
-.cat-count{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
-/* Topics panel */
-.topics-panel{max-width:1040px;margin:0 auto;padding:0 24px 60px;}
-.topics-panel-header{margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid rgba(201,168,76,0.12);}
-.topics-panel-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
-.topics-panel-desc{font-size:0.88rem;color:var(--text-muted);font-style:italic;}
-.topics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
-/* Topic card */
-.topic-card{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:4px;overflow:hidden;cursor:pointer;transition:border-color 0.2s,transform 0.2s;}
-.topic-card:hover{border-color:var(--border);transform:translateY(-1px);}
-.topic-card-body{padding:18px 20px;}
-.topic-card-label{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:6px;}
-.topic-card-title{font-family:'Cinzel',serif;font-size:0.92rem;color:var(--text);letter-spacing:0.04em;margin-bottom:8px;line-height:1.3;}
-.topic-card-summary{font-size:0.88rem;color:var(--text-dim);line-height:1.7;font-style:italic;}
-.topic-card-quote{margin:12px 0;padding:10px 14px;background:rgba(27,58,107,0.25);border-left:2px solid var(--gold-dim);font-size:0.84rem;color:var(--text-dim);font-style:italic;line-height:1.65;}
-.topic-card-attr{font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;margin-top:4px;}
-.topic-card-footer{padding:10px 20px 14px;border-top:1px solid rgba(42,90,156,0.15);display:flex;align-items:center;justify-content:space-between;}
-.topic-card-read{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);cursor:pointer;transition:color 0.2s;}
-.topic-card-read:hover{color:var(--gold-light);}
-.topic-card-tags{display:flex;gap:5px;flex-wrap:wrap;}
-.topic-tag{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:1px 6px;}
-/* Topic modal */
+.cat-card{background:linear-gradient(135deg,#C9A84C,#A07828);border:1px solid #E8CB7A;border-radius:4px;padding:18px 16px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,168,76,0.25);}
+.cat-card-icon{font-size:1.4rem;margin-bottom:8px;}
+.cat-card-name{font-family:'Cinzel',serif;font-size:0.82rem;font-weight:600;color:#1a0f00;letter-spacing:0.04em;margin-bottom:4px;}
+.cat-card-desc{font-size:0.78rem;color:#3a2000;line-height:1.5;font-style:italic;}
+.cat-card-count{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:#5a3a00;margin-top:8px;}
+
+/* ── Section header (ornament) ── */
+.cat-section{margin-bottom:40px;}
+.cat-section-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.cat-section-title{font-family:'Cinzel',serif;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);white-space:nowrap;}
+.cat-section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
+.cat-section-desc{font-size:0.88rem;color:var(--text-muted);font-style:italic;margin-bottom:14px;line-height:1.6;}
+.cat-back{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:6px 12px;cursor:pointer;margin-bottom:20px;transition:all 0.2s;}
+.cat-back:hover{color:var(--gold-light);border-color:var(--gold-dim);}
+
+/* ── Topic cards ── */
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.topic-card{background:linear-gradient(135deg,#C9A84C,#A07828);border:1px solid #E8CB7A;border-radius:3px;padding:16px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;}
+.topic-card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(201,168,76,0.2);}
+.topic-name{font-family:'Cinzel',serif;font-size:0.82rem;font-weight:600;color:#1a0f00;letter-spacing:0.04em;margin-bottom:4px;}
+.topic-desc{font-size:0.78rem;color:#3a2000;line-height:1.55;font-style:italic;}
+.topic-related{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.topic-rel-tag{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.06em;color:#5a3a00;border:1px solid rgba(90,58,0,0.3);border-radius:2px;padding:1px 6px;}
+
+/* ── All topics list view ── */
+.all-topics-list{display:flex;flex-direction:column;gap:4px;}
+.topic-list-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:12px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:border-color 0.2s;}
+.topic-list-item:hover{border-color:var(--gold-dim);}
+.topic-list-name{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--text);}
+.topic-list-cat{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+
+/* ── Modal ── */
 #topic-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 #topic-modal.open{display:flex;}
-.tm-box{background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:680px;margin:auto;animation:fadeUp 0.3s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+.tm-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:620px;margin:auto;animation:tmUp 0.3s ease;}
+@keyframes tmUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .tm-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);}
-.tm-cat{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:6px;}
-.tm-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
-.tm-subtitle{font-size:0.88rem;color:var(--text-muted);font-style:italic;}
-.tm-close{position:absolute;top:20px;right:26px;background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;transition:color 0.2s;}
-.tm-close:hover{color:var(--gold);}
-.tm-body{padding:22px 26px;max-height:65vh;overflow-y:auto;}
-.tm-body::-webkit-scrollbar{width:4px;}
-.tm-body::-webkit-scrollbar-thumb{background:var(--border-dim);border-radius:2px;}
-.tm-summary{font-size:1rem;color:var(--text-dim);line-height:1.9;margin-bottom:20px;}
-.tm-quote-block{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:16px 20px;margin-bottom:16px;}
-.tm-quote-text{font-size:0.96rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:8px;}
-.tm-quote-attr{font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;}
-.tm-deeper-title{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:12px;padding-top:20px;border-top:1px solid rgba(201,168,76,0.12);}
-.tm-deeper-box{background:rgba(27,58,107,0.18);border:1px solid var(--border-dim);border-radius:3px;padding:14px 18px;display:flex;flex-direction:column;gap:6px;}
-.tm-deeper-item{display:flex;align-items:baseline;gap:10px;padding:5px 0;border-bottom:1px solid rgba(42,90,156,0.12);}
-.tm-deeper-item:last-child{border-bottom:none;padding-bottom:0;}
-.tm-deeper-cross{color:var(--gold-dim);font-size:0.78rem;flex-shrink:0;}
-.tm-deeper-ref{font-size:0.9rem;color:var(--text-dim);line-height:1.5;font-style:italic;}
-.tm-deeper-author{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--text-muted);letter-spacing:0.06em;white-space:nowrap;flex-shrink:0;}
-.tm-footer{padding:13px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.15);}
-.tm-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;text-decoration:none;}
-.tm-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}.cat-grid{grid-template-columns:repeat(2,1fr);}.topics-grid{grid-template-columns:1fr;}}
-@media(max-width:600px){.cat-grid{grid-template-columns:repeat(2,1fr);}.cat-section,.topics-panel{padding-left:16px;padding-right:16px;}.page-hero{padding:28px 16px 20px;}}
-.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
-
-
-/* ═══════════════════════════════════════════════════════
-   THEME SYSTEM — Dark (default) + Light (parchment)
-   Respects prefers-color-scheme, saved to localStorage
-═══════════════════════════════════════════════════════ */
-:root {
-  /* Dark theme (default) */
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);
-  --bg-panel:rgba(27,58,107,0.3);
-  --shadow:rgba(0,0,0,0.5);
-  --nav-bg:rgba(10,22,40,0.97);
-  --nav-h:68px;
-}
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --bg-panel:rgba(212,188,150,0.4);
-  --shadow:rgba(100,70,20,0.15);
-  --nav-bg:rgba(245,237,216,0.97);
-}
-
-/* ── Theme toggle button ─────────────────────────────── */
-.theme-toggle {
-  background:transparent;border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text-muted);padding:5px 9px;
-  cursor:pointer;font-size:0.82rem;transition:all 0.2s;
-  flex-shrink:0;line-height:1;
-}
-.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
-
-/* ── Body background ─────────────────────────────────── */
-body{background:var(--bg-page);color:var(--text);}
-
-/* ── Smooth theme transition ─────────────────────────── */
-*, *::before, *::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-/* But NOT transitions on transforms/opacity (breaks animations) */
-.fade-in, .nav-dropdown, [class*="modal"], [class*="panel"] {
-  transition: none !important;
-}
-.fade-in { transition: opacity 0.5s ease, transform 0.5s ease !important; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-
-/* ── Topics Browse by Category ornament ─────────────── */
-.cat-section-label{
-  display:flex;align-items:center;gap:16px;
-  font-family:"Cinzel",serif;font-size:0.75rem;
-  text-transform:uppercase;letter-spacing:0.22em;color:var(--gold);
-  margin-bottom:20px;
-}
-.cat-section-label::before,.cat-section-label::after{
-  content:"";flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
-}
-/* ── Topic category cards gold ───────────────────────── */
-.cat-card{
-  background:linear-gradient(160deg,#C9A84C,#A07828)!important;
-  border:1px solid #E8CB7A!important;
-}
-.cat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,168,76,0.3);}
-.cat-name{color:#1a0f00!important;}
-.cat-count{color:#5a3a00!important;}
-
-/* ═══════════════════════════════════════════════════════
-   MOBILE IMPROVEMENTS
-═══════════════════════════════════════════════════════ */
-@media(max-width:768px){
-  /* Better touch targets */
-  .nav-link,.cat-item,.prayer-item,.saint-list-item{min-height:44px;}
-  
-  /* Calendar mobile */
-  .cal-day{min-height:44px;padding:4px;}
-  .cal-day-num{font-size:0.75rem;}
-  .cal-grid{gap:2px;}
-  .cal-outer{padding:8px 10px 40px;}
-  
-  /* Better modal sizing */
-  .saint-modal-box,.pm-box,.tm-box,.rm-box{
-    width:100%;max-height:92vh;margin:auto 0 0;
-    border-radius:12px 12px 0 0;
-  }
-  #saint-modal,#prayer-modal,#topic-modal,#reading-modal{
-    align-items:flex-end;padding:0;
-  }
-  
-  /* Typography */
-  body{font-size:1.05rem;line-height:1.85;}
-  .page-title{font-size:1.4rem;}
-  
-  /* Cards stack */
-  .rules-grid,.seasons-grid{grid-template-columns:1fr;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  
-  /* Day panel full width */
-  .day-panel{width:100%;border-left:none;border-top:2px solid var(--gold-dim);}
-  
-  /* Wider modals */
-  .sm-header{flex-direction:column;gap:12px;}
-  .sm-icon{width:100%;height:90px;flex-direction:row;justify-content:center;}
-  
-  /* Better spacing */
-  .content,.section{padding:20px 16px 40px;}
-  .page-hero{padding:28px 16px 24px;}
-}
-@media(max-width:480px){
-  .cat-grid{grid-template-columns:1fr 1fr;}
-  .main-layout{grid-template-columns:1fr;}
-  nav{padding:0 14px;}
-  .nav-brand .nav-subtitle{display:none;}
-}
-
+.tm-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.tm-cat{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+.tm-body{padding:22px 26px;max-height:60vh;overflow-y:auto;}
+.tm-def{font-size:1rem;color:var(--text-dim);line-height:1.9;margin-bottom:18px;}
+.tm-section{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.tm-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;}
+.tm-tag{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:3px 9px;cursor:pointer;transition:all 0.15s;background:transparent;}
+.tm-tag:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.tm-links{display:flex;flex-wrap:wrap;gap:7px;margin-top:6px;}
+.tm-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:5px 12px;text-decoration:none;transition:all 0.2s;}
+.tm-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.tm-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:flex-end;}
+.tm-close{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;}
+.tm-close:hover{color:var(--gold-light);}
+.empty-msg{padding:40px;text-align:center;color:var(--text-muted);font-style:italic;}
+@media(max-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:700px){.cat-grid{grid-template-columns:repeat(2,1fr);}.topic-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.cat-grid{grid-template-columns:1fr;}.topic-grid{grid-template-columns:1fr;}}
 </style>
+<meta property="og:title" content="Topics & Doctrine — Orthodox Companion"/>
+<meta property="og:description" content="207 Orthodox theological topics across 15 categories — from Triadology to Eschatology, connected to the Greek lexicon and Church Fathers."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/topics.html"/>
 </head>
 <body>
 <nav id="mainNav">
@@ -541,356 +349,48 @@ body{background:var(--bg-page);color:var(--text);}
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-<div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
-  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
-  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
-  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
-</div>
-<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
-  <div style="width:100%;max-width:640px;padding:0 20px;">
-    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
-      <span style="color:var(--text-muted);">&#9901;</span>
-      <input type="text" id="searchInput" placeholder="Search topics..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;"/>
-      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
-    </div>
-  </div>
-</div>
-
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Topics &amp; Study</div>
-    <h1 class="page-title">Topics &amp; Study</h1>
-    <p class="page-desc">Orthodox theology, sacraments, liturgical life, church history, and the spiritual life — explored through the words of the Holy Fathers and the living Tradition of the Church.</p>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Topics &amp; Doctrine</div>
+    <h1 class="page-title">Topics &amp; Doctrine</h1>
+    <p class="page-desc">207 Orthodox theological topics across 15 doctrinal categories — from the Holy Trinity to Eschatology, from Theosis to Comparative Theology. Each topic connects to the Greek lexicon, feasts, saints, and the Church Fathers.</p>
   </div>
 </div>
 
-<div class="cat-section">
-  <div class="cat-section-label fade-in">Browse by Category</div>
-  <div class="cat-grid" id="catGrid"></div>
-</div>
-
-<div class="topics-panel" id="topicsPanel">
-  <div class="topics-panel-header fade-in">
-    <div class="topics-panel-title" id="panelTitle">Theology &amp; Doctrine</div>
-    <div class="topics-panel-desc" id="panelDesc">The foundational teachings of the Orthodox faith, grounded in Scripture and Holy Tradition.</div>
+<div class="topics-wrap">
+  <div class="topics-search-row">
+    <input class="topics-search" type="text" id="topicSearch" placeholder="Search topics, descriptions, or related terms&hellip;" oninput="handleSearch(this.value)" autocomplete="off"/>
+    <div class="view-toggle">
+      <button class="view-btn active" id="viewByCat" onclick="setView('cat')">By Category</button>
+      <button class="view-btn" id="viewAll" onclick="setView('all')">All Topics</button>
+    </div>
   </div>
-  <div class="topics-grid" id="topicsGrid"></div>
+  <div id="topicsContent"></div>
 </div>
 
-<div id="topic-modal" style="position:fixed;">
-  <div class="tm-box" style="position:relative;">
-    <button class="tm-close" onclick="closeTopic()">&#x2715;</button>
+<div id="topic-modal">
+  <div class="tm-box">
     <div class="tm-header">
-      <div class="tm-cat" id="tm-cat"></div>
       <div class="tm-title" id="tm-title"></div>
-      <div class="tm-subtitle" id="tm-subtitle"></div>
+      <div class="tm-cat" id="tm-cat"></div>
     </div>
-    <div class="tm-body" id="tm-body"></div>
-    <div class="tm-footer">
-      <a href="chatbot.html" class="tm-btn" id="tm-ask">&#9766; Ask the Companion</a>
-      <button onclick="closeTopic()" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;">Close</button>
+    <div class="tm-body">
+      <div class="tm-def" id="tm-def"></div>
+      <div id="tm-greek-section" style="display:none;">
+        <div class="tm-section">Greek Terms</div>
+        <div class="tm-tags" id="tm-greek"></div>
+      </div>
+      <div id="tm-related-section" style="display:none;">
+        <div class="tm-section">Related Topics</div>
+        <div class="tm-tags" id="tm-related"></div>
+      </div>
+      <div class="tm-section" style="margin-top:8px;">Explore Further</div>
+      <div class="tm-links" id="tm-links"></div>
     </div>
+    <div class="tm-footer"><button class="tm-close" onclick="closeTopic()">Close &#10005;</button></div>
   </div>
 </div>
 
-<script>
-"use strict";
-var CATEGORIES = [
-  {id:'theology',   icon:'✦', name:'Theology & Doctrine',    desc:'The foundational teachings of the Orthodox faith, grounded in Scripture and Holy Tradition.'},
-  {id:'sacraments', icon:'🕯', name:'Sacraments',             desc:'The seven Holy Mysteries through which divine grace is communicated to the faithful.'},
-  {id:'liturgical', icon:'☩', name:'Liturgical Life',         desc:'The cycle of worship, feasts, fasting, and prayer that structures Orthodox Christian life.'},
-  {id:'history',    icon:'📜', name:'Church History',          desc:'The story of the One, Holy, Catholic, and Apostolic Church from Pentecost to the present.'},
-  {id:'spiritual',  icon:'🌿', name:'Spiritual Life',          desc:'The inner life of prayer, repentance, and the pursuit of theosis.'},
-  {id:'inquirers',  icon:'🌱', name:'For Inquirers',           desc:'Gentle introductions to Orthodoxy for those who are exploring the faith.'},
-  {id:'fathers',    icon:'📖', name:'Church Fathers',          desc:'The great theological minds of the patristic era — their lives, works, and legacy.'},
-];
-
-// ═══════════════════════════════════════════════════════════════
-// TOPICS DATA — add new topics by adding entries here.
-// deeper[] = array of {name, source, url} external links.
-// ═══════════════════════════════════════════════════════════════
-var TOPICS = [
-  // Theology & Doctrine
-  {id:'theosis', cat:'theology', title:'Theosis — Deification', subtitle:'The goal and destiny of human existence',
-   summary:'Theosis is the Orthodox understanding of salvation — not merely forgiveness of sins, but the transformation of the whole person into a genuine participant in the divine life. St. Athanasius summarized it: "God became man so that man might become God." Theosis is not an absorption into God (pantheism) but a participation in His uncreated energies by grace, while His essence remains forever beyond all creaturely grasp.',
-   quote:'"The Word of God became man so that you also may learn from man how man may become God."', attr:'St. Clement of Alexandria',
-   tags:['salvation','divine energies','grace'],
-   deeper:[
-     {author:'St. Clement of Alexandria', work:'Exhortation to the Greeks'},
-     {author:'St. Athanasius the Great', work:'On the Incarnation'},
-     {author:'St. Maximus the Confessor', work:'Ambigua — On the Difficult Passages of Gregory the Theologian'},
-   ]},
-  {id:'trinity', cat:'theology', title:'The Holy Trinity', subtitle:'One God in three Persons',
-   summary:'Orthodox theology confesses one God existing eternally as three Persons (hypostases): Father, Son, and Holy Spirit. This is not three gods (tritheism) nor one God wearing three masks (Sabellianism) but the mystery of perfect unity-in-distinction. The theological vocabulary was defined at the First and Second Ecumenical Councils (Nicaea 325, Constantinople 381).',
-   quote:'"The Holy Trinity is three hypostases in one ousia — three Persons in one Nature. The Father is neither the Son nor the Spirit; the Son is neither the Father nor the Spirit; the Spirit is neither the Father nor the Son."', attr:'St. Gregory the Theologian, Theological Orations',
-   tags:['hypostasis','ousia','councils'],
-   deeper:[
-     {author:'St. Gregory the Theologian', work:'Five Theological Orations (Orations 27–31)'},
-     {author:'St. Basil the Great', work:'On the Holy Spirit'},
-     {author:'St. John of Damascus', work:'An Exact Exposition of the Orthodox Faith, Book I'},
-   ]},
-  {id:'incarnation', cat:'theology', title:'The Incarnation', subtitle:'The Word became flesh',
-   summary:'The Incarnation is the central mystery of the Christian faith: the eternal Son of God took to Himself a full human nature — body, soul, and will — from the Virgin Mary, remaining fully God while becoming fully man. This is the basis of Orthodox iconography, the theology of theosis, and the reality of the Sacraments.',
-   quote:'"He became what we are so that He might make us what He is."', attr:'St. Irenaeus of Lyon, Against Heresies',
-   tags:['theotokos','christology','icon'],
-   deeper:[
-     {author:'St. Athanasius the Great', work:'On the Incarnation of the Word'},
-     {author:'St. Irenaeus of Lyon', work:'Against Heresies, Book III'},
-     {author:'St. Cyril of Alexandria', work:'On the Unity of Christ'},
-   ]},
-  {id:'scripture-tradition', cat:'theology', title:'Scripture & Holy Tradition', subtitle:'One river of revelation',
-   summary:'Orthodox Christianity does not separate Scripture from Tradition as if they were two different sources. Scripture is the written part of the one Holy Tradition of the Church — which includes also the Creeds, the Canons of the Ecumenical Councils, the liturgical texts, the lives of the saints, and the writings of the Holy Fathers. The Church does not derive its authority from Scripture alone; Scripture itself was written within the Church and is properly interpreted only within the Church.',
-   quote:'"The Holy Scriptures are not to be interpreted privately; they belong to the Church and are understood through the Church."', attr:'St. Hilary of Poitiers',
-   tags:['scripture','tradition','councils'],
-   deeper:[
-     {author:'St. Basil the Great', work:'On the Holy Spirit, Chapter 27 — On Holy Tradition'},
-     {author:'St. Vincent of Lérins', work:'Commonitory — On the Rule of Faith'},
-     {author:'St. John of Damascus', work:'Against Those Who Attack the Holy Icons, Oration I'},
-   ]},
-  // Sacraments
-  {id:'baptism', cat:'sacraments', title:'Holy Baptism', subtitle:'Death and resurrection in Christ',
-   summary:'Baptism is the door into the Church — the death of the old Adam and the birth of the new man in Christ. The Orthodox Church baptizes by triple immersion in the name of the Holy Trinity, effecting not merely a symbolic washing but a genuine dying and rising with Christ. Immediately following Baptism comes Chrismation and then the reception of Holy Communion — the fullness of initiation.',
-   quote:'"Baptism is not merely a washing but a dying and a rising. It is not a bath but a new birth."', attr:'St. John Chrysostom, Baptismal Homilies',
-   tags:['chrismation','eucharist','new birth'],
-   deeper:[
-     {author:'St. John Chrysostom', work:'Baptismal Instructions (Catecheses)'},
-     {author:'St. Cyril of Jerusalem', work:'Mystagogical Catecheses, Lectures II–III'},
-     {author:'Tertullian', work:'On Baptism'},
-   ]},
-  {id:'eucharist-topic', cat:'sacraments', title:'The Holy Eucharist', subtitle:'The Body and Blood of Christ',
-   summary:'The Eucharist is the center of Orthodox Christian life — the culmination of every Divine Liturgy and the Sacrament that most fully unites the faithful with Christ. The bread and wine are transformed by the Holy Spirit into the true Body and Blood of the Lord Jesus Christ. This is not a metaphor or a memorial but a mystery of the Church\'s faith from the beginning.',
-   quote:'"I am the living bread which came down from heaven. Whoever eats of this bread will live forever."', attr:'Our Lord Jesus Christ, John 6:51',
-   tags:['divine liturgy','anaphora','epiclesis'],
-   deeper:[
-     {author:'St. John Chrysostom', work:'Homilies on the Gospel of John, Homily 46'},
-     {author:'St. Cyril of Jerusalem', work:'Mystagogical Catecheses, Lectures IV–V'},
-     {author:'St. Maximus the Confessor', work:'The Mystagogy'},
-   ]},
-  // Liturgical Life
-  {id:'divine-liturgy', cat:'liturgical', title:'The Divine Liturgy', subtitle:'Heaven on earth',
-   summary:'The Divine Liturgy is the central act of Orthodox Christian worship — the offering of the Eucharist to God and the participation of the faithful in the heavenly worship. The two primary liturgies in use are those of St. John Chrysostom (most Sundays) and St. Basil the Great (ten times per year). The Liturgy is understood as a participation in the timeless worship of heaven, not merely a historical reenactment.',
-   quote:'"When you see the Liturgy performed, think that you are in heaven and that the angels are ministering with you."', attr:'St. John Chrysostom',
-   tags:['anaphora','eucharist','liturgy'],
-   deeper:[
-     {author:'St. Maximus the Confessor', work:'The Mystagogy — Commentary on the Divine Liturgy'},
-     {author:'St. Nicholas Cabasilas', work:'A Commentary on the Divine Liturgy'},
-     {author:'St. Germanos of Constantinople', work:'On the Divine Liturgy'},
-   ]},
-  {id:'great-lent', cat:'liturgical', title:'Great Lent', subtitle:'The spring of the soul',
-   summary:'Great Lent is the forty-eight day fasting season before Holy Pascha — the most intense period of spiritual struggle, repentance, and preparation in the Orthodox year. It begins with Clean Monday and unfolds through the five Sundays of Lent (Orthodoxy, Palamas, Holy Cross, Climacus, Mary of Egypt), Lazarus Saturday, and Holy Week.',
-   quote:'"Let us observe the fast not only by refraining from foods, but by becoming strangers to all the things of this life."', attr:'St. John Chrysostom',
-   tags:['fasting','triodion','pascha'],
-   deeper:[
-     {author:'St. John Chrysostom', work:'Homilies on Fasting'},
-     {author:'St. Andrew of Crete', work:'The Great Canon of Repentance'},
-     {author:'St. Basil the Great', work:'On Fasting, Homily I'},
-   ]},
-  // Church History
-  {id:'ecumenical-councils', cat:'history', title:'The Seven Ecumenical Councils', subtitle:'The pillars of Orthodox doctrine',
-   summary:'The Seven Ecumenical Councils, held between 325 and 787 AD, are the supreme doctrinal authority of the Orthodox Church alongside Holy Scripture. They defined the Orthodox faith on the Trinity (Nicaea I, Constantinople I), the Incarnation (Ephesus, Chalcedon, Constantinople II, Constantinople III), and the veneration of icons (Nicaea II).',
-   quote:'"The decrees of the Councils are not merely human documents — they are the witness of the Holy Spirit speaking through the whole Church."', attr:'St. Maximus the Confessor',
-   tags:['councils','doctrine','tradition'],
-   deeper:[
-     {author:'St. Athanasius the Great', work:'On the Council of Nicaea (De Decretis)'},
-     {author:'St. John of Damascus', work:'Against the Iconoclasts — Defense of the Holy Icons'},
-     {author:'St. Maximus the Confessor', work:'Opuscula Theologica et Polemica'},
-   ]},
-  {id:'great-schism', cat:'history', title:'The Great Schism (1054)', subtitle:'East and West divide',
-   summary:'The Great Schism of 1054 was the formal separation of the Eastern Orthodox Church from the Church of Rome. Its causes were both theological (the Filioque controversy, papal primacy claims) and cultural (growing estrangement between Greek East and Latin West). Orthodox theology understands the Schism not as a mutual separation but as Rome\'s departure from the ancient conciliar ecclesiology of the undivided Church.',
-   quote:'"The Church is not a monarchy but a symphony — many bishops, one faith, one Eucharist."', attr:'St. Cyprian of Carthage (principle)',
-   tags:['filioque','rome','papacy'],
-   deeper:[
-     {author:'Patriarch Photios the Great', work:'Encyclical to the Eastern Patriarchs (867)'},
-     {author:'St. Mark of Ephesus', work:'Encyclical Letter from Florence'},
-     {author:'St. Gregory Palamas', work:'Apodictic Treatises on the Procession of the Holy Spirit'},
-   ]},
-  // Spiritual Life
-  {id:'prayer-topic', cat:'spiritual', title:'The Life of Prayer', subtitle:'The soul\'s conversation with God',
-   summary:'Orthodox prayer is not merely asking God for things but the orientation of the whole person toward God — an act of love, praise, and self-offering. The Tradition provides a structure of daily prayer (morning and evening rules), liturgical prayer (the Divine Liturgy and the Hours), and continuous prayer (the Jesus Prayer). The Philokalia is the great collection of writings on the inner life of prayer.',
-   quote:'"Prayer is the place of refuge for every worry, a foundation for cheerfulness, a source of constant happiness."', attr:'St. John Chrysostom',
-   tags:['jesus prayer','hesychasm','nepsis'],
-   deeper:[
-     {author:'St. Hesychios of Sinai', work:'On Watchfulness and Holiness (Philokalia, Vol. I)'},
-     {author:'St. John Climacus', work:'The Ladder of Divine Ascent, Step 28 — On Prayer'},
-     {author:'St. Gregory of Sinai', work:'On Stillness and the Two Ways of Prayer (Philokalia, Vol. IV)'},
-   ]},
-  {id:'repentance', cat:'spiritual', title:'Repentance & Confession', subtitle:'The second baptism',
-   summary:'Metanoia — repentance — is not merely sorrow for sin but a fundamental reorientation of the whole person toward God. The Holy Mystery of Confession is the sacramental expression of this metanoia, in which the penitent confesses before God in the presence of a priest-witness and receives absolution. The Fathers call Confession the "second baptism."',
-   quote:'"The beginning of repentance is the beginning of salvation."', attr:'St. John Climacus, The Ladder of Divine Ascent',
-   tags:['metanoia','confession','passions'],
-   deeper:[
-     {author:'St. John Climacus', work:'The Ladder of Divine Ascent, Steps 4–5'},
-     {author:'St. Symeon the New Theologian', work:'The Discourses, Discourse IV — On Repentance'},
-     {author:'St. John Chrysostom', work:'On Repentance and Compunction'},
-   ]},
-  // For Inquirers
-  {id:'becoming-orthodox', cat:'inquirers', title:'Becoming Orthodox', subtitle:'The journey into the Church',
-   summary:'The path into the Orthodox Church typically involves three stages: inquiry (attending services and meeting with a priest), the catechumenate (formal instruction, usually 1–3 years), and reception into the Church through Baptism, Chrismation, and Holy Communion. There is no universal timeline — the Church welcomes each person at the pace they are ready to receive.',
-   quote:'"Come and see."', attr:'St. Philip the Apostle to Nathanael, John 1:46',
-   tags:['catechumen','baptism','chrismation'],
-   deeper:[
-     {author:'St. Cyril of Jerusalem', work:'Procatechesis — Address to Those About to Be Illumined'},
-     {author:'St. John Chrysostom', work:'Baptismal Instructions, Instruction I'},
-     {author:'St. Theodore the Studite', work:'On the Reception of Converts'},
-   ]},
-  {id:'ortho-vs-western', cat:'inquirers', title:'Orthodoxy & Western Christianity', subtitle:'What makes Orthodoxy distinct',
-   summary:'Orthodox Christianity is not a "version" of Western Christianity but a distinct expression of the ancient undivided Church. Key differences include the rejection of Papal infallibility, the theology of theosis vs. juridical salvation, the understanding of ancestral sin, the Filioque in the Creed, and the role of Holy Tradition alongside Scripture.',
-   quote:'"We have not changed. We hold the faith of the ancient Church."', attr:'Patriarch Bartholomew I',
-   tags:['filioque','theosis','ancestral sin'],
-   deeper:[
-     {author:'Patriarch Photios the Great', work:'Mystagogy of the Holy Spirit'},
-     {author:'St. Mark of Ephesus', work:'Syllogistic Chapters Against the Latins'},
-     {author:'St. Gregory Palamas', work:'Topics of Natural and Theological Science, Chapter 109'},
-   ]},
-  // Church Fathers
-  {id:'three-hierarchs', cat:'fathers', title:'The Three Holy Hierarchs', subtitle:'Basil, Gregory, and John',
-   summary:'The Three Holy Hierarchs — St. Basil the Great, St. Gregory the Theologian, and St. John Chrysostom — are the supreme theologians of the Greek patristic tradition, celebrated together on January 30. Basil organized monasticism and defended the Holy Trinity; Gregory delivered the Theological Orations; John preached with incomparable brilliance and fearless courage.',
-   quote:'"These three great luminaries have illumined the whole world by their teachings."', attr:'Synaxarion for January 30',
-   tags:['basil','gregory','chrysostom'],
-   deeper:[
-     {author:'St. Basil the Great', work:'On the Holy Spirit — Address to Amphilochius'},
-     {author:'St. Gregory the Theologian', work:'Theological Orations (Orations 27–31)'},
-     {author:'St. John Chrysostom', work:'On the Priesthood (De Sacerdotio)'},
-   ]},
-  {id:'desert-fathers-topic', cat:'fathers', title:'The Desert Fathers', subtitle:'Antony, Pachomius, and the great ascetics',
-   summary:'The Desert Fathers were the monks of Egypt, Palestine, and Syria in the 3rd–5th centuries who fled the cities to pursue God in silence and austerity. From St. Antony the Great — the father of monasticism — to the great communities of Pachomius, their spiritual insights were collected in the Apophthegmata Patrum (Sayings of the Desert Fathers).',
-   quote:'"Abba, give me a word." "Go, sit in your cell, and your cell will teach you everything."', attr:'Abba Moses, Sayings of the Desert Fathers',
-   tags:['monasticism','nepsis','prayer'],
-   deeper:[
-     {author:'St. Athanasios the Great', work:'Life of Antony the Great'},
-     {author:'Various Desert Fathers', work:'Apophthegmata Patrum — Sayings of the Desert Fathers'},
-     {author:'Palladios of Galatia', work:'The Lausiac History'},
-   ]},
-];
-
-var currentCat = 'theology';
-var currentTopic = null;
-var drawerOpen = false;
-
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
-document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
-function closeSearch(){document.getElementById('search-overlay').style.display='none';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSearch();closeTopic();}});
-document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
-
-function buildCatGrid(){
-  var html='';
-  CATEGORIES.forEach(function(c){
-    var count=TOPICS.filter(function(t){return t.cat===c.id;}).length;
-    var active=c.id===currentCat?' active':'';
-    html+='<div class="cat-card fade-in'+active+'" onclick="selectCat(\''+c.id+'\')">';
-    html+='<span class="cat-icon">'+c.icon+'</span>';
-    html+='<div class="cat-name">'+c.name+'</div>';
-    html+='<div class="cat-count">'+count+' topic'+(count!==1?'s':'')+'</div>';
-    html+='</div>';
-  });
-  document.getElementById('catGrid').innerHTML=html;
-}
-
-function selectCat(id){
-  currentCat=id;
-  buildCatGrid();
-  var cat=CATEGORIES.find(function(c){return c.id===id;});
-  if(cat){
-    document.getElementById('panelTitle').textContent=cat.name;
-    document.getElementById('panelDesc').textContent=cat.desc;
-  }
-  renderTopics();
-}
-
-function renderTopics(){
-  var topics=TOPICS.filter(function(t){return t.cat===currentCat;});
-  if(!topics.length){document.getElementById('topicsGrid').innerHTML='<div style="color:var(--text-muted);font-style:italic;padding:20px 0;">Topics coming soon for this category.</div>';return;}
-  var html='';
-  topics.forEach(function(t){
-    html+='<div class="topic-card fade-in" onclick="openTopic(\''+t.id+'\')">';
-    html+='<div class="topic-card-body">';
-    html+='<div class="topic-card-label">'+CATEGORIES.find(function(c){return c.id===t.cat;}).name+'</div>';
-    html+='<div class="topic-card-title">'+t.title+'</div>';
-    html+='<div class="topic-card-summary">'+t.summary.substring(0,180)+'&hellip;</div>';
-    if(t.quote){
-      html+='<div class="topic-card-quote">&ldquo;'+t.quote+'&rdquo;';
-      html+='<div class="topic-card-attr">&mdash; '+t.attr+'</div></div>';
-    }
-    html+='</div>';
-    html+='<div class="topic-card-footer">';
-    html+='<span class="topic-card-read">Read More &rarr;</span>';
-    html+='<div class="topic-card-tags">';
-    (t.tags||[]).slice(0,3).forEach(function(tag){html+='<span class="topic-tag">'+tag+'</span>';});
-    html+='</div></div></div>';
-  });
-  document.getElementById('topicsGrid').innerHTML=html;
-  initFadeIn();
-}
-
-function openTopic(id){
-  var t=TOPICS.find(function(x){return x.id===id;});
-  if(!t)return;
-  currentTopic=t;
-  var cat=CATEGORIES.find(function(c){return c.id===t.cat;});
-  document.getElementById('tm-cat').textContent=cat?cat.name:'';
-  document.getElementById('tm-title').textContent=t.title;
-  document.getElementById('tm-subtitle').textContent=t.subtitle;
-  document.getElementById('tm-ask').href='chatbot.html?q='+encodeURIComponent('Tell me about '+t.title);
-  var html='<div class="tm-summary">'+t.summary+'</div>';
-  if(t.quote){
-    html+='<div class="tm-quote-block">';
-    html+='<div class="tm-quote-text">&ldquo;'+t.quote+'&rdquo;</div>';
-    html+='<div class="tm-quote-attr">&mdash; '+t.attr+'</div>';
-    html+='</div>';
-  }
-  if(t.deeper&&t.deeper.length){
-    html+='<div class="tm-deeper-title">Go Deeper</div>';
-    html+='<div class="tm-deeper-box">';
-    t.deeper.forEach(function(d){
-      html+='<div class="tm-deeper-item">';
-      html+='<span class="tm-deeper-cross">&#9766;</span>';
-      html+='<span class="tm-deeper-ref">'+d.work+'</span>';
-      html+='<span class="tm-deeper-author">&mdash; '+d.author+'</span>';
-      html+='</div>';
-    });
-    html+='</div>';
-  }
-  document.getElementById('tm-body').innerHTML=html;
-  document.getElementById('topic-modal').classList.add('open');
-  document.getElementById('topic-modal').scrollTop=0;
-}
-
-function closeTopic(){document.getElementById('topic-modal').classList.remove('open');}
-document.getElementById('topic-modal').addEventListener('click',function(e){if(e.target===this)closeTopic();});
-
-function initFadeIn(){
-  var obs=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}});},{threshold:0.08});
-  document.querySelectorAll('.fade-in:not(.visible)').forEach(function(el){obs.observe(el);});
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  buildCatGrid();
-  renderTopics();
-  initFadeIn();
-  var params=new URLSearchParams(window.location.search);
-  var cat=params.get('cat');if(cat)selectCat(cat);
-  var tid=params.get('topic');if(tid)setTimeout(function(){openTopic(tid);},200);
-});
-</script>
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
@@ -989,6 +489,201 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
+
+var TOPICS    = {"agape": {"label": "Agape", "category": "ascetical_theology", "aliases": ["divine love", "charity", "love feast"], "description": "Self-giving divine love \u2014 the fullness of theosis, in which the purified soul loves God and neighbour with God's own love.", "related": ["love", "theosis", "apatheia", "koinonia"]}, "anakephalaiosis": {"label": "Anakephalaiosis", "category": "soteriology", "aliases": ["recapitulation", "summing up"], "description": "Recapitulation \u2014 St. Irenaeus's teaching that Christ sums up and restores in Himself all that Adam lost, healing the whole of human nature.", "related": ["atonement", "incarnation", "salvation", "christ_victory"]}, "analepsis": {"label": "Analepsis", "category": "christology", "aliases": ["ascension", "taking up", "feast of the ascension"], "description": "The taking up of Christ's glorified humanity into heaven, completing the Incarnation and opening the way of theosis.", "related": ["incarnation", "resurrection", "pentecost", "theosis"]}, "anamnesis": {"label": "Anamnesis", "category": "liturgical_theology", "aliases": ["eucharistic memorial", "liturgical remembrance"], "description": "The Eucharistic memorial that makes present the saving acts of Christ \u2014 not mere recollection but sacramental participation.", "related": ["eucharist", "divine_liturgy", "epiklesis", "pascha"]}, "anastasis": {"label": "Anastasis", "category": "paschal_theology", "aliases": ["resurrection", "rising"], "description": "The Resurrection of Christ \u2014 His bodily rising from the dead on the third day, trampling down death by death.", "related": ["resurrection", "pascha", "christ_victory", "eschatology"]}, "ancestral_sin": {"label": "Ancestral Sin", "category": "anthropology", "aliases": ["original sin"], "description": "The inherited condition of mortality and corruption resulting from the fall, inclining humanity toward sin. Orthodoxy emphasizes inherited death and brokenness rather than inherited guilt.", "related": ["baptism", "free_will", "incarnation"]}, "annunciation": {"label": "Annunciation", "category": "liturgical_theology", "aliases": ["feast of the annunciation", "evangelismos"], "description": "The Great Feast of the angel Gabriel's announcement to the Theotokos and the conception of the incarnate Son.", "related": ["theotokos", "incarnation", "divine_liturgy"]}, "apatheia": {"label": "Apatheia", "category": "ascetical_theology", "aliases": ["dispassion", "freedom from passions"], "description": "Not stoic indifference but the healing of the passions so that the soul loves God and neighbour with a pure, undistorted love.", "related": ["passions", "theosis", "nepsis", "hesychia"]}, "aphesis": {"label": "Aphesis", "category": "soteriology", "aliases": ["forgiveness", "remission", "release"], "description": "Forgiveness and remission of sins \u2014 the gift of God's mercy releasing the soul from the bondage of sin.", "related": ["forgiveness", "confession", "repentance", "salvation"]}, "apophatic_theology": {"label": "Apophatic Theology", "category": "triadology", "aliases": ["negative theology", "via negativa"], "description": "The way of negation \u2014 approaching God by recognizing the limits of all human concepts and language about Him. Apophatic theology does not deny that God is good, powerful, or wise, but insists that He ", "related": ["trinity", "hesychasm", "theosis"]}, "apostolic_succession": {"label": "Apostolic Succession", "category": "ecclesiology", "aliases": [], "description": "The transmission of apostolic authority and teaching through the bishops of the Church.", "related": ["church", "tradition", "councils"]}, "ascension": {"label": "Ascension", "category": "christology", "aliases": [], "description": "The ascension of Christ into heaven in glory, completing His earthly ministry and exalting human nature.", "related": ["incarnation", "eschatology", "resurrection"]}, "asceticism": {"label": "Asceticism", "category": "ascetical_theology", "aliases": ["askesis", "spiritual struggle"], "description": "The disciplined spiritual struggle against sin and for growth in holiness.", "related": ["monasticism", "prayer", "fasting", "passions"]}, "atonement": {"label": "Atonement", "category": "soteriology", "aliases": ["redemption", "recapitulation"], "description": "Christ\u2019s saving work by which humanity is reconciled to God, sin is defeated, and death is overcome. Orthodoxy emphasizes Christ\u2019s victory and healing more than purely legal categories.", "related": ["incarnation", "resurrection", "salvation"]}, "baptism": {"label": "Baptism", "category": "sacramental_theology", "aliases": ["illumination"], "description": "The sacrament of entry into Christ and His Church.", "related": ["eucharist", "church", "incarnation"]}, "baptisma": {"label": "Baptisma", "category": "sacramental_theology", "aliases": ["baptism", "holy baptism", "immersion"], "description": "Baptism \u2014 the sacrament of new birth in which the believer is united to Christ's death and resurrection.", "related": ["baptism", "chrismation", "church", "ancestral_sin"]}, "basileia": {"label": "Basileia", "category": "eschatology", "aliases": ["kingdom of god", "kingdom of heaven", "royal reign"], "description": "The Kingdom of God \u2014 already present in the Church through the Eucharist, to be revealed in fullness at the Second Coming.", "related": ["kingdom_of_god", "eschatology", "church", "second_coming"]}, "calvinism": {"label": "Calvinism", "category": "comparative_theology", "aliases": ["reformed theology", "tulip"], "description": "A Protestant theological system including the doctrines of total depravity, unconditional election, limited atonement, irresistible grace, and perseverance of the saints (TULIP). Orthodoxy rejects the", "related": ["predestination", "once_saved_always_saved", "free_will"]}, "charis": {"label": "Charis", "category": "soteriology", "aliases": ["grace", "divine grace"], "description": "Grace \u2014 the uncreated gift of God's own life communicated to the human person, identified in Orthodox theology with the divine Energies.", "related": ["grace", "theosis", "divine_energies", "salvation"]}, "chrismation": {"label": "Chrismation", "category": "sacramental_theology", "aliases": [], "description": "The sacrament of anointing with holy chrism by which the baptized receive the gift of the Holy Spirit and are sealed as members of Christ.", "related": ["baptism", "holy_spirit", "church"]}, "christ_victory": {"label": "Christ's Victory", "category": "paschal_theology", "aliases": ["victory of christ", "trampling down death"], "description": "Christ\u2019s triumph over sin, death, and the powers of darkness through His Cross and Resurrection.", "related": ["resurrection", "atonement", "descent_into_hades"]}, "christology": {"label": "Christology", "category": "christology", "aliases": [], "description": "The doctrine of the person and work of Jesus Christ.", "related": ["incarnation", "trinity", "two_natures", "hypostatic_union"]}, "christos": {"label": "Christos", "category": "christology", "aliases": ["christ", "anointed one", "messiah"], "description": "The Anointed One \u2014 the title affirming that Jesus is the fulfillment of the Old Testament messianic promise.", "related": ["messiah", "incarnation", "christology", "divinity_of_christ"]}, "church": {"label": "Church", "category": "ecclesiology", "aliases": ["ecclesia"], "description": "The Body of Christ, gathered by the Holy Spirit and sustained in sacramental life.", "related": ["apostolic_succession", "liturgical_theology", "eucharist", "tradition", "councils", "holy_spirit", "saints_intercession", "eschatology"]}, "circumcision_of_christ": {"label": "Circumcision of Christ", "category": "liturgical_theology", "aliases": ["feast of circumcision", "january 1st feast"], "description": "The feast on January 1 commemorating Christ's circumcision, His fulfillment of the Old Covenant Law.", "related": ["incarnation", "divine_liturgy"]}, "comparative_theology": {"label": "Comparative Theology", "category": "comparative_theology", "aliases": ["orthodox apologetics", "east-west comparison"], "description": "The disciplined comparison of Orthodox theology with other Christian traditions, using the patristic and conciliar Tradition as the standard.", "related": ["filioque", "purgatory", "intermediate_state", "ecclesiology", "great_schism"]}, "confession": {"label": "Confession", "category": "sacramental_theology", "aliases": [], "description": "The sacrament of repentance in which sins are confessed before God with a priest as witness, and forgiveness and healing are bestowed by Christ.", "related": ["repentance", "salvation", "prayer", "theosis"]}, "councils": {"label": "Ecumenical Councils", "category": "ecclesiology", "aliases": ["ecumenical_council"], "description": "Councils of the Church that define and defend the Orthodox faith.", "related": ["church", "tradition", "incarnation", "icons"]}, "cross": {"label": "Cross", "category": "soteriology", "aliases": ["holy cross"], "description": "The Cross of Christ as the instrument of salvation, self-offering, and victory.", "related": ["atonement", "crucifixion", "sacrifice", "salvation"]}, "crucifixion": {"label": "Crucifixion", "category": "soteriology", "aliases": ["passion of christ"], "description": "The saving death of Christ upon the Cross for the life of the world.", "related": ["atonement", "cross", "sacrifice", "resurrection"]}, "daily_prayer_cycle": {"label": "Daily Prayer Cycle", "category": "liturgical_theology", "aliases": [], "description": "The rhythm of prayer that sanctifies each day \u2014 Vespers, Compline, Matins, and the Hours. Rooted in monastic practice and extended to all the faithful, the daily cycle punctuates time with praise, rep", "related": ["prayer", "hesychasm", "liturgical_theology"]}, "death_and_dying": {"label": "Death And Dying", "category": "eschatology", "aliases": [], "description": "The separation of soul and body resulting from the fall. Orthodoxy understands death as an enemy \u2014 real and tragic \u2014 but one already conquered in principle by Christ's Resurrection. The faithful appro", "related": ["resurrection", "intermediate_state", "eschatology"]}, "descent_into_hades": {"label": "Descent into Hades", "category": "paschal_theology", "aliases": ["harrowing of hades"], "description": "Christ\u2019s descent into Hades to destroy death\u2019s dominion and liberate the righteous.", "related": ["resurrection", "pascha", "christ_victory"]}, "divine_energies": {"label": "Divine Energies", "category": "triadology", "aliases": ["uncreated energies", "energeia"], "description": "The uncreated operations of God by which He is truly known and participated in.", "related": ["theosis", "hesychast_controversy", "trinity"]}, "divine_essence": {"label": "Divine Essence", "category": "triadology", "aliases": [], "description": "The one divine nature common to the Father, Son, and Holy Spirit.", "related": ["trinity", "apophatic_theology", "divine_energies"]}, "divine_liturgy": {"label": "Divine Liturgy", "category": "liturgical_theology", "aliases": ["liturgy of st john chrysostom"], "description": "The central act of Christian worship \u2014 the Eucharistic assembly in which the faithful gather to hear the word, offer the gifts, and receive the Body and Blood of Christ. The Orthodox Church celebrates", "related": ["eucharist", "liturgical_theology", "church"]}, "divinity_of_christ": {"label": "Divinity of Christ", "category": "christology", "aliases": ["christ_divinity"], "description": "The confession that Jesus Christ is truly God, one in divinity with the Father and the Holy Spirit.", "related": ["incarnation", "trinity", "christology"]}, "dormition": {"label": "Dormition", "category": "mariology", "aliases": ["dormition_of_the_theotokos"], "description": "The falling asleep of the Theotokos and her entrance into heavenly glory.", "related": ["theotokos", "resurrection", "death_and_dying"]}, "doxa": {"label": "Doxa", "category": "triadology", "aliases": ["glory", "divine glory", "radiance"], "description": "Glory \u2014 the divine radiance revealed in creation, in Scripture, and above all in the Transfiguration and the Resurrection.", "related": ["divine_energies", "theosis", "hesychast_controversy", "glorification_of_christ"]}, "ecclesiology": {"label": "Ecclesiology", "category": "ecclesiology", "aliases": ["theology of the church"], "description": "The theology of the Church \u2014 her nature as the Body of Christ, Eucharistic constitution, apostolic governance, and conciliar unity.", "related": ["church", "apostolic_succession", "eucharist", "phronema", "sobornost"]}, "ecology_and_creation": {"label": "Ecology And Creation", "category": "creation_theology", "aliases": [], "description": "Orthodox theology holds that creation is good, made by God and destined for transfiguration. Humanity is the priest of creation, called to offer the world back to God in thanksgiving. Care for creatio", "related": ["incarnation", "theosis", "human_person"]}, "ekklesia": {"label": "Ekklesia", "category": "ecclesiology", "aliases": ["church", "assembly", "called out"], "description": "The Church as the assembly of those called out by God \u2014 the Body of Christ and Temple of the Holy Spirit.", "related": ["church", "ecclesiology", "apostolic_succession", "koinonia"]}, "ekporeusis": {"label": "Ekporeusis", "category": "triadology", "aliases": ["procession", "eternal procession"], "description": "The eternal procession of the Holy Spirit from the Father alone (John 15:26), the Orthodox position against the Filioque.", "related": ["filioque", "pneumatology", "trinity", "holy_spirit"]}, "elevation_of_holy_cross": {"label": "Elevation of the Holy Cross", "category": "liturgical_theology", "aliases": ["exaltation of the holy cross", "universal exaltation"], "description": "Great Feast commemorating the finding of the True Cross by St. Helena and its elevation for veneration.", "related": ["atonement", "cross", "divine_liturgy"]}, "enanthropesis": {"label": "Enanthropesis", "category": "christology", "aliases": ["incarnation", "becoming human", "humanization"], "description": "The becoming-human of the eternal Son \u2014 the taking on of complete human nature in the womb of the Theotokos.", "related": ["incarnation", "theotokos", "christology", "kenosis"]}, "energeia": {"label": "Energeia", "category": "triadology", "aliases": ["energy", "energies"], "description": "The divine operation or activity of God, especially in reference to the uncreated energies.", "related": ["divine_energies", "theosis", "hesychast_controversy"]}, "entrance_of_theotokos": {"label": "Entrance of the Theotokos", "category": "liturgical_theology", "aliases": ["presentation of the theotokos", "entrance into the temple"], "description": "Great Feast commemorating the presentation of the Virgin Mary in the Temple as a child.", "related": ["theotokos", "divine_liturgy", "temple"]}, "epiklesis": {"label": "Epiklesis", "category": "liturgical_theology", "aliases": ["invocation of the spirit", "epiclesis"], "description": "The invocation of the Holy Spirit in the Divine Liturgy by which the gifts are consecrated and the Church is renewed.", "related": ["eucharist", "divine_liturgy", "anamnesis", "pneumatology"]}, "epiphaneia": {"label": "Epiphaneia", "category": "christology", "aliases": ["epiphany", "manifestation", "appearing"], "description": "The appearing or manifestation of Christ \u2014 used of the Theophany and of the Second Coming.", "related": ["incarnation", "manifestation_of_christ", "theophany", "second_coming"]}, "eschatology": {"label": "Eschatology", "category": "eschatology", "aliases": ["last things", "end times"], "description": "The theology of the last things \u2014 death, judgment, the resurrection of the body, the Second Coming of Christ, and the life of the age to come. Orthodox eschatology is fundamentally hopeful, centered o", "related": ["resurrection", "last_judgment", "second_coming", "death_and_dying"]}, "eucharist": {"label": "Eucharist", "category": "sacramental_theology", "aliases": ["holy_communion"], "description": "The sacrament of Christ\u2019s Body and Blood at the center of the Church\u2019s worship.", "related": ["liturgical_theology", "eucharist", "church", "atonement"]}, "eucharistia": {"label": "Eucharistia", "category": "liturgical_theology", "aliases": ["eucharist", "thanksgiving", "holy communion"], "description": "Thanksgiving \u2014 the Eucharist as the Church's supreme act of thanksgiving, in which she is united to Christ's own self-offering.", "related": ["eucharist", "divine_liturgy", "anamnesis", "epiklesis"]}, "exousia": {"label": "Exousia", "category": "christology", "aliases": ["divine authority", "authority of christ"], "description": "The intrinsic divine authority of Christ, expressed in His teaching, forgiveness of sins, and lordship over creation.", "related": ["christology", "ecclesiology", "apostolic_succession"]}, "faith": {"label": "Faith", "category": "soteriology", "aliases": ["belief", "pistis"], "description": "Faithful trust in God and steadfast adherence to divine revelation.", "related": ["salvation", "tradition", "repentance"]}, "fasting": {"label": "Fasting", "category": "ascetical_theology", "aliases": ["the fast", "great fast"], "description": "A spiritual discipline of self-denial ordered toward repentance and communion with God.", "related": ["asceticism", "repentance", "lenten_worship"]}, "filioque": {"label": "Filioque", "category": "triadology", "aliases": ["and from the son"], "description": "Latin phrase meaning 'and from the Son', added by the Western Church to the Nicene Creed to indicate the Holy Spirit proceeds from both Father and Son. Orthodoxy rejects this as a theological error an", "related": ["trinity", "holy_spirit", "great_schism", "tradition"]}, "forgiveness": {"label": "Forgiveness", "category": "soteriology", "aliases": ["remission of sins", "aphesis"], "description": "The remission of sins granted by God and reflected in the life of Christians toward one another.", "related": ["confession", "repentance", "salvation"]}, "forgiveness_sunday": {"label": "Forgiveness Sunday", "category": "liturgical_theology", "aliases": ["cheesefare sunday", "sunday of forgiveness", "maslenitsa"], "description": "The last Sunday before Great Lent, on which forgiveness is asked and given, opening the fast.", "related": ["repentance", "lent", "triodion", "forgiveness"]}, "free_will": {"label": "Free Will", "category": "anthropology", "aliases": ["human freedom"], "description": "The capacity of the human person to choose between good and evil, preserved even after the fall. Orthodox theology insists that grace does not override free will but invites and enables free cooperati", "related": ["predestination", "ancestral_sin"]}, "glorification_of_christ": {"label": "Glorification of Christ", "category": "christology", "aliases": ["exaltation of christ"], "description": "The exaltation of Christ in His Passion, Resurrection, and Ascension.", "related": ["resurrection", "ascension", "incarnation"]}, "grace": {"label": "Grace", "category": "soteriology", "aliases": ["divine grace", "charis"], "description": "The divine gift and operation by which God sanctifies and saves.", "related": ["theosis", "salvation"]}, "great_schism": {"label": "Great Schism", "category": "comparative_theology", "aliases": ["east west schism", "schism of 1054"], "description": "The formal division between Eastern and Western Christianity in 1054, rooted in theological disputes over the Filioque, growing claims of papal supremacy, and divergent liturgical practices. The deepe", "related": ["filioque", "papacy", "tradition"]}, "hades": {"label": "Hades", "category": "eschatology", "aliases": ["sheol", "realm of the dead"], "description": "The realm of the dead into which Christ descended on Holy Saturday, shattering its gates and liberating the captive souls.", "related": ["descent_into_hades", "death_and_dying", "intermediate_state", "eschatology"]}, "hagios": {"label": "Hagios", "category": "ascetical_theology", "aliases": ["holy", "saint", "holy one"], "description": "Holy \u2014 used of God as the All-Holy, and of the saints as those transfigured by participation in divine holiness.", "related": ["saints", "holiness", "theosis", "saints_intercession"]}, "hagiosyne": {"label": "Hagiosyne", "category": "ascetical_theology", "aliases": ["holiness", "sanctity", "sanctification"], "description": "Holiness \u2014 the quality of being set apart in God, the fruit of theosis and the goal of the Christian life.", "related": ["holiness", "theosis", "saints", "saints_intercession"]}, "hamartia": {"label": "Hamartia", "category": "soteriology", "aliases": ["sin", "missing the mark", "transgression"], "description": "Sin understood as missing the mark \u2014 the distortion of the human person from its God-given purpose and orientation.", "related": ["sin", "ancestral_sin", "repentance", "salvation"]}, "hesychasm": {"label": "Hesychasm", "category": "ascetical_theology", "aliases": [], "description": "The tradition of inner stillness, unceasing prayer, and purification of the heart.", "related": ["prayer", "theosis", "monasticism", "hesychasm", "hesychast_controversy"]}, "hesychast_controversy": {"label": "Hesychast Controversy", "category": "ascetical_theology", "aliases": ["palamite controversy"], "description": "The 14th-century theological dispute in which Gregory Palamas defended the hesychast monks against Barlaam of Calabria, who denied that God could be truly known in experience. The councils of Constant", "related": ["hesychasm", "apophatic_theology", "theosis"]}, "hesychia": {"label": "Hesychia", "category": "ascetical_theology", "aliases": ["stillness", "inner silence", "holy stillness"], "description": "The interior quiet cultivated through prayer and watchfulness, the proper context for the experience of the divine Energies.", "related": ["hesychasm", "prayer", "nepsis", "divine_energies"]}, "holiness": {"label": "Holiness", "category": "ascetical_theology", "aliases": ["sanctity", "sanctification"], "description": "Participation in the sanctifying life of God through grace, virtue, and communion with Him.", "related": ["theosis", "saints", "saints_intercession"]}, "holy_friday": {"label": "Holy Friday", "category": "liturgical_theology", "aliases": ["good friday", "great friday", "the passion"], "description": "The commemoration of the Crucifixion of Christ \u2014 the central day of Holy Week.", "related": ["atonement", "pascha", "crucifixion", "divine_liturgy"]}, "holy_spirit": {"label": "Holy Spirit", "category": "pneumatology", "aliases": ["pneuma"], "description": "The third person of the Holy Trinity, who gives life and sanctifies the Church.", "related": ["trinity", "theosis", "holy_spirit", "church", "salvation"]}, "homoousios": {"label": "Homoousios", "category": "triadology", "aliases": ["consubstantial", "of one essence", "same substance"], "description": "Of one essence \u2014 the Nicene definition affirming that the Son is of the same divine essence as the Father.", "related": ["trinity", "christology", "divinity_of_christ", "ousia"]}, "human_person": {"label": "Human Person", "category": "anthropology", "aliases": [], "description": "A living icon of God, created in the divine image and likeness, uniting the visible and invisible worlds. The human person is a microcosm, bearing the capacity for reason, freedom, and union with God ", "related": ["image_and_likeness", "free_will", "theosis", "ancestral_sin"]}, "hymnography": {"label": "Hymnography", "category": "liturgical_theology", "aliases": [], "description": "The liturgical poetry and sacred song of the Orthodox Church, including troparia, kontakia, canons, and stichera. Hymnography is theology in poetic form \u2014 Romanos the Melodist, Andrew of Crete, and Jo", "related": ["liturgical_theology", "tradition", "theosis"]}, "hypakoe": {"label": "Hypakoe", "category": "ascetical_theology", "aliases": ["obedience", "listening", "hearkening"], "description": "Obedience \u2014 the attentive listening and conformity of the will that is foundational to monastic and ascetic life.", "related": ["obedience", "monasticism", "free_will", "asceticism"]}, "hypostasis": {"label": "Hypostasis", "category": "triadology", "aliases": [], "description": "Concrete personhood or subsistent reality, especially in Trinitarian and Christological theology.", "related": ["trinity", "incarnation", "christology"]}, "hypostatic_union": {"label": "Hypostatic Union", "category": "christology", "aliases": ["two natures in one person"], "description": "The union of divine and human natures in the one person of Christ.", "related": ["incarnation", "christology", "two_natures"]}, "icons": {"label": "Icons", "category": "liturgical_theology", "aliases": ["iconography"], "description": "Holy images that witness to the reality of the Incarnation and the communion of saints.", "related": ["incarnation", "liturgical_theology", "tradition", "councils", "saints_intercession"]}, "image_and_likeness": {"label": "Image And Likeness", "category": "anthropology", "aliases": [], "description": "From Genesis 1:26, the declaration that humanity is made in the image (eikon) and likeness (homoiosis) of God. The image refers to the indelible dignity and capacity of the human person; the likeness ", "related": ["human_person", "theosis", "incarnation"]}, "incarnation": {"label": "Incarnation", "category": "christology", "aliases": [], "description": "The eternal Son of God became man for our salvation.", "related": ["incarnation", "salvation", "theosis", "theotokos"]}, "intermediate_state": {"label": "Intermediate State", "category": "eschatology", "aliases": [], "description": "The condition of souls between death and the general resurrection. Orthodoxy teaches that souls are conscious after death, in a state of foretaste of their ultimate condition, but that the full reward", "related": ["death_and_dying", "purgatory", "resurrection"]}, "islam_and_orthodoxy": {"label": "Islam And Orthodoxy", "category": "comparative_theology", "aliases": [], "description": "Islam is one of the world's major religions, denying the Incarnation and the Trinity. St. John of Damascus was among the first to offer a systematic Orthodox theological response to Islam, classifying", "related": ["incarnation", "trinity", "tradition"]}, "judgment": {"label": "Judgment", "category": "eschatology", "aliases": ["divine judgment", "final judgment"], "description": "God\u2019s righteous judgment over sin and His final vindication of truth and holiness.", "related": ["last_judgment", "eschatology", "salvation"]}, "kardia": {"label": "Kardia", "category": "ascetical_theology", "aliases": ["heart", "spiritual heart"], "description": "The heart as the deepest center of the human person where intellect, will, and love converge and where God dwells.", "related": ["nous", "nepsis", "prayer", "theosis"]}, "katharsis": {"label": "Katharsis", "category": "ascetical_theology", "aliases": ["purification", "cleansing", "purgation"], "description": "Purification \u2014 the first stage of the threefold way (purification, illumination, union), the cleansing of the passions.", "related": ["theosis", "repentance", "passions", "apatheia", "asceticism"]}, "kenosis": {"label": "Kenosis", "category": "christology", "aliases": ["self-emptying", "divine condescension"], "description": "The self-emptying of the eternal Son in the Incarnation (Phil 2:7) \u2014 His taking on of the limitations of human nature.", "related": ["incarnation", "atonement", "monasticism", "cross"]}, "kingdom_of_god": {"label": "Kingdom of God", "category": "eschatology", "aliases": ["kingdom of heaven", "basileia"], "description": "The reign of God revealed in Christ, present in the Church, and fulfilled in the age to come.", "related": ["eschatology", "church", "second_coming"]}, "koimesis": {"label": "Koimesis", "category": "mariology", "aliases": ["dormition", "falling asleep", "repose"], "description": "The falling asleep of the Theotokos \u2014 her holy repose and glorification, celebrated August 15.", "related": ["dormition", "theotokos", "resurrection", "death_and_dying"]}, "koinonia": {"label": "Koinonia", "category": "ecclesiology", "aliases": ["communion", "fellowship"], "description": "Greek for communion or fellowship. The deepest unity of the faithful with God and with one another, expressed most fully in the Eucharist and in the common life of the Church. Koinonia is not merely s", "related": ["eucharist", "church", "theosis"]}, "krisis": {"label": "Krisis", "category": "eschatology", "aliases": ["judgment", "divine judgment"], "description": "Judgment \u2014 the divine disclosure of truth at death and at the Last Judgment, when all is revealed before God.", "related": ["judgment", "last_judgment", "eschatology", "toll_houses"]}, "last_judgment": {"label": "Last Judgment", "category": "eschatology", "aliases": [], "description": "The final revelation of truth before God at the end of history, in which all are judged according to their response to love \u2014 both divine and human. Christ's parable of the sheep and goats (Matthew 25", "related": ["eschatology", "resurrection", "second_coming"]}, "lazarus_saturday": {"label": "Lazarus Saturday", "category": "liturgical_theology", "aliases": ["raising of lazarus", "saturday of lazarus"], "description": "The Saturday before Palm Sunday, commemorating the raising of Lazarus as a foreshadowing of the universal resurrection.", "related": ["resurrection", "pascha", "divine_liturgy", "lent"]}, "leitourgia": {"label": "Leitourgia", "category": "liturgical_theology", "aliases": ["liturgy", "public worship", "common work"], "description": "Liturgy \u2014 the common worship of the people of God, the action of the whole Church offering itself to the Father through the Son in the Spirit.", "related": ["divine_liturgy", "liturgical_theology", "eucharist", "church"]}, "lent": {"label": "Great Lent", "category": "liturgical_theology", "aliases": ["great fast", "holy forty days", "lenten season"], "description": "The forty-day season of intensified fasting, prayer, and repentance preceding Holy Week and Pascha.", "related": ["triodion", "repentance", "fasting", "pascha", "lenten_worship"]}, "lenten_worship": {"label": "Lenten Worship", "category": "liturgical_theology", "aliases": ["great lent", "holy week"], "description": "The liturgical services of Great Lent, including the Great Canon of St. Andrew of Crete, the Prayer of St. Ephrem, the Presanctified Liturgy, and the Akathist Hymn. Lenten worship is the Church's scho", "related": ["repentance", "prayer", "paschal_worship"]}, "liturgical_theology": {"label": "Liturgical Theology", "category": "liturgical_theology", "aliases": [], "description": "The theological reflection on the Church's worship \u2014 its structure, content, and transformative power. In Orthodoxy, the liturgy is itself a primary source of theology: the lex orandi (law of prayer) ", "related": ["eucharist", "church", "theosis"]}, "liturgy": {"label": "Liturgy", "category": "liturgical_theology", "aliases": ["divine liturgy", "leitourgia"], "description": "The public worship of the Church, especially the Eucharistic assembly.", "related": ["divine_liturgy", "liturgical_theology", "eucharist"]}, "logismoi": {"label": "Logismoi", "category": "ascetical_theology", "aliases": ["thoughts", "intrusive thoughts", "eight logismoi"], "description": "The persistent thoughts or impulses through which the passions enter the soul. Identified by Evagrius as eight principal types.", "related": ["passions", "nepsis", "apatheia", "nous"]}, "logos": {"label": "Logos", "category": "christology", "aliases": ["word of god", "divine word"], "description": "The eternal Word of God, the second Person of the Trinity, through whom all things were made and who became flesh.", "related": ["incarnation", "christology", "trinity", "scripture"]}, "love": {"label": "Love", "category": "ascetical_theology", "aliases": ["agape", "charity", "divine love"], "description": "Holy love of God and neighbor, the fulfillment of the commandments and the bond of perfection.", "related": ["theosis", "koinonia"]}, "manifestation_of_christ": {"label": "Manifestation of Christ", "category": "christology", "aliases": ["revelation_of_christ"], "description": "The revelation of Christ\u2019s identity and glory in His words, works, and saving presence.", "related": ["incarnation"]}, "marriage": {"label": "Marriage", "category": "sacramental_theology", "aliases": [], "description": "A holy mystery in which a man and woman are crowned and united in Christ, becoming a small church (church in miniature) and participating in the love of God. Marriage is not merely a civil or social c", "related": ["theosis", "church"]}, "messiah": {"label": "Messiah", "category": "christology", "aliases": ["anointed one", "christos"], "description": "Christ as the promised Anointed One who fulfills the hopes of Israel and brings salvation.", "related": ["incarnation", "christology", "eschatology"]}, "metanoia": {"label": "Metanoia", "category": "ascetical_theology", "aliases": ["repentance", "change of mind", "conversion"], "description": "A complete change of mind and orientation \u2014 repentance as the turning of the whole person toward God.", "related": ["repentance", "confession", "salvation", "passions"]}, "mission": {"label": "Mission", "category": "ecclesiology", "aliases": [], "description": "The sending of the Church to proclaim the Gospel to all nations and to gather the peoples into the Body of Christ. For Orthodoxy, mission is not cultural imposition but incarnational \u2014 the Gospel take", "related": ["church", "incarnation", "salvation"]}, "monasticism": {"label": "Monasticism", "category": "ascetical_theology", "aliases": ["monastic life"], "description": "The vocation of withdrawing from the world to seek God through prayer, fasting, obedience, and community. Monastic life is the heart of the Orthodox spiritual tradition, producing the Philokalia and m", "related": ["hesychasm", "spiritual_father", "philokalia"]}, "mysterion": {"label": "Mysterion", "category": "sacramental_theology", "aliases": ["mystery", "holy mystery", "sacrament"], "description": "Mystery \u2014 the sacraments as saving acts of God in which the faithful participate in the divine life.", "related": ["sacraments", "eucharist", "baptism", "church"]}, "naos": {"label": "Naos", "category": "liturgical_theology", "aliases": ["nave", "sanctuary", "temple nave"], "description": "The nave or sanctuary of the church \u2014 the space of the assembly, theologically the place of the Church's priestly offering.", "related": ["temple", "divine_liturgy", "liturgical_theology", "theotokos"]}, "nativity": {"label": "Nativity", "category": "liturgical_theology", "aliases": ["christmas", "birth of christ"], "description": "The feast of the birth of Christ according to the flesh.", "related": ["incarnation", "theotokos", "divine_liturgy"]}, "nativity_of_theotokos": {"label": "Nativity of the Theotokos", "category": "liturgical_theology", "aliases": ["birth of the theotokos", "nativity of our lady"], "description": "Great Feast celebrating the birth of the Virgin Mary, the vessel prepared by God for the Incarnation.", "related": ["theotokos", "incarnation", "divine_liturgy"]}, "nepsis": {"label": "Nepsis", "category": "ascetical_theology", "aliases": ["watchfulness", "sobriety", "vigilance of heart"], "description": "The attentive guarding of the mind and heart against sinful thoughts. The foundational ascetical practice of the Philokalia.", "related": ["watchfulness", "hesychia", "kardia", "logismoi", "philokalia"]}, "new_age_and_orthodoxy": {"label": "New Age And Orthodoxy", "category": "comparative_theology", "aliases": [], "description": "The New Age movement draws on Eastern religions, occultism, and Western esotericism, often teaching that divinity is immanent in all things and that the self can be its own god. Orthodoxy contrasts au", "related": ["theosis", "apophatic_theology"]}, "nike": {"label": "Nike", "category": "paschal_theology", "aliases": ["victory", "triumph"], "description": "Victory \u2014 Christ's triumph over sin, death, and the devil through His Pascha.", "related": ["christ_victory", "resurrection", "pascha", "atonement"]}, "nomos": {"label": "Nomos", "category": "scripture_and_tradition", "aliases": ["law", "mosaic law", "the law"], "description": "The Law \u2014 fulfilled and transcended in Christ, interpreted typologically in relation to the New Covenant.", "related": ["tradition", "sola_scriptura", "scripture"]}, "nous": {"label": "Nous", "category": "ascetical_theology", "aliases": ["intellect", "spiritual intellect", "eye of the soul"], "description": "The highest faculty of the human person \u2014 the eye of the soul capable of direct perception of God when purified.", "related": ["kardia", "hesychia", "theoria", "theosis", "image_and_likeness"]}, "obedience": {"label": "Obedience", "category": "ascetical_theology", "aliases": ["hypakoe"], "description": "Faithful submission to God\u2019s will, exemplified perfectly in Christ and cultivated in the spiritual life.", "related": ["free_will", "monasticism", "asceticism"]}, "oikonomia": {"label": "Oikonomia", "category": "triadology", "aliases": ["economy", "divine economy", "dispensation"], "description": "The divine economy \u2014 God's saving plan as it unfolds in history, to be distinguished from the eternal theologia.", "related": ["salvation", "incarnation", "theologia_vs_oikonomia"]}, "once_saved_always_saved": {"label": "Once Saved Always Saved", "category": "soteriology", "aliases": ["perseverance of the saints", "eternal security"], "description": "The Protestant doctrine that genuine saving faith cannot ultimately be lost. Orthodoxy rejects this, teaching that salvation is a lifelong journey requiring perseverance, repentance, and continued coo", "related": ["salvation", "free_will", "repentance"]}, "ousia": {"label": "Ousia", "category": "triadology", "aliases": ["essence", "divine essence", "being"], "description": "The divine essence or being, shared equally and fully by all three Persons of the Trinity.", "related": ["trinity", "hypostasis", "divine_energies", "divine_essence"]}, "palm_sunday": {"label": "Palm Sunday", "category": "liturgical_theology", "aliases": ["entry into jerusalem", "sunday of palms", "flower sunday"], "description": "The feast commemorating Christ's triumphal entry into Jerusalem, opening Holy Week.", "related": ["pascha", "divine_liturgy", "lenten_worship", "lent"]}, "papacy": {"label": "Papacy", "category": "ecclesiology", "aliases": ["papal supremacy", "pope"], "description": "The Roman Catholic doctrine of the Bishop of Rome as the supreme and universal pastor of the Church with jurisdictional authority over all Christians. Orthodoxy honors Rome's ancient dignity but rejec", "related": ["apostolic_succession", "sobornost", "great_schism"]}, "paradosis": {"label": "Paradosis", "category": "scripture_and_tradition", "aliases": ["tradition", "handing on", "holy tradition"], "description": "The handing on of the faith \u2014 the living Tradition of the Church encompassing Scripture, councils, Fathers, and liturgy.", "related": ["tradition", "church", "apostolic_succession", "scripture"]}, "parousia": {"label": "Parousia", "category": "eschatology", "aliases": ["second coming", "return of christ", "advent"], "description": "The Second Coming of Christ in glory to judge the living and the dead and to inaugurate the Kingdom in its fullness.", "related": ["second_coming", "eschatology", "last_judgment", "judgment"]}, "pascha": {"label": "Pascha", "category": "paschal_theology", "aliases": ["easter", "feast of feasts"], "description": "The feast of Christ\u2019s Resurrection, the center of the liturgical year.", "related": ["resurrection", "atonement", "paschal_worship"]}, "paschal_worship": {"label": "Paschal Worship", "category": "paschal_theology", "aliases": ["pascha", "easter worship"], "description": "The liturgical celebration of Holy Pascha \u2014 the Feast of feasts \u2014 encompassing Holy Friday, Holy Saturday, and the Paschal Vigil. The Paschal Canon of John of Damascus, Chrysostom's Paschal Homily, an", "related": ["resurrection", "salvation", "lenten_worship"]}, "passions": {"label": "Passions", "category": "ascetical_theology", "aliases": ["disordered desires", "logismoi"], "description": "Disordered movements of the soul that are healed through repentance and ascetical life.", "related": ["logismoi", "nepsis", "repentance", "asceticism"]}, "pentecost": {"label": "Pentecost", "category": "pneumatology", "aliases": ["feast of pentecost"], "description": "The feast of the descent of the Holy Spirit and the manifestation of the Church.", "related": ["holy_spirit", "church", "resurrection"]}, "perichoresis": {"label": "Perichoresis", "category": "triadology", "aliases": ["mutual indwelling", "co-inherence", "circumincession"], "description": "The complete mutual indwelling of the three Persons of the Holy Trinity without confusion or separation.", "related": ["trinity", "hypostasis", "divine_energies", "theosis"]}, "philokalia": {"label": "Philokalia", "category": "ascetical_theology", "aliases": ["love of the beautiful"], "description": "Greek for 'love of the beautiful'. A collection of writings by the Fathers of the desert and monastery tradition, compiled by Nikodemos the Hagiorite and Makarios of Corinth in 1782, and translated in", "related": ["hesychasm", "monasticism", "prayer"]}, "phronema": {"label": "Phronema", "category": "ecclesiology", "aliases": ["mind of the church", "orthodox mindset"], "description": "The mind of the Church \u2014 the way of perceiving all things formed by the living Tradition and the consensus of the Fathers.", "related": ["tradition", "church", "what_is_orthodoxy", "ecclesiology"]}, "physis": {"label": "Physis", "category": "christology", "aliases": ["nature", "divine and human nature"], "description": "Nature in the patristic sense \u2014 used to describe the two complete natures, divine and human, in the one Person of Christ.", "related": ["two_natures", "christology", "hypostatic_union", "incarnation"]}, "pistis": {"label": "Pistis", "category": "soteriology", "aliases": ["faith", "trust", "belief"], "description": "Faith \u2014 not mere intellectual assent but the entrusting of the whole person to God in the communion of the Church.", "related": ["faith", "salvation", "tradition", "scripture"]}, "pneuma": {"label": "Pneuma", "category": "triadology", "aliases": ["spirit", "holy spirit", "breath"], "description": "Spirit \u2014 used of the Holy Spirit, the third Person of the Trinity, and of the human spirit renewed by grace.", "related": ["holy_spirit", "trinity", "baptism", "epiklesis", "filioque"]}, "pneumatology": {"label": "Pneumatology", "category": "triadology", "aliases": ["theology of the holy spirit"], "description": "The theology of the Holy Spirit \u2014 His Person, eternal procession from the Father alone, and work of sanctification.", "related": ["holy_spirit", "ekporeusis", "filioque", "trinity", "epiklesis"]}, "prayer": {"label": "Prayer", "category": "ascetical_theology", "aliases": [], "description": "Communion with God through worship, petition, thanksgiving, and contemplation.", "related": ["hesychasm", "repentance", "monasticism", "liturgical_theology"]}, "predestination": {"label": "Predestination", "category": "soteriology", "aliases": ["foreordination"], "description": "The Orthodox teaching that God foreknows all things but does not foreordain individuals to damnation. God wills all to be saved. Orthodox theology firmly rejects the Calvinist doctrine of double prede", "related": ["free_will", "salvation", "calvinism"]}, "presentation_of_christ": {"label": "Presentation of Christ", "category": "liturgical_theology", "aliases": ["meeting of the lord", "hypapante", "candlemas"], "description": "Great Feast commemorating the presentation of the infant Christ in the Temple and His meeting with Simeon.", "related": ["incarnation", "divine_liturgy", "temple", "theotokos"]}, "priesthood": {"label": "Priesthood", "category": "sacramental_theology", "aliases": [], "description": "The ordained ministry of the Church through which the sacraments are celebrated, the word is proclaimed, and the people of God are shepherded. The priest acts in the person of Christ as the head of th", "related": ["apostolic_succession", "eucharist", "church"]}, "prodigal_son": {"label": "Sunday of the Prodigal Son", "category": "liturgical_theology", "aliases": ["parable of the prodigal son sunday"], "description": "The pre-Lenten Sunday proclaiming God's boundless mercy and the possibility of repentance and return.", "related": ["repentance", "salvation", "triodion", "lent"]}, "proorismos": {"label": "Proorismos", "category": "soteriology", "aliases": ["predestination", "foreordination"], "description": "Predestination \u2014 Orthodox theology distinguishes divine foreknowledge from causal predetermination, preserving human freedom.", "related": ["predestination", "free_will", "calvinism", "salvation"]}, "propatorikon": {"label": "Propatorikon", "category": "anthropology", "aliases": ["ancestral sin", "sin of the forefather"], "description": "The ancestral sin of Adam \u2014 transmitted as corruption and mortality, not guilt, to all human beings in Orthodox theology.", "related": ["ancestral_sin", "free_will", "baptism", "human_person"]}, "prosopon": {"label": "Prosopon", "category": "christology", "aliases": ["person", "face", "countenance"], "description": "Person \u2014 used in Trinitarian and Christological theology; distinguished from hypostasis in pre-Chalcedonian debates.", "related": ["hypostasis", "christology", "two_natures", "incarnation"]}, "publican_and_pharisee": {"label": "Sunday of the Publican and Pharisee", "category": "liturgical_theology", "aliases": ["pharisee and publican sunday"], "description": "The pre-Lenten Sunday opening the Triodion, teaching humility and true repentance through the parable.", "related": ["repentance", "prayer", "triodion", "lent"]}, "purgatory": {"label": "Purgatory", "category": "comparative_theology", "aliases": ["purgatorial fire"], "description": "The Roman Catholic doctrine of a place or state of purifying suffering after death. Orthodoxy rejects purgatorial fire but affirms prayer for the departed and the possibility of continued purification", "related": ["death_and_dying", "intermediate_state", "toll_houses"]}, "repentance": {"label": "Repentance", "category": "ascetical_theology", "aliases": ["metanoia"], "description": "The turning of the heart back to God through sorrow for sin and renewed obedience.", "related": ["confession", "salvation", "prayer", "theosis", "free_will"]}, "resurrection": {"label": "Resurrection", "category": "paschal_theology", "aliases": [], "description": "Christ\u2019s victory over death and the foundation of Christian hope.", "related": ["salvation", "resurrection"]}, "sacraments": {"label": "Sacraments", "category": "sacramental_theology", "aliases": ["holy mysteries", "mysteries"], "description": "The holy mysteries through which divine grace is communicated in the Church.", "related": ["eucharist", "baptism", "church"]}, "sacrifice": {"label": "Sacrifice", "category": "soteriology", "aliases": ["offering", "thysia"], "description": "Self-offering to God, fulfilled perfectly in the saving sacrifice of Christ.", "related": ["atonement", "eucharist", "cross"]}, "saints": {"label": "Saints", "category": "ecclesiology", "aliases": ["holy ones", "hagios"], "description": "The holy ones of God who manifest the fruits of grace and remain in communion with the Church.", "related": ["saints_intercession", "theosis", "church"]}, "saints_intercession": {"label": "Saints Intercession", "category": "soteriology", "aliases": ["intercession of saints", "prayers of the saints"], "description": "The Orthodox teaching that the saints, being alive in God, pray for the Church on earth. Their intercession is not a mediating role separate from Christ but a participation in His one mediation. The f", "related": ["church", "theosis", "prayer"]}, "salvation": {"label": "Salvation", "category": "soteriology", "aliases": ["redemption"], "description": "Deliverance from sin and death through Christ, culminating in life in God.", "related": ["theosis", "incarnation", "grace", "resurrection", "repentance"]}, "sarx": {"label": "Sarx", "category": "anthropology", "aliases": ["flesh", "human flesh"], "description": "Flesh \u2014 human bodily nature, which the Son of God assumed in the Incarnation, hallowing and redeeming it.", "related": ["incarnation", "ancestral_sin", "human_person", "nativity"]}, "scripture": {"label": "Scripture", "category": "scripture_and_tradition", "aliases": ["holy scripture", "bible"], "description": "The inspired writings received by the Church as authoritative witness to divine revelation.", "related": ["tradition", "sola_scriptura", "church"]}, "second_coming": {"label": "Second Coming", "category": "eschatology", "aliases": ["parousia", "return of christ"], "description": "The expected return of Jesus Christ at the end of history in glory, to judge the living and the dead and to establish His kingdom fully. The Fathers consistently taught watchfulness and readiness rath", "related": ["eschatology", "last_judgment", "resurrection"]}, "secularism_and_orthodoxy": {"label": "Secularism And Orthodoxy", "category": "comparative_theology", "aliases": [], "description": "Secularism excludes God and transcendent meaning from public and personal life. The Orthodox response \u2014 rooted in Basil the Great, Justin Martyr, and Justin Popovich \u2014 holds that authentic human flour", "related": ["tradition", "church", "what_is_orthodoxy"]}, "sin": {"label": "Sin", "category": "soteriology", "aliases": ["hamartia", "missing the mark"], "description": "The distortion of human life and communion with God, healed through repentance and salvation in Christ.", "related": ["repentance", "ancestral_sin", "salvation"]}, "sobornost": {"label": "Sobornost", "category": "ecclesiology", "aliases": ["conciliarity"], "description": "A Slavic term expressing the conciliar, communal nature of the Church \u2014 the gathered unity of all in free agreement under the Holy Spirit. Sometimes translated as 'conciliarity', it emphasizes that au", "related": ["church", "tradition", "councils"]}, "sola_fide": {"label": "Sola Fide", "category": "soteriology", "aliases": ["faith alone"], "description": "The Protestant doctrine that justification is by faith alone, apart from works. Orthodoxy affirms that salvation requires faith expressed through repentance, love, and cooperation with grace \u2014 what th", "related": ["salvation", "repentance", "free_will"]}, "sola_scriptura": {"label": "Sola Scriptura", "category": "scripture_and_tradition", "aliases": ["scripture alone"], "description": "The Protestant principle that Scripture alone is the sufficient rule of faith and practice. Orthodoxy holds that Scripture is received, interpreted, and preserved within the living Tradition of the Ch", "related": ["tradition", "councils", "apostolic_succession"]}, "soteria": {"label": "Soteria", "category": "soteriology", "aliases": ["salvation", "deliverance"], "description": "Salvation \u2014 understood in Orthodox theology not merely as forgiveness of sins but as healing, deification, and union with God.", "related": ["salvation", "theosis", "resurrection", "atonement"]}, "spiritual_father": {"label": "Spiritual Father", "category": "ascetical_theology", "aliases": [], "description": "An elder or confessor who guides a person on the spiritual path through discernment, counsel, and prayer. The relationship of spiritual fatherhood is foundational in Orthodox ascetic tradition \u2014 the L", "related": ["monasticism", "confession", "hesychasm"]}, "stauros": {"label": "Stauros", "category": "soteriology", "aliases": ["cross", "holy cross"], "description": "The Cross of Christ \u2014 instrument of atonement and the sign of the Kingdom, venerated as the tree of life.", "related": ["atonement", "crucifixion", "sacrifice", "cross"]}, "staurosis": {"label": "Staurosis", "category": "soteriology", "aliases": ["crucifixion", "the crucifying"], "description": "The Crucifixion of Christ \u2014 His voluntary self-offering on the Cross for the life of the world.", "related": ["crucifixion", "atonement", "cross", "kenosis"]}, "suffering": {"label": "Suffering", "category": "ascetical_theology", "aliases": [], "description": "Trials, illness, loss, and hardship understood in Orthodox theology not as signs of divine abandonment but as means of purification, humility, and participation in the sufferings of Christ. The Father", "related": ["repentance", "theosis", "salvation", "kenosis", "passions"]}, "sunday_of_climacus": {"label": "Sunday of St. John Climacus", "category": "liturgical_theology", "aliases": ["fourth sunday of lent", "climacus sunday"], "description": "The fourth Sunday of Lent, honoring St. John Climacus, author of the Ladder of Divine Ascent.", "related": ["nepsis", "hesychia", "lent", "triodion"]}, "sunday_of_holy_cross": {"label": "Sunday of the Holy Cross", "category": "liturgical_theology", "aliases": ["third sunday of lent", "veneration of the cross"], "description": "The third Sunday of Lent on which the Holy Cross is venerated, refreshing the faithful for the remainder of the fast.", "related": ["atonement", "cross", "lent", "triodion"]}, "sunday_of_last_judgment": {"label": "Sunday of the Last Judgment", "category": "liturgical_theology", "aliases": ["meatfare sunday", "judgment sunday"], "description": "The pre-Lenten Sunday on which the Church meditates on the Last Judgment, beginning the Lenten call to repentance.", "related": ["judgment", "last_judgment", "triodion", "repentance"]}, "sunday_of_mary_egypt": {"label": "Sunday of St. Mary of Egypt", "category": "liturgical_theology", "aliases": ["fifth sunday of lent", "mary of egypt sunday"], "description": "The fifth Sunday of Lent, honoring St. Mary of Egypt as a model of radical repentance and transformation.", "related": ["repentance", "lent", "triodion", "theosis"]}, "sunday_of_orthodoxy": {"label": "Sunday of Orthodoxy", "category": "liturgical_theology", "aliases": ["triumph of orthodoxy", "first sunday of lent"], "description": "The first Sunday of Lent, commemorating the final restoration of the holy icons in 843.", "related": ["icons", "tradition", "lent", "triodion"]}, "sunday_of_palamas": {"label": "Sunday of St. Gregory Palamas", "category": "liturgical_theology", "aliases": ["second sunday of lent", "palamas sunday"], "description": "The second Sunday of Lent, honoring St. Gregory Palamas and his theology of the divine Energies.", "related": ["divine_energies", "hesychast_controversy", "lent", "triodion"]}, "synergia": {"label": "Synergia", "category": "soteriology", "aliases": ["synergy", "cooperation with god", "theandric cooperation"], "description": "The cooperation of the human will with divine grace in the work of salvation \u2014 neither pure autonomy nor passive receptivity.", "related": ["free_will", "grace", "salvation", "theosis"]}, "temple": {"label": "Temple", "category": "scripture_and_tradition", "aliases": ["naos", "house of god"], "description": "The temple as the place of divine presence and worship, fulfilled in Christ and extended in the life of the Church.", "related": ["liturgical_theology", "theotokos", "incarnation"]}, "theanthropos": {"label": "Theanthropos", "category": "christology", "aliases": ["god-man", "divine-human"], "description": "The God-Man \u2014 the one Person of Jesus Christ who is both fully divine and fully human.", "related": ["christology", "two_natures", "hypostatic_union", "incarnation"]}, "thelema": {"label": "Thelema", "category": "christology", "aliases": ["will", "divine will", "two wills"], "description": "Will \u2014 in Christology, the two wills of Christ, divine and human, each operating without confusion per Constantinople III.", "related": ["two_wills", "free_will", "christology", "incarnation"]}, "theologia": {"label": "Theologia", "category": "triadology", "aliases": ["theology proper", "contemplation of god"], "description": "Theology in the strict patristic sense \u2014 contemplative knowledge of the Trinity as distinct from the divine economy.", "related": ["apophatic_theology", "hesychasm", "theologia_vs_oikonomia", "prayer"]}, "theologia_vs_oikonomia": {"label": "Theologia Vs Oikonomia", "category": "triadology", "aliases": [], "description": "A fundamental patristic distinction: theologia refers to God as He is in Himself \u2014 the inner life of the Trinity \u2014 while oikonomia refers to God's saving activity in history. Maximus the Confessor and", "related": ["trinity", "incarnation", "apophatic_theology"]}, "theophania": {"label": "Theophania", "category": "christology", "aliases": ["theophany", "divine appearance", "manifestation of god"], "description": "The appearance of God \u2014 theophanies in the Old Testament are read as pre-incarnate manifestations of the Logos.", "related": ["manifestation_of_christ", "trinity", "incarnation", "logos"]}, "theophany": {"label": "Theophany", "category": "liturgical_theology", "aliases": ["epiphany", "baptism of christ", "feast of lights"], "description": "The Great Feast of the Baptism of Christ, when the Holy Trinity was manifested at the Jordan River.", "related": ["baptism", "trinity", "manifestation_of_christ", "divine_liturgy"]}, "theoria": {"label": "Theoria", "category": "ascetical_theology", "aliases": ["divine vision", "contemplation", "illumination"], "description": "The vision of God \u2014 the direct perception of the divine Energies granted to the purified nous in hesychast prayer.", "related": ["hesychasm", "divine_energies", "nous", "theosis", "apophatic_theology"]}, "theos": {"label": "Theos", "category": "triadology", "aliases": ["god", "deity"], "description": "God \u2014 the one divine Being existing as Trinity, worshipped as Father, Son, and Holy Spirit.", "related": ["trinity", "incarnation", "divinity_of_christ"]}, "theosis": {"label": "Theosis", "category": "soteriology", "aliases": ["deification"], "description": "Participation in the divine life through union with God in Christ.", "related": ["incarnation", "salvation", "theosis"]}, "theotokos": {"label": "Theotokos", "category": "mariology", "aliases": ["mother_of_god"], "description": "The Virgin Mary as the bearer of God incarnate and chief witness to the mystery of the Incarnation.", "related": ["incarnation", "liturgical_theology", "theotokos"]}, "theotokos_term": {"label": "Theotokos (term)", "category": "mariology", "aliases": ["god-bearer", "mother of god", "birth-giver of god"], "description": "The title Theotokos affirmed at Ephesus (431) \u2014 Mary is the Mother of God because the one she bore is God incarnate.", "related": ["theotokos", "incarnation", "christology", "hypostatic_union"]}, "thysia": {"label": "Thysia", "category": "soteriology", "aliases": ["sacrifice", "offering"], "description": "Sacrifice \u2014 the self-offering of Christ on the Cross, continued sacramentally in the Eucharist.", "related": ["sacrifice", "eucharist", "atonement", "crucifixion"]}, "toll_houses": {"label": "Toll Houses", "category": "eschatology", "aliases": [], "description": "A patristic image, found especially in Gregory of Nyssa and other Fathers, depicting the soul's passage after death through a series of spiritual trials or examinations before demons. Understood by mo", "related": ["death_and_dying", "intermediate_state", "purgatory"]}, "tradition": {"label": "Tradition", "category": "scripture_and_tradition", "aliases": ["holy_tradition"], "description": "The living transmission of the apostolic faith in the life, worship, and teaching of the Church.", "related": ["church", "councils", "tradition", "icons"]}, "transfiguration": {"label": "Transfiguration", "category": "liturgical_theology", "aliases": ["feast of the transfiguration", "metamorphosis"], "description": "The Great Feast commemorating Christ's revelation of His divine glory on Mount Tabor \u2014 the foundation of hesychast theology.", "related": ["divine_energies", "hesychast_controversy", "theosis", "divine_liturgy"]}, "trias": {"label": "Trias", "category": "triadology", "aliases": ["trinity", "holy triad"], "description": "The Holy Trinity \u2014 the one God in three Persons, Father, Son, and Holy Spirit.", "related": ["trinity", "perichoresis", "ousia", "hypostasis"]}, "trinity": {"label": "Trinity", "category": "triadology", "aliases": ["holy_trinity"], "description": "The one God in three divine persons: Father, Son, and Holy Spirit.", "related": ["filioque", "holy_spirit", "perichoresis", "incarnation", "councils"]}, "triodion": {"label": "Triodion", "category": "liturgical_theology", "aliases": ["lenten triodion", "pre-lenten period"], "description": "The liturgical book and season covering the pre-Lenten and Lenten period through Holy Saturday, containing the Great Canon of St. Andrew of Crete.", "related": ["lent", "repentance", "pascha", "lenten_worship", "divine_liturgy"]}, "two_natures": {"label": "Two Natures of Christ", "category": "christology", "aliases": ["divine and human nature"], "description": "The confession that Christ is fully God and fully man.", "related": ["christology", "hypostatic_union", "incarnation"]}, "two_wills": {"label": "Two Wills of Christ", "category": "christology", "aliases": ["dyothelite"], "description": "The confession that Christ possesses both a divine will and a human will.", "related": ["christology", "incarnation", "hesychast_controversy"]}, "virtue": {"label": "Virtue", "category": "ascetical_theology", "aliases": ["arete"], "description": "Holy habits and dispositions formed by grace and ascetical struggle.", "related": ["asceticism", "theosis", "passions"]}, "watchfulness": {"label": "Watchfulness", "category": "ascetical_theology", "aliases": ["nepsis", "sobriety", "vigilance"], "description": "Spiritual vigilance over the heart and mind through prayer, discernment, and sobriety.", "related": ["hesychasm", "prayer"]}, "what_is_orthodoxy": {"label": "What Is Orthodoxy", "category": "ecclesiology", "aliases": ["orthodox faith", "orthodoxy"], "description": "Orthodox Christianity is the fullness of the Christian faith preserved in unbroken continuity from the apostles through the Fathers, councils, and saints. It is not one denomination among many but the", "related": ["tradition", "theosis", "church"]}, "women_in_orthodoxy": {"label": "Women In Orthodoxy", "category": "ascetical_theology", "aliases": [], "description": "Women occupy a place of profound dignity in the Orthodox Church \u2014 as the Mother of God (highest of all creatures), as martyrs, as equal bearers of the image of God, and as monastics and prophets. Orth", "related": ["church", "theosis", "monasticism"]}, "essence_energies": {"label": "Essence and Energies", "category": "triadology", "aliases": ["palamism", "divine energies distinction", "uncreated energies", "palamite theology"], "description": "The Palamite teaching that God is truly known and participated in through His uncreated energies, while His essence remains absolutely unknowable and unparticipable. Defined at the Councils of Constantinople 1341 and 1351.", "related": ["divine_energies", "divine_essence", "theosis", "hesychasm", "hesychast_controversy", "theoria", "apophatic_theology"]}, "great_canon": {"label": "Great Canon of St. Andrew of Crete", "category": "ascetical_theology", "aliases": ["great canon", "canon of andrew", "andrew of crete canon", "lenten canon"], "description": "The longest canon in the Orthodox liturgical tradition, chanted during the first week of Great Lent and on Thursday of the fifth week. A sustained meditation on repentance, the soul's journey through Scripture, and the mercy of God.", "related": ["repentance", "lent", "triodion", "lenten_worship", "metanoia", "great_schism"]}, "paschal_homily": {"label": "Paschal Homily of St. John Chrysostom", "category": "paschal_theology", "aliases": ["paschal homily", "chrysostom easter homily", "bright tuesday homily"], "description": "The homily of St. John Chrysostom read at every Orthodox Paschal Matins worldwide. Proclaims the universal invitation of the Resurrection and the complete defeat of death and Hades.", "related": ["resurrection", "pascha", "paschal_homily", "incarnation", "salvation"]}, "other_religions": {"label": "Orthodoxy and Other Religions", "category": "comparative_theology", "aliases": ["other faiths", "non-christian religions", "religious pluralism", "logos spermatikos", "orthodox missiology"], "description": "The Orthodox Church's theological engagement with non-Christian religions. Affirms that all truth belongs to the eternal Logos while holding that the fullness of saving truth is found only in the Orthodox Church as the Body of Christ. Grounded in the logos spermatikos teaching of Justin Martyr and the missionary witness of Sts. Nicholas of Japan and Justin Popovich.", "related": ["mission", "salvation", "logos", "ecclesiology", "comparative_theology", "christos"]}, "great_lent": {"label": "Great Lent", "category": "liturgical_theology", "aliases": ["holy forty days", "great fast", "forty-day fast"], "description": "The forty-day season of intensified fasting, prayer, and repentance before Holy Week and Pascha. Structured around four Sundays: St. Gregory Palamas (2nd), the Holy Cross (3rd), St. John Climacus (4th), and St. Mary of Egypt (5th). The Great Canon of St. Andrew of Crete is read in its fullness on Thursday of the fifth week.", "related": ["lent", "triodion", "repentance", "fasting", "pascha", "great_canon", "lenten_worship"]}, "soteriology": {"label": "Soteriology", "category": "soteriology", "aliases": ["doctrine of salvation", "theology of salvation"], "description": "The theological study of salvation. Orthodox soteriology is theocentric and participatory: salvation is not primarily forensic acquittal but theosis, the transformation of the whole person into the divine life through the Incarnation, Pascha, and the Holy Spirit.", "related": ["salvation", "theosis", "incarnation", "anakephalaiosis", "sola_fide", "synergy", "atonement"]}, "synergy": {"label": "Synergy", "category": "soteriology", "aliases": ["divine-human cooperation", "synergism", "theandric cooperation"], "description": "The cooperation of the human will with divine grace in the work of salvation. Orthodox theology holds that salvation requires the free response of the person to divine grace. Synergy is the theological basis for the Orthodox rejection of both Pelagianism and strict predestination.", "related": ["synergia", "free_will", "grace", "salvation", "predestination", "obedience"]}, "women_ordination": {"label": "Women and Ordination", "category": "comparative_theology", "aliases": ["ordination of women", "female priesthood", "women priests"], "description": "The Orthodox Church does not ordain women to the priesthood or episcopate. This reflects the theological structure of the priesthood: the priest serves as an icon of Christ who is male in His incarnate person. Women hold the highest dignity in Orthodoxy, with the Theotokos as the supreme exemplar of the human response to God.", "related": ["priesthood", "theotokos", "church", "women_in_orthodoxy", "sacraments"]}, "nicaea": {"label": "The First Council of Nicaea", "category": "scripture_and_tradition", "aliases": ["council of nicaea", "nicea", "first ecumenical council"], "description": "The First Ecumenical Council (325 AD) which defined the full divinity of Christ and produced the Nicene Creed.", "related": ["trinity", "christology", "councils", "filioque", "homoousios"]}, "providence": {"label": "Divine Providence", "category": "soteriology", "aliases": ["pronoia", "god's providence", "divine care"], "description": "The Orthodox teaching that God governs all creation with wisdom and love, guiding all things toward the salvation of humanity.", "related": ["suffering", "salvation", "theosis", "creation_theology"]}};
+var CATS      = {"triadology": {"label": "Triadology", "description": "Doctrine concerning the Holy Trinity: the Father, Son, and Holy Spirit."}, "christology": {"label": "Christology", "description": "Doctrine concerning the person, natures, and work of Jesus Christ."}, "pneumatology": {"label": "Pneumatology", "description": "Doctrine concerning the Holy Spirit and His work in the Church."}, "soteriology": {"label": "Soteriology", "description": "Doctrine concerning salvation, redemption, and participation in divine life."}, "ecclesiology": {"label": "Ecclesiology", "description": "Doctrine concerning the Church, its structure, authority, and continuity."}, "sacramental_theology": {"label": "Sacramental Theology", "description": "Doctrine concerning the holy mysteries through which divine grace is given."}, "ascetical_theology": {"label": "Ascetical Theology", "description": "Doctrine concerning repentance, spiritual struggle, purification, and prayer."}, "liturgical_theology": {"label": "Liturgical Theology", "description": "Doctrine expressed through the worship and liturgical life of the Church."}, "scripture_and_tradition": {"label": "Scripture and Tradition", "description": "Doctrine concerning divine revelation preserved in Holy Scripture and Holy Tradition."}, "mariology": {"label": "Mariology", "description": "Doctrine concerning the Theotokos and her role in the mystery of the Incarnation."}, "paschal_theology": {"label": "Paschal Theology", "description": "Doctrine centered on the death and resurrection of Christ and the victory over death."}, "anthropology": {"label": "Theological Anthropology", "description": "Doctrine concerning the human person as created in the image and likeness of God, and the effects of the fall."}, "comparative_theology": {"label": "Comparative Theology", "description": "Orthodox responses to and distinctions from Protestant, Catholic, and other religious traditions."}, "eschatology": {"label": "Eschatology", "description": "Doctrine concerning the last things: death, the intermediate state, the Second Coming, resurrection, and final judgment."}, "creation_theology": {"label": "Creation Theology", "description": "Doctrine concerning God as Creator, the goodness of creation, and humanity's role as steward and priest of the cosmos."}};
+var GREEK_LK  = {"analepsis": ["analepsis", "anastasis", "doxa", "theosis", "enanthropesis"], "anamnesis": ["anamnesis", "eucharistia", "epiklesis", "leitourgia", "mysterion"], "ancestral_sin": ["propatorikon", "hamartia", "sarx"], "apatheia": ["apatheia", "nepsis", "nous", "logismoi", "hesychia"], "apophatic_theology": ["ousia", "energeia", "theologia", "nous"], "apostolic_succession": ["ekklesia", "paradosis", "exousia"], "ascension": ["analepsis", "doxa", "glorification_of_christ"], "asceticism": ["nepsis", "apatheia", "katharsis", "logismoi"], "atonement": ["anakephalaiosis", "stauros", "soteria", "thysia", "staurosis", "kenosis", "nike"], "baptism": ["baptisma", "metanoia", "pneuma", "mysterion", "propatorikon"], "calvinism": ["proorismos", "synergia", "charis"], "chrismation": ["pneuma", "mysterion", "baptisma"], "christ_victory": ["nike", "anastasis", "stauros"], "christology": ["logos", "physis", "hypostasis", "theanthropos", "exousia", "perichoresis"], "church": ["ekklesia", "koinonia", "paradosis", "leitourgia", "phronema", "basileia", "exousia", "baptisma"], "comparative_theology": ["paradosis", "ekklesia", "metanoia", "krisis"], "confession": ["metanoia", "aphesis", "mysterion"], "councils": ["paradosis", "ekklesia"], "cross": ["stauros", "kenosis", "anakephalaiosis"], "crucifixion": ["staurosis", "thysia", "kenosis"], "daily_prayer_cycle": ["hesychia", "leitourgia", "nous"], "death_and_dying": ["hades", "koimesis", "anastasis", "krisis"], "descent_into_hades": ["hades", "anastasis", "nike"], "divine_energies": ["energeia", "theosis", "ousia", "perichoresis"], "divine_essence": ["ousia", "energeia"], "divine_liturgy": ["leitourgia", "eucharistia", "epiklesis", "anamnesis", "naos"], "divinity_of_christ": ["logos", "theos", "homoousios"], "dormition": ["koimesis", "anastasis", "theotokos"], "ecclesiology": ["ekklesia", "paradosis", "koinonia", "leitourgia", "mysterion", "exousia", "phronema"], "ecology_and_creation": ["logos", "theosis"], "ekporeusis": ["ekporeusis", "pneuma", "trias"], "energeia": ["energeia", "ousia", "theosis"], "epiklesis": ["epiklesis", "pneuma", "eucharistia", "anamnesis", "leitourgia"], "eschatology": ["parousia", "anastasis", "krisis", "hades", "christos", "analepsis", "basileia"], "eucharist": ["eucharistia", "mysterion", "koinonia", "epiklesis", "thysia", "anamnesis"], "exousia": ["exousia", "logos", "christos", "ekklesia"], "faith": ["pistis", "synergia", "charis"], "fasting": ["metanoia", "nepsis", "katharsis"], "filioque": ["ekporeusis", "pneuma", "trias"], "forgiveness": ["aphesis", "metanoia", "mysterion"], "free_will": ["synergia", "thelema", "proorismos", "propatorikon", "hypakoe"], "glorification_of_christ": ["doxa", "anastasis", "analepsis"], "grace": ["charis", "energeia", "synergia"], "great_schism": ["ekporeusis", "ekklesia", "paradosis"], "hesychasm": ["hesychia", "nepsis", "nous", "kardia", "theoria", "theologia", "philokalia", "apatheia"], "hesychast_controversy": ["energeia", "hesychia", "ousia", "theoria", "doxa", "glorification_of_christ"], "hesychia": ["hesychia", "nepsis", "nous", "kardia", "theoria"], "holiness": ["hagiosyne", "hagios", "theosis"], "holy_spirit": ["pneuma", "ekporeusis", "epiklesis", "charis"], "human_person": ["nous", "kardia", "sarx", "propatorikon"], "hymnography": ["doxa", "leitourgia", "paradosis"], "hypostasis": ["hypostasis", "ousia", "trias", "perichoresis"], "hypostatic_union": ["hypostasis", "physis", "enanthropesis"], "icons": ["enanthropesis", "doxa", "logos"], "image_and_likeness": ["nous", "theosis", "logos"], "incarnation": ["logos", "sarx", "physis", "hypostasis", "enanthropesis", "kenosis", "christos", "theotokos", "analepsis", "theosis", "prosopon", "thelema", "oikonomia", "theanthropos", "anakephalaiosis", "epiphaneia", "theos", "exousia", "theotokos_term"], "intermediate_state": ["hades", "krisis", "anastasis"], "islam_and_orthodoxy": ["logos", "enanthropesis", "trias"], "judgment": ["krisis", "parousia", "anastasis"], "kardia": ["kardia", "nous", "nepsis", "hesychia", "metanoia"], "kingdom_of_god": ["basileia", "parousia", "anastasis"], "koinonia": ["koinonia", "eucharistia", "agape"], "last_judgment": ["krisis", "parousia", "anastasis"], "lent": ["metanoia", "nepsis", "katharsis", "hesychia"], "lenten_worship": ["metanoia", "nepsis", "katharsis"], "liturgical_theology": ["leitourgia", "mysterion", "eucharistia", "anamnesis", "epiklesis", "doxa", "naos"], "liturgy": ["leitourgia", "eucharistia", "mysterion"], "logismoi": ["logismoi", "nous", "nepsis", "apatheia", "metanoia"], "love": ["agape", "theosis", "koinonia"], "manifestation_of_christ": ["theophania", "epiphaneia", "pneuma"], "marriage": ["mysterion", "agape", "theosis"], "messiah": ["christos", "logos", "basileia"], "mission": ["logos", "ekklesia", "soteria"], "monasticism": ["hesychia", "nepsis", "apatheia", "metanoia", "theoria", "katharsis", "nous", "kardia", "logismoi", "kenosis", "hypakoe", "philokalia"], "nativity": ["enanthropesis", "logos", "sarx"], "nepsis": ["nepsis", "hesychia", "nous", "kardia", "logismoi"], "new_age_and_orthodoxy": ["theosis", "ousia", "energeia"], "nous": ["nous", "kardia", "hesychia", "nepsis", "theoria", "logos"], "obedience": ["hypakoe", "thelema", "synergia"], "once_saved_always_saved": ["synergia", "pistis", "metanoia"], "papacy": ["ekklesia", "paradosis"], "pascha": ["anastasis", "nike", "soteria", "anamnesis"], "paschal_worship": ["anastasis", "nike", "stauros"], "passions": ["logismoi", "apatheia", "metanoia"], "pentecost": ["pneuma", "epiklesis", "charis", "analepsis"], "perichoresis": ["perichoresis", "trias", "ousia", "hypostasis", "energeia"], "philokalia": ["nepsis", "hesychia", "nous", "theoria", "katharsis", "philokalia"], "phronema": ["phronema", "paradosis", "ekklesia"], "pneumatology": ["pneuma", "ekporeusis", "trias", "charis", "epiklesis"], "prayer": ["nous", "kardia", "hesychia", "nepsis", "agape", "theologia"], "predestination": ["proorismos", "synergia", "thelema"], "priesthood": ["mysterion", "ekklesia", "leitourgia"], "purgatory": ["metanoia", "katharsis", "krisis"], "repentance": ["metanoia", "katharsis", "aphesis"], "resurrection": ["anastasis", "nike", "soteria", "analepsis", "koimesis", "glorification_of_christ"], "sacraments": ["mysterion", "eucharistia", "baptisma"], "sacrifice": ["thysia", "stauros", "eucharistia"], "saints": ["hagios", "theosis", "agape"], "saints_intercession": ["hagios", "agape", "koinonia", "hagiosyne"], "salvation": ["theosis", "anastasis", "charis", "synergia", "soteria", "oikonomia", "metanoia", "hamartia", "katharsis", "anakephalaiosis", "aphesis", "pistis"], "scripture": ["logos", "paradosis", "pistis"], "second_coming": ["parousia", "anastasis", "basileia"], "secularism_and_orthodoxy": ["logos", "ekklesia"], "sin": ["hamartia", "metanoia", "aphesis"], "sobornost": ["ekklesia", "koinonia", "paradosis"], "sola_fide": ["pistis", "synergia", "charis"], "sola_scriptura": ["paradosis", "pistis", "nomos"], "spiritual_father": ["nous", "metanoia", "nepsis"], "suffering": ["metanoia", "agape", "soteria"], "temple": ["naos", "leitourgia", "mysterion"], "theologia_vs_oikonomia": ["oikonomia", "trias", "logos"], "theosis": ["theosis", "energeia", "charis", "theoria", "katharsis", "nous", "synergia", "doxa", "soteria", "agape", "hagios", "hagiosyne", "analepsis", "apatheia", "kardia", "perichoresis"], "theotokos": ["theotokos", "koimesis", "enanthropesis", "theotokos_term", "naos"], "toll_houses": ["krisis", "metanoia", "hades"], "tradition": ["paradosis", "pistis", "phronema", "nomos"], "trinity": ["trias", "ousia", "hypostasis", "homoousios", "perichoresis", "theophania", "energeia", "prosopon", "pneuma", "ekporeusis", "theos"], "triodion": ["metanoia", "katharsis", "nepsis", "anastasis"], "two_natures": ["physis", "hypostasis", "theanthropos"], "two_wills": ["thelema", "physis", "synergia"], "virtue": ["apatheia", "katharsis"], "watchfulness": ["nepsis", "hesychia", "nous", "kardia", "logismoi", "philokalia"], "what_is_orthodoxy": ["paradosis", "theosis", "ekklesia", "phronema"], "women_in_orthodoxy": ["theosis", "hagios", "agape"], "essence_energies": ["energeia", "ousia", "theoria", "hesychia", "theosis"], "great_canon": ["metanoia", "katharsis", "anastasis"], "paschal_homily": ["anastasis", "nike", "soteria"], "other_religions": ["logos", "ekklesia", "soteria"], "great_lent": ["metanoia", "katharsis", "nepsis", "anastasis", "hesychia"], "soteriology": ["theosis", "soteria", "synergia", "anakephalaiosis", "charis", "oikonomia"], "synergy": ["synergia", "thelema", "charis", "proorismos"], "women_ordination": ["mysterion", "ekklesia", "leitourgia"], "anakephalaiosis": ["anakephalaiosis", "soteria", "logos", "stauros", "thysia", "kenosis"], "proorismos": ["proorismos", "synergia", "thelema", "charis"], "annunciation": ["enanthropesis", "logos", "theotokos"], "circumcision_of_christ": ["sarx", "enanthropesis", "oikonomia"], "elevation_of_holy_cross": ["stauros", "thysia", "nike", "soteria"], "entrance_of_theotokos": ["naos", "theotokos", "enanthropesis"], "forgiveness_sunday": ["metanoia", "aphesis", "katharsis"], "holy_friday": ["staurosis", "thysia", "stauros", "kenosis"], "lazarus_saturday": ["anastasis", "logos"], "nativity_of_theotokos": ["theotokos", "enanthropesis", "oikonomia"], "palm_sunday": ["christos", "logos", "anastasis"], "presentation_of_christ": ["enanthropesis", "logos", "theotokos"], "sunday_of_climacus": ["nepsis", "hesychia", "nous", "logismoi"], "sunday_of_holy_cross": ["stauros", "thysia", "nike"], "sunday_of_last_judgment": ["krisis", "parousia", "anastasis"], "sunday_of_mary_egypt": ["metanoia", "katharsis", "aphesis"], "sunday_of_orthodoxy": ["enanthropesis", "logos", "doxa", "paradosis"], "sunday_of_palamas": ["theosis", "energeia", "ousia", "theoria"], "theophany": ["theophania", "pneuma", "trias", "baptisma"], "transfiguration": ["energeia", "doxa", "ousia", "hesychia"], "prodigal_son": ["metanoia", "aphesis", "agape"], "publican_and_pharisee": ["metanoia", "apatheia", "kardia"]};
+var CAT_ORDER = ["triadology", "christology", "pneumatology", "soteriology", "ecclesiology", "sacramental_theology", "ascetical_theology", "liturgical_theology", "scripture_and_tradition", "mariology", "paschal_theology", "anthropology", "comparative_theology", "eschatology", "creation_theology"];
+var CAT_ICONS = {"triadology": "&#9670;", "christology": "&#9766;", "pneumatology": "&#9643;", "soteriology": "&#9775;", "ecclesiology": "&#9906;", "sacramental_theology": "&#9640;", "ascetical_theology": "&#9753;", "liturgical_theology": "&#9641;", "scripture_and_tradition": "&#9636;", "mariology": "&#9733;", "paschal_theology": "&#9680;", "anthropology": "&#9671;", "comparative_theology": "&#9632;", "eschatology": "&#9650;", "creation_theology": "&#9651;"};
+
+var currentView = 'cat';
+var currentCat  = null;
+var searchQuery = '';
+
+function setView(v){
+  currentView=v; currentCat=null;
+  document.getElementById('viewByCat').classList.toggle('active',v==='cat');
+  document.getElementById('viewAll').classList.toggle('active',v==='all');
+  renderContent();
+}
+
+function handleSearch(q){
+  searchQuery=q.toLowerCase().trim();
+  currentCat=null;
+  if(searchQuery) currentView='all';
+  renderContent();
+}
+
+function openCat(catId){
+  currentCat=catId; currentView='cat';
+  renderContent();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function openTopic(key){
+  var t=TOPICS[key]; if(!t) return;
+  var cat=CATS[t.category]||{};
+  document.getElementById('tm-title').textContent=t.label;
+  document.getElementById('tm-cat').textContent=(cat.label||t.category).toUpperCase();
+  document.getElementById('tm-def').textContent=t.description||'';
+
+  // Greek terms
+  var greekTerms=GREEK_LK[key]||[];
+  if(greekTerms.length){
+    document.getElementById('tm-greek-section').style.display='block';
+    document.getElementById('tm-greek').innerHTML=greekTerms.slice(0,6).map(function(g){
+      return '<button class="tm-tag" onclick="window.open('glossary.html#term-'+g+'','_blank')">'+g+'</button>';
+    }).join('');
+  } else document.getElementById('tm-greek-section').style.display='none';
+
+  // Related topics
+  var related=(t.related||[]).filter(function(r){return TOPICS[r]&&r!==key;});
+  if(related.length){
+    document.getElementById('tm-related-section').style.display='block';
+    document.getElementById('tm-related').innerHTML=related.slice(0,6).map(function(r){
+      var rt=TOPICS[r]; return '<button class="tm-tag" onclick="closeTopic();setTimeout(function(){openTopic(''+r+'');},100)">'+((rt&&rt.label)||r)+'</button>';
+    }).join('');
+  } else document.getElementById('tm-related-section').style.display='none';
+
+  // Links
+  var links='<a href="glossary.html" target="_blank" class="tm-link">&#913; Glossary</a>';
+  links+='<a href="feasts.html" target="_blank" class="tm-link">&#9733; Feasts</a>';
+  links+='<a href="church-fathers.html" target="_blank" class="tm-link">&#9998; Church Fathers</a>';
+  links+='<a href="chatbot.html?q='+encodeURIComponent('Tell me about '+t.label)+'" class="tm-link">&#9766; Ask Companion</a>';
+  document.getElementById('tm-links').innerHTML=links;
+
+  document.getElementById('topic-modal').classList.add('open');
+}
+
+function closeTopic(){document.getElementById('topic-modal').classList.remove('open');}
+document.getElementById('topic-modal').addEventListener('click',function(e){if(e.target===this)closeTopic();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeTopic();});
+
+function getTopicsForCat(catId){
+  return Object.entries(TOPICS).filter(function(e){
+    var t=e[1];
+    if(t.category!==catId&&!(catId==='scripture_and_tradition'&&t.category==='councils')) return false;
+    if(!searchQuery) return true;
+    return (t.label||'').toLowerCase().includes(searchQuery)||
+           (t.description||'').toLowerCase().includes(searchQuery)||
+           (t.aliases||[]).some(function(a){return a.toLowerCase().includes(searchQuery);});
+  });
+}
+
+function renderContent(){
+  var el=document.getElementById('topicsContent');
+
+  // Search results
+  if(searchQuery){
+    var results=Object.entries(TOPICS).filter(function(e){
+      var t=e[1];
+      return (t.label||'').toLowerCase().includes(searchQuery)||
+             (t.description||'').toLowerCase().includes(searchQuery)||
+             (t.aliases||[]).some(function(a){return a.toLowerCase().includes(searchQuery);});
+    });
+    if(!results.length){el.innerHTML='<div class="empty-msg">No topics found for &ldquo;'+searchQuery+'&rdquo;.</div>';return;}
+    var html='<div class="topic-grid">';
+    results.forEach(function(e){html+=renderTopicCard(e[0],e[1]);});
+    html+='</div>';
+    el.innerHTML=html; return;
+  }
+
+  // Category drill-down
+  if(currentCat){
+    var cat=CATS[currentCat]||{};
+    var catTopics=getTopicsForCat(currentCat);
+    var html='<button class="cat-back" onclick="currentCat=null;renderContent()">&#8592; All Categories</button>';
+    html+='<div class="cat-section">';
+    html+='<div class="cat-section-header"><div class="cat-section-title">'+(cat.label||currentCat)+'</div><div class="cat-section-line"></div></div>';
+    if(cat.description) html+='<div class="cat-section-desc">'+cat.description+'</div>';
+    html+='<div class="topic-grid">';
+    catTopics.forEach(function(e){html+=renderTopicCard(e[0],e[1]);});
+    html+='</div></div>';
+    el.innerHTML=html; return;
+  }
+
+  // All topics list
+  if(currentView==='all'){
+    var all=Object.entries(TOPICS).sort(function(a,b){return (a[1].label||a[0]).localeCompare(b[1].label||b[0]);});
+    var html='<div class="all-topics-list">';
+    all.forEach(function(e){
+      var key=e[0],t=e[1];
+      var cat=CATS[t.category]||{};
+      html+='<div class="topic-list-item" onclick="openTopic(''+key+'')">';
+      html+='<span class="topic-list-name">'+(t.label||key)+'</span>';
+      html+='<span class="topic-list-cat">'+(cat.label||t.category||'')+'</span>';
+      html+='</div>';
+    });
+    html+='</div>';
+    el.innerHTML=html; return;
+  }
+
+  // Category grid (default)
+  var html='';
+  // Category cards
+  html+='<div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">';
+  html+='<div style="font-family:Cinzel,serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);">Browse by Category</div>';
+  html+='<div style="flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);"></div></div>';
+  html+='<div class="cat-grid">';
+  CAT_ORDER.forEach(function(catId){
+    var cat=CATS[catId]||{label:catId,description:''};
+    var count=Object.values(TOPICS).filter(function(t){return t.category===catId||(catId==='scripture_and_tradition'&&t.category==='councils');}).length;
+    var icon=CAT_ICONS[catId]||'&#9670;';
+    html+='<div class="cat-card" onclick="openCat(''+catId+'')">';
+    html+='<div class="cat-card-icon">'+icon+'</div>';
+    html+='<div class="cat-card-name">'+(cat.label||catId)+'</div>';
+    html+='<div class="cat-card-desc">'+(cat.description||'').substring(0,80)+'&hellip;</div>';
+    html+='<div class="cat-card-count">'+count+' topics</div>';
+    html+='</div>';
+  });
+  html+='</div>';
+
+  // Featured topics from each category
+  html+='<div style="display:flex;align-items:center;gap:16px;margin:28px 0 18px;">';
+  html+='<div style="font-family:Cinzel,serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);">All Topics</div>';
+  html+='<div style="flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);"></div></div>';
+  CAT_ORDER.forEach(function(catId){
+    var cat=CATS[catId]||{};
+    var catTopics=getTopicsForCat(catId);
+    if(!catTopics.length) return;
+    html+='<div class="cat-section" id="cat-'+catId+'">';
+    html+='<div class="cat-section-header">';
+    html+='<div class="cat-section-title">'+(cat.label||catId)+'</div>';
+    html+='<div class="cat-section-line"></div></div>';
+    html+='<div class="topic-grid">';
+    catTopics.forEach(function(e){html+=renderTopicCard(e[0],e[1]);});
+    html+='</div></div>';
+  });
+
+  el.innerHTML=html;
+}
+
+function renderTopicCard(key,t){
+  var related=(t.related||[]).filter(function(r){return r!==key&&TOPICS[r];}).slice(0,3);
+  var html='<div class="topic-card" onclick="openTopic(''+key+'')">';
+  html+='<div class="topic-name">'+(t.label||key)+'</div>';
+  html+='<div class="topic-desc">'+(t.description||'').substring(0,100)+'&hellip;</div>';
+  if(related.length){
+    html+='<div class="topic-related">';
+    related.forEach(function(r){
+      var rt=TOPICS[r];
+      html+='<span class="topic-rel-tag">'+((rt&&rt.label)||r)+'</span>';
+    });
+    html+='</div>';
+  }
+  html+='</div>';
+  return html;
+}
+
+document.addEventListener('DOMContentLoaded',renderContent);
+
+// URL param support
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  var cat=p.get('cat'); var topic=p.get('topic');
+  if(cat){currentCat=cat;}
+  if(topic){setTimeout(function(){openTopic(topic);},300);}
+})();
 </script>
 </body>
 </html>
