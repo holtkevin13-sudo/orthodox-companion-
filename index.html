@@ -191,7 +191,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
 }
 
-
 /* ── Reset & Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -209,14 +208,7 @@ body{
 }
 
 /* ── NAV ────────────────────────────────────────────────────── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:600;
-  background:rgba(10,22,40,0.97);
-  border-bottom:1px solid rgba(42,90,156,0.5);
-  backdrop-filter:blur(12px);height:var(--nav-h);
-  display:flex;align-items:center;padding:0 24px;gap:16px;
-  box-shadow:0 2px 30px rgba(0,0,0,0.5);
-}
+
 .nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
 .nav-cross{
   font-size:28px;color:var(--gold);
@@ -246,30 +238,6 @@ nav{
   text-decoration:none;transition:all 0.2s;white-space:nowrap;
 }
 .nav-login-btn:hover{background:rgba(201,168,76,0.2);border-color:var(--gold);}
-.nav-hamburger{
-  display:none;background:transparent;border:none;
-  color:var(--text-dim);cursor:pointer;padding:8px;
-  flex-direction:column;gap:5px;margin-left:auto;
-}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Mobile drawer */
-.nav-drawer{
-  display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;
-  padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);
-  transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;
-}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{
-  display:block;font-family:'Cinzel',serif;font-size:0.78rem;
-  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;
-  padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;
-}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;display:flex;gap:10px;}
 
 /* ── Search Overlay ─────────────────────────────────────────── */
 #search-overlay{
@@ -520,8 +488,8 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
 /* ── Responsive ─────────────────────────────────────────────── */
 @media(max-width:900px){
   .nav-links{display:none;}
-  .nav-hamburger{display:flex;}
-  .nav-drawer{display:block;}
+  
+  
   .nav-right .nav-login-btn{display:none;}
   .intro-grid{grid-template-columns:1fr;}
   .ql-grid{grid-template-columns:repeat(2,1fr);}
@@ -542,9 +510,6 @@ footer{background:var(--dark);border-top:1px solid var(--border-dim);padding:40p
   .section{padding:40px 16px;}
   .ornament-divider{padding:0 16px;}
 }
-
-
-
 
 /* ═══════════════════════════════════════════════════════
    THEME SYSTEM — Dark (default) + Light (parchment)
@@ -739,23 +704,6 @@ body{background:var(--bg-page);color:var(--text);}
 </div>
 
 
-<!-- ══ NAVIGATION ══════════════════════════════════════════════════════════ --><div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
-
-<!-- Search Overlay -->
 <div id="search-overlay">
   <div class="search-box">
     <div class="search-input-wrap">
