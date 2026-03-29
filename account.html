@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Account — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="theme-color" content="#0A1628"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>My Account — Orthodox Companion</title>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="Your Orthodox Companion account — bookmarks, journal, reading plans, fasting log, and settings."/>
+<meta property="og:title" content="My Account — Orthodox Companion"/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -181,175 +182,356 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
-
-/* ── Auth screens ───────────────────────────────────────── */
-.auth-wrap{margin-top:var(--nav-h);min-height:calc(100vh - var(--nav-h));display:flex;align-items:center;justify-content:center;padding:40px 24px;}
-.auth-box{background:linear-gradient(160deg,var(--dark),rgba(27,58,107,0.4));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:420px;padding:36px;}
-.auth-cross{font-size:32px;color:var(--gold-dim);text-align:center;display:block;margin-bottom:16px;font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
-.auth-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold-light);letter-spacing:0.08em;text-align:center;margin-bottom:6px;}
-.auth-subtitle{font-size:0.88rem;color:var(--text-muted);font-style:italic;text-align:center;margin-bottom:28px;line-height:1.6;}
-.auth-tabs{display:flex;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;margin-bottom:24px;}
-.auth-tab{flex:1;font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;padding:9px;text-align:center;cursor:pointer;background:transparent;border:none;color:var(--text-muted);transition:all 0.2s;}
+/* ════════════════════════════════════════════════
+   AUTH SCREEN
+════════════════════════════════════════════════ */
+#authScreen{
+  display:flex;align-items:center;justify-content:center;
+  min-height:100vh;padding:100px 20px 40px;
+  background:radial-gradient(ellipse at 30% 40%,rgba(27,58,107,0.25) 0%,transparent 60%);
+}
+.auth-box{
+  background:linear-gradient(160deg,#0D1E38,#0A1628);
+  border:1px solid var(--border);border-top:3px solid var(--gold-dim);
+  border-radius:4px;width:100%;max-width:420px;padding:32px 32px 28px;
+  box-shadow:0 24px 60px rgba(0,0,0,0.5);
+}
+.auth-cross{font-size:2rem;color:var(--gold);text-align:center;margin-bottom:6px;}
+.auth-title{font-family:'Cinzel',serif;font-size:1.2rem;color:var(--gold-light);
+  letter-spacing:0.08em;text-align:center;margin-bottom:4px;}
+.auth-subtitle{font-size:0.86rem;color:var(--text-muted);font-style:italic;
+  text-align:center;margin-bottom:24px;line-height:1.5;}
+.auth-tabs{display:flex;border:1px solid var(--border-dim);border-radius:3px;
+  overflow:hidden;margin-bottom:22px;}
+.auth-tab{flex:1;font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.08em;padding:9px;text-align:center;cursor:pointer;
+  background:transparent;border:none;color:var(--text-muted);transition:all 0.2s;}
 .auth-tab.active{background:rgba(201,168,76,0.1);color:var(--gold-light);}
 .auth-form{display:flex;flex-direction:column;gap:14px;}
+.auth-form{display:none;}
+.auth-form.active{display:flex;}
 .auth-field{display:flex;flex-direction:column;gap:5px;}
-.auth-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
-.auth-input{background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:10px 14px;outline:none;transition:border-color 0.2s;}
+.auth-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);}
+.auth-input{background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);
+  border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;
+  font-size:0.96rem;padding:10px 14px;outline:none;transition:border-color 0.2s;}
+[data-theme="light"] .auth-input{background:rgba(180,150,100,0.2);}
 .auth-input:focus{border-color:var(--gold-dim);}
 .auth-input::placeholder{color:var(--text-muted);font-style:italic;}
-.auth-remember{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--text-muted);cursor:pointer;}
-.auth-remember input{accent-color:var(--gold);}
-.auth-btn{font-family:'Cinzel',serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-light);background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));border:1px solid var(--gold-dim);border-radius:2px;padding:12px;cursor:pointer;transition:all 0.2s;margin-top:4px;}
+.auth-btn{font-family:'Cinzel',serif;font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--gold-light);
+  background:linear-gradient(135deg,rgba(201,168,76,0.18),rgba(201,168,76,0.06));
+  border:1px solid var(--gold-dim);border-radius:2px;padding:12px;
+  cursor:pointer;transition:all 0.2s;margin-top:4px;}
 .auth-btn:hover{background:rgba(201,168,76,0.28);}
 .auth-divider{display:flex;align-items:center;gap:12px;margin:4px 0;}
 .auth-divider::before,.auth-divider::after{content:'';flex:1;border-top:1px solid rgba(42,90,156,0.3);}
-.auth-divider-text{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.1em;}
-.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;padding:10px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-dim);font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;transition:all 0.2s;}
-.social-btn:hover{border-color:var(--border);color:var(--text);}
+.auth-divider-text{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:0.1em;}
 .social-btns{display:flex;gap:8px;}
-.social-btns .social-btn{flex:1;}
-.auth-footer-text{font-size:0.78rem;color:var(--text-muted);text-align:center;margin-top:16px;font-style:italic;}
-.auth-error{background:rgba(139,32,32,0.15);border:1px solid rgba(139,32,32,0.3);border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#D08080;display:none;}
+.social-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:9px;border:1px solid var(--border-dim);border-radius:2px;
+  background:transparent;color:var(--text-dim);font-family:'Cinzel',serif;
+  font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;
+  cursor:pointer;transition:all 0.2s;}
+.social-btn:hover{border-color:var(--border);color:var(--text);}
+.auth-error{background:rgba(139,32,32,0.15);border:1px solid rgba(139,32,32,0.3);
+  border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#D08080;display:none;}
 .auth-error.show{display:block;}
-.auth-success{background:rgba(58,106,58,0.15);border:1px solid rgba(58,106,58,0.3);border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#8ACA8A;display:none;}
+.auth-success{background:rgba(58,106,58,0.15);border:1px solid rgba(58,106,58,0.3);
+  border-radius:2px;padding:8px 12px;font-size:0.84rem;color:#8ACA8A;display:none;}
 .auth-success.show{display:block;}
 
-/* ── Dashboard ───────────────────────────────────────────── */
+/* ════════════════════════════════════════════════
+   DASHBOARD
+════════════════════════════════════════════════ */
 #dashboard{display:none;margin-top:var(--nav-h);}
-.dash-header{background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(10,22,40,0.9));border-bottom:1px solid rgba(201,168,76,0.15);padding:28px 24px;}
-.dash-header-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:20px;}
-.dash-avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--panel),var(--deep));border:2px solid var(--gold-dim);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:1.3rem;color:var(--gold-light);flex-shrink:0;}
-.dash-user-name{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
-.dash-user-sub{font-size:0.82rem;color:var(--text-muted);font-style:italic;}
-.dash-sub-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;border-radius:2px;margin-left:8px;}
-.dash-sub-badge.free{border:1px solid var(--border-dim);color:var(--text-muted);}
-.dash-sub-badge.premium{border:1px solid var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.dash-signout{margin-left:auto;font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;}
-.dash-signout:hover{border-color:var(--border);color:var(--text-dim);}
-/* Tabs */
-.dash-tabs{max-width:960px;margin:0 auto;padding:0 24px;display:flex;gap:0;border-bottom:1px solid rgba(42,90,156,0.2);}
-.dash-tab{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;padding:14px 18px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s;}
-.dash-tab:hover{color:var(--text-dim);}
-.dash-tab.active{color:var(--gold-light);border-bottom-color:var(--gold);}
-/* Tab content */
-.dash-body{max-width:960px;margin:0 auto;padding:28px 24px 60px;}
+
+/* ── Profile header ── */
+.dash-header{
+  background:var(--hero-bg);
+  border-bottom:2px solid var(--gold-dim);
+  padding:28px 24px 0;
+}
+.dash-header-inner{max-width:980px;margin:0 auto;}
+.dash-profile-row{display:flex;align-items:center;gap:18px;padding-bottom:20px;}
+.dash-avatar{
+  width:58px;height:58px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--panel),var(--deep));
+  border:2px solid var(--gold-dim);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cinzel',serif;font-size:1.4rem;color:var(--gold-light);
+}
+.dash-user-name{font-family:'Cinzel',serif;font-size:1.1rem;
+  color:var(--hero-text);letter-spacing:0.06em;margin-bottom:3px;}
+.dash-user-email{font-size:0.82rem;color:#6B4C1A;font-style:italic;}
+[data-theme="dark"] .dash-user-name{color:#1a0f00;}
+[data-theme="dark"] .dash-user-email{color:#6B4C1A;}
+.dash-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.58rem;
+  text-transform:uppercase;letter-spacing:0.1em;padding:2px 8px;
+  border-radius:2px;margin-left:8px;}
+.dash-badge.free{border:1px solid #C4A882;color:#6B4C1A;}
+.dash-badge.premium{border:1px solid var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.dash-signout{margin-left:auto;font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.1em;color:#6B4C1A;
+  background:transparent;border:1px solid #C4A882;border-radius:2px;
+  padding:7px 14px;cursor:pointer;transition:all 0.2s;}
+.dash-signout:hover{color:var(--gold-light);border-color:var(--gold-dim);}
+
+/* ── Dashboard tabs ── */
+.dash-tabs{display:flex;gap:0;border-bottom:1px solid rgba(201,168,76,0.15);
+  overflow-x:auto;}
+.dash-tab{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.09em;padding:13px 18px;background:transparent;border:none;
+  color:#6B4C1A;cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all 0.2s;white-space:nowrap;}
+.dash-tab:hover{color:var(--gold);}
+.dash-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+
+/* ── Dashboard body ── */
+.dash-body{max-width:980px;margin:0 auto;padding:28px 24px 60px;}
 .dash-section{display:none;}
 .dash-section.active{display:block;}
-.dash-section-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.12);}
-/* Bookmark / Journal items */
-.item-list{display:flex;flex-direction:column;gap:8px;}
-.item-card{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:3px;padding:14px 16px;display:flex;align-items:flex-start;gap:12px;transition:border-color 0.2s;}
+
+/* ── Section headers ── */
+.dash-section-title{font-family:'Cinzel',serif;font-size:0.9rem;
+  color:var(--gold-light);letter-spacing:0.06em;
+  margin-bottom:16px;padding-bottom:10px;
+  border-bottom:1px solid rgba(201,168,76,0.15);}
+
+/* ── Stats row ── */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px;}
+.stat-card{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:16px;text-align:center;}
+.stat-num{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold-light);
+  font-weight:600;line-height:1;margin-bottom:4px;}
+.stat-label{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);}
+
+/* ── Bookmarks ── */
+.bm-filter-bar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.bm-filter{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--border-dim);
+  border-radius:2px;background:transparent;color:var(--text-muted);
+  cursor:pointer;transition:all 0.2s;}
+.bm-filter.active{border-color:var(--gold-dim);color:var(--gold-light);
+  background:rgba(201,168,76,0.07);}
+.item-list{display:flex;flex-direction:column;gap:7px;}
+.item-card{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:13px 16px;display:flex;align-items:flex-start;
+  gap:12px;transition:border-color 0.2s;}
 .item-card:hover{border-color:var(--border);}
-.item-type-badge{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold);border:1px solid rgba(201,168,76,0.25);border-radius:2px;padding:2px 6px;flex-shrink:0;margin-top:2px;}
+.item-type{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold);border:1px solid rgba(201,168,76,0.25);
+  border-radius:2px;padding:2px 7px;flex-shrink:0;margin-top:2px;}
 .item-body{flex:1;}
-.item-title{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text);letter-spacing:0.04em;margin-bottom:3px;}
-.item-meta{font-size:0.76rem;color:var(--text-muted);font-style:italic;}
-.item-actions{display:flex;gap:6px;flex-shrink:0;}
-.item-btn{font-family:'Cinzel',serif;font-size:0.56rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:3px 8px;cursor:pointer;transition:all 0.2s;}
+.item-title{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text);
+  letter-spacing:0.04em;margin-bottom:3px;}
+.item-note{font-size:0.82rem;color:var(--text-muted);font-style:italic;
+  margin-top:4px;line-height:1.5;}
+.item-meta{font-size:0.76rem;color:var(--text-muted);}
+.item-actions{display:flex;gap:5px;flex-shrink:0;}
+.item-btn{font-family:'Cinzel',serif;font-size:0.56rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-muted);background:transparent;
+  border:1px solid var(--border-dim);border-radius:2px;padding:3px 8px;
+  cursor:pointer;transition:all 0.2s;}
 .item-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.item-empty{padding:32px;text-align:center;color:var(--text-muted);font-style:italic;font-size:0.9rem;}
-/* Journal entry */
-.journal-compose{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:3px;padding:16px;margin-bottom:16px;}
-.journal-compose-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:8px;}
-.journal-textarea{width:100%;background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:10px 14px;outline:none;resize:vertical;min-height:100px;transition:border-color 0.2s;}
+.item-empty{padding:40px;text-align:center;color:var(--text-muted);
+  font-style:italic;font-size:0.9rem;line-height:1.7;}
+
+/* ── Journal ── */
+.journal-compose{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:18px;margin-bottom:18px;}
+.journal-date{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;}
+.journal-textarea{width:100%;background:rgba(27,58,107,0.25);
+  border:1px solid var(--border-dim);border-radius:2px;color:var(--text);
+  font-family:'EB Garamond',serif;font-size:1rem;padding:12px 14px;
+  outline:none;resize:vertical;min-height:110px;line-height:1.75;
+  transition:border-color 0.2s;}
+[data-theme="light"] .journal-textarea{background:rgba(180,150,100,0.15);}
 .journal-textarea:focus{border-color:var(--gold-dim);}
-.journal-compose-footer{display:flex;justify-content:space-between;align-items:center;margin-top:10px;flex-wrap:wrap;gap:8px;}
-.journal-cat-select{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);font-family:'Cinzel',serif;font-size:0.62rem;padding:6px 10px;outline:none;cursor:pointer;}
-.journal-save-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 16px;cursor:pointer;transition:all 0.2s;}
-.journal-save-btn:hover{background:rgba(201,168,76,0.2);}
-/* Fasting log */
-.fast-log-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:16px;}
-.fast-log-day{background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);border-radius:2px;padding:6px 4px;text-align:center;cursor:pointer;transition:all 0.15s;}
-.fast-log-day:hover{border-color:var(--border);}
-.fast-log-day.fasted{background:rgba(58,106,58,0.25);border-color:#5A8A5A;}
-.fast-log-date{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);}
-.fast-log-num{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text-dim);font-weight:600;}
-.fast-log-day.fasted .fast-log-num{color:#8ACA8A;}
-/* Settings */
-.settings-group{margin-bottom:24px;}
-.settings-group-title{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:12px;}
-.settings-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.1);}
+.journal-textarea::placeholder{color:var(--text-muted);font-style:italic;}
+.journal-compose-footer{display:flex;justify-content:space-between;align-items:center;
+  margin-top:12px;flex-wrap:wrap;gap:8px;}
+.journal-cat{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);
+  border-radius:2px;color:var(--text-dim);font-family:'Cinzel',serif;
+  font-size:0.62rem;padding:7px 10px;outline:none;cursor:pointer;}
+.journal-save{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);
+  border:1px solid var(--gold-dim);border-radius:2px;padding:7px 18px;
+  cursor:pointer;transition:all 0.2s;}
+.journal-save:hover{background:rgba(201,168,76,0.2);}
+.journal-card{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:16px;margin-bottom:8px;}
+.journal-card-header{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.journal-card-date{font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);}
+.journal-card-cat{font-family:'Cinzel',serif;font-size:0.58rem;
+  text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);
+  border:1px solid var(--border-dim);border-radius:2px;padding:1px 7px;}
+.journal-card-delete{margin-left:auto;font-size:0.75rem;color:var(--text-muted);
+  background:transparent;border:none;cursor:pointer;opacity:0.5;transition:opacity 0.2s;}
+.journal-card-delete:hover{opacity:1;color:#cc4444;}
+.journal-card-text{font-size:0.96rem;color:var(--text-dim);line-height:1.85;
+  white-space:pre-wrap;}
+
+/* ── Reading Plans tab ── */
+.rp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+.rp-card{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:16px;border-left:3px solid var(--gold-dim);}
+.rp-card.active-plan{border-left-color:var(--gold);background:rgba(201,168,76,0.05);}
+.rp-name{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--gold-light);
+  letter-spacing:0.04em;margin-bottom:4px;}
+.rp-today{font-size:0.88rem;color:var(--text-dim);font-style:italic;margin-bottom:8px;}
+.rp-progress-bar{background:rgba(42,90,156,0.2);border-radius:2px;height:5px;
+  margin-bottom:6px;overflow:hidden;}
+.rp-progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.4s;}
+.rp-meta{display:flex;justify-content:space-between;align-items:center;}
+.rp-pct{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-muted);}
+.rp-read-btn{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--gold-light);background:rgba(201,168,76,0.08);
+  border:1px solid var(--gold-dim);border-radius:2px;padding:4px 10px;
+  text-decoration:none;transition:all 0.2s;cursor:pointer;}
+.rp-read-btn:hover{background:rgba(201,168,76,0.18);}
+.rp-no-plan{padding:32px;text-align:center;color:var(--text-muted);
+  font-style:italic;grid-column:span 2;}
+
+/* ── Fasting Log ── */
+.fast-stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;}
+.fast-stat{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:16px;text-align:center;}
+.fast-stat-num{font-family:'Cinzel',serif;font-size:1.8rem;color:var(--gold-light);
+  font-weight:600;line-height:1;margin-bottom:4px;}
+.fast-stat-label{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);}
+
+/* Heatmap */
+.heatmap-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--gold);margin-bottom:10px;}
+.heatmap-months{display:flex;gap:3px;overflow-x:auto;padding-bottom:8px;}
+.heatmap-month{display:flex;flex-direction:column;gap:2px;}
+.heatmap-month-name{font-family:'Cinzel',serif;font-size:0.56rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-muted);margin-bottom:3px;text-align:center;}
+.heatmap-weeks{display:flex;gap:2px;}
+.heatmap-week{display:flex;flex-direction:column;gap:2px;}
+.heatmap-cell{width:12px;height:12px;border-radius:2px;
+  background:rgba(42,90,156,0.15);border:1px solid rgba(42,90,156,0.1);
+  cursor:pointer;transition:transform 0.15s;position:relative;}
+.heatmap-cell:hover{transform:scale(1.3);z-index:1;}
+.heatmap-cell.fasted{background:rgba(34,136,34,0.7);border-color:rgba(34,136,34,0.4);}
+.heatmap-cell.strict{background:rgba(200,34,34,0.7);border-color:rgba(200,34,34,0.4);}
+.heatmap-cell.today{border-color:var(--gold)!important;}
+.heatmap-legend{display:flex;align-items:center;gap:12px;margin-top:10px;flex-wrap:wrap;}
+.heatmap-legend-item{display:flex;align-items:center;gap:5px;}
+.heatmap-legend-dot{width:10px;height:10px;border-radius:2px;}
+.heatmap-legend-text{font-family:'Cinzel',serif;font-size:0.56rem;
+  text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+
+/* Monthly fast log */
+.fast-log-title{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--gold);margin:24px 0 10px;}
+.fast-log-week-header{display:grid;grid-template-columns:repeat(7,1fr);
+  gap:4px;margin-bottom:4px;}
+.fast-log-day-label{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
+  letter-spacing:0.07em;color:var(--text-muted);text-align:center;padding:4px 0;}
+.fast-log-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
+.fast-cell{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:8px 4px;text-align:center;cursor:pointer;
+  transition:all 0.15s;min-height:44px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;}
+.fast-cell:hover{border-color:var(--border);}
+.fast-cell.fasted{background:rgba(34,136,34,0.15);border-color:#5A8A5A;}
+.fast-cell.strict{background:rgba(200,34,34,0.12);border-color:#8A3A3A;}
+.fast-cell.empty{background:transparent;border-color:transparent;cursor:default;}
+.fast-cell-date{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--text-dim);font-weight:600;}
+.fast-cell.fasted .fast-cell-date{color:#8ACA8A;}
+.fast-cell.strict .fast-cell-date{color:#CA8A8A;}
+.fast-cell-dot{width:6px;height:6px;border-radius:50%;}
+.fast-cell.fasted .fast-cell-dot{background:#5A8A5A;}
+.fast-cell.strict .fast-cell-dot{background:#8A3A3A;}
+.fast-log-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.fast-log-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);background:transparent;
+  border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;
+  cursor:pointer;transition:all 0.2s;}
+.fast-log-btn:hover,.fast-log-btn.active{border-color:var(--gold-dim);
+  color:var(--gold-light);background:rgba(201,168,76,0.07);}
+
+/* ── Settings ── */
+.settings-section{margin-bottom:28px;}
+.settings-section-title{font-family:'Cinzel',serif;font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);
+  margin-bottom:14px;padding-bottom:6px;
+  border-bottom:1px solid rgba(42,90,156,0.15);}
+.settings-row{display:flex;align-items:center;justify-content:space-between;
+  padding:11px 0;border-bottom:1px solid rgba(42,90,156,0.08);gap:16px;flex-wrap:wrap;}
 .settings-row:last-child{border-bottom:none;}
-.settings-row-label{font-size:0.9rem;color:var(--text-dim);}
-.settings-row-sublabel{font-size:0.76rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.settings-input{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.9rem;padding:6px 12px;outline:none;width:220px;transition:border-color 0.2s;}
+.settings-row-left{flex:1;}
+.settings-row-label{font-size:0.92rem;color:var(--text-dim);margin-bottom:2px;}
+.settings-row-sub{font-size:0.78rem;color:var(--text-muted);font-style:italic;}
+.settings-input{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);
+  border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;
+  font-size:0.9rem;padding:7px 12px;outline:none;width:200px;
+  transition:border-color 0.2s;}
 .settings-input:focus{border-color:var(--gold-dim);}
-.settings-save-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 16px;cursor:pointer;transition:all 0.2s;margin-top:12px;}
+.settings-toggle{position:relative;width:40px;height:22px;flex-shrink:0;}
+.settings-toggle input{opacity:0;width:0;height:0;}
+.settings-toggle-slider{position:absolute;cursor:pointer;inset:0;
+  background:rgba(42,90,156,0.3);border:1px solid var(--border-dim);
+  border-radius:22px;transition:0.3s;}
+.settings-toggle-slider::before{content:'';position:absolute;height:16px;width:16px;
+  left:2px;bottom:2px;background:var(--text-muted);border-radius:50%;transition:0.3s;}
+.settings-toggle input:checked + .settings-toggle-slider{background:rgba(201,168,76,0.2);
+  border-color:var(--gold-dim);}
+.settings-toggle input:checked + .settings-toggle-slider::before{transform:translateX(18px);background:var(--gold-light);}
+.settings-select{background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);
+  border-radius:2px;color:var(--text-dim);font-family:'Cinzel',serif;
+  font-size:0.7rem;padding:7px 12px;outline:none;cursor:pointer;}
+.settings-save-btn{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);
+  border:1px solid var(--gold-dim);border-radius:2px;padding:10px 22px;
+  cursor:pointer;transition:all 0.2s;margin-top:8px;}
 .settings-save-btn:hover{background:rgba(201,168,76,0.2);}
-/* Upgrade banner */
-.upgrade-banner{background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(201,168,76,0.08));border:1px solid rgba(201,168,76,0.2);border-radius:4px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;}
-.upgrade-text{}
-.upgrade-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.settings-danger-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:#CA8A8A;background:transparent;
+  border:1px solid rgba(200,80,80,0.3);border-radius:2px;padding:8px 16px;
+  cursor:pointer;transition:all 0.2s;}
+.settings-danger-btn:hover{border-color:rgba(200,80,80,0.6);color:#D08080;}
+
+/* ── Upgrade banner ── */
+.upgrade-banner{
+  background:linear-gradient(135deg,rgba(27,58,107,0.4),rgba(201,168,76,0.08));
+  border:1px solid rgba(201,168,76,0.2);border-radius:4px;
+  padding:20px 24px;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:24px;
+}
+.upgrade-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);
+  letter-spacing:0.06em;margin-bottom:4px;}
 .upgrade-desc{font-size:0.84rem;color:var(--text-muted);font-style:italic;}
-.upgrade-btn{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 20px;background:rgba(201,168,76,0.12);cursor:pointer;transition:all 0.2s;white-space:nowrap;}
+.upgrade-btn{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:9px 20px;background:rgba(201,168,76,0.12);
+  cursor:pointer;transition:all 0.2s;white-space:nowrap;}
 .upgrade-btn:hover{background:rgba(201,168,76,0.25);}
-@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.dash-tabs{overflow-x:auto;}.fast-log-grid{grid-template-columns:repeat(7,1fr);}.settings-input{width:160px;}}
-@media(max-width:600px){.auth-box{padding:24px 18px;}.dash-header{padding:20px 16px;}.dash-body{padding:20px 16px 40px;}.dash-tabs{padding:0 16px;}.fast-log-grid{grid-template-columns:repeat(5,1fr);}.upgrade-banner{flex-direction:column;}}
 
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
-
+@media(max-width:700px){
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .rp-grid{grid-template-columns:1fr;}
+  .fast-stats-row{grid-template-columns:repeat(3,1fr);}
+  .settings-input{width:140px;}
+  .auth-box{padding:24px 18px;}
+  .dash-header{padding:20px 16px 0;}
+  .dash-body{padding:20px 16px 40px;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:repeat(2,1fr);}
+  .fast-stats-row{grid-template-columns:repeat(3,1fr);}
+  .fast-stat-num{font-size:1.4rem;}
+  .heatmap-cell{width:10px;height:10px;}
+}
 </style>
 </head>
 <body>
@@ -445,215 +627,282 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-<div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
-  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
-  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
-  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"></div>
-</div>
 
-<!-- AUTH SCREEN -->
-<div class="auth-wrap" id="authScreen">
+<!-- ════════ AUTH SCREEN ════════ -->
+<div id="authScreen">
   <div class="auth-box">
-    <span class="auth-cross">&#9766;&#65038;</span>
+    <div class="auth-cross">&#9766;</div>
     <div class="auth-title">Orthodox Companion</div>
-    <div class="auth-subtitle">Sign in to save your progress, bookmark content, keep a journal, and unlock deeper study tools.</div>
-
+    <div class="auth-subtitle">Sign in to access your bookmarks, journal, reading plans, and fasting log.</div>
     <div class="auth-tabs">
       <button class="auth-tab active" id="tab-signin" onclick="switchTab('signin')">Sign In</button>
       <button class="auth-tab" id="tab-signup" onclick="switchTab('signup')">Create Account</button>
     </div>
-
-    <!-- Sign In Form -->
-    <div id="form-signin">
-      <div class="auth-form">
-        <div class="auth-field">
-          <label class="auth-label">Email Address</label>
-          <input class="auth-input" type="email" id="signin-email" placeholder="your@email.com" autocomplete="email"/>
-        </div>
-        <div class="auth-field">
-          <label class="auth-label">Password</label>
-          <input class="auth-input" type="password" id="signin-password" placeholder="&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;" autocomplete="current-password"/>
-        </div>
-        <label class="auth-remember"><input type="checkbox" id="signin-remember" checked/> Remember me</label>
-        <div class="auth-error" id="signin-error"></div>
-        <button class="auth-btn" onclick="signIn()">Sign In</button>
+    <!-- Sign In form -->
+    <div class="auth-form active" id="form-signin">
+      <div class="auth-error" id="signin-error"></div>
+      <div class="auth-field">
+        <label class="auth-label">Email</label>
+        <input class="auth-input" id="signin-email" type="email" placeholder="your@email.com" autocomplete="email"/>
       </div>
-      <div class="auth-divider" style="margin-top:18px;"><span class="auth-divider-text">or continue with</span></div>
-      <div class="social-btns" style="margin-top:10px;">
-        <button class="social-btn" onclick="socialSignIn('google')">&#9654; Google</button>
+      <div class="auth-field">
+        <label class="auth-label">Password</label>
+        <input class="auth-input" id="signin-password" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')signIn()"/>
+      </div>
+      <button class="auth-btn" onclick="signIn()">Sign In</button>
+      <div class="auth-divider"><span class="auth-divider-text">or</span></div>
+      <div class="social-btns">
+        <button class="social-btn" onclick="socialSignIn('google')">&#9312; Google</button>
         <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
       </div>
-      <div class="auth-footer-text"><a href="#" onclick="switchTab('signup');return false;" style="color:var(--text-muted);">Don&rsquo;t have an account? Create one free &rarr;</a></div>
     </div>
-
-    <!-- Sign Up Form -->
-    <div id="form-signup" style="display:none;">
-      <div class="auth-form">
-        <div class="auth-field">
-          <label class="auth-label">Display Name</label>
-          <input class="auth-input" type="text" id="signup-name" placeholder="Your name" autocomplete="name"/>
-        </div>
-        <div class="auth-field">
-          <label class="auth-label">Email Address</label>
-          <input class="auth-input" type="email" id="signup-email" placeholder="your@email.com" autocomplete="email"/>
-        </div>
-        <div class="auth-field">
-          <label class="auth-label">Password</label>
-          <input class="auth-input" type="password" id="signup-password" placeholder="At least 8 characters" autocomplete="new-password"/>
-        </div>
-        <div class="auth-error" id="signup-error"></div>
-        <div class="auth-success" id="signup-success"></div>
-        <button class="auth-btn" onclick="signUp()">Create Free Account</button>
+    <!-- Sign Up form -->
+    <div class="auth-form" id="form-signup">
+      <div class="auth-error" id="signup-error"></div>
+      <div class="auth-success" id="signup-success"></div>
+      <div class="auth-field">
+        <label class="auth-label">Your Name</label>
+        <input class="auth-input" id="signup-name" type="text" placeholder="Name or username" autocomplete="name"/>
       </div>
-      <div class="auth-divider" style="margin-top:18px;"><span class="auth-divider-text">or continue with</span></div>
-      <div class="social-btns" style="margin-top:10px;">
-        <button class="social-btn" onclick="socialSignIn('google')">&#9654; Google</button>
+      <div class="auth-field">
+        <label class="auth-label">Email</label>
+        <input class="auth-input" id="signup-email" type="email" placeholder="your@email.com" autocomplete="email"/>
+      </div>
+      <div class="auth-field">
+        <label class="auth-label">Password</label>
+        <input class="auth-input" id="signup-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" onkeydown="if(event.key==='Enter')signUp()"/>
+      </div>
+      <button class="auth-btn" onclick="signUp()">Create Account</button>
+      <div class="auth-divider"><span class="auth-divider-text">or</span></div>
+      <div class="social-btns">
+        <button class="social-btn" onclick="socialSignIn('google')">&#9312; Google</button>
         <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
       </div>
-      <div class="auth-footer-text" style="font-size:0.74rem;line-height:1.6;">By creating an account you agree to our terms. Your data is never sold. Orthodox Companion is ad-free and always will be.</div>
     </div>
   </div>
 </div>
 
-<!-- DASHBOARD -->
+<!-- ════════ DASHBOARD ════════ -->
 <div id="dashboard">
+  <!-- Profile header -->
   <div class="dash-header">
     <div class="dash-header-inner">
-      <div class="dash-avatar" id="dashAvatar">&#9766;</div>
-      <div>
-        <div class="dash-user-name" id="dashName">Welcome</div>
-        <div class="dash-user-sub">
-          <span id="dashEmail" style="font-size:0.82rem;color:var(--text-muted);font-style:italic;"></span>
-          <span class="dash-sub-badge free" id="dashBadge">Free</span>
+      <div class="dash-profile-row">
+        <div class="dash-avatar" id="dashAvatar">A</div>
+        <div>
+          <div class="dash-user-name" id="dashName">Welcome</div>
+          <div class="dash-user-email" id="dashEmail"></div>
         </div>
+        <span class="dash-badge free" id="dashBadge">Free</span>
+        <button class="dash-signout" onclick="signOut()">Sign Out</button>
       </div>
-      <button class="dash-signout" onclick="signOut()">Sign Out</button>
+      <!-- Tabs -->
+      <div class="dash-tabs">
+        <button class="dash-tab active" onclick="switchDash('bookmarks')">Bookmarks</button>
+        <button class="dash-tab" onclick="switchDash('journal')">Journal</button>
+        <button class="dash-tab" onclick="switchDash('reading')">Reading Plans</button>
+        <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
+        <button class="dash-tab" onclick="switchDash('settings')">Account</button>
+      </div>
     </div>
-  </div>
-
-  <div class="dash-tabs">
-    <button class="dash-tab active" onclick="switchDash('bookmarks')">Bookmarks</button>
-    <button class="dash-tab" onclick="switchDash('journal')">Journal</button>
-    <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
-    <button class="dash-tab" onclick="switchDash('settings')">Settings</button>
   </div>
 
   <div class="dash-body">
 
-    <!-- Bookmarks -->
+    <!-- ── Stats overview ── -->
+    <div class="stats-row" id="statsRow">
+      <div class="stat-card"><div class="stat-num" id="stat-bookmarks">0</div><div class="stat-label">Bookmarks</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-journal">0</div><div class="stat-label">Journal Entries</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">Fast Streak</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-reading">0</div><div class="stat-label">Days Read</div></div>
+    </div>
+
+    <!-- ══ BOOKMARKS ══ -->
     <div class="dash-section active" id="dash-bookmarks">
-      <div class="upgrade-banner" id="upgradeBookmarks" style="display:none;">
-        <div class="upgrade-text">
-          <div class="upgrade-title">Unlock Full Study Mode</div>
-          <div class="upgrade-desc">Upgrade to access all three Companion AI modes, unlimited bookmarks, and the full journal history.</div>
-        </div>
-        <button class="upgrade-btn">Upgrade to Premium</button>
+      <div class="dash-section-title">Bookmarks</div>
+      <div class="bm-filter-bar">
+        <button class="bm-filter active" onclick="filterBookmarks('all',this)">All</button>
+        <button class="bm-filter" onclick="filterBookmarks('prayer',this)">Prayers</button>
+        <button class="bm-filter" onclick="filterBookmarks('saint',this)">Saints</button>
+        <button class="bm-filter" onclick="filterBookmarks('topic',this)">Topics</button>
+        <button class="bm-filter" onclick="filterBookmarks('feast',this)">Feasts</button>
+        <button class="bm-filter" onclick="filterBookmarks('reading',this)">Readings</button>
       </div>
-      <div class="dash-section-title">Saved Bookmarks</div>
-      <div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;" id="bookmarkFilters">
-        <button class="item-btn" onclick="filterBookmarks('all')" style="padding:5px 12px;">All</button>
-        <button class="item-btn" onclick="filterBookmarks('saint')">Saints</button>
-        <button class="item-btn" onclick="filterBookmarks('prayer')">Prayers</button>
-        <button class="item-btn" onclick="filterBookmarks('topic')">Topics</button>
-        <button class="item-btn" onclick="filterBookmarks('blog')">Blog</button>
+      <div class="item-list" id="bookmarkList">
+        <div class="item-empty">No bookmarks yet.<br>Tap the save button on any prayer, saint, topic, or feast to save it here.</div>
       </div>
-      <div class="item-list" id="bookmarkList"></div>
     </div>
 
-    <!-- Journal -->
+    <!-- ══ JOURNAL ══ -->
     <div class="dash-section" id="dash-journal">
-      <div class="dash-section-title">Prayer Journal</div>
+      <div class="dash-section-title">Journal</div>
       <div class="journal-compose">
-        <div class="journal-compose-label">New Entry</div>
-        <textarea class="journal-textarea" id="journalText" placeholder="Write a prayer, reflection, or note from your reading today&#8230;"></textarea>
+        <div class="journal-date" id="journalTodayDate"></div>
+        <textarea class="journal-textarea" id="journalText" placeholder="Write your reflection, prayer intention, or notes for today..."></textarea>
         <div class="journal-compose-footer">
-          <select class="journal-cat-select" id="journalCat">
+          <select class="journal-cat" id="journalCat">
             <option value="reflection">Reflection</option>
-            <option value="prayer">Personal Prayer</option>
+            <option value="prayer">Prayer Intention</option>
             <option value="gratitude">Gratitude</option>
-            <option value="struggle">Struggle</option>
-            <option value="reading">From Reading</option>
+            <option value="confession">Preparation for Confession</option>
+            <option value="spiritual">Spiritual Reading Notes</option>
+            <option value="other">Other</option>
           </select>
-          <button class="journal-save-btn" onclick="saveJournal()">Save Entry</button>
+          <button class="journal-save" onclick="saveJournalEntry()">Save Entry</button>
         </div>
       </div>
-      <div class="item-list" id="journalList"></div>
+      <div class="item-list" id="journalList">
+        <div class="item-empty">No journal entries yet.<br>Write your first reflection above.</div>
+      </div>
     </div>
 
-    <!-- Fasting Log -->
+    <!-- ══ READING PLANS ══ -->
+    <div class="dash-section" id="dash-reading">
+      <div class="dash-section-title">Reading Plans</div>
+      <div class="rp-grid" id="rpGrid">
+        <div class="rp-no-plan">No reading plans active.<br><a href="reading-plans.html" style="color:var(--gold-light);">Browse reading plans</a> to get started.</div>
+      </div>
+      <div style="text-align:center;margin-top:12px;">
+        <a href="reading-plans.html" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:8px 18px;text-decoration:none;background:rgba(201,168,76,0.08);">Browse All Reading Plans</a>
+      </div>
+    </div>
+
+    <!-- ══ FASTING LOG ══ -->
     <div class="dash-section" id="dash-fasting">
       <div class="dash-section-title">Fasting Log</div>
-      <p style="font-size:0.9rem;color:var(--text-muted);font-style:italic;margin-bottom:18px;line-height:1.7;">Tap any day to mark it as fasted. Your log is saved locally and helps you build consistency in the discipline of fasting.</p>
-      <div class="fast-log-grid" id="fastLogGrid"></div>
-      <div style="display:flex;gap:10px;font-size:0.8rem;color:var(--text-muted);">
-        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(58,106,58,0.4);border:1px solid #5A8A5A;"></div> Fasted</div>
-        <div style="display:flex;align-items:center;gap:6px;"><div style="width:12px;height:12px;border-radius:2px;background:rgba(15,32,53,0.5);border:1px solid var(--border-dim);"></div> Not logged</div>
+      <div class="fast-stats-row">
+        <div class="fast-stat"><div class="fast-stat-num" id="fastStreak">0</div><div class="fast-stat-label">Day Streak</div></div>
+        <div class="fast-stat"><div class="fast-stat-num" id="fastThisMonth">0</div><div class="fast-stat-label">This Month</div></div>
+        <div class="fast-stat"><div class="fast-stat-num" id="fastTotal">0</div><div class="fast-stat-label">Total Days</div></div>
       </div>
-      <div style="margin-top:20px;padding:14px 16px;background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;">
-        <div style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:4px;">This Month</div>
-        <div style="font-size:0.88rem;color:var(--text-dim);font-style:italic;" id="fastStats">Loading&#8230;</div>
+
+      <!-- Heatmap -->
+      <div class="heatmap-label">Year at a Glance</div>
+      <div class="heatmap-months" id="heatmapGrid"></div>
+      <div class="heatmap-legend">
+        <div class="heatmap-legend-item"><div class="heatmap-legend-dot" style="background:rgba(34,136,34,0.7);"></div><div class="heatmap-legend-text">Fasted</div></div>
+        <div class="heatmap-legend-item"><div class="heatmap-legend-dot" style="background:rgba(200,34,34,0.7);"></div><div class="heatmap-legend-text">Strict Fast</div></div>
+        <div class="heatmap-legend-item"><div class="heatmap-legend-dot" style="background:rgba(42,90,156,0.15);"></div><div class="heatmap-legend-text">Not logged</div></div>
+      </div>
+
+      <!-- Monthly grid -->
+      <div class="fast-log-title" id="fastLogMonthTitle"></div>
+      <div class="fast-log-week-header">
+        <div class="fast-log-day-label">Sun</div>
+        <div class="fast-log-day-label">Mon</div>
+        <div class="fast-log-day-label">Tue</div>
+        <div class="fast-log-day-label">Wed</div>
+        <div class="fast-log-day-label">Thu</div>
+        <div class="fast-log-day-label">Fri</div>
+        <div class="fast-log-day-label">Sat</div>
+      </div>
+      <div class="fast-log-grid" id="fastLogGrid"></div>
+      <div class="fast-log-actions">
+        <button class="fast-log-btn active" id="fastBtnFasted" onclick="logFast(new Date(),'fasted')">Log Fast Today</button>
+        <button class="fast-log-btn" id="fastBtnStrict" onclick="logFast(new Date(),'strict')">Log Strict Fast</button>
+        <button class="fast-log-btn" id="fastBtnClear" onclick="logFast(new Date(),'none')">Clear Today</button>
+        <a href="fasting.html" class="fast-log-btn" style="text-decoration:none;">View Fasting Guide</a>
       </div>
     </div>
 
-    <!-- Settings -->
+    <!-- ══ SETTINGS / ACCOUNT ══ -->
     <div class="dash-section" id="dash-settings">
-      <div class="dash-section-title">Account Settings</div>
-      <div class="settings-group">
-        <div class="settings-group-title">Profile</div>
+      <div class="dash-section-title">Account &amp; Settings</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Profile</div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Display Name</div></div>
-          <input class="settings-input" type="text" id="settings-name" placeholder="Your name"/>
+          <div class="settings-row-left"><div class="settings-row-label">Display Name</div></div>
+          <input class="settings-input" id="settings-name" type="text" placeholder="Your name"/>
         </div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Email Address</div></div>
-          <input class="settings-input" type="email" id="settings-email" placeholder="your@email.com"/>
+          <div class="settings-row-left"><div class="settings-row-label">Email</div></div>
+          <input class="settings-input" id="settings-email" type="email" placeholder="your@email.com"/>
         </div>
         <div class="settings-row">
-          <div><div class="settings-row-label">New Password</div><div class="settings-row-sublabel">Leave blank to keep current password</div></div>
-          <input class="settings-input" type="password" id="settings-password" placeholder="New password"/>
+          <div class="settings-row-left"><div class="settings-row-label">Password</div><div class="settings-row-sub">Leave blank to keep current</div></div>
+          <input class="settings-input" id="settings-password" type="password" placeholder="New password"/>
         </div>
         <button class="settings-save-btn" onclick="saveSettings()">Save Changes</button>
       </div>
-      <div class="settings-group">
-        <div class="settings-group-title">Subscription</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Appearance</div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Current Plan</div><div class="settings-row-sublabel" id="planDesc">Free — 3 Companion AI questions per session</div></div>
-          <button class="upgrade-btn" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);cursor:pointer;" onclick="alert('Premium subscriptions coming soon!')">Upgrade</button>
+          <div class="settings-row-left">
+            <div class="settings-row-label">Theme</div>
+            <div class="settings-row-sub">Light mode uses a warm parchment background</div>
+          </div>
+          <select class="settings-select" id="settings-theme" onchange="applyThemeSetting(this.value)">
+            <option value="system">Follow System</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light (Parchment)</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-left">
+            <div class="settings-row-label">Font Size</div>
+            <div class="settings-row-sub">Larger text for easier reading</div>
+          </div>
+          <select class="settings-select" id="settings-fontsize" onchange="applyFontSize(this.value)">
+            <option value="normal">Normal</option>
+            <option value="large">Large</option>
+            <option value="xlarge">Extra Large</option>
+          </select>
         </div>
       </div>
-      <div class="settings-group">
-        <div class="settings-group-title">Notifications</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Notifications</div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Saint of the Day</div><div class="settings-row-sublabel">Daily email with the saint&rsquo;s feast and brief life</div></div>
-          <input type="checkbox" id="notif-saint" style="accent-color:var(--gold);width:18px;height:18px;cursor:pointer;"/>
+          <div class="settings-row-left">
+            <div class="settings-row-label">Daily Reading Reminder</div>
+            <div class="settings-row-sub">Remind me to read my daily passage</div>
+          </div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-reading"/><span class="settings-toggle-slider"></span></label>
         </div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Fasting Reminders</div><div class="settings-row-sublabel">Reminder on Wednesday and Friday mornings</div></div>
-          <input type="checkbox" id="notif-fast" style="accent-color:var(--gold);width:18px;height:18px;cursor:pointer;"/>
+          <div class="settings-row-left">
+            <div class="settings-row-label">Fasting Day Reminder</div>
+            <div class="settings-row-sub">Remind me on Wednesdays and Fridays</div>
+          </div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-fasting"/><span class="settings-toggle-slider"></span></label>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-left">
+            <div class="settings-row-label">Feast Day Alerts</div>
+            <div class="settings-row-sub">Notify me of Great Feasts</div>
+          </div>
+          <label class="settings-toggle"><input type="checkbox" id="notif-feasts"/><span class="settings-toggle-slider"></span></label>
         </div>
       </div>
-      <div class="settings-group">
-        <div class="settings-group-title">Danger Zone</div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Subscription</div>
+        <div class="upgrade-banner">
+          <div>
+            <div class="upgrade-title">Orthodox Companion Premium</div>
+            <div class="upgrade-desc">Sync across devices, full conversation history, and priority Companion AI access — coming soon.</div>
+          </div>
+          <button class="upgrade-btn" onclick="alert('Premium subscriptions coming soon!')">Learn More</button>
+        </div>
+      </div>
+
+      <div class="settings-section">
+        <div class="settings-section-title">Data</div>
         <div class="settings-row">
-          <div><div class="settings-row-label">Sign Out Everywhere</div></div>
-          <button class="item-btn" onclick="signOut()" style="padding:6px 14px;">Sign Out</button>
+          <div class="settings-row-left">
+            <div class="settings-row-label">Export My Data</div>
+            <div class="settings-row-sub">Download your bookmarks, journal, and fasting log</div>
+          </div>
+          <button class="settings-danger-btn" onclick="exportData()">Export</button>
+        </div>
+        <div class="settings-row">
+          <div class="settings-row-left">
+            <div class="settings-row-label">Delete Account</div>
+            <div class="settings-row-sub">Permanently delete your account and all data</div>
+          </div>
+          <button class="settings-danger-btn" onclick="if(confirm('Are you sure? This cannot be undone.'))deleteAccount()">Delete Account</button>
         </div>
       </div>
     </div>
@@ -661,234 +910,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   </div>
 </div>
 
-<script>
-"use strict";
-// ══════════════════════════════════════════════════════════
-// SUPABASE CONFIGURATION
-// Replace these with your actual Supabase project credentials.
-// ══════════════════════════════════════════════════════════
-var SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
-var SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
-
-// ── Simple session management (localStorage until Supabase wired) ──
-var currentUser = null;
-
-function getStoredUser(){
-  try{ return JSON.parse(localStorage.getItem('oc_user')||'null'); }catch(e){return null;}
-}
-function storeUser(user){
-  try{ localStorage.setItem('oc_user', JSON.stringify(user)); }catch(e){}
-}
-function clearUser(){
-  try{ localStorage.removeItem('oc_user'); }catch(e){}
-}
-
-var drawerOpen=false;
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
-document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-
-// ── Auth tabs ────────────────────────────────────────────
-function switchTab(tab){
-  document.getElementById('form-signin').style.display = tab==='signin'?'':'none';
-  document.getElementById('form-signup').style.display = tab==='signup'?'':'none';
-  document.getElementById('tab-signin').classList.toggle('active', tab==='signin');
-  document.getElementById('tab-signup').classList.toggle('active', tab==='signup');
-}
-
-// ── Auth functions (wire to Supabase) ────────────────────
-function signIn(){
-  var email = document.getElementById('signin-email').value.trim();
-  var pass  = document.getElementById('signin-password').value;
-  var err   = document.getElementById('signin-error');
-  err.classList.remove('show');
-  if(!email||!pass){ err.textContent='Please enter your email and password.'; err.classList.add('show'); return; }
-
-  // ── Supabase auth (replace this block when Supabase is connected) ──
-  // supabase.auth.signInWithPassword({email, password: pass}).then(function({data, error}){
-  //   if(error){ err.textContent = error.message; err.classList.add('show'); return; }
-  //   onAuthSuccess(data.user);
-  // });
-
-  // Placeholder: simulate sign-in for UI testing
-  var user = { id: 'demo', name: email.split('@')[0], email: email, plan: 'free' };
-  storeUser(user);
-  onAuthSuccess(user);
-}
-
-function signUp(){
-  var name  = document.getElementById('signup-name').value.trim();
-  var email = document.getElementById('signup-email').value.trim();
-  var pass  = document.getElementById('signup-password').value;
-  var err   = document.getElementById('signup-error');
-  var succ  = document.getElementById('signup-success');
-  err.classList.remove('show'); succ.classList.remove('show');
-  if(!name||!email||!pass){ err.textContent='Please fill in all fields.'; err.classList.add('show'); return; }
-  if(pass.length<8){ err.textContent='Password must be at least 8 characters.'; err.classList.add('show'); return; }
-
-  // ── Supabase auth (replace when connected) ──
-  // supabase.auth.signUp({email, password: pass, options:{data:{display_name: name}}})
-  //   .then(function({data, error}){
-  //     if(error){ err.textContent=error.message; err.classList.add('show'); return; }
-  //     succ.textContent='Account created! Please check your email to confirm.';
-  //     succ.classList.add('show');
-  //   });
-
-  // Placeholder: simulate signup
-  var user = { id: 'demo', name: name, email: email, plan: 'free' };
-  storeUser(user);
-  onAuthSuccess(user);
-}
-
-function socialSignIn(provider){
-  // ── Supabase OAuth (replace when connected) ──
-  // supabase.auth.signInWithOAuth({provider: provider, options:{redirectTo: window.location.origin+'/account.html'}});
-  alert('Social sign-in coming soon — Supabase OAuth will be wired here.');
-}
-
-function signOut(){
-  clearUser();
-  currentUser = null;
-  document.getElementById('dashboard').style.display='none';
-  document.getElementById('authScreen').style.display='flex';
-}
-
-function onAuthSuccess(user){
-  currentUser = user;
-  document.getElementById('authScreen').style.display='none';
-  document.getElementById('dashboard').style.display='block';
-  document.getElementById('dashName').textContent = user.name || 'Welcome';
-  document.getElementById('dashEmail').textContent = user.email || '';
-  document.getElementById('dashAvatar').textContent = (user.name||'U')[0].toUpperCase();
-  var badge = document.getElementById('dashBadge');
-  badge.textContent = user.plan==='premium' ? 'Premium' : 'Free';
-  badge.className = 'dash-sub-badge '+(user.plan==='premium'?'premium':'free');
-  document.getElementById('settings-name').value = user.name||'';
-  document.getElementById('settings-email').value = user.email||'';
-  loadBookmarks();
-  loadJournal();
-  buildFastLog();
-}
-
-// ── Dashboard tabs ────────────────────────────────────────
-function switchDash(id){
-  document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
-  document.getElementById('dash-'+id).classList.add('active');
-  var tabs=document.querySelectorAll('.dash-tab');
-  var order=['bookmarks','journal','fasting','settings'];
-  tabs[order.indexOf(id)].classList.add('active');
-}
-
-// ── Bookmarks ─────────────────────────────────────────────
-function getBookmarks(){ try{return JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');}catch(e){return[];} }
-function saveBookmarks(arr){ try{localStorage.setItem('oc_bookmarks',JSON.stringify(arr));}catch(e){} }
-
-function loadBookmarks(filter){
-  filter=filter||'all';
-  var bms=getBookmarks();
-  var list=document.getElementById('bookmarkList');
-  if(filter!=='all') bms=bms.filter(function(b){return b.type===filter;});
-  if(!bms.length){ list.innerHTML='<div class="item-empty">No bookmarks yet. Tap the save button on any saint, prayer, or topic.</div>'; return; }
-  list.innerHTML=bms.map(function(b,i){
-    return '<div class="item-card"><span class="item-type-badge">'+b.type+'</span>'
-      +'<div class="item-body"><div class="item-title">'+b.title+'</div><div class="item-meta">'+b.date+'</div></div>'
-      +'<div class="item-actions"><a href="'+b.url+'" class="item-btn">View</a>'
-      +'<button class="item-btn" onclick="removeBookmark('+i+')">Remove</button></div></div>';
-  }).join('');
-}
-function filterBookmarks(f){ loadBookmarks(f); }
-function removeBookmark(i){ var bms=getBookmarks(); bms.splice(i,1); saveBookmarks(bms); loadBookmarks(); }
-
-// ── Journal ───────────────────────────────────────────────
-function getJournal(){ try{return JSON.parse(localStorage.getItem('oc_journal')||'[]');}catch(e){return[];} }
-function saveJournalData(arr){ try{localStorage.setItem('oc_journal',JSON.stringify(arr));}catch(e){} }
-
-function saveJournal(){
-  var text=document.getElementById('journalText').value.trim();
-  if(!text)return;
-  var cat=document.getElementById('journalCat').value;
-  var entries=getJournal();
-  entries.unshift({text:text,cat:cat,date:new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})});
-  if(entries.length>200)entries=entries.slice(0,200);
-  saveJournalData(entries);
-  document.getElementById('journalText').value='';
-  loadJournal();
-}
-function loadJournal(){
-  var entries=getJournal();
-  var list=document.getElementById('journalList');
-  if(!entries.length){ list.innerHTML='<div class="item-empty">No journal entries yet. Write a prayer, reflection, or note from your reading.</div>'; return; }
-  list.innerHTML=entries.map(function(e,i){
-    return '<div class="item-card"><span class="item-type-badge">'+e.cat+'</span>'
-      +'<div class="item-body"><div class="item-title" style="font-family:\'EB Garamond\',serif;font-size:0.9rem;font-weight:400;font-style:italic;color:var(--text-dim);">'+e.text.slice(0,140)+(e.text.length>140?'&hellip;':'')+'</div>'
-      +'<div class="item-meta">'+e.date+'</div></div>'
-      +'<div class="item-actions"><button class="item-btn" onclick="deleteJournal('+i+')">Delete</button></div></div>';
-  }).join('');
-}
-function deleteJournal(i){ var j=getJournal(); j.splice(i,1); saveJournalData(j); loadJournal(); }
-
-// ── Fasting Log ───────────────────────────────────────────
-function getFastLog(){ try{return JSON.parse(localStorage.getItem('oc_fastlog')||'{}');}catch(e){return{};} }
-function saveFastLog(obj){ try{localStorage.setItem('oc_fastlog',JSON.stringify(obj));}catch(e){} }
-
-function buildFastLog(){
-  var now=new Date();
-  var y=now.getFullYear(),m=now.getMonth();
-  var daysInMonth=new Date(y,m+1,0).getDate();
-  var firstDay=new Date(y,m,1).getDay();
-  var log=getFastLog();
-  var grid=document.getElementById('fastLogGrid');
-  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var DAYS=['S','M','T','W','T','F','S'];
-
-  var html='';
-  // Day headers
-  DAYS.forEach(function(d){ html+='<div style="text-align:center;font-family:Cinzel,serif;font-size:0.55rem;color:var(--text-muted);padding-bottom:4px;">'+d+'</div>'; });
-  // Empty cells
-  for(var i=0;i<firstDay;i++) html+='<div></div>';
-  // Days
-  for(var d=1;d<=daysInMonth;d++){
-    var key=y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
-    var fasted=log[key];
-    html+='<div class="fast-log-day'+(fasted?' fasted':'')+'" onclick="toggleFast(\''+key+'\')"><div class="fast-log-date">'+DAYS[new Date(y,m,d).getDay()]+'</div><div class="fast-log-num">'+d+'</div></div>';
-  }
-  grid.innerHTML=html;
-
-  // Stats
-  var fastedCount=Object.keys(log).filter(function(k){return k.startsWith(y+'-'+String(m+1).padStart(2,'0'))&&log[k];}).length;
-  document.getElementById('fastStats').textContent=fastedCount+' day'+(fastedCount!==1?'s':'')+' fasted in '+MONTHS[m]+'. Keep going &mdash; the Fathers say fasting and prayer go hand in hand.';
-}
-function toggleFast(key){
-  var log=getFastLog();
-  log[key]=!log[key];
-  if(!log[key])delete log[key];
-  saveFastLog(log);
-  buildFastLog();
-}
-
-// ── Settings ──────────────────────────────────────────────
-function saveSettings(){
-  var name=document.getElementById('settings-name').value.trim();
-  var email=document.getElementById('settings-email').value.trim();
-  if(currentUser){
-    currentUser.name=name;
-    currentUser.email=email;
-    storeUser(currentUser);
-    document.getElementById('dashName').textContent=name;
-    document.getElementById('dashEmail').textContent=email;
-    document.getElementById('dashAvatar').textContent=(name||'U')[0].toUpperCase();
-    alert('Settings saved!');
-  }
-  // Wire to Supabase: supabase.auth.updateUser({email, data:{display_name:name}})
-}
-
-// ── Init ──────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',function(){
-  var user=getStoredUser();
-  if(user){ onAuthSuccess(user); }
-  // Wire to Supabase: supabase.auth.getUser().then(function({data:{user}}){ if(user) onAuthSuccess(user); });
-});
-</script>
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
@@ -987,6 +1008,427 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
+
+var currentUser = null;
+
+// ── Helpers ───────────────────────────────────────────────
+function getStore(key,def){ try{return JSON.parse(localStorage.getItem(key)||'null')||def;}catch(e){return def;} }
+function setStore(key,val){ try{localStorage.setItem(key,JSON.stringify(val));}catch(e){} }
+function fmtDate(d){ return d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}); }
+function todayKey(){ var d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function dateKey(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+
+// ── Auth ──────────────────────────────────────────────────
+function switchTab(tab){
+  document.getElementById('form-signin').classList.toggle('active',tab==='signin');
+  document.getElementById('form-signup').classList.toggle('active',tab==='signup');
+  document.getElementById('tab-signin').classList.toggle('active',tab==='signin');
+  document.getElementById('tab-signup').classList.toggle('active',tab==='signup');
+}
+
+function signIn(){
+  var email=document.getElementById('signin-email').value.trim();
+  var pass=document.getElementById('signin-password').value;
+  var err=document.getElementById('signin-error');
+  err.classList.remove('show');
+  if(!email||!pass){err.textContent='Please enter your email and password.';err.classList.add('show');return;}
+  // Supabase stub — replace with: supabase.auth.signInWithPassword({email,password:pass})
+  var user={id:'demo',username:email.split('@')[0],name:email.split('@')[0],email:email,plan:'free'};
+  setStore('oc_user',user);
+  onAuthSuccess(user);
+}
+
+function signUp(){
+  var name=document.getElementById('signup-name').value.trim();
+  var email=document.getElementById('signup-email').value.trim();
+  var pass=document.getElementById('signup-password').value;
+  var err=document.getElementById('signup-error');
+  var succ=document.getElementById('signup-success');
+  err.classList.remove('show');succ.classList.remove('show');
+  if(!name||!email||!pass){err.textContent='Please fill in all fields.';err.classList.add('show');return;}
+  if(pass.length<8){err.textContent='Password must be at least 8 characters.';err.classList.add('show');return;}
+  // Supabase stub
+  var user={id:'demo',username:name,name:name,email:email,plan:'free'};
+  setStore('oc_user',user);
+  onAuthSuccess(user);
+}
+
+function socialSignIn(provider){
+  alert('Social sign-in coming soon — Supabase OAuth will be connected here.');
+}
+
+function signOut(){
+  localStorage.removeItem('oc_user');
+  currentUser=null;
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('authScreen').style.display='flex';
+  initAccountNav();
+}
+
+function onAuthSuccess(user){
+  currentUser=user;
+  document.getElementById('authScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('dashName').textContent=user.name||user.username||'Welcome';
+  document.getElementById('dashEmail').textContent=user.email||'';
+  document.getElementById('dashAvatar').textContent=(user.name||user.username||'U')[0].toUpperCase();
+  var badge=document.getElementById('dashBadge');
+  badge.textContent=user.plan==='premium'?'Premium':'Free';
+  badge.className='dash-badge '+(user.plan==='premium'?'premium':'free');
+  document.getElementById('settings-name').value=user.name||'';
+  document.getElementById('settings-email').value=user.email||'';
+  document.getElementById('journalTodayDate').textContent=fmtDate(new Date());
+  // Load all data
+  loadBookmarks();loadJournal();buildReadingTab();buildFastLog();updateStats();
+  initAccountNav();
+  // Handle hash
+  var hash=window.location.hash.replace('#','');
+  var valid=['bookmarks','journal','reading','fasting','settings'];
+  if(valid.includes(hash))switchDash(hash);
+}
+
+// ── Dashboard tabs ─────────────────────────────────────────
+function switchDash(id){
+  document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
+  var sec=document.getElementById('dash-'+id);
+  if(sec)sec.classList.add('active');
+  var order=['bookmarks','journal','reading','fasting','settings'];
+  var idx=order.indexOf(id);
+  var tabs=document.querySelectorAll('.dash-tab');
+  if(tabs[idx])tabs[idx].classList.add('active');
+  if(id==='fasting')buildFastLog();
+  if(id==='reading')buildReadingTab();
+}
+
+// ── Stats ─────────────────────────────────────────────────
+function updateStats(){
+  var bms=getStore('oc_bookmarks',[]);
+  var journal=getStore('oc_journal',[]);
+  var fastLog=getStore('oc_fast_log',{});
+  var readLog=getStore('oc_reading_log',{});
+  document.getElementById('stat-bookmarks').textContent=bms.length;
+  document.getElementById('stat-journal').textContent=journal.length;
+  document.getElementById('stat-streak').textContent=calcFastStreak(fastLog);
+  var totalRead=Object.values(readLog).reduce(function(a,b){return a+Object.keys(b).length;},0);
+  document.getElementById('stat-reading').textContent=totalRead;
+}
+
+// ── Bookmarks ─────────────────────────────────────────────
+function filterBookmarks(type,btn){
+  document.querySelectorAll('.bm-filter').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  loadBookmarks(type);
+}
+
+function loadBookmarks(filter){
+  filter=filter||'all';
+  var bms=getStore('oc_bookmarks',[]);
+  var list=document.getElementById('bookmarkList');
+  var filtered=filter==='all'?bms:bms.filter(function(b){return b.type===filter;});
+  if(!filtered.length){
+    list.innerHTML='<div class="item-empty">No '+(filter==='all'?'bookmarks':filter+' bookmarks')+' yet.<br>Tap the save button on any '+
+      (filter==='all'?'prayer, saint, topic, or feast':filter)+' to save it here.</div>';
+    return;
+  }
+  list.innerHTML=filtered.map(function(b,i){
+    return '<div class="item-card">'+
+      '<span class="item-type">'+(b.type||'item')+'</span>'+
+      '<div class="item-body">'+
+      '<div class="item-title">'+(b.title||'Untitled')+'</div>'+
+      (b.note?'<div class="item-note">'+b.note+'</div>':'')+
+      '<div class="item-meta">'+(b.date||'')+'</div>'+
+      '</div>'+
+      '<div class="item-actions">'+
+      '<button class="item-btn" onclick="openBookmarkNote('+i+')">Note</button>'+
+      '<a href="'+(b.url||'#')+'" class="item-btn" style="text-decoration:none;">View</a>'+
+      '<button class="item-btn" onclick="removeBookmark('+i+')" style="color:#CA8A8A;">Remove</button>'+
+      '</div></div>';
+  }).join('');
+}
+
+function removeBookmark(idx){
+  var bms=getStore('oc_bookmarks',[]);
+  bms.splice(idx,1);
+  setStore('oc_bookmarks',bms);
+  loadBookmarks();updateStats();
+}
+
+function openBookmarkNote(idx){
+  var bms=getStore('oc_bookmarks',[]);
+  var note=prompt('Add a note to this bookmark:',bms[idx].note||'');
+  if(note!==null){bms[idx].note=note;setStore('oc_bookmarks',bms);loadBookmarks();}
+}
+
+// Global save bookmark function (called from other pages)
+window.saveBookmark=function(type,title,url){
+  var bms=getStore('oc_bookmarks',[]);
+  if(bms.some(function(b){return b.url===url;})){alert('Already bookmarked!');return;}
+  bms.unshift({type:type,title:title,url:url,date:fmtDate(new Date()),note:''});
+  setStore('oc_bookmarks',bms);
+  alert(title+' saved to bookmarks!');
+};
+
+// ── Journal ───────────────────────────────────────────────
+function saveJournalEntry(){
+  var text=document.getElementById('journalText').value.trim();
+  if(!text)return;
+  var cat=document.getElementById('journalCat').value;
+  var entries=getStore('oc_journal',[]);
+  entries.unshift({text:text,category:cat,date:fmtDate(new Date()),key:todayKey()+'-'+Date.now()});
+  setStore('oc_journal',entries);
+  document.getElementById('journalText').value='';
+  loadJournal();updateStats();
+}
+
+function loadJournal(){
+  var entries=getStore('oc_journal',[]);
+  var list=document.getElementById('journalList');
+  if(!entries.length){
+    list.innerHTML='<div class="item-empty">No journal entries yet.<br>Write your first reflection above.</div>';
+    return;
+  }
+  list.innerHTML=entries.map(function(e,i){
+    return '<div class="journal-card">'+
+      '<div class="journal-card-header">'+
+      '<span class="journal-card-date">'+(e.date||'')+'</span>'+
+      '<span class="journal-card-cat">'+(e.category||'reflection')+'</span>'+
+      '<button class="journal-card-delete" onclick="deleteJournalEntry('+i+')" title="Delete">&#10005;</button>'+
+      '</div>'+
+      '<div class="journal-card-text">'+(e.text||'')+'</div>'+
+      '</div>';
+  }).join('');
+}
+
+function deleteJournalEntry(idx){
+  if(!confirm('Delete this journal entry?'))return;
+  var entries=getStore('oc_journal',[]);
+  entries.splice(idx,1);
+  setStore('oc_journal',entries);
+  loadJournal();updateStats();
+}
+
+// ── Reading Plans ─────────────────────────────────────────
+var PLAN_NAMES={
+  'bible-1yr':'Bible — 1 Year','bible-2yr':'Bible — 2 Years',
+  'nt-90':'NT — 90 Days','nt-1yr':'NT — 1 Year',
+  'psalter':'Psalter Monthly','epistles-30':'Epistles — 30 Days',
+  'gospels-60':'Gospels — 60 Days','ot-1yr':'OT — 1 Year','lenten':'Lenten Plan'
+};
+
+function buildReadingTab(){
+  var activePlan=localStorage.getItem('oc_reading_plan');
+  var planStart=localStorage.getItem('oc_plan_start');
+  var readLog=getStore('oc_reading_log',{});
+  var grid=document.getElementById('rpGrid');
+  if(!activePlan){
+    grid.innerHTML='<div class="rp-no-plan">No reading plans active.<br><a href="reading-plans.html" style="color:var(--gold-light);">Browse reading plans</a> to get started.</div>';
+    return;
+  }
+  var daysSince=0;
+  if(planStart){
+    var start=new Date(planStart);var now=new Date();now.setHours(0,0,0,0);
+    daysSince=Math.floor((now-start)/(1000*60*60*24));
+  }
+  var planLog=readLog[activePlan]||{};
+  var daysRead=Object.keys(planLog).length;
+  var totalDays=parseInt({
+    'bible-1yr':365,'bible-2yr':730,'nt-90':90,'nt-1yr':365,
+    'psalter':30,'epistles-30':30,'gospels-60':60,'ot-1yr':365,'lenten':48
+  }[activePlan])||365;
+  var pct=Math.min(Math.round(daysRead/totalDays*100),100);
+  var readUrl='https://www.biblegateway.com/passage/?search=&version=NKJV';
+  grid.innerHTML='<div class="rp-card active-plan">'+
+    '<div class="rp-name">'+(PLAN_NAMES[activePlan]||activePlan)+'</div>'+
+    '<div class="rp-today">Day '+(daysSince+1)+' &mdash; Continue reading</div>'+
+    '<div class="rp-progress-bar"><div class="rp-progress-fill" style="width:'+pct+'%"></div></div>'+
+    '<div class="rp-meta">'+
+    '<span class="rp-pct">'+pct+'% complete &mdash; '+daysRead+' of '+totalDays+' days</span>'+
+    '<a href="reading-plans.html" class="rp-read-btn">Open Plan</a>'+
+    '</div></div>'+
+    '<div class="rp-card" style="display:flex;align-items:center;justify-content:center;">'+
+    '<a href="reading-plans.html" style="font-family:Cinzel,serif;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);text-decoration:none;text-align:center;">+ Add Another Plan</a>'+
+    '</div>';
+}
+
+// ── Fasting Log ───────────────────────────────────────────
+function logFast(date,type){
+  var log=getStore('oc_fast_log',{});
+  var key=dateKey(date);
+  if(type==='none'){delete log[key];}
+  else{log[key]=type;}
+  setStore('oc_fast_log',log);
+  buildFastLog();updateStats();
+}
+
+function calcFastStreak(log){
+  var streak=0;
+  var d=new Date();d.setHours(0,0,0,0);
+  while(true){
+    var k=dateKey(d);
+    if(log[k]==='fasted'||log[k]==='strict'){streak++;}
+    else{break;}
+    d.setDate(d.getDate()-1);
+  }
+  return streak;
+}
+
+function buildFastLog(){
+  var log=getStore('oc_fast_log',{});
+  var now=new Date();
+  var todayStr=dateKey(now);
+
+  // Stats
+  var allFasted=Object.keys(log).filter(function(k){return log[k]==='fasted'||log[k]==='strict';});
+  var thisMonth=allFasted.filter(function(k){return k.startsWith(now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0'));});
+  document.getElementById('fastStreak').textContent=calcFastStreak(log);
+  document.getElementById('fastThisMonth').textContent=thisMonth.length;
+  document.getElementById('fastTotal').textContent=allFasted.length;
+
+  // Heatmap — last 12 months
+  var heatmap=document.getElementById('heatmapGrid');
+  var months=[];
+  for(var m=11;m>=0;m--){
+    var d=new Date(now.getFullYear(),now.getMonth()-m,1);
+    months.push(d);
+  }
+  heatmap.innerHTML=months.map(function(monthStart){
+    var year=monthStart.getFullYear();
+    var month=monthStart.getMonth();
+    var daysInMonth=new Date(year,month+1,0).getDate();
+    var monthName=monthStart.toLocaleDateString('en-US',{month:'short'});
+    // Build weeks
+    var days=[];
+    for(var day=1;day<=daysInMonth;day++){
+      var d=new Date(year,month,day);
+      var k=dateKey(d);
+      var cls='heatmap-cell';
+      if(log[k]==='fasted')cls+=' fasted';
+      else if(log[k]==='strict')cls+=' strict';
+      if(k===todayStr)cls+=' today';
+      days.push('<div class="'+cls+'" title="'+k+'" onclick="toggleFastDay(''+k+'')"></div>');
+    }
+    // Pad start
+    var firstDow=new Date(year,month,1).getDay();
+    for(var p=0;p<firstDow;p++)days.unshift('<div class="heatmap-cell" style="opacity:0;"></div>');
+    // Group into weeks
+    var weeks=[];
+    for(var i=0;i<days.length;i+=7)weeks.push(days.slice(i,i+7));
+    return '<div class="heatmap-month">'+
+      '<div class="heatmap-month-name">'+monthName+'</div>'+
+      '<div class="heatmap-weeks">'+
+      weeks.map(function(w){return '<div class="heatmap-week">'+w.join('')+'</div>';}).join('')+
+      '</div></div>';
+  }).join('');
+
+  // Monthly calendar grid
+  var year=now.getFullYear();var month=now.getMonth();
+  var monthName=now.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  document.getElementById('fastLogMonthTitle').textContent=monthName;
+  var daysInMonth=new Date(year,month+1,0).getDate();
+  var firstDow=new Date(year,month,1).getDay();
+  var cells=[];
+  for(var p=0;p<firstDow;p++)cells.push('<div class="fast-cell empty"></div>');
+  for(var day=1;day<=daysInMonth;day++){
+    var d=new Date(year,month,day);
+    var k=dateKey(d);
+    var cls='fast-cell';
+    if(log[k]==='fasted')cls+=' fasted';
+    else if(log[k]==='strict')cls+=' strict';
+    cells.push('<div class="'+cls+'" onclick="toggleFastDay(''+k+'')">'+
+      '<div class="fast-cell-date">'+day+'</div>'+
+      '<div class="fast-cell-dot"></div></div>');
+  }
+  document.getElementById('fastLogGrid').innerHTML=cells.join('');
+}
+
+function toggleFastDay(key){
+  var log=getStore('oc_fast_log',{});
+  if(log[key]==='fasted'){log[key]='strict';}
+  else if(log[key]==='strict'){delete log[key];}
+  else{log[key]='fasted';}
+  setStore('oc_fast_log',log);
+  buildFastLog();updateStats();
+}
+
+// ── Settings ──────────────────────────────────────────────
+function applyThemeSetting(val){
+  if(val==='system'){
+    var sys=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';
+    document.documentElement.setAttribute('data-theme',sys);
+    localStorage.removeItem('oc_theme');
+  } else {
+    document.documentElement.setAttribute('data-theme',val);
+    localStorage.setItem('oc_theme',val);
+  }
+}
+
+function applyFontSize(val){
+  var sizes={normal:'1.05rem',large:'1.15rem',xlarge:'1.25rem'};
+  document.body.style.fontSize=sizes[val]||'1.05rem';
+  localStorage.setItem('oc_fontsize',val);
+}
+
+function saveSettings(){
+  var name=document.getElementById('settings-name').value.trim();
+  var email=document.getElementById('settings-email').value.trim();
+  if(currentUser){
+    currentUser.name=name;currentUser.username=name;currentUser.email=email;
+    setStore('oc_user',currentUser);
+    document.getElementById('dashName').textContent=name;
+    document.getElementById('dashAvatar').textContent=(name||'U')[0].toUpperCase();
+    initAccountNav();
+  }
+  // Save notification prefs
+  var prefs={reading:document.getElementById('notif-reading').checked,
+    fasting:document.getElementById('notif-fasting').checked,
+    feasts:document.getElementById('notif-feasts').checked};
+  setStore('oc_notif_prefs',prefs);
+  alert('Settings saved!');
+}
+
+function exportData(){
+  var data={
+    bookmarks:getStore('oc_bookmarks',[]),
+    journal:getStore('oc_journal',[]),
+    fastLog:getStore('oc_fast_log',{}),
+    readLog:getStore('oc_reading_log',{}),
+    exportDate:new Date().toISOString()
+  };
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');a.href=url;a.download='orthodox-companion-data.json';
+  a.click();URL.revokeObjectURL(url);
+}
+
+function deleteAccount(){
+  ['oc_user','oc_bookmarks','oc_journal','oc_fast_log','oc_reading_log',
+   'oc_reading_plan','oc_plan_start','oc_theme','oc_notif_prefs']
+  .forEach(function(k){localStorage.removeItem(k);});
+  signOut();
+}
+
+// ── Init ──────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded',function(){
+  var user=getStore('oc_user',null);
+  if(user&&user.email){
+    onAuthSuccess(user);
+  } else {
+    document.getElementById('authScreen').style.display='flex';
+  }
+  // Restore font size
+  var fs=localStorage.getItem('oc_fontsize');
+  if(fs)applyFontSize(fs);
+  // Restore theme setting in select
+  var theme=localStorage.getItem('oc_theme');
+  var sel=document.getElementById('settings-theme');
+  if(sel)sel.value=theme||'system';
+  // Restore notif prefs
+  var prefs=getStore('oc_notif_prefs',{});
+  if(prefs.reading)document.getElementById('notif-reading').checked=true;
+  if(prefs.fasting)document.getElementById('notif-fasting').checked=true;
+  if(prefs.feasts)document.getElementById('notif-feasts').checked=true;
+});
 </script>
 </body>
 </html>
