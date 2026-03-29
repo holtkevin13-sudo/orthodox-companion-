@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<script>
-(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
-</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Saints — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="theme-color" content="#0A1628"/>
-<meta name="description" content="The saints of the Orthodox Church — Saint of the Day, 1212 saints with feast days, profiles, and liturgical calendar connections."/>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="The saints of the Orthodox Church — Saint of the Day, profiles, feast days, and categories from the Apostles to the modern New Martyrs."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -185,412 +181,73 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-:root{
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --nav-h:68px;
-}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-
-/* ── Nav (shared) ──────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.4);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;letter-spacing:0.04em;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;transition:all 0.2s;font-size:1rem;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
-
-/* ── Saint of the Day ──────────────────────────────────────── */
-.sotd-banner{
-  margin-top:var(--nav-h);
-  background:linear-gradient(135deg,rgba(27,58,107,0.5),rgba(10,22,40,0.9));
-  border-bottom:1px solid rgba(201,168,76,0.2);
-  padding:36px 24px;
-}
-.sotd-inner{max-width:1040px;margin:0 auto;display:flex;gap:32px;align-items:center;}
-.sotd-icon-wrap{flex-shrink:0;position:relative;}
-.sotd-icon{
-  width:120px;height:150px;object-fit:cover;
-  border:2px solid rgba(201,168,76,0.4);border-radius:3px;
-  background:linear-gradient(160deg,var(--panel),var(--deep));
-  display:flex;align-items:center;justify-content:center;
-  font-size:3rem;color:var(--gold-dim);
-}
-.sotd-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
-.sotd-icon-placeholder{width:120px;height:150px;background:linear-gradient(160deg,rgba(27,58,107,0.6),rgba(10,22,40,0.8));border:1px solid rgba(201,168,76,0.25);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.sotd-icon-placeholder span{font-size:2.8rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
-.sotd-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:8px;}
-.sotd-name{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;color:var(--gold-light);letter-spacing:0.06em;line-height:1.1;margin-bottom:8px;}
-.sotd-feast{font-size:0.85rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:0.06em;margin-bottom:12px;}
-.sotd-bio{font-size:1rem;color:var(--text-dim);line-height:1.85;font-style:italic;max-width:580px;}
-.sotd-link{display:inline-block;margin-top:16px;font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:8px 18px;text-decoration:none;transition:all 0.2s;background:rgba(201,168,76,0.08);}
-.sotd-link:hover{background:rgba(201,168,76,0.2);}
-
-/* ── Page header ───────────────────────────────────────────── */
-.page-top{max-width:1040px;margin:0 auto;padding:32px 24px 20px;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:10px;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
-.breadcrumb a:hover{color:var(--gold-light);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:6px;}
-.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;}
-
-/* ── Category Grid ─────────────────────────────────────────── */
-.section{padding:0 24px 60px;max-width:1040px;margin:0 auto;}
-.section-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:20px;}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
-.cat-card{
-  background:linear-gradient(160deg,rgba(15,32,53,0.8),rgba(27,58,107,0.3));
-  border:1px solid var(--border-dim);border-radius:4px;
-  padding:22px 18px;cursor:pointer;
-  transition:border-color 0.25s,transform 0.2s,background 0.25s;
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;gap:8px;
-}
-.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.05),transparent);opacity:0;transition:opacity 0.3s;}
-.cat-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
-.cat-card:hover::before{opacity:1;}
-.cat-card.active{border-color:var(--gold);background:rgba(201,168,76,0.08);}
-.cat-icon{font-size:1.6rem;line-height:1;margin-bottom:2px;}
-.cat-name{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;line-height:1.3;}
-.cat-desc{font-size:0.78rem;color:var(--text-muted);font-style:italic;line-height:1.5;}
-.cat-count{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:auto;}
-
-/* ── Saints List Panel ─────────────────────────────────────── */
-.saints-list-wrap{
-  margin-top:24px;
-  background:rgba(15,32,53,0.5);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:4px;overflow:hidden;
-  display:none;
-  animation:slideDown 0.3s ease;
-}
-.saints-list-wrap.open{display:block;}
-@keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-.saints-list-header{
-  padding:16px 22px;border-bottom:1px solid rgba(201,168,76,0.1);
-  display:flex;align-items:center;justify-content:space-between;
-  background:rgba(0,0,0,0.2);
-}
-.saints-list-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;}
-.saints-list-close{background:transparent;border:none;color:var(--text-dim);font-size:1.2rem;cursor:pointer;padding:0;transition:color 0.2s;}
-.saints-list-close:hover{color:var(--gold);}
-.saints-search-wrap{padding:12px 22px;border-bottom:1px solid rgba(42,90,156,0.15);}
-.saints-search{
-  width:100%;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.95rem;
-  padding:8px 14px;outline:none;transition:border-color 0.2s;
-}
+/* ── SOTD white hero ── */
+.sotd-banner{background:#ffffff;border-bottom:2px solid var(--gold-dim);padding:28px 24px;}
+.sotd-inner{max-width:960px;margin:0 auto;display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap;}
+.sotd-icon-wrap{width:90px;height:110px;background:linear-gradient(160deg,rgba(27,58,107,0.4),rgba(10,22,40,0.7));border:1px solid var(--border-dim);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--gold);flex-shrink:0;}
+.sotd-info{flex:1;min-width:200px;}
+.sotd-label{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.18em;color:#6B4C1A;margin-bottom:6px;}
+.sotd-name{font-family:"Cinzel",serif;font-size:1.4rem;color:#1a0f00;letter-spacing:0.06em;font-weight:700;margin-bottom:4px;}
+.sotd-feast{font-size:0.88rem;color:#6B4C1A;font-style:italic;margin-bottom:10px;}
+.sotd-bio{font-size:0.92rem;color:#3a2800;line-height:1.75;max-width:560px;}
+.sotd-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
+.sotd-btn{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);background:rgba(201,168,76,0.1);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;text-decoration:none;transition:all 0.2s;}
+.sotd-btn:hover{background:rgba(201,168,76,0.2);}
+.sotd-also{font-size:0.8rem;color:#6B4C1A;font-style:italic;margin-top:8px;}
+/* ── Main content ── */
+.saints-wrap{max-width:1060px;margin:0 auto;padding:28px 24px 60px;}
+/* ── Browse by Category header ── */
+.browse-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+.browse-title{font-family:"Cinzel",serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);white-space:nowrap;}
+.browse-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
+/* ── Category cards ── */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:36px;}
+.cat-card{background:linear-gradient(135deg,#C9A84C,#A07828);border:1px solid #E8CB7A;border-radius:4px;padding:18px 16px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;text-align:center;}
+.cat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,168,76,0.25);}
+.cat-icon{font-size:1.6rem;margin-bottom:6px;}
+.cat-name{font-family:"Cinzel",serif;font-size:0.82rem;font-weight:600;color:#1a0f00;letter-spacing:0.04em;margin-bottom:4px;}
+.cat-count{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:#5a3a00;}
+/* ── Saints search ── */
+.saints-search-wrap{display:flex;gap:10px;margin-bottom:16px;}
+.saints-search{flex:1;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:"EB Garamond",serif;font-size:1rem;padding:10px 16px;outline:none;transition:border-color 0.2s;}
+[data-theme="light"] .saints-search{background:rgba(212,188,150,0.4);}
 .saints-search:focus{border-color:var(--gold-dim);}
 .saints-search::placeholder{color:var(--text-muted);font-style:italic;}
-.alpha-bar{
-  padding:8px 22px;border-bottom:1px solid rgba(42,90,156,0.12);
-  display:flex;flex-wrap:wrap;gap:3px;
-}
-.alpha-btn{
-  font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);
-  background:transparent;border:none;cursor:pointer;padding:3px 6px;
-  border-radius:2px;transition:all 0.15s;
-}
+/* ── Saints list ── */
+.saints-alpha{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:12px;}
+.alpha-btn{font-family:"Cinzel",serif;font-size:0.65rem;color:var(--text-muted);background:transparent;border:none;cursor:pointer;padding:4px 8px;border-radius:2px;transition:all 0.15s;}
+.alpha-btn.has{color:var(--text-dim);}
 .alpha-btn:hover,.alpha-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.1);}
-.saints-list-body{padding:12px 0;max-height:400px;overflow-y:auto;}
-.saints-list-body::-webkit-scrollbar{width:4px;}
-.saints-list-body::-webkit-scrollbar-thumb{background:var(--border-dim);border-radius:2px;}
-.alpha-section{margin-bottom:4px;}
-.alpha-letter{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;padding:6px 22px 4px;border-top:1px solid rgba(42,90,156,0.1);margin-top:8px;}
-.alpha-letter:first-child{border-top:none;margin-top:0;}
-.saint-list-item{
-  display:flex;align-items:center;gap:14px;
-  padding:10px 22px;cursor:pointer;
-  transition:background 0.15s;border-bottom:1px solid rgba(42,90,156,0.06);
-  text-decoration:none;
-}
-.saint-list-item:hover{background:rgba(27,58,107,0.35);}
-.saint-list-item:last-child{border-bottom:none;}
-.sli-icon{width:36px;height:44px;flex-shrink:0;background:linear-gradient(160deg,var(--panel),var(--deep));border:1px solid var(--border-dim);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-.sli-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
-.sli-name{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--text);letter-spacing:0.04em;margin-bottom:2px;}
-.sli-feast{font-size:0.74rem;color:var(--text-muted);font-style:italic;}
-.sli-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
-.saints-empty{padding:28px 22px;text-align:center;color:var(--text-muted);font-style:italic;font-size:0.9rem;}
-
-/* ── Saint Profile Modal ───────────────────────────────────── */
+.saints-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.saint-list-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:border-color 0.2s;}
+.saint-list-item:hover{border-color:var(--gold-dim);}
+.saint-list-icon{width:36px;height:36px;border-radius:2px;background:linear-gradient(135deg,rgba(27,58,107,0.5),rgba(10,22,40,0.8));border:1px solid var(--border-dim);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold);flex-shrink:0;}
+.saint-list-name{font-family:"Cinzel",serif;font-size:0.78rem;color:var(--text);letter-spacing:0.03em;}
+.saint-list-feast{font-size:0.72rem;color:var(--text-muted);font-style:italic;}
+/* ── Saint modal ── */
 #saint-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
 #saint-modal.open{display:flex;}
-.saint-modal-box{
-  background:linear-gradient(160deg,#0D1E38,#0A1628);
-  border:1px solid var(--border);border-top:3px solid var(--gold);
-  border-radius:4px;width:100%;max-width:680px;
-  margin:auto;
-  animation:fadeUp 0.3s ease;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-.sm-header{
-  padding:20px 26px 16px;border-bottom:1px solid rgba(201,168,76,0.12);
-  display:flex;gap:20px;align-items:flex-start;background:rgba(0,0,0,0.2);
-}
-.sm-icon{width:90px;height:110px;flex-shrink:0;background:linear-gradient(160deg,var(--panel),var(--deep));border:1px solid rgba(201,168,76,0.3);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-.sm-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
-.sm-title-wrap{flex:1;}
-.sm-breadcrumb{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;}
-.sm-name{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--gold-light);letter-spacing:0.06em;line-height:1.2;margin-bottom:6px;}
-.sm-feast{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
-.sm-badges{display:flex;flex-wrap:wrap;gap:5px;}
-.sm-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;border-radius:2px;padding:2px 9px;border:1px solid;}
-.sm-badge.father{color:var(--gold);border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.08);}
-.sm-badge.category{color:var(--text-muted);border-color:var(--border-dim);background:rgba(42,90,156,0.1);}
-.sm-close{background:transparent;border:none;color:var(--text-dim);font-size:1.4rem;cursor:pointer;padding:0;flex-shrink:0;transition:color 0.2s;}
-.sm-close:hover{color:var(--gold);}
-.sm-body{padding:20px 26px;}
-.sm-meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(42,90,156,0.2);}
-.sm-meta-item{}
-.sm-meta-label{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:3px;}
-.sm-meta-value{font-size:0.88rem;color:var(--text-dim);font-style:italic;line-height:1.5;}
-.sm-section{margin-bottom:20px;}
-.sm-section-title{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.12);}
-.sm-bio{font-size:0.96rem;color:var(--text-dim);line-height:1.9;}
-.sm-troparion{
-  background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);
-  border-left:3px solid var(--gold-dim);border-radius:3px;
-  padding:16px 18px;font-size:0.95rem;color:var(--text);
-  font-style:italic;line-height:1.9;
-}
-.sm-writings{display:flex;flex-direction:column;gap:8px;}
-.sm-writing-link{
-  display:flex;align-items:center;gap:10px;padding:10px 14px;
-  background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);
-  border-radius:3px;text-decoration:none;transition:border-color 0.2s,background 0.2s;
-}
-.sm-writing-link:hover{border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
-.sm-writing-title{font-size:0.88rem;color:var(--text);line-height:1.4;}
-.sm-writing-source{font-size:0.74rem;color:var(--text-muted);font-style:italic;}
-.sm-writing-arrow{margin-left:auto;color:var(--text-muted);font-size:0.8rem;flex-shrink:0;}
-.sm-footer{padding:14px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;gap:10px;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.15);}
-.sm-share-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;}
-.sm-share-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.sm-chatbot-link{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;transition:all 0.2s;}
-.sm-chatbot-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-
-/* ── Responsive ────────────────────────────────────────────── */
-@media(max-width:900px){
-  .nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);}
-  .sotd-inner{flex-direction:column;gap:20px;}
-  .sotd-icon-placeholder{width:80px;height:100px;}
-  .sm-meta-grid{grid-template-columns:1fr;}
-}
-@media(max-width:600px){
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  .cat-card{padding:16px 14px;}
-  .page-top{padding:24px 16px 16px;}
-  .section{padding:0 16px 40px;}
-  .sotd-banner{padding:24px 16px;}
-  .sm-header{flex-direction:column;}
-  .sm-icon{width:100%;height:100px;}
-}
-.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
-
-
-/* ═══════════════════════════════════════════════════════
-   THEME SYSTEM — Dark (default) + Light (parchment)
-   Respects prefers-color-scheme, saved to localStorage
-═══════════════════════════════════════════════════════ */
-:root {
-  /* Dark theme (default) */
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);
-  --bg-panel:rgba(27,58,107,0.3);
-  --shadow:rgba(0,0,0,0.5);
-  --nav-bg:rgba(10,22,40,0.97);
-  --nav-h:68px;
-}
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --bg-panel:rgba(212,188,150,0.4);
-  --shadow:rgba(100,70,20,0.15);
-  --nav-bg:rgba(245,237,216,0.97);
-}
-
-/* ── Theme toggle button ─────────────────────────────── */
-.theme-toggle {
-  background:transparent;border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text-muted);padding:5px 9px;
-  cursor:pointer;font-size:0.82rem;transition:all 0.2s;
-  flex-shrink:0;line-height:1;
-}
-.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
-
-/* ── Body background ─────────────────────────────────── */
-body{background:var(--bg-page);color:var(--text);}
-
-/* ── Smooth theme transition ─────────────────────────── */
-*, *::before, *::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-/* But NOT transitions on transforms/opacity (breaks animations) */
-.fade-in, .nav-dropdown, [class*="modal"], [class*="panel"] {
-  transition: none !important;
-}
-.fade-in { transition: opacity 0.5s ease, transform 0.5s ease !important; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-
-/* ── Saints SOTD white background ───────────────────── */
-.sotd-banner{background:#ffffff;border-bottom:2px solid var(--gold-dim);}
-.sotd-label{color:var(--gold);}
-.sotd-name{color:#1a0f00;}
-.sotd-feast{color:#5a4a20;}
-.sotd-bio{color:#3a2800;}
-[data-theme="dark"] .sotd-banner{background:#ffffff;}
-[data-theme="dark"] .sotd-name{color:#1a0f00;}
-[data-theme="dark"] .sotd-bio{color:#3a2800;}
-
-/* ── Browse by Category ornament ────────────────────── */
-.cat-section-label{
-  display:flex;align-items:center;gap:16px;
-  font-family:"Cinzel",serif;font-size:0.75rem;
-  text-transform:uppercase;letter-spacing:0.22em;color:var(--gold);
-  margin-bottom:20px;
-}
-.cat-section-label::before,.cat-section-label::after{
-  content:"";flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
-}
-
-/* ── Category cards gold ─────────────────────────────── */
-.cat-card{
-  background:linear-gradient(160deg,#C9A84C,#A07828)!important;
-  border:1px solid #E8CB7A!important;
-}
-.cat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,168,76,0.3);}
-.cat-name{color:#1a0f00!important;}
-.cat-desc{color:#3a2800!important;}
-.cat-count{color:#5a3a00!important;}
-.cat-icon{filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3));}
-
-/* ═══════════════════════════════════════════════════════
-   MOBILE IMPROVEMENTS
-═══════════════════════════════════════════════════════ */
-@media(max-width:768px){
-  /* Better touch targets */
-  .nav-link,.cat-item,.prayer-item,.saint-list-item{min-height:44px;}
-  
-  /* Calendar mobile */
-  .cal-day{min-height:44px;padding:4px;}
-  .cal-day-num{font-size:0.75rem;}
-  .cal-grid{gap:2px;}
-  .cal-outer{padding:8px 10px 40px;}
-  
-  /* Better modal sizing */
-  .saint-modal-box,.pm-box,.tm-box,.rm-box{
-    width:100%;max-height:92vh;margin:auto 0 0;
-    border-radius:12px 12px 0 0;
-  }
-  #saint-modal,#prayer-modal,#topic-modal,#reading-modal{
-    align-items:flex-end;padding:0;
-  }
-  
-  /* Typography */
-  body{font-size:1.05rem;line-height:1.85;}
-  .page-title{font-size:1.4rem;}
-  
-  /* Cards stack */
-  .rules-grid,.seasons-grid{grid-template-columns:1fr;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  
-  /* Day panel full width */
-  .day-panel{width:100%;border-left:none;border-top:2px solid var(--gold-dim);}
-  
-  /* Wider modals */
-  .sm-header{flex-direction:column;gap:12px;}
-  .sm-icon{width:100%;height:90px;flex-direction:row;justify-content:center;}
-  
-  /* Better spacing */
-  .content,.section{padding:20px 16px 40px;}
-  .page-hero{padding:28px 16px 24px;}
-}
-@media(max-width:480px){
-  .cat-grid{grid-template-columns:1fr 1fr;}
-  .main-layout{grid-template-columns:1fr;}
-  nav{padding:0 14px;}
-  .nav-brand .nav-subtitle{display:none;}
-}
+.sm-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:660px;margin:auto;}
+.sm-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);display:flex;gap:16px;align-items:flex-start;}
+.sm-icon{width:70px;height:86px;border-radius:2px;background:linear-gradient(135deg,rgba(27,58,107,0.5),rgba(10,22,40,0.8));border:1px solid var(--border-dim);display:flex;align-items:center;justify-content:center;font-size:2rem;color:var(--gold);flex-shrink:0;}
+.sm-icon img{width:70px;height:86px;object-fit:cover;border-radius:2px;}
+.sm-info{flex:1;}
+.sm-name{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.05em;margin-bottom:4px;}
+.sm-feast{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+.sm-tradition{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;border:1px solid var(--border-dim);border-radius:2px;padding:2px 8px;color:var(--text-muted);margin-top:6px;display:inline-block;}
+.sm-body{padding:22px 26px;max-height:55vh;overflow-y:auto;}
+.sm-section{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.sm-bio{font-size:0.96rem;color:var(--text-dim);line-height:1.9;margin-bottom:16px;}
+.sm-troparion{font-size:0.94rem;color:var(--text-dim);font-style:italic;line-height:1.85;padding:12px 16px;background:rgba(27,58,107,0.2);border-left:2px solid var(--gold-dim);border-radius:2px;margin-bottom:16px;}
+.sm-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;gap:8px;justify-content:space-between;align-items:center;}
+.sm-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
+.sm-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.sm-close{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;color:var(--text-muted);background:transparent;border:none;cursor:pointer;}
+.sm-close:hover{color:var(--gold-light);}
+@media(max-width:800px){.saints-list{grid-template-columns:repeat(2,1fr);}.cat-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.saints-list{grid-template-columns:1fr;}.cat-grid{grid-template-columns:repeat(2,1fr);}}
 
 </style>
-<meta property="og:title" content="Saints — Orthodox Companion"/>
-<meta property="og:description" content="The saints of the Orthodox Church — Saint of the Day, 1212 saints with feast days, profiles, and liturgical calendar connections."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://orthodoxcompanion.com/saints.html"/>
 </head>
 <body>
 <nav id="mainNav">
@@ -685,786 +342,70 @@ body{background:var(--bg-page);color:var(--text);}
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-
-
-<!-- NAV --><div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a>
-  <a href="topics.html">Topics</a><a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a>
-  <a href="resources.html">Resources</a><a href="blog.html">Blog</a><a href="glossary.html">Glossary</a>
-  <a href="new-to-orthodoxy.html">New to Orthodoxy</a><a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
-</div>
-<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
-  <div style="width:100%;max-width:640px;padding:0 20px;">
-    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
-      <span style="color:var(--text-muted);font-size:1.1rem;">&#9901;</span>
-      <input type="text" id="searchInput" placeholder="Search saints, prayers, topics, feasts..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.15rem;caret-color:var(--gold);"/>
-      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
-    </div>
-    <p style="font-size:0.75rem;color:var(--text-muted);font-style:italic;margin-top:12px;text-align:center;">Press Enter to search &nbsp;&#183;&nbsp; Esc to close</p>
-  </div>
-</div>
-
-<!-- SAINT OF THE DAY -->
+<!-- SOTD will be injected here -->
 <div class="sotd-banner" id="sotdBanner">
   <div class="sotd-inner">
-    <div class="sotd-icon-placeholder" id="sotdIcon">
-      <span>&#9766;&#65038;</span>
-    </div>
-    <div>
+    <div class="sotd-icon-wrap" id="sotdIcon">&#9766;</div>
+    <div class="sotd-info">
       <div class="sotd-label">Saint of the Day</div>
-      <div class="sotd-name" id="sotdName">Loading&hellip;</div>
+      <div class="sotd-name" id="sotdName">Loading...</div>
       <div class="sotd-feast" id="sotdFeast"></div>
       <div class="sotd-bio" id="sotdBio"></div>
-      <button class="sotd-link" id="sotdBtn" onclick="openSaintById('sotd')" style="display:none;">Read Full Profile &rarr;</button>
-    </div>
-  </div>
-</div>
-
-<!-- PAGE HEADER -->
-<div class="page-top fade-in">
-  <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Saints</div>
-  <h1 class="page-title">The Saints</h1>
-  <p class="page-desc">The holy men and women of the Church — apostles, martyrs, monastics, hierarchs, and all who have shone forth in the faith from every age and every land.</p>
-</div>
-
-<!-- CATEGORY GRID -->
-<div class="section">
-  <div class="section-label fade-in">Browse by Category</div>
-  <div class="cat-grid" id="catGrid">
-    <div class="cat-card fade-in" onclick="openCategory('apostles')">
-      <div class="cat-icon">&#10013;</div>
-      <div class="cat-name">Apostles &amp; Evangelists</div>
-      <div class="cat-desc">Those sent by Christ to preach the Gospel to all nations</div>
-      <div class="cat-count" id="count-apostles">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('prophets')">
-      <div class="cat-icon">&#9891;</div>
-      <div class="cat-name">Prophets</div>
-      <div class="cat-desc">The holy ones who spoke the word of God before the Incarnation</div>
-      <div class="cat-count" id="count-prophets">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('martyrs')">
-      <div class="cat-icon">&#10022;</div>
-      <div class="cat-name">Martyrs &amp; Confessors</div>
-      <div class="cat-desc">Those who bore witness to Christ through suffering and death</div>
-      <div class="cat-count" id="count-martyrs">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('monastics')">
-      <div class="cat-icon">&#9789;</div>
-      <div class="cat-name">Monastics &amp; Desert Fathers</div>
-      <div class="cat-desc">The great teachers of prayer, fasting, and the inner life</div>
-      <div class="cat-count" id="count-monastics">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('hierarchs')">
-      <div class="cat-icon">&#9824;</div>
-      <div class="cat-name">Hierarchs &amp; Bishops</div>
-      <div class="cat-desc">Shepherds of the Church and defenders of the Orthodox Faith</div>
-      <div class="cat-count" id="count-hierarchs">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('women')">
-      <div class="cat-icon">&#10041;</div>
-      <div class="cat-name">Holy Women</div>
-      <div class="cat-desc">Myrrh-bearers, queens, monastics, and martyrs among women</div>
-      <div class="cat-count" id="count-women">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('wonderworkers')">
-      <div class="cat-icon">&#10024;</div>
-      <div class="cat-name">Wonderworkers</div>
-      <div class="cat-desc">Saints glorified by God through miracles and healings</div>
-      <div class="cat-count" id="count-wonderworkers">Loading&hellip;</div>
-    </div>
-    <div class="cat-card fade-in" onclick="openCategory('old-testament')">
-      <div class="cat-icon">&#9651;</div>
-      <div class="cat-name">Old Testament Saints</div>
-      <div class="cat-desc">The righteous forebears and ancestors of God venerated by the Church</div>
-      <div class="cat-count" id="count-old-testament">Loading&hellip;</div>
-    </div>
-  </div>
-
-  <!-- Saints list (opens below the grid) -->
-  <div class="saints-list-wrap" id="saintsListWrap">
-    <div class="saints-list-header">
-      <div class="saints-list-title" id="saintsListTitle">Saints</div>
-      <button class="saints-list-close" onclick="closeCategory()">&#x2715;</button>
-    </div>
-    <div class="saints-search-wrap">
-      <input class="saints-search" type="text" id="saintsSearch" placeholder="Search within this category&hellip;" oninput="filterSaints(this.value)" autocomplete="off"/>
-    </div>
-    <div class="alpha-bar" id="alphaBar"></div>
-    <div class="saints-list-body" id="saintsListBody"></div>
-  </div>
-</div>
-
-<!-- SAINT PROFILE MODAL -->
-<div id="saint-modal">
-  <div class="saint-modal-box">
-    <div class="sm-header">
-      <div class="sm-icon" id="sm-icon"><span>&#9766;&#65038;</span></div>
-      <div class="sm-title-wrap">
-        <div class="sm-breadcrumb" id="sm-breadcrumb">Saints</div>
-        <div class="sm-name" id="sm-name">&mdash;</div>
-        <div class="sm-feast" id="sm-feast"></div>
-        <div class="sm-badges" id="sm-badges"></div>
+      <div class="sotd-also" id="sotdAlso"></div>
+      <div class="sotd-actions">
+        <button class="sotd-btn" id="sotdProfileBtn" onclick="openSotdProfile()" style="display:none;">View Full Profile</button>
+        <a href="#" class="sotd-btn" id="sotdAskBtn" target="_blank">Ask the Companion</a>
       </div>
-      <button class="sm-close" onclick="closeSaintModal()">&#x2715;</button>
     </div>
-    <div class="sm-body" id="sm-body"></div>
+  </div>
+</div>
+
+<div class="saints-wrap">
+  <!-- Browse by Category -->
+  <div class="browse-header"><div class="browse-title">Browse by Category</div><div class="browse-line"></div></div>
+  <div class="cat-grid" id="catGrid"></div>
+
+  <!-- Search + list -->
+  <div class="browse-header" style="margin-top:8px;"><div class="browse-title">All Saints</div><div class="browse-line"></div></div>
+  <div class="saints-search-wrap">
+    <input class="saints-search" type="text" id="saintsSearch" placeholder="Search saints by name..." oninput="filterSaints(this.value)" autocomplete="off"/>
+  </div>
+  <div class="saints-alpha" id="saintsAlpha"></div>
+  <div class="saints-list" id="saintsList"></div>
+</div>
+
+<!-- Saint Modal -->
+<div id="saint-modal">
+  <div class="sm-box">
+    <div class="sm-header">
+      <div class="sm-icon" id="smIcon">&#9766;</div>
+      <div class="sm-info">
+        <div class="sm-name" id="smName"></div>
+        <div class="sm-feast" id="smFeast"></div>
+        <div class="sm-tradition" id="smTradition"></div>
+      </div>
+    </div>
+    <div class="sm-body">
+      <div id="smBioSection" style="display:none;"><div class="sm-section">Life</div><div class="sm-bio" id="smBio"></div></div>
+      <div id="smTroparionSection" style="display:none;"><div class="sm-section">Troparion</div><div class="sm-troparion" id="smTroparion"></div></div>
+      <div id="smAskSection"><div class="sm-section">Ask the Companion</div><div class="sm-bio" id="smAskText"></div></div>
+    </div>
     <div class="sm-footer">
       <div style="display:flex;gap:8px;">
-        <button class="sm-share-btn" onclick="shareSaint()">&#9650; Share</button>
-        <a href="chatbot.html" class="sm-chatbot-link" id="sm-chatbot-link">Ask the Companion</a>
+        <a href="#" class="sm-link" id="smCalLink">Calendar</a>
+        <a href="#" class="sm-link" id="smChatLink">Ask Companion</a>
       </div>
-      <button onclick="closeSaintModal()" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;">Close</button>
+      <button class="sm-close" onclick="closeSaint()">Close &#10005;</button>
     </div>
   </div>
 </div>
 
-<!-- Calendar engine loads first so SOTD can use it immediately -->
+<!-- Calendar engine -->
 <script src="calendar-engine-v2.js"></script>
-<script>
-"use strict";
-
-// ══════════════════════════════════════════════════════════════
-//  SAINTS DATA
-//  Add new saints here. Each entry auto-appears in the category
-//  list, alphabetical index, and search. No other changes needed.
-//
-//  FIELDS:
-//    id          — unique slug (used in URLs and bookmarks)
-//    name        — display name
-//    category    — one of: apostles | prophets | martyrs | monastics
-//                          hierarchs | women | wonderworkers | old-testament
-//    feastDay    — e.g. "November 14"
-//    born        — birth info or "Unknown"
-//    birthplace  — city/region
-//    reposed     — year or date of repose / martyrdom
-//    veneratedBy — e.g. "All Orthodox Christians"
-//    patronage   — list of patronages (string)
-//    isFather    — true if Church Father (shows badge)
-//    iconUrl     — URL to icon image (leave '' for placeholder)
-//    bio         — short biography (1–3 paragraphs, use \n\n to separate)
-//    troparion   — full text of the troparion
-//    writings    — array of { title, source, url } for Church Fathers
-// ══════════════════════════════════════════════════════════════
-var SAINTS = [
-  {
-    id: 'john-chrysostom',
-    name: 'John Chrysostom',
-    category: 'hierarchs',
-    feastDay: 'November 13',
-    born: 'c. 349 AD',
-    birthplace: 'Antioch, Syria',
-    reposed: '407 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Preachers, orators, educators, Constantinople',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint John Chrysostom, Archbishop of Constantinople, is one of the Three Holy Hierarchs and a Doctor of the Church. Born in Antioch around 349, he received an exceptional education under the pagan rhetor Libanius, but was drawn to the ascetic life and Christian learning. He spent several years as a monk in the desert before his health compelled his return to Antioch.\n\nOrdained priest in 386, John became renowned throughout the Church for his brilliant preaching — earning the title Chrysostom ("Golden-Mouthed") from later generations. His homiletical works on Scripture, especially his commentaries on Matthew, John, Romans, and the Pauline Epistles, remain unsurpassed in the patristic tradition.\n\nElected Archbishop of Constantinople in 398, he undertook sweeping reforms of the clergy and distributed the wealth of the episcopal household to care for the poor. His fearless preaching against the moral corruption of the imperial court brought him into conflict with Empress Eudoxia and led to two exiles. He died in exile at Comana in Pontus in 407. His relics were returned to Constantinople in 438, where they were received with great honor.',
-    troparion: 'Grace shining forth from your lips like a beacon of fire, enlightened the universe; not by love of wealth was the world illumined, but by the treasury of poverty. You showed us the heights of humility. But as you instruct us by your words, Father John Chrysostom, intercede with the Word, Christ our God, for the salvation of our souls.',
-    writings: [
-      { title: 'Homilies on the Gospel of Matthew', source: 'NPNF Series I, Vol. X', url: 'https://www.newadvent.org/fathers/2001.htm' },
-      { title: 'Homilies on the Gospel of John', source: 'NPNF Series I, Vol. XIV', url: 'https://www.newadvent.org/fathers/2401.htm' },
-      { title: 'Homilies on Romans', source: 'NPNF Series I, Vol. XI', url: 'https://www.newadvent.org/fathers/2102.htm' },
-      { title: 'On the Priesthood', source: 'NPNF Series I, Vol. IX', url: 'https://www.newadvent.org/fathers/1900.htm' },
-      { title: 'Paschal Homily', source: 'Public Domain', url: 'https://orthodoxwiki.org/Paschal_Homily' },
-    ]
-  },
-  {
-    id: 'basil-the-great',
-    name: 'Basil the Great',
-    category: 'hierarchs',
-    feastDay: 'January 1',
-    born: 'c. 330 AD',
-    birthplace: 'Caesarea, Cappadocia',
-    reposed: '379 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Hospital administrators, reformers, Russia, Cappadocia',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint Basil the Great, Archbishop of Caesarea in Cappadocia, is numbered among the Three Holy Hierarchs and is called "the Great" both for his theological brilliance and his extraordinary works of charity. Born into a remarkable Christian family — his grandmother, mother, sister, and two brothers are also venerated as saints — Basil received the finest philosophical and theological education available in his day, studying at Caesarea, Constantinople, and Athens.\n\nAfter embracing the monastic life and traveling to the great ascetic communities of Egypt, Palestine, and Syria, Basil returned to Cappadocia and helped organize monastic communities that would become foundational for Eastern Christian monasticism. His Asketikon remains the primary rule of Orthodox monasticism to this day.\n\nElected Archbishop of Caesarea in 370, Basil was a towering figure in the defense of Nicene Orthodoxy against the Arian heresy during the reign of the emperor Valens. His theological writings — especially his treatise On the Holy Spirit and his work against Eunomius — are cornerstones of the Church\'s trinitarian theology. He is also known for his extraordinary social ministry, having built a great complex of charitable institutions outside Caesarea — hospital, hospice, and training school — which became a model for Christian charity for centuries.',
-    troparion: 'Your voice has gone out to all the earth, which received your word. You explained the Faith in a God-befitting manner; you showed forth the nature of all created things; and you adorned human conduct with virtuous ways. O royal priesthood, O venerable father, intercede with Christ God that our souls may be saved.',
-    writings: [
-      { title: 'On the Holy Spirit', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3202.htm' },
-      { title: 'Hexaemeron (On the Six Days of Creation)', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3201.htm' },
-      { title: 'Address to Young Men', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3205.htm' },
-      { title: 'The Long Rules (Asketikon)', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-    ]
-  },
-  {
-    id: 'gregory-nazianzen',
-    name: 'Gregory the Theologian',
-    category: 'hierarchs',
-    feastDay: 'January 25',
-    born: 'c. 329 AD',
-    birthplace: 'Arianzus, Cappadocia',
-    reposed: '390 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Theologians, poets, Constantinople',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint Gregory the Theologian — called "the Theologian" by the Church along with only St. John the Evangelist — is numbered among the Three Holy Hierarchs and is considered the supreme poet-theologian of the Greek patristic tradition. Born in Cappadocia and educated at Caesarea, Alexandria, and Athens, where he formed his lifelong friendship with St. Basil the Great, Gregory was a reluctant churchman who longed above all for the contemplative life.\n\nHis five Theological Orations, preached in Constantinople in 380, represent perhaps the greatest sustained theological achievement of the patristic era. Against the Arian and Pneumatomachian controversies, Gregory articulated with unparalleled precision the Church\'s faith in the Holy Trinity and the full divinity of the Holy Spirit. Called to become Archbishop of Constantinople, he presided over the Second Ecumenical Council (381) before resigning and retiring to his estate in Arianzus.\n\nGregory was also a poet of rare gifts, leaving hundreds of theological and autobiographical poems that illuminate both his inner spiritual life and the dogmatic teaching of the Church.',
-    troparion: 'The shepherd\'s flute of your theology vanquished the trumpets of the orators; for having searched the depths of the Spirit, the beauty of eloquence was added to you. Intercede with Christ God, O Father Gregory, that our souls may be saved.',
-    writings: [
-      { title: 'The Five Theological Orations', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3102.htm' },
-      { title: 'Orations on the Theophany', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3101.htm' },
-      { title: 'On His Own Life (Autobiographical Poems)', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-    ]
-  },
-  {
-    id: 'athanasius',
-    name: 'Athanasius the Great',
-    category: 'hierarchs',
-    feastDay: 'May 2',
-    born: 'c. 296 AD',
-    birthplace: 'Alexandria, Egypt',
-    reposed: '373 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Alexandria, defenders of Orthodoxy',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint Athanasius the Great, Archbishop of Alexandria, is the great champion of Nicene Orthodoxy and is called "Athanasius against the World" (Athanasius contra mundum) for his steadfast defense of the divinity of Christ against the Arian heresy. As a young deacon, he attended the First Ecumenical Council at Nicaea in 325, and his theological acumen was evident even then.\n\nElected Archbishop of Alexandria in 328, Athanasius would spend seventeen years of his forty-five-year episcopate in exile — exiled five times by four different emperors under Arian pressure — yet never wavered in his confession of the Nicene faith. His masterpiece On the Incarnation, written while still a young man, remains one of the most beautiful and accessible presentations of Orthodox Christology.\n\nHis Life of Antony, the biography of the great desert father, played an enormous role in the spread of monasticism throughout the Christian world. Augustine of Hippo records that it was the reading of this book that catalyzed his own conversion.',
-    troparion: 'You were a pillar of Orthodoxy, supporting the Church with divine doctrines, O righteous one. You proclaimed the Son to be consubstantial with the Father, putting to shame Arius. O Father Athanasius, intercede with Christ God that our souls may be saved.',
-    writings: [
-      { title: 'On the Incarnation', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-      { title: 'Against the Arians (Four Orations)', source: 'NPNF Series II, Vol. IV', url: 'https://www.newadvent.org/fathers/2806.htm' },
-      { title: 'Life of Antony', source: 'NPNF Series II, Vol. IV', url: 'https://www.newadvent.org/fathers/2811.htm' },
-    ]
-  },
-  {
-    id: 'seraphim-of-sarov',
-    name: 'Seraphim of Sarov',
-    category: 'monastics',
-    feastDay: 'January 2',
-    born: '1754',
-    birthplace: 'Kursk, Russia',
-    reposed: '1833',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Russia, monastics, those seeking joy',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Saint Seraphim of Sarov is the most beloved saint of modern Russia and one of the great luminaries of Orthodox mystical theology. Born Prokhor Moshnin in Kursk in 1754, he entered the Sarov Monastery at nineteen and was tonsured a monk in 1786, taking the name Seraphim ("burning" or "fiery" in Hebrew).\n\nAfter ordination to the priesthood, Seraphim spent fifteen years as a hermit in the dense forests around Sarov, living in severe asceticism. He is especially remembered for spending one thousand days and nights in prayer on a boulder, kneeling with arms raised, repeating the prayer of the publican. Following a severe illness, he returned to the monastery and spent the last decades of his life as a startets (spiritual father) and healer, receiving thousands of pilgrims.\n\nHis conversation with Nicholas Motovilov "On the Acquisition of the Holy Spirit" — in which St. Seraphim was seen transfigured in uncreated light — is one of the most remarkable documents of Orthodox mystical theology. His greeting to all visitors, whatever the season, was always: "Christ is Risen, my joy!"',
-    troparion: 'From your youth you loved Christ, O blessed one, and longed only to serve Him alone. Therefore, practicing a life of strict fasting and prayer in the desert, you pleased God in repentance of heart. Hence Christ has enriched you with His grace, to heal the ailing and the infirm. O Seraphim, our venerable Father, intercede that our souls be saved.',
-    writings: []
-  },
-  {
-    id: 'mary-magdalene',
-    name: 'Mary Magdalene',
-    category: 'women',
-    feastDay: 'July 22',
-    born: '1st century AD',
-    birthplace: 'Magdala, Galilee',
-    reposed: '1st century AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Myrrh-bearers, penitents, apothecaries',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Saint Mary Magdalene is venerated by the Orthodox Church as "Equal to the Apostles" and the first witness of the Resurrection of Christ. She is identified in the Gospels as a woman from whom the Lord cast out seven demons, and who subsequently became one of His most devoted followers, accompanying Him throughout His ministry in Galilee.\n\nMary Magdalene was present at the Crucifixion when nearly all the male disciples had fled, and she was the first to arrive at the tomb on the morning of the Resurrection. She is the first person to whom the Risen Lord appeared, and He commissioned her to carry the news to the Apostles — earning her the title "Apostle to the Apostles."\n\nOrthodox tradition holds that after Pentecost, Mary Magdalene traveled to Rome, where she appeared before the Emperor Tiberius holding a red egg and declaring "Christ is Risen!" — the origin of the red Paschal eggs. She later traveled to Ephesus with the Theotokos and St. John the Theologian, and reposed there.',
-    troparion: 'While Christ our God was lying in the tomb, you came with spices to anoint Him, O Mary Magdalene, weeping like a bride deprived of her spouse. Your tears moved the angels to reveal the Resurrection to you; for you were granted to be the first witness of the risen Christ and announce glad tidings to His Apostles.',
-    writings: []
-  },
-  {
-    id: 'nicholas-of-myra',
-    name: 'Nicholas of Myra',
-    category: 'wonderworkers',
-    feastDay: 'December 6',
-    born: 'c. 270 AD',
-    birthplace: 'Patara, Lycia',
-    reposed: 'c. 343 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Children, sailors, merchants, the falsely accused, Russia, Greece',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Saint Nicholas, Archbishop of Myra in Lycia, is among the most beloved and widely venerated saints in all of Christendom. Born to wealthy Christian parents in Patara, Nicholas was orphaned early in life and used his entire inheritance to assist the needy, the sick, and the suffering. He is especially remembered for secretly providing dowries to the three impoverished daughters of a ruined nobleman, who otherwise faced a life of destitution.\n\nElected Archbishop of Myra, Nicholas was a tireless defender of the Orthodox faith and the poor. Tradition records his presence at the First Ecumenical Council at Nicaea in 325, where he was so moved by the blasphemies of Arius that he struck him — a story that has made him beloved as a defender of the faith as well as a protector of the innocent.\n\nHis wonderworking continued after his repose: countless miracles are attributed to his intercession, including the rescue of sailors from storms, the release of the falsely imprisoned, and the restoration of children to life. His relics were translated to Bari, Italy in 1087, where they continue to exude fragrant myrrh.',
-    troparion: 'The truth of things revealed you to your flock as a rule of faith, a model of meekness and a teacher of temperance. Therefore you have won the heights by humility, riches by poverty. Father and Hierarch Nicholas, intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'antony-the-great',
-    name: 'Antony the Great',
-    category: 'monastics',
-    feastDay: 'January 17',
-    born: 'c. 251 AD',
-    birthplace: 'Coma, Egypt',
-    reposed: '356 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Monastics, hermits, skin diseases, basket weavers',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Saint Antony the Great is the father of Christian monasticism. Born in Coma in Upper Egypt around 251, he was moved at age twenty by hearing the Gospel passage "Go, sell all that you have and give to the poor," and took this literally, distributing his inheritance and withdrawing to the desert to live as an ascetic.\n\nFor decades he fought an intense spiritual warfare against demonic attacks of every kind, becoming the prototype of the spiritual athlete. His experience drew disciples who settled around him in the desert, and his influence spread throughout the Christian world, giving birth to the cenobitic and eremitic traditions of monasticism.\n\nSt. Athanasios the Great wrote his Life of Antony, which became one of the most widely read books in the ancient world and played an enormous role in the spread of monasticism. The Sayings of the Desert Fathers record many of his teachings. He reposed at 105 years of age, leaving behind two disciples and his sheepskin mantle.',
-    troparion: 'You imitated the zeal of Elijah and followed the straight path of the Baptist, O holy Father Antony. You became a dweller in the desert and strengthened the world by your prayers. Intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'paul-apostle',
-    name: 'Paul the Apostle',
-    category: 'apostles',
-    feastDay: 'June 29',
-    born: 'c. 5 AD',
-    birthplace: 'Tarsus, Cilicia',
-    reposed: 'c. 64–68 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Missionaries, theologians, tentmakers, Greece',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint Paul the Apostle, called the "Apostle to the Gentiles," is the great theologian of the early Church and the author of fourteen epistles in the New Testament. Born Saul of Tarsus, a Pharisee and Roman citizen, he was an early persecutor of the Church until his dramatic encounter with the Risen Christ on the road to Damascus, which transformed him into one of the most tireless missionaries in history.\n\nPaul\'s three great missionary journeys carried the Gospel throughout Asia Minor, Greece, and eventually to Rome. His epistles — Romans, Corinthians, Galatians, Ephesians, Philippians, Colossians, Thessalonians, Timothy, Titus, Philemon, and Hebrews — constitute the most systematic theological reflection on the meaning of the death and resurrection of Christ in the entire New Testament.\n\nPaul\'s teaching on grace, justification, the body of Christ, the gifts of the Spirit, and the resurrection of the dead has been foundational for all subsequent Orthodox theology. He was martyred by beheading in Rome under the Emperor Nero, commemorated together with St. Peter on June 29.',
-    troparion: 'You were a vessel of election, O Apostle Paul, a preacher of faith to the nations. Intercede with the God who is merciful that He may grant the remission of sins to those who celebrate your holy memory with love.',
-    writings: [
-      { title: 'Letter to the Romans', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Romans+1&version=NKJV' },
-      { title: 'First Letter to the Corinthians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=1+Corinthians+1&version=NKJV' },
-      { title: 'Letter to the Galatians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Galatians+1&version=NKJV' },
-      { title: 'Letter to the Ephesians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Ephesians+1&version=NKJV' },
-    ]
-  },
-  {
-    id: 'mary-theotokos',
-    name: 'The Most Holy Theotokos',
-    category: 'women',
-    feastDay: 'Multiple (Nativity Sep 8, Dormition Aug 15, etc.)',
-    born: 'c. 16 BC',
-    birthplace: 'Jerusalem',
-    reposed: 'c. 48 AD (Dormition)',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'All Christians, all monastics, the Church',
-    isFather: false,
-    iconUrl: '',
-    bio: 'The Most Holy Theotokos — the Mother of God — is venerated above all the saints as the one who bore in her womb the eternal Son of God. The title Theotokos ("God-bearer" or "Mother of God") was formally defined at the Third Ecumenical Council at Ephesus in 431, affirming that Christ is one person, both fully God and fully man, and that she who bore Him bore the Son of God.\n\nThe Virgin Mary was born to Joachim and Anna, who were childless for many years and prayed fervently for a child. She was presented to the Temple as a child and lived there until her betrothal to Joseph. After the Annunciation, when she received the Angel Gabriel\'s greeting and gave her fiat — "Be it done to me according to your word" — she conceived the Son of God by the Holy Spirit.\n\nThe Orthodox Church commemorates the Theotokos on numerous feasts throughout the year: her Nativity (September 8), her Entrance into the Temple (November 21), the Annunciation (March 25), and especially her Dormition (August 15), the celebration of her falling asleep and being taken up body and soul into the heavenly Kingdom. She is invoked in every service of the Orthodox Church as the greatest intercessor before God.',
-    troparion: 'In giving birth you preserved your virginity; in falling asleep you did not forsake the world, O Theotokos. You were translated to life, O Mother of Life, and by your prayers you deliver our souls from death.',
-    writings: []
-  },
-  {
-    id: 'john-climacus',
-    name: 'John Climacus',
-    category: 'monastics',
-    feastDay: 'March 30',
-    born: 'c. 523 AD',
-    birthplace: 'Possibly Palestine or Sinai',
-    reposed: 'c. 606 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Monastics, those climbing toward God',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint John Climacus, Abbot of the Monastery of St. Catherine at Mount Sinai, is the author of the Ladder of Divine Ascent — one of the most widely read books in Eastern Christian monasticism. Receiving the name "Climacus" (from the Greek klimax, "ladder") from his famous work, John entered Sinai as a teenager, was tonsured a monk, and spent approximately forty years as a hermit near the monastery.\n\nIn his later years he was elected Abbot of the Sinai Monastery. At the request of John, Abbot of Raïthu, he wrote the Ladder — thirty steps corresponding to the thirty years of Christ\'s hidden life, guiding the soul from its departure from the world through purification and illumination to the heights of love, apatheia, and union with God.\n\nThe Ladder of Divine Ascent is read aloud in Orthodox monasteries throughout Great Lent and is one of the primary texts for the Orthodox spiritual life. Its teachings on prayer, silence, humility, discernment, and the passions have shaped Orthodox spirituality for fifteen centuries.',
-    troparion: 'With the streams of your tears, you made the barren desert fertile; and with sighs from deep within you, your labors bore fruit a hundredfold. You became a star shining over the world with miracles. O John our holy Father, intercede with Christ God that our souls may be saved.',
-    writings: [
-      { title: 'The Ladder of Divine Ascent', source: 'Holy Transfiguration Monastery Press', url: 'https://www.amazon.com' },
-    ]
-  },
-  {
-    id: 'maximus-confessor',
-    name: 'Maximus the Confessor',
-    category: 'monastics',
-    feastDay: 'January 21',
-    born: '580 AD',
-    birthplace: 'Constantinople',
-    reposed: '662 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Theologians, those who suffer for the faith',
-    isFather: true,
-    iconUrl: '',
-    bio: 'Saint Maximus the Confessor is considered the last great theologian of the patristic era and the supreme synthesizer of Greek patristic thought. Born in Constantinople in 580 and educated at the imperial court, he served as secretary to the Emperor Heraclius before abandoning his career to become a monk.\n\nMaximus became the chief theological opponent of Monothelitism — the heresy that Christ had only one will — defending the complete human will and freedom of Christ as necessary for our salvation. His theological work on the two wills of Christ was vindicated at the Sixth Ecumenical Council (680-681).\n\nFor his defense of Orthodoxy, Maximus was arrested, tried, and subjected to brutal torture by the imperial authorities. His tongue was cut out and his right hand severed so that he could neither speak nor write in defense of the faith. He died in exile in 662. His Centuries on Love, his Mystagogy, and his Ambigua (on the difficult passages in St. Gregory the Theologian and St. Dionysius) are cornerstones of Orthodox theology.',
-    troparion: 'Champion of the Faith and teacher of Orthodoxy, light and adornment of those who live a life consecrated to God, most wise Maximus, by your writings you inspired all men with love of divine wisdom; therefore we cry out: Intercede with Christ God that our souls may be saved.',
-    writings: [
-      { title: 'Centuries on Love', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-      { title: 'Mystagogy', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-      { title: 'The Philokalia (Selected Works)', source: 'Faber & Faber', url: 'https://www.amazon.com' },
-    ]
-  },
-  {
-    id: 'isaiah-prophet',
-    name: 'Isaiah the Prophet',
-    category: 'prophets',
-    feastDay: 'May 9',
-    born: 'c. 8th century BC',
-    birthplace: 'Jerusalem',
-    reposed: 'c. 681 BC (martyred)',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Prophets, messengers, those who bear divine words',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Holy Prophet Isaiah is venerated by the Orthodox Church as the greatest of the Major Prophets and is sometimes called the "Fifth Evangelist" for the extraordinary clarity with which his prophecies foretell the birth, ministry, passion, death, and resurrection of the Messiah. His book opens with the famous vision of the seraphim and God\'s call, which structures the Divine Liturgy and the Church\'s understanding of worship.\n\nIsaiah prophesied during the reigns of Uzziah, Jotham, Ahaz, and Hezekiah, kings of Judah, in the eighth century BC. His prophecies include the sign of Immanuel (Isaiah 7:14), the great Servant Songs (including the suffering servant of Isaiah 53), the promise of the peaceable kingdom, and the vision of the new heavens and the new earth.\n\nAccording to Jewish and Christian tradition, Isaiah was martyred by being sawn in two during the reign of the wicked king Manasseh. The New Testament Book of Hebrews may be alluding to this in its catalogue of the sufferings of the prophets.',
-    troparion: 'O Holy Prophet Isaiah, enlightened by the Spirit, you described clearly the mystery of the dispensation and prophesied the ways of the Lord, moving by your ardent faith, you cried out: Behold, the Virgin shall conceive and bear a Son, who shall be called Emmanuel — our God and our Lord.',
-    writings: []
-  },
-  {
-    id: 'george-martyr',
-    name: 'George the Great Martyr',
-    category: 'martyrs',
-    feastDay: 'April 23',
-    born: 'c. 275 AD',
-    birthplace: 'Cappadocia',
-    reposed: '303 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Soldiers, cavalry, England, Georgia, scouts',
-    isFather: false,
-    iconUrl: '',
-    bio: 'Saint George the Great Martyr and Trophy-Bearer is one of the most beloved and widely venerated martyrs in all of Christendom. Born to Christian parents in Cappadocia, George became a military officer of exceptional ability and rose to high rank in the Roman army under the Emperor Diocletian, who was himself deeply attached to the young officer.\n\nWhen Diocletian launched his great persecution of the Church in 303, George publicly confessed his Christian faith before the Emperor, resigned his commission, and distributed his wealth to the poor. He endured horrific tortures over the course of several days — impalement, laceration with iron spikes, being placed in a cauldron of boiling lead, and other sufferings — all of which he endured miraculously, continuing to confess Christ. He was finally beheaded on April 23, 303.\n\nThe famous icon of St. George slaying the dragon represents his intercession on behalf of a city plagued by a dragon, interpreted by the Church as an image of his victory over evil and his role as a protector of the faithful.',
-    troparion: 'As a liberator of captives, a defender of the poor, a physician for the sick, and champion of kings, O Great Martyr and Trophy-Bearer George, intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-];
-
-// ── Category configuration ────────────────────────────────────
-var CATEGORIES = {
-  'apostles':     { name: 'Apostles & Evangelists' },
-  'prophets':     { name: 'Prophets' },
-  'martyrs':      { name: 'Martyrs & Confessors' },
-  'monastics':    { name: 'Monastics & Desert Fathers' },
-  'hierarchs':    { name: 'Hierarchs & Bishops' },
-  'women':        { name: 'Holy Women' },
-  'wonderworkers':{ name: 'Wonderworkers' },
-  'old-testament':{ name: 'Old Testament Saints' },
-};
-
-// ── State ─────────────────────────────────────────────────────
-var currentCategory = null;
-var currentSaint = null;
-
-// ── NAV ───────────────────────────────────────────────────────
-var drawerOpen = false;
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
-document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
-function closeSearch(){document.getElementById('search-overlay').style.display='none';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSearch();closeSaintModal();}});
-document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
-
-// ── Category counts ───────────────────────────────────────────
-function updateCounts(){
-  Object.keys(CATEGORIES).forEach(function(cat){
-    var count = SAINTS.filter(function(s){ return s.category === cat; }).length;
-    var el = document.getElementById('count-' + cat);
-    if(el) el.textContent = count + (count === 1 ? ' saint' : ' saints');
-  });
-}
-
-// ── Saint of the Day ──────────────────────────────────────────
-async function loadSaintOfTheDay(){
-  var today = new Date();
-  var dateStr = today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
-  var displayDate = today.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
-
-  // ── Load calendar engine data ──────────────────────────────
-  var calSaints = [];
-  var calSummary = '';
-  var calSeason = '';
-  if (typeof OrthodoxCalendar !== 'undefined') {
-    try {
-      await OrthodoxCalendar.init();
-      var day = OrthodoxCalendar.getDay(dateStr);
-      if (day) {
-        calSaints  = day.saints_feasts || [];
-        calSummary = day.summary || '';
-        calSeason  = day.liturgical_season || '';
-      }
-    } catch(e) {}
-  }
-
-  // ── Filter to actual saint names (drop liturgical day markers) ──
-  var markerWords = ['forefeast','afterfeast','apodosis','leavetaking','synaxis',
-    'sunday','saturday','monday','tuesday','wednesday','thursday','friday',
-    'lent','bright week','triodion','akathist','lazarus','cheesefare','meatfare',
-    'publican','prodigal','judgment','forgiveness','all souls','all saints',
-    'thomas sunday','mid-pentecost','clean monday','holy week',
-    'nativity of our lord','theophany','transfiguration','pentecost','pascha',
-    'dormition','ascension','annunciation','elevation','ecumenical council'];
-
-  function isActualSaint(name){
-    var nl = name.toLowerCase();
-    // Reject if ANY marker word appears anywhere in the name
-    return !markerWords.some(function(m){ return nl.includes(m); });
-  }
-
-  var saintNames = calSaints.filter(isActualSaint);
-
-  // ── Try to match first saint against full profiles ──────────
-  var matched = null;
-  for (var i = 0; i < saintNames.length; i++) {
-    var calName = saintNames[i].toLowerCase();
-    var found = SAINTS.find(function(s){
-      var sn = s.name.toLowerCase();
-      // Match if the profile name appears in the calendar name or vice versa
-      return calName.includes(sn) || sn.includes(calName.split(',')[0].trim());
-    });
-    if (found){ matched = found; break; }
-  }
-
-  // ── Case 1: Matched a full profile ─────────────────────────
-  if (matched) {
-    currentSaint = matched;
-    document.getElementById('sotdName').textContent = matched.name;
-    document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
-    document.getElementById('sotdBio').textContent = matched.bio.split('\n\n')[0].slice(0,220) + '\u2026';
-    document.getElementById('sotdBtn').style.display = 'inline-block';
-    document.getElementById('sotdBtn').textContent = 'Read Full Profile \u2192';
-    document.getElementById('sotdBtn').onclick = function(){ openSaint(matched); };
-    return;
-  }
-
-  // ── Case 2: Calendar saints exist but no full profile ───────
-  if (saintNames.length > 0) {
-    var primaryName = saintNames[0];
-    // Show all today's saints as a list
-    var allNamesDisplay = saintNames.slice(0,3).join('  ·  ');
-    document.getElementById('sotdName').textContent = primaryName;
-    document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
-    document.getElementById('sotdBio').textContent = saintNames.length > 1
-      ? 'Also commemorated today: ' + saintNames.slice(1,3).join(', ') + '. Full profiles coming soon.'
-      : 'Full profile coming soon. Ask the Companion to learn about this saint.';
-    document.getElementById('sotdBtn').style.display = 'inline-block';
-    document.getElementById('sotdBtn').textContent = 'Ask the Companion \u2192';
-    document.getElementById('sotdBtn').onclick = function(){
-      window.location.href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + primaryName);
-    };
-    return;
-  }
-
-  // ── Case 3: No calendar data — rotate known profiles ────────
-  var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
-  var saint = SAINTS[dayOfYear % SAINTS.length];
-  currentSaint = saint;
-  document.getElementById('sotdName').textContent = saint.name;
-  document.getElementById('sotdFeast').textContent = 'Feast Day: ' + saint.feastDay;
-  document.getElementById('sotdBio').textContent = saint.bio.split('\n\n')[0].slice(0,220) + '\u2026';
-  document.getElementById('sotdBtn').style.display = 'inline-block';
-  document.getElementById('sotdBtn').textContent = 'Read Full Profile \u2192';
-  document.getElementById('sotdBtn').onclick = function(){ openSaint(saint); };
-}
-
-// ── Category list ─────────────────────────────────────────────
-var filteredSaints = [];
-
-function openCategory(cat){
-  currentCategory = cat;
-  // Highlight active card
-  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
-  event.currentTarget.classList.add('active');
-
-  var catConfig = CATEGORIES[cat];
-  document.getElementById('saintsListTitle').textContent = catConfig.name;
-  document.getElementById('saintsSearch').value = '';
-
-  filteredSaints = SAINTS.filter(function(s){ return s.category === cat; })
-    .sort(function(a,b){ return a.name.localeCompare(b.name); });
-
-  renderSaintsList(filteredSaints);
-  buildAlphaBar(filteredSaints);
-
-  var wrap = document.getElementById('saintsListWrap');
-  wrap.classList.add('open');
-  wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
-function closeCategory(){
-  document.getElementById('saintsListWrap').classList.remove('open');
-  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
-  currentCategory = null;
-}
-
-function filterSaints(query){
-  var base = currentCategory
-    ? SAINTS.filter(function(s){ return s.category === currentCategory; })
-    : SAINTS;
-  var q = query.toLowerCase().trim();
-  filteredSaints = base.filter(function(s){
-    return !q || s.name.toLowerCase().includes(q) || s.feastDay.toLowerCase().includes(q);
-  }).sort(function(a,b){ return a.name.localeCompare(b.name); });
-  renderSaintsList(filteredSaints);
-  buildAlphaBar(filteredSaints);
-}
-
-function renderSaintsList(saints){
-  var body = document.getElementById('saintsListBody');
-  if(!saints.length){
-    body.innerHTML = '<div class="saints-empty">No saints found.</div>';
-    return;
-  }
-  var html = '';
-  var currentLetter = '';
-  saints.forEach(function(s){
-    var letter = s.name[0].toUpperCase();
-    if(letter !== currentLetter){
-      currentLetter = letter;
-      html += '<div class="alpha-letter" id="alpha-' + letter + '">' + letter + '</div>';
-    }
-    html += '<div class="saint-list-item" onclick="openSaintById(\'' + s.id + '\')">';
-    html += '<div class="sli-icon">';
-    if(s.iconUrl) html += '<img src="' + s.iconUrl + '" alt="' + s.name + '" onerror="this.parentNode.innerHTML=\'&#9766;&#65038;\';"/>';
-    else html += '&#9766;&#65038;';
-    html += '</div>';
-    html += '<div><div class="sli-name">' + s.name;
-    if(s.isFather) html += '<span class="sli-badge">Church Father</span>';
-    html += '</div>';
-    html += '<div class="sli-feast">' + s.feastDay + '</div></div>';
-    html += '</div>';
-  });
-  body.innerHTML = html;
-}
-
-function buildAlphaBar(saints){
-  var letters = [...new Set(saints.map(function(s){ return s.name[0].toUpperCase(); }))].sort();
-  var bar = document.getElementById('alphaBar');
-  var allLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-  bar.innerHTML = allLetters.map(function(l){
-    var active = letters.includes(l) ? ' active' : '';
-    var click = letters.includes(l) ? ' onclick="scrollToLetter(\'' + l + '\')"' : '';
-    return '<button class="alpha-btn' + active + '"' + click + '>' + l + '</button>';
-  }).join('');
-}
-
-function scrollToLetter(letter){
-  var el = document.getElementById('alpha-' + letter);
-  if(el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ── Saint Profile Modal ───────────────────────────────────────
-function openSaintById(id){
-  var saint = id === 'sotd' ? currentSaint : SAINTS.find(function(s){ return s.id === id; });
-  if(saint) openSaint(saint);
-}
-
-function openSaint(saint){
-  currentSaint = saint;
-
-  // Icon
-  var iconEl = document.getElementById('sm-icon');
-  if(saint.iconUrl){
-    iconEl.innerHTML = '<img src="' + saint.iconUrl + '" alt="' + saint.name + '" onerror="this.parentNode.innerHTML=\'&#9766;&#65038;\';"/>';
-  } else {
-    iconEl.innerHTML = '<span>&#9766;&#65038;</span>';
-  }
-
-  // Header
-  var catName = CATEGORIES[saint.category] ? CATEGORIES[saint.category].name : saint.category;
-  document.getElementById('sm-breadcrumb').textContent = 'Saints \u203a ' + catName;
-  document.getElementById('sm-name').textContent = saint.name;
-  document.getElementById('sm-feast').textContent = 'Feast: ' + saint.feastDay;
-
-  var badges = '';
-  if(saint.isFather) badges += '<span class="sm-badge father">Church Father</span>';
-  badges += '<span class="sm-badge category">' + catName + '</span>';
-  document.getElementById('sm-badges').innerHTML = badges;
-
-  // Chatbot link
-  document.getElementById('sm-chatbot-link').href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + saint.name);
-
-  // Body
-  var html = '';
-
-  // Meta grid
-  html += '<div class="sm-meta-grid">';
-  if(saint.born)       html += metaItem('Born', saint.born);
-  if(saint.birthplace) html += metaItem('Birthplace', saint.birthplace);
-  if(saint.reposed)    html += metaItem('Reposed', saint.reposed);
-  if(saint.veneratedBy)html += metaItem('Venerated By', saint.veneratedBy);
-  if(saint.patronage)  html += metaItem('Patronage', saint.patronage);
-  html += '</div>';
-
-  // Biography
-  if(saint.bio){
-    html += '<div class="sm-section"><div class="sm-section-title">Life</div>';
-    html += '<div class="sm-bio">';
-    saint.bio.split('\n\n').forEach(function(para, i){
-      html += '<p' + (i > 0 ? ' style="margin-top:14px;"' : '') + '>' + para + '</p>';
-    });
-    html += '</div></div>';
-  }
-
-  // Troparion
-  if(saint.troparion){
-    html += '<div class="sm-section"><div class="sm-section-title">Troparion</div>';
-    html += '<div class="sm-troparion">' + saint.troparion + '</div></div>';
-  }
-
-  // Writings (Church Fathers)
-  if(saint.writings && saint.writings.length){
-    html += '<div class="sm-section"><div class="sm-section-title">Writings</div>';
-    html += '<div class="sm-writings">';
-    saint.writings.forEach(function(w){
-      html += '<a href="' + w.url + '" target="_blank" rel="noopener" class="sm-writing-link">';
-      html += '<div><div class="sm-writing-title">' + w.title + '</div>';
-      html += '<div class="sm-writing-source">' + w.source + '</div></div>';
-      html += '<span class="sm-writing-arrow">&#8599;</span></a>';
-    });
-    html += '</div></div>';
-  }
-
-  document.getElementById('sm-body').innerHTML = html;
-  document.getElementById('saint-modal').classList.add('open');
-  document.getElementById('saint-modal').scrollTop = 0;
-}
-
-function metaItem(label, value){
-  return '<div class="sm-meta-item"><div class="sm-meta-label">' + label + '</div><div class="sm-meta-value">' + value + '</div></div>';
-}
-
-function closeSaintModal(){
-  document.getElementById('saint-modal').classList.remove('open');
-}
-document.getElementById('saint-modal').addEventListener('click', function(e){
-  if(e.target === this) closeSaintModal();
-});
-
-function shareSaint(){
-  if(!currentSaint) return;
-  var text = 'Orthodox Companion\n\n' + currentSaint.name + '\nFeast Day: ' + currentSaint.feastDay + '\n\northodoxcompanion.com/saints';
-  if(navigator.share){
-    navigator.share({ title: currentSaint.name, text: text, url: 'https://orthodoxcompanion.com/saints' });
-  } else {
-    navigator.clipboard.writeText(text).then(function(){
-      alert('Copied to clipboard!');
-    });
-  }
-}
-
-// ── Fade-in on scroll ─────────────────────────────────────────
-function initFadeIn(){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
-}
-
-// ── Init ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function(){
-  updateCounts();
-  loadSaintOfTheDay();   // async — uses calendar engine
-  initFadeIn();
-
-  var params = new URLSearchParams(window.location.search);
-  var cat = params.get('cat');
-  if(cat && CATEGORIES[cat]){
-    setTimeout(function(){ openCategory(cat); }, 300);
-  }
-  var saintId = params.get('saint');
-  if(saintId){
-    var s = SAINTS.find(function(x){ return x.id === saintId; });
-    if(s) setTimeout(function(){ openSaint(s); }, 200);
-  }
-});
-</script>
-</script>
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
-// <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+// Anti-flash: inline script in <head> sets data-theme before render
 
 /* ── Theme + Nav + Account JS ───────────────────────── */
 // Theme
@@ -1557,6 +498,263 @@ document.addEventListener('DOMContentLoaded',function(){
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },200);
   }
+});
+
+</script>
+
+<script>
+
+var CATEGORIES = {
+  apostles:    {name:"Apostles",         icon:"Cross", color:"#C9A84C"},
+  martyrs:     {name:"Martyrs",          icon:"Cross", color:"#8A3A3A"},
+  hierarchs:   {name:"Holy Hierarchs",   icon:"Cross", color:"#3A6A8A"},
+  monastics:   {name:"Monastics",        icon:"Cross", color:"#5A3A8A"},
+  wonderworkers:{name:"Wonderworkers",   icon:"Cross", color:"#5A8A3A"},
+  prophets:    {name:"Prophets",         icon:"Cross", color:"#8A6A3A"},
+  righteous:   {name:"Righteous",        icon:"Cross", color:"#6A5A3A"},
+  other:       {name:"Other Saints",     icon:"Cross", color:"#4A6A8A"}
+};
+
+var SAINTS = [
+  {id:"john_chrysostom",name:"St. John Chrysostom",feast:"November 13",tradition:"Greek",category:"hierarchs",
+   bio:"Archbishop of Constantinople, one of the Three Holy Hierarchs. Called Golden-Mouthed for his incomparable preaching. Born c. 349 in Antioch. Twice exiled for denouncing imperial corruption, he died in exile in 407.",
+   troparion:"Grace like a trumpet has sounded forth thy words, and filled the universe with the beauty thereof. Thou didst lay up treasures of gold for us, free from the love of money. O Father John Chrysostom, intercede with Christ our God that our souls be saved.",
+   works:["Homilies on Matthew","On the Priesthood","Divine Liturgy of St. John Chrysostom"]},
+  {id:"basil_the_great",name:"St. Basil the Great",feast:"January 1",tradition:"Greek",category:"hierarchs",
+   bio:"Archbishop of Caesarea, one of the Three Holy Hierarchs. Born c. 330. Organized cenobitic monasticism, defended the divinity of the Holy Spirit, and built the first hospital complex. His Divine Liturgy is celebrated ten times a year.",
+   troparion:"Thy sound has gone forth into all the earth, which has received thy word. Thereby thou hast divinely taught the Faith. O holy father and royal priesthood, intercede with Christ our God that our souls may be saved.",
+   works:["On the Holy Spirit","Hexaemeron","Asketikon"]},
+  {id:"gregory_the_theologian",name:"St. Gregory the Theologian",feast:"January 25",tradition:"Greek",category:"hierarchs",
+   bio:"Archbishop of Constantinople, one of the Three Holy Hierarchs. Called the Theologian — a title shared only with St. John the Evangelist. His Five Theological Orations defined Trinitarian doctrine for all Orthodox theology.",
+   troparion:"The pastoral flute of thy theology conquered the trumpets of the orators. O Father Gregory, intercede with Christ our God that our souls be saved.",
+   works:["Five Theological Orations","Theological Poems"]},
+  {id:"nicholas_of_myra",name:"St. Nicholas of Myra",feast:"December 6",tradition:"Greek",category:"hierarchs",
+   bio:"Bishop of Myra in Lycia. Born to wealthy parents who died young, he gave away his entire inheritance. Attended the First Council of Nicaea in 325. Known for secret gifts to the poor and for saving the innocent from death.",
+   troparion:"Thy truth has shown forth in thy works, most holy Nicholas. Thou didst save the innocent from death. Wherefore thou wast sanctified as a great initiate of the grace of God.",
+   works:[]},
+  {id:"seraphim_of_sarov",name:"St. Seraphim of Sarov",feast:"January 2",tradition:"Russian",category:"monastics",
+   bio:"Born 1754 in Kursk. Entered the Sarov monastery at 19, ordained hieromonk 1793. Spent years as a hermit, praying on a rock for 1,000 days. His conversation with Motovilov about acquiring the Holy Spirit is a landmark of modern Orthodox spirituality.",
+   troparion:"From thy youth thou didst love Christ above all things, O blessed one, and desiring to serve Him alone thou didst struggle in the desert with unceasing prayer and fasting. O Seraphim, our venerable and God-bearing Father, intercede with Christ our God that our souls be saved.",
+   works:["Conversation with Motovilov"]},
+  {id:"mary_magdalene",name:"St. Mary Magdalene",feast:"July 22",tradition:"Greek",category:"apostles",
+   bio:"Called Equal to the Apostles and Myrrhbearer. Healed by Christ of seven demons, she was present at the Crucifixion and Resurrection. First to witness the Risen Christ on Pascha morning. She traveled to Rome and presented Emperor Tiberius with a red egg saying Christ is Risen.",
+   troparion:"Christ is Risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
+   works:[]},
+  {id:"antony_the_great",name:"St. Antony the Great",feast:"January 17",tradition:"Egyptian",category:"monastics",
+   bio:"Father of Christian monasticism, born c. 251 in Egypt. At twenty he heard the Gospel call to sell all, distributed his inheritance, and withdrew to the desert. He spent decades in spiritual warfare that became the pattern for all monastic life, living to 105.",
+   troparion:"Emulating the ways of Elijah and following the Baptist, thou didst make the desert thine own dwelling-place. Through fasting, vigil and prayer thou didst receive from God the power to overcome the hosts of demons. O our Father Anthony, intercede with Christ on behalf of us all.",
+   works:["Seven Letters","Sayings of the Desert Fathers"]},
+  {id:"john_climacus",name:"St. John Climacus",feast:"4th Sunday of Lent",tradition:"Greek",category:"monastics",
+   bio:"Abbot of the Sinai monastery, born c. 523. His Ladder of Divine Ascent — thirty steps of the spiritual life from renunciation through love — has been read aloud in Orthodox monasteries throughout Great Lent for fifteen centuries.",
+   troparion:"With the streams of thy tears thou didst make the dry desert fruitful. By thy deep sighings thou hast borne fruit a hundredfold. O John our Father, intercede with Christ God that He may save our souls.",
+   works:["The Ladder of Divine Ascent"]},
+  {id:"mary_of_egypt",name:"St. Mary of Egypt",feast:"5th Sunday of Lent",tradition:"Greek",category:"monastics",
+   bio:"Born c. 344 in Egypt. She lived a life of passion in Alexandria for seventeen years. At thirty, an invisible force prevented her entering the Church of the Holy Sepulchre. Repenting before an icon of the Theotokos, she spent forty-seven years as a hermit in the Judean desert.",
+   troparion:"The image of God was truly preserved in thee, O Mother, for thou didst take up the Cross and follow Christ. Thereby thou taughtest us to disregard the flesh. Thy spirit, O Holy Mother Mary, rejoiceth with the Angels.",
+   works:[]},
+  {id:"athanasius_of_alexandria",name:"St. Athanasius the Great",feast:"May 2",tradition:"Greek",category:"hierarchs",
+   bio:"Archbishop of Alexandria. Exiled five times by Arian emperors, defending the full divinity of Christ throughout his long episcopate. His formula — God became man so that man might become God — is the classic statement of theosis. His Life of Antony launched monasticism worldwide.",
+   troparion:"Thy rule of faith and image of meekness have made thee a teacher of humility. O Righteous Father Athanasius, intercede with Christ our God that our souls be saved.",
+   works:["On the Incarnation","Against the Arians","Life of Antony"]},
+  {id:"maximus_the_confessor",name:"St. Maximus the Confessor",feast:"August 13",tradition:"Greek",category:"monastics",
+   bio:"Born c. 580. Resisted Monothelitism at great personal cost — his tongue and right hand were cut off for refusing to sign the heretical formula. He died in exile in 662, vindicated posthumously by the Sixth Ecumenical Council.",
+   troparion:"Champion of Orthodoxy and teacher of holiness, O wise Maximus, by thy teachings thou hast enlightened all, O harp of the Spirit. Intercede with Christ God to save our souls.",
+   works:["Ambigua","Centuries on Love","The Mystagogy"]},
+  {id:"john_the_theologian",name:"St. John the Theologian",feast:"May 8",tradition:"Greek",category:"apostles",
+   bio:"Apostle and Evangelist, the Beloved Disciple. He stood at the foot of the Cross with the Theotokos and was entrusted with her care. Exiled to Patmos under Domitian, he received the Book of Revelation. He reposed at Ephesus at extreme old age — the only Apostle not to suffer martyrdom.",
+   troparion:"O Apostle beloved of Christ our God, hasten to deliver a people without defense. He who permitted thee to recline upon His breast accepts thee as thou dost fall before Him. Beseech Him, O Theologian, that He dispel the persistent cloud of the Gentiles.",
+   works:["Gospel of John","Three Epistles","Revelation"]},
+  {id:"ignatius_of_antioch",name:"St. Ignatius of Antioch",feast:"October 17",tradition:"Greek",category:"hierarchs",
+   bio:"Bishop of Antioch, disciple of St. John the Apostle. Arrested under Trajan and taken to Rome for martyrdom, en route he wrote seven letters foundational to Orthodox ecclesiology. He gave us the term Catholic Church and first wrote outside the NT about the Eucharist as true Body and Blood.",
+   troparion:"As the apostles formed thee and the martyrs made thee strong, thou didst become a vessel of the Holy Spirit. Thou didst preach Christ to all as the bearer of God. O holy hierarch Ignatius, intercede with Christ our God that our souls be saved.",
+   works:["Letter to the Ephesians","Letter to the Romans","Letter to the Smyrnaeans"]},
+  {id:"luke_the_surgeon",name:"St. Luke Archbishop of Crimea",feast:"June 11",tradition:"Russian",category:"hierarchs",
+   bio:"Archbishop of Simferopol, born Valentin Voino-Yasenetsky in 1877. A brilliant surgeon who published groundbreaking work on regional anesthesia. Ordained a bishop in 1923, he spent years in Soviet prison camps while continuing to practice medicine. He received the Stalin Prize for medicine in 1946 while still a bishop.",
+   troparion:"Thou wast a defender of Orthodoxy and a good pastor of the flock of Christ, pursuing the calling of physician and hierarch with equal devotion, healing bodies and souls. O holy hierarch Luke, intercede with Christ our God that our souls be saved.",
+   works:["Essays on Purulent Surgery"]}
+];
+
+var markerWords = ['forefeast','afterfeast','apodosis','leavetaking','synaxis','sunday','saturday','monday','tuesday','wednesday','thursday','friday','lent','bright week','triodion','akathist','lazarus','cheesefare','meatfare','publican','prodigal','judgment','forgiveness','all souls','all saints','thomas sunday','mid-pentecost','clean monday','holy week','nativity of our lord','theophany','transfiguration','pentecost','pascha','dormition','ascension','annunciation','elevation','ecumenical council'];
+
+function isActualSaint(name) {
+  var nl = name.toLowerCase();
+  return !markerWords.some(function(m) { return nl.includes(m); });
+}
+
+var _sotdSaint = null;
+
+async function loadSaintOfTheDay() {
+  try {
+    var cal = new OrthodoxCalendar();
+    var today = new Date();
+    var data = await cal.buildDay(today);
+    var calSaints = (data.fixed && data.fixed.saints_feasts) ? data.fixed.saints_feasts : [];
+    var saintNames = calSaints.filter(isActualSaint);
+    if (!saintNames.length) saintNames = ['Saint of the Day'];
+    var primaryName = saintNames[0];
+    var also = saintNames.slice(1);
+    document.getElementById('sotdName').textContent = primaryName;
+    document.getElementById('sotdFeast').textContent = today.toLocaleDateString('en-US', {weekday:'long',month:'long',day:'numeric',year:'numeric'});
+    var match = SAINTS.find(function(s) {
+      var parts = s.name.toLowerCase().split(' ');
+      return parts.some(function(p) { return primaryName.toLowerCase().includes(p) && p.length > 3; });
+    });
+    if (match) {
+      _sotdSaint = match;
+      document.getElementById('sotdBio').textContent = match.bio.substring(0, 220) + '...';
+      document.getElementById('sotdProfileBtn').style.display = '';
+    }
+    if (also.length) {
+      document.getElementById('sotdAlso').textContent = 'Also commemorated: ' + also.slice(0, 3).join(', ');
+    }
+    document.getElementById('sotdAskBtn').href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + primaryName);
+  } catch(e) {
+    document.getElementById('sotdName').textContent = 'Saint of the Day';
+  }
+}
+
+function openSotdProfile() { if (_sotdSaint) openSaint(_sotdSaint); }
+
+// Build category grid using data attributes
+function buildCategories() {
+  var html = '';
+  Object.keys(CATEGORIES).forEach(function(key) {
+    var cat = CATEGORIES[key];
+    var count = SAINTS.filter(function(s) { return s.category === key; }).length;
+    html += '<div class="cat-card" data-cat="' + key + '">';
+    html += '<div class="cat-icon">&#9766;</div>';
+    html += '<div class="cat-name">' + cat.name + '</div>';
+    html += '<div class="cat-count">' + count + ' saints</div>';
+    html += '</div>';
+  });
+  var el = document.getElementById('catGrid');
+  el.innerHTML = html;
+  el.addEventListener('click', function(e) {
+    var card = e.target.closest('.cat-card');
+    if (card && card.dataset.cat) filterByCategory(card.dataset.cat);
+  });
+}
+
+var _currentFilter = '', _currentCat = '';
+
+function buildAlphaBar(saints) {
+  var letters = [];
+  saints.forEach(function(s) {
+    var l = s.name.replace('St. ', '').replace('Ss. ', '')[0].toUpperCase();
+    if (letters.indexOf(l) < 0) letters.push(l);
+  });
+  letters.sort();
+  var all = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+  document.getElementById('saintsAlpha').innerHTML = all.map(function(l) {
+    var has = letters.indexOf(l) >= 0;
+    return '<button class="alpha-btn' + (has ? ' has' : '') + '"' +
+      (has ? ' data-letter="' + l + '"' : ' disabled') + '>' + l + '</button>';
+  }).join('');
+  document.getElementById('saintsAlpha').addEventListener('click', function(e) {
+    if (e.target.dataset.letter) scrollToLetter(e.target.dataset.letter);
+  });
+}
+
+function renderSaints(saints) {
+  buildAlphaBar(saints);
+  var html = '';
+  var grouped = {};
+  saints.forEach(function(s) {
+    var l = s.name.replace('St. ', '').replace('Ss. ', '')[0].toUpperCase();
+    if (!grouped[l]) grouped[l] = [];
+    grouped[l].push(s);
+  });
+  var letters = Object.keys(grouped).sort();
+  for (var i = 0; i < letters.length; i++) {
+    var l = letters[i];
+    html += '<div id="sl-' + l + '" style="display:contents;">';
+    grouped[l].forEach(function(s) {
+      html += '<div class="saint-list-item" data-saint-id="' + s.id + '">';
+      html += '<div class="saint-list-icon">&#9766;</div>';
+      html += '<div><div class="saint-list-name">' + s.name + '</div>';
+      html += '<div class="saint-list-feast">' + s.feast + '</div></div>';
+      html += '</div>';
+    });
+    html += '</div>';
+  }
+  var el = document.getElementById('saintsList');
+  el.innerHTML = html;
+  el.addEventListener('click', function(e) {
+    var item = e.target.closest('.saint-list-item');
+    if (item) {
+      var s = SAINTS.find(function(x) { return x.id === item.dataset.saintId; });
+      if (s) openSaint(s);
+    }
+  });
+}
+
+function filterSaints(q) {
+  _currentFilter = q.toLowerCase();
+  _currentCat = '';
+  var filtered = SAINTS.filter(function(s) {
+    return !_currentFilter || s.name.toLowerCase().includes(_currentFilter);
+  });
+  renderSaints(filtered);
+}
+
+function filterByCategory(cat) {
+  _currentCat = cat;
+  _currentFilter = '';
+  document.getElementById('saintsSearch').value = '';
+  var filtered = SAINTS.filter(function(s) { return s.category === cat; });
+  renderSaints(filtered);
+  document.getElementById('saintsList').scrollIntoView({behavior:'smooth'});
+}
+
+function scrollToLetter(l) {
+  var el = document.getElementById('sl-' + l);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function openSaint(s) {
+  if (!s) return;
+  document.getElementById('smName').textContent = s.name;
+  document.getElementById('smFeast').textContent = 'Feast: ' + s.feast;
+  document.getElementById('smTradition').textContent = s.tradition + ' Tradition';
+  var iconEl = document.getElementById('smIcon');
+  iconEl.textContent = '\u2626';
+  var img = new Image();
+  img.onload = function() { iconEl.innerHTML = '<img src="icons/' + s.id + '.jpg" alt="' + s.name + '">'; };
+  img.src = 'icons/' + s.id + '.jpg';
+  if (s.bio) {
+    document.getElementById('smBioSection').style.display = '';
+    document.getElementById('smBio').textContent = s.bio;
+  } else {
+    document.getElementById('smBioSection').style.display = 'none';
+  }
+  if (s.troparion) {
+    document.getElementById('smTroparionSection').style.display = '';
+    document.getElementById('smTroparion').textContent = s.troparion;
+  } else {
+    document.getElementById('smTroparionSection').style.display = 'none';
+  }
+  document.getElementById('smAskText').textContent = 'Ask the Orthodox Companion about ' + s.name + ' — their life, their teachings, and their place in the Tradition.';
+  document.getElementById('smCalLink').href = 'calendar.html';
+  document.getElementById('smChatLink').href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + s.name);
+  document.getElementById('saint-modal').classList.add('open');
+}
+
+function closeSaint() { document.getElementById('saint-modal').classList.remove('open'); }
+document.getElementById('saint-modal').addEventListener('click', function(e) { if (e.target === this) closeSaint(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeSaint(); });
+
+document.addEventListener('DOMContentLoaded', function() {
+  buildCategories();
+  renderSaints(SAINTS);
+  loadSaintOfTheDay();
+  var p = new URLSearchParams(window.location.search);
+  var sid = p.get('saint');
+  if (sid) {
+    var s = SAINTS.find(function(x) { return x.id === sid; });
+    if (s) setTimeout(function() { openSaint(s); }, 300);
+  }
+  var cat = p.get('cat');
+  if (cat) setTimeout(function() { filterByCategory(cat); }, 200);
 });
 
 </script>
