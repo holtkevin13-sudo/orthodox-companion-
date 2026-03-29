@@ -12,7 +12,453 @@
 /* OC-MASTER-CSS */
 /* ═══════════════════════════════════════════════════════
    ORTHODOX COMPANION — MASTER CSS v3
+   Applied to every page via clean <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="About Orthodox Companion — a free independent resource for Orthodox Christian faith and theology grounded in the patristic tradition."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* OC-MASTER-CSS */
+/* ═══════════════════════════════════════════════════════
+   ORTHODOX COMPANION — MASTER CSS v3
    Applied to every page via clean sweep
+═══════════════════════════════════════════════════════ */
+
+/* ── Theme Variables ─────────────────────────────────── */
+:root {
+  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
+  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
+  --border:#2A5A9C;--border-dim:#1A3A5C;
+  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
+  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
+  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
+  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+}
+[data-theme="light"] {
+  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
+  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
+  --border:#C4A882;--border-dim:#D4BC96;
+  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
+  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
+  --nav-bg:rgba(245,237,216,0.97);
+  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+}
+
+/* ── Base ────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
+  color:var(--text);min-height:100vh;overflow-x:hidden;
+  font-size:1.05rem;line-height:1.85;}
+
+/* ── Nav ─────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
+  backdrop-filter:blur(12px);height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
+  flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
+  color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;
+  height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:220px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
+  border-radius:0 0 4px 4px;z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
+  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
+.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
+  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+
+/* ── Account dropdown ────────────────────────────────── */
+.nav-account-wrap{position:relative;}
+.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
+  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
+  white-space:nowrap;}
+.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
+.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
+.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
+.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
+  min-width:200px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
+  border-radius:0 0 4px 4px;z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+
+/* ── Hamburger & Drawer ──────────────────────────────── */
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--text-dim);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--dark);border-bottom:1px solid var(--border-dim);
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
+  text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);
+  padding:12px 24px 4px;margin-top:4px;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
+  text-transform:uppercase;color:var(--text-dim);text-decoration:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
+  transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
+
+/* ── White Page Hero ─────────────────────────────────── */
+.page-hero{
+  margin-top:var(--nav-h);
+  background:var(--hero-bg);
+  border-bottom:2px solid var(--gold-dim);
+  padding:40px 24px 32px;
+}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--text-muted);margin-bottom:12px;}
+[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
+[data-theme="light"] .breadcrumb{color:#6B4C1A;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
+  letter-spacing:0.08em;margin-bottom:8px;
+  color:var(--hero-text);}
+.page-desc{font-size:0.95rem;line-height:1.75;max-width:640px;
+  font-style:italic;color:var(--hero-sub);}
+
+/* ── Content ─────────────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .nav-right .nav-signin-btn{display:none;}
+}
+@media(max-width:600px){
+  .page-hero{padding:28px 16px 22px;}
+  .page-title{font-size:1.3rem;}
+  .content{padding:20px 16px 40px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+}
+
+</style>
+<meta property="og:title" content="About Orthodox Companion"/>
+<meta property="og:description" content="About Orthodox Companion — a free independent resource for Orthodox Christian faith and theology grounded in the patristic tradition."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/about.html"/>
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-cross">&#9766;&#65038;</span>
+    <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link active has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Study</span>
+      <div class="nav-dropdown">
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="blog.html"><span class="dd-icon">&#9999;</span>Blog</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <a href="chatbot.html" class="nav-ai-btn ">&#9766; Companion AI</a>
+    <div class="nav-account-wrap" id="navAccountWrap">
+      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
+      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
+        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
+          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
+        </button>
+        <div class="nav-user-dropdown" id="navUserDropdown">
+          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
+          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
+          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+  <a href="about.html">About This Site</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="blog.html">Blog</a>
+  <div class="nav-drawer-footer">
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
+  </div>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>About This Site</div>
+    <h1 class="page-title">About Orthodox Companion</h1>
+    <p class="page-desc">A free, independent resource for understanding and living the Orthodox Christian faith — grounded in the patristic tradition, built for inquirers, catechumens, and lifelong Orthodox Christians alike.</p>
+  </div>
+</div>
+<div class="content">
+  <div style="max-width:720px;">
+
+    <div style="margin-bottom:36px;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">What Is Orthodox Companion?</h2>
+      <p style="color:var(--text-dim);line-height:1.9;margin-bottom:14px;">
+        Orthodox Companion is a free, independent resource for anyone seeking to understand and live the Orthodox Christian faith — for those who are exploring, those who are newly received, and those who have been walking this path for decades.
+      </p>
+      <p style="color:var(--text-dim);line-height:1.9;margin-bottom:14px;">
+        The site brings together the liturgical calendar, theological topics, saints, Church Fathers, feasts, reading plans, prayer, and fasting guidance in one place — connected to one another and grounded in the patristic tradition.
+      </p>
+      <p style="color:var(--text-dim);line-height:1.9;">
+        The Companion AI draws on Orthodox theological sources — the Church Fathers, the Ecumenical Councils, the liturgical texts — to provide grounded, faithful answers to questions about the faith.
+      </p>
+    </div>
+
+    <div style="margin-bottom:36px;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">What This Site Is Not</h2>
+      <p style="color:var(--text-dim);line-height:1.9;margin-bottom:14px;">
+        Orthodox Companion is not affiliated with any jurisdiction, archdiocese, or parish. It is not a substitute for a spiritual father, a parish community, or the sacramental life of the Church.
+      </p>
+      <p style="color:var(--text-dim);line-height:1.9;">
+        Orthodoxy is not primarily a body of information — it is a way of life, lived in community, in fasting, in prayer, and above all in the Eucharist. This site exists to support that life, not to replace it.
+      </p>
+    </div>
+
+    <div style="margin-bottom:36px;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Sources and Standards</h2>
+      <p style="color:var(--text-dim);line-height:1.9;margin-bottom:14px;">
+        All theological content is drawn from the Holy Scriptures, the Seven Ecumenical Councils, the Church Fathers, and the liturgical texts of the Orthodox Church. Where contemporary sources are used, they are chosen for their fidelity to the Tradition.
+      </p>
+      <p style="color:var(--text-dim);line-height:1.9;">
+        The site strives to reflect the consensus of Orthodox theology, not the views of any particular school, jurisdiction, or personality. Where genuine theological diversity exists within Orthodoxy, it is noted as such.
+      </p>
+    </div>
+
+    <div style="margin-bottom:36px;">
+      <h2 style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;">Finding a Parish</h2>
+      <p style="color:var(--text-dim);line-height:1.9;">
+        If you are inquiring about Orthodoxy, the most important step is attending a Divine Liturgy at a local parish. No website can substitute for the living experience of Orthodox worship. Use the <a href="new-to-orthodoxy.html#how-do-i-find-a-church" style="color:var(--gold-light);">Parish Finder</a> on the New Here? page to find a parish near you.
+      </p>
+    </div>
+
+    <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:20px 24px;">
+      <div style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:10px;">Contact</div>
+      <p style="color:var(--text-dim);font-style:italic;font-size:0.96rem;line-height:1.8;">
+        For questions, corrections, or feedback, reach us at <a href="/cdn-cgi/l/email-protection#93f0fcfde7f2f0e7d3fce1e7fbfcf7fcebf0fcfee3f2fdfafcfdbdf0fcfe" style="color:var(--gold-light);"><span class="__cf_email__" data-cfemail="d9bab6b7adb8baad99b6abadb1b6bdb6a1bab6b4a9b8b7b0b6b7f7bab6b4">[email&#160;protected]</span></a>. We welcome corrections from priests, theologians, and knowledgeable laypeople.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
+<script>
+/* OC-MASTER-JS */
+/* ── Anti-flash (inline in <head>) ──────────────────── */
+// Anti-flash: inline script in <head> sets data-theme before render
+
+/* ── Theme + Nav + Account JS ───────────────────────── */
+// Theme
+function toggleTheme(){
+  var c=document.documentElement.getAttribute('data-theme')||'dark';
+  var n=c==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  localStorage.setItem('oc_theme',n);
+}
+(function(){
+  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  document.documentElement.setAttribute('data-theme',t);
+})();
+
+// Nav drawer
+var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);
+  if(h)h.classList.toggle('open',_drawerOpen);
+}
+
+// User account menu
+function toggleUserMenu(){
+  var d=document.getElementById('navUserDropdown');
+  var b=document.getElementById('navUserBtn');
+  if(d)d.classList.toggle('open');
+  if(b)b.classList.toggle('open');
+}
+
+// Sign out
+function signOut(){
+  localStorage.removeItem('oc_user');
+  localStorage.removeItem('oc_token');
+  window.location.href='index.html';
+}
+
+// Init account state on every page
+function initAccountNav(){
+  var user=null;
+  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
+  var signIn=document.getElementById('navSignIn');
+  var userMenu=document.getElementById('navUserMenu');
+  var usernameEl=document.getElementById('navUsername');
+  var drawerSignIn=document.getElementById('drawerSignIn');
+  if(user&&user.username){
+    if(signIn)signIn.style.display='none';
+    if(userMenu)userMenu.style.display='block';
+    if(usernameEl)usernameEl.textContent=user.username;
+    if(drawerSignIn)drawerSignIn.textContent=user.username;
+  } else {
+    if(signIn)signIn.style.display='';
+    if(userMenu)userMenu.style.display='none';
+  }
+}
+
+// Close menus on outside click
+document.addEventListener('click',function(e){
+  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
+    _drawerOpen=false;
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
+  }
+  // Close user dropdown
+  if(!e.target.closest('.nav-account-wrap')){
+    var d=document.getElementById('navUserDropdown');
+    var b=document.getElementById('navUserBtn');
+    if(d)d.classList.remove('open');
+    if(b)b.classList.remove('open');
+  }
+});
+
+// Smooth scroll for anchor links
+function scrollToSection(id){
+  var el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  initAccountNav();
+  // Handle hash scrolling
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+});
+
+</script>
+</body>
+</html>
 ═══════════════════════════════════════════════════════ */
 
 /* ── Theme Variables ─────────────────────────────────── */
