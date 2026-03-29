@@ -183,7 +183,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 .resources-wrap{max-width:1040px;margin:0 auto;padding:28px 24px 60px;}
 .res-tabs{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;margin-bottom:24px;}
-.res-tab{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;padding:10px 18px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;transition:all 0.2s;border-right:1px solid var(--border-dim);}
+.res-tab{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;padding:10px 18px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;transition:all 0.2s;border-right:1px solid var(--border-dim);flex:1;text-align:center;}
 .res-tab:last-child{border-right:none;}
 .res-tab.active{background:rgba(201,168,76,0.1);color:var(--gold-light);}
 .res-level-bar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
@@ -550,7 +550,7 @@ var CATS = [
   {id:'books',     name:'Books'},
   {id:'podcasts',  name:'Podcasts'},
   {id:'websites',  name:'Websites'},
-  {id:'documents', name:'Church Documents'},
+  {id:'documents', name:'Documents'},
 ];
 
 var currentCat = 'all';
