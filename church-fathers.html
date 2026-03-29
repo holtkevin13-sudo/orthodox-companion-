@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Church Fathers — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="The Church Fathers — their lives, works, theological contributions, and place in the Orthodox tradition."/>
+<script>(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);}
+[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);}
+body{font-family:"EB Garamond",Georgia,serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+[data-theme="light"] nav{background:rgba(245,237,216,0.97);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:"Cinzel",serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:"▾";font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.theme-toggle{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;}
+.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
+.nav-ai-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;}
+.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-signin-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:"Cinzel",serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;}
+.nav-drawer a{display:block;font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
+.breadcrumb{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:640px;}
+.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}}
+@media(max-width:600px){.content,.page-hero{padding-left:16px;padding-right:16px;}.page-title{font-size:1.4rem;}}
+
+.era-section{margin-bottom:48px;}
+.era-title{
+  font-family:"Cinzel",serif;font-size:0.75rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--gold);
+  display:flex;align-items:center;gap:16px;margin-bottom:20px;
+}
+.era-title::before,.era-title::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);}
+.fathers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.father-card{
+  background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;
+  padding:20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;
+  display:flex;flex-direction:column;gap:6px;
+}
+.father-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
+.father-name{font-family:"Cinzel",serif;font-size:0.86rem;color:var(--gold-light);letter-spacing:0.04em;line-height:1.3;}
+.father-dates{font-family:"Cinzel",serif;font-size:0.6rem;color:var(--text-muted);letter-spacing:0.08em;}
+.father-tradition{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;border-radius:2px;padding:1px 7px;border:1px solid;display:inline-block;margin-top:2px;}
+.father-tradition.greek{color:var(--gold);border-color:rgba(201,168,76,0.3);}
+.father-tradition.latin{color:#8ABCDC;border-color:rgba(138,188,220,0.3);}
+.father-tradition.syrian{color:#9A8ACA;border-color:rgba(154,138,202,0.3);}
+.father-tradition.egyptian{color:#8ACA8A;border-color:rgba(138,202,138,0.3);}
+.father-tradition.russian{color:#CA8A8A;border-color:rgba(202,138,138,0.3);}
+.father-desc{font-size:0.82rem;color:var(--text-dim);line-height:1.6;font-style:italic;margin-top:4px;}
+.father-works{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.father-work-tag{font-family:"Cinzel",serif;font-size:0.56rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:1px 6px;}
+/* Modal */
+#father-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+#father-modal.open{display:flex;}
+.fm2-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:660px;margin:auto;animation:fadeUp 0.3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fm2-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);}
+.fm2-name{font-family:"Cinzel",serif;font-size:1.15rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.fm2-meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+.fm2-meta-item{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+.fm2-body{padding:22px 26px;max-height:60vh;overflow-y:auto;}
+.fm2-section-title{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.fm2-bio{font-size:0.96rem;color:var(--text-dim);line-height:1.9;margin-bottom:20px;}
+.fm2-contrib{font-size:0.96rem;color:var(--text-dim);line-height:1.9;margin-bottom:20px;}
+.fm2-works-list{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.fm2-work{background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;padding:10px 14px;}
+.fm2-work-title{font-family:"Cinzel",serif;font-size:0.82rem;color:var(--text);}
+.fm2-work-desc{font-size:0.78rem;color:var(--text-muted);font-style:italic;margin-top:3px;}
+.fm2-councils{display:flex;flex-wrap:wrap;gap:6px;}
+.fm2-council-tag{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);border:1px solid rgba(201,168,76,0.3);border-radius:2px;padding:2px 8px;}
+.fm2-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;gap:8px;justify-content:space-between;align-items:center;}
+.fm2-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
+.fm2-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.fm2-close{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;}
+.fm2-close:hover{color:var(--gold-light);}
+@media(max-width:768px){.fathers-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.fathers-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#127807;</span>What Is Orthodoxy?</a>
+        <a href="new-to-orthodoxy.html#parish-locator"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>FAQ</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop active">Study</span>
+      <div class="nav-dropdown">
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="feasts.html"><span class="dd-icon">&#9829;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#128197;</span>Liturgical Seasons</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#128214;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#127897;</span>Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html"><span class="dd-icon">&#128197;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#128141;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#127807;</span>Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="blog.html"><span class="dd-icon">&#9998;</span>Blog</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">&#9728;</button>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="new-to-orthodoxy.html#parish-locator">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">FAQ</a>
+  <a href="about.html">About</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="blog.html">Blog</a>
+  <div class="nav-drawer-footer">
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="topics.html">Study</a><span>&#8250;</span>Church Fathers</div>
+    <h1 class="page-title">The Church Fathers</h1>
+    <p class="page-desc">The great theological minds of the patristic era — their lives, their major works, their contributions to Orthodox doctrine, and their place in the Ecumenical Councils. The Fathers are not history; they are the living voice of the Tradition.</p>
+  </div>
+</div>
+<div class="content" id="fathersContent"></div>
+<div id="father-modal">
+  <div class="fm2-box">
+    <div class="fm2-header">
+      <div class="fm2-name" id="fm2-name"></div>
+      <div class="fm2-meta" id="fm2-meta"></div>
+    </div>
+    <div class="fm2-body" id="fm2-body"></div>
+    <div class="fm2-footer">
+      <div style="display:flex;gap:8px;">
+        <a href="#" class="fm2-link" id="fm2-saints-link">&#9766; Saint Profile</a>
+        <a href="#" class="fm2-link" id="fm2-chat-link">&#9766; Ask Companion</a>
+      </div>
+      <button class="fm2-close" onclick="closeFather()">Close &#10005;</button>
+    </div>
+  </div>
+</div>
+<script>
+
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById("navDrawer").classList.toggle("open",drawerOpen);document.getElementById("hamburger").classList.toggle("open",drawerOpen);}
+document.addEventListener("click",function(e){if(drawerOpen&&!e.target.closest("nav")&&!e.target.closest(".nav-drawer")){drawerOpen=false;document.getElementById("navDrawer").classList.remove("open");document.getElementById("hamburger").classList.remove("open");}});
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme")||"dark";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("oc_theme",n);var b=document.getElementById("themeToggle");if(b)b.textContent=n==="light"?"🌙":"☀";}
+(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);var b=document.getElementById("themeToggle");if(b)b.textContent=t==="light"?"🌙":"☀";})();
+
+var FATHERS = [
+  // ── Apostolic Fathers ────────────────────────────────────────────────────────
+  {era:"Apostolic Fathers (1st–2nd c.)", name:"St. Ignatius of Antioch", dates:"c. 35–108 AD", tradition:"greek",
+   desc:"Bishop of Antioch and disciple of the Apostle John. On his way to martyrdom in Rome he wrote seven letters that are foundational documents of Orthodox ecclesiology, Eucharistic theology, and the episcopate.",
+   contribution:"Defined the three-fold ministry of bishop, presbyter, and deacon. Gave us the term 'Catholic Church.' Emphasized the reality of Christ's flesh and the centrality of the Eucharist.",
+   councils:[], works:[
+    {title:"Letters to the Seven Churches", desc:"Seven epistles written en route to martyrdom — to Ephesus, Magnesia, Tralles, Rome, Philadelphia, Smyrna, and to Polycarp."},
+  ]},
+  {era:"Apostolic Fathers (1st–2nd c.)", name:"St. Polycarp of Smyrna", dates:"c. 69–155 AD", tradition:"greek",
+   desc:"Bishop of Smyrna, disciple of St. John the Theologian, and link between the Apostolic age and the later patristic tradition. Martyred at age 86 with the words 'Eighty and six years have I served Him.'",
+   contribution:"Living bridge between the Apostles and the 2nd-century Church. His martyrdom is one of the earliest and most moving accounts of Christian witness.",
+   councils:[], works:[
+    {title:"Epistle to the Philippians", desc:"A letter of pastoral guidance drawing on the Pauline corpus and the Apostolic tradition."},
+    {title:"Martyrdom of Polycarp", desc:"The earliest detailed account of a Christian martyrdom, composed by the Church of Smyrna."},
+  ]},
+  {era:"Apostolic Fathers (1st–2nd c.)", name:"St. Justin Martyr", dates:"c. 100–165 AD", tradition:"greek",
+   desc:"Philosopher and apologist who converted to Christianity after encountering an old man by the sea. The first great Christian intellectual, Justin sought to demonstrate the harmony between Greek philosophy and the Gospel.",
+   contribution:"First systematic apologist. Connected the Logos of Greek philosophy with the incarnate Christ. Provided the earliest description of the Sunday Eucharist.",
+   councils:[], works:[
+    {title:"First and Second Apology", desc:"Defenses of Christianity addressed to the Roman Emperor, explaining Christian belief and practice."},
+    {title:"Dialogue with Trypho", desc:"A lengthy dialogue with a Jewish interlocutor, arguing that the Old Testament prophecies are fulfilled in Christ."},
+  ]},
+  // ── Ante-Nicene Fathers ──────────────────────────────────────────────────────
+  {era:"Ante-Nicene Fathers (2nd–3rd c.)", name:"St. Irenaeus of Lyon", dates:"c. 130–202 AD", tradition:"greek",
+   desc:"Bishop of Lyon, student of Polycarp, and the first systematic theologian of the Orthodox Church. Born in Asia Minor, he became the shepherd of a community in Gaul and the great opponent of Gnosticism.",
+   contribution:"Developed the theology of recapitulation (anakephalaiosis) — Christ as the New Adam who sums up and restores all humanity. Gave the earliest clear articulation of theosis. Defended the four Gospels and apostolic succession.",
+   councils:[], works:[
+    {title:"Against Heresies (Adversus Haereses)", desc:"A five-volume refutation of Gnosticism that simultaneously provides the most complete positive account of apostolic faith before Nicaea."},
+    {title:"Demonstration of the Apostolic Preaching", desc:"A brief summary of Christian doctrine for those recently baptized — a kind of early catechism."},
+  ]},
+  {era:"Ante-Nicene Fathers (2nd–3rd c.)", name:"St. Clement of Alexandria", dates:"c. 150–215 AD", tradition:"greek",
+   desc:"Head of the Catechetical School of Alexandria, the first center of Christian theological learning. Clement sought to show that Greek philosophy, properly understood, was a preparation for the Gospel.",
+   contribution:"Pioneered the synthesis of classical learning and Christian faith. Developed a sophisticated theology of Christian gnosis (true knowledge) against the Gnostics. First to articulate the concept of theosis in sustained theological form.",
+   councils:[], works:[
+    {title:"Protrepticus (Exhortation to the Greeks)", desc:"An appeal to the educated pagan world to abandon idolatry and embrace the Logos."},
+    {title:"Paedagogus (The Instructor)", desc:"A guide to Christian living and moral formation, addressed to the newly baptized."},
+    {title:"Stromata (Miscellanies)", desc:"A rich and wide-ranging collection of theological reflections, the most advanced of Clement's works."},
+  ]},
+  // ── Nicene and Post-Nicene ────────────────────────────────────────────────────
+  {era:"Nicene Fathers (4th c.)", name:"St. Athanasius the Great", dates:"296–373 AD", tradition:"greek",
+   desc:"Archbishop of Alexandria, exiled five times for defending Nicene Orthodoxy. Called 'the pillar of the Church' and Athanasius contra mundum — Athanasius against the world.",
+   contribution:"Defended the full divinity of Christ (homoousios) against Arianism. His formula 'God became man so that man might become God' is the classic statement of theosis. His Life of Antony launched monasticism across the Christian world.",
+   councils:["Council of Nicaea I (325)"], works:[
+    {title:"On the Incarnation", desc:"His masterpiece — written as a young man, still the clearest and most beautiful statement of Orthodox Christology."},
+    {title:"Against the Arians (Four Orations)", desc:"The definitive theological refutation of Arianism, establishing the eternal divinity of the Son."},
+    {title:"Life of Antony", desc:"The biography of the father of monasticism — the book that set the world on fire and catalyzed Augustine's conversion."},
+  ]},
+  {era:"Nicene Fathers (4th c.)", name:"St. Basil the Great", dates:"330–379 AD", tradition:"greek",
+   desc:"Archbishop of Caesarea in Cappadocia, one of the Three Holy Hierarchs. Organized monasticism, defended the Trinity, and distributed his inheritance to the poor. Built the first great hospital complex outside Caesarea.",
+   contribution:"Defended the divinity of the Holy Spirit. Organized cenobitic monasticism (his Asketikon remains the rule of Orthodox monasticism). Distinguished the divine essence from the divine energies — foundational for Orthodox theology.",
+   councils:["Council of Constantinople I (381)"], works:[
+    {title:"On the Holy Spirit", desc:"The definitive Orthodox treatment of the Spirit's divinity — written against the Pneumatomachians."},
+    {title:"Hexaemeron", desc:"Nine homilies on the six days of creation — the most influential patristic commentary on Genesis."},
+    {title:"Asketikon (Long & Short Rules)", desc:"The foundational rule of Orthodox monasticism, still used in Eastern Christian communities."},
+    {title:"Address to Young Men", desc:"A guide to how Christians should read classical literature — seminal for Orthodox education."},
+  ]},
+  {era:"Nicene Fathers (4th c.)", name:"St. Gregory the Theologian", dates:"329–390 AD", tradition:"greek",
+   desc:"Archbishop of Constantinople, one of the Three Holy Hierarchs. Called 'the Theologian' — a title shared only with St. John the Evangelist. Presided over the Second Ecumenical Council.",
+   contribution:"Delivered the Five Theological Orations that defined Trinitarian doctrine for all subsequent Orthodox theology. Developed the theology of the Holy Spirit's full divinity. Greatest poet-theologian of the patristic era.",
+   councils:["Council of Constantinople I (381)"], works:[
+    {title:"Five Theological Orations (27–31)", desc:"The supreme achievement of patristic Trinitarian theology — delivered in Constantinople in 380 AD."},
+    {title:"Theological Poems", desc:"Hundreds of theological and autobiographical poems — a unique record of the inner life of a Church Father."},
+    {title:"Orations on the Great Feasts", desc:"Homilies on the Nativity, Theophany, Pascha, Pentecost, and other feasts — masterpieces of theological poetry."},
+  ]},
+  {era:"Nicene Fathers (4th c.)", name:"St. John Chrysostom", dates:"349–407 AD", tradition:"greek",
+   desc:"Archbishop of Constantinople, one of the Three Holy Hierarchs. Called 'Golden-Mouthed' for his incomparable preaching. Exiled twice for denouncing the corruption of the imperial court. Author of the Divine Liturgy used every Sunday.",
+   contribution:"Unsurpassed preacher and biblical commentator. Author of the standard form of the Divine Liturgy. His social theology — on poverty, wealth, and the body of Christ — remains the most radical in Christian history.",
+   councils:[], works:[
+    {title:"Homilies on Matthew", desc:"Ninety homilies on the Gospel of Matthew — the standard of Christian preaching for fifteen centuries."},
+    {title:"On the Priesthood (De Sacerdotio)", desc:"The most influential treatment of the Christian priesthood in the patristic tradition."},
+    {title:"Homilies on Romans", desc:"Thirty-two homilies on Paul's Letter to the Romans — his most sustained theological commentary."},
+    {title:"Paschal Homily", desc:"The brief homily read at every Orthodox Pascha — one of the most celebrated texts in the entire Christian tradition."},
+  ]},
+  {era:"Nicene Fathers (4th c.)", name:"St. Gregory of Nyssa", dates:"335–395 AD", tradition:"greek",
+   desc:"Brother of Basil the Great and the most profound philosophical theologian of the Cappadocian school. He extended the Trinitarian theology of his brother and Gregory Nazianzen into a comprehensive mystical and cosmological vision.",
+   contribution:"Developed the theology of epektasis — the soul's eternal progress into the infinite God. The first systematic mystical theologian of the Orthodox tradition. His Life of Moses is the masterpiece of Christian allegorical exegesis.",
+   councils:["Council of Constantinople I (381)"], works:[
+    {title:"Life of Moses", desc:"A spiritual interpretation of Moses' ascent of Sinai as the model of the soul's journey into the divine darkness."},
+    {title:"On the Soul and the Resurrection", desc:"A dialogue with his sister Macrina on the soul's fate after death — a Christian Phaedo."},
+    {title:"Catechetical Oration", desc:"A comprehensive summary of Christian doctrine for those preparing to teach the faith."},
+  ]},
+  // ── Desert Fathers ─────────────────────────────────────────────────────────
+  {era:"Desert Fathers (3rd–5th c.)", name:"St. Antony the Great", dates:"251–356 AD", tradition:"egyptian",
+   desc:"The father of Christian monasticism. At twenty he heard the Gospel call to sell all and give to the poor, distributed his inheritance, and withdrew to the Egyptian desert. Spent decades in spiritual warfare that defined the monastic tradition.",
+   contribution:"Father of monasticism. The prototype of the Christian spiritual athlete. His life, as told by Athanasius, spread the monastic ideal throughout the Christian world.",
+   councils:[], works:[
+    {title:"Letters (Seven)", desc:"Seven letters to monastic communities — rare direct literary remains of the great Abba."},
+    {title:"Sayings (Apophthegmata)", desc:"Brief, incisive sayings preserved in the Sayings of the Desert Fathers — the distilled wisdom of decades of struggle."},
+  ]},
+  {era:"Desert Fathers (3rd–5th c.)", name:"Evagrius Ponticus", dates:"345–399 AD", tradition:"egyptian",
+   desc:"Student of Basil the Great and Gregory Nazianzen who became the most systematic theologian of the Desert tradition. His analysis of the eight logismoi (thoughts) is the foundation of all subsequent Orthodox ascetical theology.",
+   contribution:"Systematized the analysis of the eight chief passions (logismoi) that became the basis of Orthodox ascetical psychology. Developed the threefold path of praktike, theoria physike, and theologia.",
+   councils:[], works:[
+    {title:"Praktikos", desc:"The manual of ascetical struggle — the 100 chapters on the eight logismoi and how to combat them."},
+    {title:"On Prayer (153 Chapters)", desc:"The most concentrated text on the practice of prayer in the patristic tradition."},
+    {title:"Chapters on Knowledge (Kephalaia Gnostica)", desc:"His most advanced mystical theology — controversial but foundational."},
+  ]},
+  // ── 5th–8th Century ───────────────────────────────────────────────────────
+  {era:"5th–8th Century", name:"St. Cyril of Alexandria", dates:"376–444 AD", tradition:"greek",
+   desc:"Archbishop of Alexandria and the great champion of the title Theotokos for the Virgin Mary. His theology of the hypostatic union — the one person of Christ with two natures — was defined at the Council of Ephesus (431).",
+   contribution:"Defined the unity of Christ's person against Nestorianism. Secured the title Theotokos at Ephesus. His Christological formula 'one nature of the Word Incarnate' was the theological touchstone of the Council of Chalcedon.",
+   councils:["Council of Ephesus (431)"], works:[
+    {title:"Against Nestorius", desc:"His major theological refutation, presenting the Orthodox understanding of Christ's one person."},
+    {title:"Commentary on John", desc:"The most theologically rich of the patristic commentaries on the Fourth Gospel."},
+    {title:"Twelve Anathemas", desc:"The twelve propositions against Nestorian Christology that defined the stakes at Ephesus."},
+  ]},
+  {era:"5th–8th Century", name:"St. Maximus the Confessor", dates:"580–662 AD", tradition:"greek",
+   desc:"The last great theologian of the patristic era — the supreme synthesizer of the entire Greek tradition. Tortured and exiled for defending the two wills of Christ; his tongue and right hand were cut off. Vindicated posthumously at the Sixth Ecumenical Council.",
+   contribution:"Defined the two wills and two energies of Christ against Monothelitism. Synthesized Dionysius, Evagrius, Origen, and the Cappadocians into a unified theological vision. Developed the most complete Orthodox theology of theosis.",
+   councils:["Council of Constantinople III (680–681) — posthumously vindicated"], works:[
+    {title:"Ambigua (Difficulties)", desc:"His masterpiece — commentary on the difficult passages in Gregory Nazianzen, containing his most original theology."},
+    {title:"Centuries on Love", desc:"Four centuries of aphorisms on the spiritual life — the most accessible of his works."},
+    {title:"The Mystagogy", desc:"A theological commentary on the Divine Liturgy as an icon of the cosmos and the soul."},
+    {title:"Opuscula Theologica et Polemica", desc:"Short theological treatises written in the heat of the Monothelite controversy."},
+  ]},
+  {era:"5th–8th Century", name:"St. John of Damascus", dates:"676–749 AD", tradition:"greek",
+   desc:"The last of the Eastern Church Fathers and the great synthesizer of patristic theology. Born in Damascus to a prominent Christian family, he served the Umayyad Caliph before retiring to the monastery of Mar Saba near Jerusalem.",
+   contribution:"Wrote the Exact Exposition of the Orthodox Faith — the Summa Theologica of the Eastern Church. Defended the veneration of icons with decisive theological arguments. Composed some of the greatest liturgical poetry of the Orthodox tradition.",
+   councils:["Council of Nicaea II (787) — vindicated posthumously"], works:[
+    {title:"Exact Exposition of the Orthodox Faith", desc:"A comprehensive systematic theology that synthesizes the entire Greek patristic tradition — still the standard Orthodox dogmatic reference."},
+    {title:"Against Those Who Attack the Holy Icons", desc:"Three treatises that provide the definitive theological defense of the veneration of icons."},
+    {title:"Canon for Pascha", desc:"The Paschal Canon sung at Orthros on Pascha night — one of the greatest poems in the Greek language."},
+  ]},
+  // ── Byzantine Theologians ───────────────────────────────────────────────────
+  {era:"Byzantine Theologians (9th–15th c.)", name:"St. Photios the Great", dates:"820–893 AD", tradition:"greek",
+   desc:"Patriarch of Constantinople, the greatest scholar of the Byzantine world. His conflict with Rome over the Filioque and papal authority foreshadowed the Great Schism of 1054.",
+   contribution:"Gave the most comprehensive theological refutation of the Filioque. Preserved and transmitted enormous quantities of classical and patristic learning. His Bibliothe is an invaluable record of ancient books now lost.",
+   councils:["Council of Constantinople (879–880)"], works:[
+    {title:"Mystagogy of the Holy Spirit", desc:"The definitive Orthodox theological argument against the Filioque."},
+    {title:"Amphilochia", desc:"Responses to theological and exegetical questions — an encyclopedia of patristic learning."},
+    {title:"Bibliotheca", desc:"Reviews of 279 books read by Photios — many preserved only in his summaries."},
+  ]},
+  {era:"Byzantine Theologians (9th–15th c.)", name:"St. Symeon the New Theologian", dates:"949–1022 AD", tradition:"greek",
+   desc:"Abbot of the monastery of St. Mamas in Constantinople and the most mystical of the Byzantine theologians. Called 'the New Theologian' — a title borne previously only by John the Evangelist and Gregory Nazianzen.",
+   contribution:"The great theologian of direct personal experience of God. Insisted that conscious awareness of the Holy Spirit is not extraordinary mysticism but the normal expectation of every baptized Christian. Pioneered the theology of penthos (compunction).",
+   councils:[], works:[
+    {title:"Catechetical Discourses", desc:"Homilies preached to his monks — direct, personal, and spiritually urgent."},
+    {title:"Theological and Ethical Essays", desc:"More systematic theological treatments of the divine light, baptism, and the priesthood."},
+    {title:"Hymns of Divine Love", desc:"Mystical poetry of extraordinary beauty — his most personal and accessible works."},
+  ]},
+  {era:"Byzantine Theologians (9th–15th c.)", name:"St. Gregory Palamas", dates:"1296–1359 AD", tradition:"greek",
+   desc:"Archbishop of Thessalonica and the great defender of hesychasm against the attacks of Barlaam the Calabrian. His theology of the distinction between the divine essence and the divine energies is the cornerstone of Orthodox mystical theology.",
+   contribution:"Defined the distinction between God's unknowable essence and His communicable energies — making theosis rationally coherent. Defended the monks' experience of the uncreated light of Tabor as genuine encounter with God. Canonized the hesychast tradition.",
+   councils:["Hesychast Councils of Constantinople (1341, 1347, 1351)"], works:[
+    {title:"Triads in Defense of the Holy Hesychasts", desc:"His major theological work — a comprehensive defense of hesychasm and the theology of the divine energies."},
+    {title:"One Hundred and Fifty Chapters", desc:"A concise synthesis of his theology — more accessible than the Triads."},
+    {title:"Homilies", desc:"Sixty homilies on the feasts and the Gospels — pastoral, warm, and theologically rich."},
+  ]},
+  {era:"Byzantine Theologians (9th–15th c.)", name:"St. Mark of Ephesus", dates:"1392–1444 AD", tradition:"greek",
+   desc:"The last great defender of Orthodox theology in the Byzantine era. Alone among the Orthodox delegation at the Council of Florence (1438–39), he refused to sign the union document and walked away. His resistance preserved the Orthodox tradition intact.",
+   contribution:"Preserved Orthodox theology from forced union with Rome. His theological arguments against the Filioque and purgatory remain the standard Orthodox responses. Called 'the Pillar of Orthodoxy' and 'the Athlete of the Faith.'",
+   councils:["Council of Florence (1439) — refused to sign"], works:[
+    {title:"Encyclical Letter to All the Orthodox", desc:"His appeal from Florence to all Orthodox Christians not to accept the false union."},
+    {title:"Refutations of the Latin Chapters", desc:"Detailed theological arguments against the Filioque and the Latin doctrine of purgatory."},
+    {title:"Syllogistic Chapters Against the Latins", desc:"A systematic logical refutation of Latin theological positions."},
+  ]},
+];
+
+function openFather(idx){
+  var f = FATHERS[idx];
+  document.getElementById("fm2-name").textContent = f.name;
+  var meta = "<span class=\"fm2-meta-item\">" + f.dates + "</span>";
+  meta += "<span class=\"fm2-meta-item father-tradition " + f.tradition + "\">" + f.tradition.charAt(0).toUpperCase()+f.tradition.slice(1) + " Tradition</span>";
+  if(f.councils && f.councils.length) meta += "<span class=\"fm2-meta-item\">" + f.councils[0] + "</span>";
+  document.getElementById("fm2-meta").innerHTML = meta;
+  
+  var body = "<div class=\"fm2-section-title\">Life &amp; Significance</div>";
+  body += "<div class=\"fm2-bio\">" + f.desc + "</div>";
+  body += "<div class=\"fm2-section-title\">Theological Contribution</div>";
+  body += "<div class=\"fm2-contrib\">" + f.contribution + "</div>";
+  if(f.works && f.works.length){
+    body += "<div class=\"fm2-section-title\">Major Works</div><div class=\"fm2-works-list\">";
+    f.works.forEach(function(w){
+      body += "<div class=\"fm2-work\"><div class=\"fm2-work-title\">" + w.title + "</div><div class=\"fm2-work-desc\">" + w.desc + "</div></div>";
+    });
+    body += "</div>";
+  }
+  if(f.councils && f.councils.length){
+    body += "<div class=\"fm2-section-title\">Ecumenical Councils</div><div class=\"fm2-councils\">";
+    f.councils.forEach(function(c){body += "<span class=\"fm2-council-tag\">" + c + "</span>";});
+    body += "</div>";
+  }
+  document.getElementById("fm2-body").innerHTML = body;
+  
+  var saintId = f.name.toLowerCase().replace(/[^a-z0-9]/g,"_").replace(/__+/g,"_").replace(/^st_/,"");
+  document.getElementById("fm2-saints-link").href = "saints.html?saint=" + saintId;
+  document.getElementById("fm2-chat-link").href = "chatbot.html?q=" + encodeURIComponent("Tell me about " + f.name);
+  document.getElementById("father-modal").classList.add("open");
+  document.getElementById("father-modal").scrollTop = 0;
+}
+function closeFather(){document.getElementById("father-modal").classList.remove("open");}
+document.getElementById("father-modal").addEventListener("click",function(e){if(e.target===this)closeFather();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeFather();});
+
+function render(){
+  var eras = {};
+  FATHERS.forEach(function(f,i){
+    if(!eras[f.era]) eras[f.era]=[];
+    eras[f.era].push({f:f,i:i});
+  });
+  var html="";
+  Object.keys(eras).forEach(function(era){
+    html += "<div class=\"era-section\">";
+    html += "<div class=\"era-title\">" + era + "</div>";
+    html += "<div class=\"fathers-grid\">";
+    eras[era].forEach(function(item){
+      var f=item.f,i=item.i;
+      html += "<div class=\"father-card\" onclick=\"openFather(" + i + ")\">";
+      html += "<div class=\"father-name\">" + f.name + "</div>";
+      html += "<div class=\"father-dates\">" + f.dates + "</div>";
+      html += "<span class=\"father-tradition " + f.tradition + "\">" + f.tradition.charAt(0).toUpperCase()+f.tradition.slice(1) + "</span>";
+      html += "<div class=\"father-desc\">" + f.desc.substring(0,140) + "&hellip;</div>";
+      if(f.works && f.works.length){
+        html += "<div class=\"father-works\">";
+        f.works.slice(0,3).forEach(function(w){
+          html += "<span class=\"father-work-tag\">" + w.title.split("(")[0].trim() + "</span>";
+        });
+        html += "</div>";
+      }
+      html += "</div>";
+    });
+    html += "</div></div>";
+  });
+  document.getElementById("fathersContent").innerHTML = html;
+}
+document.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>

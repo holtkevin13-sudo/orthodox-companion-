@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Feasts — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="The great feasts of the Orthodox Church — each feast's theological meaning, primary Greek term, and connection to Orthodox doctrine."/>
+<script>(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);}
+[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);}
+body{font-family:"EB Garamond",Georgia,serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+[data-theme="light"] nav{background:rgba(245,237,216,0.97);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:"Cinzel",serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:"▾";font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.theme-toggle{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;}
+.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
+.nav-ai-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;}
+.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-signin-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:"Cinzel",serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;}
+.nav-drawer a{display:block;font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
+.breadcrumb{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:640px;}
+.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}}
+@media(max-width:600px){.content,.page-hero{padding-left:16px;padding-right:16px;}.page-title{font-size:1.4rem;}}
+
+.feast-group{margin-bottom:44px;}
+.feast-group-title{
+  font-family:"Cinzel",serif;font-size:0.75rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--gold);
+  display:flex;align-items:center;gap:16px;margin-bottom:20px;
+}
+.feast-group-title::before,.feast-group-title::after{
+  content:"";flex:1;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
+}
+.feast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.feast-card{
+  background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;
+  padding:20px 22px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;
+  border-left:3px solid var(--gold-dim);
+}
+.feast-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
+.feast-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.05em;margin-bottom:6px;}
+.feast-greek{font-size:0.82rem;color:var(--gold);font-style:italic;margin-bottom:8px;}
+.feast-desc{font-size:0.88rem;color:var(--text-dim);line-height:1.7;}
+.feast-topic-link{
+  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+  font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-muted);
+  border:1px solid var(--border-dim);border-radius:2px;padding:3px 9px;
+  text-decoration:none;transition:all 0.2s;
+}
+.feast-topic-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+#feast-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+#feast-modal.open{display:flex;}
+.fm-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:620px;margin:auto;animation:fadeUp 0.3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fm-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);}
+.fm-title{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
+.fm-greek{font-size:0.9rem;color:var(--gold);font-style:italic;margin-bottom:6px;}
+.fm-topic{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+.fm-body{padding:22px 26px;}
+.fm-desc{font-size:1rem;color:var(--text-dim);line-height:1.9;margin-bottom:18px;}
+.fm-links{display:flex;flex-wrap:wrap;gap:8px;}
+.fm-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
+.fm-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.fm-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:flex-end;}
+.fm-close{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;transition:color 0.2s;}
+.fm-close:hover{color:var(--gold-light);}
+@media(max-width:768px){.feast-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#127807;</span>What Is Orthodoxy?</a>
+        <a href="new-to-orthodoxy.html#parish-locator"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>FAQ</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop active">Study</span>
+      <div class="nav-dropdown">
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="feasts.html"><span class="dd-icon">&#9829;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#128197;</span>Liturgical Seasons</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#128214;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#127897;</span>Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html"><span class="dd-icon">&#128197;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#128141;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#127807;</span>Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="blog.html"><span class="dd-icon">&#9998;</span>Blog</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">&#9728;</button>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="new-to-orthodoxy.html#parish-locator">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">FAQ</a>
+  <a href="about.html">About</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="blog.html">Blog</a>
+  <div class="nav-drawer-footer">
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="topics.html">Study</a><span>&#8250;</span>Feasts</div>
+    <h1 class="page-title">The Feasts of the Church</h1>
+    <p class="page-desc">Each feast of the Orthodox Church is a doorway into a theological mystery. Here every feast is connected to its primary theological focus, its key Greek term, and its place in the living Tradition.</p>
+  </div>
+</div>
+<div class="content" id="feastContent"></div>
+<div id="feast-modal">
+  <div class="fm-box">
+    <div class="fm-header">
+      <div class="fm-title" id="fm-title"></div>
+      <div class="fm-greek" id="fm-greek"></div>
+      <div class="fm-topic" id="fm-topic"></div>
+    </div>
+    <div class="fm-body">
+      <div class="fm-desc" id="fm-desc"></div>
+      <div class="fm-links" id="fm-links"></div>
+    </div>
+    <div class="fm-footer"><button class="fm-close" onclick="closeModal()">Close &#10005;</button></div>
+  </div>
+</div>
+<script>
+
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById("navDrawer").classList.toggle("open",drawerOpen);document.getElementById("hamburger").classList.toggle("open",drawerOpen);}
+document.addEventListener("click",function(e){if(drawerOpen&&!e.target.closest("nav")&&!e.target.closest(".nav-drawer")){drawerOpen=false;document.getElementById("navDrawer").classList.remove("open");document.getElementById("hamburger").classList.remove("open");}});
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme")||"dark";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("oc_theme",n);var b=document.getElementById("themeToggle");if(b)b.textContent=n==="light"?"🌙":"☀";}
+(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);var b=document.getElementById("themeToggle");if(b)b.textContent=t==="light"?"🌙":"☀";})();
+
+var FEASTS = {"annunciation_of_the_theotokos": {"primary_topic": "incarnation", "primary_greek_term": "enanthropesis", "description": "The Annunciation reveals the moment of the Incarnation when the eternal Logos takes flesh through the assent of the Theotokos."}, "nativity_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "logos", "description": "The Nativity celebrates the birth in the flesh of the eternal Word of God, the Logos, who becomes man for the salvation of the world."}, "holy_theophany": {"primary_topic": "trinity", "primary_greek_term": "theophania", "description": "The Baptism of Christ in the Jordan reveals the Holy Trinity: the Father speaks, the Son is baptized, and the Holy Spirit descends like a dove."}, "transfiguration_of_christ": {"primary_topic": "hesychast_controversy", "primary_greek_term": "energeia", "description": "The Transfiguration manifests the uncreated divine glory of Christ, revealing the divine energies shining through His human nature."}, "presentation_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "enanthropesis", "description": "The Presentation reveals the incarnate Christ entering the Temple in obedience to the Law, where Simeon recognizes Him as the promised Messiah and light of the nations."}, "palm_sunday": {"primary_topic": "eschatology", "primary_greek_term": "christos", "description": "Palm Sunday reveals Christ as the Messiah and King who enters Jerusalem in humility before His saving Passion."}, "holy_pascha": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Pascha celebrates the Resurrection of Christ, the victory over death and the foundation of Christian salvation."}, "holy_ascension": {"primary_topic": "incarnation", "primary_greek_term": "analepsis", "description": "The Ascension reveals Christ exalted and enthroned in glory, lifting human nature into the life of God."}, "holy_pentecost": {"primary_topic": "holy_spirit", "primary_greek_term": "pneuma", "description": "Pentecost reveals the descent of the Holy Spirit upon the Church, completing the revelation of the Holy Trinity and empowering the apostolic mission."}, "dormition_of_the_theotokos": {"primary_topic": "resurrection", "primary_greek_term": "koimesis", "description": "The Dormition proclaims the falling asleep of the Theotokos and her participation in the resurrectional hope promised by Christ."}, "nativity_of_the_theotokos": {"primary_topic": "incarnation", "primary_greek_term": "theotokos", "description": "The Nativity of the Theotokos marks the beginning of the preparation for the Incarnation, through whom the Savior will enter the world."}, "entrance_of_the_theotokos": {"primary_topic": "theotokos", "primary_greek_term": "naos", "description": "The Entrance of the Theotokos reveals her dedication to God and her role as the living Temple who will bear the incarnate Word."}, "elevation_of_the_holy_cross": {"primary_topic": "atonement", "primary_greek_term": "stauros", "description": "The Elevation of the Holy Cross celebrates the victory of Christ\u2019s Cross as the instrument of salvation and the triumph over death."}, "circumcision_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "sarx", "description": "The Circumcision of Christ reveals the true Incarnation of the Word, who assumes real human flesh and submits to the Law in obedience for the salvation of mankind."}, "sunday_of_orthodoxy": {"primary_topic": "icons", "primary_greek_term": "enanthropesis", "description": "The Sunday of Orthodoxy proclaims the victory of the holy icons and the truth of the Incarnation, for the Word truly became visible flesh and may therefore be depicted."}, "sunday_of_st_gregory_palamas": {"primary_topic": "theosis", "primary_greek_term": "theosis", "description": "The Sunday of St. Gregory Palamas proclaims humanity's participation in the divine life through grace, revealing the path of theosis through communion with God."}, "sunday_of_the_holy_cross": {"primary_topic": "atonement", "primary_greek_term": "stauros", "description": "The Sunday of the Holy Cross sets the life-giving Cross before the faithful as the sign of Christ's victory and the strengthening of the Church in the midst of the Fast."}, "sunday_of_st_john_climacus": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "The Sunday of St. John Climacus calls the faithful to ascetical vigilance, spiritual struggle, and steady ascent toward communion with God."}, "sunday_of_st_mary_of_egypt": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of St. Mary of Egypt proclaims the transforming power of repentance and the mercy of God shown in radical conversion and holiness of life."}, "lazarus_saturday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Lazarus Saturday reveals Christ as Lord over death and serves as the resurrectional prelude to Holy Week and Pascha."}, "holy_monday": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "Holy Monday calls the faithful to vigilance, repentance, and readiness for the coming Bridegroom."}, "holy_tuesday": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "Holy Tuesday emphasizes spiritual vigilance, wisdom, and readiness for the Kingdom through the parables proclaimed in the services."}, "holy_wednesday": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "Holy Wednesday sets before the Church the contrast between repentance and betrayal, calling the faithful to compunction and return to Christ."}, "holy_thursday": {"primary_topic": "eucharist", "primary_greek_term": "eucharistia", "description": "Holy Thursday commemorates the Mystical Supper, the institution of the Eucharist, and Christ\u2019s self-offering in love."}, "holy_friday": {"primary_topic": "atonement", "primary_greek_term": "staurosis", "description": "Holy Friday contemplates the saving Passion and Crucifixion of Christ, by which He offers Himself for the life of the world."}, "holy_saturday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Holy Saturday proclaims Christ\u2019s descent into Hades, the harrowing of death, and the hidden triumph that prepares the revelation of Pascha."}, "thomas_sunday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Thomas Sunday confirms the truth of the Resurrection and reveals the risen Christ who strengthens faith through His presence."}, "all_saints_sunday": {"primary_topic": "theosis", "primary_greek_term": "theosis", "description": "All Saints Sunday manifests the fruit of Pentecost in the sanctification of human persons and the glory of communion with God."}, "sunday_of_the_publican_and_pharisee": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of the Publican and Pharisee reveals that true prayer is born from humility, not self-righteousness. The publican's cry of compunction \u2014 'God, be merciful to me a sinner' \u2014 is the model of Orthodox repentance."}, "sunday_of_the_prodigal_son": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of the Prodigal Son proclaims the inexhaustible mercy of the Father who runs to receive the returning sinner, revealing that repentance is always possible and divine love is always waiting."}, "sunday_of_last_judgment": {"primary_topic": "last_judgment", "primary_greek_term": "krisis", "description": "The Sunday of the Last Judgment sets before the Church the final reckoning \u2014 judged by love shown to Christ in the poor, the stranger, and the suffering. Matthew 25 is the lens through which all Christian life is measured."}, "sunday_of_forgiveness": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "Forgiveness Sunday opens the Great Fast with the mutual reconciliation of all the faithful. As we enter Lent, we ask and grant forgiveness, re-enacting in a small way the mercy of God by which the fast itself becomes possible."}};
+var GROUPS = {"Great Feasts of the Lord": ["nativity_of_christ", "holy_theophany", "presentation_of_christ", "transfiguration_of_christ", "elevation_of_the_holy_cross", "holy_ascension", "holy_pentecost"], "Feasts of the Theotokos": ["annunciation_of_the_theotokos", "nativity_of_the_theotokos", "entrance_of_the_theotokos", "dormition_of_the_theotokos"], "The Paschal Cycle": ["palm_sunday", "holy_monday", "holy_tuesday", "holy_wednesday", "holy_thursday", "holy_friday", "holy_saturday", "holy_pascha", "thomas_sunday", "all_saints_sunday", "lazarus_saturday"], "Triodion Sundays": ["sunday_of_the_publican_and_pharisee", "sunday_of_the_prodigal_son", "sunday_of_last_judgment", "sunday_of_forgiveness", "sunday_of_orthodoxy", "sunday_of_st_gregory_palamas", "sunday_of_the_holy_cross", "sunday_of_st_john_climacus", "sunday_of_st_mary_of_egypt"], "Other Feasts": ["circumcision_of_christ"]};
+var GREEK_TOPICS = {"anastasis": "topics.html?topic=resurrection", "theosis": "topics.html?topic=theosis", "logos": "topics.html?topic=incarnation", "pneuma": "topics.html?topic=holy_spirit", "metanoia": "topics.html?topic=repentance", "enanthropesis": "topics.html?topic=incarnation", "energeia": "topics.html?topic=hesychast_controversy", "stauros": "topics.html?topic=atonement", "eucharistia": "topics.html?topic=eucharist", "nepsis": "topics.html?topic=hesychasm", "koimesis": "topics.html?topic=dormition", "theotokos": "topics.html?topic=theotokos", "theophania": "topics.html?topic=trinity", "christos": "topics.html?topic=eschatology", "analepsis": "topics.html?topic=incarnation", "krisis": "topics.html?topic=last_judgment", "sarx": "topics.html?topic=incarnation"};
+
+function fmtName(k){return k.replace(/_/g," ").replace(/\b\w/g,function(c){return c.toUpperCase();}); }
+
+function openFeast(key){
+  var f = FEASTS[key];
+  if(!f) return;
+  document.getElementById("fm-title").textContent = fmtName(key);
+  document.getElementById("fm-greek").textContent = f.primary_greek_term + " (ενανθρώπησις)";
+  document.getElementById("fm-greek").textContent = "γρεεκ: " + f.primary_greek_term;
+  document.getElementById("fm-topic").textContent = "Primary Topic: " + f.primary_topic.replace(/_/g," ");
+  document.getElementById("fm-desc").textContent = f.description;
+  var links = "";
+  var topicUrl = GREEK_TOPICS[f.primary_greek_term] || ("topics.html?topic=" + f.primary_topic);
+  links += "<a href=\"" + topicUrl + "\" class=\"fm-link\">&#10022; Study this topic</a>";
+  links += "<a href=\"glossary.html#" + f.primary_greek_term + "\" class=\"fm-link\">α Greek term</a>";
+  links += "<a href=\"calendar.html\" class=\"fm-link\">&#128197; View in calendar</a>";
+  links += "<a href=\"chatbot.html?q=Tell me about " + encodeURIComponent(fmtName(key)) + "\" class=\"fm-link\">&#9766; Ask Companion</a>";
+  document.getElementById("fm-links").innerHTML = links;
+  document.getElementById("feast-modal").classList.add("open");
+}
+function closeModal(){document.getElementById("feast-modal").classList.remove("open");}
+document.getElementById("feast-modal").addEventListener("click",function(e){if(e.target===this)closeModal();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();});
+
+function render(){
+  var html = "";
+  Object.keys(GROUPS).forEach(function(group){
+    var keys = GROUPS[group].filter(function(k){return FEASTS[k];});
+    if(!keys.length) return;
+    html += "<div class=\"feast-group\">";
+    html += "<div class=\"feast-group-title\">" + group + "</div>";
+    html += "<div class=\"feast-grid\">";
+    keys.forEach(function(key){
+      var f = FEASTS[key];
+      html += "<div class=\"feast-card\" onclick=\"openFeast(\'" + key + "\')\">";
+      html += "<div class=\"feast-name\">" + fmtName(key) + "</div>";
+      html += "<div class=\"feast-greek\">&#913; " + f.primary_greek_term + "</div>";
+      html += "<div class=\"feast-desc\">" + f.description.substring(0,160) + (f.description.length>160?"&hellip;":"") + "</div>";
+      var topicUrl = GREEK_TOPICS[f.primary_greek_term] || ("topics.html?topic=" + f.primary_topic);
+      html += "<a href=\"" + topicUrl + "\" class=\"feast-topic-link\" onclick=\"event.stopPropagation()\">&#10022; " + f.primary_topic.replace(/_/g," ") + "</a>";
+      html += "</div>";
+    });
+    html += "</div></div>";
+  });
+  document.getElementById("feastContent").innerHTML = html;
+}
+document.addEventListener("DOMContentLoaded", render);
+</script>
+</body>
+</html>

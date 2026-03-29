@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reading Plans — Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="Orthodox Bible reading plans — full Bible, New Testament, Old Testament, Psalter, Epistles, and Gospels. Track your progress and read daily."/>
+<script>(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;--bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);}
+[data-theme="light"]{--gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;--deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;--border:#C4A882;--border-dim:#D4BC96;--text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;--bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);}
+body{font-family:"EB Garamond",Georgia,serif;background:var(--bg-page);color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
+[data-theme="light"] nav{background:rgba(245,237,216,0.97);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
+.nav-title{font-family:"Cinzel",serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:"▾";font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.theme-toggle{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.82rem;transition:all 0.2s;}
+.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
+.nav-ai-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;}
+.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-signin-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:"Cinzel",serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;}
+.nav-drawer a{display:block;font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s;}
+.nav-drawer a:hover{color:var(--gold-light);}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
+.breadcrumb{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:12px;}
+.breadcrumb a{color:var(--text-muted);text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;border-bottom:1px solid rgba(201,168,76,0.12);}
+.page-hero-inner{max-width:1040px;margin:0 auto;}
+.page-title{font-family:"Cinzel",serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:8px;}
+.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;max-width:640px;}
+.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}}
+@media(max-width:600px){.content,.page-hero{padding-left:16px;padding-right:16px;}.page-title{font-size:1.4rem;}}
+
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
+.plan-card{
+  background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;
+  padding:24px 20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;
+  display:flex;flex-direction:column;gap:10px;border-top:3px solid var(--gold-dim);
+}
+.plan-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
+.plan-card.active-plan{border-color:var(--gold);background:rgba(201,168,76,0.06);}
+.plan-icon{font-size:2rem;}
+.plan-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;}
+.plan-duration{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+.plan-desc{font-size:0.86rem;color:var(--text-dim);line-height:1.65;font-style:italic;}
+.plan-progress-bar{background:rgba(42,90,156,0.2);border-radius:2px;height:4px;margin-top:4px;overflow:hidden;}
+.plan-progress-fill{height:100%;background:var(--gold);border-radius:2px;transition:width 0.3s;}
+.plan-progress-label{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+.plan-action-btn{
+  font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;
+  padding:7px 14px;background:rgba(201,168,76,0.08);cursor:pointer;transition:all 0.2s;
+  text-align:center;text-decoration:none;display:block;
+}
+.plan-action-btn:hover{background:rgba(201,168,76,0.2);}
+/* Today's reading panel */
+.today-panel{
+  background:linear-gradient(160deg,rgba(27,58,107,0.4),rgba(10,22,40,0.6));
+  border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;
+  padding:28px 32px;margin-bottom:40px;
+}
+.today-label{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:8px;}
+.today-reading{font-family:"Cinzel",serif;font-size:1.2rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:8px;}
+.today-plan{font-size:0.84rem;color:var(--text-muted);font-style:italic;margin-bottom:16px;}
+.today-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.today-btn{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:7px 16px;cursor:pointer;background:transparent;transition:all 0.2s;text-decoration:none;}
+.today-btn:hover,.today-btn.primary{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.no-plan-msg{font-size:0.9rem;color:var(--text-muted);font-style:italic;}
+/* Login prompt */
+.login-prompt{
+  background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-radius:3px;
+  padding:20px 24px;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-bottom:32px;flex-wrap:wrap;
+}
+.login-prompt-text{font-size:0.9rem;color:var(--text-dim);font-style:italic;}
+.login-prompt-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;text-decoration:none;background:rgba(201,168,76,0.08);transition:all 0.2s;white-space:nowrap;}
+.login-prompt-link:hover{background:rgba(201,168,76,0.2);}
+@media(max-width:768px){.plans-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.plans-grid{grid-template-columns:1fr;}.today-panel{padding:20px 18px;}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand"><span class="nav-cross">&#9766;&#65038;</span><div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div></a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#127807;</span>What Is Orthodoxy?</a>
+        <a href="new-to-orthodoxy.html#parish-locator"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>FAQ</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop active">Study</span>
+      <div class="nav-dropdown">
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="feasts.html"><span class="dd-icon">&#9829;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#128197;</span>Liturgical Seasons</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#128214;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#127897;</span>Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html"><span class="dd-icon">&#128197;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#128141;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#127807;</span>Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="blog.html"><span class="dd-icon">&#9998;</span>Blog</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">&#9728;</button>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="new-to-orthodoxy.html#parish-locator">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">FAQ</a>
+  <a href="about.html">About</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="blog.html">Blog</a>
+  <div class="nav-drawer-footer">
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn">Sign In</a>
+  </div>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="resources.html">Study</a><span>&#8250;</span>Reading Plans</div>
+    <h1 class="page-title">Reading Plans</h1>
+    <p class="page-desc">Structured plans for reading Holy Scripture — from the entire Bible in a year to focused readings of the Epistles, Gospels, or Psalter. Each plan gives you today's reading and tracks your progress.</p>
+  </div>
+</div>
+<div class="content">
+  <div class="login-prompt" id="loginPrompt" style="display:none;">
+    <div class="login-prompt-text">Sign in to save your progress and pick up where you left off on any device.</div>
+    <a href="account.html" class="login-prompt-link">Sign In / Create Account</a>
+  </div>
+  <div class="today-panel" id="todayPanel">
+    <div class="today-label">Today&rsquo;s Reading</div>
+    <div class="today-reading" id="todayReading">Select a reading plan below</div>
+    <div class="today-plan" id="todayPlan"></div>
+    <div class="today-actions" id="todayActions">
+      <span class="no-plan-msg">Choose a plan to begin your daily reading.</span>
+    </div>
+  </div>
+  <div class="plans-grid" id="plansGrid"></div>
+</div>
+<script>
+
+var drawerOpen=false;
+function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById("navDrawer").classList.toggle("open",drawerOpen);document.getElementById("hamburger").classList.toggle("open",drawerOpen);}
+document.addEventListener("click",function(e){if(drawerOpen&&!e.target.closest("nav")&&!e.target.closest(".nav-drawer")){drawerOpen=false;document.getElementById("navDrawer").classList.remove("open");document.getElementById("hamburger").classList.remove("open");}});
+function toggleTheme(){var c=document.documentElement.getAttribute("data-theme")||"dark";var n=c==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);localStorage.setItem("oc_theme",n);var b=document.getElementById("themeToggle");if(b)b.textContent=n==="light"?"🌙":"☀";}
+(function(){var t=localStorage.getItem("oc_theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);var b=document.getElementById("themeToggle");if(b)b.textContent=t==="light"?"🌙":"☀";})();
+
+
+var PLANS = [
+  {id:"bible-1yr", icon:"&#128214;", name:"Entire Bible — 1 Year",
+   duration:"365 days", color:"#C9A84C",
+   desc:"The complete Old and New Testaments in one year — 3 to 4 chapters per day. The standard annual Bible reading plan, following canonical order.",
+   schedule: function(day){
+     var books = [
+       {name:"Genesis",ch:50},{name:"Exodus",ch:40},{name:"Leviticus",ch:27},{name:"Numbers",ch:36},{name:"Deuteronomy",ch:34},
+       {name:"Joshua",ch:24},{name:"Judges",ch:21},{name:"Ruth",ch:4},{name:"1 Samuel",ch:31},{name:"2 Samuel",ch:24},
+       {name:"1 Kings",ch:22},{name:"2 Kings",ch:25},{name:"1 Chronicles",ch:29},{name:"2 Chronicles",ch:36},
+       {name:"Ezra",ch:10},{name:"Nehemiah",ch:13},{name:"Esther",ch:10},{name:"Job",ch:42},
+       {name:"Psalms",ch:150},{name:"Proverbs",ch:31},{name:"Ecclesiastes",ch:12},{name:"Song of Songs",ch:8},
+       {name:"Isaiah",ch:66},{name:"Jeremiah",ch:52},{name:"Lamentations",ch:5},{name:"Ezekiel",ch:48},
+       {name:"Daniel",ch:12},{name:"Hosea",ch:14},{name:"Joel",ch:3},{name:"Amos",ch:9},{name:"Obadiah",ch:1},
+       {name:"Jonah",ch:4},{name:"Micah",ch:7},{name:"Nahum",ch:3},{name:"Habakkuk",ch:3},{name:"Zephaniah",ch:3},
+       {name:"Haggai",ch:2},{name:"Zechariah",ch:14},{name:"Malachi",ch:4},
+       {name:"Matthew",ch:28},{name:"Mark",ch:16},{name:"Luke",ch:24},{name:"John",ch:21},
+       {name:"Acts",ch:28},{name:"Romans",ch:16},{name:"1 Corinthians",ch:16},{name:"2 Corinthians",ch:13},
+       {name:"Galatians",ch:6},{name:"Ephesians",ch:6},{name:"Philippians",ch:4},{name:"Colossians",ch:4},
+       {name:"1 Thessalonians",ch:5},{name:"2 Thessalonians",ch:3},{name:"1 Timothy",ch:6},{name:"2 Timothy",ch:4},
+       {name:"Titus",ch:3},{name:"Philemon",ch:1},{name:"Hebrews",ch:13},{name:"James",ch:5},
+       {name:"1 Peter",ch:5},{name:"2 Peter",ch:3},{name:"1 John",ch:5},{name:"2 John",ch:1},
+       {name:"3 John",ch:1},{name:"Jude",ch:1},{name:"Revelation",ch:22}
+     ];
+     var total = books.reduce(function(a,b){return a+b.ch;},0);
+     var chPerDay = total/365;
+     var targetCh = Math.floor(day * chPerDay);
+     var count=0;
+     for(var i=0;i<books.length;i++){
+       if(count+books[i].ch > targetCh){
+         var ch = targetCh-count+1;
+         return books[i].name+" "+ch;
+       }
+       count+=books[i].ch;
+     }
+     return "Revelation 22";
+   }
+  },
+  {id:"bible-2yr", icon:"&#128214;", name:"Entire Bible — 2 Years",
+   duration:"730 days", color:"#9A7838",
+   desc:"The complete Bible at a relaxed pace — 1 to 2 chapters per day. Ideal for those who want to read slowly, pray, and reflect on each passage.",
+   schedule: function(day){ return "Day " + (day+1) + " of 730"; }
+  },
+  {id:"nt-90", icon:"&#9993;", name:"New Testament — 90 Days",
+   duration:"90 days", color:"#4A7AB8",
+   desc:"The entire New Testament in three months — about 3 chapters per day. Perfect for Great Lent or the Apostles' Fast.",
+   schedule: function(day){
+     var nt=[{n:"Matthew",c:28},{n:"Mark",c:16},{n:"Luke",c:24},{n:"John",c:21},{n:"Acts",c:28},{n:"Romans",c:16},{n:"1 Corinthians",c:16},{n:"2 Corinthians",c:13},{n:"Galatians",c:6},{n:"Ephesians",c:6},{n:"Philippians",c:4},{n:"Colossians",c:4},{n:"1 Thessalonians",c:5},{n:"2 Thessalonians",c:3},{n:"1 Timothy",c:6},{n:"2 Timothy",c:4},{n:"Titus",c:3},{n:"Philemon",c:1},{n:"Hebrews",c:13},{n:"James",c:5},{n:"1 Peter",c:5},{n:"2 Peter",c:3},{n:"1 John",c:5},{n:"2 John",c:1},{n:"3 John",c:1},{n:"Jude",c:1},{n:"Revelation",c:22}];
+     var total=nt.reduce(function(a,b){return a+b.c;},0);
+     var cpd=total/90; var target=Math.floor(day*cpd); var count=0;
+     for(var i=0;i<nt.length;i++){if(count+nt[i].c>target){return nt[i].n+" "+(target-count+1);}count+=nt[i].c;}
+     return "Revelation 22";
+   }
+  },
+  {id:"nt-1yr", icon:"&#9993;", name:"New Testament — 1 Year",
+   duration:"365 days", color:"#3A6A8A",
+   desc:"The New Testament at one chapter per day — unhurried, meditative reading. Includes time for prayer and reflection on each chapter.",
+   schedule: function(day){
+     var nt=[{n:"Matthew",c:28},{n:"Mark",c:16},{n:"Luke",c:24},{n:"John",c:21},{n:"Acts",c:28},{n:"Romans",c:16},{n:"1 Corinthians",c:16},{n:"2 Corinthians",c:13},{n:"Galatians",c:6},{n:"Ephesians",c:6},{n:"Philippians",c:4},{n:"Colossians",c:4},{n:"1 Thessalonians",c:5},{n:"2 Thessalonians",c:3},{n:"1 Timothy",c:6},{n:"2 Timothy",c:4},{n:"Titus",c:3},{n:"Philemon",c:1},{n:"Hebrews",c:13},{n:"James",c:5},{n:"1 Peter",c:5},{n:"2 Peter",c:3},{n:"1 John",c:5},{n:"2 John",c:1},{n:"3 John",c:1},{n:"Jude",c:1},{n:"Revelation",c:22}];
+     var d=day%260; var count=0;
+     for(var i=0;i<nt.length;i++){if(count+nt[i].c>d){return nt[i].n+" "+(d-count+1);}count+=nt[i].c;}
+     return "Revelation 22";
+   }
+  },
+  {id:"psalter", icon:"&#127925;", name:"The Psalter — Monthly Cycle",
+   duration:"Monthly (perpetual)", color:"#7A5A8A",
+   desc:"The traditional monastic cycle — the entire Psalter read once per month, divided into twenty Kathismata. The backbone of Orthodox liturgical prayer.",
+   schedule: function(day){
+     var d=day%30;
+     var kathismata=["Kathisma 1 (Ps 1–8)","Kathisma 2 (Ps 9–16)","Kathisma 3 (Ps 17–23)",
+       "Kathisma 4 (Ps 24–31)","Kathisma 5 (Ps 32–36)","Kathisma 6 (Ps 37–45)",
+       "Kathisma 7 (Ps 46–54)","Kathisma 8 (Ps 55–63)","Kathisma 9 (Ps 64–69)",
+       "Kathisma 10 (Ps 70–76)","Kathisma 11 (Ps 77–84)","Kathisma 12 (Ps 85–90)",
+       "Kathisma 13 (Ps 91–100)","Kathisma 14 (Ps 101–104)","Kathisma 15 (Ps 105–108)",
+       "Kathisma 16 (Ps 109–117)","Kathisma 17 (Ps 118)","Kathisma 18 (Ps 119–133)",
+       "Kathisma 19 (Ps 134–142)","Kathisma 20 (Ps 143–150)"];
+     return kathismata[Math.floor(d*kathismata.length/30)];
+   }
+  },
+  {id:"epistles-30", icon:"&#10013;", name:"Epistles of Paul — 30 Days",
+   duration:"30 days", color:"#6A4A8A",
+   desc:"All fourteen Pauline Epistles in thirty days — from Romans through Hebrews. The theological heart of the New Testament in one month.",
+   schedule: function(day){
+     var ep=[{n:"Romans",c:16},{n:"1 Corinthians",c:16},{n:"2 Corinthians",c:13},{n:"Galatians",c:6},{n:"Ephesians",c:6},{n:"Philippians",c:4},{n:"Colossians",c:4},{n:"1 Thessalonians",c:5},{n:"2 Thessalonians",c:3},{n:"1 Timothy",c:6},{n:"2 Timothy",c:4},{n:"Titus",c:3},{n:"Philemon",c:1},{n:"Hebrews",c:13}];
+     var total=ep.reduce(function(a,b){return a+b.c;},0);
+     var d=day%30; var cpd=total/30; var target=Math.floor(d*cpd); var count=0;
+     for(var i=0;i<ep.length;i++){if(count+ep[i].c>target){return ep[i].n+" "+(target-count+1);}count+=ep[i].c;}
+     return "Hebrews 13";
+   }
+  },
+  {id:"gospels-60", icon:"&#9775;", name:"The Four Gospels — 60 Days",
+   duration:"60 days", color:"#5A7A3A",
+   desc:"Matthew, Mark, Luke, and John in sixty days — two months of daily Gospel reading. Ideal during the Apostles' Fast or as preparation for Pascha.",
+   schedule: function(day){
+     var g=[{n:"Matthew",c:28},{n:"Mark",c:16},{n:"Luke",c:24},{n:"John",c:21}];
+     var total=89; var d=day%60; var cpd=total/60; var target=Math.floor(d*cpd); var count=0;
+     for(var i=0;i<g.length;i++){if(count+g[i].c>target){return g[i].n+" "+(target-count+1);}count+=g[i].c;}
+     return "John 21";
+   }
+  },
+  {id:"ot-1yr", icon:"&#9654;", name:"Old Testament — 1 Year",
+   duration:"365 days", color:"#8A6A2A",
+   desc:"The Old Testament — from Genesis through Malachi — in one year. Includes the Septuagint books venerated by the Orthodox Church.",
+   schedule: function(day){ return "Day " + (day%365+1) + " — See printed plan"; }
+  },
+  {id:"lenten", icon:"&#127807;", name:"Great Lenten Reading Plan",
+   duration:"48 days", color:"#5A8A5A",
+   desc:"A structured reading plan for the 48 days of Great Lent — combining Old Testament passages (read in Vespers), the Psalter, and the Epistles read at Liturgy.",
+   schedule: function(day){ var d=day%48; return "Lent Day "+(d+1)+" — See Triodion"; }
+  },
+];
+
+var activePlanId = localStorage.getItem("oc_reading_plan");
+var planStartDate = localStorage.getItem("oc_plan_start");
+
+function getDaysSinceStart(){
+  if(!planStartDate) return 0;
+  var start = new Date(planStartDate);
+  var now = new Date();
+  now.setHours(0,0,0,0);
+  return Math.floor((now-start)/(1000*60*60*24));
+}
+
+function selectPlan(id){
+  if(activePlanId===id){
+    // Deselect
+    localStorage.removeItem("oc_reading_plan");
+    localStorage.removeItem("oc_plan_start");
+    activePlanId=null; planStartDate=null;
+  } else {
+    localStorage.setItem("oc_reading_plan",id);
+    var today=new Date().toISOString().split("T")[0];
+    localStorage.setItem("oc_plan_start",today);
+    activePlanId=id; planStartDate=today;
+  }
+  renderAll();
+}
+
+function renderToday(){
+  var plan = PLANS.find(function(p){return p.id===activePlanId;});
+  if(!plan){
+    document.getElementById("todayReading").textContent="Select a reading plan below";
+    document.getElementById("todayPlan").textContent="";
+    document.getElementById("todayActions").innerHTML="<span class=\"no-plan-msg\">Choose a plan to begin your daily reading.</span>";
+    return;
+  }
+  var day = getDaysSinceStart();
+  var reading = plan.schedule(day);
+  document.getElementById("todayReading").textContent=reading;
+  document.getElementById("todayPlan").textContent=plan.name+" — Day "+(day+1);
+  var burl="https://www.biblegateway.com/passage/?search="+encodeURIComponent(reading)+"&version=NKJV";
+  document.getElementById("todayActions").innerHTML=
+    "<a href=\""+burl+"\" target=\"_blank\" rel=\"noopener\" class=\"today-btn primary\">&#128214; Read at BibleGateway</a>"+
+    "<button class=\"today-btn\" onclick=\"markRead()\">&#10003; Mark as Read</button>"+
+    "<button class=\"today-btn\" onclick=\"selectPlan(null)\">Change Plan</button>";
+}
+
+function markRead(){
+  var today=new Date().toISOString().split("T")[0];
+  var log=JSON.parse(localStorage.getItem("oc_reading_log")||"{}");
+  if(!log[activePlanId]) log[activePlanId]={};
+  log[activePlanId][today]=true;
+  localStorage.setItem("oc_reading_log",JSON.stringify(log));
+  var btn=event.target;btn.textContent="&#10003; Done!";btn.style.color="var(--gold-light)";
+}
+
+function getProgress(planId, totalDays){
+  var log=JSON.parse(localStorage.getItem("oc_reading_log")||"{}");
+  var planLog=log[planId]||{};
+  var done=Object.keys(planLog).length;
+  return Math.min(done/totalDays,1);
+}
+
+function renderPlans(){
+  var html="";
+  PLANS.forEach(function(p){
+    var isActive=p.id===activePlanId;
+    var totalDays=parseInt(p.duration)||365;
+    var prog=getProgress(p.id,totalDays);
+    var pct=Math.round(prog*100);
+    html+="<div class=\"plan-card"+(isActive?" active-plan":"")+"\" style=\"border-top-color:"+p.color+"\">";
+    html+="<div class=\"plan-icon\">"+p.icon+"</div>";
+    html+="<div class=\"plan-name\">"+p.name+"</div>";
+    html+="<div class=\"plan-duration\">"+p.duration+"</div>";
+    html+="<div class=\"plan-desc\">"+p.desc+"</div>";
+    if(pct>0){
+      html+="<div class=\"plan-progress-bar\"><div class=\"plan-progress-fill\" style=\"width:"+pct+"%\"></div></div>";
+      html+="<div class=\"plan-progress-label\">"+pct+"% complete</div>";
+    }
+    html+="<button class=\"plan-action-btn\" onclick=\"selectPlan('"+p.id+"')\">"+
+      (isActive?"&#10003; Current Plan":"Start This Plan")+"</button>";
+    html+="</div>";
+  });
+  document.getElementById("plansGrid").innerHTML=html;
+}
+
+function renderAll(){renderToday();renderPlans();}
+
+var user=null;
+try{user=JSON.parse(localStorage.getItem("oc_user")||"null");}catch(e){}
+if(!user) document.getElementById("loginPrompt").style.display="flex";
+
+document.addEventListener("DOMContentLoaded",renderAll);
+</script>
+</body>
+</html>
