@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<script>
-(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
-</script>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Prayer Corner — Orthodox Companion</title>
-<link rel="icon" href="cross.png" type="image/png"/>
-<meta name="theme-color" content="#0A1628"/>
-<meta name="description" content="Orthodox Christian prayers — morning, evening, penitential, and seasonal prayers including the Prayer of St. Ephrem the Syrian."/>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="Orthodox Christian prayers — morning, evening, penitential, and liturgical prayers including the Prayer of St. Ephrem and the Jesus Prayer."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
@@ -185,252 +181,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 
 
-*{box-sizing:border-box;margin:0;padding:0;}
-:root{--gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;--deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;--border:#2A5A9C;--border-dim:#1A3A5C;--text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;--nav-h:68px;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;font-size:1rem;transition:all 0.2s;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
-/* Page layout */
-.page-hero{margin-top:var(--nav-h);padding:44px 24px 36px;background:linear-gradient(180deg,rgba(27,58,107,0.2),transparent);border-bottom:1px solid rgba(201,168,76,0.1);text-align:center;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:14px;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold-light);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:10px;}
-.page-intro{font-size:1.05rem;color:var(--text-dim);font-style:italic;line-height:1.9;max-width:600px;margin:0 auto;}
-/* Two-column layout */
-.main-layout{max-width:1040px;margin:0 auto;padding:32px 24px 60px;display:grid;grid-template-columns:260px 1fr;gap:28px;align-items:start;}
-/* Sidebar categories */
-.cat-sidebar{position:sticky;top:calc(var(--nav-h) + 16px);}
-.cat-sidebar-title{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:12px;}
-.cat-list{display:flex;flex-direction:column;gap:2px;}
-.cat-item{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;border-radius:3px;border:1px solid transparent;transition:all 0.18s;text-decoration:none;}
-.cat-item:hover{background:rgba(27,58,107,0.3);border-color:var(--border-dim);}
-.cat-item.active{background:rgba(201,168,76,0.1);border-color:var(--gold-dim);}
-.cat-item-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0;}
-.cat-item-name{font-family:'Cinzel',serif;font-size:0.76rem;color:var(--text-dim);letter-spacing:0.04em;}
-.cat-item.active .cat-item-name{color:var(--gold-light);}
-/* Prayer list */
-.prayer-panel{min-height:400px;}
-.prayer-panel-header{margin-bottom:20px;}
-.prayer-panel-title{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;margin-bottom:4px;}
-.prayer-panel-desc{font-size:0.88rem;color:var(--text-muted);font-style:italic;}
-.prayer-search{width:100%;background:rgba(27,58,107,0.35);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.95rem;padding:9px 14px;outline:none;transition:border-color 0.2s;margin-bottom:14px;}
-.prayer-search:focus{border-color:var(--gold-dim);}
-.prayer-search::placeholder{color:var(--text-muted);font-style:italic;}
-.prayer-list{display:flex;flex-direction:column;gap:6px;}
-.prayer-item{background:rgba(15,32,53,0.55);border:1px solid var(--border-dim);border-radius:3px;padding:14px 18px;cursor:pointer;transition:border-color 0.2s,background 0.2s;display:flex;align-items:center;gap:14px;}
-.prayer-item:hover{border-color:var(--border);background:rgba(27,58,107,0.32);}
-.prayer-item-cross{color:var(--gold-dim);font-size:0.9rem;flex-shrink:0;}
-.prayer-item-body{flex:1;}
-.prayer-item-name{font-family:'Cinzel',serif;font-size:0.86rem;color:var(--text);letter-spacing:0.04em;margin-bottom:2px;}
-.prayer-item-note{font-size:0.76rem;color:var(--text-muted);font-style:italic;}
-.prayer-item-arrow{color:var(--text-muted);font-size:0.8rem;flex-shrink:0;}
-.prayer-empty{padding:28px;text-align:center;color:var(--text-muted);font-style:italic;}
-/* Prayer modal */
-#prayer-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
-#prayer-modal.open{display:flex;}
-.pm-box{background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:640px;margin:auto;animation:fadeUp 0.3s ease;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
-.pm-header{padding:18px 24px 14px;border-bottom:1px solid rgba(201,168,76,0.12);display:flex;justify-content:space-between;align-items:flex-start;background:rgba(0,0,0,0.2);}
-.pm-title{font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.06em;line-height:1.3;}
-.pm-category{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-top:4px;}
-.pm-close{background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;padding:0;transition:color 0.2s;flex-shrink:0;}
-.pm-close:hover{color:var(--gold);}
-.pm-body{padding:22px 24px;max-height:60vh;overflow-y:auto;}
-.pm-body::-webkit-scrollbar{width:4px;}
-.pm-body::-webkit-scrollbar-thumb{background:var(--border-dim);border-radius:2px;}
-.pm-text{font-size:1.05rem;line-height:2.1;color:var(--text);}
-.pm-text p{margin-bottom:16px;}
-.pm-text p:last-child{margin-bottom:0;}
-.pm-tags{display:flex;flex-wrap:wrap;gap:6px;padding:14px 24px;border-top:1px solid rgba(42,90,156,0.2);}
-.pm-tag{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:2px 8px;text-decoration:none;transition:all 0.2s;}
-.pm-tag:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.pm-footer{padding:12px 24px;border-top:1px solid rgba(42,90,156,0.2);display:flex;gap:8px;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.12);}
-.pm-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;}
-.pm-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}.main-layout{grid-template-columns:1fr;}.cat-sidebar{position:static;}}
-@media(max-width:600px){.main-layout{padding:20px 16px 40px;}.page-hero{padding:32px 16px 24px;}}
-
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
-
-
-/* ═══════════════════════════════════════════════════════
-   THEME SYSTEM — Dark (default) + Light (parchment)
-   Respects prefers-color-scheme, saved to localStorage
-═══════════════════════════════════════════════════════ */
-:root {
-  /* Dark theme (default) */
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);
-  --bg-panel:rgba(27,58,107,0.3);
-  --shadow:rgba(0,0,0,0.5);
-  --nav-bg:rgba(10,22,40,0.97);
-  --nav-h:68px;
-}
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --bg-panel:rgba(212,188,150,0.4);
-  --shadow:rgba(100,70,20,0.15);
-  --nav-bg:rgba(245,237,216,0.97);
-}
-
-/* ── Theme toggle button ─────────────────────────────── */
-.theme-toggle {
-  background:transparent;border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text-muted);padding:5px 9px;
-  cursor:pointer;font-size:0.82rem;transition:all 0.2s;
-  flex-shrink:0;line-height:1;
-}
-.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
-
-/* ── Body background ─────────────────────────────────── */
-body{background:var(--bg-page);color:var(--text);}
-
-/* ── Smooth theme transition ─────────────────────────── */
-*, *::before, *::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-/* But NOT transitions on transforms/opacity (breaks animations) */
-.fade-in, .nav-dropdown, [class*="modal"], [class*="panel"] {
-  transition: none !important;
-}
-.fade-in { transition: opacity 0.5s ease, transform 0.5s ease !important; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
-
-/* ── Prayer hero white ───────────────────────────────── */
-.page-hero{background:#ffffff;border-bottom:2px solid var(--gold-dim);}
-.page-title{color:#1a0f00;}
-.page-intro{color:#3a2800;}
-[data-theme="dark"] .page-hero{background:#ffffff;}
-[data-theme="dark"] .page-title{color:#1a0f00;}
-[data-theme="dark"] .page-intro{color:#3a2800;}
-/* ── Remove category icons ───────────────────────────── */
-.cat-item-icon{display:none!important;}
-.cat-item{gap:0;padding:10px 14px;}
-.cat-item-name{font-size:0.8rem;}
-
-/* ═══════════════════════════════════════════════════════
-   MOBILE IMPROVEMENTS
-═══════════════════════════════════════════════════════ */
-@media(max-width:768px){
-  /* Better touch targets */
-  .nav-link,.cat-item,.prayer-item,.saint-list-item{min-height:44px;}
-  
-  /* Calendar mobile */
-  .cal-day{min-height:44px;padding:4px;}
-  .cal-day-num{font-size:0.75rem;}
-  .cal-grid{gap:2px;}
-  .cal-outer{padding:8px 10px 40px;}
-  
-  /* Better modal sizing */
-  .saint-modal-box,.pm-box,.tm-box,.rm-box{
-    width:100%;max-height:92vh;margin:auto 0 0;
-    border-radius:12px 12px 0 0;
-  }
-  #saint-modal,#prayer-modal,#topic-modal,#reading-modal{
-    align-items:flex-end;padding:0;
-  }
-  
-  /* Typography */
-  body{font-size:1.05rem;line-height:1.85;}
-  .page-title{font-size:1.4rem;}
-  
-  /* Cards stack */
-  .rules-grid,.seasons-grid{grid-template-columns:1fr;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  
-  /* Day panel full width */
-  .day-panel{width:100%;border-left:none;border-top:2px solid var(--gold-dim);}
-  
-  /* Wider modals */
-  .sm-header{flex-direction:column;gap:12px;}
-  .sm-icon{width:100%;height:90px;flex-direction:row;justify-content:center;}
-  
-  /* Better spacing */
-  .content,.section{padding:20px 16px 40px;}
-  .page-hero{padding:28px 16px 24px;}
-}
-@media(max-width:480px){
-  .cat-grid{grid-template-columns:1fr 1fr;}
-  .main-layout{grid-template-columns:1fr;}
-  nav{padding:0 14px;}
-  .nav-brand .nav-subtitle{display:none;}
-}
+.prayer-wrap{max-width:860px;margin:0 auto;padding:28px 24px 60px;}
+/* Prayer corner guide banner */
+.guide-banner{background:rgba(201,168,76,0.07);border:1px solid var(--gold-dim);border-radius:3px;padding:14px 20px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.guide-banner-title{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;}
+.guide-banner-desc{font-size:0.88rem;color:var(--text-dim);font-style:italic;}
+.guide-banner-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;text-decoration:none;background:rgba(201,168,76,0.08);white-space:nowrap;flex-shrink:0;transition:all 0.2s;}
+.guide-banner-link:hover{background:rgba(201,168,76,0.2);}
+/* Prayer categories */
+.prayer-cats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.prayer-cat-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;padding:6px 14px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.prayer-cat-btn.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+/* Prayer section */
+.prayer-section{margin-bottom:36px;}
+.prayer-section-header{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.prayer-section-title{font-family:"Cinzel",serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);white-space:nowrap;}
+.prayer-section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
+/* Prayer card */
+.prayer-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;margin-bottom:12px;overflow:hidden;}
+.prayer-card-header{padding:16px 20px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background 0.2s;}
+.prayer-card-header:hover{background:rgba(201,168,76,0.05);}
+.prayer-card-title{font-family:"Cinzel",serif;font-size:0.88rem;color:var(--gold-light);letter-spacing:0.04em;}
+.prayer-card-toggle{font-size:0.7rem;color:var(--text-muted);transition:transform 0.25s;display:inline-block;}
+.prayer-card.open .prayer-card-toggle{transform:rotate(180deg);}
+.prayer-card-body{display:none;padding:0 24px 22px;border-top:1px solid rgba(201,168,76,0.1);}
+.prayer-card.open .prayer-card-body{display:block;}
+.prayer-text{font-size:1rem;color:var(--text-dim);line-height:2;white-space:pre-wrap;padding:16px 0;}
+.prayer-note{font-size:0.84rem;color:var(--text-muted);font-style:italic;line-height:1.7;padding:10px 14px;background:rgba(27,58,107,0.15);border-left:2px solid var(--border-dim);border-radius:2px;margin-top:8px;}
+@media(max-width:600px){.prayer-wrap{padding:20px 16px 40px;}}
 
 </style>
-<meta property="og:title" content="Prayer Corner — Orthodox Companion"/>
-<meta property="og:description" content="Orthodox Christian prayers — morning, evening, penitential, and seasonal prayers including the Prayer of St. Ephrem the Syrian."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://orthodoxcompanion.com/prayer.html"/>
 </head>
 <body>
 <nav id="mainNav">
@@ -525,263 +305,28 @@ body{background:var(--bg-page);color:var(--text);}
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
-<div class="nav-drawer-section">Study</div>
-  <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="saints.html">Saints</a>
-  <a href="glossary.html">Glossary</a>
-  <a href="resources.html">Books &amp; Resources</a>
-  <div class="nav-drawer-section">Worship &amp; Life</div>
-  <a href="calendar.html">Liturgical Calendar</a>
-  <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
-    <a href="account.html" class="nav-signin-btn">Sign In</a>
-  </div>
-</div>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="calendar.html">Calendar</a><a href="saints.html">Saints</a><a href="topics.html">Topics</a>
-  <a href="prayer.html">Prayer Corner</a><a href="fasting.html">Fasting Guide</a><a href="resources.html">Resources</a>
-  <a href="blog.html">Blog</a><a href="glossary.html">Glossary</a><a href="new-to-orthodoxy.html">New to Orthodoxy</a>
-  <a href="chatbot.html">Companion AI</a><a href="about.html">About</a>
-  <div class="nav-drawer-footer"><a href="account.html" class="nav-login-btn" style="display:inline-block;">Sign In</a></div>
-</div>
-<div id="search-overlay" style="display:none;position:fixed;inset:0;z-index:700;background:rgba(6,14,26,0.96);backdrop-filter:blur(8px);align-items:flex-start;justify-content:center;padding-top:110px;">
-  <div style="width:100%;max-width:640px;padding:0 20px;">
-    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
-      <span style="color:var(--text-muted);">&#9901;</span>
-      <input type="text" id="searchInput" placeholder="Search prayers..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.1rem;"/>
-      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
-    </div>
-  </div>
-</div>
-
 <div class="page-hero">
-  <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Prayer Corner</div>
-  <h1 class="page-title">Prayer Corner</h1>
-  <p class="page-intro">The treasury of the Church's prayer — from the ancient morning rule to the Akathist hymns, the prayers of the Theotokos, and the Jesus Prayer. Ancient words for every moment of the day.</p>
-</div>
-
-<div class="main-layout">
-  <!-- Sidebar -->
-  <div class="cat-sidebar">
-    <div class="cat-sidebar-title">Categories</div>
-    <div class="cat-list" id="catList"></div>
-  </div>
-
-  <!-- Prayer list -->
-  <div class="prayer-panel">
-    <div class="prayer-panel-header">
-      <div class="prayer-panel-title" id="panelTitle">Morning Prayers</div>
-      <div class="prayer-panel-desc" id="panelDesc">Begin each day with these ancient prayers of the Church.</div>
-    </div>
-    <input class="prayer-search" type="text" id="prayerSearch" placeholder="Search prayers&#8230;" oninput="filterPrayers(this.value)" autocomplete="off"/>
-    <div class="prayer-list" id="prayerList"></div>
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Prayer Corner</div>
+    <h1 class="page-title">Prayer Corner</h1>
+    <p class="page-desc">Morning and evening prayers, the Jesus Prayer, the Prayer of St. Ephrem, liturgical troparia, and occasional prayers — the daily prayer tradition of the Orthodox Church.</p>
   </div>
 </div>
-
-<!-- Prayer Modal -->
-<div id="prayer-modal">
-  <div class="pm-box">
-    <div class="pm-header">
-      <div><div class="pm-title" id="pm-title"></div><div class="pm-category" id="pm-category"></div></div>
-      <button class="pm-close" onclick="closePrayer()">&#x2715;</button>
+<div class="prayer-wrap">
+  <div class="guide-banner">
+    <div>
+      <div class="guide-banner-title">Setting Up a Prayer Corner?</div>
+      <div class="guide-banner-desc">A step-by-step guide to creating a home prayer space in the Orthodox tradition.</div>
     </div>
-    <div class="pm-body"><div class="pm-text" id="pm-text"></div></div>
-    <div class="pm-tags" id="pm-tags"></div>
-    <div class="pm-footer">
-      <div style="display:flex;gap:6px;">
-        <button class="pm-btn" onclick="sharePrayer()">&#9650; Share</button>
-        <button class="pm-btn" id="pm-listen-btn" onclick="listenPrayer()">&#9654; Listen</button>
-      </div>
-      <button onclick="closePrayer()" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;">Close</button>
-    </div>
+    <a href="prayer-corner-guide.html" class="guide-banner-link">View Guide &#8250;</a>
   </div>
+  <div class="prayer-cats" id="prayerCats"></div>
+  <div id="prayerContent"></div>
 </div>
-
-<script>
-"use strict";
-// ══════════════════════════════════════════════════════════
-// PRAYER DATA
-// Add new prayers by adding an entry to PRAYERS array.
-// All categories, lists, and search update automatically.
-// ══════════════════════════════════════════════════════════
-var CATEGORIES = [
-  { id:'morning',   icon:'🌅', name:'Morning Prayers',         desc:'Begin each day with these ancient prayers of the Church.' },
-  { id:'evening',   icon:'🌙', name:'Evening Prayers',          desc:'Close the day with thanksgiving and supplication.' },
-  { id:'meals',     icon:'🍞', name:'Before & After Meals',     desc:'Prayers sanctifying every meal as an act of thanksgiving.' },
-  { id:'akathist',  icon:'🕯', name:'Akathist Hymns',           desc:'The great hymns of praise to Christ, the Theotokos, and the Saints.' },
-  { id:'theotokos', icon:'⭐', name:'Prayers to the Theotokos', desc:'Intercessions and hymns to the Most Holy Mother of God.' },
-  { id:'departed',  icon:'✝', name:'Prayers for the Departed',  desc:'Ancient prayers for the faithful who have fallen asleep in Christ.' },
-  { id:'penitential',icon:'🙏',name:'Penitential Prayers',      desc:'Prayers of repentance and contrition before God.' },
-  { id:'confession', icon:'🔑',name:'Prayers Before Confession', desc:'Preparation for the Holy Mystery of Confession.' },
-  { id:'saints',    icon:'☩', name:'Prayers to Saints',         desc:'Intercessions to the holy men and women of the Church.' },
-  { id:'occasional',icon:'✦', name:'Occasional Prayers',        desc:'Prayers for travel, illness, thanksgiving, and all occasions.' },
-];
-
-var PRAYERS = [
-  // Morning
-  { id:'trisagion', cat:'morning', name:'The Trisagion Prayers', note:'Opening of the morning rule', tags:['trisagion','holy spirit'],
-    text:'In the name of the Father, and of the Son, and of the Holy Spirit. Amen.\n\nGlory to You, our God, glory to You.\n\nO Heavenly King, Comforter, Spirit of Truth, Who are present everywhere and fill all things, Treasury of good things and Giver of life: come and abide in us, cleanse us from every stain, and save our souls, O Good One.\n\nHoly God, Holy Mighty, Holy Immortal, have mercy on us. (three times)\n\nGlory to the Father, and to the Son, and to the Holy Spirit, both now and ever and unto the ages of ages. Amen.\n\nAll-holy Trinity, have mercy on us. Lord, cleanse us from our sins. Master, pardon our iniquities. Holy One, visit and heal our infirmities for Your Name\'s sake.\n\nLord, have mercy. Lord, have mercy. Lord, have mercy.\n\nGlory to the Father, and to the Son, and to the Holy Spirit, both now and ever and unto the ages of ages. Amen.\n\nOur Father, Who art in Heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in Heaven. Give us this day our daily bread, and forgive us our trespasses as we forgive those who trespass against us, and lead us not into temptation, but deliver us from the evil one.' },
-  { id:'jesus-prayer', cat:'morning', name:'The Jesus Prayer', note:'The prayer of the heart', tags:['hesychasm','nepsis','prayer'],
-    text:'Lord Jesus Christ, Son of God, have mercy on me, a sinner.\n\nThis prayer, given to us by the Desert Fathers and collected in the Philokalia, is the foundation of Orthodox hesychast spirituality. It is to be prayed quietly, with attention of the mind in the heart, without images or concepts — simply the Name of Jesus and the cry of the penitent.\n\nBegin with a few repetitions in the morning, and gradually let it become the rhythm of your breathing and your life. The Fathers teach that the Name of Jesus, spoken with faith and humility, contains within it all the power of the Gospel.' },
-  { id:'morning-rule', cat:'morning', name:'Morning Prayers (Full Rule)', note:'The complete morning prayer rule', tags:['prayer','morning'],
-    text:'O Lord, grant that I may meet the coming day in peace. Help me in all things to rely upon Your holy will. In every hour of the day, reveal Your will to me. Bless my dealings with all who surround me. Teach me to treat all that comes to me throughout the day with peace of soul and with firm conviction that Your will governs all.\n\nIn all my deeds and words guide my thoughts and feelings. In unforeseen events let me not forget that all are sent by You. Teach me to act firmly and wisely, without embittering and embarrassing others. Give me strength to bear the fatigue of the coming day with all that it shall bring. Direct my will, teach me to pray. And You, Yourself, pray in me. Amen.\n\n— Metropolitan Philaret of Moscow' },
-  // Evening
-  { id:'evening-rule', cat:'evening', name:'Evening Prayers (Rule)', note:'The traditional evening prayer rule', tags:['prayer','evening'],
-    text:'O Lord our God, if during this day I have sinned in word, deed or thought, forgive me all, for You are good and love mankind. Grant me peaceful and undisturbed sleep. Send Your Guardian Angel to protect and keep me from all evil. For You are the Guardian of our souls and bodies and to You we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, both now and ever and unto the ages of ages. Amen.' },
-  { id:'prayer-of-st-john', cat:'evening', name:'Prayer of St. John Chrysostom', note:'Evening — a prayer for each hour', tags:['john chrysostom','evening'],
-    text:'O Lord my God, I know that I am not worthy nor sufficient that You should come under the roof of the house of my soul, for it is entirely deserted and in ruins, and You have not within me a fitting place to lay Your head. But as You humbled Yourself from on high for our sake, humble Yourself now to the measure of my humility.\n\nAnd as You deigned to lie in a manger in a cave, deign also to lie in the manger of my dumb soul and to enter my darkened body. And as You did not disdain to enter and dine with sinners in their house, so deign to enter the house of my humble soul. I see Your love for mankind and I take courage.\n\n— St. John Chrysostom, Prayer before Holy Communion' },
-  // Meals
-  { id:'before-meal', cat:'meals', name:'Before Meals', note:'Ancient blessing of food', tags:['eucharist','thanksgiving'],
-    text:'The eyes of all look to You with hope, and You give them their food in due season. You open Your hand and fill every living thing with blessing.\n\nLord, have mercy. Lord, have mercy. Lord, have mercy.\n\nGlory to the Father, and to the Son, and to the Holy Spirit. Both now and ever and unto the ages of ages. Amen.\n\nChrist our God, bless the food and drink of Your servants, for You are holy always, now and ever and unto the ages of ages. Amen.' },
-  { id:'after-meal', cat:'meals', name:'After Meals', note:'Thanksgiving after eating', tags:['thanksgiving'],
-    text:'We thank You, Christ our God, that You have satisfied us with Your earthly gifts. Do not deprive us of Your heavenly Kingdom, but as You stood in the midst of Your disciples, O Savior, and gave them peace, come among us and save us. Amen.' },
-  // Theotokos
-  { id:'theotoke-parthene', cat:'theotokos', name:'Theotoke Parthene (Hail Mary)', note:'The Orthodox Hail Mary', tags:['theotokos','annunciation'],
-    text:'Theotokos and Virgin, rejoice!\nMary, full of grace, the Lord is with thee.\nBlessed art thou among women,\nand blessed is the fruit of thy womb,\nfor thou hast borne the Savior of our souls.' },
-  { id:'it-is-truly-meet', cat:'theotokos', name:'It is Truly Meet (Axion Estin)', note:'The great hymn to the Theotokos', tags:['theotokos','divine liturgy'],
-    text:'It is truly meet to bless you, O Theotokos, ever blessed and most pure and the Mother of our God.\n\nMore honorable than the Cherubim, and more glorious beyond compare than the Seraphim, without defilement you gave birth to God the Word. True Theotokos, we magnify you.\n\nThis hymn was sung by an angel to a monk at Karyes on Mount Athos, and has been sung in the Divine Liturgy ever since. It is the concluding hymn of the Anaphora and is sung during every celebration of the Divine Liturgy.' },
-  { id:'o-theotokos', cat:'theotokos', name:'O Most Holy Theotokos, Save Us', note:'Brief prayer of intercession', tags:['theotokos'],
-    text:'O Most Holy Theotokos, save us.\n\nAll ye saints, pray to God for us.\n\nO Lord, through the intercessions of all the saints and the Theotokos, grant us Your peace and have mercy on us, for You alone are merciful.' },
-  // Penitential
-  { id:'prayer-manasses', cat:'penitential', name:'Prayer of Manasseh', note:'Old Testament prayer of repentance', tags:['repentance','metanoia'],
-    text:'O Lord Almighty, the God of our fathers Abraham, Isaac, and Jacob, and of their righteous seed, who made heaven and earth with all their adornment, who bound the sea by the word of Your command, who shut the deep and sealed it with Your terrible and glorious name, whom all things dread and tremble before the face of Your power, for the magnificence of Your glory is unbearable and the wrath of Your threatening toward sinners is unmerciful — the mercy of Your promise is immeasurable and unsearchable, for You are the Lord Most High, of great compassion, patient, and very merciful, who repents over the evils of men.\n\nYou, O Lord, according to Your great goodness have promised repentance and forgiveness to those who have sinned against You, and in the multitude of Your mercies You have appointed repentance for sinners unto salvation.\n\nYou therefore, O Lord, the God of the just, did not appoint repentance for the just — for Abraham, and Isaac, and Jacob, who did not sin against You, but You appointed repentance for me who am a sinner.\n\nFor I have sinned more than the number of the sands of the sea. My transgressions are multiplied, O Lord, they are multiplied! I am not worthy to look at or see the height of heaven, because of the multitude of my unrighteous deeds, being bent down by many iron chains so that I cannot lift up my head. And there is no relief for me, because I have provoked Your anger, and done evil before You, not doing Your will and not keeping Your commandments.\n\nAnd now I bend the knee of my heart, beseeching Your goodness. I have sinned, O Lord, I have sinned, and I acknowledge my transgressions. But I ask, beseeching You: Forgive me, O Lord, forgive me! Do not destroy me with my iniquities, nor keep evil for me in anger forever, nor condemn me to the parts of the earth that are below. For You are the God of those who repent, and in me You will show all Your goodness, for You will save me, who am unworthy, in Your great mercy. And I will praise You continually all the days of my life; for all the host of heaven praises You, and Yours is the glory unto the ages of ages. Amen.' },
-  // Occasional
-  { id:'prayer-travel', cat:'occasional', name:'Prayer Before Travel', note:'Protection on the journey', tags:['travel','protection'],
-    text:'O God, our salvation, who didst guide Your servant Abraham in all his ways when he departed from his homeland, keeping him unhurt in all his journeyings and travels: Guide now the way of Your servants and accompany us on our journey. Be for us the guide and the companion of our way. Protect us from all harm and danger, and bring us in safety and peace to our destination, so that, having fulfilled the purpose of our journey and having returned to our home, we may give thanks to You who is the fulfillment of all our good purposes. For You are the way, the truth, and the life, and to You we ascribe glory, to the Father, and to the Son, and to the Holy Spirit, both now and ever and unto the ages of ages. Amen.' },
-  { id:'prayer-sick', cat:'occasional', name:'Prayer for the Sick', note:'Intercession for the suffering', tags:['healing','illness'],
-    text:'O Holy Father, Heavenly Physician of our souls and bodies, who sent Your only-begotten Son our Lord Jesus Christ, who healed every sickness and delivered men from death: heal also Your servants (name/s) of the bodily and spiritual infirmity which oppresses them and quicken them by the grace of Your Christ; through the intercessions of our Most Holy Lady, the Theotokos and Ever-Virgin Mary, through the intercessions of the holy unmercenary healers Cosmas and Damian, Cyrus and John, Panteleimon and Hermolaus and all the saints who have pleased You since the ages, for You are the source of healing and to You we ascribe glory, Father, Son, and Holy Spirit, both now and ever and unto the ages of ages. Amen.' },
-  // Confession
-  { id:'before-confession', cat:'confession', name:'Prayer Before Confession', note:'Preparation of heart and mind', tags:['confession','repentance','metanoia'],
-    text:'O Lord my God, I know that I am not worthy of Your presence, for I have sinned before You in thought, word, and deed. But Your mercy is boundless, and I come to You in penitence.\n\nGrant me true repentance — not only sorrow for my sins, but a firm resolve to amend my life and to sin no more. Enlighten my mind that I may remember all my sins and confess them with a contrite heart and without shame before Your priest.\n\nFor it is not to man that I confess, but to You alone, O God, though man stands as a witness. Make me worthy to receive the forgiveness and healing that You offer through this Holy Mystery, and to walk in newness of life from this day forward.\n\nLord, have mercy. Lord, have mercy. Lord, have mercy. Amen.' },
-  // Departed
-  { id:'prayer-departed', cat:'departed', name:'Prayer for the Departed', note:'For the faithful who have fallen asleep', tags:['death','resurrection','eschatology'],
-    text:'Give rest, O Lord, to the souls of Your servants who have fallen asleep, in a place of brightness, a place of refreshment, a place of repose, where all sickness, sighing, and sorrow have fled away.\n\nO good and loving Lord, forgive every sin they have committed in thought, word, or deed, for there is no man who lives and does not sin. You alone are without sin, Your righteousness is everlasting, and Your word is truth.\n\nFor You are the Resurrection and the Life, and the Repose of Your departed servants, O Christ our God, and to You we ascribe glory, together with Your eternal Father, and Your all-holy, good and life-creating Spirit, both now and ever and unto the ages of ages. Amen.' },
-  // Saints
-  { id:'to-nicholas', cat:'saints', name:'To St. Nicholas of Myra', note:'Intercession to the Great Wonderworker', tags:['nicholas','wonderworker'],
-    text:'O holy Father Nicholas, archbishop and wonderworker of Myra, beloved servant of Christ: intercede for us before the Lord our God, that He may grant us all things needful for our salvation and protect us from all evil.\n\nYou were a defender of the poor, a helper of those in need, a comforter of the sorrowful. Remember us before the throne of God, and by your prayers protect us from all danger, visible and invisible. Amen.' },
-  { id:'to-seraphim', cat:'saints', name:'To St. Seraphim of Sarov', note:'Intercession to the great Russian staretz', tags:['seraphim','monastics','holy spirit'],
-    text:'O wonderful and holy Father Seraphim, great luminary of the Russian Church: with faith and love we run to you and beg your powerful intercession before God.\n\nYou acquired the Holy Spirit while still living on earth, and He dwelt in you abundantly. Now, standing before the throne of the Holy Trinity, intercede for us that we too may acquire the Holy Spirit and in Him find peace, joy, and salvation.\n\nRemember all who call upon you in faith, and by your holy prayers obtain for us forgiveness of sins and help in all our needs. To Christ our God be glory unto the ages. Amen.' },
-  // Akathist
-  { id:'akathist-theotokos-kontakion', cat:'akathist', name:'Kontakion of the Akathist to the Theotokos', note:'The opening of the great Akathist', tags:['theotokos','akathist','lent'],
-    text:'To you, the Champion Leader, we your servants dedicate a feast of victory and of thanksgiving as ones rescued out of sufferings, O Theotokos. But as you are one with might which is invincible, from all dangers that can be deliver us, so that we may cry to you:\n\nRejoice, O Unwedded Bride!\n\nThis kontakion is sung on the Saturday of the fifth week of Great Lent, known as the Akathist Saturday, and at many other services throughout the year. The full Akathist Hymn to the Theotokos consists of twenty-four stanzas and is one of the most beautiful liturgical hymns in the Orthodox tradition.' },
-];
-
-// ── State ─────────────────────────────────────────────────────
-var currentCat = 'morning';
-var currentPrayer = null;
-var speaking = false;
-
-// ── Nav ───────────────────────────────────────────────────────
-var drawerOpen=false;
-function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
-document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
-function closeSearch(){document.getElementById('search-overlay').style.display='none';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSearch();closePrayer();}});
-document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
-
-// ── Category sidebar ──────────────────────────────────────────
-function buildSidebar(){
-  var html='';
-  CATEGORIES.forEach(function(c){
-    var active=c.id===currentCat?' active':'';
-    html+='<div class="cat-item'+active+'" onclick="selectCat(\''+c.id+'\')">';
-    html+='';
-    html+='<span class="cat-item-name">'+c.name+'</span>';
-    html+='</div>';
-  });
-  document.getElementById('catList').innerHTML=html;
-}
-
-function selectCat(id){
-  currentCat=id;
-  document.getElementById('prayerSearch').value='';
-  buildSidebar();
-  var cat=CATEGORIES.find(function(c){return c.id===id;});
-  if(cat){
-    document.getElementById('panelTitle').textContent=cat.name;
-    document.getElementById('panelDesc').textContent=cat.desc;
-  }
-  renderPrayers(PRAYERS.filter(function(p){return p.cat===id;}));
-}
-
-function filterPrayers(q){
-  var base=PRAYERS.filter(function(p){return p.cat===currentCat;});
-  if(!q.trim()){renderPrayers(base);return;}
-  var lq=q.toLowerCase();
-  renderPrayers(base.filter(function(p){return p.name.toLowerCase().includes(lq)||p.note.toLowerCase().includes(lq)||(p.tags||[]).some(function(t){return t.includes(lq);});}));
-}
-
-function renderPrayers(prayers){
-  if(!prayers.length){document.getElementById('prayerList').innerHTML='<div class="prayer-empty">No prayers found.</div>';return;}
-  var html='';
-  prayers.forEach(function(p){
-    html+='<div class="prayer-item" onclick="openPrayer(\''+p.id+'\')">';
-    html+='<span class="prayer-item-cross">&#9766;&#65038;</span>';
-    html+='<div class="prayer-item-body"><div class="prayer-item-name">'+p.name+'</div>';
-    html+='<div class="prayer-item-note">'+p.note+'</div></div>';
-    html+='<span class="prayer-item-arrow">&#8250;</span></div>';
-  });
-  document.getElementById('prayerList').innerHTML=html;
-}
-
-// ── Prayer modal ──────────────────────────────────────────────
-function openPrayer(id){
-  var prayer=PRAYERS.find(function(p){return p.id===id;});
-  if(!prayer)return;
-  currentPrayer=prayer;
-  var cat=CATEGORIES.find(function(c){return c.id===prayer.cat;});
-  document.getElementById('pm-title').textContent=prayer.name;
-  document.getElementById('pm-category').textContent=cat?cat.name:'';
-  var paras=prayer.text.split('\n\n');
-  document.getElementById('pm-text').innerHTML=paras.map(function(p){return '<p>'+p.replace(/\n/g,'<br/>')+'</p>';}).join('');
-  var tagsHtml=(prayer.tags||[]).map(function(t){return '<a href="glossary.html#'+t+'" class="pm-tag">'+t+'</a>';}).join('');
-  document.getElementById('pm-tags').innerHTML=tagsHtml;
-  document.getElementById('prayer-modal').classList.add('open');
-  document.getElementById('prayer-modal').scrollTop=0;
-}
-function closePrayer(){
-  if(speaking){window.speechSynthesis&&window.speechSynthesis.cancel();speaking=false;}
-  document.getElementById('prayer-modal').classList.remove('open');
-}
-document.getElementById('prayer-modal').addEventListener('click',function(e){if(e.target===this)closePrayer();});
-
-function sharePrayer(){
-  if(!currentPrayer)return;
-  var text='Orthodox Companion\n\n'+currentPrayer.name+'\n\n'+currentPrayer.text.substring(0,400)+'...\n\northodoxcompanion.com/prayer';
-  if(navigator.share){navigator.share({title:currentPrayer.name,text:text});}
-  else{navigator.clipboard.writeText(text).then(function(){alert('Copied to clipboard!');});}
-}
-
-function listenPrayer(){
-  if(!window.speechSynthesis||!currentPrayer)return;
-  if(speaking){window.speechSynthesis.cancel();speaking=false;document.getElementById('pm-listen-btn').textContent='&#9654; Listen';return;}
-  var utt=new SpeechSynthesisUtterance(currentPrayer.text.replace(/\n/g,' '));
-  utt.rate=0.88;
-  utt.onend=function(){speaking=false;document.getElementById('pm-listen-btn').textContent='&#9654; Listen';};
-  window.speechSynthesis.speak(utt);
-  speaking=true;
-  document.getElementById('pm-listen-btn').textContent='&#9646;&#9646; Stop';
-}
-
-// ── Init ──────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded',function(){
-  buildSidebar();
-  selectCat('morning');
-  var params=new URLSearchParams(window.location.search);
-  var cat=params.get('cat');
-  if(cat)selectCat(cat);
-  var pid=params.get('prayer');
-  if(pid)setTimeout(function(){openPrayer(pid);},200);
-});
-</script>
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
-// <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+// Anti-flash: inline script in <head> sets data-theme before render
 
 /* ── Theme + Nav + Account JS ───────────────────────── */
 // Theme
@@ -873,6 +418,82 @@ document.addEventListener('DOMContentLoaded',function(){
       var el=document.getElementById(id);
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },200);
+  }
+});
+
+</script>
+<script>
+
+var PRAYERS = [{"id": "morning-rule", "cat": "morning", "title": "Morning Prayers (Full Rule)", "text": "O Lord, grant me to greet the coming day in peace. Help me in all things to rely upon Thy holy will. In every hour of the day reveal Thy will to me. Bless my dealings with all who surround me. Teach me to treat all that comes throughout the day with peace of soul and with firm conviction that Thy will governs all. In all my deeds and words, guide my thoughts and feelings. In unforeseen events, let me not forget that all are sent by Thee. Teach me to act firmly and wisely, without embittering and embarrassing others. Give me strength to bear the fatigue of the coming day with all that it shall bring. Direct my will, teach me to pray. Pray Thou Thyself in me. Amen.", "note": "From the prayers of Elder Macarius of Optina. A complete morning offering of the day to God."}, {"id": "morning-trisagion", "cat": "morning", "title": "The Trisagion Prayers", "text": "Holy God, Holy Mighty, Holy Immortal, have mercy on us. (3x)\n\nGlory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nAll-Holy Trinity, have mercy on us. Lord, forgive our sins. Master, pardon our iniquities. Holy One, visit and heal our infirmities for Thy name's sake.\n\nLord have mercy. (3x)\n\nGlory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.\n\nOur Father, Who art in Heaven, hallowed be Thy Name. Thy Kingdom come. Thy will be done, on earth as it is in Heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us. And lead us not into temptation, but deliver us from evil.\n\nFor Thine is the Kingdom, the power and the glory, of the Father, the Son and the Holy Spirit, now and ever and unto the ages of ages. Amen.", "note": "The Trisagion prayers open every Orthodox prayer rule \u2014 morning, evening, and before any service."}, {"id": "evening-prayer", "cat": "evening", "title": "Evening Prayer (St. John Chrysostom)", "text": "O Lord our God, in Whom we believe and Whose name we invoke above every name \u2014 grant us, as we go to sleep, relaxation of soul and body, and keep us from all dreaming thoughts and dark pleasures. Arrest the impulses of the passions, quench the burning darts of the evil one that are cast against us in a crafty manner. Still the rebellions of our flesh, and put away from us all anxiety and worldly care. Grant us a guardian angel, protect us from everything that takes us away from Thee. Raise us up again at the hour of prayer strengthened in Thy commandments, bearing within us the remembrance of Thy judgments.\n\nGlory to the Father and to the Son and to the Holy Spirit, now and ever and unto ages of ages. Amen.", "note": "Prayed before going to sleep, entrusting the night to God."}, {"id": "evening-examination", "cat": "evening", "title": "Evening Examination of Conscience", "text": "O merciful Lord, forgive me all my sins of this day: in word and deed, and in thought, whether voluntary and involuntary, whether of knowledge or of ignorance.\n\nLord, grant peaceful sleep to my weary body. Protect me from the dark dreamings of the evil one. Grant me, O Lord, to complete the night in peace, that rising at dawn I may praise Thy holy Name.\n\nGrant me, O God, a good night free from all temptation, that I may rise to serve Thee. Amen.", "note": "Brief examination of conscience before sleep \u2014 an ancient monastic practice adapted for lay use."}, {"id": "st-ephrem", "cat": "penitential", "title": "The Prayer of St. Ephrem the Syrian", "text": "O Lord and Master of my life, take from me the spirit of sloth, despair, lust of power, and idle talk.\n\nBut give rather the spirit of chastity, humility, patience, and love to Thy servant.\n\nYea, O Lord and King, grant me to see my own transgressions, and not to judge my brother, for blessed art Thou, unto ages of ages. Amen.\n\n(Prostration)\n\nO God, cleanse me a sinner.\n(Prostration)\nO God, cleanse me a sinner.\n(Prostration)\nO God, cleanse me a sinner and have mercy on me.\n(Prostration)", "note": "Prayed with prostrations throughout Great Lent \u2014 three times at each service of the hours from Clean Monday through Holy Wednesday. The most beloved penitential prayer of the Orthodox Church."}, {"id": "act-of-contrition", "cat": "penitential", "title": "Prayer of Contrition", "text": "O God, be merciful to me a sinner, and have mercy on me according to Thy great mercy, according to the multitude of Thy compassions blot out my transgression.\n\nI have sinned before Heaven and before Thee. I am not worthy to be called Thy servant. Yet receive me as one of Thy hired servants.\n\nO Lord, I have sinned much in word, deed and thought \u2014 conscious and unconscious, knowing and unknowing. Forgive me all, as a good and loving God.\n\nAmen.", "note": "A prayer of general contrition, suitable for private use or before Confession."}, {"id": "jesus-prayer", "cat": "jesus-prayer", "title": "The Jesus Prayer", "text": "Lord Jesus Christ, Son of God, have mercy on me, a sinner.", "note": "The prayer of the heart \u2014 prayed continuously on the prayer rope (komboskini). The heart of Orthodox hesychast prayer. This single sentence contains the entire Gospel: the name of Jesus, His identity as Son of God, and our plea for mercy from our sinfulness."}, {"id": "jesus-prayer-expanded", "cat": "jesus-prayer", "title": "The Jesus Prayer (Expanded Forms)", "text": "Short form:\nLord Jesus Christ, have mercy on me.\n\nMedium form:\nLord Jesus Christ, Son of God, have mercy on me.\n\nFull form:\nLord Jesus Christ, Son of God, have mercy on me, a sinner.\n\nIntercession form:\nLord Jesus Christ, Son of God, have mercy on us.", "note": "All forms are used in the tradition. The full form, including \"a sinner,\" is standard in the Russian tradition. Begin with the full form and progress to silence as prayer deepens."}, {"id": "troparion-resurrection", "cat": "liturgical", "title": "Troparion of the Resurrection (Tone 1)", "text": "Though the stone was sealed by the Jews, and soldiers guarded Thy most pure body, Thou didst arise on the third day, O Saviour, granting life to the world. Therefore the Heavenly Powers cried aloud unto Thee, O Giver of Life: Glory to Thy Resurrection, O Christ! Glory to Thy Kingdom! Glory to Thy dispensation, O Thou Who lovest mankind!", "note": "The Sunday troparion of Tone 1 \u2014 one of eight resurrection troparia sung at Orthros (Matins) on Sunday mornings in the eight-week cycle of tones."}, {"id": "paschal-troparion", "cat": "liturgical", "title": "Troparion of Holy Pascha", "text": "Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.\n\nChristos Anesti ek nekron, thanato thanaton patisas, kai tis en tis mnimasi, zoin charisamenos.", "note": "The most joyful words in the Orthodox calendar. Sung throughout Bright Week and until the Apodosis of Pascha (the day before the Ascension). Also sung as the dismissal blessing throughout Paschaltide."}, {"id": "theotokos-hymn", "cat": "liturgical", "title": "Hymn to the Theotokos (Axion Estin)", "text": "It is truly right to bless thee, the Theotokos, the ever-blessed and most pure, and the Mother of our God. More honorable than the Cherubim, and more glorious beyond compare than the Seraphim, thou who without corruption gavest birth to God the Word: true Theotokos, we magnify thee.", "note": "Sung at every Divine Liturgy and in the daily prayer rule. The foundational Marian hymn of the Orthodox Church."}, {"id": "prayer-before-meals", "cat": "occasional", "title": "Prayer Before Meals", "text": "The eyes of all wait upon Thee, O Lord, and Thou givest them their meat in due season. Thou openest Thine hand, and satisfiest the desire of every living thing.\n\nGlory to the Father, and to the Son, and to the Holy Spirit, now and ever and unto the ages of ages. Amen.\n\nChrist God, bless the food and drink of Thy servants, for Thou art holy, always, now and ever and unto ages of ages. Amen.", "note": ""}, {"id": "prayer-after-meals", "cat": "occasional", "title": "Prayer After Meals", "text": "We thank Thee, O Christ our God, that Thou hast satisfied us with Thy earthly gifts. Deprive us not of Thy heavenly Kingdom, but as Thou didst come in the midst of Thy disciples, O Saviour, and gavest them peace, come to us and save us. Amen.", "note": ""}, {"id": "prayer-for-departed", "cat": "occasional", "title": "Prayer for the Departed", "text": "O God of spirits and of all flesh, Who hast trampled down death and overthrown the Devil, and given life to Thy world: Give rest, O Lord, to the soul of Thy departed servant N., in a place of brightness, a place of refreshment, a place of repose, where all sickness, sighing, and sorrow have fled away. Pardon every transgression which he/she has committed, whether by word or deed or thought, for Thou art good and lovest mankind. Amen.", "note": "Use the name of the deceased in place of N. Prayed at home commemorations, during Lent on Soul Saturdays, and at any time for the faithful departed."}];
+var CATS = [{"id": "all", "name": "All Prayers"}, {"id": "morning", "name": "Morning"}, {"id": "evening", "name": "Evening"}, {"id": "penitential", "name": "Penitential"}, {"id": "jesus-prayer", "name": "Jesus Prayer"}, {"id": "liturgical", "name": "Liturgical"}, {"id": "occasional", "name": "Occasional"}];
+var currentCat = 'all';
+
+function buildCats() {
+  var el = document.getElementById('prayerCats');
+  el.innerHTML = CATS.map(function(c) {
+    return '<button class="prayer-cat-btn' + (c.id === currentCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c.name + '</button>';
+  }).join('');
+  el.addEventListener('click', function(e) {
+    var btn = e.target.closest('.prayer-cat-btn');
+    if (!btn) return;
+    currentCat = btn.dataset.cat;
+    document.querySelectorAll('.prayer-cat-btn').forEach(function(b) { b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderPrayers();
+  });
+}
+
+function togglePrayer(id) {
+  var card = document.getElementById('pc-' + id);
+  if (card) card.classList.toggle('open');
+}
+
+function renderPrayers() {
+  var filtered = currentCat === 'all' ? PRAYERS : PRAYERS.filter(function(p) { return p.cat === currentCat; });
+  var groups = {};
+  filtered.forEach(function(p) {
+    if (!groups[p.cat]) groups[p.cat] = [];
+    groups[p.cat].push(p);
+  });
+  var catLabels = {};
+  CATS.forEach(function(c) { catLabels[c.id] = c.name; });
+  var html = '';
+  Object.keys(groups).forEach(function(cat) {
+    var label = catLabels[cat] || cat;
+    html += '<div class="prayer-section">';
+    html += '<div class="prayer-section-header"><div class="prayer-section-title">' + label + '</div><div class="prayer-section-line"></div></div>';
+    groups[cat].forEach(function(p) {
+      html += '<div class="prayer-card" id="pc-' + p.id + '">';
+      html += '<div class="prayer-card-header" data-id="' + p.id + '">';
+      html += '<div class="prayer-card-title">' + p.title + '</div>';
+      html += '<span class="prayer-card-toggle">&#9660;</span>';
+      html += '</div>';
+      html += '<div class="prayer-card-body">';
+      html += '<div class="prayer-text">' + p.text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</div>';
+      if (p.note) html += '<div class="prayer-note">' + p.note + '</div>';
+      html += '</div></div>';
+    });
+    html += '</div>';
+  });
+  var el = document.getElementById('prayerContent');
+  el.innerHTML = html;
+  el.addEventListener('click', function(e) {
+    var header = e.target.closest('.prayer-card-header');
+    if (header && header.dataset.id) togglePrayer(header.dataset.id);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  buildCats();
+  renderPrayers();
+  // URL param
+  var p = new URLSearchParams(window.location.search);
+  var id = p.get('prayer');
+  if (id) {
+    setTimeout(function() {
+      var card = document.getElementById('pc-' + id);
+      if (card) { card.classList.add('open'); card.scrollIntoView({behavior:'smooth'}); }
+    }, 300);
   }
 });
 
