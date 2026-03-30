@@ -180,15 +180,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
 }
 
-
 .resources-wrap{max-width:1040px;margin:0 auto;padding:28px 24px 60px;}
-.res-tabs{display:flex;gap:0;border:1px solid var(--border-dim);border-radius:3px;overflow:hidden;margin-bottom:24px;}
-.res-tab{font-family:"Cinzel",serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.09em;padding:10px 18px;background:transparent;border:none;color:var(--text-muted);cursor:pointer;transition:all 0.2s;border-right:1px solid var(--border-dim);flex:1;text-align:center;}
-.res-tab:last-child{border-right:none;}
-.res-tab.active{background:rgba(201,168,76,0.1);color:var(--gold-light);}
-.res-level-bar{display:flex;gap:6px;margin-bottom:20px;flex-wrap:wrap;}
-.res-level-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
-.res-level-btn.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.07);}
+
+/* ── Category pill bar (matches topics.html) ─────────── */
+.cat-pill-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+.cat-pill{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.09em;padding:6px 13px;border-radius:2px;cursor:pointer;border:1px solid var(--gold-dim);background:transparent;color:var(--text-dim);transition:all 0.18s;white-space:nowrap;}
+.cat-pill:hover{background:rgba(201,168,76,0.1);color:var(--gold-light);border-color:var(--gold);}
+.cat-pill.active{background:linear-gradient(135deg,#C9A84C,#A07828);color:#1a0f00;border-color:#E8CB7A;font-weight:600;}
+
+/* ── Level filter bar (secondary — outlined active) ──── */
+.res-level-bar{display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid rgba(42,90,156,0.15);}
+.res-level-btn{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;padding:5px 12px;border:1px solid var(--border-dim);border-radius:2px;background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.res-level-btn:hover{border-color:var(--gold-dim);color:var(--text-dim);}
+.res-level-btn.active{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+
 .res-grid{display:flex;flex-direction:column;gap:8px;}
 .res-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:18px 20px;border-left:3px solid var(--gold-dim);}
 .res-card-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:2px;}
@@ -196,7 +201,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .res-card-desc{font-size:0.9rem;color:var(--text-dim);line-height:1.7;font-style:italic;}
 .res-card-footer{margin-top:10px;}
 .res-empty{padding:40px;text-align:center;color:var(--text-muted);font-style:italic;}
-@media(max-width:600px){.res-tabs{overflow-x:auto;}.res-tab{white-space:nowrap;}}
 
 </style>
 </head>
@@ -301,7 +305,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   </div>
 </div>
 <div class="resources-wrap">
-  <div class="res-tabs" id="resTabs"></div>
+  <div class="cat-pill-bar" id="resTabs"></div>
   <div class="res-level-bar" id="resLevelBar">
     <button class="res-level-btn active" data-level="all">All Levels</button>
     <button class="res-level-btn" data-level="beginner">Beginner</button>
@@ -312,11 +316,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 </div>
 <script>
 /* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
-
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
 function toggleTheme(){
   var c=document.documentElement.getAttribute('data-theme')||'dark';
   var n=c==='dark'?'light':'dark';
@@ -328,7 +327,6 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',t);
 })();
 
-// Nav drawer
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
@@ -338,7 +336,6 @@ function toggleDrawer(){
   if(h)h.classList.toggle('open',_drawerOpen);
 }
 
-// User account menu
 function toggleUserMenu(){
   var d=document.getElementById('navUserDropdown');
   var b=document.getElementById('navUserBtn');
@@ -346,14 +343,12 @@ function toggleUserMenu(){
   if(b)b.classList.toggle('open');
 }
 
-// Sign out
 function signOut(){
   localStorage.removeItem('oc_user');
   localStorage.removeItem('oc_token');
   window.location.href='index.html';
 }
 
-// Init account state on every page
 function initAccountNav(){
   var user=null;
   try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
@@ -372,7 +367,6 @@ function initAccountNav(){
   }
 }
 
-// Close menus on outside click
 document.addEventListener('click',function(e){
   if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
     _drawerOpen=false;
@@ -381,7 +375,6 @@ document.addEventListener('click',function(e){
     if(d)d.classList.remove('open');
     if(h)h.classList.remove('open');
   }
-  // Close user dropdown
   if(!e.target.closest('.nav-account-wrap')){
     var d=document.getElementById('navUserDropdown');
     var b=document.getElementById('navUserBtn');
@@ -390,7 +383,6 @@ document.addEventListener('click',function(e){
   }
 });
 
-// Smooth scroll for anchor links
 function scrollToSection(id){
   var el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
@@ -398,7 +390,6 @@ function scrollToSection(id){
 
 document.addEventListener('DOMContentLoaded',function(){
   initAccountNav();
-  // Handle hash scrolling
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
     setTimeout(function(){
@@ -407,12 +398,10 @@ document.addEventListener('DOMContentLoaded',function(){
     },200);
   }
 });
-
 </script>
 <script>
 
 var RESOURCES = [
-  // ── Books (including patristic + Schmemann folded in) ─────────────────────
   {cat:'books', level:'beginner', name:'The Didache', author:'The Apostolic Fathers (c. 50–120 AD)',
    desc:'The Teaching of the Twelve Apostles — one of the earliest Christian documents outside the New Testament. A window into the life of the primitive Church.',
    link:'https://www.newadvent.org/fathers/0714.htm'},
@@ -473,7 +462,6 @@ var RESOURCES = [
   {cat:'books', level:'beginner', name:'On the Incarnation', author:'St. Athanasius the Great',
    desc:'Written as a young man, still the clearest statement of Orthodox Christology. C.S. Lewis called it one of the most important books he ever read.',
    link:'https://www.newadvent.org/fathers/2802.htm'},
-  // Patristic texts folded in
   {cat:'books', level:'intermediate', name:'Homilies on Matthew', author:'St. John Chrysostom',
    desc:'Ninety homilies on the Gospel of Matthew — the standard of Christian preaching for fifteen centuries.',
    link:'https://www.newadvent.org/fathers/2001.htm'},
@@ -489,7 +477,6 @@ var RESOURCES = [
   {cat:'books', level:'intermediate', name:'Sayings of the Desert Fathers', author:'The Abbas of Egypt (4th–5th century)',
    desc:'The collected wisdom of the great Egyptian monastics — terse, paradoxical, and infinitely deep.',
    link:'https://www.desertfathers.com/'},
-  // Schmemann folded in
   {cat:'books', level:'intermediate', name:'Great Lent', author:'Fr. Alexander Schmemann',
    desc:'A day-by-day theological guide to the Great Fast — its services, its liturgical texts, and the spiritual journey to Pascha.',
    link:''},
@@ -499,8 +486,6 @@ var RESOURCES = [
   {cat:'books', level:'beginner', name:'Celebration of Faith (3 vols.)', author:'Fr. Alexander Schmemann',
    desc:'Three volumes of broadcast sermons — accessible, warm, and illuminating. The best introduction to Schmemann for new readers.',
    link:''},
-
-  // ── Podcasts ────────────────────────────────────────────────────────────────
   {cat:'podcasts', level:'beginner', name:'Ancient Faith Radio', author:'Ancient Faith Ministries',
    desc:'Hundreds of podcasts on every aspect of Orthodox faith and life — the largest library of Orthodox audio content in English.',
    link:'https://www.ancientfaith.com/podcasts'},
@@ -516,8 +501,6 @@ var RESOURCES = [
   {cat:'podcasts', level:'intermediate', name:'Search the Scriptures', author:'Dr. Jeannie Constantinou',
    desc:'Dr. Constantinou takes listeners through the books of the Bible with patristic commentary and Orthodox theological insight.',
    link:'https://www.ancientfaith.com/podcasts/searchthescriptures'},
-
-  // ── Websites ────────────────────────────────────────────────────────────────
   {cat:'websites', level:'beginner', name:'Greek Orthodox Archdiocese of America', author:'goarch.org',
    desc:'Liturgical resources, parish locator, liturgical calendar, and catechetical materials from the Greek Orthodox Archdiocese.',
    link:'https://www.goarch.org'},
@@ -530,8 +513,6 @@ var RESOURCES = [
   {cat:'websites', level:'intermediate', name:'New Advent — Church Fathers', author:'newadvent.org',
    desc:'The Ante-Nicene, Nicene, and Post-Nicene Fathers online in full. Invaluable for patristic research and reading primary sources.',
    link:'https://www.newadvent.org/fathers/'},
-
-  // ── Church Documents ────────────────────────────────────────────────────────
   {cat:'documents', level:'beginner', name:'The Nicene-Constantinopolitan Creed', author:'Ecumenical Councils I &amp; II (325, 381)',
    desc:'The Symbol of Faith — the foundational statement of Orthodox belief sung at every Divine Liturgy.',
    link:'https://www.goarch.org/nicene-creed'},
@@ -545,6 +526,7 @@ var RESOURCES = [
    desc:'The disciplinary and doctrinal canons of all seven Ecumenical Councils — the foundational Church law of Orthodoxy.',
    link:'https://www.newadvent.org/fathers/3802.htm'},
 ];
+
 var CATS = [
   {id:'all',       name:'All'},
   {id:'books',     name:'Books'},
@@ -559,10 +541,10 @@ var currentLevel = 'all';
 function buildTabs() {
   var el = document.getElementById('resTabs');
   el.innerHTML = CATS.map(function(c) {
-    return '<button class="res-tab' + (c.id === currentCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c.name + '</button>';
+    return '<button class="cat-pill' + (c.id === currentCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c.name + '</button>';
   }).join('');
   el.addEventListener('click', function(e) {
-    var btn = e.target.closest('.res-tab');
+    var btn = e.target.closest('.cat-pill');
     if (btn) { currentCat = btn.dataset.cat; render(); buildTabs(); }
   });
 }
