@@ -75,7 +75,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 /* ── Saint of the Day ──────────────────────────────────────── */
 .sotd-banner{
   margin-top:var(--nav-h);
-  background:#ffffff;
+  background:var(--hero-bg);
   border-bottom:2px solid var(--gold-dim);
   padding:36px 24px;
 }
@@ -109,24 +109,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 
 /* ── Category Grid ─────────────────────────────────────────── */
 .section{padding:0 24px 60px;max-width:1040px;margin:0 auto;}
-.section-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--text-muted);margin-bottom:20px;}
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
+.section-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);white-space:nowrap;}
+.section-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(201,168,76,0.35),transparent);}
+.cat-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
 .cat-card{
-  background:linear-gradient(160deg,rgba(15,32,53,0.8),rgba(27,58,107,0.3));
-  border:1px solid var(--border-dim);border-radius:4px;
-  padding:22px 18px;cursor:pointer;
-  transition:border-color 0.25s,transform 0.2s,background 0.25s;
-  position:relative;overflow:hidden;
-  display:flex;flex-direction:column;gap:8px;
+  font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);
+  background:transparent;border:1px solid var(--border-dim);
+  border-radius:2px;padding:7px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  transition:color 0.2s,border-color 0.2s,background 0.2s;
+  white-space:nowrap;
 }
-.cat-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0.05),transparent);opacity:0;transition:opacity 0.3s;}
-.cat-card:hover{border-color:var(--gold-dim);transform:translateY(-2px);}
-.cat-card:hover::before{opacity:1;}
-.cat-card.active{border-color:var(--gold);background:rgba(201,168,76,0.08);}
-.cat-icon{font-size:1.6rem;line-height:1;margin-bottom:2px;}
-.cat-name{font-family:'Cinzel',serif;font-size:0.82rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;line-height:1.3;}
-.cat-desc{font-size:0.78rem;color:var(--text-muted);font-style:italic;line-height:1.5;}
-.cat-count{font-family:'Cinzel',serif;font-size:0.58rem;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-top:auto;}
+.cat-card:hover{color:var(--gold-light);border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
+.cat-card.active{color:var(--deep);background:var(--gold);border-color:var(--gold);}
+.cat-count{font-size:0.58rem;opacity:0.75;}
 
 /* ── Saints List Panel ─────────────────────────────────────── */
 .saints-list-wrap{
@@ -246,14 +244,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 /* ── Responsive ────────────────────────────────────────────── */
 @media(max-width:900px){
   .nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);}
   .sotd-inner{flex-direction:column;gap:20px;}
   .sotd-icon-placeholder{width:80px;height:100px;}
   .sm-meta-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
-  .cat-card{padding:16px 14px;}
   .page-top{padding:24px 16px 16px;}
   .section{padding:0 16px 40px;}
   .sotd-banner{padding:24px 16px;}
@@ -435,7 +430,17 @@ body{background:var(--bg-page);color:var(--text);}
   nav{padding:0 14px;}
   .nav-brand .nav-subtitle{display:none;}
 }
-
+/* ── Back to Top ─────────────────────────────────────────── */
+#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--dark);border:1px solid var(--gold-dim);
+  color:var(--gold-light);font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,transform 0.25s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 </style>
 <meta property="og:title" content="Saints — Orthodox Companion"/>
 <meta property="og:description" content="The saints of the Orthodox Church — Saint of the Day, 1212 saints with feast days, profiles, and liturgical calendar connections."/>
@@ -445,7 +450,7 @@ body{background:var(--bg-page);color:var(--text);}
 <body>
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross"></span>
+    <span class="nav-cross">&#9766;&#65038;</span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
@@ -453,35 +458,37 @@ body{background:var(--bg-page);color:var(--text);}
     <li class="nav-item">
       <span class="nav-link has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
+        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html">About This Site</a>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link active has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="topics.html">Topics &amp; Doctrine</a>
-        <a href="saints.html">Saints</a>
-        <a href="church-fathers.html">Church Fathers</a>
-        <a href="feasts.html">Feasts</a>
-        <a href="liturgical-seasons.html">Liturgical Seasons</a>
-        <a href="glossary.html">Glossary</a>
+        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
+        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html">Reading Plans</a>
-        <a href="resources.html">Books &amp; Resources</a>
+        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html">Liturgical Calendar</a>
-        <a href="prayer.html">Prayer Corner</a>
-        <a href="fasting.html">Fasting Guide</a>
-        <hr class="nav-dropdown-divider"/>
-        <a href="blog.html">Blog</a>
+        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
       </div>
     </li>
   </ul>
@@ -513,25 +520,28 @@ body{background:var(--bg-page);color:var(--text);}
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
   <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="parents.html">Guidance for Parents</a>
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
   <div class="nav-drawer-section">Study</div>
+  <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+  <a href="symbol-of-faith.html">Symbol of Faith</a>
   <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="glossary.html">Glossary</a>
   <a href="saints.html">Saints</a>
   <a href="church-fathers.html">Church Fathers</a>
-  <a href="feasts.html">Feasts</a>
-  <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <a href="glossary.html">Glossary</a>
+  <a href="holy-scripture.html">Holy Scripture</a>
   <a href="reading-plans.html">Reading Plans</a>
   <a href="resources.html">Books &amp; Resources</a>
   <div class="nav-drawer-section">Worship &amp; Life</div>
   <a href="calendar.html">Liturgical Calendar</a>
   <a href="prayer.html">Prayer Corner</a>
   <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">Companion AI</a>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
@@ -572,55 +582,46 @@ body{background:var(--bg-page);color:var(--text);}
 
 <!-- CATEGORY GRID -->
 <div class="section">
-  <div class="section-label fade-in">Browse by Category</div>
+  <div class="section-header fade-in">
+    <span class="section-label">Browse by Category</span>
+    <div class="section-rule"></div>
+  </div>
   <div class="cat-grid" id="catGrid">
     <div class="cat-card fade-in" onclick="openCategory('apostles')">
-      <div class="cat-icon">&#10013;</div>
-      <div class="cat-name">Apostles &amp; Evangelists</div>
-      <div class="cat-desc">Those sent by Christ to preach the Gospel to all nations</div>
-      <div class="cat-count" id="count-apostles">Loading&hellip;</div>
+      <span class="cat-name">Apostles &amp; Evangelists</span>
+      <span class="cat-count" id="count-apostles"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('prophets')">
-      <div class="cat-icon">&#9891;</div>
-      <div class="cat-name">Prophets</div>
-      <div class="cat-desc">The holy ones who spoke the word of God before the Incarnation</div>
-      <div class="cat-count" id="count-prophets">Loading&hellip;</div>
+      <span class="cat-name">Prophets</span>
+      <span class="cat-count" id="count-prophets"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('martyrs')">
-      <div class="cat-icon">&#10022;</div>
-      <div class="cat-name">Martyrs &amp; Confessors</div>
-      <div class="cat-desc">Those who bore witness to Christ through suffering and death</div>
-      <div class="cat-count" id="count-martyrs">Loading&hellip;</div>
+      <span class="cat-name">Martyrs &amp; Confessors</span>
+      <span class="cat-count" id="count-martyrs"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('monastics')">
-      <div class="cat-icon">&#9789;</div>
-      <div class="cat-name">Monastics &amp; Desert Fathers</div>
-      <div class="cat-desc">The great teachers of prayer, fasting, and the inner life</div>
-      <div class="cat-count" id="count-monastics">Loading&hellip;</div>
+      <span class="cat-name">Monastics &amp; Desert Fathers</span>
+      <span class="cat-count" id="count-monastics"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('hierarchs')">
-      <div class="cat-icon">&#9824;</div>
-      <div class="cat-name">Hierarchs &amp; Bishops</div>
-      <div class="cat-desc">Shepherds of the Church and defenders of the Orthodox Faith</div>
-      <div class="cat-count" id="count-hierarchs">Loading&hellip;</div>
+      <span class="cat-name">Hierarchs &amp; Bishops</span>
+      <span class="cat-count" id="count-hierarchs"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('women')">
-      <div class="cat-icon">&#10041;</div>
-      <div class="cat-name">Holy Women</div>
-      <div class="cat-desc">Myrrh-bearers, queens, monastics, and martyrs among women</div>
-      <div class="cat-count" id="count-women">Loading&hellip;</div>
+      <span class="cat-name">Holy Women</span>
+      <span class="cat-count" id="count-women"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('wonderworkers')">
-      <div class="cat-icon">&#10024;</div>
-      <div class="cat-name">Wonderworkers</div>
-      <div class="cat-desc">Saints glorified by God through miracles and healings</div>
-      <div class="cat-count" id="count-wonderworkers">Loading&hellip;</div>
+      <span class="cat-name">Wonderworkers</span>
+      <span class="cat-count" id="count-wonderworkers"></span>
+    </div>
+    <div class="cat-card fade-in" onclick="openCategory('equal-to-apostles')">
+      <span class="cat-name">Equal-to-the-Apostles</span>
+      <span class="cat-count" id="count-equal-to-apostles"></span>
     </div>
     <div class="cat-card fade-in" onclick="openCategory('old-testament')">
-      <div class="cat-icon">&#9651;</div>
-      <div class="cat-name">Old Testament Saints</div>
-      <div class="cat-desc">The righteous forebears and ancestors of God venerated by the Church</div>
-      <div class="cat-count" id="count-old-testament">Loading&hellip;</div>
+      <span class="cat-name">Old Testament Saints</span>
+      <span class="cat-count" id="count-old-testament"></span>
     </div>
   </div>
 
@@ -701,7 +702,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Preachers, orators, educators, Constantinople',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/john-chrysostom.jpg',
     bio: 'Saint John Chrysostom, Archbishop of Constantinople, is one of the Three Holy Hierarchs and a Doctor of the Church. Born in Antioch around 349, he received an exceptional education under the pagan rhetor Libanius, but was drawn to the ascetic life and Christian learning. He spent several years as a monk in the desert before his health compelled his return to Antioch.\n\nOrdained priest in 386, John became renowned throughout the Church for his brilliant preaching — earning the title Chrysostom ("Golden-Mouthed") from later generations. His homiletical works on Scripture, especially his commentaries on Matthew, John, Romans, and the Pauline Epistles, remain unsurpassed in the patristic tradition.\n\nElected Archbishop of Constantinople in 398, he undertook sweeping reforms of the clergy and distributed the wealth of the episcopal household to care for the poor. His fearless preaching against the moral corruption of the imperial court brought him into conflict with Empress Eudoxia and led to two exiles. He died in exile at Comana in Pontus in 407. His relics were returned to Constantinople in 438, where they were received with great honor.',
     troparion: 'Grace shining forth from your lips like a beacon of fire, enlightened the universe; not by love of wealth was the world illumined, but by the treasury of poverty. You showed us the heights of humility. But as you instruct us by your words, Father John Chrysostom, intercede with the Word, Christ our God, for the salvation of our souls.',
     writings: [
@@ -723,7 +724,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Hospital administrators, reformers, Russia, Cappadocia',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/basil-the-great.jpg',
     bio: 'Saint Basil the Great, Archbishop of Caesarea in Cappadocia, is numbered among the Three Holy Hierarchs and is called "the Great" both for his theological brilliance and his extraordinary works of charity. Born into a remarkable Christian family — his grandmother, mother, sister, and two brothers are also venerated as saints — Basil received the finest philosophical and theological education available in his day, studying at Caesarea, Constantinople, and Athens.\n\nAfter embracing the monastic life and traveling to the great ascetic communities of Egypt, Palestine, and Syria, Basil returned to Cappadocia and helped organize monastic communities that would become foundational for Eastern Christian monasticism. His Asketikon remains the primary rule of Orthodox monasticism to this day.\n\nElected Archbishop of Caesarea in 370, Basil was a towering figure in the defense of Nicene Orthodoxy against the Arian heresy during the reign of the emperor Valens. His theological writings — especially his treatise On the Holy Spirit and his work against Eunomius — are cornerstones of the Church\'s trinitarian theology. He is also known for his extraordinary social ministry, having built a great complex of charitable institutions outside Caesarea — hospital, hospice, and training school — which became a model for Christian charity for centuries.',
     troparion: 'Your voice has gone out to all the earth, which received your word. You explained the Faith in a God-befitting manner; you showed forth the nature of all created things; and you adorned human conduct with virtuous ways. O royal priesthood, O venerable father, intercede with Christ God that our souls may be saved.',
     writings: [
@@ -744,7 +745,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Theologians, poets, Constantinople',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/gregory-theologian.jpg',
     bio: 'Saint Gregory the Theologian — called "the Theologian" by the Church along with only St. John the Evangelist — is numbered among the Three Holy Hierarchs and is considered the supreme poet-theologian of the Greek patristic tradition. Born in Cappadocia and educated at Caesarea, Alexandria, and Athens, where he formed his lifelong friendship with St. Basil the Great, Gregory was a reluctant churchman who longed above all for the contemplative life.\n\nHis five Theological Orations, preached in Constantinople in 380, represent perhaps the greatest sustained theological achievement of the patristic era. Against the Arian and Pneumatomachian controversies, Gregory articulated with unparalleled precision the Church\'s faith in the Holy Trinity and the full divinity of the Holy Spirit. Called to become Archbishop of Constantinople, he presided over the Second Ecumenical Council (381) before resigning and retiring to his estate in Arianzus.\n\nGregory was also a poet of rare gifts, leaving hundreds of theological and autobiographical poems that illuminate both his inner spiritual life and the dogmatic teaching of the Church.',
     troparion: 'The shepherd\'s flute of your theology vanquished the trumpets of the orators; for having searched the depths of the Spirit, the beauty of eloquence was added to you. Intercede with Christ God, O Father Gregory, that our souls may be saved.',
     writings: [
@@ -764,7 +765,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Alexandria, defenders of Orthodoxy',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/athanasius-the-great.jpg',
     bio: 'Saint Athanasius the Great, Archbishop of Alexandria, is the great champion of Nicene Orthodoxy and is called "Athanasius against the World" (Athanasius contra mundum) for his steadfast defense of the divinity of Christ against the Arian heresy. As a young deacon, he attended the First Ecumenical Council at Nicaea in 325, and his theological acumen was evident even then.\n\nElected Archbishop of Alexandria in 328, Athanasius would spend seventeen years of his forty-five-year episcopate in exile — exiled five times by four different emperors under Arian pressure — yet never wavered in his confession of the Nicene faith. His masterpiece On the Incarnation, written while still a young man, remains one of the most beautiful and accessible presentations of Orthodox Christology.\n\nHis Life of Antony, the biography of the great desert father, played an enormous role in the spread of monasticism throughout the Christian world. Augustine of Hippo records that it was the reading of this book that catalyzed his own conversion.',
     troparion: 'You were a pillar of Orthodoxy, supporting the Church with divine doctrines, O righteous one. You proclaimed the Son to be consubstantial with the Father, putting to shame Arius. O Father Athanasius, intercede with Christ God that our souls may be saved.',
     writings: [
@@ -784,7 +785,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Russia, monastics, those seeking joy',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/seraphim-of-sarov.jpg',
     bio: 'Saint Seraphim of Sarov is the most beloved saint of modern Russia and one of the great luminaries of Orthodox mystical theology. Born Prokhor Moshnin in Kursk in 1754, he entered the Sarov Monastery at nineteen and was tonsured a monk in 1786, taking the name Seraphim ("burning" or "fiery" in Hebrew).\n\nAfter ordination to the priesthood, Seraphim spent fifteen years as a hermit in the dense forests around Sarov, living in severe asceticism. He is especially remembered for spending one thousand days and nights in prayer on a boulder, kneeling with arms raised, repeating the prayer of the publican. Following a severe illness, he returned to the monastery and spent the last decades of his life as a startets (spiritual father) and healer, receiving thousands of pilgrims.\n\nHis conversation with Nicholas Motovilov "On the Acquisition of the Holy Spirit" — in which St. Seraphim was seen transfigured in uncreated light — is one of the most remarkable documents of Orthodox mystical theology. His greeting to all visitors, whatever the season, was always: "Christ is Risen, my joy!"',
     troparion: 'From your youth you loved Christ, O blessed one, and longed only to serve Him alone. Therefore, practicing a life of strict fasting and prayer in the desert, you pleased God in repentance of heart. Hence Christ has enriched you with His grace, to heal the ailing and the infirm. O Seraphim, our venerable Father, intercede that our souls be saved.',
     writings: []
@@ -800,7 +801,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Myrrh-bearers, penitents, apothecaries',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/mary-magdalene.jpg',
     bio: 'Saint Mary Magdalene is venerated by the Orthodox Church as "Equal to the Apostles" and the first witness of the Resurrection of Christ. She is identified in the Gospels as a woman from whom the Lord cast out seven demons, and who subsequently became one of His most devoted followers, accompanying Him throughout His ministry in Galilee.\n\nMary Magdalene was present at the Crucifixion when nearly all the male disciples had fled, and she was the first to arrive at the tomb on the morning of the Resurrection. She is the first person to whom the Risen Lord appeared, and He commissioned her to carry the news to the Apostles — earning her the title "Apostle to the Apostles."\n\nOrthodox tradition holds that after Pentecost, Mary Magdalene traveled to Rome, where she appeared before the Emperor Tiberius holding a red egg and declaring "Christ is Risen!" — the origin of the red Paschal eggs. She later traveled to Ephesus with the Theotokos and St. John the Theologian, and reposed there.',
     troparion: 'While Christ our God was lying in the tomb, you came with spices to anoint Him, O Mary Magdalene, weeping like a bride deprived of her spouse. Your tears moved the angels to reveal the Resurrection to you; for you were granted to be the first witness of the risen Christ and announce glad tidings to His Apostles.',
     writings: []
@@ -816,7 +817,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Children, sailors, merchants, the falsely accused, Russia, Greece',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/nicholas-of-myra.jpg',
     bio: 'Saint Nicholas, Archbishop of Myra in Lycia, is among the most beloved and widely venerated saints in all of Christendom. Born to wealthy Christian parents in Patara, Nicholas was orphaned early in life and used his entire inheritance to assist the needy, the sick, and the suffering. He is especially remembered for secretly providing dowries to the three impoverished daughters of a ruined nobleman, who otherwise faced a life of destitution.\n\nElected Archbishop of Myra, Nicholas was a tireless defender of the Orthodox faith and the poor. Tradition records his presence at the First Ecumenical Council at Nicaea in 325, where he was so moved by the blasphemies of Arius that he struck him — a story that has made him beloved as a defender of the faith as well as a protector of the innocent.\n\nHis wonderworking continued after his repose: countless miracles are attributed to his intercession, including the rescue of sailors from storms, the release of the falsely imprisoned, and the restoration of children to life. His relics were translated to Bari, Italy in 1087, where they continue to exude fragrant myrrh.',
     troparion: 'The truth of things revealed you to your flock as a rule of faith, a model of meekness and a teacher of temperance. Therefore you have won the heights by humility, riches by poverty. Father and Hierarch Nicholas, intercede with Christ God that our souls may be saved.',
     writings: []
@@ -832,7 +833,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Monastics, hermits, skin diseases, basket weavers',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/antony-the-great.jpg',
     bio: 'Saint Antony the Great is the father of Christian monasticism. Born in Coma in Upper Egypt around 251, he was moved at age twenty by hearing the Gospel passage "Go, sell all that you have and give to the poor," and took this literally, distributing his inheritance and withdrawing to the desert to live as an ascetic.\n\nFor decades he fought an intense spiritual warfare against demonic attacks of every kind, becoming the prototype of the spiritual athlete. His experience drew disciples who settled around him in the desert, and his influence spread throughout the Christian world, giving birth to the cenobitic and eremitic traditions of monasticism.\n\nSt. Athanasios the Great wrote his Life of Antony, which became one of the most widely read books in the ancient world and played an enormous role in the spread of monasticism. The Sayings of the Desert Fathers record many of his teachings. He reposed at 105 years of age, leaving behind two disciples and his sheepskin mantle.',
     troparion: 'You imitated the zeal of Elijah and followed the straight path of the Baptist, O holy Father Antony. You became a dweller in the desert and strengthened the world by your prayers. Intercede with Christ God that our souls may be saved.',
     writings: []
@@ -848,7 +849,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Missionaries, theologians, tentmakers, Greece',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/paul-apostle.jpg',
     bio: 'Saint Paul the Apostle, called the "Apostle to the Gentiles," is the great theologian of the early Church and the author of fourteen epistles in the New Testament. Born Saul of Tarsus, a Pharisee and Roman citizen, he was an early persecutor of the Church until his dramatic encounter with the Risen Christ on the road to Damascus, which transformed him into one of the most tireless missionaries in history.\n\nPaul\'s three great missionary journeys carried the Gospel throughout Asia Minor, Greece, and eventually to Rome. His epistles — Romans, Corinthians, Galatians, Ephesians, Philippians, Colossians, Thessalonians, Timothy, Titus, Philemon, and Hebrews — constitute the most systematic theological reflection on the meaning of the death and resurrection of Christ in the entire New Testament.\n\nPaul\'s teaching on grace, justification, the body of Christ, the gifts of the Spirit, and the resurrection of the dead has been foundational for all subsequent Orthodox theology. He was martyred by beheading in Rome under the Emperor Nero, commemorated together with St. Peter on June 29.',
     troparion: 'You were a vessel of election, O Apostle Paul, a preacher of faith to the nations. Intercede with the God who is merciful that He may grant the remission of sins to those who celebrate your holy memory with love.',
     writings: [
@@ -869,7 +870,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'All Christians, all monastics, the Church',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/mary-theotokos.jpg',
     bio: 'The Most Holy Theotokos — the Mother of God — is venerated above all the saints as the one who bore in her womb the eternal Son of God. The title Theotokos ("God-bearer" or "Mother of God") was formally defined at the Third Ecumenical Council at Ephesus in 431, affirming that Christ is one person, both fully God and fully man, and that she who bore Him bore the Son of God.\n\nThe Virgin Mary was born to Joachim and Anna, who were childless for many years and prayed fervently for a child. She was presented to the Temple as a child and lived there until her betrothal to Joseph. After the Annunciation, when she received the Angel Gabriel\'s greeting and gave her fiat — "Be it done to me according to your word" — she conceived the Son of God by the Holy Spirit.\n\nThe Orthodox Church commemorates the Theotokos on numerous feasts throughout the year: her Nativity (September 8), her Entrance into the Temple (November 21), the Annunciation (March 25), and especially her Dormition (August 15), the celebration of her falling asleep and being taken up body and soul into the heavenly Kingdom. She is invoked in every service of the Orthodox Church as the greatest intercessor before God.',
     troparion: 'In giving birth you preserved your virginity; in falling asleep you did not forsake the world, O Theotokos. You were translated to life, O Mother of Life, and by your prayers you deliver our souls from death.',
     writings: []
@@ -885,7 +886,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Monastics, those climbing toward God',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/john-climacus.jpg',
     bio: 'Saint John Climacus, Abbot of the Monastery of St. Catherine at Mount Sinai, is the author of the Ladder of Divine Ascent — one of the most widely read books in Eastern Christian monasticism. Receiving the name "Climacus" (from the Greek klimax, "ladder") from his famous work, John entered Sinai as a teenager, was tonsured a monk, and spent approximately forty years as a hermit near the monastery.\n\nIn his later years he was elected Abbot of the Sinai Monastery. At the request of John, Abbot of Raïthu, he wrote the Ladder — thirty steps corresponding to the thirty years of Christ\'s hidden life, guiding the soul from its departure from the world through purification and illumination to the heights of love, apatheia, and union with God.\n\nThe Ladder of Divine Ascent is read aloud in Orthodox monasteries throughout Great Lent and is one of the primary texts for the Orthodox spiritual life. Its teachings on prayer, silence, humility, discernment, and the passions have shaped Orthodox spirituality for fifteen centuries.',
     troparion: 'With the streams of your tears, you made the barren desert fertile; and with sighs from deep within you, your labors bore fruit a hundredfold. You became a star shining over the world with miracles. O John our holy Father, intercede with Christ God that our souls may be saved.',
     writings: [
@@ -903,7 +904,7 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Theologians, those who suffer for the faith',
     isFather: true,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/maximus-confessor.jpg',
     bio: 'Saint Maximus the Confessor is considered the last great theologian of the patristic era and the supreme synthesizer of Greek patristic thought. Born in Constantinople in 580 and educated at the imperial court, he served as secretary to the Emperor Heraclius before abandoning his career to become a monk.\n\nMaximus became the chief theological opponent of Monothelitism — the heresy that Christ had only one will — defending the complete human will and freedom of Christ as necessary for our salvation. His theological work on the two wills of Christ was vindicated at the Sixth Ecumenical Council (680-681).\n\nFor his defense of Orthodoxy, Maximus was arrested, tried, and subjected to brutal torture by the imperial authorities. His tongue was cut out and his right hand severed so that he could neither speak nor write in defense of the faith. He died in exile in 662. His Centuries on Love, his Mystagogy, and his Ambigua (on the difficult passages in St. Gregory the Theologian and St. Dionysius) are cornerstones of Orthodox theology.',
     troparion: 'Champion of the Faith and teacher of Orthodoxy, light and adornment of those who live a life consecrated to God, most wise Maximus, by your writings you inspired all men with love of divine wisdom; therefore we cry out: Intercede with Christ God that our souls may be saved.',
     writings: [
@@ -929,7 +930,7 @@ var SAINTS = [
     writings: []
   },
   {
-    id: 'george-martyr',
+    id: 'george-of-lydda',
     name: 'George the Great Martyr',
     category: 'martyrs',
     feastDay: 'April 23',
@@ -939,9 +940,655 @@ var SAINTS = [
     veneratedBy: 'All Orthodox Christians',
     patronage: 'Soldiers, cavalry, England, Georgia, scouts',
     isFather: false,
-    iconUrl: '',
+    iconUrl: 'assets/images/saints/george-of-lydda.jpg',
     bio: 'Saint George the Great Martyr and Trophy-Bearer is one of the most beloved and widely venerated martyrs in all of Christendom. Born to Christian parents in Cappadocia, George became a military officer of exceptional ability and rose to high rank in the Roman army under the Emperor Diocletian, who was himself deeply attached to the young officer.\n\nWhen Diocletian launched his great persecution of the Church in 303, George publicly confessed his Christian faith before the Emperor, resigned his commission, and distributed his wealth to the poor. He endured horrific tortures over the course of several days — impalement, laceration with iron spikes, being placed in a cauldron of boiling lead, and other sufferings — all of which he endured miraculously, continuing to confess Christ. He was finally beheaded on April 23, 303.\n\nThe famous icon of St. George slaying the dragon represents his intercession on behalf of a city plagued by a dragon, interpreted by the Church as an image of his victory over evil and his role as a protector of the faithful.',
     troparion: 'As a liberator of captives, a defender of the poor, a physician for the sick, and champion of kings, O Great Martyr and Trophy-Bearer George, intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+
+  // ── APOSTLES & EVANGELISTS ───────────────────────────────────
+  {
+    id: 'peter-apostle',
+    name: 'Peter the Apostle',
+    category: 'apostles',
+    feastDay: 'June 29',
+    born: 'c. 1 BC',
+    birthplace: 'Bethsaida, Galilee',
+    reposed: 'c. 64–68 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Fishermen, popes, locksmiths, net makers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/peter-apostle.jpg',
+    bio: 'Saint Peter the Apostle, called Simon by birth and renamed Cephas ("Rock") by Christ, was the leader of the Twelve and the first to confess Jesus as the Christ, the Son of the living God. A fisherman from Bethsaida, Peter was called by Christ along with his brother Andrew from the shores of the Sea of Galilee.\n\nThough he denied Christ three times during the Passion, Peter was restored after the Resurrection and entrusted three times with the charge: "Feed my sheep." After Pentecost, Peter led the Jerusalem church, performed miracles, and preached boldly to both Jews and Gentiles. His epistles in the New Testament remain foundational for the theology of suffering, baptism, and the Church as a royal priesthood.\n\nPeter eventually made his way to Rome, where he became the bishop and was ultimately martyred by crucifixion upside down — at his own request, feeling unworthy to die in the same position as his Lord — under the Emperor Nero. He is commemorated together with St. Paul on June 29.',
+    troparion: 'O first-enthroned of the Apostles and teachers of the universe, intercede with the Master of all to grant peace to the world and to our souls great mercy.',
+    writings: [
+      { title: 'First Epistle of Peter', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=1+Peter+1&version=NKJV' },
+      { title: 'Second Epistle of Peter', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=2+Peter+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'luke-apostle',
+    name: 'Luke the Apostle',
+    category: 'apostles',
+    feastDay: 'October 18',
+    born: 'c. 1st century AD',
+    birthplace: 'Antioch, Syria',
+    reposed: 'c. 84 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Physicians, artists, painters of icons',
+    isFather: false,
+    iconUrl: 'assets/images/saints/luke-apostle.jpg',
+    bio: 'Saint Luke the Apostle and Evangelist was a physician by profession, a companion of St. Paul, and the author of the third Gospel and the Acts of the Apostles — together the longest single contribution to the New Testament. A Gentile by birth from Antioch in Syria, Luke was a man of culture, education, and literary skill.\n\nHis Gospel is especially notable for its emphasis on mercy, prayer, women, and the Holy Spirit. It contains the parables of the Prodigal Son and the Good Samaritan, as well as the most detailed account of the Nativity. The Acts of the Apostles preserves the irreplaceable history of the early Church from Pentecost through Paul\'s first imprisonment in Rome.\n\nOrthodox tradition venerates Luke as the first iconographer — said to have painted the original icons of the Theotokos from life. He traveled with Paul on his second and third missionary journeys. After Paul\'s martyrdom, Luke continued preaching in Greece, and is said to have been martyred at Thebes in Boeotia.',
+    troparion: 'O Holy Apostle and Evangelist Luke, intercede with the merciful God that He may grant our souls forgiveness of sins.',
+    writings: [
+      { title: 'The Gospel of Luke', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Luke+1&version=NKJV' },
+      { title: 'The Acts of the Apostles', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Acts+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'john-evangelist',
+    name: 'John the Evangelist',
+    category: 'apostles',
+    feastDay: 'September 26',
+    born: 'c. 6 AD',
+    birthplace: 'Bethsaida, Galilee',
+    reposed: 'c. 100 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Theologians, authors, publishers, love',
+    isFather: true,
+    iconUrl: 'assets/images/saints/john-evangelist.jpg',
+    bio: 'Saint John the Theologian and Beloved Disciple is the last surviving Apostle and the author of the Fourth Gospel, three epistles, and the Book of Revelation. Called "the Theologian" by the Church — an honor shared only with Gregory Nazianzen — John was the son of Zebedee, a Galilean fisherman, and was called together with his brother James from mending their nets.\n\nJohn was the disciple who reclined at the Last Supper next to Jesus, the one who stood at the foot of the Cross with the Theotokos, and the first to believe in the Resurrection when he saw the empty tomb. Christ entrusted His mother to John\'s care from the Cross: "Behold your mother."\n\nAfter the Dormition of the Theotokos, John lived and taught in Ephesus. He was exiled to the island of Patmos under the Emperor Domitian, where he received the Apocalypse. He returned to Ephesus and died peacefully in old age — the only one of the Twelve not to be martyred. His Fourth Gospel, opening with the eternal Logos, is the supreme theological document of the New Testament.',
+    troparion: 'Beloved Apostle of Christ our God, hasten to deliver your defenseless people; for he who permitted you to recline upon his breast accepts you as an intercessor. Beseech him, O Theologian, to dispel the persistent cloud of the heathen, asking for us peace and great mercy.',
+    writings: [
+      { title: 'The Gospel of John', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=John+1&version=NKJV' },
+      { title: 'The Book of Revelation', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Revelation+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'andrew-first-called',
+    name: 'Andrew the First-Called',
+    category: 'apostles',
+    feastDay: 'November 30',
+    born: 'c. 1st century AD',
+    birthplace: 'Bethsaida, Galilee',
+    reposed: 'c. 60–70 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Greece, Scotland, Russia, Ukraine, fishermen',
+    isFather: false,
+    iconUrl: 'assets/images/saints/andrew-first-called.jpg',
+    bio: 'Saint Andrew the First-Called is so named because he was the first of the Twelve Apostles to be called by Christ. A fisherman from Bethsaida and a disciple of John the Baptist, Andrew heard the Baptist\'s testimony concerning Christ and immediately followed Him — then went and brought his brother Simon Peter to the Lord.\n\nAfter Pentecost, Andrew carried the Gospel throughout the regions of Scythia, Thrace, Greece, and the Black Sea coast — the lands that would become Russia, Ukraine, and Greece. Tradition holds that he founded the Church of Byzantium, which would become the Ecumenical Patriarchate of Constantinople, and appointed its first bishop.\n\nAndrew was martyred at Patras in Achaia by crucifixion on an X-shaped cross, now known as the Cross of St. Andrew. He is the patron saint of Scotland, Greece, Russia, and Ukraine, and the Ecumenical Patriarchate bears his legacy as the See of the First-Called.',
+    troparion: 'As the first-called of the Apostles and the brother of the foremost disciple, entreat the Master of all, O Andrew, to grant peace to the world and to our souls great mercy.',
+    writings: []
+  },
+  {
+    id: 'matthew-evangelist',
+    name: 'Matthew the Evangelist',
+    category: 'apostles',
+    feastDay: 'November 16',
+    born: 'c. 1st century AD',
+    birthplace: 'Capernaum, Galilee',
+    reposed: 'c. 70 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Tax collectors, accountants, bankers, bookkeepers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/matthew-evangelist.jpg',
+    bio: 'Saint Matthew the Apostle and Evangelist, also called Levi, was a tax collector in Capernaum when Christ called him with two words: "Follow me." He rose immediately, left everything, and became one of the Twelve. His dramatic conversion — and the feast he gave for Jesus, attended by tax collectors and sinners, which scandalized the Pharisees — is recorded in his own Gospel with characteristic brevity.\n\nMatthew\'s Gospel, the first in canonical order, was addressed primarily to Jewish Christians and is saturated with Old Testament quotations and fulfillments, presenting Jesus as the new Moses and the fulfillment of all the Law and the Prophets. It contains the Sermon on the Mount, the Lord\'s Prayer, and the Great Commission.\n\nAfter Pentecost, Matthew preached in Judea, Ethiopia, Persia, and Parthia. He is believed to have been martyred, though accounts vary on the location and manner. His symbol in iconography is the man or angel, representing the Gospel\'s emphasis on the humanity of Christ.',
+    troparion: 'With eager resolve you forsook the tax collector\'s table and followed in the steps of Christ the Master. By the grace of God you received the power to heal the sick. Through your holy Gospel you have enriched the world. O Matthew, Apostle and Evangelist, entreat merciful God to grant our souls salvation.',
+    writings: [
+      { title: 'The Gospel of Matthew', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Matthew+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'mark-evangelist',
+    name: 'Mark the Evangelist',
+    category: 'apostles',
+    feastDay: 'April 25',
+    born: 'c. 1st century AD',
+    birthplace: 'Cyrene, North Africa',
+    reposed: 'c. 68 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Alexandria, Venice, Egypt, notaries, lawyers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/mark-evangelist.jpg',
+    bio: 'Saint Mark the Apostle and Evangelist, also called John Mark, was the author of the second and earliest Gospel and the founder of the Church of Alexandria. A companion of both Peter and Paul, Mark is believed to have written his Gospel based primarily on the eyewitness testimony of St. Peter, whose interpreter he served in Rome. The Gospel of Mark is characterized by its urgency and directness.\n\nMark accompanied Paul and Barnabas on the first missionary journey but turned back at Perga — a departure that led to a rift between Paul and Barnabas and the formation of two separate missionary teams. He was later reconciled with Paul and served him again during his imprisonment in Rome.\n\nMark is especially venerated as the founder of the ancient and apostolic Church of Alexandria, one of the great patriarchal sees of antiquity. He preached in Egypt, Libya, and the Pentapolis, and is said to have been martyred in Alexandria by dragging through the streets on Easter Day.',
+    troparion: 'O Holy Apostle and Evangelist Mark, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: [
+      { title: 'The Gospel of Mark', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Mark+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'thomas-apostle',
+    name: 'Thomas the Apostle',
+    category: 'apostles',
+    feastDay: 'October 6',
+    born: 'c. 1st century AD',
+    birthplace: 'Galilee',
+    reposed: 'c. 72 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'India, architects, the blind, those who doubt',
+    isFather: false,
+    iconUrl: 'assets/images/saints/thomas-apostle.jpg',
+    bio: 'Saint Thomas the Apostle, called Didymus ("Twin"), is best known for his refusal to believe in the Resurrection without direct evidence — "Unless I see in His hands the print of the nails, and put my finger into the print of the nails, and put my hand into His side, I will not believe" — and for his subsequent confession when Christ appeared to him: "My Lord and my God!" This confession is the most explicit affirmation of Christ\'s divinity in the entire Gospel of John.\n\nAfter Pentecost, Thomas carried the Gospel further than any other Apostle, traveling to Parthia, Persia, and ultimately to India, where he is credited with founding the ancient Thomas Christian communities of Kerala — one of the oldest Christian communities in the world. The Mar Thoma Christians of India trace their origin to his missionary work.\n\nThomas was martyred at Mylapore (near modern Chennai) by being pierced with lances, around 72 AD. His tomb is venerated to this day in the Cathedral of St. Thomas Basilica in Chennai. He is the patron saint of India.',
+    troparion: 'O Apostle Thomas, you dispelled unbelief by your touch of the Lord\'s life-giving side. You confirmed the faith of the Church in the proclamation of Christ our God. Therefore we honor you.',
+    writings: []
+  },
+  {
+    id: 'philip-apostle',
+    name: 'Philip the Apostle',
+    category: 'apostles',
+    feastDay: 'November 14',
+    born: 'c. 1st century AD',
+    birthplace: 'Bethsaida, Galilee',
+    reposed: 'c. 80 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Hatters, pastry chefs, Luxembourg',
+    isFather: false,
+    iconUrl: 'assets/images/saints/philip-apostle.jpg',
+    bio: 'Saint Philip the Apostle was called by Christ on the same day as Andrew and Peter, and immediately went and found Nathanael (Bartholomew), saying: "We have found him of whom Moses in the Law and also the Prophets wrote, Jesus of Nazareth." At the feeding of the five thousand, Christ asked Philip where they could buy bread — testing him, as the Gospel notes.\n\nAfter Pentecost, Philip preached in Phrygia, Greece, and Syria. He is associated especially with the city of Hierapolis in Phrygia (modern Turkey), where he worked many miracles and converted many to the faith, including the wife of the local proconsul. This led to his arrest and martyrdom by crucifixion or hanging upside down, around 80 AD.\n\nPhilip is commemorated on November 14, the day before the Nativity Fast begins — often called "Philip\'s Fast" in some Orthodox traditions. His boldness in witness and his role in bringing others to Christ make him a model of apostolic mission.',
+    troparion: 'O Holy Apostle Philip, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: []
+  },
+  {
+    id: 'bartholomew-apostle',
+    name: 'Bartholomew the Apostle',
+    category: 'apostles',
+    feastDay: 'June 11',
+    born: 'c. 1st century AD',
+    birthplace: 'Cana, Galilee',
+    reposed: 'c. 68–71 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Armenia, tanners, bookbinders, butchers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/bartholomew-apostle.jpg',
+    bio: 'Saint Bartholomew the Apostle is generally identified by scholars with Nathanael of Cana, who was brought to Jesus by Philip and greeted with the words: "Behold, an Israelite indeed, in whom there is no deceit!" — to which Nathanael replied with one of the great confessions in John\'s Gospel: "Rabbi, You are the Son of God! You are the King of Israel!"\n\nAfter Pentecost, Bartholomew carried the Gospel to Arabia, Ethiopia, India, Armenia, and Mesopotamia. He is especially venerated as the apostle of Armenia, along with St. Thaddaeus (Jude), and is considered one of the founders of Armenian Christianity — which claims to be the first nation to officially adopt Christianity as its state religion, in 301 AD.\n\nBartholomew was martyred in Albanopolis in Armenia, having been flayed alive and then beheaded — or, in some accounts, crucified upside down. His iconographic image often depicts him holding his own skin. His relics were brought to Rome in the 10th century.',
+    troparion: 'O Holy Apostle Bartholomew, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: []
+  },
+  {
+    id: 'james-zebedee',
+    name: 'James Son of Zebedee',
+    category: 'apostles',
+    feastDay: 'April 30',
+    born: 'c. 1st century AD',
+    birthplace: 'Bethsaida, Galilee',
+    reposed: 'c. 44 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Spain, pilgrims, the dying, laborers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/james-zebedee.jpg',
+    bio: 'Saint James the Apostle, son of Zebedee and brother of John the Evangelist, was one of the innermost circle of the Twelve — present at the Transfiguration, the Raising of Jairus\'s daughter, and the Agony in Gethsemane. He and John were nicknamed "Boanerges" — "Sons of Thunder" — by Christ, for their fiery temperament.\n\nJames was the first of the Apostles to be martyred. Around 44 AD, King Herod Agrippa I had James killed with the sword in Jerusalem — the only Apostolic martyrdom explicitly recorded in the New Testament (Acts 12:2). The brevity of the account underscores its matter-of-fact significance in the early church.\n\nWestern tradition, not found in the Orthodox East, identifies James with the patron saint of Spain (Santiago de Compostela), one of the great medieval pilgrimage sites. The Orthodox Church commemorates him on April 30 and on the Sunday of the Holy Myrrhbearers.',
+    troparion: 'O Holy Apostle James, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: []
+  },
+  {
+    id: 'jude-apostle',
+    name: 'Jude the Apostle',
+    category: 'apostles',
+    feastDay: 'June 19',
+    born: 'c. 1st century AD',
+    birthplace: 'Galilee',
+    reposed: 'c. 65–80 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Hopeless causes, desperate situations',
+    isFather: false,
+    iconUrl: 'assets/images/saints/jude-apostle.jpg',
+    bio: 'Saint Jude the Apostle, also called Thaddaeus, was the brother of James the Less and a kinsman of Christ. At the Last Supper he asked Christ: "Lord, how is it that You will manifest Yourself to us, and not to the world?" — receiving the profound answer about the mutual indwelling of the Father, Son, and the believer who loves and keeps His word.\n\nAfter Pentecost, Jude preached in Judea, Samaria, Idumaea, Syria, Mesopotamia, and Persia. Together with St. Bartholomew, he is venerated as one of the apostles of Armenia. His brief Epistle in the New Testament is a fierce defense of the apostolic faith against false teachers who distort grace into licentiousness.\n\nJude is venerated in Western Christianity as the patron saint of hopeless causes — attributed to his feast day sharing proximity with that of Simon the Zealot in the Western calendar, and to confusion with Judas Iscariot discouraging his invocation. In Orthodoxy he is simply venerated as one of the holy Apostles.',
+    troparion: 'O Holy Apostle Jude, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: [
+      { title: 'The Epistle of Jude', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Jude+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'simon-zealot',
+    name: 'Simon the Zealot',
+    category: 'apostles',
+    feastDay: 'May 10',
+    born: 'c. 1st century AD',
+    birthplace: 'Cana, Galilee',
+    reposed: 'c. 1st century AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Tanners, woodcutters',
+    isFather: false,
+    iconUrl: 'assets/images/saints/simon-zealot.jpg',
+    bio: 'Saint Simon the Apostle, called "the Zealot" to distinguish him from Simon Peter, is one of the least documented of the Twelve. His epithet may indicate he belonged to or had sympathies with the Zealot movement — a Jewish nationalist group dedicated to liberation from Roman rule — before his call to follow Christ.\n\nThe Gospels record almost nothing specific about Simon other than his name in the lists of the Twelve. After Pentecost, various traditions send him to Egypt, North Africa, Persia, and Armenia. He is often associated with St. Jude Thaddaeus in his missionary work, and some traditions say they were martyred together in Persia.\n\nSimon\'s inclusion among the Twelve alongside Matthew the tax collector — a Roman collaborator — is itself a sign of the radical new community Christ was forming: men of diametrically opposed political convictions, united by their call to follow the same Lord.',
+    troparion: 'O Holy Apostle Simon, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: []
+  },
+  {
+    id: 'matthias-apostle',
+    name: 'Matthias the Apostle',
+    category: 'apostles',
+    feastDay: 'August 9',
+    born: 'c. 1st century AD',
+    birthplace: 'Judea',
+    reposed: 'c. 80 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Alcoholics, smallpox sufferers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/matthias-apostle.jpg',
+    bio: 'Saint Matthias the Apostle was chosen by lot to replace Judas Iscariot among the Twelve after the Ascension. The Acts of the Apostles records that Peter presented two candidates — Joseph Barsabbas and Matthias — both of whom had accompanied the disciples throughout the entire ministry of Jesus, from the Baptism of John to the Ascension. The lot fell upon Matthias, who was numbered with the Eleven.\n\nMatthias had thus been a witness to the entire earthly ministry of Christ without being one of the original Twelve — a reminder that the circle of disciples was always larger than the inner Twelve. His inclusion represents the principle that apostolic witness requires both the call of God and the confirmation of the Church.\n\nAfter Pentecost, tradition associates Matthias with preaching in Judea, Cappadocia, Ethiopia, and the regions around the Caspian Sea. He is said to have been stoned and then beheaded. His relics are venerated in Rome and in Trier, Germany.',
+    troparion: 'O Holy Apostle Matthias, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
+    writings: []
+  },
+
+  // ── PROPHETS ─────────────────────────────────────────────────
+  {
+    id: 'john-the-baptist',
+    name: 'John the Baptist',
+    category: 'prophets',
+    feastDay: 'January 7 (Synaxis); June 24 (Nativity); August 29 (Beheading)',
+    born: 'c. 1st century BC',
+    birthplace: 'Judean hill country',
+    reposed: 'c. 28–29 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Monastics, converts, bird dealers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/john-the-baptist.jpg',
+    bio: 'Saint John the Baptist and Forerunner is the greatest of the prophets and the last of the Old Testament saints — the "voice crying in the wilderness" foretold by Isaiah who prepared the way of the Lord. Born of the aged and barren Elizabeth, a kinswoman of the Virgin Mary, John\'s birth itself was a miracle, announced by the Angel Gabriel to his father Zechariah in the Temple.\n\nFrom youth John lived in the Judean desert in severe asceticism, clothed in camel\'s hair and eating locusts and wild honey. He preached a baptism of repentance for the forgiveness of sins and called all people to prepare for the One who would come after him. When Christ came to the Jordan, John recognized Him and said: "Behold, the Lamb of God, who takes away the sin of the world" — and baptized Him, receiving the revelation of the Holy Trinity.\n\nChrist Himself declared: "Among those born of women there has not arisen anyone greater than John the Baptist." John was imprisoned by Herod Antipas for rebuking his unlawful marriage to Herodias, and was beheaded at her daughter\'s request. He is venerated in the Orthodox Church with a feast the day after Theophany (January 7) as the one who baptized and personally witnessed the Lord.',
+    troparion: 'The memory of the righteous is celebrated with hymns of praise, but the Lord\'s testimony is sufficient for you, O Forerunner; you were shown to be truly even more venerable than the Prophets, for you were granted to baptize in the flowing waters Him whom they proclaimed. Then, having suffered for truth with joy, you announced to those in Hades God who appeared in the flesh, who takes away the sin of the world and grants us great mercy.',
+    writings: []
+  },
+  {
+    id: 'elijah-prophet',
+    name: 'Elijah the Prophet',
+    category: 'prophets',
+    feastDay: 'July 20',
+    born: 'c. 9th century BC',
+    birthplace: 'Tishbe, Gilead',
+    reposed: 'Taken up alive into heaven',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Bosnia & Herzegovina, Carmelite Order, those who fight for God\'s glory',
+    isFather: false,
+    iconUrl: 'assets/images/saints/elijah-prophet.jpg',
+    bio: 'Holy Prophet Elijah is one of the greatest prophets of the Old Testament and one of only two figures in the Scriptures (together with Enoch) who were taken up to heaven without dying. He prophesied in the northern Kingdom of Israel during the reign of the wicked King Ahab and Queen Jezebel, who had led Israel into Baal worship.\n\nElijah called down fire from heaven to confound the prophets of Baal on Mount Carmel, announced a devastating three-year drought, was fed by ravens in the wilderness, and raised the son of the widow of Zarephath from the dead. His encounter with God on Mount Horeb — where God spoke not in wind or fire but in "a still small voice" — is one of the most profound theophanies in the Old Testament.\n\nElijah was taken up into heaven in a chariot of fire before the eyes of his disciple Elisha, leaving his mantle behind. Jewish and Christian tradition awaited his return as the precursor of the Messiah — a role fulfilled, as Christ declared, by John the Baptist. Elijah appeared at the Transfiguration together with Moses, bearing witness to Christ as the fulfillment of the Law and the Prophets.',
+    troparion: 'The angel in the flesh and the cornerstone of the Prophets, the second Forerunner of the coming of Christ, the glorious Elijah sent grace from on high to Elisha to dispel diseases and to cleanse lepers. Therefore he also pours forth healing for those who honor him.',
+    writings: []
+  },
+
+  // ── MARTYRS ──────────────────────────────────────────────────
+  {
+    id: 'stephen-protomartyr',
+    name: 'Stephen the Protomartyr',
+    category: 'martyrs',
+    feastDay: 'December 27',
+    born: 'c. 1st century AD',
+    birthplace: 'Unknown',
+    reposed: 'c. 34 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Deacons, stonecutters, bricklayers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/stephen-protomartyr.jpg',
+    bio: 'Saint Stephen the Protomartyr — the "first martyr" — was one of the Seven Deacons chosen by the Apostles to care for the daily distribution of food in the Jerusalem church and a man described as "full of faith and of the Holy Spirit." He became the first Christian to die for his faith, stoned to death by a crowd that included the young Saul of Tarsus, who would later become the Apostle Paul.\n\nStephen\'s speech to the Sanhedrin — preserved in Acts 7 — is the longest speech in the Book of Acts and a magisterial summary of salvation history, concluding with a passionate rebuke of Israel\'s resistance to the Holy Spirit. As he was being stoned, Stephen prayed: "Lord, do not hold this sin against them" — an echo of Christ\'s prayer from the Cross.\n\nAs he was dying, Stephen saw heaven opened and Christ standing — not seated — at the right hand of the Father, as if rising to welcome His first martyr. He is commemorated on December 27, the day after Christmas, a placement that frames the joy of the Nativity with the reality of the Cross.',
+    troparion: 'As the first of the martyrs and the leader of the athletes, O Stephen, you entreat the Lord to forgive your enemies on bended knees, for you saw the Lord standing at the right hand of the Father, and you cried out: O Lord Jesus, receive my spirit.',
+    writings: []
+  },
+  {
+    id: 'ignatius-of-antioch',
+    name: 'Ignatius of Antioch',
+    category: 'martyrs',
+    feastDay: 'December 20',
+    born: 'c. 35 AD',
+    birthplace: 'Syria',
+    reposed: 'c. 107 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Eastern Mediterranean churches, those facing execution',
+    isFather: true,
+    iconUrl: 'assets/images/saints/ignatius-of-antioch.jpg',
+    bio: 'Saint Ignatius of Antioch, the second bishop of Antioch after St. Peter, is one of the Apostolic Fathers and a martyr of exceptional significance. Condemned to death in Rome, he was transported across Asia Minor and Greece under armed escort — and used every stop along the way to write seven letters to Christian communities that remain among the most important early Christian documents.\n\nIgnatius\'s letters reveal a church with a clear episcopal structure, a sacramental life centered on the Eucharist, and a profound theology of martyrdom. His letters to the Ephesians, Magnesians, Trallians, Romans, Philadelphians, Smyrnaeans, and to Polycarp are the first clear evidence of the threefold ministry of bishop, presbyter, and deacon in the early Church.\n\nHis letter to the Romans contains his famous plea not to be saved from martyrdom: "Let me be food for the wild beasts, through whom it is possible to attain to God. I am God\'s wheat, and I am ground by the teeth of wild beasts, that I may be found to be pure bread." He was devoured by lions in the Colosseum around 107 AD.',
+    troparion: 'You participated in the ways of the Apostles and succeeded to their thrones; through practice you found the path to divine contemplation, O God-inspired one; teaching the word of truth aright, you suffered for the faith even unto blood, O hieromartyr Ignatius. Intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'Letters (Seven Epistles)', source: 'Early Church Fathers, Vol. 1', url: 'https://www.newadvent.org/fathers/0105.htm' },
+    ]
+  },
+  {
+    id: 'demetrius-of-thessaloniki',
+    name: 'Demetrius of Thessaloniki',
+    category: 'martyrs',
+    feastDay: 'October 26',
+    born: 'c. 280 AD',
+    birthplace: 'Thessaloniki, Greece',
+    reposed: '306 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Thessaloniki, soldiers, Serbia, Dalmatia',
+    isFather: false,
+    iconUrl: '',
+    bio: 'Saint Demetrius the Great Martyr and Myrrh-Streamer is one of the most beloved military martyrs of the Orthodox Church, the patron saint of Thessaloniki, and one of the great intercessors for the Greek and Serbian peoples. Born to a Christian family of noble rank in Thessaloniki, he was appointed by the Emperor Maximian as a Roman proconsul, but secretly taught the Christian faith.\n\nWhen his faith was discovered, Demetrius was imprisoned in a bath-house beneath the arena. While he was imprisoned, a Christian gladiator named Nestor sought his blessing to fight the giant champion Lyaeus. Demetrius blessed him, Nestor defeated and killed Lyaeus, and was immediately executed. Demetrius himself was killed by soldiers with spears in his prison cell.\n\nHis body was immediately venerated by Christians, and his tomb became a place of miracle-working. He is especially known for exuding holy myrrh — fragrant oil from his relics — which continues to the present day. His great basilica in Thessaloniki is one of the oldest Christian churches in the world.',
+    troparion: 'The world has found in you a great champion in time of peril, as you emerged victorious in routing the barbarians, O passion-bearer. As you humbled the boasts of Lyaeus and gave courage to Nestor in the stadium, in the same way, O holy Great Martyr Demetrios, implore Christ God to grant us His great mercy.',
+    writings: []
+  },
+  {
+    id: 'perpetua-and-felicity',
+    name: 'Perpetua and Felicity',
+    category: 'martyrs',
+    feastDay: 'February 1',
+    born: 'c. 182 AD / Unknown',
+    birthplace: 'Carthage, North Africa',
+    reposed: '203 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Mothers, expectant mothers, those persecuted for faith',
+    isFather: false,
+    iconUrl: '',
+    bio: 'The Holy Martyrs Perpetua and Felicity, together with their companions Saturus, Saturninus, Secundulus, and Revocatus, were martyred in Carthage in 203 AD under the Emperor Septimius Severus. Vibia Perpetua was a young noblewoman of 22, recently married and nursing an infant son. Felicity was her pregnant slave, who gave birth to a daughter in prison days before the martyrdom.\n\nThe Passion of Perpetua and Felicity is one of the most extraordinary documents from the ancient Church — in part because it includes a first-person diary written by Perpetua herself, making it among the earliest texts known to be authored by a Christian woman. Her diary records her father\'s anguished pleas for her to renounce her faith, her visions, and her unwavering determination to die for Christ.\n\nIn the arena, Perpetua and Felicity were thrown to a wild cow, then finished with the sword. Their witness is a powerful testimony to the equal dignity of women in martyrdom. Augustine of Hippo wrote and preached extensively about them. Their feast on February 1 precedes the feast of the Presentation of Christ into the Temple, drawing a connection between sacrifice and faith.',
+    troparion: 'O holy martyrs Perpetua and Felicity, you counted not your lives dear for the sake of Christ, and by your blood you watered the seed of faith in Africa. Intercede for us who honor your holy memory, that we may have courage to confess Christ in every circumstance.',
+    writings: [
+      { title: 'The Passion of Perpetua and Felicity', source: 'Early Christian Writings', url: 'https://www.earlychristianwritings.com/text/perpetua.html' },
+    ]
+  },
+
+  // ── MONASTICS ────────────────────────────────────────────────
+  {
+    id: 'mary-of-egypt',
+    name: 'Mary of Egypt',
+    category: 'monastics',
+    feastDay: 'April 1; Fifth Sunday of Great Lent',
+    born: 'c. 344 AD',
+    birthplace: 'Egypt',
+    reposed: 'c. 421 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Repentant sinners, women, those struggling with temptation',
+    isFather: false,
+    iconUrl: 'assets/images/saints/mary-of-egypt.jpg',
+    bio: 'Saint Mary of Egypt is the great icon of repentance in Orthodox tradition — a woman who spent seventeen years in extreme sin followed by forty-seven years of solitary asceticism in the desert beyond the Jordan. Her life is read in Orthodox churches during the fifth week of Great Lent as a call to profound repentance.\n\nBorn in Egypt, Mary left home at twelve and spent the next seventeen years in Alexandria living a life of wanton immorality — not for gain but, as she herself said, out of an insatiable passion. At the age of twenty-nine, she joined a group of pilgrims sailing to Jerusalem for the feast of the Exaltation of the Cross. When she attempted to enter the church of the Holy Sepulchre, an invisible force prevented her — she was physically unable to cross the threshold. Struck with compunction, she fell before an icon of the Theotokos in prayer and received the grace of conversion.\n\nA voice directed her to cross the Jordan into the desert. There she lived for forty-seven years in total solitude, fasting, praying, and struggling against her passions. She was discovered by the monk Zosimas, who heard her confession, brought her Holy Communion, and buried her after her repose. Her life was recorded by Sophronius, Patriarch of Jerusalem.',
+    troparion: 'The image of God was truly preserved in you, O Mother, for you took up the Cross and followed Christ. By so doing, you taught us to disregard the flesh, for it passes away, but to care instead for the soul, since it is immortal. Therefore your spirit, O Holy Mother Mary, rejoices with the Angels.',
+    writings: []
+  },
+  {
+    id: 'silouan-the-athonite',
+    name: 'Silouan the Athonite',
+    category: 'monastics',
+    feastDay: 'September 24',
+    born: '1866',
+    birthplace: 'Shovskoe, Tambov, Russia',
+    reposed: '1938',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Russia, Mount Athos, monastics',
+    isFather: false,
+    iconUrl: 'assets/images/saints/silouan-the-athonite.jpg',
+    bio: 'Saint Silouan the Athonite is one of the most beloved saints of the 20th century — a Russian peasant monk who spent nearly fifty years on Mount Athos and whose life and writings have shaped the spirituality of the modern Orthodox world. Born Simeon Antonov in a village in the Tambov region of Russia, he was known in his youth for great physical strength and was given to drunkenness and sinful living.\n\nAfter a vision warning him of his path toward destruction, Silouan underwent a profound conversion and entered the Russian Monastery of St. Panteleimon on Mount Athos. There he received a direct experience of the living Christ — a vision of such blazing light that he fell to the floor — and was simultaneously shown his own poverty and unworthiness.\n\nHis life was characterized by an extraordinarily intense spiritual struggle, periods of darkness and desolation lasting years, and a central theological insight preserved in his writings: "Keep your mind in hell, and despair not." His disciple Archimandrite Sophrony (Sakharov) edited and published his notes, and Silouan was canonized in 1988. His teaching on love for enemies — "love your enemies" as the mark of the Christian — has become central to Orthodox spiritual discourse.',
+    troparion: 'In you, O Father, the image was preserved with care; for you took up the Cross and followed Christ, teaching by example how to disregard the flesh, for it is transient, but to care for the soul as immortal. Therefore your spirit, Venerable Silouan, rejoices with the Angels.',
+    writings: [
+      { title: 'Saint Silouan the Athonite', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+    ]
+  },
+  {
+    id: 'ephrem-the-syrian',
+    name: 'Ephrem the Syrian',
+    category: 'monastics',
+    feastDay: 'January 28',
+    born: 'c. 306 AD',
+    birthplace: 'Nisibis, Mesopotamia',
+    reposed: '373 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Spiritual directors, spiritual leaders, Syria',
+    isFather: true,
+    iconUrl: 'assets/images/saints/ephrem-the-syrian.jpg',
+    bio: 'Saint Ephrem the Syrian is the greatest poet-theologian of the Syriac Christian tradition and one of the most prolific of all the Church Fathers. Born in Nisibis in Mesopotamia (modern Turkey/Syria border region), he spent the last years of his life as a monk in Edessa, where he cared for plague victims and wrote his extraordinary theological poetry.\n\nEphrem composed hundreds of hymns — called madrashe — in a sophisticated Syriac poetic form that he virtually invented for theological purposes. His hymns on the Nativity, on Paradise, on Faith, and on the Church are treasuries of Orthodox theology expressed in lyric form. He also wrote extensive biblical commentaries, homilies, and polemical works against various heresies.\n\nEphrem\'s Prayer of St. Ephrem — "O Lord and Master of my life, take from me the spirit of sloth, despondency, lust of power, and idle talk..." — is the central penitential prayer of Orthodox Great Lent, repeated with prostrations at every service throughout the season. It is one of the most beloved and widely prayed texts in all of Orthodox Christianity.',
+    troparion: 'Distributor of divine gifts, O Ephrem, you gladdened the Church with your sacred writings, O venerable one. You distributed richly of God\'s grace, and you watered with the streams of your tears the dry ground of our hearts. O God-bearing Father, intercede with Christ God that He may save our souls.',
+    writings: [
+      { title: 'Hymns on Paradise', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+      { title: 'Hymns on the Nativity', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+    ]
+  },
+
+  // ── HIERARCHS ────────────────────────────────────────────────
+  {
+    id: 'gregory-palamas',
+    name: 'Gregory Palamas',
+    category: 'hierarchs',
+    feastDay: 'November 14; Second Sunday of Great Lent',
+    born: '1296',
+    birthplace: 'Constantinople',
+    reposed: '1359',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Thessaloniki, theologians, hesychasts',
+    isFather: true,
+    iconUrl: 'assets/images/saints/gregory-palamas.jpg',
+    bio: 'Saint Gregory Palamas, Archbishop of Thessaloniki, is the great defender of hesychasm and the theologian of the uncreated divine energies — the last of the great dogmatic Fathers of the Church. Born in Constantinople and educated at court, Gregory chose the monastic life on Mount Athos in his early twenties, where he devoted himself to the hesychast practice of pure prayer and the vision of the divine light.\n\nIn the 1330s, the monk Barlaam of Calabria launched a philosophical attack on the hesychast monks, denying that the divine light perceived in prayer could be genuinely uncreated and divine. Gregory\'s response — articulated in his Triads in Defense of the Holy Hesychasts and his One Hundred and Fifty Chapters — drew the crucial distinction between God\'s unknowable essence and His real, participable uncreated energies. The Councils of Constantinople (1341, 1347, 1351) vindicated Gregory\'s theology.\n\nElected Archbishop of Thessaloniki in 1347, Gregory continued to teach and preach until his repose in 1359. He was canonized in 1368. The second Sunday of Great Lent is dedicated to his memory as a second Sunday of Orthodoxy — linking the confession of the uncreated energies with the Triumph of Orthodoxy celebrated on the first Sunday.',
+    troparion: 'O light of Orthodoxy, pillar and teacher of the Church, adornment of monastics and invincible champion of theologians, O Gregory the Wonderworker, glory of Thessaloniki and preacher of grace, intercede with the Lord unceasingly for the salvation of our souls.',
+    writings: [
+      { title: 'Triads in Defense of the Holy Hesychasts', source: 'Paulist Press', url: 'https://www.amazon.com' },
+      { title: 'One Hundred and Fifty Chapters', source: 'Pontifical Institute of Mediaeval Studies', url: 'https://www.amazon.com' },
+    ]
+  },
+  {
+    id: 'cyril-and-methodius',
+    name: 'Cyril and Methodius',
+    category: 'hierarchs',
+    feastDay: 'May 11',
+    born: 'c. 826 / c. 815 AD',
+    birthplace: 'Thessaloniki, Greece',
+    reposed: '869 / 885 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Slavic peoples, Bulgaria, Moravia, Europe',
+    isFather: false,
+    iconUrl: 'assets/images/saints/cyril-and-methodius.jpg',
+    bio: 'Saints Cyril and Methodius, the Holy Equal-to-the-Apostles and Enlighteners of the Slavs, are the brothers from Thessaloniki who created the Glagolitic alphabet, translated the Scriptures and liturgical texts into Slavonic, and evangelized the Slavic peoples of Moravia and Bulgaria — giving them both literacy and Christianity simultaneously.\n\nCyril (born Constantine) was a brilliant scholar who had mastered multiple languages and served as a professor of philosophy in Constantinople. Methodius was an administrator and monk. Together they were sent by the Patriarch Photios and the Emperor Michael III as missionaries to the Moravian prince Rastislav in 863, responding to his request for teachers in the Slavic tongue.\n\nCyril died in Rome in 869, having been received with honor by Pope Hadrian II, who approved the use of Slavonic in the liturgy. Methodius continued the mission until his death in 885. Their work gave the Slavic world its alphabet (Cyrillic is named after Cyril), its liturgy, its theology, and its literature. They are venerated as Equal-to-the-Apostles and are the co-patrons of Europe, proclaimed by Pope John Paul II in 1980.',
+    troparion: 'O holy brothers Cyril and Methodius, you taught the Slavic peoples through divine wisdom. You became instruments of God to lead the nations to know the truth. Through your holy intercessions keep all Orthodox Christians steadfast in true faith.',
+    writings: []
+  },
+  {
+    id: 'innocent-of-alaska',
+    name: 'Innocent of Alaska',
+    category: 'hierarchs',
+    feastDay: 'March 31; October 6',
+    born: '1797',
+    birthplace: 'Anga, Siberia, Russia',
+    reposed: '1879',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Alaska, missionaries, the Eastern Church in America',
+    isFather: false,
+    iconUrl: 'assets/images/saints/innocent-of-alaska.jpg',
+    bio: 'Saint Innocent of Alaska, Equal-to-the-Apostles, is the great missionary of the Orthodox Church in North America and one of the most extraordinary figures in the history of Christian mission. Born Ivan Popov in a small Siberian village in 1797, he accepted a mission appointment to the Aleutian Islands in 1823 and spent decades among the indigenous peoples of Alaska, the Aleutians, and Siberia.\n\nInnocent was a linguist, craftsman, naturalist, and theologian. He created alphabets for the Aleut, Tlingit, and other Alaskan languages, translated the Gospels and liturgical texts, and wrote the celebrated Indication of the Way into the Kingdom of Heaven in Aleut — the first book printed in an Alaskan language. He built churches, schools, and a weather station, and his scientific observations were published by the Russian Academy of Sciences.\n\nOrdained bishop in 1840, Innocent became Metropolitan of Moscow in 1868 — the highest position in the Russian Orthodox Church. Under his leadership the Russian Ecclesiastical Mission expanded its North American work. He was canonized in 1977 by the Russian Orthodox Church and by the Orthodox Church in America. His relics rest in the Dormition Cathedral of the Trinity-Sergius Lavra.',
+    troparion: 'Praising the holy hierarch Innocent, let us cry aloud: You were a true and faithful servant of God. As a new apostle, you enlightened the peoples of North America and Siberia with the light of the Gospel, and by your tireless missionary work, you brought the nations to the knowledge of the truth. Intercede with Christ God that He may save our souls.',
+    writings: [
+      { title: 'Indication of the Way into the Kingdom of Heaven', source: 'St. Herman of Alaska Brotherhood', url: 'https://www.amazon.com' },
+    ]
+  },
+
+  // ── HOLY WOMEN ───────────────────────────────────────────────
+  {
+    id: 'matuska-olga-michael',
+    name: 'Matuska Olga of Alaska',
+    category: 'women',
+    feastDay: 'December 24',
+    born: '1916',
+    birthplace: 'Kwethluk, Alaska',
+    reposed: '1979',
+    veneratedBy: 'Orthodox Church in America',
+    patronage: 'Alaska, indigenous peoples, simple faithfulness',
+    isFather: false,
+    iconUrl: 'assets/images/saints/matuska-olga-michael.jpg',
+    bio: 'Matushka Olga of Alaska, glorified as a saint in 2019 by the Orthodox Church in America, is a modern American saint of extraordinary simplicity and charity. Born Olga Pavlova in Kwethluk, Alaska, a Yup\'ik woman raised in the Orthodox faith planted by St. Innocent and the Russian missionaries, she married the priest Nikolai Michael in 1936 and served alongside him for decades as a matushka (priest\'s wife) in the Yukon-Kuskokwim Delta.\n\nMatushka Olga\'s sainthood is not defined by dramatic miracles or theological writings but by a life of quiet, unceasing charity. She was known for never turning anyone away from her door — feeding the hungry, housing the homeless, caring for the sick, comforting the grieving, and bringing the Faith to her people through simple presence and love. She is said to have never refused to give away what she had, even her last food.\n\nHer canonization represents a significant moment in the history of American Orthodoxy — the glorification of a Native Alaskan woman, a layperson and matushka, whose holiness was entirely hidden in ordinary life. She is an icon of the sanctity available in every Christian vocation.',
+    troparion: 'O righteous Matushka Olga, adornment of Alaska, faithful shepherd\'s wife, gentle comforter of the suffering, through your unceasing prayer and works of mercy you bore fruit for Christ. Intercede for us, that we may follow your example of humble service.',
+    writings: []
+  },
+  {
+    id: 'nino-equal-to-apostles',
+    name: 'Nino Equal-to-the-Apostles',
+    category: 'women',
+    feastDay: 'January 14',
+    born: 'c. 280 AD',
+    birthplace: 'Cappadocia or Gaul',
+    reposed: 'c. 335 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, women missionaries',
+    isFather: false,
+    iconUrl: 'assets/images/saints/nino-equal-to-apostles.jpg',
+    bio: 'Saint Nino Equal-to-the-Apostles is the Enlightener of Georgia — the woman who brought Christianity to the ancient Kingdom of Kartli (Georgia) in the early fourth century. A young Christian woman, possibly a relative of St. George or a captive brought to Georgia, Nino arrived in the country and began to preach Christ, living a life of prayer and asceticism in a briar bush in the royal gardens of Mtskheta.\n\nNino\'s preaching and miraculous healings — including the healing of the Queen Nana — gradually won the confidence of the royal court. When King Mirian, while hunting, was suddenly struck blind and enveloped in darkness, he called upon the God of Nino and his sight was immediately restored. He was baptized with his court, and Christianity became the official religion of Georgia in 327 AD — making Georgia one of the earliest Christian nations.\n\nNino\'s cross — made from a grapevine bound with her own hair — is preserved in Tbilisi\'s Sioni Cathedral as the most sacred relic of the Georgian Church. She is venerated with the title Equal-to-the-Apostles, one of very few women to receive this honor. She reposed in peace at Bodbe in Kakheti, where her tomb became a great place of pilgrimage.',
+    troparion: 'Enlightener of Georgia and equal to the Apostles, bride of Christ, holy Nino, entreat Christ our God, to protect our land in peace, to strengthen in Orthodoxy those who honor you, and to save our souls.',
+    writings: []
+  },
+  {
+    id: 'macrina-the-elder',
+    name: 'Macrina the Elder',
+    category: 'women',
+    feastDay: 'January 14',
+    born: 'c. 270 AD',
+    birthplace: 'Neocaesarea, Pontus',
+    reposed: 'c. 340 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Grandmothers, widows, families of faith',
+    isFather: false,
+    iconUrl: 'assets/images/saints/macrina-the-elder.jpg',
+    bio: 'Saint Macrina the Elder is venerated as the grandmother of a remarkable family of saints: her son Basil the Elder, his sons Basil the Great, Gregory of Nyssa, and Peter of Sebaste, and his daughter Macrina the Younger are all venerated as saints — a concentration of holiness in a single family unparalleled in patristic history.\n\nMacrina was a disciple of Gregory the Wonderworker, the great Bishop of Neocaesarea, from whom she received the faith directly. During the persecution of the Emperor Maximinus Daia (311–313), she and her husband fled with their family into the forests of Pontus, enduring years of privation for their faith. Their suffering during this period shaped the deep commitment to Christian asceticism and charity that would mark their family for generations.\n\nGregory of Nyssa records that Macrina taught her grandson Basil the doctrines and "words" she had received from Gregory the Wonderworker, thus transmitting the apostolic tradition across generations through the family home. She is a witness to the crucial role of grandmothers in the transmission of faith — a role the Apostle Paul also honors in speaking of Timothy\'s faith first dwelling in his grandmother Lois.',
+    troparion: 'O righteous Macrina, faithful transmitter of apostolic tradition, grandmother of saints and pillar of the Cappadocian family, through your suffering in persecution and your faithful teaching you nourished the seeds of holiness for generations. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+
+  // ── WONDERWORKERS ────────────────────────────────────────────
+  {
+    id: 'spyridon-of-tremithus',
+    name: 'Spyridon of Tremithus',
+    category: 'wonderworkers',
+    feastDay: 'December 12',
+    born: 'c. 270 AD',
+    birthplace: 'Askia, Cyprus',
+    reposed: 'c. 348 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Corfu, potters, poor people, brickmakers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/spyridon-of-tremithus.jpg',
+    bio: 'Saint Spyridon of Tremithus was a simple Cypriot shepherd who became Bishop of Tremithus and a father of the First Ecumenical Council at Nicaea (325), where his homespun wisdom and miraculous signs confounded the philosophers who argued against the Trinity. He is famous for taking a potsherd and demonstrating the Trinity by holding it so that fire shot up from one end, water flowed from another, while the clay itself remained in his hand.\n\nSpyridon\'s life was marked by extraordinary miraculous gifts combined with radical simplicity. He kept his flock of sheep even as bishop, continued farming, and distributed all that he received to the poor. Numerous miracles are recorded: he summoned rain during a drought, restored a dead child to life, and spoke with the spirit of his deceased daughter.\n\nHis relics were translated to Corfu in 1456, where they remain to this day in the Church of St. Spyridon in Corfu Town — the most visited Orthodox pilgrimage site in Greece. His body remains incorrupt and is carried in solemn procession around the city four times a year. He is particularly beloved by the people of Corfu and by the poor.',
+    troparion: 'You proved yourself a fellow-contestant of the Apostles in your faith and a pastor of the Church. Through you the King of Kings, as fire, came to earth and repelled the errors of the unbelievers. O Spyridon, bearer of God, intercede with Christ our God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'luke-of-crimea',
+    name: 'Luke of Crimea',
+    category: 'wonderworkers',
+    feastDay: 'June 11',
+    born: '1877',
+    birthplace: 'Kerch, Crimea, Russia',
+    reposed: '1961',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Surgeons, physicians, those suffering under persecution',
+    isFather: false,
+    iconUrl: 'assets/images/saints/luke-of-crimea.jpg',
+    bio: 'Saint Luke of Crimea, Archbishop of Simferopol and Crimea, is one of the most remarkable saints of the 20th century — a distinguished surgeon, a bishop, and a confessor who endured eleven years of imprisonment and exile in Soviet labor camps while continuing to practice both medicine and priestly ministry. Born Valentin Feliksovich Voyno-Yasenetsky in Kerch in 1877, he trained as a physician and became one of the leading surgeons in Russia, pioneering techniques in regional anesthesia.\n\nValentin was ordained a deacon, then priest, then tonsured a monk and consecrated bishop — all within a few years — while continuing his medical career. He was arrested three times by Soviet authorities, sent to labor camps in Siberia, and subjected to brutal interrogations. He continued to perform surgery even in the camps, and when his interrogators demanded he remove his pectoral cross before examining patients, he refused.\n\nUpon his release after World War II, he returned to surgery and episcopal ministry, writing his celebrated Essais on Purulent Surgery — a standard medical text — simultaneously with his theological writings. Despite his near-blindness in his final years, he continued to preach and perform episcopal duties. He was glorified by the Russian Orthodox Church in 1996. His relics rest in the Holy Trinity Cathedral of Simferopol.',
+    troparion: 'Apostolic rule was your lot, O Hierarch Luke; for you appeared as a great physician to those who were ill, a champion of Christ\'s flock in the time of persecutions, a confessor of the faith by the grace of God. We the faithful glorify you.',
+    writings: [
+      { title: 'Essais on Purulent Surgery', source: 'Medical Classic', url: 'https://www.amazon.com' },
+      { title: 'Spirit, Soul and Body', source: 'Holy Trinity Publications', url: 'https://www.amazon.com' },
+    ]
+  },
+  {
+    id: 'paisios-holy-mountain',
+    name: 'Paisios of the Holy Mountain',
+    category: 'wonderworkers',
+    feastDay: 'July 12',
+    born: '1924',
+    birthplace: 'Farasa, Cappadocia',
+    reposed: '1994',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Greece, Cyprus, Mount Athos, the poor',
+    isFather: false,
+    iconUrl: 'assets/images/saints/paisios-holy-mountain.jpg',
+    bio: 'Saint Paisios of the Holy Mountain is the most beloved Greek Orthodox saint of the 20th century — a simple Athonite monk of Cappadocian descent whose extraordinary spiritual gifts, practical wisdom, and burning love for every person drew pilgrims from throughout the world to his cell at the Monastery of Koutloumousiou on Mount Athos.\n\nBorn Arsenios Eznepidis in Farasa, Cappadocia — the birthplace of St. Arsenios the Cappadocian, after whom he was named — Paisios served in the Greek army during the Civil War and then pursued a monastic vocation with singular intensity. He lived as a hermit in various cells on Athos and on Mount Sinai, enduring severe ascetical struggles and physical illnesses.\n\nHis spiritual gifts included clairvoyance, prophecy, healing, and what visitors consistently described as a deep and immediate sense of being loved and understood. Pilgrims waited for days in a queue outside his cell for a few minutes of conversation. His collected sayings — in the multi-volume Spiritual Counsels — are among the most widely read Orthodox spiritual books of the contemporary world. He was canonized by the Ecumenical Patriarchate in 2015.',
+    troparion: 'An angel in the flesh and a wonderworker was revealed to be our righteous Father Paisios the Athonite, for he gladdened all who came to him with spiritual counsel and healing of infirmities. He was consumed with love for all people and was made worthy to commune with the angels and the saints. O blessed Paisios, intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'Spiritual Counsels (5 vols.)', source: 'Holy Monastery of the Evangelist John the Theologian', url: 'https://www.amazon.com' },
+    ]
+  },
+
+  // ── EQUAL-TO-THE-APOSTLES ────────────────────────────────────
+  {
+    id: 'constantine-and-helen',
+    name: 'Constantine and Helen',
+    category: 'equal-to-apostles',
+    feastDay: 'May 21',
+    born: 'c. 272 / c. 248 AD',
+    birthplace: 'Naissus, Moesia / Bithynia',
+    reposed: '337 / c. 330 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Emperors, rulers, archaeologists, those who find lost items',
+    isFather: false,
+    iconUrl: 'assets/images/saints/constantine-and-helen.jpg',
+    bio: 'The Holy Equal-to-the-Apostles Emperor Constantine the Great and his mother Helena are venerated together as the royal pair who transformed the legal and cultural situation of the Church and recovered the sacred sites of Christian faith. Constantine\'s vision of the Cross before the Battle of Milvian Bridge (312) and his subsequent victory led to the Edict of Milan (313), granting religious toleration throughout the Empire.\n\nConstantine convened the First Ecumenical Council at Nicaea (325), built the great churches of Jerusalem, Rome, and Constantinople, and made Christianity the favored religion of the Empire. He was baptized on his deathbed, having delayed baptism throughout his reign. The complexity of his character — Christian emperor yet still executing family members — has been debated by historians and theologians for centuries, but the Church venerates him for the genuine faith he showed and the transformation he effected.\n\nHis mother Helena, equally venerated, made a pilgrimage to Jerusalem in her old age and is credited with discovering the True Cross, the Holy Sepulchre, and other sites of the Passion. She built churches on the Mount of Olives and in Bethlehem. Her discovery of the Cross is commemorated on the Feast of the Exaltation of the Holy Cross (September 14).',
+    troparion: 'Beholding the image of the Cross in the heavens and like Paul having received the call not from men, O lord among the Apostles, your kingdom was placed in the hands of the Lord. Entreat Him to save our souls.',
+    writings: []
+  },
+  {
+    id: 'vladimir-of-kiev',
+    name: 'Vladimir of Kiev',
+    category: 'equal-to-apostles',
+    feastDay: 'July 15',
+    born: 'c. 958 AD',
+    birthplace: 'Kyiv (Kiev), Rus\'',
+    reposed: '1015 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Russia, Ukraine, Belarus, converts, rulers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/vladimir-of-kiev.jpg',
+    bio: 'Saint Vladimir Equal-to-the-Apostles, Grand Prince of Kiev, is the Baptizer of Russia and the man responsible for the Christianization of the Kievan Rus\' — the foundation event of Russian, Ukrainian, and Belarusian Orthodox civilization. Before his conversion, Vladimir was a pagan ruler known for his violence, cruelty, and numerous wives and concubines.\n\nSeeking the true faith, Vladimir sent envoys to investigate Islam, Judaism, Western Christianity, and Eastern Orthodoxy. The envoys sent to Constantinople were overwhelmed by the Divine Liturgy in Hagia Sophia: "We knew not whether we were in heaven or on earth... We cannot forget that beauty." In 988, Vladimir was baptized and married the Byzantine princess Anna. He then ordered the mass baptism of Kiev\'s population in the Dnieper River.\n\nAfter baptism, Vladimir underwent a remarkable personal transformation — abolishing torture, caring for the poor, freeing slaves, and building churches. He built the Tithe Church (Desyatynna), the first stone church in Kiev, and invited Greek clergy and architects to educate his people. He is venerated as the father of Orthodox Christian civilization in Eastern Europe.',
+    troparion: 'O great Prince Vladimir, you were like the merchant who found the pearl of great price when you found the true faith. You baptized your land in the Holy Trinity and we, your people, call you equal to the Apostles and intercessor before the Lord our God.',
+    writings: []
+  },
+  {
+    id: 'nina-of-georgia',
+    name: 'Nina of Georgia',
+    category: 'equal-to-apostles',
+    feastDay: 'January 14',
+    born: 'c. 280 AD',
+    birthplace: 'Cappadocia',
+    reposed: 'c. 335 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, women missionaries, captives',
+    isFather: false,
+    iconUrl: 'assets/images/saints/nina-of-georgia.jpg',
+    bio: 'Saint Nina Equal-to-the-Apostles is the Enlightener of Georgia — commemorated also as Nino in the Georgian tradition — who brought the Christian faith to the Kingdom of Kartli (Georgia) in the early fourth century. Though commemorated separately in some traditions from Nino Equal-to-the-Apostles (January 14), the Orthodox Church honors her as the woman through whom the Georgian people received the faith.\n\nNina arrived in Georgia as a young woman and lived a life of prayer and asceticism, her preaching and healings gradually winning converts among the Georgian people. Her vinestock cross — made from grapevines bound with her own hair when she had no other material — became the symbol of Georgian Christianity.\n\nHer ministry to the royal family of King Mirian, the miraculous healing of Queen Nana, and King Mirian\'s conversion after being struck blind during a hunt led to the official Christianization of Georgia in 327 AD — one of the earliest nations to adopt Christianity as its state religion. Nina reposed at Bodbe in eastern Georgia, where her tomb became a great pilgrimage site.',
+    troparion: 'Equal to the Apostles in your ways and pleasing to God in your deeds, O enlightener of Georgia, holy Nina, entreat Christ our God to grant peace to the world and to our souls great mercy.',
+    writings: []
+  },
+
+  // ── OLD TESTAMENT SAINTS ─────────────────────────────────────
+  {
+    id: 'moses-prophet',
+    name: 'Moses the Prophet',
+    category: 'old-testament',
+    feastDay: 'September 4',
+    born: 'c. 13th century BC',
+    birthplace: 'Egypt',
+    reposed: 'c. 13th century BC',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Jewish people, black Americans (historically), those called to lead',
+    isFather: false,
+    iconUrl: 'assets/images/saints/moses-prophet.jpg',
+    bio: 'Holy Prophet Moses, the God-seer and Lawgiver, is venerated by the Orthodox Church as the supreme Old Testament prophet — the one to whom God spoke "face to face, as a man speaks to his friend," and through whom the Law was given to Israel. Born in Egypt during a time of persecution, saved as an infant by being placed in a basket in the Nile, raised in the Pharaoh\'s household, Moses fled to the wilderness after killing an Egyptian taskmaster and encountered God in the burning bush at Mount Horeb.\n\nMoses led the Exodus of the Israelites from Egypt — the central saving event of the Old Testament and the type of Christian salvation in Orthodox typology. He received the Torah, including the Ten Commandments, on Mount Sinai amid fire and thick darkness — a theophany that Gregory of Nyssa and Dionysius the Areopagite interpreted as the paradigm of apophatic encounter with God: the deeper one enters into God, the more one enters into divine darkness.\n\nMoses appears at the Transfiguration of Christ on Mount Tabor alongside Elijah, representing the Law and the Prophets bearing witness to Christ as their fulfillment. The Orthodox Church venerates him as one of the greatest of the saints and as the type of the Christian mystic who seeks God above all visible forms.',
+    troparion: 'O holy Prophet Moses, God-seer and friend of God, through whom the Law was written and the Exodus accomplished, you ascended to God in fire and cloud and were found worthy to behold the Glory. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'david-prophet-king',
+    name: 'David the Prophet-King',
+    category: 'old-testament',
+    feastDay: 'Sunday before Christmas (Sunday of the Holy Forefathers)',
+    born: 'c. 1040 BC',
+    birthplace: 'Bethlehem, Judah',
+    reposed: 'c. 970 BC',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Poets, musicians, kings, those who repent',
+    isFather: false,
+    iconUrl: 'assets/images/saints/david-prophet-king.jpg',
+    bio: 'The Holy Prophet and King David is venerated by the Orthodox Church as the greatest of the royal prophets — the ancestor of Christ according to the flesh, the author of the Psalms, and the repentant sinner whose life encompasses both the heights of divine friendship and the depths of human failure.\n\nChosen by God as a youth in Bethlehem, David was anointed king by Samuel while still a shepherd boy. He killed the giant Goliath with a sling and stone, served and fled from King Saul, united the tribes of Israel, conquered Jerusalem and made it the holy city, and brought the Ark of the Covenant to Jerusalem in a dance of ecstatic joy.\n\nDavid\'s great sin — his adultery with Bathsheba and his effective murder of her husband Uriah — and his profound repentance, expressed in Psalm 51 ("Have mercy on me, O God"), make him an icon of the penitent who does not despair. The Psalms — attributed to David throughout the Church\'s tradition — are the prayer book of Orthodox Christianity, prayed at every Vespers, Matins, and Divine Liturgy, and form the foundation of all Christian hymnography.',
+    troparion: 'O holy Prophet-King David, you were called a man after God\'s own heart, and through your Psalms you have given the Church her eternal song. Teach us to cry out with you: Have mercy on me, O God, and restore to us the joy of your salvation.',
+    writings: [
+      { title: 'The Psalms of David', source: 'Old Testament', url: 'https://www.biblegateway.com/passage/?search=Psalm+1&version=NKJV' },
+    ]
+  },
+  {
+    id: 'elisha-prophet',
+    name: 'Elisha the Prophet',
+    category: 'old-testament',
+    feastDay: 'June 14',
+    born: 'c. 9th century BC',
+    birthplace: 'Abel-Meholah, Jordan Valley',
+    reposed: 'c. 800 BC',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Prophets, disciples, those who receive the mantle of another\'s calling',
+    isFather: false,
+    iconUrl: 'assets/images/saints/elisha-prophet.jpg',
+    bio: 'Holy Prophet Elisha, the disciple and successor of Elijah, is venerated by the Orthodox Church as one of the greatest of the Old Testament prophets and the most prolific miracle-worker in all of Scripture before Christ. Called from plowing his field by Elijah\'s mantle being cast over him, Elisha asked for a double portion of Elijah\'s spirit — and received it.\n\nElisha\'s miracles surpassed even those of his master in number: he parted the Jordan River, healed the bitter waters of Jericho, multiplied oil for a widow, raised the son of the Shunammite woman from the dead, healed Naaman the Syrian of leprosy, and fed one hundred men with twenty loaves. The raising of the Shunammite\'s son and the healing of Naaman are explicitly cited by Christ in his sermon in Nazareth (Luke 4) as types of the wideness of God\'s mercy beyond the boundaries of Israel.\n\nElisha served as prophetic counselor to several kings of Israel, intervening in the affairs of nations and guiding Israel through political crisis. He ministered for approximately sixty years — far longer than Elijah — and died peacefully in old age. Even his bones retained miraculous power: a dead man thrown into Elisha\'s tomb was raised to life on contact with his relics.',
+    troparion: 'O holy Prophet Elisha, you received a double portion of the spirit of your teacher Elijah and worked wonders through it, healing the sick and raising the dead. Intercede with Christ God that our souls may be saved.',
     writings: []
   },
 ];
@@ -956,6 +1603,7 @@ var CATEGORIES = {
   'women':        { name: 'Holy Women' },
   'wonderworkers':{ name: 'Wonderworkers' },
   'old-testament':{ name: 'Old Testament Saints' },
+  'equal-to-apostles':{ name: 'Equal-to-the-Apostles' },
 };
 
 // ── State ─────────────────────────────────────────────────────
@@ -976,7 +1624,7 @@ function updateCounts(){
   Object.keys(CATEGORIES).forEach(function(cat){
     var count = SAINTS.filter(function(s){ return s.category === cat; }).length;
     var el = document.getElementById('count-' + cat);
-    if(el) el.textContent = count + (count === 1 ? ' saint' : ' saints');
+    if(el) el.textContent = count > 0 ? '(' + count + ')' : '';
   });
 }
 
@@ -1285,7 +1933,16 @@ document.addEventListener('DOMContentLoaded', function(){
     var s = SAINTS.find(function(x){ return x.id === saintId; });
     if(s) setTimeout(function(){ openSaint(s); }, 200);
   }
+
+  // Back to top
+  var btn=document.getElementById('backToTop');
+  if(btn){
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('visible',window.scrollY>400);
+    },{passive:true});
+  }
 });
 </script>
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 </body>
 </html>
