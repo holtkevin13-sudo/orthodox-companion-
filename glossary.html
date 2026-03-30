@@ -129,6 +129,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .topic-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
 .empty-msg{padding:40px;text-align:center;color:var(--text-muted);font-style:italic;}
 @media(max-width:600px){.glossary-body,.glossary-top,.alpha-bar{padding-left:14px;padding-right:14px;}}
+
+/* ── Back to Top ─────────────────────────────────────── */
+#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--dark);border:1px solid var(--gold-dim);
+  color:var(--gold-light);font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,transform 0.25s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 </style>
 <meta property="og:title" content="Glossary & Lexicon — Orthodox Companion"/>
 <meta property="og:description" content="Orthodox theological glossary — 324 English terms and 99 Greek lexicon entries with definitions, cross-references, and topic links."/>
@@ -663,7 +675,7 @@ function renderEnglish(){
         t.see_also.forEach(function(key){
           var label=key.replace(/_/g," ");label=label.charAt(0).toUpperCase()+label.slice(1);
           var href=TOPIC_KEYS_GL[key]?"topics.html?topic="+key:SEASON_KEYS_GL[key]?"liturgical-seasons.html#"+key:"feasts.html#"+key;
-          html+="<a href=\""+href+"\" class=\"related-tag tm-tag\">"+label+"</a>";
+          html+="<a href=\""+href+"\" class=\"related-tag tm-tag\" target=\"_blank\" rel=\"noopener\">"+label+"</a>";
         });
         html+="</div>";
       }
@@ -723,7 +735,7 @@ function renderGreek(){
         t.see_also.forEach(function(key){
           var label=key.replace(/_/g," ");label=label.charAt(0).toUpperCase()+label.slice(1);
           var href=TOPIC_KEYS_GL[key]?"topics.html?topic="+key:SEASON_KEYS_GL[key]?"liturgical-seasons.html#"+key:"feasts.html#"+key;
-          html+="<a href=\""+href+"\" class=\"related-tag tm-tag\">"+label+"</a>";
+          html+="<a href=\""+href+"\" class=\"related-tag tm-tag\" target=\"_blank\" rel=\"noopener\">"+label+"</a>";
         });
         html+="</div>";
       }
@@ -864,6 +876,18 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 
+
+/* ── Back to Top ─────────────────────────────────── */
+(function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+})();
+
 </script>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 </body>
 </html>
