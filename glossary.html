@@ -101,7 +101,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .glossary-body{max-width:1040px;margin:0 auto;padding:16px 24px 60px;}
 .alpha-section{margin-bottom:4px;}
 .alpha-heading{font-family:"Cinzel",serif;font-size:1.3rem;color:var(--gold);letter-spacing:0.1em;padding:14px 0 8px;border-bottom:1px solid rgba(201,168,76,0.2);margin-bottom:6px;}
-.term-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;margin-bottom:5px;overflow:hidden;transition:border-color 0.2s;}
+.term-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;margin-bottom:5px;overflow:hidden;transition:border-color 0.2s;scroll-margin-top:88px;}
 .term-card:hover{border-color:var(--border);}
 .term-card.open{border-color:var(--gold-dim);}
 .term-header{display:flex;align-items:baseline;justify-content:space-between;padding:13px 18px;cursor:pointer;gap:10px;}
@@ -412,7 +412,7 @@ function jumpToTerm(id){
   setTimeout(function(){
     var clean=id.replace(/[^a-z0-9_]/gi,"_");
     var el=document.getElementById("term-"+clean)||document.getElementById("term-"+id);
-    if(el){el.classList.add("open");var top=el.getBoundingClientRect().top+window.scrollY-88;window.scrollTo({top:top,behavior:"smooth"});}
+    if(el){el.classList.add("open");el.scrollIntoView({behavior:"smooth",block:"start"});}
   },80);
 }
 
