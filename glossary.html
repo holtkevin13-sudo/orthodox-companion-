@@ -417,8 +417,9 @@ function jumpToTerm(id){
 }
 
 document.addEventListener("DOMContentLoaded",function(){
-  renderGlossary();
   var hash=window.location.hash.replace("#","");
+  if(hash && GREEK[hash]){setTab("greek");}
+  else{renderGlossary();}
   if(hash)setTimeout(function(){jumpToTerm(hash);},200);
 });
 </script>
