@@ -412,7 +412,7 @@ function jumpToTerm(id){
   setTimeout(function(){
     var clean=id.replace(/[^a-z0-9_]/gi,"_");
     var el=document.getElementById("term-"+clean)||document.getElementById("term-"+id);
-    if(el){el.classList.add("open");el.scrollIntoView({behavior:"smooth",block:"center"});}
+    if(el){el.classList.add("open");var top=el.getBoundingClientRect().top+window.scrollY-88;window.scrollTo({top:top,behavior:"smooth"});}
   },80);
 }
 
