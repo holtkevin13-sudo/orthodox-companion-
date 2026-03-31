@@ -1108,6 +1108,8 @@ async function showDashboard(user,profile){
   document.getElementById('authScreen').style.display='none';
   document.getElementById('dashboard').style.display='block';
   window.scrollTo(0,0);
+  /* Log this session silently for analytics */
+  sb.from('user_sessions').insert([{user_id:user.id}]);
   var role=profile?profile.role:'free';
   var initial=(profile&&profile.username?profile.username:user.email).charAt(0).toUpperCase();
   document.getElementById('dashAvatar').textContent=initial;
