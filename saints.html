@@ -219,7 +219,7 @@ body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--
 
 /* ── Responsive ────────────────────────────────────────────── */
 @media(max-width:900px){
-  .nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-login-btn{display:none;}
+  .nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-signin-btn{display:none;}
   .sotd-inner{flex-direction:column;gap:20px;}
   .sotd-icon-placeholder{width:80px;height:100px;}
   .sm-meta-grid{grid-template-columns:1fr;}
@@ -387,7 +387,7 @@ body{background:var(--bg-page);color:var(--text);}
   
   /* Cards stack */
   .rules-grid,.seasons-grid{grid-template-columns:1fr;}
-  .cat-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .cat-grid{gap:10px;}
   
   /* Day panel full width */
   .day-panel{width:100%;border-left:none;border-top:2px solid var(--gold-dim);}
@@ -401,7 +401,7 @@ body{background:var(--bg-page);color:var(--text);}
   .page-hero{padding:28px 16px 24px;}
 }
 @media(max-width:480px){
-  .cat-grid{grid-template-columns:1fr 1fr;}
+  .cat-grid{gap:8px;}
   .main-layout{grid-template-columns:1fr;}
   nav{padding:0 14px;}
   .nav-brand .nav-subtitle{display:none;}
