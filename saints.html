@@ -47,30 +47,6 @@ html{scroll-behavior:smooth;}
 }
 body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
-/* ── Nav (shared) ──────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.4);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;letter-spacing:0.04em;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-links a{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-dim);padding:6px 10px;cursor:pointer;transition:all 0.2s;font-size:1rem;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-.nav-login-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-login-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:12px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-dim);text-decoration:none;padding:12px 28px;border-bottom:1px solid rgba(42,90,156,0.12);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;}
 
 /* ── Saint of the Day ──────────────────────────────────────── */
 .sotd-banner{
@@ -1592,437 +1568,434 @@ var SAINTS = [
     writings: []
   },
 
-  // ── PHASE 3 ──────────────────────────────────────────────────
+  // ── PHASE 4 ──────────────────────────────────────────────────
 
-  // ── MARTYRS & UNMERCENARIES ──────────────────────────────────
+  // ── GEORGIAN SAINTS ──────────────────────────────────────────
   {
-    id: 'cosmas-and-damian',
-    name: 'Cosmas and Damian',
-    category: 'martyrs',
-    feastDay: 'November 1',
+    id: 'shio-of-mgvime',
+    name: 'Shio of Mgvime',
+    category: 'monastics',
+    feastDay: 'May 9',
+    born: 'c. 6th century AD',
+    birthplace: 'Syria (Antioch region)',
+    reposed: 'c. 560 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, monastics, hermits',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Repose of Venerable Shio the Anchorite of Georgia (05-09).jpg',
+    bio: 'Saint Shio of Mgvime is one of the Thirteen Syrian Fathers who came to Georgia from Antioch in the 6th century with St. John of Zedazeni and established the foundations of Georgian monasticism. He founded the Mgvime (Cave) Monastery in a gorge near Mtskheta, one of the most important monasteries in Georgia.\n\nShio lived as a severe anchorite, eventually descending into a deep pit where he spent the last years of his life in absolute solitude, subsisting on bread lowered by rope. Despite this radical withdrawal, he was known for miraculous gifts and was sought out by those in need from throughout Georgia.\n\nThe Shio-Mgvime Monastery he founded continues to this day carved into the limestone cliffs of the Mtkvari River gorge. The Thirteen Syrian Fathers are credited with transforming Georgia from a recently Christianized kingdom into a deeply monastic civilization.',
+    troparion: 'O venerable Shio, you left your homeland and came to Georgia to plant the seed of monasticism. Living in your cave like a bodiless angel, you became a light to the Georgian people. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'david-of-gareji',
+    name: 'David of Gareji',
+    category: 'monastics',
+    feastDay: 'May 7',
+    born: 'c. 6th century AD',
+    birthplace: 'Syria (Antioch region)',
+    reposed: 'c. 580 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, the desert, those who seek God in solitude',
+    isFather: false,
+    iconUrl: 'assets/images/saints/6,000 Martyrs of Saint David Gareji Monastery, Georgia (04-26).jpg',
+    bio: 'Saint David of Gareji is one of the Thirteen Syrian Fathers who evangelized Georgia in the 6th century. He founded his monastery in the semi-desert region of Gareji in eastern Georgia and established the remarkable cave-monastery complex that bears his name to this day.\n\nAccording to tradition, David made a pilgrimage to Jerusalem but stopped at the hill overlooking the city, saying he was not worthy to enter. He took three stones from the hillside and was told in a vision that these held the same grace as Jerusalem itself. He returned to Georgia with the stones, which became revered relics.\n\nIn 1616, Shah Abbas I of Persia massacred approximately 6,000 monks at Gareji on Easter night — one of the greatest monastic martyrdoms in history. The monks are venerated collectively as the 6,000 Martyrs of David Gareji.',
+    troparion: 'O venerable David, light of the desert of Gareji, you came from Syria to illuminate Georgia with the light of monasticism. Through your prayers and the blood of your spiritual children, make us worthy of the Kingdom of Heaven.',
+    writings: []
+  },
+  {
+    id: 'mirian-and-nana',
+    name: 'Mirian and Nana of Georgia',
+    category: 'equal-to-apostles',
+    feastDay: 'October 1',
+    born: 'c. 277 / c. 285 AD',
+    birthplace: 'Georgia',
+    reposed: 'c. 361 / c. 340 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, Christian rulers, royal families',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Equals of the Apostles, Emperor Mirian and Empress Nana of Georgia; Saint Sidonia; the Commemoration of the apparition of the Pillar with the Robe of (10-01).jpg',
+    bio: 'The Holy Equal-to-the-Apostles Emperor Mirian III and Empress Nana of Georgia are the royal couple whose conversion to Christianity in 327 AD made Georgia one of the first nations to officially adopt Christianity as its state religion. Their conversion was the fruit of the preaching of St. Nino, whose miraculous healing of Queen Nana and the restoration of King Mirian\'s sight during a hunting expedition brought the entire Georgian royal house to the faith.\n\nKing Mirian\'s conversion is recorded with striking detail: while hunting, he was suddenly enveloped in darkness and blindness. Recalling the God of Nino, he called upon Christ and his sight was immediately restored. He returned to Mtskheta and publicly confessed Christ.\n\nMirian sent an embassy to Constantinople requesting clergy and builders. The great Svetitskhoveli Cathedral in Mtskheta — built on the site where the Robe of the Lord is said to be buried — became the mother church of the Georgian nation, a position it holds to this day.',
+    troparion: 'O holy Equals-to-the-Apostles Mirian and Nana, through the preaching of holy Nino you received the light of Christ and brought your whole kingdom into the faith. Intercede with God for the salvation of our souls.',
+    writings: []
+  },
+  {
+    id: 'george-the-athonite',
+    name: 'George the Athonite',
+    category: 'monastics',
+    feastDay: 'January 21',
+    born: '1009',
+    birthplace: 'Trialeti, Georgia',
+    reposed: '1065',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Georgia, translators, monastic scholars',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Saint George (John) of Georgia (01-21).jpg',
+    bio: 'Saint George the Athonite (Giorgi Mtatsmindeli) is the greatest Georgian scholar-monk of the medieval period — the man who translated the entire corpus of Greek patristic literature into Georgian and whose work transformed Georgian Christianity into a fully mature theological civilization. Born of a noble Georgian family, he entered monastic life and eventually came to the Iviron (Georgian) Monastery on Mount Athos.\n\nGeorge spent decades on Athos mastering Greek and translating systematically — the Gospels, the Epistles, liturgical texts, the works of John Climacus, Basil the Great, John of Damascus, and dozens of other Fathers. He created a literary theological Georgian language of exceptional precision and beauty.\n\nHis translations remain the foundation of the Georgian Orthodox liturgical and theological tradition. He was glorified as a saint and is venerated as one of the greatest Fathers of the Georgian Church.',
+    troparion: 'O venerable George, you labored on the Holy Mountain to bring the riches of the Greek Fathers to your Georgian people. Through your translations the light of Orthodoxy shone in the Georgian tongue. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'zabulon-and-sosanna',
+    name: 'Zabulon and Sosanna',
+    category: 'equal-to-apostles',
+    feastDay: 'May 20',
     born: 'c. 3rd century AD',
-    birthplace: 'Arabia',
-    reposed: 'c. 303 AD',
+    birthplace: 'Cappadocia',
+    reposed: 'c. early 4th century',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Physicians, surgeons, pharmacists, barbers, the sick',
+    patronage: 'Parents, families, those who raise children in the faith',
     isFather: false,
-    iconUrl: 'assets/images/saints/Holy Wonderworkers and Unmercenaries Cosmas and Damian of Mesopotamia (11-01).jpg',
-    bio: 'The Holy Unmercenary Physicians Cosmas and Damian of Arabia are among the most beloved of the Holy Unmercenaries — saints who healed the sick without receiving payment, offering their gift freely in the name of Christ. Twin brothers born in Arabia to a Christian mother, Theodotia, they were trained as physicians and practiced medicine throughout Syria and Arabia, refusing all compensation and asking only that their patients believe in Christ.\n\nCosmas and Damian are venerated in three separate pairs in the Orthodox calendar — the Arabian brothers (November 1), the Roman brothers (July 1), and the Mesopotamian brothers (November 1 in some traditions) — all sharing the same witness of free healing in imitation of Christ\'s own ministry. The November feast is the most prominent and widely celebrated.\n\nTheir miraculous healings drew so many to the Christian faith that they were arrested during the Diocletian persecution and martyred by beheading. They are invoked before medical procedures and operations throughout the Orthodox world, and their icon is found in hospitals and clinics across Greece, Russia, and the Middle East.',
-    troparion: 'O holy unmercenary healers Cosmas and Damian, visit our infirmities; freely you received, freely give to us.',
-    writings: []
-  },
-  {
-    id: 'sebastian-of-rome',
-    name: 'Sebastian of Rome',
-    category: 'martyrs',
-    feastDay: 'December 18',
-    born: 'c. 256 AD',
-    birthplace: 'Narbonne, Gaul',
-    reposed: 'c. 288 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Soldiers, athletes, those suffering from plague',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Martyr Sebastian at Rome, and his companions (12-18).jpg',
-    bio: 'Saint Sebastian the Martyr was a Roman soldier of high rank who secretly professed Christianity and used his position to minister to imprisoned Christians during the Diocletian persecution. Born in Gaul and raised in Milan, Sebastian served in the Praetorian Guard — the elite imperial bodyguard — while concealing his faith and quietly strengthening fellow believers facing martyrdom.\n\nSebastian\'s faith was eventually discovered and he was condemned to death by Diocletian, who ordered him shot through with arrows and left for dead. He survived — nursed back to health by the widow Irene — and immediately presented himself before Diocletian to rebuke him for his persecution of Christians. This time Diocletian had him beaten to death with clubs and his body thrown into the sewer.\n\nSebastian is one of the most widely recognized martyrs in all of Christendom and has been venerated since at least the 4th century. His body was recovered and buried in the catacomb that bears his name on the Appian Way. He is invoked against plague and pestilence, and his feast has been celebrated continuously since the early Church.',
-    troparion: 'O holy Martyr Sebastian, you served Christ faithfully in secret and proclaimed Him openly in the face of death. By your wounds and your prayers, intercede with God for the healing of our souls and bodies.',
-    writings: []
-  },
-  {
-    id: 'theodore-tyro',
-    name: 'Theodore the Tyro',
-    category: 'martyrs',
-    feastDay: 'February 17',
-    born: 'c. 290 AD',
-    birthplace: 'Pontus',
-    reposed: 'c. 306 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Soldiers, military recruits, those falsely accused',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Great Martyr Theodore the Tyro (Recruit) (02-17).jpg',
-    bio: 'Saint Theodore the Tyro ("the Recruit") is venerated as one of the Great Martyr-soldiers of the Orthodox Church. A recruit in the Roman army at Amasea in Pontus, Theodore publicly confessed his Christian faith and was ordered to apostatize. When he refused, he was imprisoned and tortured. During the night in prison, he was comforted by a heavenly vision, and he was burned to death in a furnace in 306 AD, emerging unharmed before finally being killed.\n\nSaint Theodore is especially associated with the first Saturday of Great Lent, when the Orthodox Church celebrates the "Miracle of the Koliva." When the Emperor Julian the Apostate secretly ordered the food in the Constantinople markets sprinkled with blood sacrificed to idols during the first week of Lent, Theodore appeared in a vision to Archbishop Eudoxios and warned him. He instructed the faithful to eat boiled wheat with honey (koliva) instead — thus avoiding the defilement. The Church has commemorated this miracle on the first Saturday of Great Lent ever since.\n\nA second St. Theodore — Theodore Stratelates ("the General") — is closely associated with him and both are great military martyrs of the Church.',
-    troparion: 'Great are the achievements of faith! In the fountain of flame, the holy Martyr Theodore rejoiced as if at the waters of rest. For having been consumed by fire, he was offered to You as sweet bread. By his prayers, O Christ God, save our souls.',
-    writings: []
-  },
-  {
-    id: 'euphemia-all-praised',
-    name: 'Euphemia the All-Praised',
-    category: 'martyrs',
-    feastDay: 'September 16',
-    born: 'c. 289 AD',
-    birthplace: 'Chalcedon, Bithynia',
-    reposed: '303 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Chalcedon, those who suffer for the faith, ecumenical councils',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Great Martyr Euphemia the All-praised (09-16).jpg',
-    bio: 'Saint Euphemia the All-Praised Great Martyr holds a unique place in the history of the Orthodox Church — she is the saint through whom God miraculously confirmed the Definition of Chalcedon. A young Christian woman from Chalcedon, Euphemia was tortured and killed during the Diocletian persecution around 303 AD for confessing her faith. She endured fire, wild beasts, and the sword before dying, and her tomb in Chalcedon became a great place of pilgrimage.\n\nWhen the Fourth Ecumenical Council assembled at Chalcedon in 451 to define the two natures of Christ, the Council Fathers faced irreconcilable disagreement between two positions. In an act of great faith, both the orthodox definition and the Monophysite alternative were placed in a sealed reliquary at the tomb of St. Euphemia and left for three days. When the reliquary was opened, the orthodox definition was found clasped in Euphemia\'s hands, while the heretical document lay at her feet.\n\nThis miracle sealed the acceptance of the Chalcedonian Definition by the assembled bishops. Saint Euphemia is therefore uniquely associated with the doctrinal heart of Orthodox Christology — the confession of Christ as one person in two natures — and is celebrated as a great protectress of the faith.',
-    troparion: 'The passion-bearer and great martyr Euphemia is the champion of true doctrines. In the holy council of Chalcedon she miraculously confirmed the faith of the Fathers. Therefore we Orthodox faithfully honor her.',
-    writings: []
-  },
-  {
-    id: 'anastasia-deliverer',
-    name: 'Anastasia the Deliverer from Poisons',
-    category: 'martyrs',
-    feastDay: 'December 22',
-    born: 'c. 280 AD',
-    birthplace: 'Rome',
-    reposed: '304 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Those suffering from poisoning, women, weaving',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Great Martyr Anastasia the Deliverer from Poisons, her teacher, Martyr Chrysogonos, and many with them (12-22).jpg',
-    bio: 'Saint Anastasia the Great Martyr, called "Deliverer from Poisons" or "Pharmakolytria," was a Roman noblewoman who devoted herself to ministering to Christians imprisoned during the Diocletian persecution, providing them with food, medicine, and comfort at great personal risk. Born to a noble Roman family, she was raised as a Christian by her mother and instructed in the faith by the martyr Chrysogonos.\n\nAnastasia used her wealth and social position to visit Christians in prisons throughout Illyricum, releasing the imprisoned and healing the sick. She was herself imprisoned, tortured, and eventually martyred by being burned in a furnace on the island of Palmaria around 304 AD. Her name, from the Greek anastasis (resurrection), became a name of profound theological significance in the Church.\n\nShe is called "Deliverer from Poisons" because of the many miraculous healings attributed to her intercession, especially healing from poisonous substances and illness. Her feast falls on December 22, just before Christmas, and she is commemorated in the Divine Liturgy of Christmas Day.',
-    troparion: 'In you, O martyr Anastasia, the image of God was faithfully preserved; for taking up your cross, you followed Christ. By your deeds you taught us to look beyond the flesh, for it passes away; and to care for the soul, since it is immortal. Therefore your spirit rejoices with the Angels.',
+    iconUrl: 'assets/images/saints/Glorification of Venerable Zabulon and Sosanna, parents of Saint Nino, Enlightener of Georgia (05-20).jpg',
+    bio: 'The Holy Venerable Zabulon and Sosanna are venerated as the parents of St. Nino, the Enlightener of Georgia. They are honored by the Church as those who, by raising their daughter in the Christian faith and dedicating her to God, became instruments of the evangelization of an entire nation.\n\nZabulon was a military commander of Cappadocian origin who embraced the monastic life after his wife Sosanna, the sister of the Patriarch of Jerusalem, also dedicated herself to God. Nino was raised partly at the court of the Patriarch in Jerusalem before being directed by the Theotokos in a vision to go to Georgia.\n\nThe veneration of Zabulon and Sosanna reflects the Orthodox understanding that holiness is transmitted through families, and that the parents of great saints share in the fruits of their children\'s ministry.',
+    troparion: 'O holy Zabulon and Sosanna, through your faithful upbringing you gave to the Church her great enlightener Nino. Your dedication to God bore fruit a hundredfold in the conversion of Georgia. Intercede with Christ God for the salvation of our souls.',
     writings: []
   },
 
-  // ── MONASTICS ────────────────────────────────────────────────
+  // ── NEW MARTYRS ──────────────────────────────────────────────
   {
-    id: 'paisios-velichkovsky',
-    name: 'Paisios Velichkovsky',
-    category: 'monastics',
-    feastDay: 'November 15',
-    born: '1722',
-    birthplace: 'Poltava, Ukraine',
-    reposed: '1794',
+    id: 'benjamin-of-petrograd',
+    name: 'Benjamin, Metropolitan of Petrograd',
+    category: 'martyrs',
+    feastDay: 'July 31',
+    born: '1873',
+    birthplace: 'Nizhma, Olonets Province, Russia',
+    reposed: '1922',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Monastics, translators, the hesychast tradition',
+    patronage: 'Russia, those falsely accused, victims of political persecution',
     isFather: false,
-    iconUrl: 'assets/images/saints/Venerable Paisios Velichkovsky (11-15).jpg',
-    bio: 'Saint Paisios Velichkovsky is the great 18th century monastic who almost single-handedly revived the hesychast and Philokalic tradition in the Slavic Orthodox world. Born Pyotr Velichkovsky in Poltava, Ukraine, he entered monastic life as a teenager and eventually made his way to Mount Athos, where he lived for seventeen years, gathering a community of Slavic monks and learning Greek in order to translate the Fathers.\n\nPaisius\'s greatest achievement was the translation of the Philokalia into Church Slavonic — published as the Dobrotolyubie in 1793, one year before his death. This translation brought the entire hesychast tradition of prayer, watchfulness, and inner spiritual life into accessible form for Russian, Ukrainian, Romanian, and Serbian monastics, and ignited a great revival of spiritual life throughout Eastern Orthodox Christianity.\n\nAt his monastery of Neamts in Romania, Paisios gathered hundreds of monks and instituted the Athonite Rule. His disciples carried the hesychast renewal to Russia — through them it reached Optina Monastery and, through Optina, the whole of 19th century Russian spirituality. He was canonized by the Romanian Orthodox Church in 1988.',
-    troparion: 'You were an instrument of divine grace and illumined the Orthodox world with the Philokalic tradition, O venerable Paisios. You gathered disciples and translated the words of the Fathers, becoming a light to the Slavic peoples. Intercede with Christ God that our souls may be saved.',
-    writings: [
-      { title: 'Dobrotolyubie (Slavonic Philokalia)', source: 'Translation', url: 'https://www.amazon.com' },
-    ]
-  },
-  {
-    id: 'sergius-of-radonezh',
-    name: 'Sergius of Radonezh',
-    category: 'monastics',
-    feastDay: 'September 25',
-    born: '1314',
-    birthplace: 'Rostov, Russia',
-    reposed: '1392',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Russia, students, those building communities of faith',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Repose of Venerable Sergius the Wonderworker, Abbot of Radonezh (09-25).jpg',
-    bio: 'Saint Sergius of Radonezh is the most beloved saint of Russia — the "Abbot of All Russia" who founded the Holy Trinity-Sergius Lavra (still the spiritual heart of Russian Orthodoxy), reconciled warring princes, inspired the defeat of the Mongols at Kulikovo Field, and through his disciples founded approximately seventy monasteries across northern Russia.\n\nBorn Bartholomew to a noble family, Sergius retreated into the wilderness forests of Radonezh with his brother Stephen to live as a hermit. Disciples gradually gathered, and the community that grew around him became the Trinity-Sergius Monastery. Sergius was known for his radical humility — he refused the bishopric of Moscow twice — and for his ministry of reconciliation, traveling to warring princes to make peace.\n\nIn 1380, Sergius blessed Prince Dmitry Donskoy before the Battle of Kulikovo, prophesying victory over the Mongol Horde. The victory transformed the consciousness of the Russian people. The Andrei Rublev icon of the Holy Trinity — arguably the greatest icon ever painted — was created for the Trinity-Sergius Monastery in honor of Sergius. His relics rest at the Lavra to this day.',
-    troparion: 'By your way of life you became a model to your disciples. Keeping vigils, you made yourself a rule of prayer. Therefore your spirit rejoices with the Angels. Venerable Father Sergius, intercede with Christ God that our souls may be saved.',
+    iconUrl: 'assets/images/saints/Hieromartyr Benjamin, Metropolitan of Petrograd and Gdovsk, and those with him (07-31).jpg',
+    bio: 'Saint Benjamin, Metropolitan of Petrograd, is one of the most beloved New Martyrs of Russia — elected by the popular vote of clergy and laity in 1917, he was beloved by his flock and shot by the Bolsheviks in 1922 on fabricated charges.\n\nWhen the Soviet government launched its campaign to seize Church valuables in 1922, Metropolitan Benjamin sought to negotiate a peaceful resolution, offering to contribute substantial Church property voluntarily. The Soviets arrested him anyway, charging him with counter-revolutionary resistance. The trial was a show trial; the verdict was predetermined.\n\nSaint Benjamin went to his execution with peace and forgiveness, writing from prison: "At the present time I write to you from prison. Let my soul be as calm and joyful as if I were at liberty." He was shot on August 12-13, 1922, together with three companions. Canonized in 1992.',
+    troparion: 'O holy hieromartyr Benjamin, beloved shepherd of Petrograd, you served your flock with love and faced your death with peace. Intercede with Christ God for the salvation of our souls.',
     writings: []
   },
   {
-    id: 'john-of-damascus',
-    name: 'John of Damascus',
-    category: 'monastics',
-    feastDay: 'December 4',
-    born: 'c. 675 AD',
-    birthplace: 'Damascus, Syria',
-    reposed: 'c. 749 AD',
+    id: 'seraphim-chichagov',
+    name: 'Seraphim Chichagov, Metropolitan',
+    category: 'martyrs',
+    feastDay: 'November 28',
+    born: '1856',
+    birthplace: 'St. Petersburg, Russia',
+    reposed: '1937',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Icon painters, pharmacists, theologians, those studying the faith',
-    isFather: true,
-    iconUrl: 'assets/images/saints/Venerable John of Damascus (12-04).jpg',
-    bio: 'Saint John of Damascus is the last great Father of the Eastern Church and the supreme synthesizer of Greek patristic theology. Born into a prominent Christian family in Damascus that served the Umayyad Caliphate, John inherited his father\'s position as a high official in the Muslim court before eventually withdrawing to the monastery of Mar Saba in the Judean desert, where he spent the rest of his life in theological writing, hymnography, and prayer.\n\nHis three-volume Fount of Knowledge is one of the most important theological texts in the Orthodox tradition — including a systematic summary of all previous patristic theology in its third volume, The Orthodox Faith, which became the standard theological textbook for both Eastern and Western Christendom. His three Orations on the Holy Icons are the definitive theological defense of the veneration of icons and were foundational for the Seventh Ecumenical Council (787).\n\nJohn is also one of the greatest hymnographers of the Church. He wrote the Easter Canon ("The day of Resurrection"), the Octoechos (the eight tones of Byzantine liturgical music), and hundreds of other hymns still sung in Orthodox worship today. He is called "the Golden Speaker" and was declared a Doctor of the Church.',
-    troparion: 'As a bearer of divine wisdom, you poured forth streams of theology and quenched the thirst of all the faithful. Like a living harp of the Spirit, you hymned the divine mysteries. Therefore we cry: Rejoice, O John, the light of wisdom.',
-    writings: [
-      { title: 'The Orthodox Faith (Fount of Knowledge, Vol. 3)', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-      { title: 'Three Orations on the Holy Icons', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
-    ]
-  },
-  {
-    id: 'isaac-the-syrian',
-    name: 'Isaac the Syrian',
-    category: 'monastics',
-    feastDay: 'January 28',
-    born: 'c. 613 AD',
-    birthplace: 'Qatar (Beth Qatraye)',
-    reposed: 'c. 700 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Monastics, those who pray, those in spiritual desolation',
-    isFather: true,
-    iconUrl: 'assets/images/saints/Saint Isaac the Syrian, Bishop of Nineveh (01-28).jpg',
-    bio: 'Saint Isaac the Syrian, Bishop of Nineveh, is the great mystical theologian of prayer and the spiritual life — one of the most widely read of all the Church Fathers among monastics and those devoted to interior prayer. Born in the region of Qatar (Beth Qatraye) in the Persian Gulf, Isaac was a monk of the Church of the East who was consecrated Bishop of Nineveh, only to resign after five months and return to his beloved solitary life of prayer in the mountains of Khuzestan.\n\nIsaac spent his final years in the monastery of Rabban Shabur, dictating his homilies when his eyesight failed from intensive reading. His writings — known as the Ascetical Homilies — are among the most beautiful and profound texts on prayer, tears, humility, divine mercy, and the love of God in all of Christian literature. His teaching that God\'s love is so vast that even the demons may one day be saved by it pushed at the boundaries of Orthodox theology but has been widely read and loved.\n\nThough Isaac was technically a bishop of the Nestorian Church of the East, the Orthodox Church has venerated him as a saint because his writings transcend every ecclesial boundary, breathing the pure air of desert prayer and mystical encounter with God.',
-    troparion: 'Having lived a life of strict fasting and vigilance on earth, O venerable Isaac, you were found worthy of divine visions. You left behind writings full of wisdom for all who desire to be saved. Therefore we honor you.',
-    writings: [
-      { title: 'The Ascetical Homilies', source: 'Holy Transfiguration Monastery', url: 'https://www.amazon.com' },
-    ]
-  },
-  {
-    id: 'benedict-of-nursia',
-    name: 'Benedict of Nursia',
-    category: 'monastics',
-    feastDay: 'March 14',
-    born: 'c. 480 AD',
-    birthplace: 'Nursia, Umbria',
-    reposed: 'c. 547 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Europe, monks, students, speleologists, those who are dying',
+    patronage: 'Russia, military officers who convert, those who suffer for the Church',
     isFather: false,
-    iconUrl: 'assets/images/saints/Venerable Benedict of Nursia (03-14).jpg',
-    bio: 'Saint Benedict of Nursia is venerated by the Orthodox Church as a venerable father of Western monasticism — the author of the Rule of Saint Benedict that shaped the entire monastic tradition of Western Christendom and who founded the monastery of Monte Cassino. He is commemorated by the Orthodox Church as one of the great monastic saints of the pre-Schism period of Christian unity.\n\nBorn in Nursia in Umbria, Benedict abandoned his studies in Rome to live as a hermit in a cave at Subiaco, where he spent three years in intense ascetical struggle. His reputation for holiness attracted disciples, and he eventually gathered twelve communities of monks. He then moved to Monte Cassino and founded the great monastery that became the mother house of Benedictine monasticism.\n\nBenedict\'s Rule — moderate, practical, spiritually profound — balanced prayer, work, and study in a way that proved immensely fruitful. Pope Paul VI proclaimed him the Patron of Europe in 1964. The Orthodox Church venerates him as a saint of the undivided Church, and his feast is celebrated in Orthodox communities in Western Europe and North America.',
-    troparion: 'You withdrew from the world to live for God alone, O venerable Benedict, and were made worthy of divine gifts. You gathered disciples and gave them a rule of life rooted in prayer and work. Intercede with Christ God that our souls may be saved.',
+    iconUrl: 'assets/images/saints/Hieromartyr Metropolitan Seraphim (Chichagov) (11-28).jpg',
+    bio: 'Saint Seraphim Chichagov is a decorated military officer who became a monk, bishop, and martyr. Born into a noble military family, he served as a Guards officer before his profound conversion led him to leave military life and become a bishop.\n\nAs a bishop Seraphim compiled the documents that led to the glorification of St. Seraphim of Sarov in 1903 — one of the great events in Russian religious life. He served as Metropolitan of Leningrad and was arrested multiple times by Soviet authorities.\n\nAt eighty-one years old, bedridden and barely able to move, Seraphim was carried to the Butovo firing range on a stretcher and shot on December 11, 1937 at the height of the Great Terror. Canonized in 1997.',
+    troparion: 'O holy hieromartyr Seraphim, you laid aside military glory to take up the Cross of Christ, and having served the Church with all your gifts, you sealed your service with your blood. Intercede for the salvation of Russia and of our souls.',
+    writings: []
+  },
+  {
+    id: 'andrew-fool-for-christ',
+    name: 'Andrew the Fool-for-Christ',
+    category: 'monastics',
+    feastDay: 'October 2',
+    born: 'c. 10th century AD',
+    birthplace: 'Scythia',
+    reposed: 'c. 936 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Constantinople, Russia, those who appear foolish to the world',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Blessed Andrew the Fool-For-Christ at Constantinople (10-02).jpg',
+    bio: 'Saint Andrew the Fool-for-Christ of Constantinople is one of the most celebrated holy fools and the visionary to whom the great feast of the Protection of the Theotokos (Pokrov) is traced. A Scythian slave who voluntarily chose holy foolishness, Andrew lived on the streets of Constantinople for decades bearing cold, hunger, and mockery for Christ.\n\nThe defining vision of his life occurred in the Church of Blachernae, where Andrew beheld the Most Holy Theotokos standing in the air above the congregation, spreading her veil over the worshippers as a sign of her protection. This vision gave rise to the Feast of the Protection of the Theotokos, one of the great feasts of the Russian Orthodox calendar (October 1).\n\nAndrew is a model of the radical freedom of the holy fool — one who, by abandoning all worldly dignity, paradoxically receives the greatest spiritual gifts.',
+    troparion: 'Having taken upon yourself the feat of foolishness for Christ, O Andrew, you were granted the vision of the Queen of Heaven spreading her protection over the faithful. Intercede with her for the salvation of our souls.',
+    writings: []
+  },
+
+  // ── WESTERN SAINTS ───────────────────────────────────────────
+  {
+    id: 'augustine-of-hippo',
+    name: 'Augustine of Hippo',
+    category: 'hierarchs',
+    feastDay: 'June 15',
+    born: '354 AD',
+    birthplace: 'Thagaste, North Africa',
+    reposed: '430 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Theologians, brewers, printers',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Blessed Augustine, Bishop of Hippo (06-15).jpg',
+    bio: 'Saint Augustine of Hippo is one of the most influential theologians in Christian history, venerated by the Orthodox Church as a saint of the undivided Church. Born to a pagan father and the devout Christian Monica, Augustine pursued philosophy before his famous conversion in Milan in 386, recorded in his Confessions.\n\nBaptized by Ambrose of Milan, Augustine became Bishop of Hippo, where he served for thirty-five years. His writings against the Donatists, Pelagians, and Manichees shaped Western theology for over a millennium. His City of God and his Confessions remain among the most universally read works of Christian literature.\n\nThe Orthodox Church venerates Augustine as a Blessed Father while maintaining theological reservations about certain aspects of his legacy — particularly his developments on grace, predestination, and the Filioque. His opening words ring through the centuries: "Our heart is restless until it repose in Thee."',
+    troparion: 'O Blessed Augustine, your heart burned for God from youth until its rest in Him. Through your Confessions you led countless souls to seek the Lord. Intercede with Christ God that our souls may find in Him their true rest.',
     writings: [
-      { title: 'The Rule of Saint Benedict', source: 'Liturgical Press', url: 'https://www.amazon.com' },
+      { title: 'Confessions', source: 'Various editions', url: 'https://www.newadvent.org/fathers/1101.htm' },
+      { title: 'City of God', source: 'Various editions', url: 'https://www.newadvent.org/fathers/1201.htm' },
     ]
   },
   {
-    id: 'theodosius-of-kiev',
-    name: 'Theodosius of the Kiev Caves',
+    id: 'columba-of-iona',
+    name: 'Columba of Iona',
     category: 'monastics',
-    feastDay: 'August 28 (Synaxis)',
-    born: 'c. 1009 AD',
-    birthplace: 'Vasiliev, near Kiev',
-    reposed: '1074 AD',
+    feastDay: 'June 9',
+    born: '521 AD',
+    birthplace: 'Gartan, County Donegal, Ireland',
+    reposed: '597 AD',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Russia, Ukraine, monastics, the poor',
+    patronage: 'Scotland, Ireland, poets, bookbinders',
     isFather: false,
-    iconUrl: 'assets/images/saints/Synaxis of the Saints of the Kiev Caves, whose relics repose in the Far Caves of Venerable Theodosius (08-28).jpg',
-    bio: 'Saint Theodosius of the Kiev Caves is the father of monastic life in Russia — co-founder with St. Anthony of the Kyiv Pechersk Lavra (the Monastery of the Caves) and the organizer who gave it its permanent form, rule, and missionary character. Born near Kiev, Theodosius was drawn from youth to ascetic life, wearing rough clothing and working with the servants despite his wealthy family\'s objections.\n\nAfter finding Anthony living in a cave above the Dnieper, Theodosius joined him, was tonsured, and eventually became the abbot of the growing monastic community. He introduced the Studite Rule from Constantinople, organized the community into a proper cenobitic monastery, and built it into the most important spiritual and cultural center in Kievan Rus.\n\nTheodosius was distinguished by his radical care for the poor — distributing food to beggars, building a hospice for the crippled and blind, visiting prisoners, and rebuking princes for injustice. His combination of deep prayer, practical charity, and fearless prophetic witness set the pattern for Russian Orthodox monastic life. The Kiev Caves Lavra, which he shaped, remains one of the holiest sites in Eastern Christianity.',
-    troparion: 'You came to love the monastic life from childhood, O venerable Theodosius, and with fervent zeal you established the pattern of monastic life in Russia. You were a teacher of monks and a model of charity to all. Intercede with Christ God that our souls may be saved.',
+    iconUrl: 'assets/images/saints/Saint Columba of Iona, Enlightener of Scotland (06-09).jpg',
+    bio: 'Saint Columba (Colmcille) of Iona is the great Irish monk who evangelized Scotland and whose monastery on the island of Iona became one of the most important Christian centers of the early medieval world. Born into a royal Irish family, Columba sailed with twelve companions to Iona off the west coast of Scotland in 563.\n\nAt Iona, Columba founded the monastery that became the mother house of Celtic monasticism in Scotland and Northern England — converting the Pictish king Bridei and establishing a tradition of scholarship and manuscript illumination that influenced the entire British Isles. The Book of Kells was likely produced at Iona or by monks trained in its tradition.\n\nColumba died alone before the altar of the Iona church on June 9, 597. The Orthodox Church venerates him as a saint of the pre-Schism Western Church.',
+    troparion: 'O holy Columba, you left your beloved Ireland to bring the light of Christ to the Picts and Scots. From your holy island of Iona you sent forth missionaries who illumined the whole of Britain. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'aidan-of-lindisfarne',
+    name: 'Aidan of Lindisfarne',
+    category: 'hierarchs',
+    feastDay: 'August 31',
+    born: 'c. 590 AD',
+    birthplace: 'Ireland',
+    reposed: '651 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'England, Northumbria, the poor',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Saint Aidan, Bishop of Lindesfarne (08-31).jpg',
+    bio: 'Saint Aidan of Lindisfarne is the Irish monk from Iona who evangelized the Anglo-Saxon kingdom of Northumbria and established the great monastery of Lindisfarne (Holy Island). Sent at the request of King Oswald, Aidan chose the tidal island of Lindisfarne as his base.\n\nAidan\'s approach to mission was one of extraordinary gentleness and poverty. He walked rather than rode on horseback to be approachable, gave away whatever he received to the poor, ransomed slaves and educated them as priests, and established schools throughout Northumbria. The Venerable Bede praised him as the model of what a bishop should be.\n\nAidan died leaning against the church wall at Bamburgh in 651. His spirit lived on in the great Northumbrian saints he formed — Cuthbert, Chad, and others. The Lindisfarne Gospels reflect the tradition he established.',
+    troparion: 'O holy Aidan, gentle shepherd of Northumbria, you walked among your people in poverty and love. From your holy island you sent forth missionaries who enlightened all of England. Intercede with Christ God for our salvation.',
+    writings: []
+  },
+  {
+    id: 'cuthbert-of-britain',
+    name: 'Cuthbert of Britain',
+    category: 'monastics',
+    feastDay: 'March 20',
+    born: 'c. 634 AD',
+    birthplace: 'Northumbria, England',
+    reposed: '687 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'England, Northumbria, sailors, shepherds',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Saint Cuthbert, Wonderworker of Britain (03-20).jpg',
+    bio: 'Saint Cuthbert of Lindisfarne is the most beloved saint of northern England — a Northumbrian shepherd who became a monk, bishop, and hermit, whose incorrupt relics made him the patron of the North for over a thousand years. Trained at Melrose in the tradition of St. Aidan, Cuthbert became Prior and then Bishop of Lindisfarne.\n\nCuthbert spent years as a hermit on the remote island of Inner Farne, living in a cell dug into the earth. He was known for miracles of healing and prophecy, for his love of animals, and for a holiness that drew even kings to seek his counsel.\n\nHis body was found incorrupt when translated in 698. The monks of Lindisfarne carried his remains for over a century during the Viking raids until finding a resting place at Durham, where his shrine remains to this day.',
+    troparion: 'O holy Cuthbert, wonderworker of Britain, you sought God in solitude on the cold northern seas and healed the sick from your hermitage. Your holy relics have remained a source of blessing to the English people. Intercede for us with Christ God.',
+    writings: []
+  },
+  {
+    id: 'irenaeus-of-lyons',
+    name: 'Irenaeus of Lyons',
+    category: 'hierarchs',
+    feastDay: 'August 23',
+    born: 'c. 130 AD',
+    birthplace: 'Smyrna, Asia Minor',
+    reposed: 'c. 202 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Theologians, those who combat heresy',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Hieromartyr Irenaeus, Bishop of Lyons (08-23).jpg',
+    bio: 'Saint Irenaeus of Lyons is the first great systematic theologian of the Church — a disciple of Polycarp (who was himself a disciple of John the Apostle) who preserved the apostolic tradition and refuted the Gnostic heresies. Born in Smyrna and educated under Polycarp, Irenaeus became Bishop of Lyons in Gaul.\n\nHis great work Against Heresies refutes the Gnostic systems comprehensively, articulating the unity of the Old and New Testaments, the goodness of creation, the reality of the Incarnation, and apostolic succession as the guarantee of tradition.\n\nIrenaeus also gave the Church the concept of recapitulation (anakephalaiosis) — Christ summing up and restoring all of humanity in Himself — which became foundational for Orthodox soteriology. He was martyred around 202 AD.',
+    troparion: 'O holy Irenaeus, disciple of disciples of the Lord, you preserved the apostolic tradition and refuted Gnostic errors with the sword of truth. Intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'Against Heresies', source: 'Ante-Nicene Fathers, Vol. I', url: 'https://www.newadvent.org/fathers/0103.htm' },
+    ]
+  },
+
+  // ── HOLY FOOL ────────────────────────────────────────────────
+  {
+    id: 'basil-of-moscow',
+    name: 'Basil of Moscow',
+    category: 'monastics',
+    feastDay: 'August 2',
+    born: 'c. 1469',
+    birthplace: 'Elokhovo, Moscow',
+    reposed: '1552',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Moscow, the poor, those who speak truth to power',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Blessed Basil of Moscow the Fool-For-Christ (08-02).jpg',
+    bio: 'Saint Basil the Blessed is the most celebrated Russian holy fool and the saint after whom "St. Basil\'s Cathedral" on Red Square is named. Born near Moscow, Basil left home to live as a naked wanderer on the streets, enduring cold, hunger, and mockery as a voluntary ascetic who saw all earthly comfort as an obstacle to union with God.\n\nBasil was known for prophetic acts that were only understood afterward. He spoke truth fearlessly even to Ivan the Terrible — handing the feared tsar a piece of raw meat during Lent to suggest his murders were no different from breaking the fast. Ivan is said to have feared Basil more than anyone.\n\nBasil died in 1552 and Ivan himself carried his coffin. The Cathedral of the Intercession was built between 1555-1561, and one of its chapels was dedicated to Basil over his tomb — giving it the name by which it is known worldwide.',
+    troparion: 'O Basil the Blessed, you chose the folly of the Cross and walked naked through Moscow\'s streets for love of Christ. By your spiritual gifts you saw hidden things and spoke truth without fear. Intercede with God for the salvation of our souls.',
     writings: []
   },
 
   // ── HIERARCHS ────────────────────────────────────────────────
   {
-    id: 'mark-of-ephesus',
-    name: 'Mark of Ephesus',
+    id: 'cyril-of-jerusalem',
+    name: 'Cyril of Jerusalem',
     category: 'hierarchs',
-    feastDay: 'January 19',
-    born: '1392',
-    birthplace: 'Constantinople',
-    reposed: '1444',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Defenders of Orthodoxy, those who resist uncanonical union',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Saint Mark, Archbishop of Ephesus (01-19).jpg',
-    bio: 'Saint Mark of Ephesus is the great confessor of the Orthodox faith at the Council of Florence (1439) — the man who alone refused to sign the proposed union between the Orthodox and Roman Catholic churches and thereby preserved the integrity of Orthodoxy at one of its most critical moments. Born to a noble Constantinopolitan family, he was an accomplished theologian and ascetic who became Metropolitan of Ephesus.\n\nAt the Council of Florence, convened under desperate Byzantine political pressure to secure Western military aid against the Ottoman threat, almost all the Orthodox hierarchs were induced to sign the Act of Union accepting Roman primacy and the Filioque. Mark of Ephesus alone refused. When Pope Eugenius IV heard that Mark had not signed, he reportedly said: "So we have accomplished nothing."\n\nMark returned to Constantinople and organized Orthodox resistance to the union, writing extensively against the Florentine decrees. When Constantinople fell to the Ottomans in 1453 — fourteen years after Florence — the people saw it as vindication of his position: the union that was meant to save the empire had neither saved it nor preserved the faith. He is venerated as a saint and confessor and one of the heroes of Orthodox ecclesiological integrity.',
-    troparion: 'Champion of Orthodoxy and pillar of the Church, you stood alone against the error of the Latin union and preserved the faith of the Fathers, O holy Mark. Your boldness before councils and princes showed that truth is more precious than worldly safety. Intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'dionysius-areopagite',
-    name: 'Dionysius the Areopagite',
-    category: 'hierarchs',
-    feastDay: 'October 3',
-    born: 'c. 1st century AD',
-    birthplace: 'Athens',
-    reposed: 'c. 96 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'France, Athens, philosophers, theologians',
-    isFather: true,
-    iconUrl: 'assets/images/saints/Hieromartyr Dionysius the Areopagite, Bishop of Athens (10-03).jpg',
-    bio: 'Saint Dionysius the Areopagite was a member of the Areopagus — the supreme court of Athens — who was converted by the preaching of St. Paul on the Areopagus Hill (Acts 17:34), became the first Bishop of Athens, and is the author (by Orthodox tradition) of the Corpus Areopagiticum: the most influential body of mystical theology in Christian history.\n\nThe Areopagitic writings — including The Divine Names, The Mystical Theology, The Celestial Hierarchy, and The Ecclesiastical Hierarchy — present a profound vision of apophatic theology (knowing God through negation), the hierarchy of angels, and the structure of the Church\'s liturgical life as a participation in divine realities. Their influence on both Eastern and Western theology has been immeasurable: Maximus the Confessor, Thomas Aquinas, Meister Eckhart, and countless others drew deeply from them.\n\nDionysius later traveled to France with St. Paul\'s disciple Hierotheus and is identified by French tradition with Saint Denis, the patron of France and first Bishop of Paris, who was martyred by beheading around 96 AD. The Orthodox Church venerates him as hieromartyr, theologian, and companion of the Apostles.',
-    troparion: 'Having received divine wisdom from the vessel of election Paul, O Dionysius, you illumined the Athenians and became the first shepherd of their Church. You were martyred for Christ and now stand before Him. Intercede with Him that our souls may be saved.',
-    writings: [
-      { title: 'The Divine Names', source: 'Paulist Press', url: 'https://www.amazon.com' },
-      { title: 'The Mystical Theology', source: 'Paulist Press', url: 'https://www.amazon.com' },
-      { title: 'The Celestial Hierarchy', source: 'Paulist Press', url: 'https://www.amazon.com' },
-    ]
-  },
-  {
-    id: 'polycarp-of-smyrna',
-    name: 'Polycarp of Smyrna',
-    category: 'hierarchs',
-    feastDay: 'February 23',
-    born: 'c. 69 AD',
-    birthplace: 'Smyrna, Asia Minor',
-    reposed: 'c. 155 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Those who suffer for the faith, the elderly',
-    isFather: true,
-    iconUrl: 'assets/images/saints/Hieromartyr Polycarp, Bishop of Smyrna (02-23).jpg',
-    bio: 'Saint Polycarp of Smyrna is one of the most important Apostolic Fathers — a direct disciple of St. John the Theologian, Bishop of Smyrna for half a century, and a martyr whose death is recorded in one of the earliest and most moving documents of Christian antiquity, the Martyrdom of Polycarp.\n\nPolycarp served as a living link between the Apostolic generation and the 2nd century Church. Irenaeus of Lyons, who knew him as a boy, records that Polycarp often spoke of his conversations with John and others who had seen the Lord. He wrote an epistle to the Philippians that is preserved and venerated. He traveled to Rome to discuss the dating of Easter with Pope Anicetus — an early example of the communion and occasional disagreement between Rome and the East.\n\nWhen he was arrested at the age of 86, he was brought before the proconsul and urged to curse Christ and be released. His response has echoed through the centuries: "Eighty-six years have I served Him, and He has done me no wrong. How can I blaspheme my King who saved me?" He was burned at the stake, and when the fire would not touch him, he was pierced with a sword. The Martyrdom of Polycarp, written by his church immediately after, is the earliest detailed account of Christian martyrdom outside the New Testament.',
-    troparion: 'You shared in the ways of the Apostles and ascended to their throne. Inspired by God, you found the path to the practice of virtue. You accepted the word of truth and the right teaching of the faith; and you were martyred for Christ God, O Polycarp. Intercede for the salvation of our souls.',
-    writings: [
-      { title: 'Epistle to the Philippians', source: 'Early Christian Writings', url: 'https://www.earlychristianwritings.com/polycarp.html' },
-    ]
-  },
-  {
-    id: 'leo-the-great',
-    name: 'Leo the Great',
-    category: 'hierarchs',
-    feastDay: 'February 18',
-    born: 'c. 400 AD',
-    birthplace: 'Tuscany or Rome',
-    reposed: '461 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Rome, musicians, those who preach',
-    isFather: true,
-    iconUrl: 'assets/images/saints/Saint Leo the Great, Pope of Rome (02-18).jpg',
-    bio: 'Saint Leo the Great, Pope of Rome, is one of the greatest bishops of the early Church — a theologian, preacher, and administrator of extraordinary gifts who guided Rome through the turbulent 5th century and whose Christological teaching was confirmed by the Fourth Ecumenical Council at Chalcedon. He is one of only two popes called "the Great" in the Latin tradition.\n\nLeo\'s Tome — a letter to Flavian of Constantinople on the two natures of Christ — was read aloud at Chalcedon, after which the assembled bishops cried: "Peter has spoken through Leo!" The Tome\'s precise formulation of Christ as one person in two natures, without confusion or division, became one of the foundational texts of Chalcedonian Christology.\n\nLeo is also known for his extraordinary pastoral courage: when Attila the Hun threatened Rome in 452, Leo met him in person and persuaded him to withdraw — an event celebrated as miraculous. When the Vandals sacked Rome in 455, he again met their leader Genseric and persuaded him to spare the population from murder and fire. The Orthodox Church venerates him as a saint of the undivided Church and celebrates his feast on February 18.',
-    troparion: 'By your orthodox teachings you illumined the Church and banished the darkness of heresy. O Leo, lover of Orthodoxy, great among hierarchs, intercede with Christ God to grant peace to the world and great mercy to our souls.',
-    writings: [
-      { title: 'The Tome of Leo', source: 'NPNF Series II, Vol. XII', url: 'https://www.newadvent.org/fathers/3604028.htm' },
-      { title: 'Sermons', source: 'NPNF Series II, Vol. XII', url: 'https://www.newadvent.org/fathers/3602.htm' },
-    ]
-  },
-  {
-    id: 'tikhon-of-zadonsk',
-    name: 'Tikhon of Zadonsk',
-    category: 'hierarchs',
-    feastDay: 'August 13',
-    born: '1724',
-    birthplace: 'Korotsk, Novgorod Province, Russia',
-    reposed: '1783',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Russia, bishops, those who suffer from mental illness',
-    isFather: false,
-    iconUrl: 'assets/images/saints/First opening of the relics of Saint Tikhon of Zadonsk (05-14).jpg',
-    bio: 'Saint Tikhon of Zadonsk is one of the most beloved bishops and spiritual writers of 18th century Russia — a man of deep personal holiness and extraordinary pastoral care who resigned his bishopric at forty-three to spend the last fifteen years of his life in solitary prayer and writing at the Zadonsk Monastery. Dostoyevsky modeled the Elder Zosima in The Brothers Karamazov partly on Tikhon, and the theologian Georges Florovsky called him "the most remarkable phenomenon of 18th-century Russian church life."\n\nBorn to a poor deacon\'s family, Tikhon rose by merit to become Bishop of Voronezh, where he undertook vigorous reforms of clerical education and church life. But increasingly drawn to contemplative solitude, he resigned and retired to Zadonsk. There he lived in strict simplicity, receiving all who came to him, giving away everything he had to the poor, and writing his major spiritual works.\n\nHis books — especially The True Christianity and Journey to Heaven — breathe the spirit of patristic Orthodox spirituality applied to everyday life, and were enormously popular throughout Russia. He was canonized in 1861 and his relics rest at Zadonsk.',
-    troparion: 'You were a model of meekness and an image of repentance, a foundation of charity and the glory of hierarchs. Therefore, O Father Tikhon, entreat Christ our God to grant us great mercy.',
-    writings: [
-      { title: 'True Christianity', source: 'Nordland Publishing', url: 'https://www.amazon.com' },
-    ]
-  },
-
-  // ── HOLY WOMEN ───────────────────────────────────────────────
-  {
-    id: 'macrina-younger',
-    name: 'Macrina the Younger',
-    category: 'women',
-    feastDay: 'July 19',
-    born: 'c. 330 AD',
-    birthplace: 'Caesarea, Cappadocia',
-    reposed: '379 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Nuns, widows, those who grieve',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Venerable Macrina, sister of Saint Basil the Great (07-19).jpg',
-    bio: 'Saint Macrina the Younger is one of the most remarkable women of the patristic era — the sister of Basil the Great and Gregory of Nyssa, who exercised a profound spiritual influence over both her brothers and whose life became the subject of Gregory\'s beautiful biography, the Life of Macrina. She is distinguished from her grandmother Macrina the Elder by the title "the Younger."\n\nMacrina was betrothed as a young woman, but when her fiancé died she refused all further marriage proposals, calling her fiancé "away on a journey" and living as a virgin from then on. After her father\'s death, she transformed the family estate on the Iris River in Pontus into a monastic community, gathering her mother, servants, and other women into a life of prayer, simplicity, and charity.\n\nWhen Gregory of Nyssa visited her during her final illness, he found her on a simple board bed, burning with fever, yet radiant with joy and speaking words of such theological depth that Gregory recorded them in his dialogue On the Soul and Resurrection. She died as the sun set, and Gregory wept over her body. She is a model of the Christian woman as theologian, founder, and spiritual mother.',
-    troparion: 'O holy Macrina, sister of the great hierarchs Basil and Gregory, you transformed your home into a school of virtue and prayer. By your wisdom and holy life you guided many to Christ. Intercede with Him that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'melania-the-roman',
-    name: 'Melania the Roman',
-    category: 'women',
-    feastDay: 'December 31',
-    born: 'c. 383 AD',
-    birthplace: 'Rome',
-    reposed: '439 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Those who give away wealth, women of means who serve the poor',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Venerable Melania the Younger of Rome (12-31).jpg',
-    bio: 'Saint Melania the Younger was one of the wealthiest women in the Roman Empire who gave everything away to live as a servant of Christ and the poor. Born to a noble Roman family of immense wealth, Melania married Pinianus and together they resolved to live as celibates devoted to asceticism and charity, despite enormous family opposition.\n\nOver the following years, Melania and Pinianus sold their estates throughout the Empire — in Italy, Spain, North Africa, and the East — distributing the proceeds to monasteries, churches, and the poor on a scale never before seen. Jerome, Augustine, and Paulinus of Nola all knew and corresponded with them. After visiting the Egyptian and Palestinian monasteries, they eventually settled in Jerusalem, where Melania founded a monastery on the Mount of Olives.\n\nAfter Pinianus\'s death, Melania continued alone, living in extraordinary simplicity on the Mount of Olives, receiving pilgrims, counseling clergy and laity, and writing letters of spiritual guidance throughout the Church. She reposed in 439 AD surrounded by bishops and monks. Her life is a witness that wealth itself is neither virtue nor vice — only what is done with it.',
-    troparion: 'Forsaking the riches of this world for the wealth of heaven, O venerable Melania, you distributed all you had to the poor and lived as a servant of Christ. Intercede with Him that He may grant great mercy to our souls.',
-    writings: []
-  },
-  {
-    id: 'olympias-deaconess',
-    name: 'Olympias the Deaconess',
-    category: 'women',
-    feastDay: 'July 25',
-    born: 'c. 361 AD',
-    birthplace: 'Constantinople',
-    reposed: '408 AD',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Deaconesses, widows, women in ministry, those who suffer unjustly',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Holy Woman Olympias (Olympiada) the Deaconess of Constantinople (07-25).jpg',
-    bio: 'Saint Olympias the Deaconess was the closest friend and most faithful supporter of St. John Chrysostom and one of the great holy women of the Constantinopolitan Church. Born to a noble family and widowed after only a few months of marriage, Olympias refused the Emperor\'s demand that she remarry and devoted her immense wealth to the service of the Church and the poor.\n\nOrdained as a deaconess by Nectarius, the predecessor of Chrysostom, Olympias became the head of a community of deaconesses and one of the most influential women in Constantinople. Her household fed monks, clergy, and the poor; she built hospitals and homes for orphans; and she provided enormous financial support for the Church\'s missionary and charitable works.\n\nWhen John Chrysostom was unjustly deposed and exiled by the Empress Eudoxia, Olympias suffered alongside him. She was tried and fined for supposedly fomenting unrest at the time of the fire that burned the cathedral. After Chrysostom\'s death in exile, she herself was driven from Constantinople, living her final years in Nicomedia. The letters Chrysostom wrote to her from exile — surviving as seventeen precious letters — are among the most beautiful pastoral writings in the patristic tradition.',
-    troparion: 'As a faithful handmaid of the Lord and companion of the great Chrysostom, O holy Olympias, you gave all you had to God and the poor. In suffering you proved your love. Intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'xenia-of-petersburg',
-    name: 'Xenia of St. Petersburg',
-    category: 'women',
-    feastDay: 'January 24',
-    born: 'c. 1730',
-    birthplace: 'St. Petersburg, Russia',
-    reposed: 'c. 1803',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'St. Petersburg, widows, those who are grieving, the homeless',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Blessed Xenia of St. Petersburg (01-24).jpg',
-    bio: 'Saint Xenia of St. Petersburg is one of the most beloved saints of Russian Orthodoxy — a holy fool (yurodiva) whose life of self-imposed poverty, prayer, and hidden charity made her the invisible protectress of St. Petersburg. Born Xenia Grigorievna Petrova to a noble family, she was married to a colonel who died suddenly without receiving the last sacraments. This event transformed her entirely.\n\nXenia gave away all her possessions, put on her husband\'s military uniform (saying "Andrei Fyodorovich did not die — it is Xenia who died"), and began wandering the streets of St. Petersburg as a holy fool for Christ. She lived outdoors in all weathers, carrying brick at night to help build a church, giving away any money she received, and speaking in riddles and prophetic utterances that were often not understood until later events gave them meaning.\n\nThe people of St. Petersburg gradually recognized her holiness. Her touch was sought for sick children; her prayer was asked for in every difficulty. She reposed around 1803 after nearly fifty years of this hidden life. She was glorified in 1988. Her chapel in the Smolensk Cemetery in St. Petersburg draws an unending stream of pilgrims who leave prayer notes and receive answers.',
-    troparion: 'You scorned earthly wisdom and foolishness in the eyes of the world became your path to wisdom. Through your humble wandering you found heaven on earth. O holy Xenia, intercede with Christ God that He may grant our souls great mercy.',
-    writings: []
-  },
-
-  // ── OLD TESTAMENT SAINTS ─────────────────────────────────────
-  {
-    id: 'noah-righteous',
-    name: 'Noah the Righteous',
-    category: 'old-testament',
-    feastDay: 'December 13 (Sunday of the Holy Forefathers)',
-    born: 'c. 3rd millennium BC',
-    birthplace: 'Unknown',
-    reposed: 'Unknown',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Sailors, shipbuilders, those who preserve life amid catastrophe',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Righteous Noah (12-13).jpg',
-    bio: 'The Holy Righteous Noah is venerated by the Orthodox Church as the second father of humanity — the man who, by his righteousness in a generation of universal corruption, was chosen by God to preserve human life and the animal creation through the Flood, and with whom God established the first universal covenant. Scripture calls him "a righteous man, blameless in his generation; Noah walked with God."\n\nWhen God determined to cleanse the earth of the violence and corruption that had overtaken it, He commanded Noah to build an ark and bring his family and pairs of every living creature into it. For forty days and forty nights the rain fell; for one hundred and fifty days the waters prevailed. When the waters receded, Noah sent out a dove, which returned with an olive branch — the first symbol of peace and new life. God then set His bow in the clouds as the sign of His covenant never again to destroy all life by flood.\n\nThe Fathers interpret Noah and the Ark as a type of the Church — the vessel of salvation in a world of corruption — and his sacrifice of thanksgiving as a type of the Eucharist. The dove with the olive branch became one of the earliest symbols of the Holy Spirit in Christian iconography.',
-    troparion: 'O righteous Noah, you walked blamelessly with God in a generation of sinners and were found worthy to be the second father of all mankind. Through your obedience and faith you preserved the creation. Intercede with Christ God that our souls may be saved.',
-    writings: []
-  },
-  {
-    id: 'daniel-prophet',
-    name: 'Daniel the Prophet',
-    category: 'old-testament',
-    feastDay: 'December 17',
-    born: 'c. 620 BC',
-    birthplace: 'Jerusalem, Judah',
-    reposed: 'c. 537 BC',
-    veneratedBy: 'All Orthodox Christians',
-    patronage: 'Those in captivity, those in hostile environments, prophets',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Prophet Daniel (12-17).jpg',
-    bio: 'The Holy Prophet Daniel is one of the Four Major Prophets of the Old Testament and the greatest apocalyptic visionary before the Book of Revelation. Taken as a youth into captivity in Babylon after the fall of Jerusalem to Nebuchadnezzar, Daniel and his three companions — Shadrach, Meshach, and Abednego — maintained their Jewish faith in the heart of the Babylonian court, refusing to defile themselves with the king\'s food and wine.\n\nDaniel\'s gift of interpreting dreams and visions made him indispensable to successive Babylonian and Persian kings. He interpreted Nebuchadnezzar\'s dream of the great statue (showing the succession of world empires), survived the den of lions under Darius, and received his own visions of the "Son of Man coming on the clouds of heaven" and the seventy weeks of years culminating in the coming of the Anointed One — prophecies that the Church reads as pointing directly to Christ.\n\nThe stories of the three youths in the fiery furnace and Daniel in the lions\' den became foundational images of divine protection and faith under persecution, painted in the Roman catacombs and sung in the liturgy to this day. The Song of the Three Youths — "Bless the Lord, all works of the Lord" — is sung at every Orthodox Divine Liturgy at the reading of the Epistle.',
-    troparion: 'By your great virtues, O Daniel, you outshone the stars: you were made radiant with fasting as a sun, and like the moon you lit up those in darkness. Having prayed thrice daily you were found greater than Babylon\'s king.',
-    writings: []
-  },
-  {
-    id: 'isaiah-prophet',
-    name: 'Isaiah the Prophet',
-    category: 'old-testament',
-    feastDay: 'May 9',
-    born: 'c. 765 BC',
+    feastDay: 'March 18',
+    born: 'c. 313 AD',
     birthplace: 'Jerusalem',
-    reposed: 'c. 681 BC',
+    reposed: '386 AD',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Prophets, preachers, those who speak truth to power',
-    isFather: false,
-    iconUrl: 'assets/images/saints/Prophet Isaiah (05-09).jpg',
-    bio: 'Holy Prophet Isaiah is venerated as the greatest of the Major Prophets and is sometimes called the "Fifth Evangelist" for the extraordinary clarity of his prophecies concerning the Messiah. His book opens with a vision of the heavenly throne room, with seraphim crying "Holy, holy, holy is the Lord of Hosts," which directly structures the Divine Liturgy\'s Trisagion and Sanctus — making Isaiah\'s vision present in every Orthodox service.\n\nIsaiah prophesied during the reigns of four kings of Judah in the 8th century BC. His prophecies include the sign of Immanuel ("Behold, a virgin shall conceive and bear a son" — Isaiah 7:14), the vision of the peaceful kingdom where the wolf lies with the lamb, the great Servant Songs of Isaiah 40-55, and the suffering servant of Isaiah 53 — the most detailed Old Testament prophecy of the Passion of Christ.\n\nAccording to Jewish and Christian tradition preserved in the Martyrdom of Isaiah and referenced in the Epistle to the Hebrews, Isaiah was martyred by being sawn in two by the wicked king Manasseh. His prophecy that God\'s ways are as far above human ways as the heavens are above the earth remains among the most sublime declarations of divine transcendence in all Scripture.',
-    troparion: 'O holy Prophet Isaiah, enlightened by the Spirit, you described clearly the mystery of the dispensation and prophesied the ways of the Lord. By your ardent faith you cried: Behold, the Virgin shall conceive and bear a Son who shall be called Emmanuel.',
+    patronage: 'Jerusalem, catechumens, those preparing for baptism',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Saint Cyril, Archbishop of Jerusalem (03-18).jpg',
+    bio: 'Saint Cyril of Jerusalem is one of the great Fathers of the Church and the author of the Catechetical Lectures — the most complete surviving guide to the catechumenate of the ancient Church, still read by those preparing for Orthodox baptism. Bishop of Jerusalem for nearly forty years, exiled three times for resisting Arianism.\n\nHis Catechetical Lectures — eighteen prebaptismal and five mystagogical lectures delivered in the Church of the Holy Sepulchre — are a precious window into 4th century Christian worship and sacramental theology. The mystagogical lectures, delivered to the newly baptized during Bright Week, explain baptism, chrismation, and the Eucharist with extraordinary depth.\n\nCyril also reported to the Emperor the miraculous appearance of a luminous cross over Jerusalem stretching from Golgotha to the Mount of Olives in 351 — commemorated in the Orthodox Church on May 7.',
+    troparion: 'By your life and your luminous teachings, O holy Cyril, you shepherded Jerusalem and illumined the faithful with your catechetical words. Intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'Catechetical Lectures', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3101.htm' },
+    ]
+  },
+  {
+    id: 'amphilochios-of-iconium',
+    name: 'Amphilochios of Iconium',
+    category: 'hierarchs',
+    feastDay: 'November 23',
+    born: 'c. 339 AD',
+    birthplace: 'Cappadocia',
+    reposed: 'c. 403 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Theologians, friends of great saints',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Saint Amphilokhios, Bishop of Iconium (11-23).jpg',
+    bio: 'Saint Amphilochios of Iconium is a Cappadocian Father — a close friend and cousin of Gregory the Theologian and an ally of Basil the Great — who was virtually compelled to accept the bishopric of Iconium in 373, consecrated by Basil himself.\n\nA famous story records that when the Emperor Theodosius brought his son Arcadius into Church and Amphilochios refused to bow before the boy, the Emperor was enraged — until Amphilochios explained: "You cannot bear the dishonor shown to your earthly son; how then can God bear it when His divine Son is dishonored by the Arians?" Theodosius immediately issued an edict against the Arians.\n\nAmphilochios presided over regional councils confirming Nicene Orthodoxy and was present at the Second Ecumenical Council at Constantinople in 381.',
+    troparion: 'O holy Amphilochios, companion of the great Cappadocian Fathers, you defended the divinity of the Son and Spirit with wisdom and boldness. Intercede with Christ God for the salvation of our souls.',
     writings: []
   },
   {
-    id: 'jeremiah-prophet',
-    name: 'Jeremiah the Prophet',
-    category: 'old-testament',
-    feastDay: 'May 1',
-    born: 'c. 650 BC',
-    birthplace: 'Anathoth, near Jerusalem',
-    reposed: 'c. 587–582 BC',
+    id: 'gregory-of-nyssa',
+    name: 'Gregory of Nyssa',
+    category: 'hierarchs',
+    feastDay: 'January 10',
+    born: 'c. 335 AD',
+    birthplace: 'Caesarea, Cappadocia',
+    reposed: 'c. 395 AD',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Those who suffer for speaking truth, those in persecution, those who weep',
+    patronage: 'Mystics, theologians, those who seek God in darkness',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Saint Gregory, Bishop of Nyssa (01-10).jpg',
+    bio: 'Saint Gregory of Nyssa, the youngest of the three Cappadocian Fathers, is the most speculative and mystical theologian of the group — the younger brother of Basil the Great whose insights into apophatic theology and the soul\'s endless ascent toward God have shaped Orthodox mysticism to this day.\n\nHis Life of Moses reads Moses\'s ascent into the divine darkness on Sinai as the paradigm of the soul\'s encounter with the incomprehensible God. His concept of epektasis — the soul\'s ceaseless stretching forward into God, who is infinite and therefore inexhaustible — is one of the most important contributions to Christian mystical theology.\n\nBecause God is infinite, the soul\'s union with God never reaches a static end but is an eternal dynamic of deeper participation in divine life.',
+    troparion: 'O holy Gregory, your mind soared to the heights of divine contemplation and you led the faithful into the darkness where God dwells. Intercede with Christ God for our salvation.',
+    writings: [
+      { title: 'The Life of Moses', source: 'Paulist Press', url: 'https://www.amazon.com' },
+    ]
+  },
+  {
+    id: 'meletius-of-antioch',
+    name: 'Meletius of Antioch',
+    category: 'hierarchs',
+    feastDay: 'February 12',
+    born: 'c. 310 AD',
+    birthplace: 'Melitene, Armenia',
+    reposed: '381 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Antioch, those who suffer unjust exile',
     isFather: false,
-    iconUrl: 'assets/images/saints/Prophet Jeremiah (05-01).jpg',
-    bio: 'Holy Prophet Jeremiah, called the "Weeping Prophet," is the most personally revealed of all the Old Testament prophets — his confessions, laments, and struggles with God are preserved in his book with a rawness and intimacy found nowhere else in Scripture. Called as a young man with the words "Before I formed you in the womb I knew you," Jeremiah prophesied for over forty years during the final decades of the Kingdom of Judah before its destruction by Babylon.\n\nJeremiah\'s ministry was one of almost unrelenting suffering. He was forbidden by God to marry, was mocked and beaten by his own townspeople, imprisoned in a cistern, and accused of treason for counseling submission to Babylon. His prophecies of the Temple\'s destruction earned him the hatred of priests and kings. Yet he could not be silent: "If I say I will not mention Him or speak any more in His name, there is in my heart as it were a burning fire shut up in my bones, and I am weary with holding it in."\n\nJeremiah\'s prophecy of the New Covenant — "I will put my law within them and write it on their hearts" (Jeremiah 31:33) — is quoted in the Epistle to the Hebrews as the great Old Testament promise fulfilled in Christ. He is taken to Egypt after Jerusalem\'s fall and is said to have been stoned to death by his own people there.',
-    troparion: 'O holy Prophet Jeremiah, you were called from your mother\'s womb to speak God\'s word without compromise, and through suffering you showed the Church the meaning of bearing the Cross. Intercede with Christ God that our souls may be saved.',
+    iconUrl: 'assets/images/saints/Saint Meletius, Archbishop of Antioch (02-12).jpg',
+    bio: 'Saint Meletius of Antioch was exiled three times by Arian emperors for his Nicene faith yet remained the beloved father of his Antiochene flock, and presided over the Second Ecumenical Council at Constantinople in 381. He was the bishop under whom the young John Chrysostom was baptized and ordained.\n\nA famous episode records that when Meletius was forbidden to speak to his congregation, he held up three fingers, then joined them into one — expressing the Trinitarian faith with his hands when his mouth was silenced.\n\nGregory the Theologian described the joy of the Antiochene people at his restoration as those reunited with their father after a long separation. He died during the Council of Constantinople in 381, universally mourned.',
+    troparion: 'O holy Meletius, thrice exiled for the Nicene faith yet never forsaking your flock, you confessed the Trinity even in silence. Intercede with Christ God for the salvation of our souls.',
+    writings: []
+  },
+  {
+    id: 'john-maximovitch-tobolsk',
+    name: 'John Maximovitch of Tobolsk',
+    category: 'hierarchs',
+    feastDay: 'June 10',
+    born: '1651',
+    birthplace: 'Nezhin, Ukraine',
+    reposed: '1715',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Siberia, missionaries, spiritual writers',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Saint John Maximovitch, Metropolitan of Tobolsk (06-10).jpg',
+    bio: 'Saint John Maximovitch of Tobolsk is a Ukrainian-born hierarch who served as Metropolitan of Tobolsk and is the ancestor of the 20th century wonderworker St. John Maximovitch of Shanghai. Educated at the Kyiv Mohyla Academy, he became a monk and then bishop, serving in Chernigov and then as Metropolitan of Tobolsk — the ecclesiastical center of Siberia.\n\nHe was a prolific spiritual writer, composing theological meditations and a celebrated work Theotokos — meditations on the Mother of God for each day of the liturgical year. He supported missionary activity among the indigenous peoples of Siberia and was known for personal sanctity.\n\nGlorified in 1916, his kinsman St. John of Shanghai consciously drew upon his tradition.',
+    troparion: 'O holy John, illuminator of the Siberian land, you served God with all your gifts and nourished your flock with writings full of wisdom. Through your intercessions, grant peace to the world and salvation to our souls.',
+    writings: [
+      { title: 'Theotokos (Iliotrópion)', source: 'Holy Trinity Monastery', url: 'https://www.amazon.com' },
+    ]
+  },
+
+  // ── MARTYRS ──────────────────────────────────────────────────
+  {
+    id: 'justin-philosopher',
+    name: 'Justin the Philosopher and Martyr',
+    category: 'martyrs',
+    feastDay: 'June 1',
+    born: 'c. 100 AD',
+    birthplace: 'Flavia Neapolis, Samaria',
+    reposed: 'c. 165 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Philosophers, apologists, those who defend the faith with reason',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Martyr Justin the Philosopher and those with him at Rome (06-01).jpg',
+    bio: 'Saint Justin the Philosopher and Martyr is the first great Christian apologist — the philosopher who studied every school of Greek thought before finding truth in Christ, then devoted his life to showing that Christianity fulfilled all genuine philosophical inquiry. Born in Samaria to a pagan family, Justin was converted by an elderly Christian by the seashore.\n\nAfter his conversion Justin continued to wear his philosopher\'s cloak, declaring himself a Christian philosopher. His two Apologies addressed to the Emperor Antoninus Pius argue for the truth of Christianity on rational grounds. His Dialogue with Trypho is the first extended Christian apologia addressed to a Jewish audience.\n\nJustin was martyred by beheading under the prefect Rusticus around 165 AD, together with six companions.',
+    troparion: 'O holy Justin, you sought wisdom through all the schools of philosophy and found it in the incarnate Word of God. By your life and words you showed that reason and faith are not enemies. Intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'First and Second Apology', source: 'Ante-Nicene Fathers, Vol. I', url: 'https://www.newadvent.org/fathers/0126.htm' },
+    ]
+  },
+  {
+    id: 'laurence-of-rome',
+    name: 'Laurence of Rome',
+    category: 'martyrs',
+    feastDay: 'August 10',
+    born: 'c. 225 AD',
+    birthplace: 'Huesca, Hispania',
+    reposed: '258 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'The poor, students, librarians, those who care for the sick',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Martyr and Archdeacon Laurence, and those with him, of Rome (08-10).jpg',
+    bio: 'Saint Laurence the Archdeacon is one of the most celebrated martyrs of the early Roman Church. As the chief deacon of Pope Sixtus II, responsible for the Church\'s resources and distribution of alms, Laurence was ordered to surrender the treasures of the Church. He gathered the poor, the sick, the lame, and the blind and presented them to the prefect saying: "These are the treasures of the Church."\n\nWhen Sixtus was arrested and beheaded in 258 AD during the Valerian persecution, Laurence was martyred by being roasted on a gridiron. During his ordeal he said to his torturers: "Turn me over; I am done on this side" — courage that became one of the most celebrated acts of Christian witness in the ancient Church.\n\nHis feast on August 10 has been observed continuously since the 4th century. His church in Rome, San Lorenzo fuori le Mura, is one of the seven great basilicas.',
+    troparion: 'O holy Laurence, faithful servant of the Church\'s poor and fearless witness to Christ in your martyrdom, you showed that the true treasures of the Church are the people of God. Intercede with Christ God for our souls.',
+    writings: []
+  },
+  {
+    id: 'cecilia-of-rome',
+    name: 'Cecilia of Rome',
+    category: 'martyrs',
+    feastDay: 'November 22',
+    born: 'c. 2nd century AD',
+    birthplace: 'Rome',
+    reposed: 'c. 177 or 230 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Musicians, singers, poets',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Virgin Martyr Cecilia and the Holy Martyrs Valerian, Tiburtius and Maximus at Rome (11-22).jpg',
+    bio: 'Saint Cecilia the Virgin Martyr is one of the most beloved early Roman martyrs and the patron of music and musicians. A noble Roman Christian, she revealed her vow of virginity to her husband Valerian, converting him and his brother Tiburtius, both of whom were subsequently martyred for their faith.\n\nCecilia herself was condemned to be suffocated in the baths of her own house, but survived the steam for a day and a night. When a soldier was sent to behead her, three blows of the sword failed to sever her head and she lived three more days, distributing her possessions to the poor before dying.\n\nHer patronage of music is traditionally attributed to a passage in her Acts noting that at her wedding, as instruments played, Cecilia sang to God in her heart. Her church in Rome (Santa Cecilia in Trastevere) contains Maderno\'s sculpture of her body as found incorrupt in 1599.',
+    troparion: 'O holy Cecilia, virgin and martyr, you sang to God in your heart amid the world\'s noise and remained faithful through suffering and death. Patron of those who serve God through music, intercede that our lips and hearts may always praise Him.',
     writings: []
   },
 
-  // ── CONFESSOR ────────────────────────────────────────────────
+  // ── MONASTICS ────────────────────────────────────────────────
   {
-    id: 'john-the-russian',
-    name: 'John the Russian',
-    category: 'martyrs',
-    feastDay: 'May 27',
-    born: 'c. 1690',
-    birthplace: 'Ukraine',
-    reposed: '1730',
+    id: 'macarius-of-egypt',
+    name: 'Macarius the Great of Egypt',
+    category: 'monastics',
+    feastDay: 'January 19',
+    born: 'c. 300 AD',
+    birthplace: 'Upper Egypt',
+    reposed: '391 AD',
     veneratedBy: 'All Orthodox Christians',
-    patronage: 'Russia, Ukraine, prisoners of war, those in captivity',
+    patronage: 'Monastics, those who practice inner prayer',
+    isFather: true,
+    iconUrl: 'assets/images/saints/Venerable Macarius the Great of Egypt (01-19).jpg',
+    bio: 'Saint Macarius the Great of Egypt is one of the greatest Desert Fathers — a disciple of St. Antony who spent sixty years in the Egyptian desert of Scetis and became one of the founding fathers of Christian monasticism. Born in Upper Egypt, he established himself in Scetis (Wadi el Natrun) gathering a great community of hermits.\n\nMacarius was ordained priest against his will and served as spiritual father of the entire Scetis community. His discernment, gentleness with sinners, and the depth of his inner life made him one of the most sought-after spiritual guides of antiquity. He was briefly exiled by the Arian Emperor Valens for defending Nicene Orthodoxy.\n\nThe Fifty Spiritual Homilies attributed to him present the heart as the battlefield of spiritual warfare and the place of the soul\'s encounter with the divine light.',
+    troparion: 'O Father Macarius, equal to the angels, you shone in the desert of Scetis as a great luminary of monasticism. By fasting and prayer you obtained divine gifts. Intercede with Christ God that our souls may be saved.',
+    writings: [
+      { title: 'The Fifty Spiritual Homilies', source: 'SPCK / Paulist Press', url: 'https://www.amazon.com' },
+    ]
+  },
+  {
+    id: 'onuphrius-the-great',
+    name: 'Onuphrius the Great',
+    category: 'monastics',
+    feastDay: 'June 12',
+    born: 'c. 4th century AD',
+    birthplace: 'Persia or Egypt',
+    reposed: 'c. 400 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Hermits, those in extreme solitude',
     isFather: false,
-    iconUrl: 'assets/images/saints/Saint John the Russian and Confessor, whose relics are on the island of Euboia (05-27).jpg',
-    bio: 'Saint John the Russian is one of the best-loved saints of modern Greece — a Ukrainian soldier captured by the Turks during the Russo-Turkish War and sold as a slave in Prokopion in Asia Minor, where he lived as a confessor of the faith for the rest of his life. Captured around 1711 and brought to the household of a Turkish cavalry officer, John was pressured to convert to Islam and refused, accepting beatings and hard labor rather than deny his faith.\n\nJohn\'s master eventually left him to his conscience, and John continued to serve faithfully as a groom and household servant while living an ascetic life of prayer — sleeping in the stable with the animals, fasting, and secretly receiving Communion from the local Greek priest. His holiness gradually earned him the respect of his Turkish master\'s household, and miracles began to be attributed to him.\n\nJohn died in 1730 in Prokopion. His body was found incorrupt. When the Greek population of Prokopion was expelled from Turkey in the population exchange of 1923, they brought his relics with them to the island of Euboia (Euboea), where they rest to this day in the church of St. John at Prokopion (now Neos Prokopios), drawing pilgrims from throughout Greece and the Orthodox world.',
-    troparion: 'You were taken captive in body but remained free in soul, O holy John; for Christ your Master you endured slavery and suffering without complaint. Now your relics exude grace and healing. Intercede with Christ God that our souls may be saved.',
+    iconUrl: 'assets/images/saints/Venerable Onuphrius the Great (06-12).jpg',
+    bio: 'Saint Onuphrius the Great is the supreme icon of the solitary hermit — a man who spent sixty years in complete solitude in the Egyptian desert, clothed only in his own extraordinarily long hair and beard, sustained miraculously by dates from a palm tree and water from a nearby spring, with angels bringing him the Eucharist.\n\nHis life is known through the account of the monk Paphnutius, who wandered deep into the desert and encountered the ancient hermit barely recognizable as a human being, living in absolute poverty in a ruined cell. Onuphrius told him his story, received a final Communion, and reposed peacefully.\n\nOnuphrius is depicted in icons as a nearly naked figure covered in long white hair, with a palm tree and angel visible. His feast is celebrated with special solemnity in monasteries devoted to the contemplative life.',
+    troparion: 'Having left the world and its cares, O Onuphrius, you entered the inner desert to seek God alone. For sixty years you lived as a bodiless spirit in the body, nourished by angels. Intercede with Christ God that our souls may be saved.',
+    writings: []
+  },
+  {
+    id: 'simeon-stylite',
+    name: 'Simeon Stylites the Elder',
+    category: 'monastics',
+    feastDay: 'September 1',
+    born: '389 AD',
+    birthplace: 'Sis, Cilicia',
+    reposed: '459 AD',
+    veneratedBy: 'All Orthodox Christians',
+    patronage: 'Shepherds, those who stand firm in faith',
+    isFather: false,
+    iconUrl: 'assets/images/saints/Saint Simeon Stylites, the Elder (09-01).jpg',
+    bio: 'Saint Simeon Stylites the Elder is the founder of the remarkable ascetic practice of living atop a pillar (stylos). Born to a Cilician shepherd family, Simeon\'s extreme fasting and self-mortification eventually led his abbot to ask him to leave the monastery — his asceticism was too severe for common life.\n\nSimeon gradually raised his pillar to a height of approximately eighteen meters. For thirty-seven years he lived on this platform — praying, preaching twice daily, directing spiritual correspondence across the empire, and counseling emperors. Emperors and empresses, bishops and monks sought his counsel.\n\nAfter his death, the great church of Qalaat Simaan (Fortress of Simeon) was built around his pillar — its ruins still stand in Syria. His example inspired dozens of other stylite saints.',
+    troparion: 'O Simeon, you mounted upon your pillar like the fiery chariot of Elijah, ascending from earth to heaven. You became a heavenly citizen on earth. Intercede with Christ God for our salvation.',
     writings: []
   },
 ];
@@ -2113,9 +2086,30 @@ async function loadSaintOfTheDay(){
     if (found){ matched = found; break; }
   }
 
+  // ── Icon helper — try iconUrl, fall back to cross ───────────
+  function setSotdIcon(iconUrl) {
+    var el = document.getElementById('sotdIcon');
+    if (iconUrl) {
+      var img = new Image();
+      img.onload = function() {
+        el.innerHTML = '';
+        el.appendChild(img);
+      };
+      img.onerror = function() {
+        el.innerHTML = '<span>&#9766;</span>';
+      };
+      img.src = iconUrl;
+      img.alt = '';
+      img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:2px;';
+    } else {
+      el.innerHTML = '<span>&#9766;</span>';
+    }
+  }
+
   // ── Case 1: Matched a full profile ─────────────────────────
   if (matched) {
     currentSaint = matched;
+    setSotdIcon(matched.iconUrl || '');
     document.getElementById('sotdName').textContent = matched.name;
     document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
     document.getElementById('sotdBio').textContent = matched.bio.split('\n\n')[0].slice(0,220) + '\u2026';
@@ -2128,7 +2122,7 @@ async function loadSaintOfTheDay(){
   // ── Case 2: Calendar saints exist but no full profile ───────
   if (saintNames.length > 0) {
     var primaryName = saintNames[0];
-    // Show all today's saints as a list
+    setSotdIcon('');
     var allNamesDisplay = saintNames.slice(0,3).join('  ·  ');
     document.getElementById('sotdName').textContent = primaryName;
     document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
@@ -2147,6 +2141,7 @@ async function loadSaintOfTheDay(){
   var dayOfYear = Math.floor((today - new Date(today.getFullYear(),0,0)) / 86400000);
   var saint = SAINTS[dayOfYear % SAINTS.length];
   currentSaint = saint;
+  setSotdIcon(saint.iconUrl || '');
   document.getElementById('sotdName').textContent = saint.name;
   document.getElementById('sotdFeast').textContent = 'Feast Day: ' + saint.feastDay;
   document.getElementById('sotdBio').textContent = saint.bio.split('\n\n')[0].slice(0,220) + '\u2026';
