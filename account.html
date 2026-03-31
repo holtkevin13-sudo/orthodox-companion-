@@ -280,14 +280,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .dash-signout:hover{color:var(--gold-light);border-color:var(--gold-dim);}
 
 /* ── Dashboard tabs ── */
-.dash-tabs{display:flex;gap:0;border-bottom:1px solid rgba(201,168,76,0.15);
+.dash-tabs{display:flex;gap:0;border-bottom:2px solid rgba(201,168,76,0.2);
   overflow-x:auto;}
 .dash-tab{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
-  letter-spacing:0.09em;padding:13px 18px;background:transparent;border:none;
-  color:var(--text-muted);cursor:pointer;border-bottom:2px solid transparent;
-  margin-bottom:-1px;transition:all 0.2s;white-space:nowrap;}
+  letter-spacing:0.09em;padding:11px 18px;background:transparent;border:none;
+  color:var(--text-dim);cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-2px;transition:all 0.2s;white-space:nowrap;}
 .dash-tab:hover{color:var(--gold-light);}
-.dash-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.dash-tab.active{color:#0A1628;background:var(--gold);border-bottom-color:var(--gold);border-radius:2px 2px 0 0;}
 
 /* ── Dashboard body ── */
 .dash-body{max-width:980px;margin:0 auto;padding:28px 24px 60px;}
@@ -1521,6 +1521,8 @@ function deleteAccount(){localStorage.clear();window.location.reload();}
 
 /* ── Auth state listener ─────────────────────────────── */
 document.addEventListener('DOMContentLoaded',async function(){
+  var _initialized=false;
+
   var {data:{session}}=await sb.auth.getSession();
   if(session&&session.user){
     _sbUser=session.user;
@@ -1530,8 +1532,14 @@ document.addEventListener('DOMContentLoaded',async function(){
     document.getElementById('authScreen').style.display='flex';
     document.getElementById('dashboard').style.display='none';
   }
+  _initialized=true;
+
   sb.auth.onAuthStateChange(async function(event,session){
+    /* Ignore token refreshes and initial session — only react to real sign in/out */
+    if(event==='TOKEN_REFRESHED'||event==='INITIAL_SESSION') return;
     if(event==='SIGNED_IN'&&session){
+      /* Prevent re-render on page load double-fire */
+      if(_sbUser&&_sbUser.id===session.user.id) return;
       _sbUser=session.user;
       _sbProfile=await loadProfile(_sbUser);
       await showDashboard(_sbUser,_sbProfile);
@@ -1542,10 +1550,6 @@ document.addEventListener('DOMContentLoaded',async function(){
       document.getElementById('authScreen').style.display='flex';
     }
   });
-  if(window.location.hash){
-    var id=window.location.hash.replace('#','');
-    setTimeout(function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},300);
-  }
 });
 </script>
 </body>
