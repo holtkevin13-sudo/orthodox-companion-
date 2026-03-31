@@ -997,7 +997,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 /* ── Supabase ─────────────────────────────────────────── */
 const SUPA_URL='https://hhatdkrcqnhixemjavgb.supabase.co';
 const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoYXRka3JjcW5oaXhlbWphdmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MTA0NDksImV4cCI6MjA5MDQ4NjQ0OX0.9KSdbZ2RiPbAepj0XvwvUfrdu9yOMq5VcHKgunNEwQ4';
-const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
+const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY,{auth:{persistSession:true,storage:localStorage}});
 var _sbUser=null,_sbProfile=null,_editPostId=null;
 
 /* ── Theme ───────────────────────────────────────────── */
@@ -1099,7 +1099,8 @@ function updateNavAuth(user){
 
 /* ── Load profile ────────────────────────────────────── */
 async function loadProfile(user){
-  var {data}=await sb.from('profiles').select('*').eq('id',user.id).single();
+  var {data,error}=await sb.from('profiles').select('*').eq('id',user.id).single();
+  if(error) console.error('Profile load failed:',error.message,error.code);
   return data||null;
 }
 
@@ -1109,7 +1110,8 @@ async function showDashboard(user,profile){
   document.getElementById('dashboard').style.display='block';
   window.scrollTo(0,0);
   /* Log this session silently for analytics */
-  sb.from('user_sessions').insert([{user_id:user.id}]);
+  var {error:sessErr}=await sb.from('user_sessions').insert([{user_id:user.id}]);
+  if(sessErr) console.error('Session log failed:',sessErr.message,sessErr.code);
   var role=profile?profile.role:'free';
   var initial=(profile&&profile.username?profile.username:user.email).charAt(0).toUpperCase();
   document.getElementById('dashAvatar').textContent=initial;
