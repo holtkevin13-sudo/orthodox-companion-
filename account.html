@@ -981,12 +981,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 
 <script>
-/* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
+/* ── Supabase ─────────────────────────────────────────── */
+const SUPA_URL='https://hhatdkrcqnhixemjavgb.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoYXRka3JjcW5oaXhlbWphdmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MTA0NDksImV4cCI6MjA5MDQ4NjQ0OX0.9KSdbZ2RiPbAepj0XvwvUfrdu9yOMq5VcHKgunNEwQ4';
+const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
+var _sbUser=null,_sbProfile=null,_editPostId=null;
 
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
+/* ── Theme ───────────────────────────────────────────── */
 function toggleTheme(){
   var c=document.documentElement.getAttribute('data-theme')||'dark';
   var n=c==='dark'?'light':'dark';
@@ -998,94 +999,487 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',t);
 })();
 
-// Nav drawer
-var _drawerOpen=false;
-function togglePw(id,btn){
-  var inp=document.getElementById(id);
-  if(!inp) return;
-  var show=inp.type==='password';
-  inp.type=show?'text':'password';
-  btn.innerHTML=show?'&#128064;':'&#128065;';
-  btn.setAttribute('aria-label',show?'Hide password':'Show password');
-}
-function toggleDrawer(){
-  _drawerOpen=!_drawerOpen;
-  var d=document.getElementById('navDrawer');
-  var h=document.getElementById('hamburger');
-  if(d)d.classList.toggle('open',_drawerOpen);
-  if(h)h.classList.toggle('open',_drawerOpen);
+/* ── Auth tab switching ──────────────────────────────── */
+function switchTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.auth-form').forEach(function(f){f.classList.remove('active');});
+  document.getElementById('form-'+tab).classList.add('active');
 }
 
-// User account menu
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
+/* ── Sign in ─────────────────────────────────────────── */
+async function signIn(){
+  var email=document.getElementById('signin-email').value.trim();
+  var pass=document.getElementById('signin-password').value;
+  var errEl=document.getElementById('signin-error');
+  errEl.classList.remove('show');errEl.textContent='';
+  if(!email||!pass){errEl.textContent='Please enter your email and password.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.signInWithPassword({email,password:pass});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');}
 }
 
-// Sign out
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
+/* ── Sign up ─────────────────────────────────────────── */
+async function signUp(){
+  var name=document.getElementById('signup-name').value.trim();
+  var email=document.getElementById('signup-email').value.trim();
+  var pass=document.getElementById('signup-password').value;
+  var optIn=document.getElementById('signup-optin')?document.getElementById('signup-optin').checked:true;
+  var errEl=document.getElementById('signup-error');
+  var sucEl=document.getElementById('signup-success');
+  errEl.classList.remove('show');sucEl.classList.remove('show');
+  if(!email||!pass){errEl.textContent='Please enter your email and password.';errEl.classList.add('show');return;}
+  if(pass.length<8){errEl.textContent='Password must be at least 8 characters.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.signUp({email,password:pass,options:{data:{username:name,email_opt_in:optIn}}});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  sucEl.textContent='Account created! Check your email to confirm your address.';sucEl.classList.add('show');
 }
 
-// Init account state on every page
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
+/* ── Social sign in ──────────────────────────────────── */
+async function socialSignIn(provider){
+  await sb.auth.signInWithOAuth({provider,options:{redirectTo:window.location.origin+'/account.html'}});
+}
+
+/* ── Forgot password ─────────────────────────────────── */
+async function handleForgotPassword(){
+  var email=document.getElementById('signin-email').value.trim();
+  var errEl=document.getElementById('signin-error');
+  if(!email){errEl.textContent='Enter your email above first.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/account.html'});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  errEl.style.cssText='display:block;background:rgba(58,106,58,0.15);border:1px solid #4A9C6A;border-radius:2px;padding:8px 12px;color:#8ACA8A;';
+  errEl.textContent='Password reset email sent.';
+}
+
+/* ── Sign out ────────────────────────────────────────── */
+async function signOut(){
+  await sb.auth.signOut();
+  _sbUser=null;_sbProfile=null;
+  updateNavAuth(null);
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('authScreen').style.display='flex';
+}
+
+/* ── Update nav ──────────────────────────────────────── */
+function updateNavAuth(user){
+  var si=document.getElementById('navSignIn');
+  var um=document.getElementById('navUserMenu');
+  var un=document.getElementById('navUsername');
+  var ds=document.getElementById('drawerSignIn');
+  if(user){
+    if(si)si.style.display='none';
+    if(um)um.style.display='block';
+    if(un)un.textContent=user.email.split('@')[0];
+    if(ds)ds.textContent=user.email.split('@')[0];
   } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
+    if(si)si.style.display='';
+    if(um)um.style.display='none';
   }
 }
 
-// Close menus on outside click
+/* ── Load profile ────────────────────────────────────── */
+async function loadProfile(user){
+  var {data}=await sb.from('profiles').select('*').eq('id',user.id).single();
+  return data||null;
+}
+
+/* ── Show dashboard ──────────────────────────────────── */
+async function showDashboard(user,profile){
+  document.getElementById('authScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  var role=profile?profile.role:'free';
+  var initial=(profile&&profile.username?profile.username:user.email).charAt(0).toUpperCase();
+  document.getElementById('dashAvatar').textContent=initial;
+  document.getElementById('dashName').textContent=(profile&&profile.username)||user.email.split('@')[0];
+  document.getElementById('dashEmail').textContent=user.email;
+  var badge=document.getElementById('dashBadge');
+  badge.textContent=role.charAt(0).toUpperCase()+role.slice(1);
+  badge.className='dash-badge '+(role==='paid'||role==='admin'||role==='superuser'?'premium':'free');
+  if(role==='admin'||role==='superuser'){
+    if(document.getElementById('tabBlog'))document.getElementById('tabBlog').style.display='';
+    if(document.getElementById('tabEmail'))document.getElementById('tabEmail').style.display='';
+  }
+  if(role==='superuser'){
+    if(document.getElementById('tabUsers'))document.getElementById('tabUsers').style.display='';
+  }
+  updateNavAuth(user);
+  initDashboard();
+}
+
+/* ── Dashboard tab switching ─────────────────────────── */
+function switchDash(tab){
+  document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
+  event.currentTarget.classList.add('active');
+  document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
+  var sec=document.getElementById('dash-'+tab);
+  if(sec) sec.classList.add('active');
+  if(tab==='blog') loadPosts();
+  if(tab==='email') loadSubCount();
+  if(tab==='users') loadUsers();
+}
+
+/* ── Blog: auto slug ─────────────────────────────────── */
+function autoSlug(){
+  if(_editPostId) return;
+  var slug=document.getElementById('post-title').value.toLowerCase()
+    .replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
+  document.getElementById('post-slug').value=slug;
+}
+
+/* ── Blog: preview ───────────────────────────────────── */
+function updateBlogPreview(){
+  var body=document.getElementById('post-body').value;
+  var pre=document.getElementById('blog-preview');
+  if(!body.trim()){pre.innerHTML='<span style="color:var(--text-muted);font-style:italic;">Preview appears as you type&hellip;</span>';return;}
+  pre.innerHTML=marked.parse(body);
+}
+
+/* ── Blog: save ──────────────────────────────────────── */
+async function savePost(publish){
+  var title=document.getElementById('post-title').value.trim();
+  var slug=document.getElementById('post-slug').value.trim();
+  var category=document.getElementById('post-category').value;
+  var excerpt=document.getElementById('post-excerpt').value.trim();
+  var body=document.getElementById('post-body').value.trim();
+  var al=document.getElementById('blog-alert');
+  al.className='admin-alert';al.classList.remove('show');
+  if(!title||!slug||!body){al.textContent='Title, slug, and body are required.';al.classList.add('show','error');return;}
+  var d={title,slug,category:category||null,excerpt:excerpt||null,body,published:publish,
+    published_at:publish?new Date().toISOString():null,
+    author:(_sbProfile&&_sbProfile.username)||'Kevin Holt'};
+  var res=_editPostId?await sb.from('blog_posts').update(d).eq('id',_editPostId):await sb.from('blog_posts').insert([d]);
+  if(res.error){al.textContent=res.error.message;al.classList.add('show','error');return;}
+  al.textContent=publish?'Post published!':'Draft saved.';al.classList.add('show','success');
+  clearPostEditor();loadPosts();
+  setTimeout(function(){al.classList.remove('show');},4000);
+}
+
+/* ── Blog: clear ─────────────────────────────────────── */
+function clearPostEditor(){
+  ['post-title','post-slug','post-excerpt','post-body'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});
+  var cat=document.getElementById('post-category');if(cat)cat.value='';
+  var pre=document.getElementById('blog-preview');
+  if(pre)pre.innerHTML='<span style="color:var(--text-muted);font-style:italic;">Preview appears as you type&hellip;</span>';
+  var es=document.getElementById('editing-slug');if(es)es.textContent='New post';
+  var cb=document.getElementById('cancel-edit-btn');if(cb)cb.style.display='none';
+  _editPostId=null;
+}
+
+/* ── Blog: load posts ────────────────────────────────── */
+async function loadPosts(){
+  var li=document.getElementById('post-list');
+  if(!li) return;
+  li.innerHTML='<div style="color:var(--text-muted);font-style:italic;padding:12px 0;">Loading&hellip;</div>';
+  var {data,error}=await sb.from('blog_posts').select('id,title,slug,category,published,created_at').order('created_at',{ascending:false});
+  if(error||!data||!data.length){li.innerHTML='<div style="color:var(--text-muted);font-style:italic;padding:12px 0;">'+(error?'Error loading posts.':'No posts yet.')+'</div>';return;}
+  li.innerHTML=data.map(function(p){
+    return '<div class="post-row"><div class="post-row-title">'+escHtml(p.title)+'</div>'
+      +(p.category?'<span class="post-badge cat">'+escHtml(p.category)+'</span>':'')
+      +'<span class="post-badge '+(p.published?'published':'draft')+'">'+(p.published?'Published':'Draft')+'</span>'
+      +'<div class="post-actions">'
+      +'<button class="post-action-btn" data-id="'+p.id+'" onclick="editPost(this)">Edit</button>'
+      +'<button class="post-action-btn del" data-id="'+p.id+'" onclick="deletePost(this)">Delete</button>'
+      +'</div></div>';
+  }).join('');
+}
+
+/* ── Blog: edit ──────────────────────────────────────── */
+async function editPost(btn){
+  var id=btn.getAttribute('data-id');
+  var {data}=await sb.from('blog_posts').select('*').eq('id',id).single();
+  if(!data) return;
+  _editPostId=id;
+  document.getElementById('post-title').value=data.title||'';
+  document.getElementById('post-slug').value=data.slug||'';
+  document.getElementById('post-category').value=data.category||'';
+  document.getElementById('post-excerpt').value=data.excerpt||'';
+  document.getElementById('post-body').value=data.body||'';
+  document.getElementById('editing-slug').textContent=data.slug;
+  document.getElementById('cancel-edit-btn').style.display='inline-block';
+  updateBlogPreview();
+  document.getElementById('dash-blog').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ── Blog: delete ────────────────────────────────────── */
+async function deletePost(btn){
+  if(!confirm('Delete this post? This cannot be undone.')) return;
+  var id=btn.getAttribute('data-id');
+  var {error}=await sb.from('blog_posts').delete().eq('id',id);
+  if(error){alert('Error: '+error.message);return;}
+  loadPosts();
+}
+
+/* ── Email: subscriber count ─────────────────────────── */
+async function loadSubCount(){
+  var {count}=await sb.from('profiles').select('*',{count:'exact',head:true}).eq('email_opt_in',true);
+  var el=document.getElementById('sub-count');
+  if(el&&count!==null) el.textContent=(count||0)+' subscriber'+(count!==1?'s':'')+' opted in';
+}
+
+/* ── Email: send digest ──────────────────────────────── */
+async function sendWeeklyEmail(){
+  var subject=document.getElementById('email-subject').value.trim();
+  var saint=document.getElementById('email-saint').value.trim();
+  var al=document.getElementById('email-alert');
+  al.className='admin-alert';al.classList.remove('show');
+  if(!subject||!saint){al.textContent='Subject and saint spotlight are required.';al.classList.add('show','error');return;}
+  if(!confirm('Send this email to all opted-in subscribers?')) return;
+  al.textContent='Sending&hellip;';al.classList.add('show','success');
+  try {
+    var res=await fetch('https://silent-disk-1140.holt-kevin13.workers.dev/send-digest',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({subject,saint,
+        quote:document.getElementById('email-quote').value.trim(),
+        quoteSource:document.getElementById('email-quote-source').value.trim(),
+        fasting:document.getElementById('email-fasting').value.trim(),
+        feast:document.getElementById('email-feast').value.trim(),
+        seasonal:document.getElementById('email-seasonal').value.trim()
+      })
+    });
+    al.textContent=res.ok?'Email sent! &#9766;':'Error sending. The /send-digest Worker endpoint needs to be added.';
+    if(!res.ok) al.className='admin-alert show error';
+  } catch(e){al.textContent='The /send-digest Worker endpoint needs to be added.';al.className='admin-alert show error';}
+}
+
+/* ── Email: preview ──────────────────────────────────── */
+function previewEmail(){
+  var subject=document.getElementById('email-subject').value.trim()||'Orthodox Week Ahead';
+  var saint=document.getElementById('email-saint').value.trim();
+  var quote=document.getElementById('email-quote').value.trim();
+  var qs=document.getElementById('email-quote-source').value.trim();
+  var fasting=document.getElementById('email-fasting').value.trim();
+  var feast=document.getElementById('email-feast').value.trim();
+  var seasonal=document.getElementById('email-seasonal').value.trim();
+  var html='<div style="max-width:540px;margin:0 auto;font-family:Georgia,serif;background:#0A1628;color:#F0E6CC;padding:28px 24px;">';
+  html+='<div style="text-align:center;font-size:2rem;color:#C9A84C;margin-bottom:6px;">&#9766;</div>';
+  html+='<h1 style="font-family:serif;font-size:1.1rem;color:#E8CB7A;text-align:center;letter-spacing:0.1em;margin-bottom:20px;">'+escHtml(subject)+'</h1>';
+  if(saint) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Saint of the Week</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(saint)+'</p>';
+  if(quote) html+='<div style="border-left:2px solid #8A6A28;padding-left:12px;margin-bottom:16px;"><p style="color:#B8C8DC;font-style:italic;">'+escHtml(quote)+'</p>'+(qs?'<p style="font-size:0.65rem;color:#4A7AB8;text-transform:uppercase;letter-spacing:0.09em;margin-top:6px;">&mdash; '+escHtml(qs)+'</p>':'')+'</div>';
+  if(fasting) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Fasting This Week</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(fasting)+'</p>';
+  if(feast) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Upcoming Feast</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(feast)+'</p>';
+  if(seasonal) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">This Season</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(seasonal)+'</p>';
+  html+='<hr style="border:none;border-top:1px solid #1A3A5C;margin:20px 0;"/><p style="font-size:0.6rem;color:#4A7AB8;text-align:center;text-transform:uppercase;letter-spacing:0.1em;">orthodoxcompanion.com</p></div>';
+  var w=window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html><head><title>Preview</title></head><body style="margin:0;background:#0A1628;">'+html+'</body></html>');
+  w.document.close();
+}
+
+/* ── Users: load ─────────────────────────────────────── */
+async function loadUsers(){
+  var tb=document.getElementById('user-table-body');
+  if(!tb) return;
+  tb.innerHTML='<tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:12px;">Loading&hellip;</td></tr>';
+  var {data,error}=await sb.from('profiles').select('id,email,username,role,email_opt_in,created_at').order('created_at',{ascending:false});
+  if(error||!data||!data.length){tb.innerHTML='<tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:12px;">'+(error?'Error.':'No users yet.')+'</td></tr>';return;}
+  tb.innerHTML=data.map(function(u){
+    var joined=u.created_at?new Date(u.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'&mdash;';
+    return '<tr><td>'+escHtml(u.email||'&mdash;')+'</td><td>'+escHtml(u.username||'&mdash;')+'</td>'
+      +'<td><select class="role-select" data-id="'+u.id+'" onchange="updateUserRole(this)">'
+      +['free','paid','admin','superuser'].map(function(r){return '<option value="'+r+'"'+(u.role===r?' selected':'')+'>'+r+'</option>';}).join('')
+      +'</select></td><td>'+(u.email_opt_in?'&#10003;':'&mdash;')+'</td><td>'+joined+'</td></tr>';
+  }).join('');
+}
+
+/* ── Users: update role ──────────────────────────────── */
+async function updateUserRole(sel){
+  var id=sel.getAttribute('data-id');var role=sel.value;
+  var {error}=await sb.from('profiles').update({role}).eq('id',id);
+  var al=document.getElementById('users-alert');
+  if(al){al.textContent=error?'Error: '+error.message:'Role updated.';al.className='admin-alert show '+(error?'error':'success');}
+  setTimeout(function(){if(al)al.classList.remove('show');},2500);
+}
+
+/* ── Utility ─────────────────────────────────────────── */
+function escHtml(str){if(!str)return '';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ── Nav drawer ──────────────────────────────────────── */
+var _drawerOpen=false;
+
+// Nav drawer
+var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);if(h)h.classList.toggle('open',_drawerOpen);
+}
+function toggleUserMenu(){
+  var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');
+  if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');
+}
 document.addEventListener('click',function(e){
   if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
     _drawerOpen=false;
-    var d=document.getElementById('navDrawer');
-    var h=document.getElementById('hamburger');
-    if(d)d.classList.remove('open');
-    if(h)h.classList.remove('open');
+    var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');if(h)h.classList.remove('open');
   }
-  // Close user dropdown
   if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
+    var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');
+    if(d)d.classList.remove('open');if(b)b.classList.remove('open');
   }
 });
+function scrollToSection(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
 
-// Smooth scroll for anchor links
-function scrollToSection(id){
-  var el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+/* ── Dashboard init ──────────────────────────────────── */
+function initDashboard(){
+  var today=new Date();
+  var jd=document.getElementById('journalTodayDate');
+  if(jd) jd.textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  loadBookmarks();loadJournal();loadFastingLog();loadSettings();
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  // Handle hash scrolling
+/* ── Bookmarks ───────────────────────────────────────── */
+function loadBookmarks(){
+  var bookmarks=JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');
+  var sb2=document.getElementById('stat-bookmarks');if(sb2)sb2.textContent=bookmarks.length;
+  renderBookmarks(bookmarks,'all');
+}
+function renderBookmarks(bookmarks,filter){
+  var list=document.getElementById('bookmarkList');if(!list)return;
+  var filtered=filter==='all'?bookmarks:bookmarks.filter(function(b){return b.type===filter;});
+  if(!filtered.length){list.innerHTML='<div class="item-empty">No bookmarks yet.<br>Tap the save button on any prayer, saint, topic, or feast to save it here.</div>';return;}
+  list.innerHTML=filtered.map(function(b){
+    return '<div class="item-card"><div class="item-card-header"><div class="item-tag">'+b.type+'</div><div class="item-card-title">'+escHtml(b.title)+'</div><button class="item-remove" onclick="removeBookmark(\''+b.id+'\')">&#10005;</button></div>'+(b.desc?'<div class="item-card-desc">'+escHtml(b.desc)+'</div>':'')+'<div class="item-card-footer"><a href="'+escHtml(b.url||'#')+'" class="item-card-link">View &#8594;</a></div></div>';
+  }).join('');
+}
+function filterBookmarks(filter,btn){
+  document.querySelectorAll('.bm-filter').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  renderBookmarks(JSON.parse(localStorage.getItem('oc_bookmarks')||'[]'),filter);
+}
+function removeBookmark(id){
+  var bm=JSON.parse(localStorage.getItem('oc_bookmarks')||'[]').filter(function(b){return b.id!==id;});
+  localStorage.setItem('oc_bookmarks',JSON.stringify(bm));loadBookmarks();
+}
+
+/* ── Journal ─────────────────────────────────────────── */
+function loadJournal(){
+  var entries=JSON.parse(localStorage.getItem('oc_journal')||'[]');
+  var sj=document.getElementById('stat-journal');if(sj)sj.textContent=entries.length;
+  renderJournal(entries);
+}
+function renderJournal(entries){
+  var list=document.getElementById('journalList');if(!list)return;
+  if(!entries.length){list.innerHTML='<div class="item-empty">No journal entries yet.<br>Write your first reflection above.</div>';return;}
+  list.innerHTML=[...entries].reverse().map(function(e){
+    return '<div class="item-card"><div class="item-card-header"><div class="item-tag">'+e.cat+'</div><div class="item-card-title">'+new Date(e.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</div><button class="item-remove" onclick="removeJournalEntry(\''+e.id+'\')">&#10005;</button></div><div class="item-card-desc">'+escHtml(e.text.slice(0,160))+(e.text.length>160?'&hellip;':'')+'</div></div>';
+  }).join('');
+}
+function saveJournalEntry(){
+  var text=document.getElementById('journalText').value.trim();if(!text)return;
+  var cat=document.getElementById('journalCat').value;
+  var entries=JSON.parse(localStorage.getItem('oc_journal')||'[]');
+  entries.push({id:Date.now().toString(),date:new Date().toISOString(),text,cat});
+  localStorage.setItem('oc_journal',JSON.stringify(entries));
+  document.getElementById('journalText').value='';loadJournal();
+}
+function removeJournalEntry(id){
+  var e=JSON.parse(localStorage.getItem('oc_journal')||'[]').filter(function(e){return e.id!==id;});
+  localStorage.setItem('oc_journal',JSON.stringify(e));loadJournal();
+}
+
+/* ── Fasting log ─────────────────────────────────────── */
+function loadFastingLog(){
+  var log=JSON.parse(localStorage.getItem('oc_fasting')||'{}');
+  var today=new Date();var streak=0,thisMonth=0,total=0;
+  Object.keys(log).forEach(function(k){if(log[k])total++;});
+  var d=new Date(today);
+  while(true){var key=d.toISOString().slice(0,10);if(!log[key])break;streak++;d.setDate(d.getDate()-1);}
+  var y=today.getFullYear(),m=today.getMonth();
+  Object.keys(log).forEach(function(k){var kd=new Date(k);if(kd.getFullYear()===y&&kd.getMonth()===m&&log[k])thisMonth++;});
+  var fs=document.getElementById('fastStreak');if(fs)fs.textContent=streak;
+  var fm=document.getElementById('fastThisMonth');if(fm)fm.textContent=thisMonth;
+  var ft=document.getElementById('fastTotal');if(ft)ft.textContent=total;
+  var ss=document.getElementById('stat-streak');if(ss)ss.textContent=streak;
+  buildHeatmap(log);buildFastGrid(log,today);
+}
+function buildHeatmap(log){
+  var grid=document.getElementById('heatmapGrid');if(!grid)return;
+  var today=new Date();var html='';
+  for(var mo=11;mo>=0;mo--){
+    var d=new Date(today.getFullYear(),today.getMonth()-mo,1);
+    html+='<div class="heatmap-month"><div class="heatmap-month-label">'+d.toLocaleDateString('en-US',{month:'short'})+'</div><div class="heatmap-cells">';
+    var days=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+    for(var day=1;day<=days;day++){
+      var key=new Date(d.getFullYear(),d.getMonth(),day).toISOString().slice(0,10);
+      var val=log[key]||0;
+      var bg=val===2?'rgba(200,34,34,0.7)':val===1?'rgba(34,136,34,0.7)':'rgba(42,90,156,0.15)';
+      html+='<div class="heatmap-cell" style="background:'+bg+'" title="'+key+'"></div>';
+    }
+    html+='</div></div>';
+  }
+  grid.innerHTML=html;
+}
+function buildFastGrid(log,today){
+  var grid=document.getElementById('fastLogGrid');if(!grid)return;
+  var title=document.getElementById('fastLogMonthTitle');
+  if(title)title.textContent=today.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  var first=new Date(today.getFullYear(),today.getMonth(),1);
+  var days=new Date(today.getFullYear(),today.getMonth()+1,0).getDate();
+  var html='';
+  for(var i=0;i<first.getDay();i++) html+='<div class="fast-log-cell empty"></div>';
+  for(var day=1;day<=days;day++){
+    var key=new Date(today.getFullYear(),today.getMonth(),day).toISOString().slice(0,10);
+    var val=log[key]||0;
+    var cls='fast-log-cell'+(val===2?' strict':val===1?' fasted':'');
+    var isPast=new Date(today.getFullYear(),today.getMonth(),day)<=today;
+    html+='<div class="'+cls+'"'+(isPast?' onclick="toggleFast(\''+key+'\')" style="cursor:pointer"':'')+'><div class="fast-log-day-num">'+day+'</div>'+(val?'<div class="fast-log-marker">'+(val===2?'&#9632;':'&#9679;')+'</div>':'')+'</div>';
+  }
+  grid.innerHTML=html;
+}
+function toggleFast(key){
+  var log=JSON.parse(localStorage.getItem('oc_fasting')||'{}');
+  log[key]=((log[key]||0)+1)%3;
+  localStorage.setItem('oc_fasting',JSON.stringify(log));loadFastingLog();
+}
+function prevMonth(){var d=new Date();d.setMonth(d.getMonth()-1);buildFastGrid(JSON.parse(localStorage.getItem('oc_fasting')||'{}'),d);}
+function nextMonth(){buildFastGrid(JSON.parse(localStorage.getItem('oc_fasting')||'{}'),new Date());}
+
+/* ── Settings ────────────────────────────────────────── */
+function loadSettings(){
+  var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');
+  if(s.fontSize) applyFontSize(s.fontSize);
+  var sf=document.getElementById('settings-fontsize');if(sf)sf.value=s.fontSize||'normal';
+}
+function applyFontSize(size){
+  document.body.style.fontSize=size==='large'?'1.15rem':size==='xlarge'?'1.3rem':'1.05rem';
+  var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');s.fontSize=size;
+  localStorage.setItem('oc_settings',JSON.stringify(s));
+}
+function saveSettings(){localStorage.setItem('oc_settings',JSON.stringify(JSON.parse(localStorage.getItem('oc_settings')||'{}')));alert('Settings saved.');}
+function exportData(){
+  var data={bookmarks:JSON.parse(localStorage.getItem('oc_bookmarks')||'[]'),journal:JSON.parse(localStorage.getItem('oc_journal')||'[]'),fasting:JSON.parse(localStorage.getItem('oc_fasting')||'{}')};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='orthodox-companion-data.json';a.click();
+}
+function deleteAccount(){localStorage.clear();window.location.reload();}
+
+/* ── Auth state listener ─────────────────────────────── */
+document.addEventListener('DOMContentLoaded',async function(){
+  var {data:{session}}=await sb.auth.getSession();
+  if(session&&session.user){
+    _sbUser=session.user;
+    _sbProfile=await loadProfile(_sbUser);
+    await showDashboard(_sbUser,_sbProfile);
+  } else {
+    document.getElementById('authScreen').style.display='flex';
+    document.getElementById('dashboard').style.display='none';
+  }
+  sb.auth.onAuthStateChange(async function(event,session){
+    if(event==='SIGNED_IN'&&session){
+      _sbUser=session.user;
+      _sbProfile=await loadProfile(_sbUser);
+      await showDashboard(_sbUser,_sbProfile);
+    } else if(event==='SIGNED_OUT'){
+      _sbUser=null;_sbProfile=null;
+      updateNavAuth(null);
+      document.getElementById('dashboard').style.display='none';
+      document.getElementById('authScreen').style.display='flex';
+    }
+  });
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
-    setTimeout(function(){
-      var el=document.getElementById(id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    },200);
+    setTimeout(function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},300);
   }
 });
-
 </script>
 </body>
 </html>
