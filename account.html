@@ -532,7 +532,60 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .fast-stat-num{font-size:1.4rem;}
   .heatmap-cell{width:10px;height:10px;}
 }
+
+/* ── Admin panels ────────────────────────────────────── */
+.admin-section{display:none;}
+.admin-section.active{display:block;}
+.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+@media(max-width:700px){.editor-grid{grid-template-columns:1fr;}}
+.editor-textarea{width:100%;min-height:280px;background:rgba(27,58,107,0.25);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:12px;resize:vertical;outline:none;line-height:1.8;transition:border-color 0.2s;}
+[data-theme="light"] .editor-textarea{background:rgba(180,150,100,0.15);}
+.editor-textarea:focus{border-color:var(--gold-dim);}
+.editor-preview-box{min-height:280px;background:rgba(27,58,107,0.1);border:1px solid var(--border-dim);border-radius:2px;padding:12px;font-size:0.96rem;line-height:1.8;color:var(--text-dim);overflow-y:auto;}
+[data-theme="light"] .editor-preview-box{background:rgba(180,150,100,0.08);}
+.editor-preview-box h1,.editor-preview-box h2,.editor-preview-box h3{font-family:'Cinzel',serif;color:var(--gold);margin:14px 0 6px;}
+.editor-preview-box p{margin-bottom:10px;}
+.editor-preview-box blockquote{border-left:2px solid var(--gold-dim);padding-left:12px;color:var(--text-muted);font-style:italic;margin:10px 0;}
+.editor-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+@media(max-width:600px){.editor-meta-grid{grid-template-columns:1fr;}}
+.editor-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:5px;}
+.editor-input{width:100%;background:rgba(27,58,107,0.25);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:9px 12px;outline:none;transition:border-color 0.2s;}
+[data-theme="light"] .editor-input{background:rgba(180,150,100,0.15);}
+.editor-input:focus,.editor-input::placeholder{color:var(--text-muted);font-style:italic;}
+.editor-select{width:100%;background:rgba(27,58,107,0.25);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.96rem;padding:9px 12px;outline:none;cursor:pointer;}
+[data-theme="light"] .editor-select{background:rgba(180,150,100,0.15);}
+.editor-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px;}
+.editor-btn{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;padding:9px 18px;border-radius:2px;cursor:pointer;border:1px solid var(--gold-dim);background:rgba(201,168,76,0.1);color:var(--gold-light);transition:all 0.2s;}
+.editor-btn:hover{background:rgba(201,168,76,0.22);}
+.editor-btn.secondary{background:transparent;color:var(--text-muted);border-color:var(--border-dim);}
+.editor-btn.secondary:hover{color:var(--text-dim);border-color:var(--border);}
+.post-list{display:flex;flex-direction:column;gap:6px;margin-top:20px;}
+.post-row{display:flex;align-items:center;gap:12px;background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:12px 16px;transition:border-color 0.2s;flex-wrap:wrap;}
+.post-row:hover{border-color:var(--border);}
+.post-row-title{flex:1;font-family:'Cinzel',serif;font-size:0.78rem;color:var(--text);letter-spacing:0.04em;min-width:100px;}
+.post-badge{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;border:1px solid;border-radius:2px;padding:2px 7px;flex-shrink:0;}
+.post-badge.published{color:#4A9C6A;border-color:rgba(74,156,106,0.3);}
+.post-badge.draft{color:var(--text-muted);border-color:rgba(74,122,184,0.3);}
+.post-badge.cat{color:var(--text-muted);border-color:var(--border-dim);}
+.post-actions{display:flex;gap:5px;flex-shrink:0;}
+.post-action-btn{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.07em;padding:3px 9px;border-radius:2px;cursor:pointer;border:1px solid var(--border-dim);background:transparent;color:var(--text-muted);transition:all 0.15s;}
+.post-action-btn:hover{color:var(--gold-light);border-color:var(--gold-dim);}
+.post-action-btn.del:hover{color:#D08080;border-color:rgba(200,80,80,0.4);}
+.email-field{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+.user-table{width:100%;border-collapse:collapse;}
+.user-table th{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);padding:9px 12px;text-align:left;border-bottom:2px solid rgba(201,168,76,0.2);}
+.user-table td{padding:9px 12px;border-bottom:1px solid rgba(42,90,156,0.1);color:var(--text-dim);font-size:0.88rem;vertical-align:middle;}
+.user-table tr:last-child td{border-bottom:none;}
+.user-table tr:hover td{background:rgba(27,58,107,0.08);}
+.role-select{background:rgba(27,58,107,0.25);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.85rem;padding:3px 7px;outline:none;cursor:pointer;}
+.admin-alert{padding:9px 14px;border-radius:2px;border-left:2px solid;font-size:0.88rem;margin-bottom:12px;display:none;}
+.admin-alert.show{display:block;}
+.admin-alert.success{background:rgba(58,106,58,0.15);border-color:#4A9C6A;color:#8ACA8A;}
+.admin-alert.error{background:rgba(139,32,32,0.15);border-color:#9C4A4A;color:#D08080;}
+.sub-count{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.09em;margin-top:8px;}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 <nav id="mainNav">
@@ -546,6 +599,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       <span class="nav-link has-drop">New Here?</span>
       <div class="nav-dropdown">
         <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
+        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <hr class="nav-dropdown-divider"/>
         <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
         <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
@@ -555,12 +610,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
     <li class="nav-item">
       <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
+        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9679;</span>History of Orthodoxy</a>
+        <a href="symbol-of-faith.html"><span class="dd-icon">&#9830;</span>Symbol of Faith</a>
+        <hr class="nav-dropdown-divider"/>
         <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
         <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
         <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
         <hr class="nav-dropdown-divider"/>
         <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
         <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
@@ -573,7 +630,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
         <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
         <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="blog.html"><span class="dd-icon">&#9999;</span>Blog</a>
+        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
       </div>
     </li>
   </ul>
@@ -605,23 +663,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
   <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="parents.html">Guidance for Parents</a>
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
   <div class="nav-drawer-section">Study</div>
+  <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+  <a href="symbol-of-faith.html">Symbol of Faith</a>
   <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="glossary.html">Glossary</a>
   <a href="saints.html">Saints</a>
   <a href="church-fathers.html">Church Fathers</a>
-  <a href="feasts.html">Feasts</a>
-  <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <a href="glossary.html">Glossary</a>
+  <a href="holy-scripture.html">Holy Scripture</a>
   <a href="reading-plans.html">Reading Plans</a>
   <a href="resources.html">Books &amp; Resources</a>
   <div class="nav-drawer-section">Worship &amp; Life</div>
   <a href="calendar.html">Liturgical Calendar</a>
   <a href="prayer.html">Prayer Corner</a>
   <a href="fasting.html">Fasting Guide</a>
-  <a href="blog.html">Blog</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
     <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
@@ -648,12 +709,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       <div class="auth-field">
         <label class="auth-label">Password</label>
         <input class="auth-input" id="signin-password" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')signIn()"/>
+        <a href="#" style="font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);text-decoration:none;text-align:right;margin-top:2px;" onclick="handleForgotPassword();return false;">Forgot password?</a>
       </div>
       <button class="auth-btn" onclick="signIn()">Sign In</button>
       <div class="auth-divider"><span class="auth-divider-text">or</span></div>
       <div class="social-btns">
         <button class="social-btn" onclick="socialSignIn('google')">&#9312; Google</button>
-        <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
       </div>
     </div>
     <!-- Sign Up form -->
@@ -672,11 +733,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
         <label class="auth-label">Password</label>
         <input class="auth-input" id="signup-password" type="password" placeholder="At least 8 characters" autocomplete="new-password" onkeydown="if(event.key==='Enter')signUp()"/>
       </div>
+      <div style="display:flex;align-items:flex-start;gap:10px;margin-top:2px;">
+        <input type="checkbox" id="signup-optin" checked style="margin-top:4px;accent-color:var(--gold);flex-shrink:0;"/>
+        <label for="signup-optin" style="font-size:0.86rem;color:var(--text-muted);line-height:1.5;cursor:pointer;">Send me the weekly Orthodox digest &mdash; saints, feasts, fasting notes, and a word from the Fathers.</label>
+      </div>
       <button class="auth-btn" onclick="signUp()">Create Account</button>
       <div class="auth-divider"><span class="auth-divider-text">or</span></div>
       <div class="social-btns">
         <button class="social-btn" onclick="socialSignIn('google')">&#9312; Google</button>
-        <button class="social-btn" onclick="socialSignIn('apple')">&#63743; Apple</button>
       </div>
     </div>
   </div>
@@ -703,6 +767,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
         <button class="dash-tab" onclick="switchDash('reading')">Reading Plans</button>
         <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
         <button class="dash-tab" onclick="switchDash('settings')">Account</button>
+        <button class="dash-tab admin-only" id="tabBlog" onclick="switchDash('blog')" style="display:none;">&#9998; Blog</button>
+        <button class="dash-tab admin-only" id="tabEmail" onclick="switchDash('email')" style="display:none;">&#9993; Email</button>
+        <button class="dash-tab admin-only" id="tabUsers" onclick="switchDash('users')" style="display:none;">&#9760; Users</button>
       </div>
     </div>
   </div>
@@ -907,6 +974,81 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       </div>
     </div>
 
+    <!-- ══ BLOG ADMIN ══ -->
+    <div class="dash-section admin-section" id="dash-blog">
+      <div class="admin-alert" id="blog-alert"></div>
+      <div class="dash-section-title">Blog Posts</div>
+
+      <div class="editor-meta-grid">
+        <div><div class="editor-label">Title</div><input class="editor-input" id="post-title" placeholder="Post title&hellip;" oninput="autoSlug()"/></div>
+        <div><div class="editor-label">Slug</div><input class="editor-input" id="post-slug" placeholder="url-friendly-slug"/></div>
+        <div>
+          <div class="editor-label">Category</div>
+          <select class="editor-select" id="post-category">
+            <option value="">Select&hellip;</option>
+            <option>Feast Days</option><option>Saints</option><option>Prayer &amp; Fasting</option>
+            <option>Catechesis</option><option>Orthodox Life</option><option>Parenting</option><option>Parish Life</option>
+          </select>
+        </div>
+        <div><div class="editor-label">Excerpt</div><input class="editor-input" id="post-excerpt" placeholder="One or two sentence summary&hellip;"/></div>
+      </div>
+
+      <div class="editor-grid">
+        <div>
+          <div class="editor-label" style="margin-bottom:5px;">Body <span style="color:var(--text-muted);font-size:0.75rem;">(Markdown)</span></div>
+          <textarea class="editor-textarea" id="post-body" placeholder="Write in Markdown&#10;&#10;# Heading&#10;**Bold** · *Italic*&#10;> Blockquote" oninput="updateBlogPreview()"></textarea>
+        </div>
+        <div>
+          <div class="editor-label" style="margin-bottom:5px;">Preview</div>
+          <div class="editor-preview-box" id="blog-preview"><span style="color:var(--text-muted);font-style:italic;">Preview appears as you type&hellip;</span></div>
+        </div>
+      </div>
+
+      <div class="editor-actions">
+        <button class="editor-btn" onclick="savePost(false)">Save Draft</button>
+        <button class="editor-btn" onclick="savePost(true)">Publish</button>
+        <button class="editor-btn secondary" onclick="clearPostEditor()">Clear</button>
+        <span style="margin-left:auto;font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);">Editing: <span id="editing-slug" style="color:var(--gold-light);">New post</span></span>
+        <button id="cancel-edit-btn" class="post-action-btn" style="display:none;" onclick="clearPostEditor()">Cancel</button>
+      </div>
+
+      <div class="dash-section-title" style="margin-top:28px;">All Posts</div>
+      <div id="post-list" class="post-list"><div style="color:var(--text-muted);font-style:italic;padding:16px 0;">Loading&hellip;</div></div>
+    </div>
+
+    <!-- ══ EMAIL ADMIN ══ -->
+    <div class="dash-section admin-section" id="dash-email">
+      <div class="admin-alert" id="email-alert"></div>
+      <div class="dash-section-title">Weekly Digest Composer</div>
+      <p style="color:var(--text-muted);font-size:0.88rem;font-style:italic;margin-bottom:20px;">Compose this week&rsquo;s Orthodox digest. Sent to all opted-in subscribers.</p>
+
+      <div class="email-field"><div class="editor-label">Subject Line</div><input class="editor-input" id="email-subject" placeholder="e.g. Orthodox Week Ahead &mdash; April 6, 2026"/></div>
+      <div class="email-field"><div class="editor-label">&#9766; Saint of the Week</div><textarea class="editor-textarea" id="email-saint" style="min-height:90px;" placeholder="Featured saint &mdash; brief story and why they matter&hellip;"></textarea></div>
+      <div class="email-field"><div class="editor-label">&#10077; Quote of the Week</div><textarea class="editor-textarea" id="email-quote" style="min-height:70px;" placeholder="A word from the Fathers or the Sunday Gospel&hellip;"></textarea><input class="editor-input" id="email-quote-source" placeholder="Source &mdash; e.g. St. John Chrysostom, On the Priesthood" style="margin-top:8px;"/></div>
+      <div class="email-field"><div class="editor-label">&#9632; Fasting This Week</div><input class="editor-input" id="email-fasting" placeholder="e.g. Wednesday &amp; Friday fast. No additional periods this week."/></div>
+      <div class="email-field"><div class="editor-label">&#9733; Upcoming Feast</div><input class="editor-input" id="email-feast" placeholder="e.g. Annunciation &mdash; March 25."/></div>
+      <div class="email-field"><div class="editor-label">&#9680; Seasonal Note</div><textarea class="editor-textarea" id="email-seasonal" style="min-height:70px;" placeholder="Where are we in the Church year?"></textarea></div>
+
+      <div class="editor-actions">
+        <button class="editor-btn" onclick="sendWeeklyEmail()">Send to All Subscribers</button>
+        <button class="editor-btn secondary" onclick="previewEmail()">Preview</button>
+      </div>
+      <div class="sub-count" id="sub-count"></div>
+    </div>
+
+    <!-- ══ USERS ADMIN (superuser only) ══ -->
+    <div class="dash-section admin-section" id="dash-users">
+      <div class="admin-alert" id="users-alert"></div>
+      <div class="dash-section-title">User Management</div>
+      <p style="color:var(--text-muted);font-size:0.88rem;font-style:italic;margin-bottom:20px;">Change user roles. Set to <strong>paid</strong> to grant Companion AI access.</p>
+      <div style="overflow-x:auto;">
+        <table class="user-table">
+          <thead><tr><th>Email</th><th>Username</th><th>Role</th><th>Opt-in</th><th>Joined</th></tr></thead>
+          <tbody id="user-table-body"><tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:16px 12px;">Loading&hellip;</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 </div>
 
@@ -920,11 +1062,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 <script>
 /* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
+/* ── Supabase ─────────────────────────────────────────── */
+const SUPA_URL='https://hhatdkrcqnhixemjavgb.supabase.co';
+const SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoYXRka3JjcW5oaXhlbWphdmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MTA0NDksImV4cCI6MjA5MDQ4NjQ0OX0.9KSdbZ2RiPbAepj0XvwvUfrdu9yOMq5VcHKgunNEwQ4';
+const sb=window.supabase.createClient(SUPA_URL,SUPA_KEY);
+var _sbUser=null,_sbProfile=null,_editPostId=null;
 
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
+/* ── Theme ───────────────────────────────────────────── */
 function toggleTheme(){
   var c=document.documentElement.getAttribute('data-theme')||'dark';
   var n=c==='dark'?'light':'dark';
@@ -936,7 +1080,7 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',t);
 })();
 
-// Nav drawer
+/* ── Nav drawer ──────────────────────────────────────── */
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
@@ -945,77 +1089,488 @@ function toggleDrawer(){
   if(d)d.classList.toggle('open',_drawerOpen);
   if(h)h.classList.toggle('open',_drawerOpen);
 }
-
-// User account menu
 function toggleUserMenu(){
   var d=document.getElementById('navUserDropdown');
   var b=document.getElementById('navUserBtn');
   if(d)d.classList.toggle('open');
   if(b)b.classList.toggle('open');
 }
-
-// Sign out
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-
-// Init account state on every page
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
-  }
-}
-
-// Close menus on outside click
 document.addEventListener('click',function(e){
   if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
     _drawerOpen=false;
-    var d=document.getElementById('navDrawer');
-    var h=document.getElementById('hamburger');
-    if(d)d.classList.remove('open');
-    if(h)h.classList.remove('open');
+    var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');if(h)h.classList.remove('open');
   }
-  // Close user dropdown
   if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
+    var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');
+    if(d)d.classList.remove('open');if(b)b.classList.remove('open');
   }
 });
 
-// Smooth scroll for anchor links
-function scrollToSection(id){
-  var el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+/* ── Auth tab switching ──────────────────────────────── */
+function switchTab(tab){
+  document.querySelectorAll('.auth-tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.auth-form').forEach(function(f){f.classList.remove('active');});
+  document.getElementById('form-'+tab).classList.add('active');
 }
 
-document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  // Handle hash scrolling
+/* ── Sign in (Supabase) ──────────────────────────────── */
+async function signIn(){
+  var email=document.getElementById('signin-email').value.trim();
+  var pass=document.getElementById('signin-password').value;
+  var errEl=document.getElementById('signin-error');
+  errEl.classList.remove('show');errEl.textContent='';
+  if(!email||!pass){errEl.textContent='Please enter your email and password.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.signInWithPassword({email,password:pass});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');}
+}
+
+/* ── Sign up (Supabase) ──────────────────────────────── */
+async function signUp(){
+  var name=document.getElementById('signup-name').value.trim();
+  var email=document.getElementById('signup-email').value.trim();
+  var pass=document.getElementById('signup-password').value;
+  var optIn=document.getElementById('signup-optin').checked;
+  var errEl=document.getElementById('signup-error');
+  var sucEl=document.getElementById('signup-success');
+  errEl.classList.remove('show');sucEl.classList.remove('show');
+  if(!email||!pass){errEl.textContent='Please enter your email and password.';errEl.classList.add('show');return;}
+  if(pass.length<8){errEl.textContent='Password must be at least 8 characters.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.signUp({email,password:pass,options:{data:{username:name,email_opt_in:optIn}}});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  sucEl.textContent='Account created! Check your email to confirm your address.';sucEl.classList.add('show');
+  /* Also update opt_in in profiles if user already exists */
+}
+
+/* ── Social sign in ──────────────────────────────────── */
+async function socialSignIn(provider){
+  await sb.auth.signInWithOAuth({provider,options:{redirectTo:window.location.origin+'/account.html'}});
+}
+
+/* ── Forgot password ─────────────────────────────────── */
+async function handleForgotPassword(){
+  var email=document.getElementById('signin-email').value.trim();
+  var errEl=document.getElementById('signin-error');
+  if(!email){errEl.textContent='Enter your email above first.';errEl.classList.add('show');return;}
+  var {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+'/account.html'});
+  if(error){errEl.textContent=error.message;errEl.classList.add('show');return;}
+  errEl.style.cssText='display:block;background:rgba(58,106,58,0.15);border-color:#4A9C6A;color:#8ACA8A;';
+  errEl.textContent='Password reset email sent.';
+}
+
+/* ── Sign out ────────────────────────────────────────── */
+async function signOut(){
+  await sb.auth.signOut();
+  _sbUser=null;_sbProfile=null;
+  updateNavAuth(null);
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('authScreen').style.display='flex';
+}
+
+/* ── Update nav auth ─────────────────────────────────── */
+function updateNavAuth(user){
+  var si=document.getElementById('navSignIn');
+  var um=document.getElementById('navUserMenu');
+  var un=document.getElementById('navUsername');
+  var ds=document.getElementById('drawerSignIn');
+  if(user){
+    if(si)si.style.display='none';
+    if(um)um.style.display='block';
+    if(un)un.textContent=user.email.split('@')[0];
+    if(ds)ds.textContent=user.email.split('@')[0];
+  } else {
+    if(si)si.style.display='';
+    if(um)um.style.display='none';
+  }
+}
+
+/* ── Load profile ────────────────────────────────────── */
+async function loadProfile(user){
+  var {data}=await sb.from('profiles').select('*').eq('id',user.id).single();
+  return data||null;
+}
+
+/* ── Show dashboard ──────────────────────────────────── */
+async function showDashboard(user,profile){
+  document.getElementById('authScreen').style.display='none';
+  document.getElementById('dashboard').style.display='block';
+  var role=profile?profile.role:'free';
+  /* Update profile row */
+  var initial=(profile&&profile.username?profile.username:user.email).charAt(0).toUpperCase();
+  document.getElementById('dashAvatar').textContent=initial;
+  document.getElementById('dashName').textContent=(profile&&profile.username)||user.email.split('@')[0];
+  document.getElementById('dashEmail').textContent=user.email;
+  var badge=document.getElementById('dashBadge');
+  badge.textContent=role.charAt(0).toUpperCase()+role.slice(1);
+  badge.className='dash-badge '+(role==='paid'||role==='admin'||role==='superuser'?'premium':'free');
+  /* Show admin tabs */
+  if(role==='admin'||role==='superuser'){
+    document.getElementById('tabBlog').style.display='';
+    document.getElementById('tabEmail').style.display='';
+  }
+  if(role==='superuser'){
+    document.getElementById('tabUsers').style.display='';
+  }
+  updateNavAuth(user);
+  initDashboard();
+}
+
+/* ── Dashboard tab switching ─────────────────────────── */
+function switchDash(tab){
+  document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
+  document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
+  event.currentTarget.classList.add('active');
+  var sec=document.getElementById('dash-'+tab);
+  if(sec){sec.classList.add('active');}
+  /* Load admin data on first open */
+  if(tab==='blog') loadPosts();
+  if(tab==='email') loadSubCount();
+  if(tab==='users') loadUsers();
+}
+
+/* ══ BLOG ADMIN ══════════════════════════════════════ */
+function autoSlug(){
+  if(_editPostId) return;
+  var slug=document.getElementById('post-title').value.toLowerCase()
+    .replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').slice(0,60);
+  document.getElementById('post-slug').value=slug;
+}
+function updateBlogPreview(){
+  var body=document.getElementById('post-body').value;
+  var pre=document.getElementById('blog-preview');
+  if(!body.trim()){pre.innerHTML='<span style="color:var(--text-muted);font-style:italic;">Preview appears as you type&hellip;</span>';return;}
+  pre.innerHTML=marked.parse(body);
+}
+function clearPostEditor(){
+  ['post-title','post-slug','post-excerpt','post-body'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('post-category').value='';
+  document.getElementById('blog-preview').innerHTML='<span style="color:var(--text-muted);font-style:italic;">Preview appears as you type&hellip;</span>';
+  document.getElementById('editing-slug').textContent='New post';
+  document.getElementById('cancel-edit-btn').style.display='none';
+  _editPostId=null;
+}
+async function savePost(publish){
+  var title=document.getElementById('post-title').value.trim();
+  var slug=document.getElementById('post-slug').value.trim();
+  var category=document.getElementById('post-category').value;
+  var excerpt=document.getElementById('post-excerpt').value.trim();
+  var body=document.getElementById('post-body').value.trim();
+  var al=document.getElementById('blog-alert');
+  al.className='admin-alert';al.classList.remove('show');
+  if(!title||!slug||!body){al.textContent='Title, slug, and body are required.';al.classList.add('show','error');return;}
+  var d={title,slug,category:category||null,excerpt:excerpt||null,body,published:publish,
+    published_at:publish?new Date().toISOString():null,
+    author:(_sbProfile&&_sbProfile.username)||'Kevin Holt'};
+  var res=_editPostId?await sb.from('blog_posts').update(d).eq('id',_editPostId):await sb.from('blog_posts').insert([d]);
+  if(res.error){al.textContent=res.error.message;al.classList.add('show','error');return;}
+  al.textContent=publish?'Post published!':'Draft saved.';al.classList.add('show','success');
+  clearPostEditor();loadPosts();
+  setTimeout(function(){al.classList.remove('show');},4000);
+}
+async function loadPosts(){
+  var li=document.getElementById('post-list');
+  li.innerHTML='<div style="color:var(--text-muted);font-style:italic;padding:12px 0;">Loading&hellip;</div>';
+  var {data,error}=await sb.from('blog_posts').select('id,title,slug,category,published,created_at').order('created_at',{ascending:false});
+  if(error||!data||!data.length){li.innerHTML='<div style="color:var(--text-muted);font-style:italic;padding:12px 0;">'+(error?'Error loading posts.':'No posts yet. Write your first post above.')+'</div>';return;}
+  li.innerHTML=data.map(function(p){
+    return '<div class="post-row"><div class="post-row-title">'+escHtml(p.title)+'</div>'
+      +(p.category?'<span class="post-badge cat">'+escHtml(p.category)+'</span>':'')
+      +'<span class="post-badge '+(p.published?'published':'draft')+'">'+(p.published?'Published':'Draft')+'</span>'
+      +'<div class="post-actions">'
+      +'<button class="post-action-btn" data-id="'+p.id+'" onclick="editPost(this)">Edit</button>'
+      +'<button class="post-action-btn del" data-id="'+p.id+'" onclick="deletePost(this)">Delete</button>'
+      +'</div></div>';
+  }).join('');
+}
+async function editPost(btn){
+  var id=btn.getAttribute('data-id');
+  var {data}=await sb.from('blog_posts').select('*').eq('id',id).single();
+  if(!data) return;
+  _editPostId=id;
+  document.getElementById('post-title').value=data.title||'';
+  document.getElementById('post-slug').value=data.slug||'';
+  document.getElementById('post-category').value=data.category||'';
+  document.getElementById('post-excerpt').value=data.excerpt||'';
+  document.getElementById('post-body').value=data.body||'';
+  document.getElementById('editing-slug').textContent=data.slug;
+  document.getElementById('cancel-edit-btn').style.display='inline-block';
+  updateBlogPreview();
+  document.getElementById('dash-blog').scrollIntoView({behavior:'smooth',block:'start'});
+}
+async function deletePost(btn){
+  if(!confirm('Delete this post? This cannot be undone.')) return;
+  var id=btn.getAttribute('data-id');
+  var {error}=await sb.from('blog_posts').delete().eq('id',id);
+  if(error){alert('Error: '+error.message);return;}
+  loadPosts();
+}
+
+/* ══ EMAIL ADMIN ═════════════════════════════════════ */
+async function loadSubCount(){
+  var {count}=await sb.from('profiles').select('*',{count:'exact',head:true}).eq('email_opt_in',true);
+  var el=document.getElementById('sub-count');
+  if(count!==null) el.textContent=(count||0)+' subscriber'+(count!==1?'s':'')+' opted in';
+}
+async function sendWeeklyEmail(){
+  var subject=document.getElementById('email-subject').value.trim();
+  var saint=document.getElementById('email-saint').value.trim();
+  var al=document.getElementById('email-alert');
+  al.className='admin-alert';al.classList.remove('show');
+  if(!subject||!saint){al.textContent='Subject and saint spotlight are required.';al.classList.add('show','error');return;}
+  if(!confirm('Send this email to all opted-in subscribers?')) return;
+  al.textContent='Sending&hellip;';al.classList.add('show','success');
+  try {
+    var res=await fetch('https://silent-disk-1140.holt-kevin13.workers.dev/send-digest',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        subject,saint,
+        quote:document.getElementById('email-quote').value.trim(),
+        quoteSource:document.getElementById('email-quote-source').value.trim(),
+        fasting:document.getElementById('email-fasting').value.trim(),
+        feast:document.getElementById('email-feast').value.trim(),
+        seasonal:document.getElementById('email-seasonal').value.trim()
+      })
+    });
+    if(res.ok){al.textContent='Email sent! &#9766;';}
+    else{var e=await res.json();al.textContent='Error: '+(e.error||'Unknown error');al.className='admin-alert show error';}
+  } catch(e){
+    al.textContent='The /send-digest endpoint needs to be added to the Cloudflare Worker.';
+    al.className='admin-alert show error';
+  }
+}
+function previewEmail(){
+  var subject=document.getElementById('email-subject').value.trim()||'Orthodox Week Ahead';
+  var saint=document.getElementById('email-saint').value.trim();
+  var quote=document.getElementById('email-quote').value.trim();
+  var qs=document.getElementById('email-quote-source').value.trim();
+  var fasting=document.getElementById('email-fasting').value.trim();
+  var feast=document.getElementById('email-feast').value.trim();
+  var seasonal=document.getElementById('email-seasonal').value.trim();
+  var html='<div style="max-width:540px;margin:0 auto;font-family:Georgia,serif;background:#0A1628;color:#F0E6CC;padding:28px 24px;">';
+  html+='<div style="text-align:center;font-size:2rem;color:#C9A84C;margin-bottom:6px;">&#9766;</div>';
+  html+='<h1 style="font-family:serif;font-size:1.1rem;color:#E8CB7A;text-align:center;letter-spacing:0.1em;margin-bottom:20px;">'+escHtml(subject)+'</h1>';
+  if(saint) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Saint of the Week</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(saint)+'</p>';
+  if(quote) html+='<div style="border-left:2px solid #8A6A28;padding-left:12px;margin-bottom:16px;"><p style="color:#B8C8DC;font-style:italic;">'+escHtml(quote)+'</p>'+(qs?'<p style="font-size:0.65rem;color:#4A7AB8;text-transform:uppercase;letter-spacing:0.09em;margin-top:6px;">&mdash; '+escHtml(qs)+'</p>':'')+'</div>';
+  if(fasting) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Fasting This Week</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(fasting)+'</p>';
+  if(feast) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">Upcoming Feast</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(feast)+'</p>';
+  if(seasonal) html+='<h2 style="font-size:0.7rem;color:#C9A84C;text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px;">This Season</h2><p style="color:#B8C8DC;line-height:1.8;margin-bottom:16px;">'+escHtml(seasonal)+'</p>';
+  html+='<hr style="border:none;border-top:1px solid #1A3A5C;margin:20px 0;"/><p style="font-size:0.6rem;color:#4A7AB8;text-align:center;text-transform:uppercase;letter-spacing:0.1em;">orthodoxcompanion.com</p></div>';
+  var w=window.open('','_blank');
+  w.document.write('<!DOCTYPE html><html><head><title>Email Preview</title></head><body style="margin:0;background:#0A1628;">'+html+'</body></html>');
+  w.document.close();
+}
+
+/* ══ USERS ADMIN ═════════════════════════════════════ */
+async function loadUsers(){
+  var tb=document.getElementById('user-table-body');
+  tb.innerHTML='<tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:12px;">Loading&hellip;</td></tr>';
+  var {data,error}=await sb.from('profiles').select('id,email,username,role,email_opt_in,created_at').order('created_at',{ascending:false});
+  if(error||!data||!data.length){tb.innerHTML='<tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:12px;">'+(error?'Error loading users.':'No users yet.')+'</td></tr>';return;}
+  tb.innerHTML=data.map(function(u){
+    var joined=u.created_at?new Date(u.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'&mdash;';
+    return '<tr><td>'+escHtml(u.email||'&mdash;')+'</td><td>'+escHtml(u.username||'&mdash;')+'</td>'
+      +'<td><select class="role-select" data-id="'+u.id+'" onchange="updateUserRole(this)">'
+      +['free','paid','admin','superuser'].map(function(r){return '<option value="'+r+'"'+(u.role===r?' selected':'')+'>'+r+'</option>';}).join('')
+      +'</select></td>'
+      +'<td>'+(u.email_opt_in?'&#10003;':'&mdash;')+'</td>'
+      +'<td>'+joined+'</td></tr>';
+  }).join('');
+}
+async function updateUserRole(sel){
+  var id=sel.getAttribute('data-id');var role=sel.value;
+  var {error}=await sb.from('profiles').update({role}).eq('id',id);
+  var al=document.getElementById('users-alert');
+  if(error){al.textContent='Error: '+error.message;al.className='admin-alert show error';}
+  else{al.textContent='Role updated.';al.className='admin-alert show success';}
+  setTimeout(function(){al.classList.remove('show');},2500);
+}
+
+/* ══ EXISTING DASHBOARD FUNCTIONS ════════════════════ */
+function initDashboard(){
+  var today=new Date();
+  if(document.getElementById('journalTodayDate'))
+    document.getElementById('journalTodayDate').textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  loadBookmarks();loadJournal();loadFastingLog();loadSettings();
+}
+function scrollToSection(id){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});}
+
+/* Bookmarks */
+function loadBookmarks(){
+  var bookmarks=JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');
+  document.getElementById('stat-bookmarks').textContent=bookmarks.length;
+  renderBookmarks(bookmarks,'all');
+}
+function renderBookmarks(bookmarks,filter){
+  var list=document.getElementById('bookmarkList');
+  var filtered=filter==='all'?bookmarks:bookmarks.filter(function(b){return b.type===filter;});
+  if(!filtered.length){list.innerHTML='<div class="item-empty">No bookmarks yet.<br>Tap the save button on any prayer, saint, topic, or feast to save it here.</div>';return;}
+  list.innerHTML=filtered.map(function(b){
+    return '<div class="item-card"><div class="item-card-header"><div class="item-tag">'+b.type+'</div><div class="item-card-title">'+escHtml(b.title)+'</div><button class="item-remove" onclick="removeBookmark(\''+b.id+'\')">&#10005;</button></div>'+(b.desc?'<div class="item-card-desc">'+escHtml(b.desc)+'</div>':'')+'<div class="item-card-footer"><a href="'+escHtml(b.url||'#')+'" class="item-card-link">View &#8594;</a></div></div>';
+  }).join('');
+}
+function filterBookmarks(filter,btn){
+  document.querySelectorAll('.bm-filter').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  var bookmarks=JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');
+  renderBookmarks(bookmarks,filter);
+}
+function removeBookmark(id){
+  var bookmarks=JSON.parse(localStorage.getItem('oc_bookmarks')||'[]');
+  bookmarks=bookmarks.filter(function(b){return b.id!==id;});
+  localStorage.setItem('oc_bookmarks',JSON.stringify(bookmarks));
+  loadBookmarks();
+}
+
+/* Journal */
+function loadJournal(){
+  var entries=JSON.parse(localStorage.getItem('oc_journal')||'[]');
+  document.getElementById('stat-journal').textContent=entries.length;
+  renderJournal(entries);
+}
+function renderJournal(entries){
+  var list=document.getElementById('journalList');
+  if(!entries.length){list.innerHTML='<div class="item-empty">No journal entries yet.<br>Write your first reflection above.</div>';return;}
+  list.innerHTML=[...entries].reverse().map(function(e){
+    return '<div class="item-card"><div class="item-card-header"><div class="item-tag">'+e.cat+'</div><div class="item-card-title">'+new Date(e.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+'</div><button class="item-remove" onclick="removeJournalEntry(\''+e.id+'\')">&#10005;</button></div><div class="item-card-desc">'+escHtml(e.text.slice(0,160))+(e.text.length>160?'&hellip;':'')+'</div></div>';
+  }).join('');
+}
+function saveJournalEntry(){
+  var text=document.getElementById('journalText').value.trim();
+  if(!text) return;
+  var cat=document.getElementById('journalCat').value;
+  var entries=JSON.parse(localStorage.getItem('oc_journal')||'[]');
+  entries.push({id:Date.now().toString(),date:new Date().toISOString(),text,cat});
+  localStorage.setItem('oc_journal',JSON.stringify(entries));
+  document.getElementById('journalText').value='';
+  loadJournal();
+}
+function removeJournalEntry(id){
+  var entries=JSON.parse(localStorage.getItem('oc_journal')||'[]');
+  entries=entries.filter(function(e){return e.id!==id;});
+  localStorage.setItem('oc_journal',JSON.stringify(entries));
+  loadJournal();
+}
+
+/* Fasting log */
+function loadFastingLog(){
+  var log=JSON.parse(localStorage.getItem('oc_fasting')||'{}');
+  var today=new Date();
+  var streak=0,thisMonth=0,total=0;
+  Object.keys(log).forEach(function(k){if(log[k]) total++;});
+  var d=new Date(today);
+  while(true){var key=d.toISOString().slice(0,10);if(!log[key]) break;streak++;d.setDate(d.getDate()-1);}
+  var y=today.getFullYear(),m=today.getMonth();
+  Object.keys(log).forEach(function(k){var kd=new Date(k);if(kd.getFullYear()===y&&kd.getMonth()===m&&log[k]) thisMonth++;});
+  document.getElementById('fastStreak').textContent=streak;
+  document.getElementById('fastThisMonth').textContent=thisMonth;
+  document.getElementById('fastTotal').textContent=total;
+  document.getElementById('stat-streak').textContent=streak;
+  buildHeatmap(log);buildFastGrid(log,today);
+}
+function buildHeatmap(log){
+  var grid=document.getElementById('heatmapGrid');
+  if(!grid) return;
+  var today=new Date();var html='';
+  for(var m=11;m>=0;m--){
+    var d=new Date(today.getFullYear(),today.getMonth()-m,1);
+    html+='<div class="heatmap-month"><div class="heatmap-month-label">'+d.toLocaleDateString('en-US',{month:'short'})+'</div><div class="heatmap-cells">';
+    var days=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();
+    for(var day=1;day<=days;day++){
+      var key=new Date(d.getFullYear(),d.getMonth(),day).toISOString().slice(0,10);
+      var val=log[key]||0;
+      var bg=val===2?'rgba(200,34,34,0.7)':val===1?'rgba(34,136,34,0.7)':'rgba(42,90,156,0.15)';
+      html+='<div class="heatmap-cell" style="background:'+bg+'" title="'+key+'"></div>';
+    }
+    html+='</div></div>';
+  }
+  grid.innerHTML=html;
+}
+function buildFastGrid(log,today){
+  var grid=document.getElementById('fastLogGrid');
+  if(!grid) return;
+  var title=document.getElementById('fastLogMonthTitle');
+  if(title) title.textContent=today.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  var first=new Date(today.getFullYear(),today.getMonth(),1);
+  var days=new Date(today.getFullYear(),today.getMonth()+1,0).getDate();
+  var html='';
+  for(var i=0;i<first.getDay();i++) html+='<div class="fast-log-cell empty"></div>';
+  for(var d=1;d<=days;d++){
+    var key=new Date(today.getFullYear(),today.getMonth(),d).toISOString().slice(0,10);
+    var val=log[key]||0;
+    var cls='fast-log-cell'+(val===2?' strict':val===1?' fasted':'');
+    var isPast=new Date(today.getFullYear(),today.getMonth(),d)<=today;
+    html+='<div class="'+cls+'"'+(isPast?' onclick="toggleFast(\''+key+'\')" style="cursor:pointer"':'')+'><div class="fast-log-day-num">'+d+'</div>'+(val?'<div class="fast-log-marker">'+(val===2?'&#9632;':'&#9679;')+'</div>':'')+'</div>';
+  }
+  grid.innerHTML=html;
+}
+function toggleFast(key){
+  var log=JSON.parse(localStorage.getItem('oc_fasting')||'{}');
+  log[key]=((log[key]||0)+1)%3;
+  localStorage.setItem('oc_fasting',JSON.stringify(log));
+  loadFastingLog();
+}
+function prevMonth(){var d=new Date();d.setMonth(d.getMonth()-1);buildFastGrid(JSON.parse(localStorage.getItem('oc_fasting')||'{}'),d);}
+function nextMonth(){buildFastGrid(JSON.parse(localStorage.getItem('oc_fasting')||'{}'),new Date());}
+
+/* Settings */
+function loadSettings(){
+  var settings=JSON.parse(localStorage.getItem('oc_settings')||'{}');
+  if(settings.fontSize) applyFontSize(settings.fontSize);
+  if(document.getElementById('settings-fontsize')) document.getElementById('settings-fontsize').value=settings.fontSize||'normal';
+}
+function applyFontSize(size){
+  document.body.style.fontSize=size==='large'?'1.15rem':size==='xlarge'?'1.3rem':'1.05rem';
+  var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');s.fontSize=size;
+  localStorage.setItem('oc_settings',JSON.stringify(s));
+}
+function saveSettings(){
+  var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');
+  localStorage.setItem('oc_settings',JSON.stringify(s));
+  alert('Settings saved.');
+}
+function exportData(){
+  var data={bookmarks:JSON.parse(localStorage.getItem('oc_bookmarks')||'[]'),journal:JSON.parse(localStorage.getItem('oc_journal')||'[]'),fasting:JSON.parse(localStorage.getItem('oc_fasting')||'{}')};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='orthodox-companion-data.json';a.click();
+}
+function deleteAccount(){localStorage.clear();window.location.reload();}
+
+/* ── Utility ─────────────────────────────────────────── */
+function escHtml(str){if(!str) return '';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+/* ── Auth state listener ─────────────────────────────── */
+document.addEventListener('DOMContentLoaded',async function(){
+  /* Check Supabase session */
+  var {data:{session}}=await sb.auth.getSession();
+  if(session&&session.user){
+    _sbUser=session.user;
+    _sbProfile=await loadProfile(_sbUser);
+    await showDashboard(_sbUser,_sbProfile);
+  } else {
+    document.getElementById('authScreen').style.display='flex';
+    document.getElementById('dashboard').style.display='none';
+  }
+
+  sb.auth.onAuthStateChange(async function(event,session){
+    if(event==='SIGNED_IN'&&session){
+      _sbUser=session.user;
+      _sbProfile=await loadProfile(_sbUser);
+      await showDashboard(_sbUser,_sbProfile);
+    } else if(event==='SIGNED_OUT'){
+      _sbUser=null;_sbProfile=null;
+      updateNavAuth(null);
+      document.getElementById('dashboard').style.display='none';
+      document.getElementById('authScreen').style.display='flex';
+    }
+  });
+
+  /* Handle hash navigation */
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
-    setTimeout(function(){
-      var el=document.getElementById(id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    },200);
+    setTimeout(function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},300);
   }
 });
-
 </script>
 </body>
 </html>
