@@ -23,6 +23,7 @@
   --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
   --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
   --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
+  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
 }
 [data-theme="light"] {
   --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
@@ -340,7 +341,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Reading Plans</div>
     <h1 class="page-title">Reading Plans</h1>
-    <p class="page-desc">Nine Bible reading plans for daily Orthodox Scripture reading — from the full Bible in a year to the Psalter read monthly in the kathisma tradition.</p>
+    <p class="page-desc">Fourteen Bible reading plans for daily Orthodox Scripture reading — from the full Bible in a year to the Psalter read monthly in the kathisma tradition.</p>
   </div>
 </div>
 <div class="plans-wrap">
@@ -445,20 +446,20 @@ document.addEventListener('DOMContentLoaded',function(){
 <script>
 
 var PLANS = [
-  {id:'bible-2yr',   icon:'📖', name:'Full Bible — 2 Years',         duration:'730 days', total:730, desc:'The complete Scripture at a gentle pace — ideal for first-time readers.'},
-  {id:'bible-1yr',   icon:'📖', name:'Full Bible — 1 Year',          duration:'365 days', total:365, desc:'The complete Old and New Testament in one year. Four passages every day.'},
-  {id:'ot-1yr',      icon:'🕎', name:'Old Testament — 1 Year',       duration:'365 days', total:365, desc:'The full Orthodox Old Testament in LXX order, including all deuterocanonicals.'},
-  {id:'nt-1yr',      icon:'✝',  name:'New Testament — 1 Year',       duration:'365 days', total:365, desc:'The New Testament read at a gentle pace, with Psalm reflections throughout.'},
-  {id:'nt-90',       icon:'✝',  name:'New Testament — 90 Days',      duration:'90 days',  total:90,  desc:'The entire New Testament in three months. Ideal for Great Lent.'},
-  {id:'gospels-60',  icon:'✝',  name:'Gospels — 60 Days',            duration:'60 days',  total:60,  desc:'All four Gospels in sequence — Matthew, Mark, Luke, and John — over two months.'},
-  {id:'epistles-30', icon:'✉',  name:'Epistles — 30 Days',           duration:'30 days',  total:30,  desc:'All the Apostolic Epistles, Romans through Jude, in one month.'},
-  {id:'psalter',     icon:'♪',  name:'Psalter Monthly',              duration:'30 days',  total:30,  desc:'The complete Psalter each month in the ancient kathisma tradition.'},
-  {id:'wisdom-30',   icon:'📜', name:'Wisdom Literature — 30 Days',  duration:'30 days',  total:30,  desc:'Job, Proverbs, Ecclesiastes, Song of Songs, Wisdom, and Sirach in sequence.'},
-  {id:'prophets-60', icon:'🕊', name:'Prophets — 60 Days',           duration:'60 days',  total:60,  desc:'Isaiah through Malachi — all the major and minor prophets in LXX order.'},
-  {id:'lenten',      icon:'✙',  name:'Lenten Plan — 48 Days',        duration:'48 days',  total:48,  desc:'Aligned with the Triodion. Genesis, Proverbs, Isaiah, and Mark\'s Gospel.'},
-  {id:'nativity-40', icon:'⭐', name:'Nativity Fast — 40 Days',      duration:'40 days',  total:40,  desc:'Isaiah and the Epistles for the 40-day fast before the Nativity of Christ.'},
-  {id:'holy-week',   icon:'✞',  name:'Holy Week — 8 Days',           duration:'8 days',   total:8,   desc:'Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.'},
-  {id:'catechumen-40',icon:'☦', name:'Catechumen Plan — 40 Days',    duration:'40 days',  total:40,  desc:'For those entering the Faith. John\'s Gospel, Acts, Psalms, and Wisdom of Solomon.'},
+  {id:'bible-2yr',    icon:'📖', name:'Full Bible — 2 Years',        duration:'730 days', total:730, desc:'The complete Scripture at a gentle pace — ideal for first-time readers.'},
+  {id:'bible-1yr',    icon:'📖', name:'Full Bible — 1 Year',         duration:'365 days', total:365, desc:'The complete Old and New Testament in one year. Four passages every day.'},
+  {id:'ot-1yr',       icon:'🕎', name:'Old Testament — 1 Year',      duration:'365 days', total:365, desc:'The full Orthodox Old Testament in LXX order, including all deuterocanonicals.'},
+  {id:'nt-1yr',       icon:'✝',  name:'New Testament — 1 Year',      duration:'365 days', total:365, desc:'The New Testament read at a gentle pace, with Psalm reflections throughout.'},
+  {id:'nt-90',        icon:'✝',  name:'New Testament — 90 Days',     duration:'90 days',  total:90,  desc:'The entire New Testament in three months. Ideal for Great Lent.'},
+  {id:'gospels-60',   icon:'✝',  name:'Gospels — 60 Days',           duration:'60 days',  total:60,  desc:'All four Gospels in sequence — Matthew, Mark, Luke, and John — over two months.'},
+  {id:'epistles-30',  icon:'✉',  name:'Epistles — 30 Days',          duration:'30 days',  total:30,  desc:'All the Apostolic Epistles, Romans through Jude, in one month.'},
+  {id:'psalter',      icon:'♪',  name:'Psalter Monthly',                 duration:'30 days',  total:30,  desc:'The complete Psalter each month in the ancient kathisma tradition.'},
+  {id:'wisdom-30',    icon:'📜', name:'Wisdom Literature — 30 Days', duration:'30 days',  total:30,  desc:'Job, Proverbs, Ecclesiastes, Song of Songs, Wisdom, and Sirach in sequence.'},
+  {id:'prophets-60',  icon:'🕊', name:'Prophets — 60 Days',          duration:'60 days',  total:60,  desc:'Isaiah through Malachi — all the major and minor prophets in LXX order.'},
+  {id:'lenten',       icon:'✙',  name:'Lenten Plan — 48 Days',       duration:'48 days',  total:48,  desc:"Aligned with the Triodion. Genesis, Proverbs, Isaiah, and Mark's Gospel."},
+  {id:'nativity-40',  icon:'⭐', name:'Nativity Fast — 40 Days',     duration:'40 days',  total:40,  desc:'Isaiah and the Epistles for the 40-day fast before the Nativity of Christ.'},
+  {id:'holy-week',    icon:'✞',  name:'Holy Week — 8 Days',          duration:'8 days',   total:8,   desc:'Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.'},
+  {id:'catechumen-40',icon:'☦',  name:'Catechumen Plan — 40 Days',   duration:'40 days',  total:40,  desc:"For those entering the Faith. John's Gospel, Acts, Psalms, and Wisdom of Solomon."},
 ];
 
 var NT_PASSAGES = [
@@ -527,10 +528,10 @@ function renderPlanDay(planId, dayNum) {
   var entry = getPlanEntry(planId, dayNum);
   if (!entry) return '<div class="today-reading-ref">Day ' + (dayNum + 1) + '</div>';
   var html = '';
-  if (entry.ot) html += renderReadingRow('OT',      entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
-  if (entry.ps) html += renderReadingRow('Psalms',  entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
-  if (entry.pr) html += renderReadingRow('Proverbs',entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
-  if (entry.nt) html += renderReadingRow('NT',      entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
+  if (entry.ot) html += renderReadingRow('OT',       entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
+  if (entry.ps) html += renderReadingRow('Psalms',   entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
+  if (entry.pr) html += renderReadingRow('Proverbs', entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
+  if (entry.nt) html += renderReadingRow('NT',       entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
   if (!html)    html  = '<div class="today-reading-ref">Day ' + (dayNum + 1) + ' — silent day</div>';
   return html;
 }
