@@ -19,42 +19,47 @@ html{scroll-behavior:smooth;}
   --nav-h:68px;
 }
 body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 24px;gap:16px;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0;}
-.nav-cross{font-size:28px;color:var(--gold);text-shadow:0 0 18px rgba(201,168,76,0.4);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.65rem;color:var(--text-muted);font-style:italic;letter-spacing:0.04em;margin-top:2px;}
-.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none;}
-.nav-dropdown{position:relative;}
-.nav-drop-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:7px 9px;border-radius:2px;transition:color 0.2s,background 0.2s;white-space:nowrap;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:4px;}
-.nav-drop-btn:hover,.nav-drop-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-drop-menu{display:none;position:absolute;top:100%;left:0;background:#0D1E38;border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 3px 3px;min-width:190px;padding:6px 0;z-index:700;box-shadow:0 8px 30px rgba(0,0,0,0.5);}
-.nav-dropdown:hover .nav-drop-menu{display:block;}
-.nav-drop-menu a{display:block;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);text-decoration:none;padding:8px 16px;transition:color 0.2s,background 0.2s;white-space:nowrap;}
-.nav-drop-menu a:hover,.nav-drop-menu a.active{color:var(--gold-light);background:rgba(201,168,76,0.08);}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:12px;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;box-shadow:0 2px 30px rgba(0,0,0,0.4);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:220px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
+.nav-dropdown a:hover,.nav-dropdown a.active{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
 .nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
-.nav-signin-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-user-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.63rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;cursor:pointer;background:rgba(201,168,76,0.08);transition:all 0.2s;white-space:nowrap;}
-.nav-user-dropdown{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#0D1E38;border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 3px 3px;min-width:150px;padding:6px 0;z-index:700;box-shadow:0 8px 30px rgba(0,0,0,0.5);}
-.nav-user-dropdown.open{display:block;}
-.nav-user-dropdown a{display:block;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-dim);text-decoration:none;padding:8px 16px;transition:color 0.2s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;}
+.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+.nav-account-wrap{position:relative;}
+.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);background:transparent;border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
+.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
+.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
+.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
+.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-user-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
 .nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid #1A3A5C;z-index:599;padding:8px 0 24px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.14em;color:#4A7AB8;padding:12px 28px 4px;border-top:1px solid rgba(42,90,156,0.15);}
-.nav-drawer-section:first-child{border-top:none;padding-top:8px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.1em;color:#B8C8DC;text-decoration:none;padding:10px 28px;transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover,.nav-drawer a.active{color:#E8CB7A;padding-left:36px;}
-.nav-drawer-footer{padding:16px 28px 0;border-top:1px solid rgba(42,90,156,0.15);margin-top:4px;}
+.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover,.nav-drawer a.active{color:var(--gold-light);padding-left:38px;}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
 .season-strip{background:linear-gradient(90deg,rgba(42,90,156,0.08),rgba(201,168,76,0.1),rgba(42,90,156,0.08));border-bottom:1px solid rgba(201,168,76,0.14);padding:7px 24px;text-align:center;font-family:'Cinzel',serif;font-size:0.68rem;color:var(--gold-light);letter-spacing:0.16em;text-transform:uppercase;display:none;}
 .season-strip.visible{display:block;}
 .page-top{margin-top:var(--nav-h);padding:32px 24px 20px;max-width:1100px;margin-left:auto;margin-right:auto;}
@@ -167,7 +172,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 #backToTop.visible{opacity:1;pointer-events:all;}
 #backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 @media(max-width:1000px){.day-panel{width:100%;top:auto;bottom:0;height:60vh;border-left:none;border-top:2px solid var(--gold-dim);transform:translateY(100%);}.day-panel.open{transform:translateY(0);}.cal-outer.panel-open{margin-right:0;padding-bottom:63vh;}}
-@media(max-width:900px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-signin-btn,.nav-right .nav-user-wrap{display:none;}.cal-day{min-height:72px;}.cal-day-feast{-webkit-line-clamp:1;}.cal-day-saint{display:none;}}
+@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-signin-btn{display:none;}.cal-day{min-height:72px;}.cal-day-feast{-webkit-line-clamp:1;}.cal-day-saint{display:none;}}
 @media(max-width:600px){.cal-grid{gap:2px;}.cal-day{min-height:50px;padding:4px 5px;}.cal-day-num{font-size:0.7rem;}.cal-day-feast{display:none;}.cal-outer{padding:10px 12px 40px;}.page-top{padding:20px 16px 12px;}.cal-controls{padding:10px 16px;gap:6px;}}
 </style>
 </head>
@@ -180,52 +185,63 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
-    <li class="nav-dropdown">
-      <button class="nav-drop-btn">New Here? &#9662;</button>
-      <div class="nav-drop-menu">
-        <a href="new-to-orthodoxy.html">What Is Orthodoxy</a>
-        <a href="parents.html">Guidance for Parents</a>
-        <a href="#">Parish Finder</a>
-        <a href="#">FAQ</a>
-        <a href="about.html">About This Site</a>
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
+        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
       </div>
     </li>
-    <li class="nav-dropdown">
-      <button class="nav-drop-btn">Study &#9662;</button>
-      <div class="nav-drop-menu">
-        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
-        <a href="symbol-of-faith.html">Symbol of Faith</a>
-        <a href="topics.html">Topics &amp; Doctrine</a>
-        <a href="glossary.html">Glossary</a>
-        <a href="saints.html">Saints</a>
-        <a href="church-fathers.html">Church Fathers</a>
-        <a href="holy-scripture.html">Holy Scripture</a>
-        <a href="bible-reader.html">Bible Reader</a>
-        <a href="reading-plans.html">Reading Plans</a>
-        <a href="resources.html">Books &amp; Resources</a>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Study</span>
+      <div class="nav-dropdown">
+        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
+        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
+        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
       </div>
     </li>
-    <li class="nav-dropdown">
-      <button class="nav-drop-btn active">Worship &amp; Life &#9662;</button>
-      <div class="nav-drop-menu">
-        <a href="calendar.html" class="active">Liturgical Calendar</a>
-        <a href="prayer.html">Prayer Corner</a>
-        <a href="fasting.html">Fasting Guide</a>
-        <a href="feasts.html">Feasts</a>
-        <a href="liturgical-seasons.html">Liturgical Seasons</a>
+    <li class="nav-item">
+      <span class="nav-link active has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html" class="active"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
       </div>
     </li>
   </ul>
   <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;">&#9766;</span> Companion AI</a>
-    <div class="nav-user-wrap" id="navUserMenu" style="display:none;">
-      <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()"><span id="navUsername">Account</span> &#9662;</button>
-      <div class="nav-user-dropdown" id="navUserDropdown">
-        <a href="account.html">My Dashboard</a>
-        <a href="#" onclick="signOut();return false;">Sign Out</a>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <div class="nav-account-wrap" id="navAccountWrap">
+      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
+      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
+        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
+          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
+        </button>
+        <div class="nav-user-dropdown" id="navUserDropdown">
+          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
+          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="account.html"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
+        </div>
       </div>
     </div>
-    <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
   </div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -234,11 +250,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 
 <!-- Mobile Drawer -->
 <div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
-  <a href="new-to-orthodoxy.html">What Is Orthodoxy</a>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
   <a href="parents.html">Guidance for Parents</a>
-  <a href="#">Parish Finder</a>
-  <a href="#">FAQ</a>
+  <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
@@ -258,8 +275,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
-    <a href="chatbot.html" style="display:inline-block;color:#E8CB7A;border:1px solid #8A6A28;border-radius:2px;padding:8px 18px;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">&#9766; Companion AI</a>
-    <a href="account.html" id="drawerSignIn" style="display:inline-block;margin-top:10px;color:#B8C8DC;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">Sign In</a>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
 
