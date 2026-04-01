@@ -778,7 +778,7 @@ let sb = null;
 function initSupabase() {
   if (typeof supabase === 'undefined') return;
   const SUPA_URL = 'https://hhatdkrcqnhixemjavgb.supabase.co';
-  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoYXRka3JjcW5oaXhlbWphdmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDMzNjI3MjYsImV4cCI6MjA1ODkzODcyNn0.example';
+  const SUPA_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhoYXRka3JjcW5oaXhlbWphdmdiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5MTA0NDksImV4cCI6MjA5MDQ4NjQ0OX0.9KSdbZ2RiPbAepj0XvwvUfrdu9yOMq5VcHKgunNEwQ4';
   try {
     sb = supabase.createClient(SUPA_URL, SUPA_KEY, {
       auth: { persistSession: true, storage: localStorage }
