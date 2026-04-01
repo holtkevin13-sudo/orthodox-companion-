@@ -453,34 +453,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 #backToTop.visible{opacity:1;pointer-events:all;}
 #backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 
-/* ── Theme toggle switch ──────────────────────────────── */
-.theme-toggle{
-  position:relative;display:inline-flex;align-items:center;
-  width:44px;height:24px;cursor:pointer;flex-shrink:0;
-  background:transparent;border:none;padding:0;
-}
-.theme-toggle-track{
-  width:44px;height:24px;border-radius:12px;
-  background:rgba(27,58,107,0.6);border:1px solid var(--border-dim);
-  transition:background 0.25s,border-color 0.25s;position:relative;
-}
-[data-theme="light"] .theme-toggle-track{
-  background:rgba(201,168,76,0.2);border-color:var(--gold-dim);
-}
-.theme-toggle-thumb{
-  position:absolute;top:3px;left:3px;
-  width:16px;height:16px;border-radius:50%;
-  background:var(--text-muted);
-  transition:transform 0.25s,background 0.25s;
-  display:flex;align-items:center;justify-content:center;
-  font-size:9px;line-height:1;
-}
-[data-theme="light"] .theme-toggle-thumb{
-  transform:translateX(20px);
-  background:var(--gold);
-}
-.theme-toggle:hover .theme-toggle-track{border-color:var(--gold-dim);}
-.theme-toggle:hover .theme-toggle-thumb{background:var(--gold-light);}
+
 body{background:var(--bg-page);color:var(--text);}
 *,*::before,*::after{transition:background-color 0.3s ease,border-color 0.3s ease,color 0.3s ease;}
 .fade-in,.nav-dropdown,[class*="modal"],[class*="panel"]{transition:none!important;}
@@ -569,11 +542,7 @@ body{background:var(--bg-page);color:var(--text);}
         </div>
       </div>
     </div>
-    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark" onclick="toggleTheme()" aria-label="Toggle theme">
-      <div class="theme-toggle-track">
-        <div class="theme-toggle-thumb">&#9790;</div>
-      </div>
-    </button>
+
   </div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -1635,7 +1604,6 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme', t);
   localStorage.setItem('oc_theme', t);
 }
-document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
 // ── Book search filter ────────────────────────────────────────
 document.getElementById('bookSearch').addEventListener('input', function() {
