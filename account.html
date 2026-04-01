@@ -1275,11 +1275,11 @@ async function showDashboard(user,profile){
   var badge=document.getElementById('dashBadge');
   badge.textContent=role.charAt(0).toUpperCase()+role.slice(1);
   badge.className='dash-badge '+(role==='paid'||role==='admin'||role==='superuser'?'premium':'free');
-  if(role==='admin'||role==='superuser'){
+  if(role==='editor'||role==='admin'||role==='superuser'){
     if(document.getElementById('tabBlog'))document.getElementById('tabBlog').style.display='';
-    if(document.getElementById('tabEmail'))document.getElementById('tabEmail').style.display='';
   }
-  if(role==='superuser'){
+  if(role==='admin'||role==='superuser'){
+    if(document.getElementById('tabEmail'))document.getElementById('tabEmail').style.display='';
     if(document.getElementById('tabUsers'))document.getElementById('tabUsers').style.display='';
   }
   updateNavAuth(user);
