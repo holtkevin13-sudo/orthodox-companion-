@@ -497,30 +497,33 @@ function getDaysSince(startDate) {
   return Math.max(0, Math.floor((now - start) / 86400000));
 }
 
-// Map plan IDs to their global data array variable names
-var PLAN_VAR_MAP = {
-  'bible-2yr':    'PLAN_2YEAR',
-  'bible-1yr':    'PLAN_1YEAR',
-  'ot-1yr':       'PLAN_OT_1YEAR',
-  'nt-1yr':       'PLAN_NT_1YEAR',
-  'nt-90':        'PLAN_NT_90',
-  'gospels-60':   'PLAN_GOSPELS',
-  'epistles-30':  'PLAN_EPISTLES',
-  'psalter':      'PLAN_PSALTER',
-  'wisdom-30':    'PLAN_WISDOM',
-  'prophets-60':  'PLAN_PROPHETS',
-  'lenten':       'PLAN_LENTEN',
-  'nativity-40':  'PLAN_NATIVITY',
-  'holy-week':    'PLAN_HOLY_WEEK',
-  'catechumen-40':'PLAN_CATECHUMEN',
-};
+// Plan data registry — built at runtime after all plan <script> files load.
+// Uses typeof checks because plan files declare const (not var),
+// and const at the top level does NOT attach to window[].
+function buildPlanRegistry() {
+  var r = {};
+  if (typeof PLAN_2YEAR      !== 'undefined') r['bible-2yr']     = PLAN_2YEAR;
+  if (typeof PLAN_1YEAR      !== 'undefined') r['bible-1yr']     = PLAN_1YEAR;
+  if (typeof PLAN_OT_1YEAR   !== 'undefined') r['ot-1yr']        = PLAN_OT_1YEAR;
+  if (typeof PLAN_NT_1YEAR   !== 'undefined') r['nt-1yr']        = PLAN_NT_1YEAR;
+  if (typeof PLAN_NT_90      !== 'undefined') r['nt-90']         = PLAN_NT_90;
+  if (typeof PLAN_GOSPELS    !== 'undefined') r['gospels-60']    = PLAN_GOSPELS;
+  if (typeof PLAN_EPISTLES   !== 'undefined') r['epistles-30']   = PLAN_EPISTLES;
+  if (typeof PLAN_PSALTER    !== 'undefined') r['psalter']       = PLAN_PSALTER;
+  if (typeof PLAN_WISDOM     !== 'undefined') r['wisdom-30']     = PLAN_WISDOM;
+  if (typeof PLAN_PROPHETS   !== 'undefined') r['prophets-60']   = PLAN_PROPHETS;
+  if (typeof PLAN_LENTEN     !== 'undefined') r['lenten']        = PLAN_LENTEN;
+  if (typeof PLAN_NATIVITY   !== 'undefined') r['nativity-40']   = PLAN_NATIVITY;
+  if (typeof PLAN_HOLY_WEEK  !== 'undefined') r['holy-week']     = PLAN_HOLY_WEEK;
+  if (typeof PLAN_CATECHUMEN !== 'undefined') r['catechumen-40'] = PLAN_CATECHUMEN;
+  return r;
+}
 
 function getPlanEntry(planId, dayNum) {
-  var varName = PLAN_VAR_MAP[planId];
-  if (!varName) return null;
-  var arr = window[varName];
+  var registry = buildPlanRegistry();
+  var arr = registry[planId];
   if (!arr) return null;
-  var day = dayNum + 1; // plans are 1-indexed (index 0 is null)
+  var day = dayNum + 1; // 1-indexed; index 0 is null
   return arr[day] || null;
 }
 
@@ -532,7 +535,7 @@ function renderPlanDay(planId, dayNum) {
   if (entry.ps) html += renderReadingRow('Psalms',   entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
   if (entry.pr) html += renderReadingRow('Proverbs', entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
   if (entry.nt) html += renderReadingRow('NT',       entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
-  if (!html)    html  = '<div class="today-reading-ref">Day ' + (dayNum + 1) + ' — silent day</div>';
+  if (!html)    html  = '<div class="today-reading-ref">Day ' + (dayNum + 1) + ' — day of rest</div>';
   return html;
 }
 
