@@ -1038,6 +1038,17 @@ async function loadChapter(idx) {
 }
 
 // ── Local LXX Renderer ────────────────────────────────────────
+// Strip USFM inline markers from verse text (footnotes, cross-refs, word attrs etc.)
+function stripUSFM(text) {
+  // Remove full inline character spans: \tag ... \tag* (e.g. \f + \fr ... \f*)
+  text = text.replace(/\\[a-z]+\d*\s[\s\S]*?\\[a-z]+\d*\*/g, '');
+  // Remove any remaining opening or closing USFM tags: \word or \word*
+  text = text.replace(/\\[a-z]+\d*\*?/g, '');
+  // Collapse multiple spaces
+  text = text.replace(/\s{2,}/g, ' ');
+  return text.trim();
+}
+
 function renderLocalChapter(bookId, chapterNum, ref) {
   const content = document.getElementById('readerContent');
   const verses = lxxBookData && lxxBookData.chapters[chapterNum];
@@ -1075,8 +1086,8 @@ function renderLocalChapter(bookId, chapterNum, ref) {
   const verseNums = Object.keys(verses).map(n => parseInt(n)).sort((a, b) => a - b);
   verseNums.forEach(vNum => {
     const vId   = `${bookId}.${chapterNum}.${vNum}`;
-    const text  = verses[String(vNum)] || '';
-    html += verseHTML(String(vNum), vId, text.trim());
+    const text  = stripUSFM(verses[String(vNum)] || '');
+    html += verseHTML(String(vNum), vId, text);
   });
 
   content.innerHTML = html;
