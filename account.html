@@ -828,6 +828,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
         <button class="dash-tab" onclick="switchDash('reading')">Reading Plans</button>
         <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
         <button class="dash-tab" onclick="switchDash('settings')">Account</button>
+        <button class="dash-tab" onclick="switchDash('bible')">Bible Notes</button>
         <button class="dash-tab" id="tabBlog" style="display:none;" onclick="switchDash('blog')">Blog Posts</button>
         <button class="dash-tab" id="tabEmail" style="display:none;" onclick="switchDash('email')">Weekly Email</button>
         <button class="dash-tab" id="tabUsers" style="display:none;" onclick="switchDash('users')">Users</button>
@@ -1030,6 +1031,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
             <div class="settings-row-sub">Permanently delete your account and all data</div>
           </div>
           <button class="settings-danger-btn" onclick="if(confirm('Are you sure? This cannot be undone.'))deleteAccount()">Delete Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BIBLE NOTES ══ -->
+    <div class="dash-section" id="dash-bible">
+      <div class="dash-section-title">Bible Notes</div>
+
+      <!-- Highlights -->
+      <div class="admin-panel" style="margin-bottom:16px;">
+        <div class="admin-panel-title">&#9680; Highlights</div>
+        <div id="bible-highlights-list">
+          <div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">Loading&hellip;</div>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="admin-panel" style="margin-bottom:16px;">
+        <div class="admin-panel-title">&#9998; Notes</div>
+        <div id="bible-notes-list">
+          <div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">Loading&hellip;</div>
+        </div>
+      </div>
+
+      <!-- Bookmarks -->
+      <div class="admin-panel">
+        <div class="admin-panel-title">&#9733; Bookmarks</div>
+        <div id="bible-bookmarks-list">
+          <div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">Loading&hellip;</div>
         </div>
       </div>
     </div>
@@ -1275,6 +1305,7 @@ function navToTab(tab){
   if(tab==='blog') loadPosts();
   if(tab==='email') loadSubCount();
   if(tab==='users') loadUsers();
+  if(tab==='bible') loadBibleNotes();
 }
 
 /* ── Dashboard tab switching ─────────────────────────── */
@@ -1287,6 +1318,7 @@ function switchDash(tab){
   if(tab==='blog') loadPosts();
   if(tab==='email') loadSubCount();
   if(tab==='users') loadUsers();
+  if(tab==='bible') loadBibleNotes();
 }
 
 /* ── Blog: auto slug ─────────────────────────────────── */
@@ -1467,6 +1499,77 @@ async function updateUserRole(sel){
   var al=document.getElementById('users-alert');
   if(al){al.textContent=error?'Error: '+error.message:'Role updated.';al.className='admin-alert show '+(error?'error':'success');}
   setTimeout(function(){if(al)al.classList.remove('show');},2500);
+}
+
+/* ── Bible Notes: load highlights, notes, bookmarks ─── */
+async function loadBibleNotes(){
+  if(!_sbUser){
+    ['bible-highlights-list','bible-notes-list','bible-bookmarks-list'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">Sign in to view your Bible notes.</div>';
+    });
+    return;
+  }
+
+  /* ── Highlights ── */
+  var hlEl=document.getElementById('bible-highlights-list');
+  sb.from('bible_highlights').select('book,chapter,verse,color,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!hlEl) return;
+    if(res.error||!res.data||!res.data.length){
+      hlEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No highlights yet — use the highlight tool in the Bible Reader to save verses.</div>';
+      return;
+    }
+    var colorMap={'gold':'#C9A84C','blue':'#4A7AB8','green':'#4A9C6A','red':'#9C4A4A'};
+    hlEl.innerHTML=res.data.map(function(h){
+      var ref=h.book+' '+h.chapter+(h.verse?':'+h.verse:'');
+      var col=colorMap[h.color]||'#C9A84C';
+      var date=h.created_at?new Date(h.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'';
+      return '<div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(42,90,156,0.12);">'
+        +'<span style="width:12px;height:12px;border-radius:50%;background:'+col+';flex-shrink:0;display:inline-block;"></span>'
+        +'<a href="bible-reader.html?book='+encodeURIComponent(h.book)+'&chapter='+encodeURIComponent(h.chapter)+'" style="font-size:0.92rem;color:var(--text);font-style:italic;font-family:\'EB Garamond\',serif;text-decoration:none;flex:1;">'+escHtml(ref)+'</a>'
+        +'<span style="font-size:0.72rem;color:var(--text-muted);">'+escHtml(date)+'</span>'
+        +'</div>';
+    }).join('');
+  });
+
+  /* ── Notes ── */
+  var ntEl=document.getElementById('bible-notes-list');
+  sb.from('bible_notes').select('book,chapter,verse,note,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!ntEl) return;
+    if(res.error||!res.data||!res.data.length){
+      ntEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No notes yet — tap the note icon on any verse in the Bible Reader.</div>';
+      return;
+    }
+    ntEl.innerHTML=res.data.map(function(n){
+      var ref=n.book+' '+n.chapter+(n.verse?':'+n.verse:'');
+      var date=n.created_at?new Date(n.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'';
+      return '<div style="padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.12);">'
+        +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">'
+        +'<a href="bible-reader.html?book='+encodeURIComponent(n.book)+'&chapter='+encodeURIComponent(n.chapter)+'" style="font-family:\'Cinzel\',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);text-decoration:none;">'+escHtml(ref)+'</a>'
+        +'<span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">'+escHtml(date)+'</span>'
+        +'</div>'
+        +'<div style="font-size:0.92rem;color:var(--text-dim);font-style:italic;line-height:1.7;">'+escHtml(n.note||'')+'</div>'
+        +'</div>';
+    }).join('');
+  });
+
+  /* ── Bookmarks ── */
+  var bkEl=document.getElementById('bible-bookmarks-list');
+  sb.from('bible_bookmarks').select('book,chapter,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!bkEl) return;
+    if(res.error||!res.data||!res.data.length){
+      bkEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No bookmarks yet — tap the bookmark icon on any chapter in the Bible Reader.</div>';
+      return;
+    }
+    bkEl.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">'+res.data.map(function(b){
+      var ref=b.book+' '+b.chapter;
+      return '<a href="bible-reader.html?book='+encodeURIComponent(b.book)+'&chapter='+encodeURIComponent(b.chapter)+'" '
+        +'style="font-family:\'Cinzel\',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;'
+        +'color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:5px 12px;'
+        +'text-decoration:none;background:rgba(201,168,76,0.08);transition:background 0.2s;">'
+        +escHtml(ref)+'</a>';
+    }).join('')+'</div>';
+  });
 }
 
 /* ── Utility ─────────────────────────────────────────── */
