@@ -129,8 +129,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
 .panel-councils{display:flex;flex-wrap:wrap;gap:6px;}
 .panel-council-tag{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);border:1px solid rgba(201,168,76,0.3);border-radius:2px;padding:3px 9px;}
 .panel-footer{margin-top:18px;padding-top:12px;border-top:1px solid rgba(42,90,156,0.15);display:flex;align-items:center;justify-content:flex-end;}
-.panel-companion-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
+.panel-companion-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;background:transparent;cursor:pointer;transition:all 0.2s;}
 .panel-companion-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+#coming-soon-modal{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:20px;}
+#coming-soon-modal.open{display:flex;}
+.cs-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold-dim);border-radius:4px;width:100%;max-width:400px;padding:32px 30px;text-align:center;}
+.cs-icon{font-size:1.6rem;margin-bottom:12px;}
+.cs-title{font-family:'Cinzel',serif;font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);margin-bottom:10px;}
+.cs-desc{font-size:0.9rem;color:var(--text-dim);line-height:1.7;margin-bottom:20px;}
+.cs-close{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:6px 16px;cursor:pointer;transition:all 0.2s;}
+.cs-close:hover{border-color:var(--gold-dim);color:var(--gold-light);}
 .timeline-empty{text-align:center;padding:48px 0;font-style:italic;color:var(--text-muted);font-size:0.95rem;display:none;}
 .timeline-empty.visible{display:block;}
 #backToTop{position:fixed;bottom:28px;right:24px;z-index:500;width:40px;height:40px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid var(--gold-dim);color:var(--gold-light);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;}
@@ -154,7 +162,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
       <span class="nav-link has-drop">New Here?</span>
       <div class="nav-dropdown">
         <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#9788;</span>Guidance for Parents</a>
+        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
         <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
         <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
@@ -164,17 +172,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
     <li class="nav-item">
       <span class="nav-link active has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9737;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#10013;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
+        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
         <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary &amp; Lexicon</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
         <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
         <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
         <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9656;</span>Bible Reader</a>
+        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9641;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9635;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
@@ -183,14 +191,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
         <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
         <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
         <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
-        <hr class="nav-dropdown-divider"/>
         <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
         <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
       </div>
     </li>
   </ul>
   <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766;&#65038; Companion AI</a>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
     <div class="nav-account-wrap" id="navAccountWrap">
       <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
       <div class="nav-user-menu" id="navUserMenu" style="display:none;">
@@ -225,7 +232,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
   <a href="topics.html">Topics &amp; Doctrine</a>
-  <a href="glossary.html">Glossary &amp; Lexicon</a>
+  <a href="glossary.html">Glossary</a>
   <a href="saints.html">Saints</a>
   <a href="church-fathers.html">Church Fathers</a>
   <a href="holy-scripture.html">Holy Scripture</a>
@@ -239,7 +246,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766;&#65038; Companion AI</a>
+    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
@@ -266,6 +273,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
   </div>
   <div class="timeline" id="fathersTimeline"></div>
   <div class="timeline-empty" id="timelineEmpty">No fathers match your search.</div>
+</div>
+<div id="coming-soon-modal">
+  <div class="cs-box">
+    <div class="cs-icon">&#9766;</div>
+    <div class="cs-title">Companion AI — Coming Soon</div>
+    <div class="cs-desc">Companion AI will allow you to ask questions about any Father, saint, or doctrine directly — and receive answers rooted in the patristic tradition.</div>
+    <button class="cs-close" onclick="closeComingSoon()">Close</button>
+  </div>
 </div>
 <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
@@ -1347,7 +1362,7 @@ function buildPanel(f){
       h+='<span class="panel-term-translit">'+t.translit+'</span>';
       h+='<span class="panel-term-meaning">'+t.meaning+'</span>';
       var lk="";
-      if(t.glossaryKey)lk+='<a href="glossary.html#term-'+encodeURIComponent(t.glossaryKey)+'" class="panel-term-link" target="_blank" rel="noopener">Glossary</a>';
+      if(t.glossaryKey)lk+='<a href="glossary.html#'+encodeURIComponent(t.glossaryKey)+'" class="panel-term-link" target="_blank" rel="noopener">Glossary</a>';
       if(t.topicKey)lk+='<a href="topics.html?topic='+encodeURIComponent(t.topicKey)+'" class="panel-term-link" target="_blank" rel="noopener">Topic</a>';
       if(lk)h+='<div class="panel-term-links">'+lk+'</div>';
       h+='</div>';
@@ -1364,7 +1379,7 @@ function buildPanel(f){
     f.councils.forEach(function(c){h+='<span class="panel-council-tag">'+c+'</span>';});
     h+='</div></div>';
   }
-  h+='<div class="panel-footer"><a href="chatbot.html?q='+encodeURIComponent("Tell me about "+f.name)+'" class="panel-companion-link">&#9766;&#65038; Ask the Companion</a></div>';
+  h+='<div class="panel-footer"><button onclick="showComingSoon()" class="panel-companion-link">&#9766; Ask the Companion</button></div>';
   h+='</div>';
   return h;
 }
@@ -1378,7 +1393,10 @@ function toggleEntry(entry){
   }
 }
 
-document.addEventListener("DOMContentLoaded",function(){
+function showComingSoon(){document.getElementById('coming-soon-modal').classList.add('open');}
+function closeComingSoon(){document.getElementById('coming-soon-modal').classList.remove('open');}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeComingSoon();});
+document.addEventListener('DOMContentLoaded',function(){
   renderTimeline();
   var pills=document.getElementById("filterPills");
   if(pills){pills.addEventListener("click",function(e){var p=e.target.closest(".filter-pill");if(!p)return;pills.querySelectorAll(".filter-pill").forEach(function(x){x.classList.remove("active");});p.classList.add("active");applyFilters();});}
@@ -1386,6 +1404,8 @@ document.addEventListener("DOMContentLoaded",function(){
   if(sr)sr.addEventListener("input",applyFilters);
   var btn=document.getElementById("backToTop");
   if(btn)window.addEventListener("scroll",function(){btn.classList.toggle("visible",window.scrollY>400);},{passive:true});
+  var csm=document.getElementById('coming-soon-modal');
+  if(csm)csm.addEventListener('click',function(e){if(e.target===this)closeComingSoon();});
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
