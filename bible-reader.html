@@ -964,6 +964,7 @@ async function loadChapter(idx) {
       `?content-type=html&include-notes=false&include-titles=false` +
       `&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=true`
     );
+    console.log("API RAW CONTENT:", JSON.stringify(data.content).slice(0,500));
     renderChapter(data, ref);
     updateUrl(currentBook.id, ch.number);
   } catch(e) {
@@ -973,99 +974,48 @@ async function loadChapter(idx) {
 
 function renderChapter(data, ref) {
   const content = document.getElementById('readerContent');
-  const parser  = new DOMParser();
-  const doc     = parser.parseFromString(data.content || '', 'text/html');
-  const chNum   = currentChapters[currentChapterIdx].number;
 
+  // Parse API HTML and convert to verse spans
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(data.content || '', 'text/html');
+
+  // API.Bible wraps verses in <span data-number="N"> or <p> elements
+  // We'll inject verse numbers and make each verse interactive
   let html = `<div class="chapter-heading">${ref}</div>`;
 
-  function verseHTML(vNum, vId, text) {
-    if (!text.trim()) return '';
-    const hl      = highlights[vId] ? ` hl-${highlights[vId]}` : '';
-    const hasnote = notes[vId] ? '<span class="verse-note-dot" title="Has note"></span>' : '';
-    return `<span class="verse${hl}" data-vid="${vId}" data-vnum="${vNum}" onclick="selectVerse(this)">
-      <span class="verse-num">${vNum}</span>${text}${hasnote}
-      <span class="verse-actions">
-        <span class="hl-picker">
-          <span class="hl-dot gold" onclick="highlightVerse(event,'gold')" title="Gold"></span>
-          <span class="hl-dot blue" onclick="highlightVerse(event,'blue')" title="Blue"></span>
-          <span class="hl-dot green" onclick="highlightVerse(event,'green')" title="Green"></span>
-          <span class="hl-dot red" onclick="highlightVerse(event,'red')" title="Red"></span>
-        </span>
-        <span class="va-sep"></span>
-        <button class="va-btn" onclick="removeHighlight(event)">&#9746;</button>
-        <span class="va-sep"></span>
-        <button class="va-btn" onclick="openNoteForVerse(event)">&#9998; Note</button>
-        <span class="va-sep"></span>
-        <button class="va-btn" onclick="bookmarkChapter(event)">&#9646; Save</button>
-      </span>
-    </span>`;
-  }
-
-  // Strategy 1: data-number spans (standard API.Bible format)
-  let verseSpans = doc.querySelectorAll('[data-number]');
+  // Extract verse spans from API HTML
+  const verseSpans = doc.querySelectorAll('[data-number]');
   if (verseSpans.length) {
     verseSpans.forEach(span => {
-      const vNum = span.getAttribute('data-number');
-      const vId  = span.getAttribute('data-sid') || `${currentBook.id}.${chNum}.${vNum}`;
-      const text = span.textContent.replace(/^\d+\s*/, '').trim();
-      html += verseHTML(vNum, vId, text);
-    });
-    content.innerHTML = html;
-    content.scrollTop = 0;
-    return;
-  }
-
-  // Strategy 2: data-sid spans (e.g. "GEN 1:1")
-  verseSpans = doc.querySelectorAll('[data-sid]');
-  if (verseSpans.length) {
-    verseSpans.forEach(span => {
-      const sid  = span.getAttribute('data-sid') || '';
-      const vNum = sid.includes(':') ? sid.split(':')[1] : '';
-      if (!vNum) return;
-      const vId  = `${currentBook.id}.${chNum}.${vNum}`;
-      const text = span.textContent.replace(/^\d+\s*/, '').trim();
-      html += verseHTML(vNum, vId, text);
-    });
-    if (doc.querySelectorAll('[data-sid]').length) {
-      content.innerHTML = html;
-      content.scrollTop = 0;
-      return;
-    }
-  }
-
-  // Strategy 3: verses wrapped in <p class="p"> — common in Brenton LXX
-  const paras = doc.querySelectorAll('p');
-  if (paras.length) {
-    let vNum = 1;
-    paras.forEach(p => {
-      // Look for verse number spans inside paragraph
-      const numSpans = p.querySelectorAll('.v, [class*="verse"], sup');
-      if (numSpans.length) {
-        numSpans.forEach(ns => {
-          const num = parseInt(ns.textContent.trim());
-          if (!isNaN(num)) vNum = num;
-          ns.remove();
-        });
-      }
-      const text = p.textContent.trim();
+      const vNum  = span.getAttribute('data-number');
+      const vId   = span.getAttribute('data-sid') || `${currentBook.id}.${currentChapters[currentChapterIdx].number}.${vNum}`;
+      const text  = span.textContent.replace(/^\d+\s*/, '').trim();
       if (!text) return;
-      const vId = `${currentBook.id}.${chNum}.${vNum}`;
-      html += verseHTML(String(vNum), vId, text);
-      vNum++;
+      const hl    = highlights[vId] ? ` hl-${highlights[vId]}` : '';
+      const hasnote = notes[vId] ? '<span class="verse-note-dot" title="Has note"></span>' : '';
+      html += `<span class="verse${hl}" data-vid="${vId}" data-vnum="${vNum}" onclick="selectVerse(this)">
+        <span class="verse-num">${vNum}</span>${text}${hasnote}
+        <span class="verse-actions">
+          <span class="hl-picker">
+            <span class="hl-dot gold" onclick="highlightVerse(event,'gold')" title="Gold"></span>
+            <span class="hl-dot blue" onclick="highlightVerse(event,'blue')" title="Blue"></span>
+            <span class="hl-dot green" onclick="highlightVerse(event,'green')" title="Green"></span>
+            <span class="hl-dot red" onclick="highlightVerse(event,'red')" title="Red"></span>
+          </span>
+          <span class="va-sep"></span>
+          <button class="va-btn" onclick="removeHighlight(event)">&#9746;</button>
+          <span class="va-sep"></span>
+          <button class="va-btn" onclick="openNoteForVerse(event)">&#9998; Note</button>
+          <span class="va-sep"></span>
+          <button class="va-btn" onclick="bookmarkChapter(event)">&#9646; Save</button>
+        </span>
+      </span>`;
     });
-    content.innerHTML = html;
-    content.scrollTop = 0;
-    return;
+  } else {
+    // Fallback: render raw HTML from API
+    html += `<div style="line-height:2;font-size:1.05rem;">${data.content || '<em>No content available.</em>'}</div>`;
   }
 
-  // Strategy 4: last resort — display raw text with basic verse splitting
-  const rawText = doc.body ? doc.body.textContent : (data.content || '');
-  if (rawText.trim()) {
-    html += `<div style="line-height:2;font-size:1.05rem;color:var(--text-dim);">${rawText}</div>`;
-  } else {
-    html += `<div class="reader-state"><div class="reader-state-sub">No content available for this chapter.</div></div>`;
-  }
   content.innerHTML = html;
   content.scrollTop = 0;
 }
