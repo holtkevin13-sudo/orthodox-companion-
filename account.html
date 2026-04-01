@@ -823,15 +823,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       </div>
       <!-- Tabs -->
       <div class="dash-tabs">
-        <button class="dash-tab active" onclick="switchDash('bookmarks')">Bookmarks</button>
-        <button class="dash-tab" onclick="switchDash('journal')">Journal</button>
-        <button class="dash-tab" onclick="switchDash('reading')">Reading Plans</button>
-        <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
-        <button class="dash-tab" onclick="switchDash('settings')">Account</button>
-        <button class="dash-tab" onclick="switchDash('bible')">Bible Notes</button>
-        <button class="dash-tab" id="tabBlog" style="display:none;" onclick="switchDash('blog')">Blog Posts</button>
-        <button class="dash-tab" id="tabEmail" style="display:none;" onclick="switchDash('email')">Weekly Email</button>
-        <button class="dash-tab" id="tabUsers" style="display:none;" onclick="switchDash('users')">Users</button>
+        <button class="dash-tab active" onclick="switchDash('bookmarks',this)">Bookmarks</button>
+        <button class="dash-tab" onclick="switchDash('journal',this)">Journal</button>
+        <button class="dash-tab" onclick="switchDash('reading',this)">Reading Plans</button>
+        <button class="dash-tab" onclick="switchDash('fasting',this)">Fasting Log</button>
+        <button class="dash-tab" onclick="switchDash('settings',this)">Account</button>
+        <button class="dash-tab" onclick="switchDash('bible',this)">Bible Notes</button>
+        <button class="dash-tab" id="tabBlog" style="display:none;" onclick="switchDash('blog',this)">Blog Posts</button>
+        <button class="dash-tab" id="tabEmail" style="display:none;" onclick="switchDash('email',this)">Weekly Email</button>
+        <button class="dash-tab" id="tabUsers" style="display:none;" onclick="switchDash('users',this)">Users</button>
       </div>
     </div>
   </div>
@@ -844,6 +844,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       <div class="stat-card"><div class="stat-num" id="stat-journal">0</div><div class="stat-label">Journal Entries</div></div>
       <div class="stat-card"><div class="stat-num" id="stat-streak">0</div><div class="stat-label">Fast Streak</div></div>
       <div class="stat-card"><div class="stat-num" id="stat-reading">0</div><div class="stat-label">Days Read</div></div>
+      <div class="stat-card"><div class="stat-num" id="stat-biblenotes">—</div><div class="stat-label">Bible Notes</div></div>
     </div>
 
     <!-- ══ BOOKMARKS ══ -->
@@ -1309,9 +1310,9 @@ function navToTab(tab){
 }
 
 /* ── Dashboard tab switching ─────────────────────────── */
-function switchDash(tab){
+function switchDash(tab,el){
   document.querySelectorAll('.dash-tab').forEach(function(t){t.classList.remove('active');});
-  event.currentTarget.classList.add('active');
+  if(el) el.classList.add('active');
   document.querySelectorAll('.dash-section').forEach(function(s){s.classList.remove('active');});
   var sec=document.getElementById('dash-'+tab);
   if(sec) sec.classList.add('active');
@@ -1511,6 +1512,100 @@ async function loadBibleNotes(){
     return;
   }
 
+  /* ── Stat card count ── */
+  Promise.all([
+    sb.from('bible_highlights').select('id',{count:'exact',head:true}).eq('user_id',_sbUser.id),
+    sb.from('bible_notes').select('id',{count:'exact',head:true}).eq('user_id',_sbUser.id),
+    sb.from('bible_bookmarks').select('id',{count:'exact',head:true}).eq('user_id',_sbUser.id),
+  ]).then(function(results){
+    var total=(results[0].count||0)+(results[1].count||0)+(results[2].count||0);
+    var el=document.getElementById('stat-biblenotes');
+    if(el) el.textContent=total;
+  });
+
+  /* ── Highlights ── */
+  var hlEl=document.getElementById('bible-highlights-list');
+  sb.from('bible_highlights').select('id,book,chapter,verse,color,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!hlEl) return;
+    if(res.error||!res.data||!res.data.length){
+      hlEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No highlights yet — use the highlight tool in the Bible Reader to save verses.</div>';
+      return;
+    }
+    var colorMap={'gold':'#C9A84C','blue':'#4A7AB8','green':'#4A9C6A','red':'#9C4A4A'};
+    hlEl.innerHTML=res.data.map(function(h){
+      var ref=h.book+' '+h.chapter+(h.verse?':'+h.verse:'');
+      var col=colorMap[h.color]||'#C9A84C';
+      var date=h.created_at?new Date(h.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'';
+      return '<div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid rgba(42,90,156,0.12);">'
+        +'<span style="width:12px;height:12px;border-radius:50%;background:'+col+';flex-shrink:0;display:inline-block;"></span>'
+        +'<a href="bible-reader.html?book='+encodeURIComponent(h.book)+'&chapter='+encodeURIComponent(h.chapter)+'" style="font-size:0.92rem;color:var(--text);font-style:italic;font-family:\'EB Garamond\',serif;text-decoration:none;flex:1;">'+escHtml(ref)+'</a>'
+        +'<span style="font-size:0.72rem;color:var(--text-muted);">'+escHtml(date)+'</span>'
+        +'<button onclick="deleteBibleItem(\'bible_highlights\',\''+h.id+'\',this)" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:0.85rem;padding:2px 6px;transition:color 0.2s;flex-shrink:0;" title="Delete">&#10005;</button>'
+        +'</div>';
+    }).join('');
+  });
+
+  /* ── Notes ── */
+  var ntEl=document.getElementById('bible-notes-list');
+  sb.from('bible_notes').select('id,book,chapter,verse,note,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!ntEl) return;
+    if(res.error||!res.data||!res.data.length){
+      ntEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No notes yet — tap the note icon on any verse in the Bible Reader.</div>';
+      return;
+    }
+    ntEl.innerHTML=res.data.map(function(n){
+      var ref=n.book+' '+n.chapter+(n.verse?':'+n.verse:'');
+      var date=n.created_at?new Date(n.created_at).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}):'';
+      return '<div style="padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.12);">'
+        +'<div style="display:flex;align-items:center;gap:10px;margin-bottom:5px;">'
+        +'<a href="bible-reader.html?book='+encodeURIComponent(n.book)+'&chapter='+encodeURIComponent(n.chapter)+'" style="font-family:\'Cinzel\',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);text-decoration:none;">'+escHtml(ref)+'</a>'
+        +'<span style="font-size:0.72rem;color:var(--text-muted);margin-left:auto;">'+escHtml(date)+'</span>'
+        +'<button onclick="deleteBibleItem(\'bible_notes\',\''+n.id+'\',this)" style="background:transparent;border:none;color:var(--text-muted);cursor:pointer;font-size:0.85rem;padding:2px 6px;transition:color 0.2s;flex-shrink:0;" title="Delete">&#10005;</button>'
+        +'</div>'
+        +'<div style="font-size:0.92rem;color:var(--text-dim);font-style:italic;line-height:1.7;">'+escHtml(n.note||'')+'</div>'
+        +'</div>';
+    }).join('');
+  });
+
+  /* ── Bookmarks ── */
+  var bkEl=document.getElementById('bible-bookmarks-list');
+  sb.from('bible_bookmarks').select('id,book,chapter,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
+    if(!bkEl) return;
+    if(res.error||!res.data||!res.data.length){
+      bkEl.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">No bookmarks yet — tap the bookmark icon on any chapter in the Bible Reader.</div>';
+      return;
+    }
+    bkEl.innerHTML='<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;">'+res.data.map(function(b){
+      var ref=b.book+' '+b.chapter;
+      return '<div style="display:flex;align-items:center;gap:0;">'
+        +'<a href="bible-reader.html?book='+encodeURIComponent(b.book)+'&chapter='+encodeURIComponent(b.chapter)+'" '
+        +'style="font-family:\'Cinzel\',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;'
+        +'color:var(--gold-light);border:1px solid var(--gold-dim);border-right:none;border-radius:2px 0 0 2px;padding:5px 10px;'
+        +'text-decoration:none;background:rgba(201,168,76,0.08);">'
+        +escHtml(ref)+'</a>'
+        +'<button onclick="deleteBibleItem(\'bible_bookmarks\',\''+b.id+'\',this.parentElement)" '
+        +'style="background:rgba(201,168,76,0.08);border:1px solid var(--gold-dim);border-radius:0 2px 2px 0;color:var(--text-muted);cursor:pointer;font-size:0.75rem;padding:5px 7px;transition:all 0.2s;line-height:1;" '
+        +'title="Remove bookmark">&#10005;</button>'
+        +'</div>';
+    }).join('')+'</div>';
+  });
+}
+
+/* ── Bible Notes: delete item ────────────────────────── */
+async function deleteBibleItem(table, id, rowEl){
+  if(!confirm('Delete this item?')) return;
+  var {error}=await sb.from(table).delete().eq('id',id);
+  if(error){alert('Error: '+error.message);return;}
+  if(rowEl) rowEl.remove();
+}
+  if(!_sbUser){
+    ['bible-highlights-list','bible-notes-list','bible-bookmarks-list'].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el) el.innerHTML='<div style="color:var(--text-muted);font-style:italic;font-size:0.88rem;">Sign in to view your Bible notes.</div>';
+    });
+    return;
+  }
+
   /* ── Highlights ── */
   var hlEl=document.getElementById('bible-highlights-list');
   sb.from('bible_highlights').select('book,chapter,verse,color,created_at').eq('user_id',_sbUser.id).order('created_at',{ascending:false}).limit(50).then(function(res){
@@ -1576,9 +1671,6 @@ async function loadBibleNotes(){
 function escHtml(str){if(!str)return '';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
 /* ── Nav drawer ──────────────────────────────────────── */
-var _drawerOpen=false;
-
-// Nav drawer
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
