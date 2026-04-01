@@ -602,10 +602,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .user-table tr:last-child td{border-bottom:none;}
 .user-table tr:hover td{background:rgba(27,58,107,0.08);}
 .role-select{background:rgba(27,58,107,0.25);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.85rem;padding:3px 7px;outline:none;cursor:pointer;}
-.admin-alert{padding:9px 14px;border-radius:2px;border-left:2px solid;font-size:0.88rem;margin-bottom:12px;display:none;}
+.admin-alert{padding:9px 14px;border-radius:2px;border-left:2px solid;font-size:0.88rem;margin-top:12px;display:none;}
 .admin-alert.show{display:block;}
 .admin-alert.success{background:rgba(58,106,58,0.15);border-color:#4A9C6A;color:#8ACA8A;}
 .admin-alert.error{background:rgba(139,32,32,0.15);border-color:#9C4A4A;color:#D08080;}
+.admin-panel{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:20px 22px;}
+.admin-panel-title{font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);margin-bottom:14px;}
+.admin-form{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.admin-input{background:var(--dark);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.92rem;padding:8px 12px;outline:none;transition:border-color 0.2s;width:100%;}
+.admin-input:focus{border-color:var(--gold-dim);}
+.admin-select{background:var(--dark);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.92rem;padding:8px 12px;outline:none;width:100%;cursor:pointer;}
+.admin-textarea{background:var(--dark);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.92rem;padding:8px 12px;outline:none;width:100%;min-height:160px;resize:vertical;line-height:1.7;}
+.admin-textarea:focus,.admin-select:focus{border-color:var(--gold-dim);}
+.admin-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}
+.admin-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:8px 18px;background:transparent;cursor:pointer;transition:all 0.2s;}
+.admin-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.admin-btn.primary{color:var(--gold-light);border-color:var(--gold-dim);background:rgba(201,168,76,0.08);}
+.admin-btn.primary:hover{background:rgba(201,168,76,0.2);}
+.admin-preview-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-top:4px;margin-bottom:6px;}
+.admin-preview{background:var(--dark);border:1px solid var(--border-dim);border-radius:2px;padding:14px 16px;font-size:0.92rem;color:var(--text-dim);line-height:1.8;min-height:80px;}
+.admin-preview h1,.admin-preview h2,.admin-preview h3{font-family:'Cinzel',serif;color:var(--gold-light);margin:14px 0 6px;}
+.admin-preview p{margin-bottom:10px;}
+.admin-preview blockquote{border-left:3px solid var(--gold-dim);padding-left:14px;color:var(--text-muted);font-style:italic;margin:10px 0;}
+.admin-table{width:100%;border-collapse:collapse;font-size:0.88rem;}
+.admin-table th{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);text-align:left;padding:8px 12px;border-bottom:1px solid var(--border-dim);}
+.admin-table td{padding:9px 12px;border-bottom:1px solid rgba(42,90,156,0.12);color:var(--text-dim);vertical-align:middle;}
+.admin-table tr:last-child td{border-bottom:none;}
+.role-select{background:var(--dark);border:1px solid var(--border-dim);border-radius:2px;color:var(--text);font-size:0.82rem;padding:4px 8px;cursor:pointer;}
+.sub-count{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:14px;}
+.post-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.12);flex-wrap:wrap;}
+.post-item:last-child{border-bottom:none;}
+.post-item-title{font-size:0.92rem;color:var(--text);font-style:italic;flex:1;}
+.post-item-meta{font-size:0.75rem;color:var(--text-muted);}
+.post-item-actions{display:flex;gap:6px;flex-shrink:0;}
+.post-item-btn{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;padding:4px 10px;border-radius:2px;border:1px solid var(--border-dim);background:transparent;color:var(--text-muted);cursor:pointer;transition:all 0.2s;}
+.post-item-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.post-item-btn.danger:hover{border-color:#9C4A4A;color:#D08080;}
 .sub-count{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.09em;margin-top:8px;}
 </style>
 </head>
@@ -793,6 +825,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
         <button class="dash-tab" onclick="switchDash('reading')">Reading Plans</button>
         <button class="dash-tab" onclick="switchDash('fasting')">Fasting Log</button>
         <button class="dash-tab" onclick="switchDash('settings')">Account</button>
+        <button class="dash-tab" id="tabBlog" style="display:none;" onclick="switchDash('blog')">Blog Posts</button>
+        <button class="dash-tab" id="tabEmail" style="display:none;" onclick="switchDash('email')">Weekly Email</button>
+        <button class="dash-tab" id="tabUsers" style="display:none;" onclick="switchDash('users')">Users</button>
       </div>
     </div>
   </div>
@@ -992,6 +1027,77 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
             <div class="settings-row-sub">Permanently delete your account and all data</div>
           </div>
           <button class="settings-danger-btn" onclick="if(confirm('Are you sure? This cannot be undone.'))deleteAccount()">Delete Account</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ BLOG POSTS (admin/superuser) ══ -->
+    <div class="dash-section" id="dash-blog">
+      <div class="dash-section-title">Blog Posts</div>
+      <div class="admin-panel">
+        <div class="admin-panel-title" id="blog-form-title">New Post</div>
+        <div class="admin-form">
+          <input class="admin-input" id="post-title" type="text" placeholder="Post title" oninput="autoSlug()"/>
+          <input class="admin-input" id="post-slug" type="text" placeholder="slug-auto-generated"/>
+          <select class="admin-select" id="post-category">
+            <option value="">Select category&hellip;</option>
+            <option>Feast Days</option><option>Saints</option><option>Prayer &amp; Fasting</option>
+            <option>Catechesis</option><option>Orthodox Life</option><option>Parenting</option><option>Parish Life</option>
+          </select>
+          <input class="admin-input" id="post-excerpt" type="text" placeholder="Short excerpt (shown in card previews)"/>
+          <textarea class="admin-textarea" id="post-body" placeholder="Write post body in Markdown&hellip;" oninput="updateBlogPreview()"></textarea>
+          <div class="admin-preview-label">Preview</div>
+          <div class="admin-preview marked-body" id="blog-preview"></div>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn" onclick="savePost(false)">Save Draft</button>
+          <button class="admin-btn primary" onclick="savePost(true)">Publish</button>
+          <button class="admin-btn" id="cancel-edit-btn" style="display:none;" onclick="cancelEdit()">Cancel Edit</button>
+        </div>
+        <div class="admin-alert" id="blog-alert"></div>
+      </div>
+      <div class="admin-panel" style="margin-top:20px;">
+        <div class="admin-panel-title">Published Posts</div>
+        <div id="post-list"><div style="color:var(--text-muted);font-style:italic;padding:12px 0;">Loading&hellip;</div></div>
+      </div>
+    </div>
+
+    <!-- ══ WEEKLY EMAIL (admin/superuser) ══ -->
+    <div class="dash-section" id="dash-email">
+      <div class="dash-section-title">Weekly Email</div>
+      <div class="admin-panel">
+        <div class="admin-panel-title">Compose Digest</div>
+        <div class="sub-count" id="sub-count">Loading subscribers&hellip;</div>
+        <div class="admin-form">
+          <input class="admin-input" id="email-subject" type="text" placeholder="Subject line (required)"/>
+          <input class="admin-input" id="email-saint" type="text" placeholder="Saint spotlight (required) — e.g. St. Mary of Egypt"/>
+          <input class="admin-input" id="email-quote" type="text" placeholder="Patristic quote (optional)"/>
+          <input class="admin-input" id="email-quote-source" type="text" placeholder="Quote source — e.g. St. Seraphim of Sarov"/>
+          <input class="admin-input" id="email-fasting" type="text" placeholder="Fasting note (optional) — e.g. Great Lent — strict fast"/>
+          <input class="admin-input" id="email-feast" type="text" placeholder="Upcoming feast (optional) — e.g. Annunciation — April 7"/>
+          <textarea class="admin-textarea" id="email-seasonal" placeholder="Seasonal note (optional) — a brief reflection for this time of year&hellip;" style="min-height:80px;"></textarea>
+        </div>
+        <div class="admin-actions">
+          <button class="admin-btn" onclick="previewEmail()">Preview</button>
+          <button class="admin-btn primary" onclick="sendWeeklyEmail()">Send to Subscribers</button>
+        </div>
+        <div class="admin-alert" id="email-alert"></div>
+      </div>
+    </div>
+
+    <!-- ══ USERS (superuser only) ══ -->
+    <div class="dash-section" id="dash-users">
+      <div class="dash-section-title">Users</div>
+      <div class="admin-panel">
+        <div class="admin-panel-title">All Users</div>
+        <div class="admin-alert" id="users-alert"></div>
+        <div style="overflow-x:auto;">
+          <table class="admin-table">
+            <thead><tr><th>Email</th><th>Name</th><th>Role</th><th>Opted In</th><th>Joined</th></tr></thead>
+            <tbody id="user-table-body">
+              <tr><td colspan="5" style="color:var(--text-muted);font-style:italic;padding:12px;">Loading&hellip;</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
@@ -1286,10 +1392,13 @@ async function sendWeeklyEmail(){
   al.className='admin-alert';al.classList.remove('show');
   if(!subject||!saint){al.textContent='Subject and saint spotlight are required.';al.classList.add('show','error');return;}
   if(!confirm('Send this email to all opted-in subscribers?')) return;
-  al.textContent='Sending&hellip;';al.classList.add('show','success');
+  al.textContent='Sending\u2026';al.classList.add('show','success');
+  var session=(await sb.auth.getSession()).data.session;
+  if(!session){al.textContent='Not signed in.';al.className='admin-alert show error';return;}
   try {
     var res=await fetch('https://silent-disk-1140.holt-kevin13.workers.dev/send-digest',{
-      method:'POST',headers:{'Content-Type':'application/json'},
+      method:'POST',
+      headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},
       body:JSON.stringify({subject,saint,
         quote:document.getElementById('email-quote').value.trim(),
         quoteSource:document.getElementById('email-quote-source').value.trim(),
@@ -1298,9 +1407,15 @@ async function sendWeeklyEmail(){
         seasonal:document.getElementById('email-seasonal').value.trim()
       })
     });
-    al.textContent=res.ok?'Email sent! &#9766;':'Error sending. The /send-digest Worker endpoint needs to be added.';
-    if(!res.ok) al.className='admin-alert show error';
-  } catch(e){al.textContent='The /send-digest Worker endpoint needs to be added.';al.className='admin-alert show error';}
+    var result=await res.json();
+    if(res.ok){
+      al.textContent='Sent to '+result.sent+' subscriber'+(result.sent!==1?'s':'')+'. \u2626';
+      al.className='admin-alert show success';
+    } else {
+      al.textContent='Error: '+(result.error||'Unknown error');
+      al.className='admin-alert show error';
+    }
+  } catch(e){al.textContent='Network error: '+e.message;al.className='admin-alert show error';}
 }
 
 /* ── Email: preview ──────────────────────────────────── */
