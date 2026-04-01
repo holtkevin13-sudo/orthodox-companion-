@@ -24,7 +24,7 @@
   --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
   --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
   --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+  --hero-bg:#0D1F3A;--hero-text:#F0E6CC;--hero-sub:#B8C8DC;
 }
 [data-theme="light"] {
   --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
@@ -300,6 +300,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 }
 .dash-tab:hover{background:rgba(201,168,76,0.12);color:var(--gold-light);}
 .dash-tab.active{color:#0A1628;background:var(--gold);border-color:var(--gold);}
+[data-theme="dark"] .dash-tab{color:#3A2800;border-color:#C4A882;}
+[data-theme="dark"] .dash-tab:hover{color:#8A5A00;background:rgba(201,168,76,0.1);}
+[data-theme="dark"] .dash-tab.active{color:#0A1628;background:var(--gold);border-color:var(--gold);}
 
 /* ── Dashboard body ── */
 .dash-body{max-width:980px;margin:0 auto;padding:28px 24px 60px;}
