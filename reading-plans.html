@@ -429,9 +429,37 @@ document.addEventListener('DOMContentLoaded',function(){
 
 </script>
 <script src="data/reading-plans/plan-2year.js"></script>
+<script src="data/reading-plans/plan-1year.js"></script>
+<script src="data/reading-plans/plan-ot-1year.js"></script>
+<script src="data/reading-plans/plan-nt-1year.js"></script>
+<script src="data/reading-plans/plan-nt-90.js"></script>
+<script src="data/reading-plans/plan-gospels.js"></script>
+<script src="data/reading-plans/plan-epistles.js"></script>
+<script src="data/reading-plans/plan-psalter.js"></script>
+<script src="data/reading-plans/plan-wisdom.js"></script>
+<script src="data/reading-plans/plan-prophets.js"></script>
+<script src="data/reading-plans/plan-lenten.js"></script>
+<script src="data/reading-plans/plan-nativity.js"></script>
+<script src="data/reading-plans/plan-holy-week.js"></script>
+<script src="data/reading-plans/plan-catechumen.js"></script>
 <script>
 
-var PLANS = [{"id": "bible-1yr", "icon": "\ud83d\udcd6", "name": "Full Bible \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The complete Old and New Testament in one year. ~4 chapters per day."}, {"id": "bible-2yr", "icon": "\ud83d\udcd6", "name": "Full Bible \u2014 2 Years", "duration": "730 days", "total": 730, "desc": "The complete Scripture at a gentle pace \u2014 ideal for first-time readers."}, {"id": "nt-90", "icon": "\u271d", "name": "New Testament \u2014 90 Days", "duration": "90 days", "total": 90, "desc": "The entire New Testament in three months. Ideal for Great Lent."}, {"id": "nt-1yr", "icon": "\u271d", "name": "New Testament \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The New Testament read at a measured pace through the liturgical year."}, {"id": "psalter", "icon": "\u266a", "name": "Psalter Monthly", "duration": "30 days", "total": 30, "desc": "The complete Psalter read each month in the kathisma tradition."}, {"id": "epistles-30", "icon": "\u2709", "name": "Epistles \u2014 30 Days", "duration": "30 days", "total": 30, "desc": "All the Apostolic Epistles in one month."}, {"id": "gospels-60", "icon": "\u2020", "name": "Gospels \u2014 60 Days", "duration": "60 days", "total": 60, "desc": "All four Gospels in two months, reading alongside the liturgical cycle."}, {"id": "ot-1yr", "icon": "\ud83d\udd4e", "name": "Old Testament \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The full Old Testament from Genesis to Malachi."}, {"id": "lenten", "icon": "\u2719", "name": "Lenten Plan \u2014 48 Days", "duration": "48 days", "total": 48, "desc": "A focused reading plan for Great Lent, aligned with the Triodion."}];
+var PLANS = [
+  {id:'bible-2yr',   icon:'📖', name:'Full Bible — 2 Years',         duration:'730 days', total:730, desc:'The complete Scripture at a gentle pace — ideal for first-time readers.'},
+  {id:'bible-1yr',   icon:'📖', name:'Full Bible — 1 Year',          duration:'365 days', total:365, desc:'The complete Old and New Testament in one year. Four passages every day.'},
+  {id:'ot-1yr',      icon:'🕎', name:'Old Testament — 1 Year',       duration:'365 days', total:365, desc:'The full Orthodox Old Testament in LXX order, including all deuterocanonicals.'},
+  {id:'nt-1yr',      icon:'✝',  name:'New Testament — 1 Year',       duration:'365 days', total:365, desc:'The New Testament read at a gentle pace, with Psalm reflections throughout.'},
+  {id:'nt-90',       icon:'✝',  name:'New Testament — 90 Days',      duration:'90 days',  total:90,  desc:'The entire New Testament in three months. Ideal for Great Lent.'},
+  {id:'gospels-60',  icon:'✝',  name:'Gospels — 60 Days',            duration:'60 days',  total:60,  desc:'All four Gospels in sequence — Matthew, Mark, Luke, and John — over two months.'},
+  {id:'epistles-30', icon:'✉',  name:'Epistles — 30 Days',           duration:'30 days',  total:30,  desc:'All the Apostolic Epistles, Romans through Jude, in one month.'},
+  {id:'psalter',     icon:'♪',  name:'Psalter Monthly',              duration:'30 days',  total:30,  desc:'The complete Psalter each month in the ancient kathisma tradition.'},
+  {id:'wisdom-30',   icon:'📜', name:'Wisdom Literature — 30 Days',  duration:'30 days',  total:30,  desc:'Job, Proverbs, Ecclesiastes, Song of Songs, Wisdom, and Sirach in sequence.'},
+  {id:'prophets-60', icon:'🕊', name:'Prophets — 60 Days',           duration:'60 days',  total:60,  desc:'Isaiah through Malachi — all the major and minor prophets in LXX order.'},
+  {id:'lenten',      icon:'✙',  name:'Lenten Plan — 48 Days',        duration:'48 days',  total:48,  desc:'Aligned with the Triodion. Genesis, Proverbs, Isaiah, and Mark\'s Gospel.'},
+  {id:'nativity-40', icon:'⭐', name:'Nativity Fast — 40 Days',      duration:'40 days',  total:40,  desc:'Isaiah and the Epistles for the 40-day fast before the Nativity of Christ.'},
+  {id:'holy-week',   icon:'✞',  name:'Holy Week — 8 Days',           duration:'8 days',   total:8,   desc:'Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.'},
+  {id:'catechumen-40',icon:'☦', name:'Catechumen Plan — 40 Days',    duration:'40 days',  total:40,  desc:'For those entering the Faith. John\'s Gospel, Acts, Psalms, and Wisdom of Solomon.'},
+];
 
 var NT_PASSAGES = [
   "Matthew 1-2","Matthew 3-4","Matthew 5-6","Matthew 7-8","Matthew 9-10",
@@ -468,15 +496,43 @@ function getDaysSince(startDate) {
   return Math.max(0, Math.floor((now - start) / 86400000));
 }
 
-function getTodayPassage(planId, dayNum) {
-  if (planId === 'nt-90' || planId === 'nt-1yr') {
-    return NT_PASSAGES[dayNum % NT_PASSAGES.length] || 'Matthew 1';
-  }
-  if (planId === 'psalter') return 'Kathisma ' + ((dayNum % 20) + 1);
-  if (planId === 'gospels-60') return NT_PASSAGES[dayNum % 28] || 'Matthew 1';
-  if (planId === 'epistles-30') return NT_PASSAGES[58 + (dayNum % 20)] || 'Romans 1-4';
-  if (planId === 'lenten') return 'Great Lent Day ' + (dayNum + 1);
-  return 'Day ' + (dayNum + 1);
+// Map plan IDs to their global data array variable names
+var PLAN_VAR_MAP = {
+  'bible-2yr':    'PLAN_2YEAR',
+  'bible-1yr':    'PLAN_1YEAR',
+  'ot-1yr':       'PLAN_OT_1YEAR',
+  'nt-1yr':       'PLAN_NT_1YEAR',
+  'nt-90':        'PLAN_NT_90',
+  'gospels-60':   'PLAN_GOSPELS',
+  'epistles-30':  'PLAN_EPISTLES',
+  'psalter':      'PLAN_PSALTER',
+  'wisdom-30':    'PLAN_WISDOM',
+  'prophets-60':  'PLAN_PROPHETS',
+  'lenten':       'PLAN_LENTEN',
+  'nativity-40':  'PLAN_NATIVITY',
+  'holy-week':    'PLAN_HOLY_WEEK',
+  'catechumen-40':'PLAN_CATECHUMEN',
+};
+
+function getPlanEntry(planId, dayNum) {
+  var varName = PLAN_VAR_MAP[planId];
+  if (!varName) return null;
+  var arr = window[varName];
+  if (!arr) return null;
+  var day = dayNum + 1; // plans are 1-indexed (index 0 is null)
+  return arr[day] || null;
+}
+
+function renderPlanDay(planId, dayNum) {
+  var entry = getPlanEntry(planId, dayNum);
+  if (!entry) return '<div class="today-reading-ref">Day ' + (dayNum + 1) + '</div>';
+  var html = '';
+  if (entry.ot) html += renderReadingRow('OT',      entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
+  if (entry.ps) html += renderReadingRow('Psalms',  entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
+  if (entry.pr) html += renderReadingRow('Proverbs',entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
+  if (entry.nt) html += renderReadingRow('NT',      entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
+  if (!html)    html  = '<div class="today-reading-ref">Day ' + (dayNum + 1) + ' — silent day</div>';
+  return html;
 }
 
 function buildReaderLink(book, ch) {
@@ -553,14 +609,7 @@ function renderTodayPanel() {
   document.getElementById('todayPlanName').textContent = (planData ? planData.name : plan) + ' — Day ' + (dayNum + 1);
 
   var readingsEl = document.getElementById('todayReadings');
-  if (plan === 'bible-2yr') {
-    readingsEl.innerHTML = render2YearDay(dayNum);
-  } else {
-    // Other plans — single passage row
-    var passage = getTodayPassage(plan, dayNum);
-    var link = 'bible-reader.html?ref=' + encodeURIComponent(passage);
-    readingsEl.innerHTML = renderReadingRow('Reading', passage, link);
-  }
+  readingsEl.innerHTML = renderPlanDay(plan, dayNum);
 
   panel.style.display = '';
   var log = getStore('oc_reading_log', {});
