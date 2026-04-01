@@ -964,7 +964,6 @@ async function loadChapter(idx) {
       `?content-type=html&include-notes=false&include-titles=false` +
       `&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=true`
     );
-    console.log("API RAW CONTENT:", JSON.stringify(data.content).slice(0,500));
     renderChapter(data, ref);
     updateUrl(currentBook.id, ch.number);
   } catch(e) {
@@ -974,48 +973,74 @@ async function loadChapter(idx) {
 
 function renderChapter(data, ref) {
   const content = document.getElementById('readerContent');
+  const chNum   = currentChapters[currentChapterIdx].number;
+  const parser  = new DOMParser();
+  const doc     = parser.parseFromString(data.content || '', 'text/html');
 
-  // Parse API HTML and convert to verse spans
-  const parser = new DOMParser();
-  const doc = parser.parseFromString(data.content || '', 'text/html');
-
-  // API.Bible wraps verses in <span data-number="N"> or <p> elements
-  // We'll inject verse numbers and make each verse interactive
   let html = `<div class="chapter-heading">${ref}</div>`;
 
-  // Extract verse spans from API HTML
-  const verseSpans = doc.querySelectorAll('[data-number]');
-  if (verseSpans.length) {
-    verseSpans.forEach(span => {
-      const vNum  = span.getAttribute('data-number');
-      const vId   = span.getAttribute('data-sid') || `${currentBook.id}.${currentChapters[currentChapterIdx].number}.${vNum}`;
-      const text  = span.textContent.replace(/^\d+\s*/, '').trim();
-      if (!text) return;
-      const hl    = highlights[vId] ? ` hl-${highlights[vId]}` : '';
-      const hasnote = notes[vId] ? '<span class="verse-note-dot" title="Has note"></span>' : '';
-      html += `<span class="verse${hl}" data-vid="${vId}" data-vnum="${vNum}" onclick="selectVerse(this)">
-        <span class="verse-num">${vNum}</span>${text}${hasnote}
-        <span class="verse-actions">
-          <span class="hl-picker">
-            <span class="hl-dot gold" onclick="highlightVerse(event,'gold')" title="Gold"></span>
-            <span class="hl-dot blue" onclick="highlightVerse(event,'blue')" title="Blue"></span>
-            <span class="hl-dot green" onclick="highlightVerse(event,'green')" title="Green"></span>
-            <span class="hl-dot red" onclick="highlightVerse(event,'red')" title="Red"></span>
-          </span>
-          <span class="va-sep"></span>
-          <button class="va-btn" onclick="removeHighlight(event)">&#9746;</button>
-          <span class="va-sep"></span>
-          <button class="va-btn" onclick="openNoteForVerse(event)">&#9998; Note</button>
-          <span class="va-sep"></span>
-          <button class="va-btn" onclick="bookmarkChapter(event)">&#9646; Save</button>
+  function verseHTML(vNum, vId, text) {
+    if (!text.trim()) return '';
+    const hl      = highlights[vId] ? ` hl-${highlights[vId]}` : '';
+    const hasnote = notes[vId] ? '<span class="verse-note-dot" title="Has note"></span>' : '';
+    return `<span class="verse${hl}" data-vid="${vId}" data-vnum="${vNum}" onclick="selectVerse(this)">
+      <span class="verse-num">${vNum}</span>${text}${hasnote}
+      <span class="verse-actions">
+        <span class="hl-picker">
+          <span class="hl-dot gold" onclick="highlightVerse(event,'gold')" title="Gold"></span>
+          <span class="hl-dot blue" onclick="highlightVerse(event,'blue')" title="Blue"></span>
+          <span class="hl-dot green" onclick="highlightVerse(event,'green')" title="Green"></span>
+          <span class="hl-dot red" onclick="highlightVerse(event,'red')" title="Red"></span>
         </span>
-      </span>`;
-    });
-  } else {
-    // Fallback: render raw HTML from API
-    html += `<div style="line-height:2;font-size:1.05rem;">${data.content || '<em>No content available.</em>'}</div>`;
+        <span class="va-sep"></span>
+        <button class="va-btn" onclick="removeHighlight(event)">&#9746;</button>
+        <span class="va-sep"></span>
+        <button class="va-btn" onclick="openNoteForVerse(event)">&#9998; Note</button>
+        <span class="va-sep"></span>
+        <button class="va-btn" onclick="bookmarkChapter(event)">&#9646; Save</button>
+      </span>
+    </span>`;
   }
 
+  // API.Bible structure: each verse has two sibling .verse-span elements
+  // sharing the same data-verse-id — first contains the number span (.v),
+  // second contains the actual verse text.
+  // Strategy: group all .verse-span elements by data-verse-id, then
+  // extract number from the one containing .v, text from the other.
+
+  const verseSpans = doc.querySelectorAll('.verse-span[data-verse-id]');
+  if (verseSpans.length) {
+    // Build a map: verseId -> { num, text }
+    const verseMap = new Map();
+    verseSpans.forEach(span => {
+      const vid = span.getAttribute('data-verse-id'); // e.g. "GEN.2.1"
+      if (!verseMap.has(vid)) verseMap.set(vid, { num: '', text: '' });
+      const entry = verseMap.get(vid);
+      const numEl = span.querySelector('.v,[data-number]');
+      if (numEl) {
+        entry.num = numEl.getAttribute('data-number') || numEl.textContent.trim();
+      } else {
+        // This span has the text
+        const t = span.textContent.trim();
+        if (t) entry.text += t + ' ';
+      }
+    });
+
+    verseMap.forEach((entry, vid) => {
+      if (!entry.text.trim()) return;
+      // Convert "GEN.2.1" → vNum = "1", vId = "GEN.2.1"
+      const vNum = entry.num || vid.split('.').pop();
+      html += verseHTML(vNum, vid, entry.text.trim());
+    });
+
+    content.innerHTML = html;
+    content.scrollTop = 0;
+    return;
+  }
+
+  // Fallback: render raw text content
+  const rawText = doc.body ? doc.body.innerHTML : (data.content || '');
+  html += `<div style="line-height:2;font-size:1.05rem;color:var(--text-dim);">${rawText || '<em>No content available.</em>'}</div>`;
   content.innerHTML = html;
   content.scrollTop = 0;
 }
