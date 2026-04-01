@@ -212,6 +212,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .plan-progress-label{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
 .plan-start-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;background:rgba(201,168,76,0.08);cursor:pointer;transition:all 0.2s;text-align:center;margin-top:4px;}
 .plan-start-btn:hover{background:rgba(201,168,76,0.2);}
+.plan-card.completed{border-top-color:var(--gold);opacity:0.9;}
+.plan-complete-badge{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:2px;}
+.plan-next-nudge{border-top:1px solid var(--border-dim);margin-top:6px;padding-top:10px;display:flex;flex-direction:column;gap:6px;}
+.plan-next-label{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
+.plan-next-btn{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--deep);background:var(--gold);border:none;border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;text-align:center;}
+.plan-next-btn:hover{background:var(--gold-light);}
 .calendar-section{margin-bottom:40px;}
 .reading-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}
 .cal-day-header{font-family:"Cinzel",serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);text-align:center;padding:4px 0;}
@@ -497,9 +503,8 @@ function getDaysSince(startDate) {
   return Math.max(0, Math.floor((now - start) / 86400000));
 }
 
-// Plan data registry — built at runtime after all plan <script> files load.
-// Uses typeof checks because plan files declare const (not var),
-// and const at the top level does NOT attach to window[].
+// Plan data registry — const variables don't attach to window[],
+// so we reference them by name via typeof checks.
 function buildPlanRegistry() {
   var r = {};
   if (typeof PLAN_2YEAR      !== 'undefined') r['bible-2yr']     = PLAN_2YEAR;
@@ -623,6 +628,24 @@ function renderTodayPanel() {
   if (readToday) btn.classList.add('primary'); else btn.classList.remove('primary');
 }
 
+// Sequential pathway map — what to suggest when a plan is completed
+var NEXT_PLAN = {
+  'holy-week':    'catechumen-40',
+  'catechumen-40':'gospels-60',
+  'gospels-60':   'epistles-30',
+  'epistles-30':  'nt-90',
+  'nt-90':        'nt-1yr',
+  'nt-1yr':       'bible-1yr',
+  'bible-1yr':    'bible-2yr',
+  'psalter':      'wisdom-30',
+  'wisdom-30':    'prophets-60',
+  'prophets-60':  'ot-1yr',
+  'ot-1yr':       'bible-1yr',
+  'lenten':       'nativity-40',
+  'nativity-40':  'lenten',
+  'bible-2yr':    null,
+};
+
 function renderPlans() {
   var activePlan = localStorage.getItem('oc_reading_plan');
   var log = getStore('oc_reading_log', {});
@@ -632,8 +655,16 @@ function renderPlans() {
     var planLog = log[p.id] || {};
     var daysRead = Object.keys(planLog).length;
     var pct = Math.min(Math.round(daysRead / p.total * 100), 100);
-    html += '<div class="plan-card' + (isActive ? ' active' : '') + '">';
+    var isComplete = daysRead >= p.total;
 
+    var cardClass = 'plan-card';
+    if (isActive) cardClass += ' active';
+    if (isComplete) cardClass += ' completed';
+    html += '<div class="' + cardClass + '">';
+
+    if (isComplete) {
+      html += '<div class="plan-complete-badge">✓ Completed</div>';
+    }
     html += '<div class="plan-name">' + p.name + '</div>';
     html += '<div class="plan-duration">' + p.duration + '</div>';
     html += '<div class="plan-desc">' + p.desc + '</div>';
@@ -643,13 +674,31 @@ function renderPlans() {
       html += '<div class="plan-progress-label">' + pct + '% complete — ' + daysRead + ' of ' + p.total + ' days</div>';
       html += '</div>';
     }
-    html += '<div class="plan-start-btn" data-planid="' + p.id + '">' + (isActive ? 'Current Plan' : daysRead > 0 ? 'Continue' : 'Start This Plan') + '</div>';
+
+    if (isComplete) {
+      // Start over button
+      html += '<div class="plan-start-btn" data-planid="' + p.id + '">Start Over</div>';
+      // Next plan nudge
+      var nextId = NEXT_PLAN[p.id];
+      if (nextId) {
+        var nextPlan = PLANS.find(function(x) { return x.id === nextId; });
+        if (nextPlan) {
+          html += '<div class="plan-next-nudge">';
+          html += '<div class="plan-next-label">Up next</div>';
+          html += '<div class="plan-next-btn" data-planid="' + nextId + '">' + nextPlan.name + ' →</div>';
+          html += '</div>';
+        }
+      }
+    } else {
+      html += '<div class="plan-start-btn" data-planid="' + p.id + '">' + (isActive ? 'Current Plan' : daysRead > 0 ? 'Continue' : 'Start This Plan') + '</div>';
+    }
+
     html += '</div>';
   });
   var el = document.getElementById('plansGrid');
   el.innerHTML = html;
   el.addEventListener('click', function(e) {
-    var btn = e.target.closest('.plan-start-btn');
+    var btn = e.target.closest('.plan-start-btn, .plan-next-btn');
     if (btn && btn.dataset.planid) startPlan(btn.dataset.planid);
   });
 }
