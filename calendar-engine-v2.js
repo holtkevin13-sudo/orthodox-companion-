@@ -451,8 +451,8 @@ const OrthodoxCalendar = (() => {
       weekdayReading = _data.weekday[String(pOff)];
     }
 
-    // ── Merge data (priority: moveable Sunday > fixed feast > weekday) ──────
-    const readings = sundayReading || weekdayReading || {};
+    // ── Merge data (priority: moveable Sunday > weekday offset > fixed feast) ──────
+    const readings = sundayReading || weekdayReading || fixedData || {};
     const summary  = sundayName || fixedData.summary || readings.summary || '';
 
     // Saints: merge fixed + any feast-specific saints
@@ -499,6 +499,8 @@ const OrthodoxCalendar = (() => {
       epistle_text: readings.epistle_text || '',
       gospel_text:  readings.gospel_text  || '',
       matins_text:  readings.matins_text  || '',
+      // OT readings — present on Lenten weekdays (array of {ref, text})
+      ot_readings:  fixedData.ot_readings || [],
     };
   }
 
