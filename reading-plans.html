@@ -188,6 +188,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .today-actions{display:flex;gap:10px;flex-wrap:wrap;}
 .today-btn{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:7px 16px;background:transparent;cursor:pointer;transition:all 0.2s;text-decoration:none;display:inline-block;}
 .today-btn:hover,.today-btn.primary{border-color:var(--gold-dim);color:var(--gold-light);background:rgba(201,168,76,0.08);}
+.today-readings{margin-bottom:14px;}
+.today-reading-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(42,90,156,0.18);}
+.today-reading-row:last-child{border-bottom:none;}
+.today-reading-meta{display:flex;align-items:center;gap:10px;flex:1;min-width:0;}
+.today-reading-label{font-family:"Cinzel",serif;font-size:0.52rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);flex-shrink:0;width:60px;}
+.today-reading-ref{font-family:"Cinzel",serif;font-size:1.0rem;color:var(--gold-light);letter-spacing:0.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
 .section-title{font-family:"Cinzel",serif;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);white-space:nowrap;}
 .section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
@@ -341,10 +347,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <!-- Today panel -->
   <div class="today-panel" id="todayPanel" style="display:none;">
     <div class="today-label">Today's Reading</div>
-    <div class="today-reading" id="todayReading">Loading...</div>
+    <div class="today-readings" id="todayReadings">Loading...</div>
     <div class="today-plan-name" id="todayPlanName"></div>
     <div class="today-actions">
-      <a href="#" class="today-btn primary" id="todayReadLink" target="_blank">Open in Bible Reader</a>
       <button class="today-btn" id="todayMarkBtn" onclick="markTodayRead()">Mark as Read</button>
       <button class="today-btn" onclick="stopPlan()">Change Plan</button>
     </div>
@@ -423,6 +428,7 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 </script>
+<script src="data/reading-plans/plan-2year.js"></script>
 <script>
 
 var PLANS = [{"id": "bible-1yr", "icon": "\ud83d\udcd6", "name": "Full Bible \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The complete Old and New Testament in one year. ~4 chapters per day."}, {"id": "bible-2yr", "icon": "\ud83d\udcd6", "name": "Full Bible \u2014 2 Years", "duration": "730 days", "total": 730, "desc": "The complete Scripture at a gentle pace \u2014 ideal for first-time readers."}, {"id": "nt-90", "icon": "\u271d", "name": "New Testament \u2014 90 Days", "duration": "90 days", "total": 90, "desc": "The entire New Testament in three months. Ideal for Great Lent."}, {"id": "nt-1yr", "icon": "\u271d", "name": "New Testament \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The New Testament read at a measured pace through the liturgical year."}, {"id": "psalter", "icon": "\u266a", "name": "Psalter Monthly", "duration": "30 days", "total": 30, "desc": "The complete Psalter read each month in the kathisma tradition."}, {"id": "epistles-30", "icon": "\u2709", "name": "Epistles \u2014 30 Days", "duration": "30 days", "total": 30, "desc": "All the Apostolic Epistles in one month."}, {"id": "gospels-60", "icon": "\u2020", "name": "Gospels \u2014 60 Days", "duration": "60 days", "total": 60, "desc": "All four Gospels in two months, reading alongside the liturgical cycle."}, {"id": "ot-1yr", "icon": "\ud83d\udd4e", "name": "Old Testament \u2014 1 Year", "duration": "365 days", "total": 365, "desc": "The full Old Testament from Genesis to Malachi."}, {"id": "lenten", "icon": "\u2719", "name": "Lenten Plan \u2014 48 Days", "duration": "48 days", "total": 48, "desc": "A focused reading plan for Great Lent, aligned with the Triodion."}];
@@ -468,10 +474,43 @@ function getTodayPassage(planId, dayNum) {
   }
   if (planId === 'psalter') return 'Kathisma ' + ((dayNum % 20) + 1);
   if (planId === 'gospels-60') return NT_PASSAGES[dayNum % 28] || 'Matthew 1';
-  if (planId === 'bible-1yr' || planId === 'bible-2yr' || planId === 'ot-1yr') return 'See your reading plan';
   if (planId === 'epistles-30') return NT_PASSAGES[58 + (dayNum % 20)] || 'Romans 1-4';
   if (planId === 'lenten') return 'Great Lent Day ' + (dayNum + 1);
   return 'Day ' + (dayNum + 1);
+}
+
+function buildReaderLink(book, ch) {
+  return 'bible-reader.html?book=' + book + '&chapter=' + ch;
+}
+
+function renderReadingRow(label, ref, link) {
+  return '<div class="today-reading-row">' +
+    '<div class="today-reading-meta">' +
+    '<span class="today-reading-label">' + label + '</span>' +
+    '<span class="today-reading-ref">' + ref + '</span>' +
+    '</div>' +
+    '<a href="' + link + '" class="today-btn primary" target="_blank">Open</a>' +
+    '</div>';
+}
+
+function render2YearDay(dayNum) {
+  var day = Math.min(dayNum + 1, 730);
+  var entry = (typeof PLAN_2YEAR !== 'undefined') ? PLAN_2YEAR[day] : null;
+  if (!entry) return '<div class="today-reading-ref">Day ' + day + '</div>';
+  var html = '';
+  if (entry.ot) {
+    html += renderReadingRow('OT', entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
+  }
+  if (entry.ps) {
+    html += renderReadingRow('Psalms', entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
+  }
+  if (entry.pr) {
+    html += renderReadingRow('Proverbs', entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
+  }
+  if (entry.nt) {
+    html += renderReadingRow('NT', entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
+  }
+  return html;
 }
 
 function stopPlan() {
@@ -511,17 +550,24 @@ function renderTodayPanel() {
   var start = localStorage.getItem('oc_plan_start');
   var dayNum = start ? getDaysSince(start) : 0;
   var planData = PLANS.find(function(p) { return p.id === plan; });
-  var passage = getTodayPassage(plan, dayNum);
-  document.getElementById('todayReading').textContent = passage;
   document.getElementById('todayPlanName').textContent = (planData ? planData.name : plan) + ' — Day ' + (dayNum + 1);
-  document.getElementById('todayReadLink').href = 'bible-reader.html?ref=' + encodeURIComponent(passage);
+
+  var readingsEl = document.getElementById('todayReadings');
+  if (plan === 'bible-2yr') {
+    readingsEl.innerHTML = render2YearDay(dayNum);
+  } else {
+    // Other plans — single passage row
+    var passage = getTodayPassage(plan, dayNum);
+    var link = 'bible-reader.html?ref=' + encodeURIComponent(passage);
+    readingsEl.innerHTML = renderReadingRow('Reading', passage, link);
+  }
+
   panel.style.display = '';
-  // Check if already read today
   var log = getStore('oc_reading_log', {});
   var readToday = log[plan] && log[plan][getTodayKey()];
   var btn = document.getElementById('todayMarkBtn');
   btn.textContent = readToday ? 'Read ✓' : 'Mark as Read';
-  if (readToday) btn.classList.add('primary');
+  if (readToday) btn.classList.add('primary'); else btn.classList.remove('primary');
 }
 
 function renderPlans() {
