@@ -1307,6 +1307,7 @@ function navToTab(tab){
   if(tab==='email') loadSubCount();
   if(tab==='users') loadUsers();
   if(tab==='bible') loadBibleNotes();
+  if(tab==='reading') loadReadingPlan();
 }
 
 /* ── Dashboard tab switching ─────────────────────────── */
@@ -1320,6 +1321,7 @@ function switchDash(tab,el){
   if(tab==='email') loadSubCount();
   if(tab==='users') loadUsers();
   if(tab==='bible') loadBibleNotes();
+  if(tab==='reading') loadReadingPlan();
 }
 
 /* ── Blog: auto slug ─────────────────────────────────── */
@@ -1667,6 +1669,72 @@ async function deleteBibleItem(table, id, rowEl){
   });
 }
 
+/* ── Reading Plans tab ───────────────────────────────── */
+var RP_META={
+  'bible-2yr':    {name:'Full Bible — 2 Years',        total:730},
+  'bible-1yr':    {name:'Full Bible — 1 Year',         total:365},
+  'ot-1yr':       {name:'Old Testament — 1 Year',      total:365},
+  'nt-1yr':       {name:'New Testament — 1 Year',      total:365},
+  'nt-90':        {name:'New Testament — 90 Days',     total:90},
+  'gospels-60':   {name:'Gospels — 60 Days',           total:60},
+  'epistles-30':  {name:'Epistles — 30 Days',          total:30},
+  'psalter':      {name:'Psalter Monthly',             total:30},
+  'wisdom-30':    {name:'Wisdom Literature — 30 Days', total:30},
+  'prophets-60':  {name:'Prophets — 60 Days',          total:60},
+  'lenten':       {name:'Lenten Plan — 48 Days',       total:48},
+  'nativity-40':  {name:'Nativity Fast — 40 Days',     total:40},
+  'holy-week':    {name:'Holy Week — 8 Days',          total:8},
+  'catechumen-40':{name:'Catechumen Plan — 40 Days',   total:40},
+};
+
+function loadReadingPlan(){
+  var el=document.getElementById('rpGrid');
+  if(!el) return;
+
+  var planId=localStorage.getItem('oc_reading_plan');
+  if(!planId){
+    el.innerHTML='<div class="rp-no-plan">No reading plan active.<br><a href="reading-plans.html" style="color:var(--gold-light);">Browse reading plans</a> to get started.</div>';
+    var sr=document.getElementById('stat-reading');if(sr)sr.textContent='0';
+    return;
+  }
+
+  var meta=RP_META[planId];
+  var name=meta?meta.name:planId;
+  var total=meta?meta.total:1;
+
+  var startStr=localStorage.getItem('oc_plan_start');
+  var dayNum=0;
+  if(startStr){
+    var start=new Date(startStr);var now=new Date();
+    start.setHours(0,0,0,0);now.setHours(0,0,0,0);
+    dayNum=Math.max(0,Math.floor((now-start)/86400000));
+  }
+  var currentDay=Math.min(dayNum+1,total);
+
+  var log=JSON.parse(localStorage.getItem('oc_reading_log')||'{}');
+  var planLog=log[planId]||{};
+  var daysRead=Object.keys(planLog).length;
+  var pct=Math.min(Math.round(daysRead/total*100),100);
+  var isComplete=daysRead>=total;
+
+  var sr=document.getElementById('stat-reading');if(sr)sr.textContent=daysRead;
+
+  var html='<div class="rp-card active-plan">';
+  html+='<div class="rp-name">'+escHtml(name)+'</div>';
+  if(isComplete){
+    html+='<div class="rp-today" style="color:var(--gold);">\u2713 Plan complete \u2014 well done.</div>';
+  } else {
+    html+='<div class="rp-today">Day '+currentDay+' of '+total+'</div>';
+  }
+  html+='<div class="rp-progress-bar"><div class="rp-progress-fill" style="width:'+pct+'%"></div></div>';
+  html+='<div class="rp-meta">';
+  html+='<span class="rp-pct">'+pct+'% complete \u2014 '+daysRead+' days read</span>';
+  html+='<a href="reading-plans.html" class="rp-read-btn">'+(isComplete?'Start Over \u2192':'Open Reading Plans \u2192')+'</a>';
+  html+='</div>';
+  html+='</div>';
+  el.innerHTML=html;
+}
+
 /* ── Utility ─────────────────────────────────────────── */
 function escHtml(str){if(!str)return '';return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
@@ -1699,7 +1767,7 @@ function initDashboard(){
   var today=new Date();
   var jd=document.getElementById('journalTodayDate');
   if(jd) jd.textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  loadBookmarks();loadJournal();loadFastingLog();loadSettings();
+  loadBookmarks();loadJournal();loadFastingLog();loadSettings();loadReadingPlan();
 }
 
 /* ── Bookmarks ───────────────────────────────────────── */
