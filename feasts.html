@@ -245,8 +245,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .cs-close{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:6px 16px;cursor:pointer;transition:all 0.2s;}
 .cs-close:hover{border-color:var(--gold-dim);color:var(--gold-light);}
 
-@media(max-width:768px){.feast-grid{grid-template-columns:1fr;}}
+@media(max-width:860px){.feast-grid{grid-template-columns:1fr;}}
 @media(max-width:600px){.pascha-card{padding:22px 20px;}}
+@media(max-width:400px){
+  .fm-header{padding:16px 18px 12px;}
+  .fm-body{padding:16px 18px;}
+  .fm-footer{padding:10px 18px;}
+  .cs-box{padding:24px 20px;}
+}
 
 </style>
 </head>
@@ -341,6 +347,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <div class="nav-drawer-footer">
     <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
+    <button onclick="toggleTheme()" class="nav-signin-btn" style="background:transparent;border:none;cursor:pointer;" aria-label="Toggle theme">&#9680; Theme</button>
   </div>
 </div>
 <div class="page-hero">
