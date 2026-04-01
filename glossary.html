@@ -427,6 +427,7 @@ function scrollToLetter(l){
 function toggleTerm(card){card.classList.toggle("open");}
 
 function jumpToTerm(id){
+  setTab('greek');
   document.getElementById("glossarySearch").value="";
   currentFilter="";
   renderGlossary();
