@@ -1259,10 +1259,17 @@ function refToBibleLink(ref) {
   }
   return null;
 }
+function cleanPassageText(t) {
+  return (t || '')
+    .replace(/\\"/g, '"')    // \" → plain quote
+    .replace(/\\\//g, '')    // \/ → remove
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
 function openReadingModal(r) {
   document.getElementById('rm-title').textContent = r.type + ' Reading';
   document.getElementById('rm-ref').textContent = r.ref;
-  document.getElementById('rm-text').textContent = r.text || '';
+  document.getElementById('rm-text').textContent = cleanPassageText(r.text);
   document.getElementById('rm-translation').textContent = r.isOT
     ? 'Old Testament · Septuagint (LXX)'
     : 'New Testament · Orthodox Lectionary';
