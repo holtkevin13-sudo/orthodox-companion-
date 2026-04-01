@@ -90,6 +90,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 /* ── Account dropdown ────────────────────────────────── */
 .nav-account-wrap{position:relative;}
+.nav-user-menu{position:relative;}
 .nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
   letter-spacing:0.09em;color:var(--gold-light);background:transparent;
   border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
@@ -234,6 +235,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 @media(max-width:900px){.cat-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:700px){.cat-grid{grid-template-columns:repeat(2,1fr);}.topic-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:480px){.cat-grid{grid-template-columns:1fr;}.topic-grid{grid-template-columns:1fr;}}
+#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;width:38px;height:38px;border-radius:50%;background:var(--dark);border:1px solid var(--gold-dim);color:var(--gold-light);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 </style>
 </head>
 <body>
@@ -392,7 +396,7 @@ function toggleDrawer(){
 
 // Sign out handled by auth-nav.js
 
-// Close menus// Close menus on outside click
+// Close menus on outside click
 document.addEventListener('click',function(e){
   if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
     _drawerOpen=false;
@@ -424,6 +428,13 @@ document.addEventListener('DOMContentLoaded',function(){
       var el=document.getElementById(id);
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },200);
+  }
+  // Back to top
+  var btn=document.getElementById('backToTop');
+  if(btn){
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('visible', window.scrollY > 400);
+    },{passive:true});
   }
 });
 </script>
@@ -641,6 +652,7 @@ document.addEventListener('DOMContentLoaded', renderContent);
 })();
 
 </script>
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth-nav.js"></script>
 </body>
