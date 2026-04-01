@@ -218,8 +218,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   </ul>
   <div class="nav-right">
     <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;">&#9766;</span> Companion AI</a>
-    <div class="nav-user-wrap" id="navUserWrap" style="display:none;">
-      <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">Account &#9662;</button>
+    <div class="nav-user-wrap" id="navUserMenu" style="display:none;">
+      <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()"><span id="navUsername">Account</span> &#9662;</button>
       <div class="nav-user-dropdown" id="navUserDropdown">
         <a href="account.html">My Dashboard</a>
         <a href="#" onclick="signOut();return false;">Sign Out</a>
@@ -259,6 +259,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
     <a href="chatbot.html" style="display:inline-block;color:#E8CB7A;border:1px solid #8A6A28;border-radius:2px;padding:8px 18px;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">&#9766; Companion AI</a>
+    <a href="account.html" id="drawerSignIn" style="display:inline-block;margin-top:10px;color:#B8C8DC;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;text-decoration:none;">Sign In</a>
   </div>
 </div>
 
