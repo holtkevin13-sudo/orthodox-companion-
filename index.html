@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<link rel="preload" as="image" href="assets/images/iStock-1129013821.webp" fetchpriority="high"/>
 
 
 <meta charset="UTF-8"/>
@@ -227,9 +226,11 @@ body{
   text-align:center;padding:60px 24px 56px;
   position:relative;overflow:hidden;
   background-color:#0A1628;
-  background-image:url('assets/images/iStock-1129013821.webp');
-  background-size:cover;
-  background-position:center 30%;
+}
+.hero-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:center 30%;
+  z-index:0;display:block;
 }
 /* When season strip is visible it adds its own margin-top, so remove hero's */
 .season-strip.visible ~ section.hero,
@@ -713,6 +714,7 @@ body{background:var(--bg-page);color:var(--text);}
 
 <!-- ══ HERO ══════════════════════════════════════════════════════════════ -->
 <section class="hero">
+  <img src="assets/images/iStock-1129013821.webp" class="hero-bg" alt="" fetchpriority="high" width="1920" height="1280" decoding="async"/>
   <span class="hero-cross">☦&#xFE0E;</span>
   <h1 class="hero-title">Orthodox Companion</h1>
   <p class="hero-subtitle">A comprehensive resource for understanding and living the Orthodox Christian faith — for those exploring, those newly received, and those deepening a lifelong journey.</p>
