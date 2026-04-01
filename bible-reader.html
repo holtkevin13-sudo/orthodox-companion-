@@ -141,14 +141,50 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .book-item:hover{color:var(--gold-light);background:rgba(201,168,76,0.05);border-left-color:var(--gold-dim);}
 .book-item.active{color:var(--gold-light);background:rgba(201,168,76,0.08);border-left-color:var(--gold);}
 
-/* ── Main Reader Area ─────────────────────────────────── */
+/* ── Main Reader Area — Parchment Scroll ──────────────── */
 .reader-main{
   flex:1;
   display:flex;
   flex-direction:column;
   overflow:hidden;
-  background:var(--bg-page);
+  background:linear-gradient(175deg,#F7EDD6 0%,#EFE0BE 55%,#E8D5A8 100%);
 }
+/* Toolbar stays dark above the parchment */
+.reader-toolbar{
+  background:rgba(10,22,40,0.94)!important;
+  border-bottom:1px solid rgba(138,90,0,0.3)!important;
+}
+/* LXX note on parchment */
+.lxx-note{
+  background:rgba(138,90,0,0.07)!important;
+  border-bottom:1px solid rgba(138,90,0,0.18)!important;
+}
+.lxx-note-text{color:#5A3800!important;}
+.lxx-note-text strong{color:#8A5A00!important;}
+.lxx-note-close{color:#8A6A30!important;}
+/* Reader content scrollbar on parchment */
+.reader-content::-webkit-scrollbar-thumb{background:rgba(138,90,0,0.25);border-radius:2px;}
+/* Chapter heading */
+.chapter-heading{
+  color:#5A3000!important;
+  border-bottom-color:rgba(138,90,0,0.2)!important;
+}
+/* Verse text */
+.verse{color:#2A1800;}
+.verse:hover{background:rgba(138,90,0,0.06)!important;}
+.verse.selected{background:rgba(138,90,0,0.1)!important;}
+/* Verse number */
+.verse-num{color:#A07030!important;}
+/* Highlight overlays adjusted for parchment */
+.verse.hl-gold{background:rgba(180,120,0,0.22)!important;}
+.verse.hl-blue{background:rgba(42,90,156,0.18)!important;}
+.verse.hl-green{background:rgba(40,120,80,0.16)!important;}
+.verse.hl-red{background:rgba(160,50,50,0.18)!important;}
+/* Empty/loading state on parchment */
+.reader-state{color:#8A6A30!important;}
+.reader-state-cross{color:#C4A064!important;}
+.reader-state-title{color:#5A3800!important;}
+.reader-state-sub{color:#8A6A30!important;}
 
 /* Reader toolbar */
 .reader-toolbar{
