@@ -1097,17 +1097,23 @@ function renderLiturgicalDayFromEngine(day, displayDate) {
     html += '</div></div>';
   }
 
-  // Readings column
+  // Readings column — NT + OT
   var readings = [];
-  if (day.matins_ref)  readings.push({type:'Matins', ref:day.matins_ref});
-  if (day.epistle_ref) readings.push({type:'Epistle', ref:day.epistle_ref});
-  if (day.gospel_ref)  readings.push({type:'Gospel',  ref:day.gospel_ref});
+  if (day.matins_ref)  readings.push({type:'Matins',  ref:day.matins_ref,  text:day.matins_text||'',  isOT:false});
+  if (day.epistle_ref) readings.push({type:'Epistle', ref:day.epistle_ref, text:day.epistle_text||'', isOT:false});
+  if (day.gospel_ref)  readings.push({type:'Gospel',  ref:day.gospel_ref,  text:day.gospel_text||'',  isOT:false});
+  if (day.ot_readings && day.ot_readings.length) {
+    day.ot_readings.forEach(function(r){
+      readings.push({type:'Old Testament', ref:r.ref, text:r.text||'', isOT:true});
+    });
+  }
 
+  window._ldayReadings = {};
   if (readings.length > 0) {
     html += '<div class="lday-col"><div class="lday-col-title">📖 Readings</div><div class="lday-col-value" style="display:flex;flex-direction:column;gap:7px;">';
-    readings.forEach(function(r){
-      var url = 'https://www.biblegateway.com/passage/?search='+encodeURIComponent(r.ref)+'&version=NKJV';
-      html += '<button class="lday-reading-btn" onclick="openReadingModal(\''+esc(r.ref)+'\',\''+esc(r.type)+'\',\''+esc(url)+'\')"> ';
+    readings.forEach(function(r, i){
+      window._ldayReadings[i] = r;
+      html += '<button class="lday-reading-btn" data-reading-idx="'+i+'">';
       html += '<span style="font-family:Cinzel,serif;font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;">'+r.type+'</span> '+r.ref;
       html += '</button>';
     });
@@ -1178,11 +1184,13 @@ function renderLiturgicalDay(data, displayDate) {
   }
   if (readings.length > 0) {
     html += '<div class="lday-col"><div class="lday-col-title">📖 Readings</div><div class="lday-col-value" style="display:flex;flex-direction:column;gap:7px;">';
-    readings.slice(0,4).forEach(function(r){
+    readings.slice(0,4).forEach(function(r, i){
       var ref = r.ref||r.passage||r.reference||'';
       var type = r.type||'Reading';
-      var url = 'https://www.biblegateway.com/passage/?search='+encodeURIComponent(ref)+'&version=OSB';
-      html += '<button class="lday-reading-btn" onclick="openReadingModal(\''+esc(ref)+'\',\''+esc(type)+'\',\''+esc(url)+'\')">';
+      var idx = 'fb'+i;
+      window._ldayReadings = window._ldayReadings || {};
+      window._ldayReadings[idx] = {type:type, ref:ref, text:'', isOT:false};
+      html += '<button class="lday-reading-btn" data-reading-idx="'+idx+'">';
       html += '<span style="font-family:Cinzel,serif;font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.06em;">'+type+'</span> '+ref;
       html += '</button>';
     });
@@ -1202,12 +1210,49 @@ function renderLiturgicalDay(data, displayDate) {
 function esc(s) { return String(s).replace(/'/g,"\\'").replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
 // ── READING MODAL ────────────────────────────────────────────
-function openReadingModal(ref, type, url) {
-  document.getElementById('rm-title').textContent = type + ' Reading';
-  document.getElementById('rm-ref').textContent = ref;
-  document.getElementById('rm-text').textContent = 'Full passage text coming soon. Click below to read the complete chapter at BibleGateway.';
-  document.getElementById('rm-translation').textContent = 'Orthodox Study Bible (OSB) · New King James Version';
-  document.getElementById('rm-full-link').href = url;
+var LDAY_BOOK_IDS = {
+  'genesis':'GEN','exodus':'EXO','leviticus':'LEV','numbers':'NUM','deuteronomy':'DEU',
+  'joshua':'JOS','judges':'JDG','ruth':'RUT','1 samuel':'1SA','2 samuel':'2SA',
+  '1 kings':'1KI','2 kings':'2KI','1 chronicles':'1CH','2 chronicles':'2CH',
+  'ezra':'EZR','nehemiah':'NEH','esther':'EST','job':'JOB','psalms':'PSA','psalm':'PSA',
+  'proverbs':'PRO','ecclesiastes':'ECC','isaiah':'ISA','jeremiah':'JER',
+  'lamentations':'LAM','ezekiel':'EZK','daniel':'DAN','hosea':'HOS','joel':'JOL',
+  'amos':'AMO','obadiah':'OBA','jonah':'JON','micah':'MIC','nahum':'NAM',
+  'habakkuk':'HAB','zephaniah':'ZEP','haggai':'HAG','zechariah':'ZEC','malachi':'MAL',
+  'tobit':'TOB','judith':'JDT','wisdom':'WIS','sirach':'SIR','baruch':'BAR',
+  '1 maccabees':'1MA','2 maccabees':'2MA',
+  'matthew':'MAT','mark':'MRK','luke':'LUK','john':'JHN','acts':'ACT',
+  'romans':'ROM','1 corinthians':'1CO','2 corinthians':'2CO','galatians':'GAL',
+  'ephesians':'EPH','philippians':'PHP','colossians':'COL',
+  '1 thessalonians':'1TH','2 thessalonians':'2TH','1 timothy':'1TI','2 timothy':'2TI',
+  'titus':'TIT','philemon':'PHM','hebrews':'HEB','james':'JAS',
+  '1 peter':'1PE','2 peter':'2PE','1 john':'1JO','2 john':'2JO','3 john':'3JO',
+  'jude':'JUD','revelation':'REV'
+};
+function refToBibleLink(ref) {
+  var lower = ref.toLowerCase();
+  var keys = Object.keys(LDAY_BOOK_IDS).sort(function(a,b){return b.length-a.length;});
+  for (var i=0; i<keys.length; i++) {
+    var idx = lower.indexOf(keys[i]);
+    if (idx !== -1) {
+      var after = ref.slice(idx+keys[i].length).trim();
+      var m = after.match(/^(\d+)/);
+      if (m) return 'bible-reader.html?book='+LDAY_BOOK_IDS[keys[i]]+'&chapter='+m[1];
+    }
+  }
+  return null;
+}
+function openReadingModal(r) {
+  document.getElementById('rm-title').textContent = r.type + ' Reading';
+  document.getElementById('rm-ref').textContent = r.ref;
+  document.getElementById('rm-text').textContent = r.text || '';
+  document.getElementById('rm-translation').textContent = r.isOT
+    ? 'Old Testament · Septuagint (LXX) · GOA Lectionary'
+    : 'New Testament · GOA Lectionary';
+  var link = refToBibleLink(r.ref);
+  var fullLink = document.getElementById('rm-full-link');
+  fullLink.href = link || '#';
+  fullLink.style.display = link ? '' : 'none';
   document.getElementById('reading-modal').classList.add('open');
 }
 function closeReadingModal() {
@@ -1233,6 +1278,14 @@ document.addEventListener('DOMContentLoaded', function() {
   resetQTimer();
   loadLiturgicalDay();   // engine init happens inside this
   initFadeIn();
+
+  // Event delegation for reading buttons (avoids inline onclick on dynamic HTML)
+  document.getElementById('ldayCard').addEventListener('click', function(e) {
+    var btn = e.target.closest('[data-reading-idx]');
+    if (!btn) return;
+    var r = window._ldayReadings && window._ldayReadings[btn.getAttribute('data-reading-idx')];
+    if (r) openReadingModal(r);
+  });
 });
 </script>
 
