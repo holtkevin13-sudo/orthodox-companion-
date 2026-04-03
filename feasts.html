@@ -838,7 +838,7 @@ function fmtName(k) {
 function buildCard(key, f, isPascha) {
   var cardClass = isPascha ? 'feast-card pascha-card' : 'feast-card';
   var topicUrl = 'topics.html?topic=' + f.primary_topic;
-  var html = '<div class="'+cardClass+'" data-key="'+key+'">';
+  var html = '<div class="'+cardClass+'" data-key="'+key+'" data-feast-id="'+key+'" data-feast-name="'+f.name+'">';
   html += '<div class="feast-name">'+f.name+'</div>';
   html += '<div class="feast-greek-full">'+f.full_greek_name+'</div>';
   html += '<div class="feast-desc">'+f.description.substring(0,150)+'&hellip;</div>';
@@ -996,7 +996,7 @@ function render() {
       var f = FEASTS[key];
       var topicUrl = GREEK_TOPICS[f.primary_greek_term] || ('topics.html?topic=' + f.primary_topic);
       // Use data attribute to avoid onclick quote issues
-      html += '<div class="feast-card" data-key="' + key + '">';
+      html += '<div class="feast-card" data-key="' + key + '" data-feast-id="' + key + '" data-feast-name="' + f.name + '">';
       html += '<div class="feast-name">' + fmtName(key) + '</div>';
       html += '<div class="feast-greek">' + f.primary_greek_term + '</div>';
       html += '<div class="feast-desc">' + f.description.substring(0, 140) + '&hellip;</div>';
