@@ -596,7 +596,7 @@ function renderContent() {
   topicsToShow.forEach(function(e) {
     var key = e[0], t = e[1];
     var cat = CATS[t.category] || {};
-    html += '<div class="topic-list-item" data-topic="' + key + '">';
+    html += '<div class="topic-list-item" data-topic="' + key + '" data-topic-id="' + key + '" data-topic-name="' + (t.label || key) + '">';
     html += '<span class="topic-list-name">' + (t.label || key) + '</span>';
     html += '<span class="topic-list-cat">' + (cat.label || t.category || '') + '</span>';
     html += '</div>';
@@ -626,7 +626,7 @@ function renderContent() {
 
 function renderCard(key, t) {
   var related = (t.related || []).filter(function(r) { return r !== key && TOPICS[r]; }).slice(0, 3);
-  var html = '<div class="topic-card" data-topic="' + key + '">';
+  var html = '<div class="topic-card" data-topic="' + key + '" data-topic-id="' + key + '" data-topic-name="' + (t.label || key) + '">';
   html += '<div class="topic-name">' + (t.label || key) + '</div>';
   html += '<div class="topic-desc">' + (t.description || '').substring(0, 100) + '&hellip;</div>';
   if (related.length) {
