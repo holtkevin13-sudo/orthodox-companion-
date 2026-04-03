@@ -180,6 +180,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
 }
 
+/* ── Back to Top ─────────────────────────────────── */
+#backToTop{position:fixed;bottom:28px;right:24px;z-index:700;
+  width:40px;height:40px;border-radius:2px;
+  background:var(--dark);border:1px solid var(--gold-dim);
+  color:var(--gold-light);font-size:1.2rem;line-height:1;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s;}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.15);}
+
 </style>
 <meta property="og:title" content="About Orthodox Companion"/>
 <meta property="og:description" content="About Orthodox Companion — a free independent resource for Orthodox Christian faith and theology grounded in the patristic tradition."/>
@@ -533,6 +544,13 @@ function scrollToSection(id){
 
 document.addEventListener('DOMContentLoaded',function(){
   initAccountNav();
+  // Back to top
+  var btn=document.getElementById('backToTop');
+  if(btn){
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('visible',window.scrollY>400);
+    },{passive:true});
+  }
   // Handle hash scrolling
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
@@ -546,5 +564,6 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth-nav.js"></script>
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 </body>
 </html>
