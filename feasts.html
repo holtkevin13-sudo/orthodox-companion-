@@ -399,6 +399,10 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',n);
   localStorage.setItem('oc_theme',n);
 }
+(function(){
+  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  document.documentElement.setAttribute('data-theme',t);
+})();
 
 // Nav drawer
 var _drawerOpen=false;
@@ -946,6 +950,76 @@ document.addEventListener('DOMContentLoaded', render);
 
 </script>
 
+
+</body>
+</html>, "nativity_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "logos", "description": "The Nativity celebrates the birth in the flesh of the eternal Word of God, the Logos, who becomes man for the salvation of the world."}, "holy_theophany": {"primary_topic": "trinity", "primary_greek_term": "theophania", "description": "The Baptism of Christ in the Jordan reveals the Holy Trinity: the Father speaks, the Son is baptized, and the Holy Spirit descends like a dove."}, "transfiguration_of_christ": {"primary_topic": "hesychast_controversy", "primary_greek_term": "energeia", "description": "The Transfiguration manifests the uncreated divine glory of Christ, revealing the divine energies shining through His human nature."}, "presentation_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "enanthropesis", "description": "The Presentation reveals the incarnate Christ entering the Temple in obedience to the Law, where Simeon recognizes Him as the promised Messiah and light of the nations."}, "palm_sunday": {"primary_topic": "eschatology", "primary_greek_term": "christos", "description": "Palm Sunday reveals Christ as the Messiah and King who enters Jerusalem in humility before His saving Passion."}, "holy_pascha": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Pascha celebrates the Resurrection of Christ, the victory over death and the foundation of Christian salvation."}, "holy_ascension": {"primary_topic": "incarnation", "primary_greek_term": "analepsis", "description": "The Ascension reveals Christ exalted and enthroned in glory, lifting human nature into the life of God."}, "holy_pentecost": {"primary_topic": "holy_spirit", "primary_greek_term": "pneuma", "description": "Pentecost reveals the descent of the Holy Spirit upon the Church, completing the revelation of the Holy Trinity and empowering the apostolic mission."}, "dormition_of_the_theotokos": {"primary_topic": "resurrection", "primary_greek_term": "koimesis", "description": "The Dormition proclaims the falling asleep of the Theotokos and her participation in the resurrectional hope promised by Christ."}, "nativity_of_the_theotokos": {"primary_topic": "incarnation", "primary_greek_term": "theotokos", "description": "The Nativity of the Theotokos marks the beginning of the preparation for the Incarnation, through whom the Savior will enter the world."}, "entrance_of_the_theotokos": {"primary_topic": "theotokos", "primary_greek_term": "naos", "description": "The Entrance of the Theotokos reveals her dedication to God and her role as the living Temple who will bear the incarnate Word."}, "elevation_of_the_holy_cross": {"primary_topic": "atonement", "primary_greek_term": "stauros", "description": "The Elevation of the Holy Cross celebrates the victory of Christ\u2019s Cross as the instrument of salvation and the triumph over death."}, "circumcision_of_christ": {"primary_topic": "incarnation", "primary_greek_term": "sarx", "description": "The Circumcision of Christ reveals the true Incarnation of the Word, who assumes real human flesh and submits to the Law in obedience for the salvation of mankind."}, "sunday_of_orthodoxy": {"primary_topic": "icons", "primary_greek_term": "enanthropesis", "description": "The Sunday of Orthodoxy proclaims the victory of the holy icons and the truth of the Incarnation, for the Word truly became visible flesh and may therefore be depicted."}, "sunday_of_st_gregory_palamas": {"primary_topic": "theosis", "primary_greek_term": "theosis", "description": "The Sunday of St. Gregory Palamas proclaims humanity's participation in the divine life through grace, revealing the path of theosis through communion with God."}, "sunday_of_the_holy_cross": {"primary_topic": "atonement", "primary_greek_term": "stauros", "description": "The Sunday of the Holy Cross sets the life-giving Cross before the faithful as the sign of Christ's victory and the strengthening of the Church in the midst of the Fast."}, "sunday_of_st_john_climacus": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "The Sunday of St. John Climacus calls the faithful to ascetical vigilance, spiritual struggle, and steady ascent toward communion with God."}, "sunday_of_st_mary_of_egypt": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of St. Mary of Egypt proclaims the transforming power of repentance and the mercy of God shown in radical conversion and holiness of life."}, "lazarus_saturday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Lazarus Saturday reveals Christ as Lord over death and serves as the resurrectional prelude to Holy Week and Pascha."}, "holy_monday": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "Holy Monday calls the faithful to vigilance, repentance, and readiness for the coming Bridegroom."}, "holy_tuesday": {"primary_topic": "hesychasm", "primary_greek_term": "nepsis", "description": "Holy Tuesday emphasizes spiritual vigilance, wisdom, and readiness for the Kingdom through the parables proclaimed in the services."}, "holy_wednesday": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "Holy Wednesday sets before the Church the contrast between repentance and betrayal, calling the faithful to compunction and return to Christ."}, "holy_thursday": {"primary_topic": "eucharist", "primary_greek_term": "eucharistia", "description": "Holy Thursday commemorates the Mystical Supper, the institution of the Eucharist, and Christ\u2019s self-offering in love."}, "holy_friday": {"primary_topic": "atonement", "primary_greek_term": "staurosis", "description": "Holy Friday contemplates the saving Passion and Crucifixion of Christ, by which He offers Himself for the life of the world."}, "holy_saturday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Holy Saturday proclaims Christ\u2019s descent into Hades, the harrowing of death, and the hidden triumph that prepares the revelation of Pascha."}, "thomas_sunday": {"primary_topic": "resurrection", "primary_greek_term": "anastasis", "description": "Thomas Sunday confirms the truth of the Resurrection and reveals the risen Christ who strengthens faith through His presence."}, "all_saints_sunday": {"primary_topic": "theosis", "primary_greek_term": "theosis", "description": "All Saints Sunday manifests the fruit of Pentecost in the sanctification of human persons and the glory of communion with God."}, "sunday_of_the_publican_and_pharisee": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of the Publican and Pharisee reveals that true prayer is born from humility, not self-righteousness. The publican's cry of compunction \u2014 'God, be merciful to me a sinner' \u2014 is the model of Orthodox repentance."}, "sunday_of_the_prodigal_son": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "The Sunday of the Prodigal Son proclaims the inexhaustible mercy of the Father who runs to receive the returning sinner, revealing that repentance is always possible and divine love is always waiting."}, "sunday_of_last_judgment": {"primary_topic": "last_judgment", "primary_greek_term": "krisis", "description": "The Sunday of the Last Judgment sets before the Church the final reckoning \u2014 judged by love shown to Christ in the poor, the stranger, and the suffering. Matthew 25 is the lens through which all Christian life is measured."}, "sunday_of_forgiveness": {"primary_topic": "repentance", "primary_greek_term": "metanoia", "description": "Forgiveness Sunday opens the Great Fast with the mutual reconciliation of all the faithful. As we enter Lent, we ask and grant forgiveness, re-enacting in a small way the mercy of God by which the fast itself becomes possible."}};
+var GROUPS = {"Great Feasts of the Lord": ["nativity_of_christ", "holy_theophany", "presentation_of_christ", "transfiguration_of_christ", "elevation_of_the_holy_cross", "holy_ascension", "holy_pentecost"], "Feasts of the Theotokos": ["annunciation_of_the_theotokos", "nativity_of_the_theotokos", "entrance_of_the_theotokos", "dormition_of_the_theotokos"], "The Paschal Cycle": ["palm_sunday", "holy_monday", "holy_tuesday", "holy_wednesday", "holy_thursday", "holy_friday", "holy_saturday", "holy_pascha", "thomas_sunday", "all_saints_sunday", "lazarus_saturday"], "Triodion Sundays": ["sunday_of_the_publican_and_pharisee", "sunday_of_the_prodigal_son", "sunday_of_last_judgment", "sunday_of_forgiveness", "sunday_of_orthodoxy", "sunday_of_st_gregory_palamas", "sunday_of_the_holy_cross", "sunday_of_st_john_climacus", "sunday_of_st_mary_of_egypt"], "Other Feasts": ["circumcision_of_christ"]};
+var GREEK_TOPICS = {"anastasis": "topics.html?topic=resurrection", "theosis": "topics.html?topic=theosis", "logos": "topics.html?topic=incarnation", "pneuma": "topics.html?topic=holy_spirit", "metanoia": "topics.html?topic=repentance", "enanthropesis": "topics.html?topic=incarnation", "energeia": "topics.html?topic=hesychast_controversy", "stauros": "topics.html?topic=atonement", "eucharistia": "topics.html?topic=eucharist", "nepsis": "topics.html?topic=hesychasm", "koimesis": "topics.html?topic=dormition", "theotokos": "topics.html?topic=theotokos", "theophania": "topics.html?topic=trinity", "christos": "topics.html?topic=eschatology", "analepsis": "topics.html?topic=incarnation", "krisis": "topics.html?topic=last_judgment", "sarx": "topics.html?topic=incarnation"};
+
+// Store keys for onclick access
+var FEAST_KEYS = Object.keys(FEASTS);
+
+function fmtName(k) {
+  return k.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+}
+
+function openFeast(key) {
+  var f = FEASTS[key];
+  if (!f) return;
+  document.getElementById('fm-title').textContent = fmtName(key);
+  document.getElementById('fm-greek').textContent = 'Greek: ' + f.primary_greek_term;
+  document.getElementById('fm-topic').textContent = 'Primary Topic: ' + f.primary_topic.replace(/_/g, ' ');
+  document.getElementById('fm-desc').textContent = f.description;
+  var topicUrl = GREEK_TOPICS[f.primary_greek_term] || ('topics.html?topic=' + f.primary_topic);
+  document.getElementById('fm-links').innerHTML =
+    '<a href="' + topicUrl + '" class="fm-link">Study this topic</a>' +
+    '<a href="glossary.html#term-' + f.primary_greek_term + '" class="fm-link">Greek term</a>' +
+    '<a href="calendar.html" class="fm-link">View in calendar</a>' +
+    '<a href="chatbot.html?q=' + encodeURIComponent('Tell me about ' + fmtName(key)) + '" class="fm-link">Ask Companion</a>';
+  document.getElementById('feast-modal').classList.add('open');
+}
+
+function closeModal() { document.getElementById('feast-modal').classList.remove('open'); }
+document.getElementById('feast-modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+function render() {
+  var html = '';
+  var groupKeys = Object.keys(GROUPS);
+  for (var gi = 0; gi < groupKeys.length; gi++) {
+    var group = groupKeys[gi];
+    var keys = GROUPS[group].filter(function(k) { return FEASTS[k]; });
+    if (!keys.length) continue;
+    html += '<div class="feast-group"><div class="feast-group-title">' + group + '</div><div class="feast-grid">';
+    for (var ki = 0; ki < keys.length; ki++) {
+      var key = keys[ki];
+      var f = FEASTS[key];
+      var topicUrl = GREEK_TOPICS[f.primary_greek_term] || ('topics.html?topic=' + f.primary_topic);
+      // Use data attribute to avoid onclick quote issues
+      html += '<div class="feast-card" data-key="' + key + '">';
+      html += '<div class="feast-name">' + fmtName(key) + '</div>';
+      html += '<div class="feast-greek">' + f.primary_greek_term + '</div>';
+      html += '<div class="feast-desc">' + f.description.substring(0, 140) + '&hellip;</div>';
+      html += '<a href="' + topicUrl + '" class="feast-topic-link" onclick="event.stopPropagation()">' + f.primary_topic.replace(/_/g, ' ') + '</a>';
+      html += '</div>';
+    }
+    html += '</div></div>';
+  }
+  var el = document.getElementById('feastContent');
+  el.innerHTML = html;
+  // Add click handlers via event delegation
+  el.addEventListener('click', function(e) {
+    var card = e.target.closest('.feast-card');
+    if (card && !e.target.closest('.feast-topic-link')) {
+      openFeast(card.dataset.key);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', render);
+
+</script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="/analytics-tracker.js"></script>
 </body>
 </html>
