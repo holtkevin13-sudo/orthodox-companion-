@@ -699,7 +699,469 @@ var CATS=['books','patristic','podcasts','websites'];
      linkLabel: 'string'
    }
 ──────────────────────────────────────────────────────── */
-var RESOURCES=[];
+var RESOURCES=[
+
+/* ═══ BOOKS — INQUIRER ══════════════════════════════ */
+{id:'orthodox-church-ware',title:'The Orthodox Church',author:'Metropolitan Kallistos Ware',
+ category:'books',audience:['inquirer'],nature:['pastoral','historical'],topic:['tradition-doctrine'],
+ synopsis:'The single most trusted introduction to Orthodox Christianity in the English language. Metropolitan Kallistos guides the reader through the history, theology, and worship of the Church with clarity, charity, and depth. Begin here \u2014 and return to it often as you grow in the faith.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'orthodox-way-ware',title:'The Orthodox Way',author:'Metropolitan Kallistos Ware',
+ category:'books',audience:['inquirer','catechumen'],nature:['theological','devotional'],topic:['theosis','spiritual-life'],
+ synopsis:'Where The Orthodox Church introduces the tradition, The Orthodox Way opens the door to its inner life. Metropolitan Kallistos traces the journey toward God through prayer, Scripture, and the Fathers \u2014 showing that Orthodoxy is not a system to be understood but a life to be entered. A natural second step.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'introducing-orthodox-coniaris',title:'Introducing the Orthodox Church',author:'Anthony Coniaris',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['tradition-doctrine'],
+ synopsis:'One of the most warm and accessible introductions to Orthodox faith and life. Fr. Anthony writes as a pastor to someone sitting across from him \u2014 practical, grounded, and gentle. Especially helpful for those coming to Orthodoxy without prior Christian formation.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'journey-to-reality-porcu',title:'Journey to Reality',author:'Zachary Porcu',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['tradition-doctrine'],
+ synopsis:'A contemporary guide to Orthodox Christianity written especially for those coming from secular or Protestant backgrounds. Porcu navigates the questions modern seekers actually ask \u2014 with clarity, personal honesty, and a thorough grounding in the Tradition.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'life-of-world-schmemann',title:'For the Life of the World',author:'Fr. Alexander Schmemann',
+ category:'books',audience:['inquirer','catechumen'],nature:['theological','liturgical'],topic:['sacraments','liturgy'],
+ synopsis:'Perhaps the most important single book for understanding the Orthodox sacramental vision of existence. Fr. Schmemann shows that the Liturgy is not an activity Christians do \u2014 it is the lens through which all of creation is seen rightly, offered back to God, and transformed into Eucharist. Accessible, luminous, and impossible to forget.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'becoming-orthodox-gillquist',title:'Becoming Orthodox',author:'Peter E. Gillquist',
+ category:'books',audience:['inquirer'],nature:['historical','pastoral'],topic:['tradition-doctrine'],
+ synopsis:'The true account of how a community of two thousand Evangelical pastors and families searched for the early Church and found Orthodoxy. A compelling read for anyone coming from Protestant Christianity \u2014 a reminder that the journey into the Church has always been driven by desire for the fullness of the Apostolic faith.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'celebration-of-faith-schmemann',title:'Celebration of Faith (3 vols.)',author:'Fr. Alexander Schmemann',
+ category:'books',audience:['inquirer'],nature:['devotional','pastoral'],topic:['spiritual-life'],
+ synopsis:'Three volumes of Schmemann\'s broadcast homilies \u2014 warm, luminous, and instantly accessible. This is Schmemann at his most human: preaching on feasts, seasons, and the rhythms of the Christian life. The easiest entry point into his vision for those not yet ready for his more theological works.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'everyday-saints-tikhon',title:'Everyday Saints',author:'Archimandrite Tikhon Shevkunov',
+ category:'books',audience:['inquirer','catechumen'],nature:['pastoral','devotional'],topic:['saints-fathers'],
+ synopsis:'Stories of monastic life in Soviet Russia that have captivated millions of readers across the Orthodox world. Archimandrite Tikhon writes with humor, tenderness, and profound faith \u2014 revealing how the saints live in the midst of ordinary, difficult, sometimes absurd human life. A window into Orthodoxy as living reality, not historical artifact.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'welcome-orthodox-mathewes-green',title:'Welcome to the Orthodox Church',author:'Frederica Mathewes-Green',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['tradition-doctrine'],
+ synopsis:'Frederica Mathewes-Green accompanies the reader through an entire liturgical year in a fictional Orthodox parish \u2014 introducing the services, the seasons, the sacraments, and the theological vision of the Church through the eyes of a newcomer. A warm, honest, and deeply personal guide for those standing at the threshold.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — CATECHUMEN: DOCTRINE ═════════════════ */
+{id:'know-the-faith-shanbour',title:'Know the Faith',author:'Fr. Michael Shanbour',
+ category:'books',audience:['catechumen'],nature:['theological'],topic:['tradition-doctrine','sacraments'],
+ synopsis:'A clear, comprehensive, and accessible Orthodox catechism covering the Creed, the sacraments, the Church, and the moral life. Fr. Shanbour writes with precision and pastoral warmth, making complex doctrine genuinely intelligible. The most practical Orthodox catechism available in English for parish use.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'religion-of-apostles-deyoung',title:'The Religion of the Apostles',author:'Fr. Stephen De Young',
+ category:'books',audience:['catechumen'],nature:['theological','historical'],topic:['tradition-doctrine','scripture'],
+ synopsis:'Fr. De Young makes a compelling and thoroughly documented case that Orthodox Christianity is the direct continuation of Second Temple Jewish Christianity \u2014 not a later development, but the original faith of the Apostles. Essential and eye-opening for anyone shaped by the Reformation\'s reading of the New Testament.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'thinking-orthodox-constantinou',title:'Thinking Orthodox',author:'Jeannie Constantinou',
+ category:'books',audience:['catechumen'],nature:['theological','pastoral'],topic:['tradition-doctrine'],
+ synopsis:'Dr. Constantinou explores what it means to have the Orthodox phronema \u2014 the Orthodox mind \u2014 and what distinguishes Orthodox thinking from Western theological assumptions. Not just a book about ideas, but a guide to seeing the world, Scripture, and the life of the Church through the eyes of the Tradition.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — CATECHUMEN: SPIRITUAL LIFE ═══════════ */
+{id:'way-of-ascetics-colliander',title:'Way of the Ascetics',author:'Tito Colliander',
+ category:'books',audience:['catechumen'],nature:['devotional'],topic:['spiritual-life','fasting','prayer'],
+ synopsis:'A slim, quietly essential guide to Orthodox ascetical life. Colliander writes on fasting, prayer, watchfulness, and the struggle against the passions with economy and depth \u2014 every sentence earns its place. A natural companion to the prayer rule and the fasting calendar for those beginning to take the inner life seriously.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'unseen-warfare-nicodemus',title:'Unseen Warfare',author:'St. Nicodemus of the Holy Mountain & St. Theophan the Recluse',
+ category:'books',audience:['catechumen','faithful'],nature:['theological','devotional'],topic:['spiritual-life'],
+ synopsis:'The classic Orthodox manual for the spiritual combat \u2014 the struggle against the passions, the enemy, and one\'s own fallen nature. A foundational text for anyone seeking to understand the inner war that underlies the Christian life.',
+ caveat:'Best approached after establishing a regular prayer rule, under the guidance of a confessor.',
+ link:'',linkLabel:''},
+
+{id:'renewing-you-louh',title:'Renewing You',author:'Fr. Nick Louh',
+ category:'books',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life'],
+ synopsis:'A guide to Orthodox spiritual renewal written by a parish priest from within the realities of American Orthodox life. Fr. Nick writes with pastoral directness and genuine care \u2014 grounded in the Tradition but attentive to the struggles of everyday Christians.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'beginning-to-pray-bloom',title:'Beginning to Pray',author:'Metropolitan Anthony Bloom',
+ category:'books',audience:['inquirer','catechumen'],nature:['devotional','pastoral'],topic:['prayer'],
+ synopsis:'One of the most beloved books on prayer in the English language. Metropolitan Anthony speaks from lived experience of prayer \u2014 not theory \u2014 with disarming honesty about the difficulties, the silences, and the unexpected moments of encounter. Read it slowly, one chapter at a time.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'way-of-pilgrim',title:'The Way of the Pilgrim',author:'Anonymous (19th century, Russia)',
+ category:'books',audience:['catechumen'],nature:['devotional'],topic:['prayer'],
+ synopsis:'The account of a wandering Russian pilgrim who learns to pray the Jesus Prayer without ceasing \u2014 a deceptively simple book with inexhaustible depth. It brings the teaching of the Philokalia into the life of an ordinary Christian. A treasury for anyone beginning to pray.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'beginners-guide-spirituality-keiser',title:'A Beginner\'s Guide to Spirituality',author:'Fr. Michael Keiser',
+ category:'books',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life','prayer'],
+ synopsis:'A gentle and practical introduction to Orthodox spiritual life for those just beginning the journey of prayer and inner transformation. Fr. Michael writes with the care of an experienced pastor \u2014 accessible, encouraging, and thoroughly grounded in the Tradition.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'jesus-prayer-gillet',title:'The Jesus Prayer',author:'Fr. Lev Gillet (A Monk of the Eastern Church)',
+ category:'books',audience:['catechumen','faithful'],nature:['theological','devotional'],topic:['prayer'],
+ synopsis:'The standard accessible treatment of the Jesus Prayer \u2014 its theology, its history, and its practice within the hesychast tradition. Fr. Lev Gillet writes with deep spiritual sensitivity and theological precision, making this the ideal guide for anyone being introduced to the prayer of the heart.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — CATECHUMEN: FORMATION ════════════════ */
+{id:'from-object-to-icon-williams',title:'From Object to Icon',author:'Andrew Williams',
+ category:'books',audience:['catechumen'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'A thoughtful exploration of the Orthodox theology of the image \u2014 how the visible world reveals the invisible reality of God, and how the spiritual vision is formed or deformed by what we attend to. A challenging and rewarding read for those beginning to think seriously about the inner life in a distracted world.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'gurus-young-man-paisios-farasiotis',title:'The Gurus, the Young Man, and Elder Paisios',author:'Dionysios Farasiotis',
+ category:'books',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life'],
+ synopsis:'A gripping personal account of spiritual deception and deliverance \u2014 the true story of a young man who sought spiritual experience in Eastern religions and encountered the Orthodox elder St. Paisios. Essential reading for those coming to Orthodoxy from Eastern, New Age, or occult backgrounds.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — CATECHUMEN: LITURGICAL ═══════════════ */
+{id:'lenten-spring-hopko',title:'Lenten Spring',author:'Fr. Thomas Hopko',
+ category:'books',audience:['catechumen'],nature:['liturgical','devotional'],topic:['liturgy','fasting'],
+ synopsis:'A day-by-day guide to Great Lent \u2014 its services, its Scripture readings, its theology, and its spiritual meaning. Fr. Hopko writes with characteristic clarity and directness, making this the most practical and spiritually nourishing companion for navigating the Great Fast.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'great-lent-schmemann',title:'Great Lent',author:'Fr. Alexander Schmemann',
+ category:'books',audience:['catechumen'],nature:['theological','liturgical'],topic:['liturgy','fasting'],
+ synopsis:'Schmemann\'s theological guide to the Great Fast \u2014 a profound meditation on what Great Lent is for: the annual journey of the Church toward Pascha and the renewal of the baptismal life. Read it before Lent begins, not during.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'meditations-holy-week-papavassiliou',title:'Meditations for Holy Week',author:'Vassilios Papavassiliou',
+ category:'books',audience:['catechumen','faithful'],nature:['liturgical','devotional'],topic:['liturgy'],
+ synopsis:'A profound guide to the services of Holy Week \u2014 opening the inexhaustible theological depth of the Church\'s most sacred days. Papavassiliou takes the reader through each day\'s hymnody with care and reverence, showing how the Church\'s poetry carries the full weight of the Paschal mystery.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'orthodox-worship-williams-anstall',title:'Orthodox Worship',author:'Benjamin Williams & Harold Anstall',
+ category:'books',audience:['catechumen'],nature:['theological','liturgical'],topic:['liturgy','scripture'],
+ synopsis:'A clear and compelling treatment of how Orthodox worship grows organically from the Temple, the synagogue, and the whole sweep of salvation history. Shows that the Divine Liturgy is not a later invention but the fulfillment of all that preceded it in Scripture.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — THE FAITHFUL ══════════════════════════ */
+{id:'ladder-divine-ascent-climacus',title:'The Ladder of Divine Ascent',author:'St. John Climacus',
+ category:'books',audience:['faithful'],nature:['theological','devotional'],topic:['spiritual-life','prayer'],
+ synopsis:'The thirty steps of the spiritual life \u2014 read in Orthodox monasteries throughout Great Lent for fifteen centuries. St. John Climacus writes with the authority of a lifetime of spiritual combat. Not a book to be read quickly, but to be returned to throughout the Christian life.',
+ caveat:'Best approached with humility and ideally with guidance from a confessor.',
+ link:'',linkLabel:''},
+
+{id:'our-thoughts-elder-thaddeus',title:'Our Thoughts Determine Our Lives',author:'Elder Thaddeus of Vitovnica',
+ category:'books',audience:['faithful'],nature:['devotional','pastoral'],topic:['spiritual-life','prayer'],
+ synopsis:'Simple, radiant wisdom from a Serbian elder on inner peace, prayer, the passions, and the life of grace. Elder Thaddeus speaks from the depths of a life hidden in God \u2014 accessible, warm, and quietly transforming. Begin with this before attempting more demanding ascetical texts.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'mountain-of-silence-markides',title:'Mountain of Silence',author:'Kyriacos C. Markides',
+ category:'books',audience:['catechumen','faithful'],nature:['historical','pastoral'],topic:['spiritual-life'],
+ synopsis:'A Western sociologist encounters the living hesychast tradition in Cyprus and on Mount Athos. Markides writes with genuine openness and intellectual honesty \u2014 a real encounter with the Orthodox mystical tradition through conversation with living elders. A beautiful bridge between intellectual inquiry and lived Orthodox spirituality.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'6-hours-7-lessons-louh',title:'6 Hours, 7 Lessons',author:'Fr. Nicholas G. Louh',
+ category:'books',audience:['catechumen','faithful'],nature:['devotional','pastoral'],topic:['christology'],
+ synopsis:'A pastoral meditation on the seven words of Christ from the Cross \u2014 weaving patristic theology, personal reflection, and the Church\'s Christological tradition into a profound extended meditation on the Crucifixion. A natural companion to Holy Friday and the services of Holy Week.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'philokalia-four-vols',title:'The Philokalia (4 vols.)',author:'Various Holy Fathers',
+ category:'books',audience:['faithful'],nature:['theological','devotional'],topic:['prayer','theosis','saints-fathers'],
+ synopsis:'The greatest treasury of Orthodox mystical and ascetical theology \u2014 writings on prayer, watchfulness, the passions, and theosis from the 4th through 15th centuries. The foundation of the hesychast tradition. Not a book to be read cover to cover but to be entered gradually, over a lifetime.',
+ caveat:'Best approached after establishing a firm foundation in the prayer rule and the sacramental life, ideally under the guidance of a spiritual father. Not for beginners.',
+ link:'',linkLabel:''},
+
+{id:'wounded-by-love-porphyrios',title:'Wounded by Love',author:'Elder Porphyrios',
+ category:'books',audience:['faithful'],nature:['devotional'],topic:['spiritual-life','prayer'],
+ synopsis:'The spiritual autobiography and teachings of Elder Porphyrios of Athens \u2014 one of the most beloved Orthodox elders of the twentieth century. His words carry the simplicity and luminosity of a life wholly given to God. Read it slowly, and let the joy that radiates from every page do its work.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'st-silouan-sophrony',title:'St. Silouan the Athonite',author:'Archimandrite Sophrony',
+ category:'books',audience:['faithful'],nature:['theological','devotional'],topic:['spiritual-life','theosis'],
+ synopsis:'The life and writings of St. Silouan, presented by his disciple Archimandrite Sophrony Sakharov. Widely regarded as one of the most important Orthodox spiritual texts of the twentieth century. St. Silouan\'s teaching on humility, love for enemies, and keeping the mind in hell while not despairing has become a touchstone of contemporary Orthodox spirituality.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'mystical-theology-lossky',title:'The Mystical Theology of the Eastern Church',author:'Vladimir Lossky',
+ category:'books',audience:['faithful'],nature:['theological'],topic:['theosis','tradition-doctrine'],
+ synopsis:'Lossky\'s landmark synthesis of Orthodox apophatic theology, the essence-energies distinction, and the life of prayer \u2014 the foundational modern treatment of Orthodox mystical theology. Dense and demanding, but irreplaceable for those who wish to understand the theological foundations of the hesychast tradition and the Orthodox vision of theosis.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'eucharist-sacrament-kingdom-schmemann',title:'The Eucharist: Sacrament of the Kingdom',author:'Fr. Alexander Schmemann',
+ category:'books',audience:['faithful'],nature:['theological','liturgical'],topic:['sacraments','liturgy'],
+ synopsis:'Schmemann\'s most theologically dense work \u2014 a sustained commentary on the Divine Liturgy revealing its inner vision of the Kingdom of God. Every movement, every prayer, every act of the Liturgy is shown to be a participation in the eschatological reality already present in the Church. Essential for the serious Orthodox Christian.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'meaning-of-icons-ouspensky-lossky',title:'The Meaning of Icons',author:'Leonid Ouspensky & Vladimir Lossky',
+ category:'books',audience:['faithful'],nature:['theological','historical'],topic:['tradition-doctrine'],
+ synopsis:'The standard scholarly treatment of Orthodox icon theology \u2014 covering the history, theology, and spiritual significance of sacred images. Ouspensky and Lossky write with complementary gifts: one as a practicing iconographer, the other as a theologian. The essential reference for understanding why the Church venerates icons.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'prologue-of-ohrid-velimirovic',title:'The Prologue of Ohrid (4 vols.)',author:'St. Nikolai Velimirovic',
+ category:'books',audience:['faithful'],nature:['devotional'],topic:['saints-fathers'],
+ synopsis:'A four-volume daily reader of saints\' lives, homilies, reflections, and prayers \u2014 one entry for each day of the year, by one of the greatest Orthodox theologian-saints of the twentieth century. Not intended to be read cover to cover but to be lived with: one day\'s entry, read slowly, over a lifetime.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'on-marriage-family-chrysostom',title:'On Marriage and Family Life',author:'St. John Chrysostom (SVS Press)',
+ category:'books',audience:['faithful'],nature:['pastoral','theological'],topic:['family-life','tradition-doctrine'],
+ synopsis:'A curated collection of Chrysostom\'s homilies on Christian marriage, the household, and the formation of children. The patristic foundation of the Orthodox theology of the family, written with the pastoral urgency and rhetorical power that has made Chrysostom the Church\'s preacher par excellence.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'orthodox-dogmatic-theology-pomazansky',title:'Orthodox Dogmatic Theology',author:'Fr. Michael Pomazansky',
+ category:'books',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'The standard Orthodox systematic theology in English \u2014 comprehensive, rigorous, and canonically precise. An essential reference for serious theological study, best used alongside primary patristic sources rather than as a standalone textbook.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'divine-energy-afp',title:'Divine Energy',author:'Ancient Faith Publishing',
+ category:'books',audience:['faithful'],nature:['theological'],topic:['theosis'],
+ synopsis:'An Orthodox exploration of the uncreated energies and theosis \u2014 the living and transforming relationship between God and the human person, as understood in the patristic and hesychast tradition.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'sayings-desert-fathers',title:'Sayings of the Desert Fathers',author:'The Abbas of Egypt (4th\u20135th century)',
+ category:'books',audience:['faithful'],nature:['devotional'],topic:['spiritual-life','saints-fathers'],
+ synopsis:'The collected wisdom of the great Egyptian monastics \u2014 terse, paradoxical, and inexhaustibly deep. These short sayings have nourished the Church\'s interior life for seventeen centuries. Read slowly, one saying at a time \u2014 the depth only reveals itself to those who sit with it.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'orthodox-veneration-theotokos-maximovitch',title:'Orthodox Veneration of the Mother of God',author:'Archbishop John Maximovitch',
+ category:'books',audience:['faithful'],nature:['theological'],topic:['theotokos'],
+ synopsis:'A clear, authoritative, and deeply reverent treatment of the Orthodox theology of the Theotokos \u2014 her role in salvation history, the foundations of the Church\'s veneration, and the distinction between Orthodox and Roman Catholic Mariology. Archbishop John writes with the precision of a theologian and the devotion of a saint.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ BOOKS — FAMILY LIFE ═══════════════════════════ */
+{id:'parenting-toward-kingdom-mamalakis',title:'Parenting Toward the Kingdom',author:'Dr. Philip Mamalakis',
+ category:'books',audience:['inquirer','catechumen'],nature:['pastoral'],topic:['family-life'],
+ synopsis:'The foundational Orthodox parenting resource \u2014 bringing together child development psychology and the theological vision of the life of the Church. Dr. Mamalakis shows how the virtues of the spiritual life shape the parent-child relationship from infancy onward. The starting point for any Orthodox family.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'blueprints-little-church-bjeletich',title:'Blueprints for the Little Church',author:'Elissa Bjeletich',
+ category:'books',audience:['inquirer','catechumen'],nature:['pastoral','liturgical'],topic:['family-life'],
+ synopsis:'A warm and practical guide to building the home as a little church \u2014 establishing the rhythms of prayer, fasting, feast days, icons, and the Church year within family life. Concrete guidance without legalism or sentimentality.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'101-orthodox-saints',title:'101 Orthodox Saints',author:'Ancient Faith Publishing',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['saints-fathers','family-life'],
+ synopsis:'An illustrated introduction to 101 saints of the Orthodox Church for children. The lives of the saints are not distant history but the continuing life of the Church \u2014 this book helps children understand that they are not alone in the faith.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'102-orthodox-saints',title:'102 Orthodox Saints',author:'Ancient Faith Publishing',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['saints-fathers','family-life'],
+ synopsis:'The companion volume to 101 Orthodox Saints \u2014 expanding the cloud of witnesses for young readers with additional lives and testimonies of the holy men and women of the Church across the centuries.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'boy-journey-sainthood-paisios',title:'A Boy\'s Journey to Sainthood: Saint Paisios the Athonite',author:'',
+ category:'books',audience:['inquirer'],nature:['devotional'],topic:['saints-fathers','family-life'],
+ synopsis:'The story of the childhood and early spiritual formation of St. Paisios of the Holy Mountain. A beautiful and accessible introduction for young readers, showing how the desire for God can shape a life from its very beginning.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'childs-guide-liturgy',title:'A Child\'s Guide to the Divine Liturgy',author:'Conciliar Press',
+ category:'books',audience:['inquirer'],nature:['liturgical'],topic:['liturgy','family-life'],
+ synopsis:'An accessible guide to the Divine Liturgy for young children \u2014 helping them understand what is happening in the service and how to participate with attention and love. The child who understands the Liturgy is the child who grows up inside the Church.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'childs-guide-confession',title:'A Child\'s Guide to Confession',author:'Conciliar Press',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['sacraments','family-life'],
+ synopsis:'A gentle and honest introduction to the sacrament of Confession for children. Confession is among the greatest gifts the Church gives her children; this guide helps parents give it to them well.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'childs-guide-prayer',title:'A Child\'s Guide to Prayer',author:'Conciliar Press',
+ category:'books',audience:['inquirer'],nature:['devotional'],topic:['prayer','family-life'],
+ synopsis:'An introduction to Orthodox prayer for children \u2014 covering morning and evening prayers, the Jesus Prayer, and the rhythm of daily prayer. Prayer is the foundation of the Christian life; this guide helps children build it from the beginning.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'childs-guide-vespers',title:'A Child\'s Guide to Vespers',author:'Conciliar Press',
+ category:'books',audience:['inquirer'],nature:['liturgical'],topic:['liturgy','family-life'],
+ synopsis:'A guide to the evening service of Vespers for children \u2014 introducing them to the beauty, structure, and meaning of Orthodox evening prayer. One of the most ancient and beautiful services of the Church; this guide helps children enter it with understanding.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'childs-guide-psalms',title:'A Child\'s Guide to the Psalms',author:'Conciliar Press',
+ category:'books',audience:['inquirer'],nature:['devotional'],topic:['scripture','family-life'],
+ synopsis:'An accessible introduction to the Psalms for children \u2014 drawing on the Church\'s deep and ancient love for the Psalter as the prayer book of both Israel and the Church. The Psalms are the prayer of every human heart: this guide begins to open that door.',
+ caveat:null,link:'',linkLabel:''},
+
+{id:'good-samaritan-catechism',title:'The Good Samaritan: A Children\'s Catechism',author:'',
+ category:'books',audience:['inquirer'],nature:['pastoral'],topic:['tradition-doctrine','family-life'],
+ synopsis:'A gentle introduction to Orthodox doctrine for young children \u2014 teaching the faith through story, illustration, and the wisdom of the Church. What is given to children in their formation shapes their entire life in the Church.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ PATRISTIC TEXTS — INQUIRER ════════════════════ */
+{id:'didache',title:'The Didache',author:'Apostolic Fathers (c. 50\u2013120 AD)',
+ category:'patristic',audience:['inquirer'],nature:['historical'],topic:['tradition-doctrine','sacraments'],
+ synopsis:'The Teaching of the Twelve Apostles \u2014 one of the earliest Christian documents outside the New Testament, offering a direct window into the worship, prayer, fasting, and baptismal practice of the primitive Church. Remarkably brief and remarkably alive. A first-time reader will be struck by how familiar it sounds \u2014 the Church has not changed.',
+ caveat:null,link:'https://www.newadvent.org/fathers/0714.htm',linkLabel:'Read Free'},
+
+{id:'nicene-creed',title:'The Nicene-Constantinopolitan Creed',author:'Ecumenical Councils I & II (325, 381 AD)',
+ category:'patristic',audience:['inquirer'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'The Symbol of Faith \u2014 the conciliar confession of the Orthodox Church, defined at Nicaea and completed at Constantinople, sung at every Divine Liturgy. Not merely a doctrinal summary but a living act of worship: the Church\'s proclamation of who God is, who Christ is, and what the Spirit has done and is doing in the world.',
+ caveat:null,link:'https://www.goarch.org/nicene-creed',linkLabel:'Read Free'},
+
+{id:'divine-liturgy-chrysostom',title:'The Divine Liturgy of St. John Chrysostom',author:'Full text \u2014 goarch.org',
+ category:'patristic',audience:['inquirer'],nature:['liturgical'],topic:['liturgy','sacraments'],
+ synopsis:'The central act of Orthodox worship \u2014 the full text of the Divine Liturgy as celebrated in parishes worldwide every Sunday and feast day. Reading it outside the service reveals the extraordinary theological density of every prayer, petition, and response. The Church prays her theology: this text is both the highest expression of Orthodox doctrine and the source of the Church\'s life.',
+ caveat:null,link:'https://www.goarch.org/liturgy',linkLabel:'Read Free'},
+
+/* ═══ PATRISTIC TEXTS — CATECHUMEN ══════════════════ */
+{id:'apostolic-fathers',title:'The Apostolic Fathers',author:'Various (1st\u20132nd century)',
+ category:'patristic',audience:['catechumen'],nature:['historical','theological'],topic:['tradition-doctrine'],
+ synopsis:'The earliest Christian writings after the New Testament \u2014 Clement of Rome, Ignatius of Antioch, Polycarp, the Shepherd of Hermas, and others. These texts breathe the air of the Apostolic Church and make vivid what the faith looked like in its first generations. St. Ignatius on the Eucharist and the bishop alone is worth the price of the entire collection.',
+ caveat:null,link:'https://www.newadvent.org/fathers/',linkLabel:'Read Free'},
+
+{id:'on-incarnation-athanasius',title:'On the Incarnation',author:'St. Athanasius the Great',
+ category:'patristic',audience:['catechumen'],nature:['theological'],topic:['christology'],
+ synopsis:'Written when Athanasius was barely a young man, this remains the clearest and most luminous statement of Orthodox Christology ever produced. C.S. Lewis said every Christian should read it. He was right. The argument is simple, the logic is inexorable, and the vision of God becoming man so that man might become God burns on every page.',
+ caveat:null,link:'https://www.newadvent.org/fathers/2802.htm',linkLabel:'Read Free'},
+
+{id:'orthodox-faith-hopko',title:'The Orthodox Faith (4 vols.)',author:'Fr. Thomas Hopko (OCA)',
+ category:'patristic',audience:['catechumen'],nature:['theological','pastoral'],topic:['tradition-doctrine','sacraments'],
+ synopsis:'Fr. Hopko\'s four-volume catechism \u2014 covering Doctrine, Worship, Bible, and Spirituality \u2014 is one of the finest Orthodox catechetical works ever written and is freely available in full at oca.org. Clear, comprehensive, and pastorally grounded: an indispensable companion for catechumens and a perennial reference for the faithful.',
+ caveat:null,link:'https://www.oca.org/orthodoxy/the-orthodox-faith',linkLabel:'Read Free'},
+
+{id:'orthodox-study-bible',title:'The Orthodox Study Bible',author:'Thomas Nelson / Conciliar Press',
+ category:'patristic',audience:['catechumen','faithful'],nature:['theological'],topic:['scripture'],
+ synopsis:'The most widely used Orthodox Bible in English \u2014 the complete Old and New Testaments with extensive Orthodox commentary, patristic notes, and icons. The Old Testament is translated from the Septuagint, the Bible of the Apostolic Church. An essential companion for Orthodox Scripture reading, though best read alongside primary patristic commentaries as study deepens.',
+ caveat:null,link:'',linkLabel:''},
+
+/* ═══ PATRISTIC TEXTS — THE FAITHFUL ════════════════ */
+{id:'on-holy-spirit-basil',title:'On the Holy Spirit',author:'St. Basil the Great',
+ category:'patristic',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'The definitive Orthodox treatment of the divinity and procession of the Holy Spirit \u2014 the theological foundation of the Third Article of the Creed. St. Basil argues with precision, pastoral wisdom, and deep Scriptural grounding. The essential patristic text for understanding the Orthodox rejection of the Filioque.',
+ caveat:null,link:'https://www.newadvent.org/fathers/3203.htm',linkLabel:'Read Free'},
+
+{id:'theological-orations-gregory',title:'Five Theological Orations',author:'St. Gregory the Theologian',
+ category:'patristic',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine','christology'],
+ synopsis:'Delivered in Constantinople in 380 AD, these five orations defined Trinitarian doctrine for all subsequent Orthodox theology. St. Gregory the Theologian earns his title on every page \u2014 demanding, luminous, and utterly authoritative. The standard against which all subsequent Trinitarian theology is measured.',
+ caveat:null,link:'https://www.newadvent.org/fathers/3102.htm',linkLabel:'Read Free'},
+
+{id:'catechetical-lectures-cyril',title:'Catechetical Lectures',author:'St. Cyril of Jerusalem',
+ category:'patristic',audience:['faithful'],nature:['theological','liturgical'],topic:['sacraments','tradition-doctrine'],
+ synopsis:'The premier catechetical text of the ancient Church \u2014 eighteen pre-baptismal lectures followed by five mystagogical catecheses on Baptism, Chrismation, and the Eucharist. St. Cyril speaks directly to those preparing for reception into the Church with warmth, clarity, and theological precision that has made these lectures a touchstone of Orthodox catechesis for sixteen centuries.',
+ caveat:null,link:'https://www.newadvent.org/fathers/3101.htm',linkLabel:'Read Free'},
+
+{id:'homilies-matthew-chrysostom',title:'Homilies on Matthew',author:'St. John Chrysostom',
+ category:'patristic',audience:['faithful'],nature:['theological','pastoral'],topic:['scripture'],
+ synopsis:'Ninety homilies on the Gospel of Matthew \u2014 the gold standard of Christian preaching for fifteen centuries. Chrysostom reads Scripture from within the life of the Church: morally demanding, pastorally warm, theologically exact, and always pressing the text toward transformation of life. Freely available through New Advent.',
+ caveat:null,link:'https://www.newadvent.org/fathers/2001.htm',linkLabel:'Read Free'},
+
+{id:'life-st-antony-athanasius',title:'The Life of St. Antony',author:'St. Athanasius the Great',
+ category:'patristic',audience:['faithful'],nature:['historical','devotional'],topic:['saints-fathers','spiritual-life'],
+ synopsis:'The foundational text of Christian monasticism \u2014 the life of the great Egyptian ascetic whose example and teaching launched the entire desert tradition. Athanasius wrote it as a rule of life and a theological manifesto as much as a biography. St. Antony\'s spiritual combat and his death are presented as a model for every Christian.',
+ caveat:null,link:'https://www.newadvent.org/fathers/2811.htm',linkLabel:'Read Free'},
+
+{id:'on-soul-resurrection-gregory-nyssa',title:'On the Soul and Resurrection',author:'St. Gregory of Nyssa',
+ category:'patristic',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'A dialogue between St. Gregory and his dying sister St. Macrina on death, the soul, the passions, and the resurrection. One of the most beautiful patristic meditations on eschatology and the Christian hope \u2014 written in the tradition of Plato\'s Phaedo but transformed by the Christian doctrines of the Resurrection and theosis.',
+ caveat:null,link:'https://www.newadvent.org/fathers/2915.htm',linkLabel:'Read Free'},
+
+{id:'exact-exposition-damascus',title:'Exact Exposition of the Orthodox Faith',author:'St. John of Damascus',
+ category:'patristic',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'The great patristic synthesis of Orthodox theology \u2014 covering the Trinity, Christology, creation, the sacraments, and the veneration of icons with encyclopedic precision. St. John of Damascus is the last of the Greek Fathers and the guardian of the Church\'s doctrinal inheritance.',
+ caveat:'Best approached as a reference text rather than devotional reading. Begin with a specific topic of interest rather than reading cover to cover.',
+ link:'https://www.newadvent.org/fathers/3303.htm',linkLabel:'Read Free'},
+
+{id:'confession-dositheus',title:'Confession of Dositheus (1672)',author:'Synod of Jerusalem',
+ category:'patristic',audience:['faithful'],nature:['theological','historical'],topic:['tradition-doctrine'],
+ synopsis:'The landmark confession of Orthodox faith issued by the Synod of Jerusalem in 1672 \u2014 a definitive Orthodox response to Calvinist influence within the Eastern churches. Foundational for understanding the Orthodox theology of Scripture, Tradition, free will, the sacraments, and the veneration of saints.',
+ caveat:null,link:'https://www.crivoice.org/creeddositheus.html',linkLabel:'Read Free'},
+
+{id:'canons-ecumenical-councils',title:'Canons of the Seven Ecumenical Councils',author:'The Holy Councils (325\u2013787)',
+ category:'patristic',audience:['faithful'],nature:['historical'],topic:['tradition-doctrine'],
+ synopsis:'The disciplinary and doctrinal canons of all seven Ecumenical Councils \u2014 the foundational Church law of Orthodoxy. Not devotional reading, but an indispensable reference for understanding how the Church has governed her life, resolved disputes, and defined the boundaries of the faith across seven centuries of conciliar deliberation.',
+ caveat:null,link:'https://www.newadvent.org/fathers/3802.htm',linkLabel:'Read Free'},
+
+/* ═══ PODCASTS & VIDEO — INQUIRER ═══════════════════ */
+{id:'ancient-faith-radio',title:'Ancient Faith Radio',author:'Ancient Faith Ministries',
+ category:'podcasts',audience:['inquirer'],nature:['pastoral'],topic:['spiritual-life'],
+ synopsis:'The largest library of Orthodox audio content in the English language \u2014 hundreds of podcasts, talks, and lectures covering every aspect of Orthodox faith and life. An invaluable first resource: browse by topic, by speaker, or simply begin with whatever draws you. The depth and breadth here is unmatched in the English-speaking Orthodox world.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts',linkLabel:'Listen'},
+
+{id:'faithfully-orthodox-podcast',title:'Faithfully Orthodox',author:'Ancient Faith Radio',
+ category:'podcasts',audience:['inquirer','catechumen'],nature:['pastoral'],topic:['tradition-doctrine'],
+ synopsis:'Warm, accessible conversations on Orthodox Christianity designed for those exploring the faith for the first time. An excellent starting point for inquirers who learn best by listening \u2014 practical, honest, and grounded in the reality of Orthodox parish life.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/faithfullyorthodox',linkLabel:'Listen'},
+
+{id:'finding-church-jesus-built',title:'Finding the Church Jesus Built',author:'YouTube',
+ category:'podcasts',audience:['inquirer'],nature:['historical'],topic:['tradition-doctrine'],
+ synopsis:'A video series exploring the historical and apostolic roots of the Orthodox Church \u2014 ideal for those investigating Orthodoxy for the first time and asking whether the early Church still exists. Accessible, honest, and clearly produced.',
+ caveat:null,link:'https://www.youtube.com/results?search_query=Finding+the+Church+Jesus+Built',linkLabel:'Watch'},
+
+{id:'be-the-bee-goa',title:'Be the Bee',author:'Greek Orthodox Archdiocese (YouTube)',
+ category:'podcasts',audience:['inquirer'],nature:['pastoral'],topic:['tradition-doctrine','family-life'],
+ synopsis:'Short, clear videos on Orthodox faith and life from the Greek Orthodox Archdiocese \u2014 especially valuable for teenagers, young adults, and families exploring the Church together. Direct, accessible, and consistently faithful to the Tradition.',
+ caveat:null,link:'https://www.youtube.com/@BeTheBee',linkLabel:'Watch'},
+
+/* ═══ PODCASTS & VIDEO — CATECHUMEN ════════════════ */
+{id:'lord-of-spirits-podcast',title:'Lord of Spirits',author:'Fr. Andrew Stephen Damick & Fr. Stephen De Young',
+ category:'podcasts',audience:['catechumen','faithful'],nature:['theological'],topic:['scripture','tradition-doctrine'],
+ synopsis:'A wide-ranging and deeply engaging exploration of the spiritual world, Scripture, Orthodox cosmology, and the Tradition \u2014 one of the most popular Orthodox podcasts in English. Fr. Damick and Fr. De Young bring genuine scholarship and pastoral warmth to topics most Christian resources avoid. Essential for catechumens who are serious readers.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/lordofspirits',linkLabel:'Listen'},
+
+{id:'live-with-the-louhs',title:'Live With The Louhs',author:'The Louhs',
+ category:'podcasts',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life','family-life'],
+ synopsis:'Orthodox Christian family life, faith, and daily practice \u2014 warm, accessible, and grounded in the reality of raising an Orthodox family in America. A natural companion for families exploring or entering the Church.',
+ caveat:null,link:'https://www.youtube.com/@LivewiththeLouhs',linkLabel:'Watch'},
+
+{id:'trisagion-films',title:'Trisagion Films',author:'Trisagion Films (YouTube)',
+ category:'podcasts',audience:['catechumen'],nature:['devotional','liturgical'],topic:['saints-fathers','liturgy'],
+ synopsis:'Visually beautiful short films on Orthodox theology, the lives of the saints, and the liturgical life of the Church. Trisagion Films brings the aesthetic beauty of Orthodoxy to the screen with rare care and reverence \u2014 an excellent introduction to the visual and liturgical dimensions of the tradition.',
+ caveat:null,link:'https://www.youtube.com/@TrisagionFilms',linkLabel:'Watch'},
+
+{id:'rock-and-sand-trenham',title:'Rock and Sand',author:'Fr. Josiah Trenham',
+ category:'podcasts',audience:['catechumen'],nature:['theological','historical'],topic:['tradition-doctrine'],
+ synopsis:'Fr. Josiah Trenham examines the theological and historical distinctions between Orthodoxy and Western Christianity with scholarly precision and pastoral directness. Essential listening for converts and those coming to Orthodoxy from Protestant or Catholic backgrounds who want to understand what they are entering and what they are leaving.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/rockandsand',linkLabel:'Listen'},
+
+{id:'orthodoxy-heterodoxy-damick',title:'Orthodoxy and Heterodoxy',author:'Fr. Andrew Stephen Damick',
+ category:'podcasts',audience:['catechumen'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'A systematic and thorough comparison of Orthodox Christianity with every major Christian tradition. Fr. Damick writes and speaks with charity and precision, making this the most comprehensive guide for those approaching Orthodoxy from other backgrounds. The book version is also available.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/orthodoxyandheterodoxy',linkLabel:'Listen'},
+
+/* ═══ PODCASTS & VIDEO — THE FAITHFUL ══════════════ */
+{id:'search-the-scriptures-constantinou',title:'Search the Scriptures',author:'Dr. Jeannie Constantinou',
+ category:'podcasts',audience:['faithful'],nature:['theological'],topic:['scripture','saints-fathers'],
+ synopsis:'Dr. Constantinou takes listeners through the books of the Bible with patristic commentary and Orthodox theological insight \u2014 a remarkable ongoing series of extraordinary depth and fidelity. The most rigorous Orthodox Scripture study resource available in audio format in the English language.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/searchthescriptures',linkLabel:'Listen'},
+
+{id:'speaking-truth-love-hopko',title:'Speaking the Truth in Love',author:'Fr. Thomas Hopko',
+ category:'podcasts',audience:['faithful'],nature:['theological','pastoral'],topic:['tradition-doctrine','scripture','liturgy'],
+ synopsis:'Fr. Hopko\'s vast archive of talks on Scripture, theology, liturgy, prayer, and the spiritual life \u2014 the most substantial and theologically rich Orthodox podcast series in English. A lifetime of listening awaits here. Begin anywhere; every talk rewards careful attention.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/hopko',linkLabel:'Listen'},
+
+{id:'glory-to-god-freeman',title:'Glory to God for All Things',author:'Fr. Stephen Freeman',
+ category:'podcasts',audience:['faithful'],nature:['pastoral','devotional'],topic:['spiritual-life'],
+ synopsis:'Fr. Freeman\'s reflective, deeply pastoral reflections on Orthodox theology and the spiritual life \u2014 drawing on the Fathers, the saints, and the wisdom of decades of parish experience. Fr. Freeman has a rare gift for making the deepest theological realities feel immediately present and livable. A quiet treasure.',
+ caveat:null,link:'https://www.ancientfaith.com/podcasts/freeman',linkLabel:'Listen'},
+
+/* ═══ WEBSITES — INQUIRER ═══════════════════════════ */
+{id:'goarch-website',title:'Greek Orthodox Archdiocese of America',author:'goarch.org',
+ category:'websites',audience:['inquirer'],nature:['liturgical','pastoral'],topic:['liturgy','tradition-doctrine'],
+ synopsis:'The official website of the Greek Orthodox Archdiocese of America \u2014 the largest Orthodox jurisdiction in the United States. Essential resources include the liturgical calendar, a parish locator, the full text of the Divine Liturgy, and catechetical materials. An indispensable first stop.',
+ caveat:null,link:'https://www.goarch.org',linkLabel:'Visit'},
+
+{id:'oca-website',title:'Orthodox Church in America',author:'oca.org',
+ category:'websites',audience:['inquirer','catechumen'],nature:['theological','pastoral'],topic:['tradition-doctrine'],
+ synopsis:'The official website of the Orthodox Church in America \u2014 carrying the full text of Fr. Hopko\'s four-volume catechism, a comprehensive saints database, liturgical calendar, and theological resources, all freely available. One of the most content-rich Orthodox websites in English.',
+ caveat:null,link:'https://www.oca.org',linkLabel:'Visit'},
+
+/* ═══ WEBSITES — CATECHUMEN ═════════════════════════ */
+{id:'ancient-faith-website',title:'Ancient Faith',author:'ancientfaith.com',
+ category:'websites',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life'],
+ synopsis:'The largest English-language Orthodox media platform \u2014 hundreds of podcasts, articles, books, and resources for every stage of the Orthodox journey. Ancient Faith has done more than any other organization to make serious Orthodox content accessible in the English-speaking world.',
+ caveat:null,link:'https://www.ancientfaith.com',linkLabel:'Visit'},
+
+{id:'ancient-faith-store',title:'Ancient Faith Store',author:'store.ancientfaith.com',
+ category:'websites',audience:['catechumen'],nature:['pastoral'],topic:['spiritual-life'],
+ synopsis:'The bookstore of Ancient Faith Publishing \u2014 carrying many of the books and resources recommended throughout this library. A trustworthy Orthodox source for books, audio, and gifts, with an especially strong selection of titles for families and those new to the faith.',
+ caveat:null,link:'https://store.ancientfaith.com',linkLabel:'Visit'},
+
+{id:'new-advent-fathers',title:'New Advent \u2014 Church Fathers',author:'newadvent.org',
+ category:'websites',audience:['catechumen','faithful'],nature:['theological','historical'],topic:['saints-fathers','tradition-doctrine'],
+ synopsis:'The Ante-Nicene, Nicene, and Post-Nicene Fathers in full \u2014 freely available online. An invaluable resource for reading patristic primary sources at no cost. The quality of translations varies, but the breadth of material available here is irreplaceable for anyone beginning serious patristic study.',
+ caveat:null,link:'https://www.newadvent.org/fathers/',linkLabel:'Visit'},
+
+{id:'antiochian-website',title:'Antiochian Orthodox Archdiocese',author:'antiochian.org',
+ category:'websites',audience:['catechumen'],nature:['pastoral'],topic:['tradition-doctrine'],
+ synopsis:'Resources, parish locator, and catechetical materials from one of the largest and most active Orthodox jurisdictions in North America. The Antiochian Archdiocese has long been a home for converts and has produced some of the most accessible Orthodox catechetical materials available.',
+ caveat:null,link:'https://www.antiochian.org',linkLabel:'Visit'},
+
+/* ═══ WEBSITES — THE FAITHFUL ═══════════════════════ */
+{id:'holy-cross-press',title:'Holy Cross Orthodox Press',author:'hchc.edu',
+ category:'websites',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'Academic and theological publications from Holy Cross Greek Orthodox School of Theology \u2014 the premier Orthodox academic press in North America. Essential for those pursuing serious theological study beyond the introductory level.',
+ caveat:null,link:'https://www.hchc.edu/holycross-press',linkLabel:'Visit'},
+
+{id:'svs-press-bookstore',title:'SVS Press & Bookstore',author:'svspress.com',
+ category:'websites',audience:['faithful'],nature:['theological'],topic:['tradition-doctrine'],
+ synopsis:'The publishing arm of St. Vladimir\'s Orthodox Theological Seminary \u2014 the most important Orthodox academic and theological publisher in the English-speaking world. SVS Press has produced landmark translations and theological works that have shaped Orthodox scholarship and catechesis for generations.',
+ caveat:null,link:'https://www.svspress.com',linkLabel:'Visit'}
+
+];
 
 /* ── Helpers ─────────────────────────────────────────── */
 function _cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):'';}
