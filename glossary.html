@@ -429,7 +429,7 @@ function toggleTerm(card){
   if(card.classList.contains("open") && window.OCAnalytics){
     var termId = card.id ? card.id.replace("term-","") : "";
     var nameEl = card.querySelector(".term-name");
-    window.OCAnalytics.send("glossary_term_open",{
+    window.OCAnalytics.send("content_open",{
       entity_type: "glossary",
       entity_id: termId,
       entity_name: nameEl ? nameEl.textContent.trim() : termId
