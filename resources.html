@@ -12,10 +12,7 @@
 /* OC-MASTER-CSS */
 /* ═══════════════════════════════════════════════════════
    ORTHODOX COMPANION — MASTER CSS v3
-   Applied to every page via clean sweep
 ═══════════════════════════════════════════════════════ */
-
-/* ── Theme Variables ─────────────────────────────────── */
 :root {
   --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
   --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
@@ -34,443 +31,324 @@
   --nav-bg:rgba(245,237,216,0.97);
   --hero-text:#1a0f00;--hero-sub:#3a2800;
 }
-
-/* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
-  color:var(--text);min-height:100vh;overflow-x:hidden;
-  font-size:1.05rem;line-height:1.85;}
+  color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
 
 /* ── Nav ─────────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;
-  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
-  backdrop-filter:blur(12px);height:var(--nav-h);
-  display:flex;align-items:center;padding:0 20px;
+nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
+  border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);
+  height:var(--nav-h);display:flex;align-items:center;padding:0 20px;
   box-shadow:0 2px 30px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  flex-shrink:0;margin-right:8px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
 .nav-cross{font-size:24px;color:var(--gold);line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
-  color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
 .nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;list-style:none;
-  height:var(--nav-h);margin-left:4px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
 .nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
-  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
-  transition:color 0.2s;}
+.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;
+  gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
 .nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
 .nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
-  min-width:220px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:220px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;
+  z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;
+  text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
   padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
 .nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
 .dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
 .nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
-  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
-  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
+  background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
 .nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
-  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
+.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
 .nav-signin-btn:hover{color:var(--text-dim);}
-
-/* ── Account dropdown ────────────────────────────────── */
 .nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
-  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
-  white-space:nowrap;}
+.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
+  color:var(--gold-light);background:transparent;border:1px solid var(--gold-dim);border-radius:2px;
+  padding:6px 13px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
 .nav-user-btn:hover{background:rgba(201,168,76,0.1);}
 .nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
 .nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
-  min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;
+  z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
 .nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+.nav-user-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;
+  text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
   padding:9px 18px;transition:color 0.15s,background 0.15s;}
 .nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-
-/* ── Hamburger & Drawer ──────────────────────────────── */
-.nav-hamburger{display:none;background:transparent;border:none;
-  color:var(--text-dim);cursor:pointer;padding:8px;
-  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;
-  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;
+  padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:var(--dark);border-bottom:1px solid var(--border-dim);
-  z-index:599;padding:8px 0 20px;
-  transform:translateY(-8px);opacity:0;
-  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);
+  border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);
-  padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
-  text-transform:uppercase;color:var(--text-dim);text-decoration:none;
-  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
-  transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
+  letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;
+  color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;
+  border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
 .nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
 .nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
 
-/* ── White Page Hero ─────────────────────────────────── */
-.page-hero{
-  margin-top:var(--nav-h);
-  background:#ffffff;
-  border-bottom:2px solid var(--gold-dim);
-  padding:40px 24px 36px;
-}
+/* ── Hero ────────────────────────────────────────────── */
+.page-hero{margin-top:var(--nav-h);background:#ffffff;border-bottom:2px solid var(--gold-dim);padding:40px 24px 36px;}
 .page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.12em;
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;
   color:var(--text-muted);margin-bottom:12px;}
 [data-theme="dark"] .breadcrumb{color:#4A7AB8;}
 [data-theme="light"] .breadcrumb{color:#6B4C1A;}
 .breadcrumb a{color:inherit;text-decoration:none;}
 .breadcrumb a:hover{color:var(--gold);}
 .breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
-  letter-spacing:0.08em;margin-bottom:4px;
-  color:var(--hero-text);}
-.page-subtitle{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:400;
-  letter-spacing:0.14em;text-transform:uppercase;
-  color:#8A6A28;margin-bottom:18px;}
-.page-intro-bordered{
-  border-left:3px solid #8A6A28;
-  padding-left:18px;
-  max-width:640px;
-  font-size:0.98rem;
-  line-height:1.9;
-  font-style:italic;
-  color:var(--hero-sub);
-}
+.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;letter-spacing:0.08em;
+  margin-bottom:4px;color:var(--hero-text);}
+.page-subtitle{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:400;letter-spacing:0.14em;
+  text-transform:uppercase;color:#8A6A28;margin-bottom:18px;}
+.page-intro-bordered{border-left:3px solid #8A6A28;padding-left:18px;max-width:640px;
+  font-size:0.98rem;line-height:1.9;font-style:italic;color:var(--hero-sub);}
 
-/* ── Dark Quote Panel ────────────────────────────────── */
-.quote-panel{
-  background:#0A1628;
-  border-bottom:1px solid rgba(42,90,156,0.4);
-  padding:52px 24px 48px;
-  text-align:center;
-  min-height:180px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.quote-inner{
-  max-width:760px;
-  transition:opacity 1.5s ease;
-}
+/* ── Quote Panel ─────────────────────────────────────── */
+.quote-panel{background:#0A1628;border-bottom:1px solid rgba(42,90,156,0.4);padding:52px 24px 48px;
+  text-align:center;min-height:180px;display:flex;align-items:center;justify-content:center;}
+.quote-inner{max-width:760px;transition:opacity 1.5s ease;}
 .quote-inner.fading{opacity:0;}
-.quote-text{
-  font-family:'EB Garamond',Georgia,serif;
-  font-size:1.38rem;
-  font-style:italic;
-  color:#E8CB7A;
-  line-height:1.9;
-  margin-bottom:18px;
-}
-.quote-attr{
-  font-family:'Cinzel',serif;
-  font-size:0.62rem;
-  text-transform:uppercase;
-  letter-spacing:0.13em;
-  color:#4A7AB8;
-  display:block;
-}
-.quote-source{
-  font-family:'EB Garamond',serif;
-  font-size:0.82rem;
-  font-style:italic;
-  color:#2A5A9C;
-  display:block;
-  margin-top:3px;
-}
+.quote-text{font-family:'EB Garamond',Georgia,serif;font-size:1.38rem;font-style:italic;
+  color:#E8CB7A;line-height:1.9;margin-bottom:18px;}
+.quote-attr{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.13em;color:#4A7AB8;display:block;}
+.quote-source{font-family:'EB Garamond',serif;font-size:0.82rem;font-style:italic;
+  color:#2A5A9C;display:block;margin-top:3px;}
 
 /* ── Orientation Bar ─────────────────────────────────── */
-.orientation-bar{
-  border-top:1px solid var(--gold-dim);
-  border-bottom:1px solid var(--gold-dim);
-  padding:14px 24px;
-  text-align:center;
-  background:var(--bg-page);
-}
-.orientation-bar p{
-  font-family:'Cinzel',serif;
-  font-size:0.6rem;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-  color:var(--text-muted);
-  max-width:760px;
-  margin:0 auto;
-  line-height:2;
-}
+.orientation-bar{border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);
+  padding:14px 24px;text-align:center;background:var(--bg-page);}
+.orientation-bar p{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);max-width:760px;margin:0 auto;line-height:2;}
 
-/* ── Anchor Navigation ───────────────────────────────── */
-.anchor-nav-wrap{
-  max-width:1040px;
-  margin:0 auto;
-  padding:22px 24px 4px;
-}
-.anchor-nav{
-  display:flex;
-  flex-wrap:wrap;
-  gap:7px;
-  justify-content:flex-start;
-}
-.anchor-link{
-  font-family:'Cinzel',serif;
-  font-size:0.57rem;
-  text-transform:uppercase;
-  letter-spacing:0.09em;
-  padding:6px 14px;
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  color:var(--text-dim);
-  text-decoration:none;
-  transition:all 0.2s;
-  white-space:nowrap;
-}
-.anchor-link:hover{
-  border-color:var(--gold-dim);
-  color:var(--gold-light);
-  background:rgba(201,168,76,0.07);
-}
-
-/* ── Content Wrap ────────────────────────────────────── */
-.content-wrap{
-  max-width:1040px;
-  margin:0 auto;
-  padding:20px 24px 80px;
-}
-
-/* ── Section ─────────────────────────────────────────── */
-.res-section{
-  margin-bottom:64px;
-  scroll-margin-top:calc(var(--nav-h) + 20px);
-}
-.section-heading{
-  font-family:'Cinzel',serif;
-  font-size:1.05rem;
-  font-weight:700;
-  letter-spacing:0.12em;
-  color:var(--gold-light);
-  text-transform:uppercase;
-  padding-bottom:12px;
-  border-bottom:1px solid var(--gold-dim);
-  margin-bottom:28px;
-}
-.section-intro{
-  font-size:0.95rem;
-  font-style:italic;
-  color:var(--text-dim);
-  line-height:1.8;
-  max-width:680px;
-  margin-bottom:28px;
-}
-
-/* ── Level block ─────────────────────────────────────── */
-.level-block{
-  margin-bottom:36px;
-}
-.level-label{
-  font-family:'Cinzel',serif;
-  font-size:0.58rem;
-  text-transform:uppercase;
-  letter-spacing:0.14em;
-  padding:4px 11px;
-  border:1px solid;
-  border-radius:2px;
-  display:inline-block;
-  margin-bottom:16px;
-}
-.level-label.inquirer{color:var(--text-muted);border-color:var(--border-dim);}
-.level-label.catechumen{color:var(--gold-dim);border-color:var(--gold-dim);}
-.level-label.faithful{color:var(--gold-light);border-color:var(--gold);background:rgba(201,168,76,0.08);}
-
-/* ── Subsection label (within Catechumen Books) ──────── */
-.subsection-label{
-  font-family:'Cinzel',serif;
-  font-size:0.55rem;
-  text-transform:uppercase;
-  letter-spacing:0.18em;
-  color:var(--text-muted);
-  margin:20px 0 10px;
-  padding-left:2px;
-  opacity:0.7;
-}
-
-/* ── Start Here block (Parents) ──────────────────────── */
-.start-here-block{
-  background:rgba(201,168,76,0.04);
-  border:1px solid rgba(138,106,40,0.4);
-  border-radius:4px;
-  padding:18px 20px;
-  margin-bottom:28px;
-}
-.start-here-label{
-  font-family:'Cinzel',serif;
-  font-size:0.52rem;
-  text-transform:uppercase;
-  letter-spacing:0.2em;
-  color:var(--gold-dim);
-  margin-bottom:14px;
-}
-
-/* ── Resource Cards ──────────────────────────────────── */
-.res-grid{
-  display:flex;
-  flex-direction:column;
-  gap:7px;
-}
-.res-card{
-  background:var(--bg-card);
-  border:1px solid var(--border-dim);
-  border-radius:4px;
-  padding:16px 20px;
-  border-left:3px solid var(--gold-dim);
-}
-.res-card-name{
-  font-family:'Cinzel',serif;
-  font-size:0.88rem;
-  color:var(--gold-light);
-  letter-spacing:0.04em;
-  margin-bottom:2px;
-}
-.res-card-author{
-  font-family:'Cinzel',serif;
-  font-size:0.58rem;
-  text-transform:uppercase;
-  letter-spacing:0.08em;
-  color:var(--text-muted);
-  margin-bottom:7px;
-}
-.res-card-desc{
-  font-size:0.9rem;
-  color:var(--text-dim);
-  line-height:1.72;
-  font-style:italic;
-}
-.res-card-footer{
-  margin-top:10px;
-}
-.res-link{
-  font-family:'Cinzel',serif;
-  font-size:0.6rem;
-  text-transform:uppercase;
-  letter-spacing:0.09em;
-  color:var(--gold-light);
-  border:1px solid var(--gold-dim);
-  border-radius:2px;
-  padding:5px 12px;
-  text-decoration:none;
-  background:rgba(201,168,76,0.08);
-  display:inline-block;
-  transition:all 0.18s;
-}
-.res-link:hover{background:rgba(201,168,76,0.18);border-color:var(--gold);}
-.res-no-link{
-  font-size:0.78rem;
-  color:var(--text-muted);
-  font-style:italic;
-}
+/* ── Back to Top ─────────────────────────────────────── */
+#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;width:38px;height:38px;
+  border-radius:50%;background:var(--dark);border:1px solid var(--gold-dim);color:var(--gold-light);
+  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 
 /* ── Pastoral Note ───────────────────────────────────── */
-.pastoral-note{
-  font-family:'EB Garamond',serif;
-  font-size:0.9rem;
-  font-style:italic;
-  color:var(--text-muted);
-  border-left:2px solid var(--gold-dim);
-  padding:8px 16px;
-  margin-top:20px;
-  line-height:1.8;
+.pastoral-note{font-family:'EB Garamond',serif;font-size:0.9rem;font-style:italic;
+  color:var(--text-muted);border-left:2px solid var(--gold-dim);padding:8px 16px;
+  margin-top:20px;line-height:1.8;}
+
+/* ═══════════════════════════════════════════════════════
+   LAYER 1 — CATEGORY BAR (sticky)
+═══════════════════════════════════════════════════════ */
+.cat-bar{
+  position:sticky;top:var(--nav-h);z-index:550;
+  background:var(--dark);
+  border-bottom:1px solid var(--gold-dim);
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
 }
+.cat-bar-inner{
+  max-width:1040px;margin:0 auto;padding:0 24px;
+  display:flex;align-items:stretch;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.cat-bar-inner::-webkit-scrollbar{display:none;}
+.cat-btn{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--text-muted);background:transparent;border:none;
+  border-bottom:2px solid transparent;
+  padding:16px 18px 14px;cursor:pointer;white-space:nowrap;
+  display:flex;align-items:center;gap:7px;
+  transition:color 0.18s,border-color 0.18s;flex-shrink:0;
+}
+.cat-btn:hover{color:var(--text-dim);}
+.cat-btn.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+.cat-btn.cat-empty{color:rgba(74,122,184,0.35);pointer-events:none;}
+.cat-btn.cat-btn-all{
+  margin-left:auto;color:var(--text-muted);
+  border-left:1px solid var(--border-dim);padding-left:18px;
+}
+.cat-btn.cat-btn-all:hover,.cat-btn.cat-btn-all.active{color:var(--gold-light);border-bottom-color:var(--gold);}
+.cat-label-mobile{display:none;}
+.cat-count{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:18px;height:18px;padding:0 5px;
+  background:rgba(201,168,76,0.15);border:1px solid var(--gold-dim);
+  border-radius:9px;font-size:0.52rem;letter-spacing:0;
+  color:var(--gold-light);font-family:'Cinzel',serif;
+}
+.cat-btn.cat-empty .cat-count{
+  background:rgba(42,90,156,0.08);border-color:rgba(42,90,156,0.15);
+  color:rgba(74,122,184,0.35);
+}
+
+/* ═══════════════════════════════════════════════════════
+   LAYER 2 — GLOBAL FILTER BAR
+═══════════════════════════════════════════════════════ */
+.filter-bar{
+  background:var(--bg-page);
+  border-bottom:1px solid rgba(42,90,156,0.2);
+  padding:16px 24px 14px;
+}
+.filter-bar-inner{max-width:1040px;margin:0 auto;}
+.filter-groups{display:flex;flex-direction:column;gap:10px;}
+.filter-group{display:flex;align-items:flex-start;gap:12px;}
+.filter-group-label{
+  font-family:'Cinzel',serif;font-size:0.52rem;text-transform:uppercase;
+  letter-spacing:0.16em;color:var(--text-muted);
+  white-space:nowrap;padding-top:6px;min-width:64px;flex-shrink:0;
+}
+.filter-pills{display:flex;flex-wrap:wrap;gap:5px;}
+.filter-pill{
+  font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
+  letter-spacing:0.09em;padding:5px 11px;border:1px solid var(--border-dim);
+  border-radius:2px;background:transparent;color:var(--text-muted);
+  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+}
+.filter-pill:hover{border-color:var(--gold-dim);color:var(--text-dim);background:rgba(201,168,76,0.05);}
+.filter-pill.active{background:rgba(201,168,76,0.12);border-color:var(--gold-dim);color:var(--gold-light);}
+.filter-actions{
+  display:flex;align-items:center;justify-content:flex-end;gap:12px;
+  margin-top:10px;padding-top:10px;border-top:1px solid rgba(42,90,156,0.12);
+}
+.filter-scope-note{
+  font-family:'EB Garamond',serif;font-size:0.85rem;font-style:italic;
+  color:var(--text-muted);margin-right:auto;
+}
+.filter-clear-btn{
+  font-family:'Cinzel',serif;font-size:0.52rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);background:transparent;
+  border:1px solid var(--border-dim);border-radius:2px;padding:5px 12px;
+  cursor:pointer;transition:all 0.15s;
+}
+.filter-clear-btn:hover{color:var(--text-dim);border-color:var(--gold-dim);}
+
+/* ═══════════════════════════════════════════════════════
+   LAYER 3 — CONTENT & CARD SYSTEM
+═══════════════════════════════════════════════════════ */
+.content-wrap{max-width:1040px;margin:0 auto;padding:28px 24px 80px;}
+.res-section{}
+.res-cards{display:flex;flex-direction:column;gap:6px;}
+
+/* Card */
+.res-card{
+  background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:4px;border-left:3px solid var(--gold-dim);overflow:hidden;
+  transition:border-left-color 0.18s;
+}
+.res-card:hover{border-left-color:var(--gold);}
+
+/* Collapsed */
+.card-collapsed{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;cursor:pointer;user-select:none;
+}
+.card-title{
+  font-family:'Cinzel',serif;font-size:0.85rem;
+  color:var(--gold-light);letter-spacing:0.04em;flex:1;min-width:0;
+}
+.card-primary-tag{flex-shrink:0;}
+.card-chevron{
+  font-family:'Cinzel',serif;font-size:0.8rem;color:var(--text-muted);
+  flex-shrink:0;width:16px;text-align:center;transition:transform 0.2s;line-height:1;
+}
+.res-card.open .card-chevron{transform:rotate(45deg);color:var(--gold-light);}
+
+/* Expanded */
+.card-expanded{
+  display:none;padding:0 18px 16px;
+  border-top:1px solid rgba(42,90,156,0.15);
+}
+.res-card.open .card-expanded{display:block;}
+.card-author{
+  font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.08em;color:var(--text-muted);margin:12px 0 10px;
+}
+.card-synopsis{
+  font-size:0.92rem;color:var(--text-dim);line-height:1.8;
+  font-style:italic;margin-bottom:12px;
+}
+.card-caveat{
+  font-family:'EB Garamond',serif;font-size:0.85rem;font-style:italic;
+  color:var(--gold-dim);border-left:2px solid var(--gold-dim);
+  padding:6px 12px;margin-bottom:12px;line-height:1.7;
+  background:rgba(201,168,76,0.04);
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
+.card-footer{margin-top:4px;}
+
+/* Tag Pills */
+.tag-pill{
+  font-family:'Cinzel',serif;font-size:0.5rem;text-transform:uppercase;
+  letter-spacing:0.1em;padding:3px 9px;border-radius:2px;
+  border:1px solid;display:inline-block;white-space:nowrap;
+}
+.tag-aud{border-color:rgba(42,90,156,0.4);color:var(--text-muted);}
+.tag-aud-inquirer{border-color:rgba(74,122,184,0.5);color:#6A9AD4;}
+.tag-aud-catechumen{border-color:rgba(138,106,40,0.5);color:var(--gold-dim);}
+.tag-aud-faithful{border-color:rgba(201,168,76,0.5);color:var(--gold);}
+.tag-nat{border-color:rgba(42,90,156,0.3);color:var(--text-muted);background:rgba(27,58,107,0.2);}
+.tag-top{border-color:rgba(201,168,76,0.2);color:rgba(201,168,76,0.7);background:rgba(201,168,76,0.04);}
+
+/* Links */
+.res-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:5px 12px;text-decoration:none;
+  background:rgba(201,168,76,0.08);display:inline-block;transition:all 0.18s;
+}
+.res-link:hover{background:rgba(201,168,76,0.18);border-color:var(--gold);}
+.res-no-link{font-size:0.78rem;color:var(--text-muted);font-style:italic;}
+
+/* Empty state */
+.res-empty{
+  padding:48px 24px;text-align:center;
+  color:var(--text-muted);font-style:italic;font-size:0.95rem;line-height:2;
+}
+.res-empty-action{
+  display:inline-block;margin-top:14px;font-family:'Cinzel',serif;
+  font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;
+  padding:6px 14px;background:rgba(201,168,76,0.08);cursor:pointer;
+  transition:all 0.18s;
+}
+.res-empty-action:hover{background:rgba(201,168,76,0.16);}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:860px){
-  .nav-links{display:none;}
-  .nav-hamburger{display:flex;}
-  .nav-drawer{display:block;}
-  .nav-right .nav-signin-btn{display:none;}
+  .nav-links{display:none;}.nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}.nav-right .nav-signin-btn{display:none;}
+}
+@media(max-width:680px){
+  .filter-group{flex-direction:column;gap:6px;}
+  .filter-group-label{min-width:auto;padding-top:0;}
 }
 @media(max-width:600px){
-  .page-hero{padding:28px 16px 26px;}
-  .page-title{font-size:1.3rem;}
-  .content-wrap{padding:16px 16px 50px;}
-  nav{padding:0 14px;}
-  .nav-subtitle{display:none;}
-  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
-  .quote-panel{padding:36px 16px;}
-  .quote-text{font-size:1.1rem;}
-  .anchor-nav-wrap{padding:16px 16px 4px;}
-  .section-heading{font-size:0.9rem;}
+  .page-hero{padding:28px 16px 26px;}.page-title{font-size:1.3rem;}
+  .content-wrap{padding:16px 16px 50px;}nav{padding:0 14px;}
+  .nav-subtitle{display:none;}.nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+  .quote-panel{padding:36px 16px;}.quote-text{font-size:1.1rem;}
+  .cat-bar-inner{padding:0 14px;}.cat-btn{padding:14px 12px 12px;font-size:0.55rem;}
+  .cat-label-desktop{display:none;}.cat-label-mobile{display:inline;}
+  .filter-bar{padding:14px 16px 12px;}
+  .card-collapsed{padding:12px 14px;}.card-title{font-size:0.8rem;}
+  .card-expanded{padding:0 14px 14px;}
 }
-
-/* ── Section Sub-Nav ─────────────────────────────────── */
-.section-subnav{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  margin-bottom:24px;
-}
-.subnav-link{
-  font-family:'Cinzel',serif;
-  font-size:0.55rem;
-  text-transform:uppercase;
-  letter-spacing:0.12em;
-  padding:4px 11px;
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  color:var(--text-muted);
-  text-decoration:none;
-  transition:all 0.18s;
-  white-space:nowrap;
-}
-.subnav-link:hover{
-  border-color:var(--gold-dim);
-  color:var(--gold-light);
-  background:rgba(201,168,76,0.07);
-}
-
-/* ── Back to Top ─────────────────────────────────────── */
-#backToTop{
-  position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--dark);border:1px solid var(--gold-dim);
-  color:var(--gold-light);font-size:1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transition:opacity 0.25s,transform 0.25s;
-  box-shadow:0 2px 12px rgba(0,0,0,0.5);
-}
-#backToTop.visible{opacity:1;pointer-events:all;}
-#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 </style>
 </head>
 <body>
@@ -578,7 +456,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   </div>
 </div>
 
-<!-- ═══ PAGE HERO ══════════════════════════════════════ -->
+<!-- ═══ PAGE HERO (preserved exactly) ════════════════ -->
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Books &amp; Resources</div>
@@ -588,7 +466,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   </div>
 </div>
 
-<!-- ═══ DARK QUOTE PANEL ══════════════════════════════ -->
+<!-- ═══ DARK QUOTE PANEL (preserved exactly) ════════ -->
 <div class="quote-panel" id="quotePanel">
   <div class="quote-inner" id="quoteInner">
     <div class="quote-text" id="quoteText"></div>
@@ -599,168 +477,106 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 <!-- ═══ ORIENTATION BAR ═══════════════════════════════ -->
 <div class="orientation-bar">
-  <p>This library is organized into five categories, each moving from Inquirer through Catechumen to The Faithful. Browse freely — or if you are new to the faith, begin anywhere marked Inquirer.</p>
+  <p>Browse by category, filter by audience or topic, or combine both. New to Orthodoxy? Begin with the Inquirer filter.</p>
 </div>
 
-<!-- ═══ ANCHOR NAVIGATION ════════════════════════════ -->
-<div class="anchor-nav-wrap">
-  <nav class="anchor-nav" aria-label="Section navigation">
-    <a href="#section-books" class="anchor-link">Books</a>
-    <a href="#section-primary" class="anchor-link">Primary Sources</a>
-    <a href="#section-podcasts" class="anchor-link">Podcasts &amp; Video</a>
-    <a href="#section-parents" class="anchor-link">Parents &amp; Family</a>
-    <a href="#section-websites" class="anchor-link">Websites</a>
-  </nav>
+<!-- ═══ LAYER 1 — CATEGORY BAR (sticky) ══════════════ -->
+<div class="cat-bar" id="catBar">
+  <div class="cat-bar-inner">
+    <button class="cat-btn active" data-cat="books">
+      <span class="cat-label-desktop">Books</span>
+      <span class="cat-label-mobile">Books</span>
+    </button>
+    <button class="cat-btn" data-cat="patristic">
+      <span class="cat-label-desktop">Patristic Texts</span>
+      <span class="cat-label-mobile">Patristic</span>
+    </button>
+    <button class="cat-btn" data-cat="podcasts">
+      <span class="cat-label-desktop">Podcasts &amp; Video</span>
+      <span class="cat-label-mobile">Media</span>
+    </button>
+    <button class="cat-btn" data-cat="websites">
+      <span class="cat-label-desktop">Websites</span>
+      <span class="cat-label-mobile">Websites</span>
+    </button>
+    <button class="cat-btn cat-btn-all" data-cat="all" id="catBtnAll" style="display:none">
+      All Categories
+    </button>
+  </div>
 </div>
 
-<!-- ═══ CONTENT ═══════════════════════════════════════ -->
+<!-- ═══ LAYER 2 — GLOBAL FILTER BAR ══════════════════ -->
+<div class="filter-bar" id="filterBar">
+  <div class="filter-bar-inner">
+    <div class="filter-groups">
+
+      <div class="filter-group">
+        <div class="filter-group-label">Audience</div>
+        <div class="filter-pills">
+          <button class="filter-pill" data-group="audience" data-val="inquirer">Inquirer</button>
+          <button class="filter-pill" data-group="audience" data-val="catechumen">Catechumen</button>
+          <button class="filter-pill" data-group="audience" data-val="faithful">Faithful</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Nature</div>
+        <div class="filter-pills">
+          <button class="filter-pill" data-group="nature" data-val="theological">Theological</button>
+          <button class="filter-pill" data-group="nature" data-val="pastoral">Pastoral</button>
+          <button class="filter-pill" data-group="nature" data-val="devotional">Devotional</button>
+          <button class="filter-pill" data-group="nature" data-val="historical">Historical</button>
+          <button class="filter-pill" data-group="nature" data-val="liturgical">Liturgical</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-group-label">Topic</div>
+        <div class="filter-pills">
+          <button class="filter-pill" data-group="topic" data-val="prayer">Prayer</button>
+          <button class="filter-pill" data-group="topic" data-val="fasting">Fasting</button>
+          <button class="filter-pill" data-group="topic" data-val="theosis">Theosis</button>
+          <button class="filter-pill" data-group="topic" data-val="scripture">Scripture</button>
+          <button class="filter-pill" data-group="topic" data-val="sacraments">Sacraments</button>
+          <button class="filter-pill" data-group="topic" data-val="liturgy">Liturgy</button>
+          <button class="filter-pill" data-group="topic" data-val="saints-fathers">Saints &amp; Fathers</button>
+          <button class="filter-pill" data-group="topic" data-val="tradition-doctrine">Tradition &amp; Doctrine</button>
+          <button class="filter-pill" data-group="topic" data-val="christology">Christology</button>
+          <button class="filter-pill" data-group="topic" data-val="theotokos">Theotokos</button>
+          <button class="filter-pill" data-group="topic" data-val="spiritual-life">Spiritual Life</button>
+          <button class="filter-pill" data-group="topic" data-val="family-life">Family Life</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="filter-actions" id="filterActions" style="display:none">
+      <span class="filter-scope-note" id="filterScopeNote"></span>
+      <button class="filter-clear-btn" id="filterClearBtn" onclick="clearFilters()">Clear Filters</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LAYER 3 — CONTENT SECTIONS ═══════════════════ -->
 <div class="content-wrap">
 
-  <!-- ══ SECTION 1: BOOKS ══════════════════════════════ -->
   <section class="res-section" id="section-books">
-    <h2 class="section-heading">Books</h2>
-    <nav class="section-subnav" aria-label="Books by level">
-      <a href="#books-lv-inquirer" class="subnav-link">Inquirer</a>
-      <a href="#books-lv-catechumen" class="subnav-link">Catechumen</a>
-      <a href="#books-lv-faithful" class="subnav-link">The Faithful</a>
-    </nav>
-
-    <!-- Inquirer -->
-    <div class="level-block" id="books-lv-inquirer">
-      <span class="level-label inquirer">Inquirer</span>
-      <div class="res-grid" id="books-inquirer"></div>
-    </div>
-
-    <!-- Catechumen -->
-    <div class="level-block" id="books-lv-catechumen">
-      <span class="level-label catechumen">Catechumen</span>
-      <div class="subsection-label">Doctrine</div>
-      <div class="res-grid" id="books-cat-doctrine"></div>
-      <div class="subsection-label">Spiritual Life</div>
-      <div class="res-grid" id="books-cat-spiritual"></div>
-      <div class="subsection-label">Formation</div>
-      <div class="res-grid" id="books-cat-formation"></div>
-      <div class="subsection-label">Liturgical</div>
-      <div class="res-grid" id="books-cat-liturgical"></div>
-    </div>
-
-    <!-- The Faithful -->
-    <div class="level-block" id="books-lv-faithful">
-      <span class="level-label faithful">The Faithful</span>
-      <div class="res-grid" id="books-faithful"></div>
-    </div>
-
-    <div class="pastoral-note">Some advanced ascetical texts are best approached with humility and guidance within the life of the Church.</div>
+    <div class="res-cards" id="section-books-cards"></div>
   </section>
 
-  <!-- ══ SECTION 2: PRIMARY SOURCES ═══════════════════ -->
-  <section class="res-section" id="section-primary">
-    <h2 class="section-heading">Primary Sources &amp; Documents</h2>
-    <nav class="section-subnav" aria-label="Primary Sources by level">
-      <a href="#primary-lv-inquirer" class="subnav-link">Inquirer</a>
-      <a href="#primary-lv-catechumen" class="subnav-link">Catechumen</a>
-      <a href="#primary-lv-faithful" class="subnav-link">The Faithful</a>
-    </nav>
-
-    <div class="level-block" id="primary-lv-inquirer">
-      <span class="level-label inquirer">Inquirer</span>
-      <div class="res-grid" id="primary-inquirer"></div>
-    </div>
-    <div class="level-block" id="primary-lv-catechumen">
-      <span class="level-label catechumen">Catechumen</span>
-      <div class="res-grid" id="primary-catechumen"></div>
-    </div>
-    <div class="level-block" id="primary-lv-faithful">
-      <span class="level-label faithful">The Faithful</span>
-      <div class="res-grid" id="primary-faithful"></div>
-    </div>
+  <section class="res-section" id="section-patristic" style="display:none">
+    <div class="res-cards" id="section-patristic-cards"></div>
   </section>
 
-  <!-- ══ SECTION 3: PODCASTS & VIDEO ══════════════════ -->
-  <section class="res-section" id="section-podcasts">
-    <h2 class="section-heading">Podcasts &amp; Video</h2>
-    <nav class="section-subnav" aria-label="Podcasts by level">
-      <a href="#podcasts-lv-inquirer" class="subnav-link">Inquirer</a>
-      <a href="#podcasts-lv-catechumen" class="subnav-link">Catechumen</a>
-      <a href="#podcasts-lv-faithful" class="subnav-link">The Faithful</a>
-    </nav>
-
-    <div class="level-block" id="podcasts-lv-inquirer">
-      <span class="level-label inquirer">Inquirer</span>
-      <div class="res-grid" id="podcasts-inquirer"></div>
-    </div>
-    <div class="level-block" id="podcasts-lv-catechumen">
-      <span class="level-label catechumen">Catechumen</span>
-      <div class="res-grid" id="podcasts-catechumen"></div>
-    </div>
-    <div class="level-block" id="podcasts-lv-faithful">
-      <span class="level-label faithful">The Faithful</span>
-      <div class="res-grid" id="podcasts-faithful"></div>
-    </div>
+  <section class="res-section" id="section-podcasts" style="display:none">
+    <div class="res-cards" id="section-podcasts-cards"></div>
   </section>
 
-  <!-- ══ SECTION 4: PARENTS & FAMILY LIFE ═════════════ -->
-  <section class="res-section" id="section-parents">
-    <h2 class="section-heading">Parents &amp; Family Life</h2>
-    <p class="section-intro">Resources for parents seeking to raise children in the life of the Church, teach the faith at home, and grow together as a family.</p>
-
-    <!-- Start Here -->
-    <div class="start-here-block">
-      <div class="start-here-label">Start Here for Parents</div>
-      <div class="res-grid" id="parents-starthere"></div>
-    </div>
-
-    <!-- Teaching Saints -->
-    <div class="level-block">
-      <span class="level-label catechumen">Teaching Saints</span>
-      <div class="res-grid" id="parents-saints"></div>
-    </div>
-
-    <!-- Church Life -->
-    <div class="level-block">
-      <span class="level-label catechumen">Church Life</span>
-      <div class="res-grid" id="parents-churchlife"></div>
-    </div>
-
-    <!-- Catechism -->
-    <div class="level-block">
-      <span class="level-label catechumen">Catechism</span>
-      <div class="res-grid" id="parents-catechism"></div>
-    </div>
-
-    <!-- The Faithful -->
-    <div class="level-block">
-      <span class="level-label faithful">The Faithful</span>
-      <div class="res-grid" id="parents-faithful"></div>
-    </div>
-
-    <div class="pastoral-note">Children learn the faith primarily through participation in the life of the Church. These resources support that life — they do not replace it.</div>
+  <section class="res-section" id="section-websites" style="display:none">
+    <div class="res-cards" id="section-websites-cards"></div>
   </section>
 
-  <!-- ══ SECTION 5: WEBSITES ═══════════════════════════ -->
-  <section class="res-section" id="section-websites">
-    <h2 class="section-heading">Websites</h2>
-    <nav class="section-subnav" aria-label="Websites by level">
-      <a href="#websites-lv-inquirer" class="subnav-link">Inquirer</a>
-      <a href="#websites-lv-catechumen" class="subnav-link">Catechumen</a>
-      <a href="#websites-lv-faithful" class="subnav-link">The Faithful</a>
-    </nav>
-
-    <div class="level-block" id="websites-lv-inquirer">
-      <span class="level-label inquirer">Inquirer</span>
-      <div class="res-grid" id="websites-inquirer"></div>
-    </div>
-    <div class="level-block" id="websites-lv-catechumen">
-      <span class="level-label catechumen">Catechumen</span>
-      <div class="res-grid" id="websites-catechumen"></div>
-    </div>
-    <div class="level-block" id="websites-lv-faithful">
-      <span class="level-label faithful">The Faithful</span>
-      <div class="res-grid" id="websites-faithful"></div>
-    </div>
-  </section>
-
-</div><!-- /.content-wrap -->
+</div>
 
 <!-- ═══ SCRIPTS ════════════════════════════════════════ -->
 <script>
@@ -775,549 +591,258 @@ function toggleTheme(){
   var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
   document.documentElement.setAttribute('data-theme',t);
 })();
-
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
-  var d=document.getElementById('navDrawer');
-  var h=document.getElementById('hamburger');
+  var d=document.getElementById('navDrawer'),h=document.getElementById('hamburger');
   if(d)d.classList.toggle('open',_drawerOpen);
   if(h)h.classList.toggle('open',_drawerOpen);
 }
 function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
+  var d=document.getElementById('navUserDropdown'),b=document.getElementById('navUserBtn');
+  if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');
 }
 function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
+  localStorage.removeItem('oc_user');localStorage.removeItem('oc_token');
   window.location.href='index.html';
 }
 function initAccountNav(){
   var user=null;
   try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
+  var signIn=document.getElementById('navSignIn'),userMenu=document.getElementById('navUserMenu');
+  var usernameEl=document.getElementById('navUsername'),drawerSignIn=document.getElementById('drawerSignIn');
   if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
+    if(signIn)signIn.style.display='none';if(userMenu)userMenu.style.display='block';
     if(usernameEl)usernameEl.textContent=user.username;
     if(drawerSignIn)drawerSignIn.textContent=user.username;
   } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
+    if(signIn)signIn.style.display='';if(userMenu)userMenu.style.display='none';
   }
 }
 document.addEventListener('click',function(e){
   if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
     _drawerOpen=false;
-    var d=document.getElementById('navDrawer');
-    var h=document.getElementById('hamburger');
-    if(d)d.classList.remove('open');
-    if(h)h.classList.remove('open');
+    var d=document.getElementById('navDrawer'),h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');if(h)h.classList.remove('open');
   }
   if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
+    var d=document.getElementById('navUserDropdown'),b=document.getElementById('navUserBtn');
+    if(d)d.classList.remove('open');if(b)b.classList.remove('open');
   }
 });
 document.addEventListener('DOMContentLoaded',function(){
   initAccountNav();
-  if(window.location.hash){
-    var id=window.location.hash.replace('#','');
-    setTimeout(function(){
-      var el=document.getElementById(id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    },200);
-  }
   var btn=document.getElementById('backToTop');
-  if(btn){
-    window.addEventListener('scroll',function(){
-      btn.classList.toggle('visible',window.scrollY>400);
-    },{passive:true});
-  }
+  if(btn){window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});}
 });
 </script>
 
 <script>
 /* ═══ REVOLVING QUOTES ════════════════════════════════ */
-var QUOTES = [
-  {
-    text: '\u201cHe was made man that we might be made God.\u201d',
-    attr: 'St. Athanasius of Alexandria',
-    source: 'On the Incarnation, ch. 54 (c. 318 AD)'
-  },
-  {
-    text: '\u201cThis is the foundation of all good things \u2014 the reading of the Scriptures.\u201d',
-    attr: 'St. John Chrysostom',
-    source: 'Homilies on Matthew, Homily 2 (4th century)'
-  },
-  {
-    text: '\u201cPrayer is the place of refuge for every worry, a foundation for cheerfulness, a source of constant happiness, a protection against sadness.\u201d',
-    attr: 'St. John Chrysostom',
-    source: 'On Anxiety (4th century)'
-  },
-  {
-    text: '\u201cThe glory of God is a living man; and the life of man consists in beholding God.\u201d',
-    attr: 'St. Irenaeus of Lyon',
-    source: 'Against Heresies, IV.20.7 (c. 180 AD)'
-  },
-  {
-    text: '\u201cAcquire a peaceful spirit, and around you thousands will be saved.\u201d',
-    attr: 'St. Seraphim of Sarov',
-    source: 'Conversations with Nicholas Motovilov (19th century)'
-  },
-  {
-    text: '\u201cA perfect soul is one whose affective drive is entirely redirected toward God.\u201d',
-    attr: 'St. Maximos the Confessor',
-    source: 'Four Hundred Texts on Love, I.1 (7th century)'
-  },
-  {
-    text: '\u201cThe soul that has tasted Thee seeketh Thee; she that hath not tasted seeketh Thee; but she that hath tasted knoweth Thee.\u201d',
-    attr: 'St. Gregory of Nyssa',
-    source: 'Homilies on the Song of Songs (4th century)'
-  },
-  {
-    text: '\u201cNo one can be saved without love.\u201d',
-    attr: 'St. John Climacus',
-    source: 'The Ladder of Divine Ascent, Step 30 (7th century)'
-  }
+var QUOTES=[
+  {text:'\u201cHe was made man that we might be made God.\u201d',attr:'St. Athanasius of Alexandria',source:'On the Incarnation, ch. 54 (c. 318 AD)'},
+  {text:'\u201cThis is the foundation of all good things \u2014 the reading of the Scriptures.\u201d',attr:'St. John Chrysostom',source:'Homilies on Matthew, Homily 2 (4th century)'},
+  {text:'\u201cPrayer is the place of refuge for every worry, a foundation for cheerfulness, a source of constant happiness, a protection against sadness.\u201d',attr:'St. John Chrysostom',source:'On Anxiety (4th century)'},
+  {text:'\u201cThe glory of God is a living man; and the life of man consists in beholding God.\u201d',attr:'St. Irenaeus of Lyon',source:'Against Heresies, IV.20.7 (c. 180 AD)'},
+  {text:'\u201cAcquire a peaceful spirit, and around you thousands will be saved.\u201d',attr:'St. Seraphim of Sarov',source:'Conversations with Nicholas Motovilov (19th century)'},
+  {text:'\u201cA perfect soul is one whose affective drive is entirely redirected toward God.\u201d',attr:'St. Maximos the Confessor',source:'Four Hundred Texts on Love, I.1 (7th century)'},
+  {text:'\u201cThe soul that has tasted Thee seeketh Thee; she that hath not tasted seeketh Thee; but she that hath tasted knoweth Thee.\u201d',attr:'St. Gregory of Nyssa',source:'Homilies on the Song of Songs (4th century)'},
+  {text:'\u201cNo one can be saved without love.\u201d',attr:'St. John Climacus',source:'The Ladder of Divine Ascent, Step 30 (7th century)'}
 ];
-
-var _qIdx = 0;
-var _qPaused = false;
-
-function _setQuote(q, fade) {
-  var inner = document.getElementById('quoteInner');
-  if (!inner) return;
-  if (fade) {
+var _qIdx=0,_qPaused=false;
+function _setQuote(q,fade){
+  var inner=document.getElementById('quoteInner');if(!inner)return;
+  if(fade){
     inner.classList.add('fading');
-    setTimeout(function() {
-      document.getElementById('quoteText').textContent = q.text;
-      document.getElementById('quoteAttr').textContent = '\u2014 ' + q.attr;
-      document.getElementById('quoteSource').textContent = q.source;
+    setTimeout(function(){
+      document.getElementById('quoteText').textContent=q.text;
+      document.getElementById('quoteAttr').textContent='\u2014 '+q.attr;
+      document.getElementById('quoteSource').textContent=q.source;
       inner.classList.remove('fading');
-    }, 1500);
+    },1500);
   } else {
-    document.getElementById('quoteText').textContent = q.text;
-    document.getElementById('quoteAttr').textContent = '\u2014 ' + q.attr;
-    document.getElementById('quoteSource').textContent = q.source;
+    document.getElementById('quoteText').textContent=q.text;
+    document.getElementById('quoteAttr').textContent='\u2014 '+q.attr;
+    document.getElementById('quoteSource').textContent=q.source;
   }
 }
-
-function _nextQuote() {
-  if (_qPaused) return;
-  _qIdx = (_qIdx + 1) % QUOTES.length;
-  _setQuote(QUOTES[_qIdx], true);
-}
-
-window.addEventListener('scroll', function() {
-  var panel = document.getElementById('quotePanel');
-  if (!panel) return;
-  _qPaused = panel.getBoundingClientRect().bottom < 0;
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  _setQuote(QUOTES[0], false);
-  setInterval(_nextQuote, 9500);
-});
+function _nextQuote(){if(_qPaused)return;_qIdx=(_qIdx+1)%QUOTES.length;_setQuote(QUOTES[_qIdx],true);}
+window.addEventListener('scroll',function(){var p=document.getElementById('quotePanel');if(p)_qPaused=p.getBoundingClientRect().bottom<0;});
+document.addEventListener('DOMContentLoaded',function(){_setQuote(QUOTES[0],false);setInterval(_nextQuote,9500);});
 </script>
 
 <script>
-/* ═══ RESOURCE DATA & RENDER ══════════════════════════ */
+/* ═══ RESOURCE LIBRARY — THREE-LAYER NAVIGATION
+   Step 3: Architecture complete. Logic wired.
+   Step 4: Inject RESOURCES array below.
+══════════════════════════════════════════════════════ */
 
-function card(r) {
-  var footer = r.link
-    ? '<a href="' + r.link + '" target="_blank" rel="noopener" class="res-link">' + (r.label || 'Visit') + ' &#8599;</a>'
-    : '<span class="res-no-link">Available at Orthodox bookstores</span>';
-  return '<div class="res-card">' +
-    '<div class="res-card-name">' + r.name + '</div>' +
-    (r.author ? '<div class="res-card-author">' + r.author + '</div>' : '') +
-    '<div class="res-card-desc">' + r.desc + '</div>' +
-    '<div class="res-card-footer">' + footer + '</div>' +
-    '</div>';
+/* ── State ───────────────────────────────────────────── */
+var _state={category:'books',audience:[],nature:[],topic:[]};
+var CATS=['books','patristic','podcasts','websites'];
+
+/* ── RESOURCES — Step 4 injects here ────────────────────
+   Schema per resource:
+   {
+     id:        'string',
+     title:     'string',
+     author:    'string',
+     category:  'books' | 'patristic' | 'podcasts' | 'websites',
+     audience:  ['inquirer','catechumen','faithful'],
+     nature:    ['theological','pastoral','devotional','historical','liturgical'],
+     topic:     ['prayer','fasting','theosis','scripture','sacraments','liturgy',
+                 'saints-fathers','tradition-doctrine','christology',
+                 'theotokos','spiritual-life','family-life'],
+     synopsis:  'string',
+     caveat:    null | 'string',
+     link:      'string',
+     linkLabel: 'string'
+   }
+──────────────────────────────────────────────────────── */
+var RESOURCES=[];
+
+/* ── Helpers ─────────────────────────────────────────── */
+function _cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):'';}
+var _TL={
+  'prayer':'Prayer','fasting':'Fasting','theosis':'Theosis','scripture':'Scripture',
+  'sacraments':'Sacraments','liturgy':'Liturgy','saints-fathers':'Saints &amp; Fathers',
+  'tradition-doctrine':'Tradition &amp; Doctrine','christology':'Christology',
+  'theotokos':'Theotokos','spiritual-life':'Spiritual Life','family-life':'Family Life'
+};
+function _tl(t){return _TL[t]||_cap(t);}
+
+/* ── Filter logic ────────────────────────────────────── */
+function _hasFilters(){return _state.audience.length>0||_state.nature.length>0||_state.topic.length>0;}
+function _matches(r){
+  if(_state.audience.length>0){
+    var ok=false;for(var i=0;i<_state.audience.length;i++){if(r.audience.indexOf(_state.audience[i])>-1){ok=true;break;}}
+    if(!ok)return false;
+  }
+  if(_state.nature.length>0){
+    var ok=false;for(var i=0;i<_state.nature.length;i++){if(r.nature.indexOf(_state.nature[i])>-1){ok=true;break;}}
+    if(!ok)return false;
+  }
+  if(_state.topic.length>0){
+    var ok=false;for(var i=0;i<_state.topic.length;i++){if(r.topic.indexOf(_state.topic[i])>-1){ok=true;break;}}
+    if(!ok)return false;
+  }
+  return true;
+}
+function _forCat(cat){return RESOURCES.filter(function(r){return r.category===cat&&_matches(r);});}
+
+/* ── Card render ─────────────────────────────────────── */
+function _card(r){
+  var pa=r.audience[0]||'inquirer';
+  var ap=r.audience.map(function(a){return '<span class="tag-pill tag-aud tag-aud-'+a+'">'+_cap(a)+'</span>';}).join('');
+  var np=r.nature.map(function(n){return '<span class="tag-pill tag-nat">'+_cap(n)+'</span>';}).join('');
+  var tp=r.topic.map(function(t){return '<span class="tag-pill tag-top">'+_tl(t)+'</span>';}).join('');
+  var cav=r.caveat?'<div class="card-caveat">&#9888; '+r.caveat+'</div>':'';
+  var lnk=r.link
+    ?'<a href="'+r.link+'" target="_blank" rel="noopener" class="res-link">'+(r.linkLabel||'Visit')+' &#8599;</a>'
+    :'<span class="res-no-link">Available at Orthodox bookstores</span>';
+  var auth=r.author?'<div class="card-author">'+r.author+'</div>':'';
+  return '<div class="res-card" data-id="'+r.id+'">'+
+    '<div class="card-collapsed">'+
+      '<div class="card-title">'+r.title+'</div>'+
+      '<div class="card-primary-tag"><span class="tag-pill tag-aud tag-aud-'+pa+'">'+_cap(pa)+'</span></div>'+
+      '<span class="card-chevron">&#43;</span>'+
+    '</div>'+
+    '<div class="card-expanded">'+
+      auth+
+      '<div class="card-synopsis">'+r.synopsis+'</div>'+
+      cav+
+      '<div class="card-tags">'+ap+np+tp+'</div>'+
+      '<div class="card-footer">'+lnk+'</div>'+
+    '</div>'+
+  '</div>';
 }
 
-function render(arr, id) {
-  var el = document.getElementById(id);
-  if (el) el.innerHTML = arr.map(card).join('');
+/* ── Section render ──────────────────────────────────── */
+function _renderSec(cat){
+  var el=document.getElementById('section-'+cat+'-cards');if(!el)return;
+  var list=_forCat(cat);
+  if(list.length===0){
+    var msg=_hasFilters()?'No resources found for this combination \u2014 try adjusting your filters.':'Resources coming soon.';
+    var act=(_hasFilters()&&_state.category!=='all')?'<div><button class="res-empty-action" onclick="setCategory(\'all\')">Search All Categories</button></div>':'';
+    el.innerHTML='<div class="res-empty">'+msg+act+'</div>';
+  } else {
+    el.innerHTML=list.map(_card).join('');
+    var cards=el.querySelectorAll('.card-collapsed');
+    for(var i=0;i<cards.length;i++){cards[i].addEventListener('click',_cardClick);}
+  }
+}
+function _cardClick(){
+  var c=this.parentElement,open=c.classList.contains('open');
+  c.classList.toggle('open',!open);
+  var ch=this.querySelector('.card-chevron');
+  if(ch)ch.innerHTML=open?'&#43;':'&#8722;';
 }
 
-/* ── Books: Inquirer ─────────────────────────────────── */
-var BOOKS_INQ = [
-  {name:'The Orthodox Church', author:'Metropolitan Kallistos Ware',
-   desc:'The single best introduction to Orthodox Christianity in English — history, theology, and worship in one volume.',
-   link:'', label:''},
-  {name:'The Orthodox Way', author:'Metropolitan Kallistos Ware',
-   desc:'A deeper exploration of Orthodox theology through the lens of the spiritual life: God, man, prayer, and the path toward theosis.',
-   link:'', label:''},
-  {name:'Introducing the Orthodox Church', author:'Anthony Coniaris',
-   desc:'One of the most accessible introductions to Orthodox faith and life — warm, practical, and grounded in parish experience.',
-   link:'', label:''},
-  {name:'Journey to Reality', author:'Zachary Porcu',
-   desc:'A contemporary guide to Orthodox Christianity written especially for those coming from secular or Protestant backgrounds.',
-   link:'', label:''},
-  {name:'For the Life of the World', author:'Fr. Alexander Schmemann',
-   desc:'The most accessible introduction to the Orthodox sacramental vision of life — showing how the Liturgy transforms all of creation into Eucharist.',
-   link:'', label:''},
-  {name:'Becoming Orthodox', author:'Peter E. Gillquist',
-   desc:'The remarkable story of how a community of Evangelical pastors researched their way into the Orthodox Church — one of the most widely read conversion accounts.',
-   link:'', label:''},
-  {name:'Celebration of Faith (3 vols.)', author:'Fr. Alexander Schmemann',
-   desc:'Three volumes of broadcast sermons — warm, luminous, and theologically clear. The most accessible introduction to Schmemann for new readers.',
-   link:'', label:''},
-  {name:'Everyday Saints', author:'Archimandrite Tikhon Shevkunov',
-   desc:'Beloved stories of monastic life in Soviet Russia — a window into the living reality of Orthodox faith that has captivated millions of readers worldwide.',
-   link:'', label:''},
-  {name:'Welcome to the Orthodox Church', author:'Frederica Mathewes-Green',
-   desc:'A warm and deeply personal guide to Orthodox faith and life, written with converts and inquirers especially in mind.',
-   link:'', label:''}
-];
+/* ── Full render ─────────────────────────────────────── */
+function _renderAll(){
+  for(var i=0;i<CATS.length;i++){
+    var cat=CATS[i],sec=document.getElementById('section-'+cat);if(!sec)continue;
+    var show=(_state.category==='all'||_state.category===cat);
+    sec.style.display=show?'':'none';
+    if(show)_renderSec(cat);
+  }
+  _updateCatBar();_updateFilterBar();
+}
 
-/* ── Books: Catechumen — Doctrine ────────────────────── */
-var BOOKS_CAT_DOC = [
-  {name:'Know the Faith', author:'Fr. Michael Shanbour',
-   desc:'A clear and accessible Orthodox catechism covering doctrine, sacraments, and the life of the Church.',
-   link:'', label:''},
-  {name:'The Religion of the Apostles', author:'Fr. Stephen De Young',
-   desc:'A compelling case that Orthodox Christianity is the direct continuation of Second Temple Jewish Christianity — essential reading for converts.',
-   link:'', label:''},
-  {name:'Thinking Orthodox', author:'Jeannie Constantinou',
-   desc:'An exploration of the Orthodox phronema — the Orthodox mind — and what it truly means to think, pray, and live as an Orthodox Christian.',
-   link:'', label:''}
-];
+/* ── Category bar ────────────────────────────────────── */
+function setCategory(cat){
+  _state.category=cat;
+  var btns=document.querySelectorAll('.cat-btn');
+  for(var i=0;i<btns.length;i++)btns[i].classList.toggle('active',btns[i].dataset.cat===cat);
+  _renderAll();
+  var wrap=document.querySelector('.content-wrap');
+  if(wrap){var top=wrap.getBoundingClientRect().top+window.scrollY-130;if(window.scrollY>top)window.scrollTo({top:top,behavior:'smooth'});}
+}
+function _updateCatBar(){
+  var af=_hasFilters();
+  for(var i=0;i<CATS.length;i++){
+    var cat=CATS[i],btn=document.querySelector('.cat-btn[data-cat="'+cat+'"]');if(!btn)continue;
+    var cnt=_forCat(cat).length,badge=btn.querySelector('.cat-count');
+    if(af){
+      if(!badge){badge=document.createElement('span');badge.className='cat-count';btn.appendChild(badge);}
+      badge.textContent=cnt;btn.classList.toggle('cat-empty',cnt===0);
+    } else {if(badge)badge.remove();btn.classList.remove('cat-empty');}
+  }
+  var ab=document.getElementById('catBtnAll');
+  if(ab){ab.style.display=af?'':'none';ab.classList.toggle('active',_state.category==='all');}
+}
 
-/* ── Books: Catechumen — Spiritual Life ──────────────── */
-var BOOKS_CAT_SPI = [
-  {name:'Way of the Ascetics', author:'Tito Colliander',
-   desc:'A slim, luminous guide to Orthodox ascetical life — fasting, prayer, watchfulness, and the struggle against the passions.',
-   link:'', label:''},
-  {name:'Unseen Warfare', author:'St. Nicodemus of the Holy Mountain &amp; St. Theophan the Recluse',
-   desc:'The classic Orthodox manual for spiritual combat — the struggle against the passions and the enemies of salvation.',
-   link:'', label:''},
-  {name:'Renewing You', author:'Fr. Nick Louh',
-   desc:'A guide to Orthodox spiritual renewal written by a parish priest — grounded, accessible, and deeply pastoral.',
-   link:'', label:''},
-  {name:'Beginning to Pray', author:'Metropolitan Anthony Bloom',
-   desc:'A short, luminous introduction to Orthodox prayer that has guided countless Christians into a living relationship with God.',
-   link:'', label:''},
-  {name:'The Way of the Pilgrim', author:'Anonymous (19th century, Russia)',
-   desc:'A wandering Russian pilgrim learns to pray the Jesus Prayer without ceasing — one of the most beloved books in the Orthodox tradition.',
-   link:'', label:''},
-  {name:'A Beginner\'s Guide to Spirituality', author:'Fr. Michael Keiser',
-   desc:'An accessible guide to Orthodox spiritual life for those beginning the journey of prayer and inner transformation.',
-   link:'', label:''},
-  {name:'The Jesus Prayer', author:'A Monk of the Eastern Church (Fr. Lev Gillet)',
-   desc:'The standard accessible treatment of the Jesus Prayer — its theology, its history, and its practice within the Orthodox tradition.',
-   link:'', label:''}
-];
+/* ── Filter bar ──────────────────────────────────────── */
+function toggleFilter(group,value){
+  var arr=_state[group],idx=arr.indexOf(value);
+  if(idx>-1)arr.splice(idx,1);else arr.push(value);
+  _renderAll();
+}
+function clearFilters(){_state.audience=[];_state.nature=[];_state.topic=[];_renderAll();}
+function _updateFilterBar(){
+  var pills=document.querySelectorAll('.filter-pill');
+  for(var i=0;i<pills.length;i++){
+    var p=pills[i],arr=_state[p.dataset.group];
+    p.classList.toggle('active',arr&&arr.indexOf(p.dataset.val)>-1);
+  }
+  var af=_hasFilters(),actions=document.getElementById('filterActions');
+  if(actions)actions.style.display=af?'':'none';
+  var note=document.getElementById('filterScopeNote');
+  if(note){
+    var CL={'books':'Books','patristic':'Patristic Texts','podcasts':'Podcasts & Video','websites':'Websites'};
+    if(af&&_state.category!=='all')note.textContent='Filtering within: '+(CL[_state.category]||_state.category);
+    else if(af)note.textContent='Searching all categories';
+    else note.textContent='';
+  }
+}
 
-/* ── Books: Catechumen — Formation ──────────────────── */
-var BOOKS_CAT_FORM = [
-  {name:'From Object to Icon', author:'Andrew Williams',
-   desc:'A thoughtful exploration of Orthodox theology of the image and how the visible reveals the invisible — addressing spiritual vision in a distracted world.',
-   link:'', label:''},
-  {name:'The Gurus, the Young Man, and Elder Paisios', author:'Dionysios Farasiotis',
-   desc:'A gripping personal account of spiritual deception and the discovery of Orthodox Christianity — essential reading for those coming from Eastern or New Age backgrounds.',
-   link:'', label:''}
-];
-
-/* ── Books: Catechumen — Liturgical ─────────────────── */
-var BOOKS_CAT_LIT = [
-  {name:'Lenten Spring', author:'Fr. Thomas Hopko',
-   desc:'A day-by-day guide to Great Lent — its services, its theology, and its spiritual meaning for the life of the Church.',
-   link:'', label:''},
-  {name:'Great Lent', author:'Fr. Alexander Schmemann',
-   desc:'A theological guide to the Great Fast — its liturgical texts, its services, and the journey toward Pascha.',
-   link:'', label:''},
-  {name:'Meditations for Holy Week', author:'Vassilios Papavassiliou',
-   desc:'A profound guide to the services of Holy Week — opening the inexhaustible theological depth of the Church\'s most sacred days.',
-   link:'', label:''},
-  {name:'Orthodox Worship', author:'Benjamin Williams &amp; Harold Anstall',
-   desc:'An accessible treatment of how Orthodox worship connects to the Temple, the synagogue, and the whole sweep of salvation history.',
-   link:'', label:''}
-];
-
-/* ── Books: The Faithful ─────────────────────────────── */
-var BOOKS_FAITH = [
-  {name:'The Ladder of Divine Ascent', author:'St. John Climacus',
-   desc:'The thirty steps of the spiritual life — from renunciation through the heights of prayer and love — read in Orthodox monasteries throughout Great Lent for fifteen centuries.',
-   link:'', label:''},
-  {name:'Our Thoughts Determine Our Lives', author:'Elder Thaddeus of Vitovnica',
-   desc:'Simple, profound wisdom from a Serbian elder on inner peace, prayer, the passions, and the life of grace.',
-   link:'', label:''},
-  {name:'Mountain of Silence', author:'Kyriacos C. Markides',
-   desc:'A Western sociologist encounters the living hesychast tradition on Mount Athos — a beautiful bridge between intellectual inquiry and lived Orthodox spirituality.',
-   link:'', label:''},
-  {name:'6 Hours, 7 Lessons', author:'Fr. Nicholas G. Louh',
-   desc:'A meditation on the seven words of Christ from the Cross — weaving theology, pastoral wisdom, and the light that transcends our darkness.',
-   link:'', label:''},
-  {name:'The Philokalia (4 vols.)', author:'Various Holy Fathers',
-   desc:'The treasury of Orthodox mystical theology — writings on prayer, watchfulness, and theosis from the 4th through 15th centuries. The foundation of the hesychast tradition.',
-   link:'', label:''},
-  {name:'Wounded by Love', author:'Elder Porphyrios',
-   desc:'The spiritual autobiography and teachings of Elder Porphyrios — one of the most beloved Orthodox elders of the 20th century.',
-   link:'', label:''},
-  {name:'St. Silouan the Athonite', author:'Archimandrite Sophrony',
-   desc:'The life and writings of St. Silouan, presented by his disciple — widely regarded as one of the most important Orthodox spiritual texts of the twentieth century.',
-   link:'', label:''},
-  {name:'The Mystical Theology of the Eastern Church', author:'Vladimir Lossky',
-   desc:'The foundational modern treatment of Orthodox mystical theology — Lossky\'s landmark synthesis of apophatic theology and the life of prayer.',
-   link:'', label:''},
-  {name:'The Eucharist: Sacrament of the Kingdom', author:'Fr. Alexander Schmemann',
-   desc:'A commentary on the Divine Liturgy that reveals its inner theological meaning and vision of the Kingdom of God — Schmemann\'s most theologically dense work.',
-   link:'', label:''},
-  {name:'The Meaning of Icons', author:'Leonid Ouspensky &amp; Vladimir Lossky',
-   desc:'The standard scholarly treatment of Orthodox icon theology — covering the history, theology, and spiritual significance of sacred images.',
-   link:'', label:''},
-  {name:'The Prologue of Ohrid (4 vols.)', author:'St. Nikolai Velimirovic',
-   desc:'A four-volume daily reader of saints\' lives, homilies, and meditations — one entry for each day of the year, intended to be read slowly over a lifetime, not cover to cover.',
-   link:'', label:''},
-  {name:'On Marriage and Family Life', author:'St. John Chrysostom (SVS Press)',
-   desc:'A curated collection of Chrysostom\'s homilies on Christian marriage, the household, and the formation of children — drawn from his Homilies on Ephesians.',
-   link:'', label:''},
-  {name:'Orthodox Dogmatic Theology', author:'Fr. Michael Pomazansky',
-   desc:'The standard Orthodox systematic theology in English — rigorous, precise, and comprehensive. The essential doctrinal reference for serious study.',
-   link:'', label:''},
-  {name:'Divine Energy', author:'Ancient Faith Publishing',
-   desc:'An Orthodox exploration of the uncreated energies and theosis — the living and transforming relationship between God and the human person.',
-   link:'', label:''},
-  {name:'Sayings of the Desert Fathers', author:'The Abbas of Egypt (4th–5th century)',
-   desc:'The collected wisdom of the great Egyptian monastics — terse, paradoxical, and inexhaustibly deep. A treasury the Church has returned to for seventeen centuries.',
-   link:'', label:''},
-  {name:'Orthodox Veneration of the Mother of God', author:'Archbishop John Maximovitch',
-   desc:'A clear and authoritative treatment of Orthodox Mariology — the theological foundation of the Church\'s love and veneration for the Theotokos.',
-   link:'', label:''}
-];
-
-/* ── Primary Sources: Inquirer ───────────────────────── */
-var PRIM_INQ = [
-  {name:'The Didache', author:'Apostolic Fathers (c. 50–120 AD)',
-   desc:'The Teaching of the Twelve Apostles — one of the earliest Christian documents outside the New Testament, offering a direct window into the life of the primitive Church.',
-   link:'https://www.newadvent.org/fathers/0714.htm', label:'Read Free'},
-  {name:'The Nicene-Constantinopolitan Creed', author:'Ecumenical Councils I &amp; II (325, 381 AD)',
-   desc:'The Symbol of Faith — the foundational statement of Orthodox belief, sung at every Divine Liturgy and the measure of all Orthodox theology.',
-   link:'https://www.goarch.org/nicene-creed', label:'Read Free'},
-  {name:'The Divine Liturgy of St. John Chrysostom', author:'Full text — goarch.org',
-   desc:'The full text of the central act of Orthodox worship — freely available at goarch.org for those following the service or studying it at home.',
-   link:'https://www.goarch.org/liturgy', label:'Read Free'}
-];
-
-/* ── Primary Sources: Catechumen ─────────────────────── */
-var PRIM_CAT = [
-  {name:'The Apostolic Fathers', author:'Various (1st–2nd century)',
-   desc:'The earliest Christian writings after the New Testament — Clement of Rome, Ignatius of Antioch, Polycarp, the Shepherd of Hermas, and others.',
-   link:'https://www.newadvent.org/fathers/', label:'Read Free'},
-  {name:'On the Incarnation', author:'St. Athanasius the Great',
-   desc:'Written as a young man, still the clearest statement of Orthodox Christology — C.S. Lewis called it one of the most important books he ever read.',
-   link:'https://www.newadvent.org/fathers/2802.htm', label:'Read Free'},
-  {name:'The Orthodox Faith (4 vols.)', author:'Fr. Thomas Hopko (OCA)',
-   desc:'A four-volume catechism covering Doctrine, Worship, Bible, and Spirituality — one of the finest Orthodox catechetical works ever written, freely available at oca.org.',
-   link:'https://www.oca.org/orthodoxy/the-orthodox-faith', label:'Read Free'},
-  {name:'The Orthodox Study Bible', author:'Thomas Nelson / Conciliar Press',
-   desc:'The most widely used Orthodox Bible in English — the complete Old and New Testaments with Orthodox commentary, patristic notes, and icons.',
-   link:'', label:''}
-];
-
-/* ── Primary Sources: The Faithful ──────────────────── */
-var PRIM_FAITH = [
-  {name:'On the Holy Spirit', author:'St. Basil the Great',
-   desc:'The definitive Orthodox treatment of the divinity and procession of the Holy Spirit — the theological foundation of the Third Article of the Creed.',
-   link:'https://www.newadvent.org/fathers/3203.htm', label:'Read Free'},
-  {name:'Five Theological Orations', author:'St. Gregory the Theologian',
-   desc:'Delivered in Constantinople in 380 AD — these five orations defined Trinitarian doctrine for all subsequent Orthodox theology.',
-   link:'https://www.newadvent.org/fathers/3102.htm', label:'Read Free'},
-  {name:'Catechetical Lectures', author:'St. Cyril of Jerusalem',
-   desc:'The premier catechetical text of the ancient Church — eighteen pre-baptismal lectures and five mystagogical catecheses on the holy sacraments.',
-   link:'https://www.newadvent.org/fathers/3101.htm', label:'Read Free'},
-  {name:'Homilies on Matthew', author:'St. John Chrysostom',
-   desc:'Ninety homilies on the Gospel of Matthew — the standard of Christian preaching for fifteen centuries, freely available through New Advent.',
-   link:'https://www.newadvent.org/fathers/2001.htm', label:'Read Free'},
-  {name:'The Life of St. Antony', author:'St. Athanasius the Great',
-   desc:'The foundational text of Christian monasticism — the life of the great Egyptian ascetic whose example launched the entire desert tradition.',
-   link:'https://www.newadvent.org/fathers/2811.htm', label:'Read Free'},
-  {name:'On the Soul and Resurrection', author:'St. Gregory of Nyssa',
-   desc:'A dialogue on death, the soul, and the resurrection — one of the most beautiful patristic meditations on eschatology and the Christian hope.',
-   link:'https://www.newadvent.org/fathers/2915.htm', label:'Read Free'},
-  {name:'Exact Exposition of the Orthodox Faith', author:'St. John of Damascus',
-   desc:'The great patristic synthesis of Orthodox theology — best approached as a reference text rather than a cover-to-cover read. The standard patristic summa.',
-   link:'https://www.newadvent.org/fathers/3303.htm', label:'Read Free'},
-  {name:'Confession of Dositheus (1672)', author:'Synod of Jerusalem',
-   desc:'The landmark confession of Orthodox faith from the Synod of Jerusalem — a definitive Orthodox response to Calvinist influence in the 17th century.',
-   link:'https://www.crivoice.org/creeddositheus.html', label:'Read Free'},
-  {name:'Canons of the Seven Ecumenical Councils', author:'The Holy Councils (325–787)',
-   desc:'The disciplinary and doctrinal canons of all seven Ecumenical Councils — the foundational Church law of Orthodoxy.',
-   link:'https://www.newadvent.org/fathers/3802.htm', label:'Read Free'}
-];
-
-/* ── Podcasts & Video: Inquirer ──────────────────────── */
-var POD_INQ = [
-  {name:'Ancient Faith Radio', author:'Ancient Faith Ministries',
-   desc:'The largest library of Orthodox audio content in English — hundreds of podcasts covering every aspect of Orthodox faith and life.',
-   link:'https://www.ancientfaith.com/podcasts', label:'Listen'},
-  {name:'Faithfully Orthodox', author:'Ancient Faith Radio',
-   desc:'Warm, accessible conversations on Orthodox Christianity for inquirers, catechumens, and the newly received.',
-   link:'https://www.ancientfaith.com/podcasts/faithfullyorthodox', label:'Listen'},
-  {name:'Finding the Church Jesus Built', author:'YouTube',
-   desc:'A video exploration of the historical and apostolic roots of the Orthodox Church — ideal for those investigating Orthodoxy for the first time.',
-   link:'https://www.youtube.com/results?search_query=Finding+the+Church+Jesus+Built', label:'Watch'},
-  {name:'Be the Bee', author:'Greek Orthodox Archdiocese (YouTube)',
-   desc:'Short, accessible videos on Orthodox faith and life — especially valuable for teenagers and families exploring the Church together.',
-   link:'https://www.youtube.com/@BeTheBee', label:'Watch'}
-];
-
-/* ── Podcasts & Video: Catechumen ────────────────────── */
-var POD_CAT = [
-  {name:'Lord of Spirits', author:'Fr. Andrew Stephen Damick &amp; Fr. Stephen De Young',
-   desc:'A wide-ranging exploration of the spiritual world, theology, Scripture, and Orthodox cosmology — one of the most popular Orthodox podcasts in English.',
-   link:'https://www.ancientfaith.com/podcasts/lordofspirits', label:'Listen'},
-  {name:'Live With The Louhs', author:'The Louhs',
-   desc:'Orthodox Christian family life, faith, and daily practice — warm, accessible, and grounded in the reality of parish and home life.',
-   link:'https://www.youtube.com/@LivewiththeLouhs', label:'Watch'},
-  {name:'Trisagion Films', author:'Trisagion Films (YouTube)',
-   desc:'Visually beautiful short films exploring Orthodox theology, the lives of the saints, and the liturgical life of the Church.',
-   link:'https://www.youtube.com/@TrisagionFilms', label:'Watch'},
-  {name:'Rock and Sand', author:'Fr. Josiah Trenham',
-   desc:'Fr. Josiah Trenham examines the theological and historical distinctions between Orthodoxy and Western Christianity — essential listening for converts.',
-   link:'https://www.ancientfaith.com/podcasts/rockandsand', label:'Listen'},
-  {name:'Orthodoxy and Heterodoxy', author:'Fr. Andrew Stephen Damick',
-   desc:'A systematic comparison of Orthodox Christianity with every major Christian tradition — indispensable for those coming to Orthodoxy from other backgrounds.',
-   link:'https://www.ancientfaith.com/podcasts/orthodoxyandheterodoxy', label:'Listen'}
-];
-
-/* ── Podcasts & Video: The Faithful ─────────────────── */
-var POD_FAITH = [
-  {name:'Search the Scriptures', author:'Dr. Jeannie Constantinou',
-   desc:'Dr. Constantinou takes listeners through the books of the Bible with patristic commentary and Orthodox theological insight — a remarkable ongoing series.',
-   link:'https://www.ancientfaith.com/podcasts/searchthescriptures', label:'Listen'},
-  {name:'Speaking the Truth in Love', author:'Fr. Thomas Hopko',
-   desc:'Fr. Hopko\'s vast archive of talks on Scripture, theology, liturgy, and spiritual life — the most substantial Orthodox theological podcast series in English.',
-   link:'https://www.ancientfaith.com/podcasts/hopko', label:'Listen'},
-  {name:'Glory to God for All Things', author:'Fr. Stephen Freeman',
-   desc:'Fr. Freeman\'s reflective, deeply pastoral reflections on Orthodox theology and the spiritual life — drawing on the Fathers and the wisdom of parish experience.',
-   link:'https://www.ancientfaith.com/podcasts/freeman', label:'Listen'}
-];
-
-/* ── Parents: Start Here ─────────────────────────────── */
-var PAR_START = [
-  {name:'Parenting Toward the Kingdom', author:'Dr. Philip Mamalakis',
-   desc:'The foundational Orthodox parenting resource — grounded in both child psychology and the theological vision of the life of the Church.',
-   link:'', label:''},
-  {name:'Blueprints for the Little Church', author:'Elissa Bjeletich',
-   desc:'A practical guide to building the home as a little church — prayer, fasting, feast days, and the rhythms of Orthodox family life.',
-   link:'', label:''}
-];
-
-/* ── Parents: Teaching Saints ───────────────────────── */
-var PAR_SAINTS = [
-  {name:'101 Orthodox Saints', author:'Ancient Faith Publishing',
-   desc:'An illustrated introduction to 101 saints of the Orthodox Church — designed to help children learn the cloud of witnesses surrounding them.',
-   link:'', label:''},
-  {name:'102 Orthodox Saints', author:'Ancient Faith Publishing',
-   desc:'The companion volume expanding the lives and witness of the holy men and women of the Church for young readers.',
-   link:'', label:''},
-  {name:'A Boy\'s Journey to Sainthood: Saint Paisios the Athonite', author:'',
-   desc:'The story of the childhood and spiritual formation of St. Paisios — a beautiful introduction to one of the most beloved saints of the twentieth century.',
-   link:'', label:''}
-];
-
-/* ── Parents: Church Life ─────────────────────────────── */
-var PAR_CHURCH = [
-  {name:'A Child\'s Guide to the Divine Liturgy', author:'Conciliar Press',
-   desc:'An accessible guide to the Divine Liturgy for young children — helping them understand and participate in the central act of Orthodox worship.',
-   link:'', label:''},
-  {name:'A Child\'s Guide to Confession', author:'Conciliar Press',
-   desc:'A gentle introduction to the sacrament of Confession — its meaning, preparation, and practice — written for children.',
-   link:'', label:''},
-  {name:'A Child\'s Guide to Prayer', author:'Conciliar Press',
-   desc:'An introduction to Orthodox prayer for children — covering the morning and evening prayers, the Jesus Prayer, and the rhythm of daily prayer.',
-   link:'', label:''},
-  {name:'A Child\'s Guide to Vespers', author:'Conciliar Press',
-   desc:'A guide to the evening service of Vespers for children — introducing them to the beauty and meaning of Orthodox evening prayer.',
-   link:'', label:''},
-  {name:'A Child\'s Guide to the Psalms', author:'Conciliar Press',
-   desc:'An accessible introduction to the Psalms for children — drawing on the Church\'s deep love for the Psalter in prayer and worship.',
-   link:'', label:''}
-];
-
-/* ── Parents: Catechism ──────────────────────────────── */
-var PAR_CATECH = [
-  {name:'The Good Samaritan: A Children\'s Catechism', author:'',
-   desc:'A gentle introduction to Orthodox doctrine for young children — teaching the faith through story, illustration, and the wisdom of the Church.',
-   link:'', label:''}
-];
-
-/* ── Parents: The Faithful ───────────────────────────── */
-var PAR_FAITH = [
-  {name:'On Marriage and Family Life', author:'St. John Chrysostom (SVS Press)',
-   desc:'Chrysostom\'s homilies on Christian marriage, the household, and the formation of children — the patristic foundation of Orthodox family theology.',
-   link:'', label:''}
-];
-
-/* ── Websites: Inquirer ──────────────────────────────── */
-var WEB_INQ = [
-  {name:'Greek Orthodox Archdiocese of America', author:'goarch.org',
-   desc:'Liturgical resources, parish locator, liturgical calendar, and catechetical materials — an essential first stop for anyone exploring the Orthodox Church.',
-   link:'https://www.goarch.org', label:'Visit'},
-  {name:'Orthodox Church in America', author:'oca.org',
-   desc:'Liturgical calendar, saints database, theological resources, and the full OCA catechism by Fr. Thomas Hopko — all freely available online.',
-   link:'https://www.oca.org', label:'Visit'}
-];
-
-/* ── Websites: Catechumen ────────────────────────────── */
-var WEB_CAT = [
-  {name:'Ancient Faith', author:'ancientfaith.com',
-   desc:'The largest English-language Orthodox media platform — podcasts, articles, books, and resources for every stage of the Orthodox journey.',
-   link:'https://www.ancientfaith.com', label:'Visit'},
-  {name:'Ancient Faith Store', author:'store.ancientfaith.com',
-   desc:'The bookstore of Ancient Faith Publishing — carrying many of the books and resources recommended throughout this library.',
-   link:'https://store.ancientfaith.com', label:'Visit'},
-  {name:'New Advent — Church Fathers', author:'newadvent.org',
-   desc:'The Ante-Nicene, Nicene, and Post-Nicene Fathers in full — an invaluable resource for reading patristic primary sources online at no cost.',
-   link:'https://www.newadvent.org/fathers/', label:'Visit'},
-  {name:'Antiochian Orthodox Christian Archdiocese', author:'antiochian.org',
-   desc:'Resources, parish locator, and catechetical materials from the Antiochian Archdiocese — one of the largest Orthodox jurisdictions in North America.',
-   link:'https://www.antiochian.org', label:'Visit'}
-];
-
-/* ── Websites: The Faithful ──────────────────────────── */
-var WEB_FAITH = [
-  {name:'Holy Cross Orthodox Press', author:'hchc.edu',
-   desc:'Academic and theological publications from Holy Cross Greek Orthodox School of Theology — the premier Orthodox academic press in North America.',
-   link:'https://www.hchc.edu/holycross-press', label:'Visit'},
-  {name:'SVS Press &amp; Bookstore', author:'svspress.com',
-   desc:'The publishing and bookstore arm of St. Vladimir\'s Seminary — the most important Orthodox academic and theological publisher in the English-speaking world.',
-   link:'https://www.svspress.com', label:'Visit'}
-];
-
-/* ── Render all sections ─────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function() {
-  render(BOOKS_INQ,        'books-inquirer');
-  render(BOOKS_CAT_DOC,   'books-cat-doctrine');
-  render(BOOKS_CAT_SPI,   'books-cat-spiritual');
-  render(BOOKS_CAT_FORM,  'books-cat-formation');
-  render(BOOKS_CAT_LIT,   'books-cat-liturgical');
-  render(BOOKS_FAITH,     'books-faithful');
-  render(PRIM_INQ,        'primary-inquirer');
-  render(PRIM_CAT,        'primary-catechumen');
-  render(PRIM_FAITH,      'primary-faithful');
-  render(POD_INQ,         'podcasts-inquirer');
-  render(POD_CAT,         'podcasts-catechumen');
-  render(POD_FAITH,       'podcasts-faithful');
-  render(PAR_START,       'parents-starthere');
-  render(PAR_SAINTS,      'parents-saints');
-  render(PAR_CHURCH,      'parents-churchlife');
-  render(PAR_CATECH,      'parents-catechism');
-  render(PAR_FAITH,       'parents-faithful');
-  render(WEB_INQ,         'websites-inquirer');
-  render(WEB_CAT,         'websites-catechumen');
-  render(WEB_FAITH,       'websites-faithful');
+/* ── Init ────────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  var cb=document.querySelectorAll('.cat-btn');
+  for(var i=0;i<cb.length;i++){cb[i].addEventListener('click',function(){setCategory(this.dataset.cat);});}
+  var fp=document.querySelectorAll('.filter-pill');
+  for(var i=0;i<fp.length;i++){fp[i].addEventListener('click',function(){toggleFilter(this.dataset.group,this.dataset.val);});}
+  _renderAll();
 });
 </script>
 
