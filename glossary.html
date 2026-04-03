@@ -424,7 +424,18 @@ function scrollToLetter(l){
   var el=document.getElementById("gl-"+l);
   if(el)el.scrollIntoView({behavior:"smooth",block:"start"});
 }
-function toggleTerm(card){card.classList.toggle("open");}
+function toggleTerm(card){
+  card.classList.toggle("open");
+  if(card.classList.contains("open") && window.OCAnalytics){
+    var termId = card.id ? card.id.replace("term-","") : "";
+    var nameEl = card.querySelector(".term-name");
+    window.OCAnalytics.send("glossary_term_open",{
+      entity_type: "glossary",
+      entity_id: termId,
+      entity_name: nameEl ? nameEl.textContent.trim() : termId
+    });
+  }
+}
 
 function jumpToTerm(id){
   setTab('greek');
