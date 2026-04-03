@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Liturgical Seasons — Orthodox Companion</title>
 <link rel="icon" href="cross.png"/>
-<meta name="description" content="The twelve liturgical seasons of the Orthodox Church — Great Lent, Bright Week, Pentecostarion, Nativity Fast, and more."/>
+<meta name="description" content="The liturgical seasons of the Orthodox Church — Great Lent, Pascha, Pentecostarion, the Apostles' Fast, the Nativity Fast, and more."/>
 <meta property="og:title" content="Liturgical Seasons — Orthodox Companion"/>
 <meta property="og:url" content="https://orthodoxcompanion.com/liturgical-seasons.html"/>
 <script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
@@ -200,6 +200,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .sm2-links{display:flex;flex-wrap:wrap;gap:8px;}
 .sm2-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
 .sm2-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.sm2-link-btn{background:transparent;cursor:pointer;}
 .sm2-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:flex-end;}
 .sm2-close{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;}
 .sm2-close:hover{color:var(--gold-light);}
@@ -228,7 +229,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       </div>
     </li>
     <li class="nav-item">
-      <span class="nav-link active has-drop">Study</span>
+      <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
         <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
         <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
@@ -244,7 +245,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       </div>
     </li>
     <li class="nav-item">
-      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <span class="nav-link active has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
         <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
         <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
@@ -307,11 +308,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
     <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
+</div>
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="topics.html">Study</a><span>&#8250;</span>Liturgical Seasons</div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Liturgical Seasons</div>
     <h1 class="page-title">Liturgical Seasons</h1>
-    <p class="page-desc">The Orthodox year is a sacred spiral — twelve seasons structure the year, each with its own character, fasting rule, and theological focus.</p>
+    <p class="page-desc">The Orthodox year is a sacred spiral — fasting and feasting, mourning and joy, each season with its own character, fasting rule, and theological focus. Select any season to learn more.</p>
   </div>
 </div>
 <div class="content">
@@ -432,8 +434,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script>
 
-var SEASONS = [{"id": "great_lent", "label": "Great Lent", "description": "The forty-day pre-Paschal fast beginning on Clean Monday \u2014 a season of intensified repentance, fasting, prayer, and almsgiving, culminating in Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The final week before Pascha, from Lazarus Saturday through Holy Saturday \u2014 the most solemn week of the Orthodox liturgical year."}, {"id": "pascha_bright_week", "label": "Bright Week", "description": "The week immediately following Pascha, entirely fast-free \u2014 a prolonged celebration of the Resurrection in which the Royal Doors remain open throughout."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season spanning fifty days from Pascha through Holy Pentecost \u2014 a period of sustained joy during which the Triodion is replaced by the Pentecostarion."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following Pentecost and All Saints Sunday, continuing until the Triodion begins \u2014 the ordinary liturgical cycle governed by the eight tones."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "The forty-day fast from November 15 through December 24, preparing the faithful for the Nativity of Christ \u2014 sometimes called the Advent fast or the Philip's Fast."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal period from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration."}, {"id": "apostles_fast", "label": "Apostles' Fast", "description": "The variable-length fast beginning the Monday after All Saints Sunday and ending June 28 \u2014 preparation for the feast of the Holy Apostles Peter and Paul."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "The two-week fast from August 1\u201314, preparing for the Dormition of the Theotokos on August 15 \u2014 the most intense of the summer fasts."}, {"id": "ordinary_time", "label": "Ordinary Time", "description": "Periods outside the major fasts and festal seasons \u2014 governed by the weekly cycle of the eight tones and the Menaion commemorations."}, {"id": "triodion", "label": "Triodion", "description": "The three-week preparatory period before Great Lent, beginning with the Sunday of the Publican and Pharisee \u2014 encompassing the Sundays of the Prodigal Son, the Last Judgment, and Forgiveness Sunday."}, {"id": "fast_free_week", "label": "Fast-Free Week", "description": "The week of the Publican and Pharisee \u2014 a liturgically mandated fast-free period within the Triodion, recalling that self-righteous fasting profits nothing without humility."}];
-var META = {"great_lent": {"color": "#5A8A5A", "fasting": "Strict Fast"}, "holy_week": {"color": "#8A3A3A", "fasting": "Strictest Fast"}, "pascha_bright_week": {"color": "#C9A84C", "fasting": "Fast Free"}, "pentecostarion": {"color": "#4A7AB8", "fasting": "No fasting"}, "after_pentecost": {"color": "#6A6A9A", "fasting": "Wed & Fri"}, "nativity_fast": {"color": "#5A6A8A", "fasting": "Moderate Fast"}, "nativity_season": {"color": "#C9A84C", "fasting": "Fast Free"}, "apostles_fast": {"color": "#6A8A6A", "fasting": "Moderate Fast"}, "dormition_fast": {"color": "#7A5A8A", "fasting": "Strict Fast"}, "ordinary_time": {"color": "#4A6A9A", "fasting": "Wed & Fri only"}, "triodion": {"color": "#8A6A3A", "fasting": "Preparatory"}, "fast_free_week": {"color": "#9A8A2A", "fasting": "Fast Free"}};
+var SEASONS = [{"id": "pre_lenten", "label": "Pre-Lenten Season", "description": "The five-week preparatory period before Great Lent, governed by the Triodion — encompassing four Sundays: the Publican & Pharisee (followed by a fast-free week), the Prodigal Son, Meatfare Sunday (the Last Judgment), and Cheesefare Sunday (Forgiveness Sunday), when the faithful ask forgiveness of one another and bid farewell to dairy in preparation for the Great Fast."}, {"id": "great_lent", "label": "Great Lent", "description": "The Holy Forty Days beginning on Clean Monday — the Church’s annual ascetic pilgrimage toward Pascha, marked by strict fasting, the Great Canon of St. Andrew of Crete, and the five Sundays of Lent: Orthodoxy, St. Gregory Palamas, the Veneration of the Cross, St. John Climacus, and St. Mary of Egypt. Lazarus Saturday and Palm Sunday stand at its threshold, opening into Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The Great and Holy Week — from Palm Sunday through Holy Saturday — the most solemn days of the Orthodox year. The Bridegroom Services of Holy Monday through Wednesday, the Mystical Supper on Holy Thursday, the Crucifixion on Great and Holy Friday, and the Descent into Hades on Holy Saturday lead the whole Church to the threshold of the Resurrection."}, {"id": "pascha", "label": "Pascha", "description": "The Feast of Feasts and the Celebration of Celebrations — the Resurrection of Christ from the dead. Pascha is not one feast among many but the center and foundation of the entire Orthodox year. Every Sunday is a little Pascha; every liturgical season finds its meaning in relation to this singular event. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life."}, {"id": "bright_week", "label": "Bright Week", "description": "The week immediately following Pascha — entirely fast-free, with the Royal Doors remaining open throughout and no kneeling permitted. The Paschal troparion replaces all ordinary hymnody at every service. Bright Week is an extension of Pascha itself: the Church dwells in the light of the Resurrection before the ordinary rhythm of the world resumes."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season spanning from Pascha through All Saints Sunday — fifty days and their crown. The Pentecostarion book governs this entire period, which includes the Sundays of Thomas, the Myrrhbearers, the Paralytic, the Samaritan Woman, and the Blind Man, as well as the Ascension (40th day after Pascha) and Pentecost (50th day). All Saints Sunday — the first Sunday after Pentecost — is the season’s completion."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following All Saints Sunday, continuing until the Triodion begins — governed by the Octoechos (the eight-tone weekly cycle), the Menaion (fixed feasts and saints’ commemorations), and the ordinary rhythm of Wednesday and Friday fasting. The tone cycle resets to Tone 1 at Pascha and progresses continuously, shaping every week’s worship with a distinct theological voice."}, {"id": "apostles_fast", "label": "Apostles’ Fast", "description": "A moderate fast beginning on the Monday after All Saints Sunday and ending on the eve of June 29, the Feast of the Holy Apostles Peter and Paul. Its length varies considerably from year to year — as few as eight days when Pascha falls late, as many as six weeks when Pascha falls early. It prepares the faithful to honor the chief Apostles and continues the Pentecostal spirit of witness to the world."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "A strict fast from August 1–14, preparing the faithful for the Dormition of the Most Holy Theotokos on August 15. Observed with rules comparable to Great Lent — no meat, fish, oil, or wine on most days, with wine and oil permitted on weekends and fish permitted on the Feast of the Transfiguration (August 6), which falls within it. It is the most rigorous of the summer fasts."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "A forty-day moderate fast from November 15 through December 24, preparing the faithful for the Nativity of Christ. Known in Orthodox tradition as Philip’s Fast — beginning the day after the Feast of the Holy Apostle Philip (November 14). It grows in intensity as the Nativity approaches, paralleling in spirit the Lenten discipline, though more moderate in its fasting rules."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal cycle from the Nativity of Christ (December 25) through the Theophany (January 6) — a fast-free season of sustained celebration. Within it: the Circumcision of Christ and the memory of St. Basil the Great (January 1), the Eve of Theophany (January 5 — a strict fast day), and the Theophany itself, when the Holy Trinity is revealed at the Jordan and the waters of creation are sanctified."}];
+var META = {"pre_lenten": {"color": "#8A6A3A", "fasting": "Preparatory"}, "great_lent": {"color": "#5A8A5A", "fasting": "Strict Fast"}, "holy_week": {"color": "#8A3A3A", "fasting": "Strictest Fast"}, "pascha": {"color": "#C9A84C", "fasting": "Fast Free"}, "bright_week": {"color": "#D4A84C", "fasting": "Fast Free"}, "pentecostarion": {"color": "#4A7AB8", "fasting": "Reduced fasting"}, "after_pentecost": {"color": "#6A6A9A", "fasting": "Wed & Fri"}, "apostles_fast": {"color": "#6A8A6A", "fasting": "Moderate Fast"}, "dormition_fast": {"color": "#7A5A8A", "fasting": "Strict Fast"}, "nativity_fast": {"color": "#5A6A8A", "fasting": "Moderate Fast"}, "nativity_season": {"color": "#C9A84C", "fasting": "Fast Free"}};
 
 function openSeason(id) {
   var s = null;
@@ -446,10 +448,14 @@ function openSeason(id) {
   document.getElementById('sm2-links').innerHTML =
     '<a href="calendar.html" class="sm2-link">Liturgical Calendar</a>' +
     '<a href="fasting.html" class="sm2-link">Fasting Guide</a>' +
-    '<a href="chatbot.html?q=' + encodeURIComponent('Tell me about the ' + s.label + ' season') + '" class="sm2-link">Ask Companion</a>';
+    '<button class="sm2-link sm2-link-btn" onclick="closeModal();showComingSoon()">Ask Companion</button>';
   document.getElementById('season-modal').classList.add('open');
 }
 function closeModal() { document.getElementById('season-modal').classList.remove('open'); }
+function showComingSoon() {
+  var el = document.getElementById('coming-soon-modal');
+  if (el) { el.style.display = 'flex'; }
+}
 document.getElementById('season-modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
@@ -474,6 +480,17 @@ function render() {
 document.addEventListener('DOMContentLoaded', render);
 
 </script>
+<div id="coming-soon-modal" style="display:none;position:fixed;inset:0;z-index:800;background:rgba(6,14,26,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
+  <div style="background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:4px;padding:36px 40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
+    <div style="font-size:1.6rem;color:var(--gold);margin-bottom:16px;font-family:'Segoe UI Symbol','Apple Symbols',serif;">☦&#xFE0E;</div>
+    <div style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:10px;">Companion AI</div>
+    <div style="font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.8;margin-bottom:24px;">The Companion AI is available to members. Sign in or create an account to ask questions about the liturgical seasons and the Orthodox faith.</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="account.html" style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 20px;text-decoration:none;background:rgba(201,168,76,0.1);">Sign In</a>
+      <button onclick="document.getElementById('coming-soon-modal').style.display='none';" style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:9px 20px;background:transparent;cursor:pointer;">Close</button>
+    </div>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth-nav.js"></script>
 </body>
