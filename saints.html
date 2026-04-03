@@ -2645,7 +2645,7 @@ function renderSaintsList(saints){
       currentLetter = letter;
       html += '<div class="alpha-letter" id="alpha-' + letter + '">' + letter + '</div>';
     }
-    html += '<div class="saint-list-item" onclick="openSaintById(\'' + s.id + '\')">';
+    html += '<div class="saint-list-item" data-saint-id="' + s.id + '" data-saint-name="' + s.name + '" onclick="openSaintById(\'' + s.id + '\')">';
     html += '<div class="sli-icon">';
     if(s.iconUrl) html += '<img src="' + s.iconUrl + '" alt="' + s.name + '" onerror="this.parentNode.innerHTML=\'\';"/>';
     else html += '';
