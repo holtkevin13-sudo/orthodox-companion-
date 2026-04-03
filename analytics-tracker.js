@@ -30,17 +30,13 @@
       page:         PAGE,
     }, data || {});
 
-    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(WORKER_URL, blob);
-    } else {
-      fetch(WORKER_URL, {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        headers: { 'Content-Type': 'application/json' },
-        keepalive: true,
-      }).catch(function () {});
-    }
+    fetch(WORKER_URL, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'omit',
+      keepalive: true,
+    }).catch(function () {});
   }
 
   // ── Page view + load time ────────────────────────────────────────────────────
