@@ -288,7 +288,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);bor
 <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
 function toggleTheme(){var c=document.documentElement.getAttribute('data-theme')||'dark';var n=c==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',n);localStorage.setItem('oc_theme',n);}
-(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
 var _drawerOpen=false;
 function toggleDrawer(){_drawerOpen=!_drawerOpen;var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');if(d)d.classList.toggle('open',_drawerOpen);if(h)h.classList.toggle('open',_drawerOpen);}
 function toggleUserMenu(){var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');}
@@ -298,8 +297,6 @@ document.addEventListener('click',function(e){
 });
 </script>
 <script>
-var ERA_ORDER=["Apostolic Fathers (1st–2nd c.)","Ante-Nicene Fathers (2nd–3rd c.)","Nicene Fathers (4th c.)","Desert Fathers","5th–8th Century","Byzantine Theologians (9th–15th c.)"];
-
 var FATHERS = [
 
 /* ─────────────────────────────────────────────────────────────
