@@ -180,52 +180,109 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
 }
 
-
+/* ── Page Layout ─────────────────────────────────────── */
 .fast-wrap{max-width:980px;margin:0 auto;padding:28px 24px 60px;}
-.fast-intro{background:linear-gradient(160deg,rgba(27,58,107,0.3),rgba(10,22,40,0.5));border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:20px 24px;margin-bottom:32px;}
+
+/* ── Intro Block ─────────────────────────────────────── */
+.fast-intro{background:linear-gradient(160deg,rgba(27,58,107,0.3),rgba(10,22,40,0.5));border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:20px 24px;margin-bottom:16px;}
 .fast-intro-title{font-family:"Cinzel",serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px;}
 .fast-intro-text{font-size:0.96rem;color:var(--text-dim);line-height:1.85;font-style:italic;}
-/* Section */
+
+/* ── Gold Offset Blocks (Scripture + Patristic) ──────── */
+.fast-gold-block{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.22);border-left:3px solid var(--gold-dim);border-radius:3px;padding:22px 26px;margin-bottom:16px;}
+.fast-gold-label{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold-dim);margin-bottom:10px;}
+.fast-gold-text{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.9;margin-bottom:10px;}
+.fast-gold-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+
+/* ── Section ─────────────────────────────────────────── */
 .fast-section{margin-bottom:44px;}
 .fast-section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
 .fast-section-title{font-family:"Cinzel",serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);white-space:nowrap;}
 .fast-section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
-/* Fasting periods grid */
+
+/* ── Fasting Periods ─────────────────────────────────── */
 .fast-periods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:12px;}
 .fast-period{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:20px;border-top:3px solid transparent;}
 .fast-period.strict{border-top-color:#8A3A3A;}
 .fast-period.moderate{border-top-color:#5A6A8A;}
-.fast-period.light{border-top-color:#5A8A5A;}
-.fast-period.fast-free{border-top-color:#C9A84C;}
-.fast-period-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:4px;}
-.fast-period-dates{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:10px;}
-.fast-period-level{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 8px;border-radius:2px;border:1px solid;display:inline-block;margin-bottom:10px;}
+.fast-period-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:6px;}
+.fast-period-purpose{font-size:0.9rem;color:var(--text-dim);font-style:italic;line-height:1.6;margin-bottom:10px;}
+.fast-period-dates{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:10px;}
+.fast-period-level{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid;display:inline-block;margin-bottom:10px;}
 .fast-period.strict .fast-period-level{color:#CA8A8A;border-color:rgba(200,80,80,0.3);}
 .fast-period.moderate .fast-period-level{color:#8ABCDC;border-color:rgba(138,188,220,0.3);}
-.fast-period.light .fast-period-level{color:#8ACA8A;border-color:rgba(138,202,138,0.3);}
-.fast-period.fast-free .fast-period-level{color:var(--gold);border-color:var(--gold-dim);}
 .fast-period-desc{font-size:0.86rem;color:var(--text-dim);line-height:1.7;font-style:italic;}
-/* Weekly fasting */
+
+/* ── Weekly Grid ─────────────────────────────────────── */
 .weekly-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px;}
 .weekly-day{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:14px 8px;text-align:center;}
 .weekly-day.fast-day{background:rgba(90,58,138,0.15);border-color:rgba(138,138,200,0.3);}
-.weekly-day.fast-free-day{background:rgba(201,168,76,0.08);border-color:rgba(201,168,76,0.2);}
 .weekly-day-name{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:5px;}
 .weekly-day.fast-day .weekly-day-name{color:var(--text-dim);}
 .weekly-day-rule{font-size:0.78rem;color:var(--text-dim);line-height:1.4;font-style:italic;}
-/* Food guide */
+
+/* ── Saturday Tooltip ────────────────────────────────── */
+.weekly-day.has-tip{position:relative;cursor:pointer;}
+.weekly-tip-popup{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:220px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:3px;padding:11px 14px;font-size:0.78rem;color:var(--text-dim);line-height:1.55;font-style:italic;z-index:200;pointer-events:none;text-align:left;}
+.weekly-day.has-tip:hover .weekly-tip-popup,
+.weekly-day.has-tip.tip-open .weekly-tip-popup{display:block;}
+
+/* ── Weekly Prose ────────────────────────────────────── */
+.weekly-prose{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
+.weekly-prose p{font-size:0.86rem;color:var(--text-dim);line-height:1.8;font-style:italic;}
+
+/* ── Fixed Fasts Compact Block ───────────────────────── */
+.fixed-fasts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.fixed-fasts-block{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 18px;}
+.fixed-fasts-label{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:10px;}
+.fixed-fasts-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.fixed-fasts-list li{font-size:0.84rem;color:var(--text-dim);line-height:1.5;}
+.fixed-fasts-list li em{color:var(--text-muted);font-size:0.8rem;display:block;margin-top:1px;}
+.fixed-fasts-note{margin-top:12px;font-size:0.8rem;color:var(--text-muted);font-style:italic;line-height:1.6;padding-top:10px;border-top:1px solid var(--border-dim);}
+
+/* ── The Whole Fast ──────────────────────────────────── */
+.fast-whole-intro{font-size:0.92rem;color:var(--text-dim);line-height:1.85;margin-bottom:18px;}
+.fast-whole-grid{display:flex;flex-direction:column;gap:10px;}
+.fast-whole-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 20px;display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;}
+.fast-whole-term{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);padding-top:2px;}
+.fast-whole-desc{font-size:0.88rem;color:var(--text-dim);line-height:1.75;font-style:italic;}
+
+/* ── Food Guide ──────────────────────────────────────── */
 .food-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .food-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px;}
-.food-card-title{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:10px;}
+.food-card-title{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:8px;}
+.food-card-note{font-size:0.8rem;color:var(--text-muted);font-style:italic;line-height:1.6;margin-bottom:10px;}
 .food-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
 .food-list li{font-size:0.86rem;color:var(--text-dim);line-height:1.5;padding-left:12px;position:relative;}
 .food-list li::before{content:"";position:absolute;left:0;top:0.5em;width:5px;height:5px;border-radius:50%;background:var(--gold-dim);}
-/* Theology section */
+.food-note{margin-top:14px;font-size:0.82rem;color:var(--text-muted);font-style:italic;line-height:1.7;padding:12px 16px;border-left:2px solid var(--border-dim);}
+
+/* ── Theology Quotes ─────────────────────────────────── */
 .theology-block{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:3px;padding:22px 26px;margin-top:16px;}
 .theology-quote{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.9;margin-bottom:10px;}
 .theology-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
-@media(max-width:768px){.fast-periods{grid-template-columns:1fr;}.food-guide{grid-template-columns:1fr;}}
-@media(max-width:500px){.weekly-grid{grid-template-columns:repeat(4,1fr);}}
+
+/* ── Pastoral Block ──────────────────────────────────── */
+.pastoral-block{background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-left:3px solid var(--border);border-radius:3px;padding:22px 26px;}
+.pastoral-block p{font-size:0.9rem;color:var(--text-dim);line-height:1.85;margin-bottom:12px;}
+.pastoral-block p:last-child{margin-bottom:0;}
+
+/* ── Prayer / Devotional Close ───────────────────────── */
+.fast-prayer-block{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:3px;padding:26px 30px;}
+.fast-prayer-label{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold-dim);margin-bottom:16px;}
+.fast-prayer-text{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:2.1;margin-bottom:14px;}
+.fast-prayer-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media(max-width:768px){
+  .fast-periods{grid-template-columns:1fr;}
+  .food-guide{grid-template-columns:1fr;}
+  .fixed-fasts-wrap{grid-template-columns:1fr;}
+  .fast-whole-item{grid-template-columns:1fr;gap:6px;}
+}
+@media(max-width:500px){
+  .weekly-grid{grid-template-columns:repeat(4,1fr);}
+}
 
 </style>
 </head>
@@ -332,56 +389,177 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════ -->
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="fasting.html">Fasting Guide</a></div>
     <h1 class="page-title">Fasting Guide</h1>
-    <p class="page-desc">The Orthodox Church fasts throughout the year — four great fasting periods, and every Wednesday and Friday. A guide to the rules, the theology, and the practice.</p>
+    <p class="page-desc">The Church fasts together &#8212; through the four great seasons, every Wednesday and Friday, and on appointed days throughout the year. A guide to the Orthodox fast: its practice, its theology, and its life.</p>
   </div>
 </div>
+
+<!-- ═══ PAGE BODY ═══════════════════════════════════════ -->
 <div class="fast-wrap">
+
+  <!-- ── 1. Opening Movement ──────────────────────────── -->
   <div class="fast-intro">
     <div class="fast-intro-title">On the Orthodox Fast</div>
-    <div class="fast-intro-text">Fasting in the Orthodox Church is not punishment but medicine — a spiritual discipline that quiets the passions, sharpens prayer, and aligns the body with the soul's movement toward God. The Church fasts with the whole person: body, soul, and spirit together.</div>
+    <div class="fast-intro-text">Fasting is not a technique for self-improvement. It is how the Church, as one body, turns toward God &#8212; quieting the passions, sharpening prayer, and preparing the whole person to receive His grace. When we fast, we fast with Christ, in His Body, moving together through repentance toward the joy of the Feast.</div>
   </div>
 
-  <!-- The Four Great Fasts -->
+  <div class="fast-gold-block">
+    <div class="fast-gold-label">The Lord&#8217;s Teaching on Fasting</div>
+    <div class="fast-gold-text">&#8220;When you fast, do not be like the hypocrites, with a sad countenance. For they disfigure their faces that they may appear to men to be fasting. But you, when you fast, anoint your head and wash your face, so that you do not appear to men to be fasting, but to your Father who is in the secret place; and your Father who sees in secret will reward you openly.&#8221;</div>
+    <div class="fast-gold-attr">&#8212; Matthew 6:16&#8211;18</div>
+  </div>
+
+  <div class="fast-gold-block" style="margin-bottom:36px;">
+    <div class="fast-gold-label">St. Basil the Great &#183; On Fasting</div>
+    <div class="fast-gold-text">&#8220;Fasting was ordained in Paradise. The first commandment was delivered to Adam concerning fasting. Because we did not fast, we fell &#8212; let us fast, therefore, that we may return.&#8221;</div>
+    <div class="fast-gold-attr">&#8212; St. Basil the Great</div>
+  </div>
+
+  <!-- ── 2. The Four Fasting Seasons ─────────────────── -->
   <div class="fast-section">
-    <div class="fast-section-header"><div class="fast-section-title">The Four Great Fasting Periods</div><div class="fast-section-line"></div></div>
+    <div class="fast-section-header">
+      <div class="fast-section-title">The Four Fasting Seasons</div>
+      <div class="fast-section-line"></div>
+    </div>
     <div class="fast-periods" id="fastPeriods"></div>
   </div>
 
-  <!-- Weekly rhythm -->
+  <!-- ── 3. The Weekly Fasting Rhythm ───────────────── -->
   <div class="fast-section">
-    <div class="fast-section-header"><div class="fast-section-title">The Weekly Fasting Rhythm</div><div class="fast-section-line"></div></div>
+    <div class="fast-section-header">
+      <div class="fast-section-title">The Weekly Fasting Rhythm</div>
+      <div class="fast-section-line"></div>
+    </div>
     <div class="weekly-grid" id="weeklyGrid"></div>
-    <div style="font-size:0.84rem;color:var(--text-muted);font-style:italic;line-height:1.7;">
-      Wednesday commemorates the betrayal of Christ. Friday commemorates the Crucifixion. These are the two fasting days of the week, observed throughout the year except during fast-free weeks.
+    <div class="weekly-prose">
+      <p>Wednesday commemorates the betrayal of Christ into the hands of sinners. Friday commemorates His Crucifixion. These are not merely dietary customs &#8212; they are the Church&#8217;s weekly participation in the Passion. To fast on Wednesday and Friday is to keep watch at Gethsemane, to stand at Golgotha. Every week the Church dies and rises with her Lord.</p>
+      <p>To fast on these days is more than not eating. It is a posture of the whole person &#8212; a turning of the heart toward repentance and prayer.</p>
+      <p>The Church does not fast on Sunday. Sunday is the Day of Resurrection &#8212; to fast on Sunday is to refuse to celebrate the victory of Christ. Every Sunday is a small Pascha.</p>
+    </div>
+
+    <!-- Fixed Fasts + Fast-Free Seasons compact block -->
+    <div class="fixed-fasts-wrap">
+      <div class="fixed-fasts-block">
+        <div class="fixed-fasts-label">Days of Strict Fasting</div>
+        <ul class="fixed-fasts-list">
+          <li><strong>January 5</strong> &#183; Eve of Theophany<em>the night before the Baptism of Christ</em></li>
+          <li><strong>August 29</strong> &#183; Beheading of St. John the Baptist<em>a fast of mourning for the Forerunner</em></li>
+          <li><strong>September 14</strong> &#183; Elevation of the Holy Cross<em>the Church bows before the Cross in fasting and prayer</em></li>
+        </ul>
+      </div>
+      <div class="fixed-fasts-block">
+        <div class="fixed-fasts-label">Seasons Without Fasting</div>
+        <ul class="fixed-fasts-list">
+          <li><strong>Bright Week</strong><em>the week following Pascha</em></li>
+          <li><strong>December 25 &#8211; January 4</strong><em>from the Nativity to the Eve of Theophany</em></li>
+          <li><strong>Week of the Publican and Pharisee</strong><em>a reminder that fasting without humility profits nothing</em></li>
+        </ul>
+        <div class="fixed-fasts-note">During these seasons all fasting &#8212; including the Wednesday and Friday fast &#8212; is set aside by the Church.</div>
+      </div>
     </div>
   </div>
 
-  <!-- What is permitted -->
+  <!-- ── 4. The Whole Fast ───────────────────────────── -->
   <div class="fast-section">
-    <div class="fast-section-header"><div class="fast-section-title">What Is Permitted</div><div class="fast-section-line"></div></div>
-    <div class="food-guide" id="foodGuide"></div>
+    <div class="fast-section-header">
+      <div class="fast-section-title">The Whole Fast</div>
+      <div class="fast-section-line"></div>
+    </div>
+    <p class="fast-whole-intro">Fasting from food is only one part of what the Church means by fasting. The Fathers are clear: to abstain from meat while feeding on anger, gossip, or pride is not a fast &#8212; it is a diet. True fasting involves the whole person.</p>
+    <div class="fast-whole-grid">
+      <div class="fast-whole-item">
+        <div class="fast-whole-term">Prayer</div>
+        <div class="fast-whole-desc">The fast sharpens prayer. The body, quieted by abstinence, no longer pulls the attention downward. The Church&#8217;s fasting seasons are seasons of intensified prayer &#8212; more prostrations, more services, more silence.</div>
+      </div>
+      <div class="fast-whole-item">
+        <div class="fast-whole-term">Repentance</div>
+        <div class="fast-whole-desc">Fasting opens the heart to see itself clearly. It is preparation for confession &#8212; for the honest examination of the soul before God. Without repentance, fasting becomes spiritual theatre.</div>
+      </div>
+      <div class="fast-whole-item">
+        <div class="fast-whole-term">Almsgiving</div>
+        <div class="fast-whole-desc">What we save by fasting, we give away. The Fathers teach this consistently: fasting and almsgiving are inseparable. To fast and hoard is a contradiction. To fast and give is to share in the mercy of God.</div>
+      </div>
+      <div class="fast-whole-item">
+        <div class="fast-whole-term">Forgiveness</div>
+        <div class="fast-whole-desc">The Church begins Great Lent with Forgiveness Vespers &#8212; every Orthodox Christian asking forgiveness of every other, face to face. No fast is received by God from a heart that holds unforgiveness.</div>
+      </div>
+      <div class="fast-whole-item">
+        <div class="fast-whole-term">Watchfulness</div>
+        <div class="fast-whole-desc">Fasting is an exercise in nepsis &#8212; attentiveness to the movements of the soul. The passions quieted by hunger become visible. The fast reveals what we actually are, and gives us the tools to struggle.</div>
+      </div>
+    </div>
   </div>
 
-  <!-- Theology of fasting -->
+  <!-- ── 5. What Is Permitted ───────────────────────── -->
   <div class="fast-section">
-    <div class="fast-section-header"><div class="fast-section-title">The Theology of Fasting</div><div class="fast-section-line"></div></div>
+    <div class="fast-section-header">
+      <div class="fast-section-title">What Is Permitted</div>
+      <div class="fast-section-line"></div>
+    </div>
+    <div class="food-guide" id="foodGuide"></div>
+    <p class="food-note">These guidelines reflect the common practice of the Orthodox Church. Specific allowances vary by feast day, jurisdiction, and the guidance of your priest. The rules exist to serve the fast &#8212; not to become a burden.</p>
+  </div>
+
+  <!-- ── 6. The Theology of Fasting ────────────────── -->
+  <div class="fast-section">
+    <div class="fast-section-header">
+      <div class="fast-section-title">The Theology of Fasting</div>
+      <div class="fast-section-line"></div>
+    </div>
     <div class="theology-block">
-      <div class="theology-quote">"Fasting is the foundation of every virtue, the beginning of the struggle, the crown of the temperate, the beauty of virginity and sanctity, the lustre of chastity, the commencement of the path of Christianity, the mother of prayer, the wellspring of prudence, the teacher of stillness, and the precursor of all good works."</div>
-      <div class="theology-attr">— St. John Chrysostom</div>
+      <div class="theology-quote">&#8220;The Church, by a long training of fasting and instruction, prepares you for the sacred mysteries.&#8221;</div>
+      <div class="theology-attr">&#8212; St. Cyril of Jerusalem, Catechetical Lectures</div>
     </div>
     <div class="theology-block" style="margin-top:12px;">
-      <div class="theology-quote">"When the stomach is contracted and does not desire much food, the mind becomes sharp and light for prayer. When the stomach is weighed down with food, thoughts become heavy and the mind becomes dull."</div>
-      <div class="theology-attr">— St. John of the Ladder</div>
+      <div class="theology-quote">&#8220;When the stomach is contracted and does not desire much food, the mind becomes sharp and light for prayer. When the stomach is weighed down with food, thoughts become heavy and the mind becomes dull.&#8221;</div>
+      <div class="theology-attr">&#8212; St. John of the Ladder</div>
     </div>
-    <div style="margin-top:20px;font-size:0.88rem;color:var(--text-muted);font-style:italic;line-height:1.8;padding:14px 18px;border-left:2px solid var(--border-dim);">
-      Always consult your priest about your personal fasting rule. The Church's guidelines are adapted for health, age, pregnancy, illness, and circumstances of life. The letter of the rule serves the spirit of the rule.
+    <div class="fast-gold-block" style="margin-top:16px;margin-bottom:0;">
+      <div class="fast-gold-label">From the Lenten Triodion &#183; Clean Monday Vespers</div>
+      <div class="fast-gold-text">&#8220;Let us observe a fast acceptable and pleasing to the Lord. True fasting is to put away all evil, to control the tongue, to forbear from anger, to abstain from lusts, slander, falsehood, and perjury. When we abstain from these things, then is our fasting true and acceptable to God.&#8221;</div>
     </div>
   </div>
-</div>
+
+  <!-- ── 7. A Pastoral Note ─────────────────────────── -->
+  <div class="fast-section">
+    <div class="fast-section-header">
+      <div class="fast-section-title">A Pastoral Note</div>
+      <div class="fast-section-line"></div>
+    </div>
+    <div class="pastoral-block">
+      <p>The Orthodox fast is not a law to be enforced but a medicine to be received. The Church adapts her fasting rule with compassion for those with illness, pregnancy, young children, demanding physical labor, or other difficult circumstances of life. No one should fast in a way that damages their health or becomes a source of pride.</p>
+      <p>Fasting without a spiritual father is fasting without a compass. Consult your priest about your personal fasting rule &#8212; he will help you find the measure appropriate to your life, your health, and your spiritual maturity.</p>
+      <p>Guard against three dangers the Fathers always name together: <strong>pride</strong> in your fasting, <strong>comparison</strong> with others, and <strong>legalism</strong> &#8212; the reduction of a living spiritual discipline to a checklist. The Lord&#8217;s words are the measure: <em>&#8220;Do not be like the hypocrites.&#8221;</em> The fast is between you and God.</p>
+    </div>
+  </div>
+
+  <!-- ── 8. A Prayer for the Fast ───────────────────── -->
+  <div class="fast-section" style="margin-bottom:0;">
+    <div class="fast-section-header">
+      <div class="fast-section-title">A Prayer for the Fast</div>
+      <div class="fast-section-line"></div>
+    </div>
+    <div class="fast-prayer-block">
+      <div class="fast-prayer-label">The Prayer of St. Ephraim the Syrian</div>
+      <div class="fast-prayer-text">
+        O Lord and Master of my life,<br>
+        take from me the spirit of sloth, despair, lust of power, and idle talk.<br><br>
+        But give rather the spirit of chastity, humility, patience, and love to Thy servant.<br><br>
+        Yea, O Lord and King, grant me to see my own transgressions,<br>
+        and not to judge my brother,<br>
+        for blessed art Thou, unto ages of ages. Amen.
+      </div>
+      <div class="fast-prayer-attr">Prayed with prostrations throughout Great Lent</div>
+    </div>
+  </div>
+
+</div><!-- end .fast-wrap -->
+
 <script>
 /* OC-MASTER-JS */
 /* ── Anti-flash (inline in <head>) ──────────────────── */
@@ -479,35 +657,91 @@ document.addEventListener('DOMContentLoaded',function(){
     },200);
   }
 });
-
 </script>
+
 <script>
+/* ── Fasting Page Data + Render ──────────────────────── */
 
 var FAST_PERIODS = [
-  {name:"Great Lent",dates:"7 weeks before Pascha",cls:"strict",level:"Strict Fast",
-   desc:"The most solemn fast of the year — no meat, dairy, fish, wine or oil on weekdays. Fish permitted on Palm Sunday. Wine and oil permitted on weekends. The fast intensifies in Holy Week."},
-  {name:"Apostles' Fast",dates:"Monday after All Saints to June 28/29",cls:"moderate",level:"Moderate Fast",
-   desc:"The fast before the Feast of Sts. Peter and Paul. Variable length depending on the date of Pascha. Fish, wine and oil are permitted on Tuesdays, Thursdays, Saturdays and Sundays."},
-  {name:"Dormition Fast",dates:"August 1-14",cls:"strict",level:"Strict Fast",
-   desc:"A two-week fast before the Dormition of the Theotokos on August 15. Similar rule to Great Lent — no meat, dairy or fish on most days. Fish permitted on the Transfiguration (August 6)."},
-  {name:"Nativity Fast",dates:"November 15 to December 24",cls:"moderate",level:"Moderate Fast",
-   desc:"A 40-day fast before the Nativity of Christ. Fish, wine and oil permitted on Tuesdays, Thursdays, Saturdays and Sundays. The fast intensifies in the final week before Christmas."}
+  {
+    name: "Great Lent",
+    purpose: "The royal road of repentance \u2014 the Church\u2019s great preparation for Pascha and the victory of the Cross.",
+    dates: "Clean Monday \u00b7 Seven weeks before Pascha",
+    cls: "strict",
+    level: "Strict Fast",
+    desc: "The most solemn fast of the year. On weekdays the Church abstains from meat, dairy, fish, wine, and oil. Wine and oil are permitted on most weekends; fish is permitted on Palm Sunday and on the Annunciation when it falls within Lent. The fast deepens through Holy Week, as the Church draws close to the Passion of her Lord."
+  },
+  {
+    name: "The Apostles\u2019 Fast",
+    purpose: "Keeping the fast of the holy Apostles, who fasted before going forth to preach the Gospel to the world.",
+    dates: "Monday after All Saints Sunday \u00b7 Ends June 29",
+    cls: "moderate",
+    level: "Moderate Fast",
+    desc: "The fast preceding the Feast of Sts. Peter and Paul. Its length varies each year with the date of Pascha. Fish, wine, and oil are permitted on Tuesdays, Thursdays, Saturdays, and Sundays. This is a gentler fast, suited to the long days of summer, but it carries the Apostolic spirit \u2014 the Church prepares to send forth her witness to the world."
+  },
+  {
+    name: "The Dormition Fast",
+    purpose: "A fast of prayer and stillness, joining ourselves to the Theotokos as she fell asleep in the Lord.",
+    dates: "August 1\u201314",
+    cls: "strict",
+    level: "Strict Fast",
+    desc: "Two weeks of fasting before the Dormition of the Theotokos on August 15. The rule is similar to Great Lent \u2014 abstinence from meat, dairy, fish, wine, and oil on most days. Fish is permitted on the Transfiguration (August 6), when the fast briefly opens to celebrate the glory of Christ revealed on Tabor."
+  },
+  {
+    name: "The Nativity Fast",
+    purpose: "Forty days of preparation to receive the Word made flesh \u2014 fasting before the great feast of His coming.",
+    dates: "November 15 \u2013 December 24",
+    cls: "moderate",
+    level: "Moderate Fast",
+    desc: "Forty days of preparation for the Nativity of Christ. In the earlier weeks fish, wine, and oil are permitted on many days. As the feast draws near, the fast deepens \u2014 from December 13 the Church enters a stricter period of preparation, setting aside the fuller diet of autumn and waiting in greater stillness for the Word to come among us."
+  }
 ];
 
 var WEEKLY = [
-  {name:"Sun",cls:"fast-free-day",rule:"No fast"},
-  {name:"Mon",cls:"",rule:"No fast"},
-  {name:"Tue",cls:"",rule:"No fast"},
-  {name:"Wed",cls:"fast-day",rule:"Fast — no meat or dairy"},
-  {name:"Thu",cls:"",rule:"No fast"},
-  {name:"Fri",cls:"fast-day",rule:"Fast — no meat or dairy"},
-  {name:"Sat",cls:"fast-free-day",rule:"No fast"}
+  {name:"Sun", cls:"", rule:"No fast"},
+  {name:"Mon", cls:"", rule:"No fast"},
+  {name:"Tue", cls:"", rule:"No fast"},
+  {name:"Wed", cls:"fast-day", rule:"Fast", tip:""},
+  {name:"Thu", cls:"", rule:"No fast", tip:""},
+  {name:"Fri", cls:"fast-day", rule:"Fast", tip:""},
+  {name:"Sat", cls:"has-tip", rule:"No fast", tip:"Saturday is the Church\u2019s day of remembrance for the departed \u2014 historically distinct from ordinary weekdays, though not a fasting day."}
 ];
 
 var FOOD = [
-  {title:"Always Permitted",items:["All vegetables and fruits","Grains and legumes","Bread and pasta (no eggs)","Nuts and seeds","Water, juices, tea"]},
-  {title:"Permitted on Relaxation Days",items:["Fish and seafood","Wine and beer (in moderation)","Olive oil","Pickled and preserved foods"]},
-  {title:"Abstained From (Strict Fast)",items:["Meat and poultry","Dairy products (milk, cheese, butter)","Eggs","Olive oil (on strict days)","Wine (on strict days)"]}
+  {
+    title: "Always Permitted",
+    note: "",
+    items: [
+      "All vegetables and fruits",
+      "Grains and legumes",
+      "Bread and pasta (without eggs)",
+      "Nuts and seeds",
+      "Water, tea, and juices",
+      "Shellfish \u2014 shrimp, crab, oysters, clams (no backbone; permitted even on strict fast days)",
+      "Pickled and preserved foods"
+    ]
+  },
+  {
+    title: "Permitted on Appointed Days",
+    note: "Wine and oil are richer, celebratory foods \u2014 the fast sets them aside as a discipline of simplicity.",
+    items: [
+      "Fish (with backbone \u2014 only on designated feasts and days of relaxation)",
+      "Wine (in moderation)",
+      "Olive oil"
+    ]
+  },
+  {
+    title: "Abstained From on Strict Days",
+    note: "",
+    items: [
+      "Meat and poultry",
+      "Dairy \u2014 milk, cheese, butter",
+      "Eggs",
+      "Fish (except on designated feast days)",
+      "Olive oil",
+      "Wine"
+    ]
+  }
 ];
 
 function render() {
@@ -515,6 +749,7 @@ function render() {
   document.getElementById('fastPeriods').innerHTML = FAST_PERIODS.map(function(p) {
     return '<div class="fast-period ' + p.cls + '">' +
       '<div class="fast-period-name">' + p.name + '</div>' +
+      '<div class="fast-period-purpose">' + p.purpose + '</div>' +
       '<div class="fast-period-dates">' + p.dates + '</div>' +
       '<div class="fast-period-level">' + p.level + '</div>' +
       '<div class="fast-period-desc">' + p.desc + '</div>' +
@@ -523,23 +758,37 @@ function render() {
 
   // Weekly grid
   document.getElementById('weeklyGrid').innerHTML = WEEKLY.map(function(d) {
+    var tipHtml = d.tip ? '<div class="weekly-tip-popup">' + d.tip + '</div>' : '';
     return '<div class="weekly-day ' + d.cls + '">' +
       '<div class="weekly-day-name">' + d.name + '</div>' +
       '<div class="weekly-day-rule">' + d.rule + '</div>' +
+      tipHtml +
       '</div>';
   }).join('');
 
   // Food guide
   document.getElementById('foodGuide').innerHTML = FOOD.map(function(f) {
+    var noteHtml = f.note ? '<div class="food-card-note">' + f.note + '</div>' : '';
     return '<div class="food-card">' +
       '<div class="food-card-title">' + f.title + '</div>' +
-      '<ul class="food-list">' + f.items.map(function(i) { return '<li>' + i + '</li>'; }).join('') + '</ul>' +
+      noteHtml +
+      '<ul class="food-list">' + f.items.map(function(i) {
+        return '<li>' + i + '</li>';
+      }).join('') + '</ul>' +
       '</div>';
   }).join('');
 }
 
-document.addEventListener('DOMContentLoaded', render);
+/* ── Saturday Tooltip: hover (CSS) + tap (JS) ────────── */
+document.addEventListener('click', function(e) {
+  var tip = e.target.closest('.has-tip');
+  document.querySelectorAll('.has-tip.tip-open').forEach(function(el) {
+    if (el !== tip) el.classList.remove('tip-open');
+  });
+  if (tip) tip.classList.toggle('tip-open');
+});
 
+document.addEventListener('DOMContentLoaded', render);
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth-nav.js"></script>
