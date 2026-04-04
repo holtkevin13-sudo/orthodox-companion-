@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Akathist Hymn to the Theotokos — Orthodox Companion</title>
+<link rel="icon" href="cross.png"/>
+<meta name="description" content="The complete Akathist Hymn to the Most Holy Theotokos — the oldest and most venerable of the Orthodox akathists, chanted on the Fifth Saturday of Great Lent."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<style>
+/* OC-MASTER-CSS */
+:root {
+  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
+  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
+  --border:#2A5A9C;--border-dim:#1A3A5C;
+  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
+  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
+  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
+  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+}
+[data-theme="light"] {
+  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
+  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
+  --border:#C4A882;--border-dim:#D4BC96;
+  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
+  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
+  --nav-bg:rgba(245,237,216,0.97);
+  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
+  color:var(--text);min-height:100vh;overflow-x:hidden;
+  font-size:1.05rem;line-height:1.85;}
+
+/* ── Nav ─────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
+  backdrop-filter:blur(12px);height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
+  flex-shrink:0;margin-right:8px;}
+.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
+.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
+  color:var(--text);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;
+  height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;}
+.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
+.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:220px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
+  border-radius:0 0 4px 4px;z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-dropdown a{display:flex;align-items:center;gap:10px;
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
+.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
+  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
+.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
+.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
+  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
+.nav-signin-btn:hover{color:var(--text-dim);}
+.nav-account-wrap{position:relative;}
+.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
+  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
+  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
+  white-space:nowrap;}
+.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
+.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
+.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
+.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
+  min-width:200px;background:var(--dark);
+  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
+  border-radius:0 0 4px 4px;z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
+.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;}
+.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--text-dim);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:#0F2035;border-bottom:1px solid #1A3A5C;
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
+  text-transform:uppercase;letter-spacing:0.16em;color:#4A7AB8;
+  padding:12px 24px 4px;margin-top:4px;}
+.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
+  text-transform:uppercase;color:#B8C8DC;text-decoration:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
+  transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:#E8CB7A;padding-left:38px;}
+.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
+
+/* ── Hero ────────────────────────────────────────────── */
+.page-hero{margin-top:var(--nav-h);background:var(--hero-bg);
+  border-bottom:2px solid var(--gold-dim);padding:40px 24px 32px;}
+.page-hero-inner{max-width:860px;margin:0 auto;}
+.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--text-muted);margin-bottom:12px;}
+[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
+[data-theme="light"] .breadcrumb{color:#6B4C1A;}
+.breadcrumb a{color:inherit;text-decoration:none;}
+.breadcrumb a:hover{color:var(--gold);}
+.breadcrumb span{margin:0 8px;opacity:0.4;}
+.page-title{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;
+  letter-spacing:0.07em;margin-bottom:8px;color:var(--hero-text);}
+.page-desc{font-size:0.95rem;line-height:1.75;max-width:600px;
+  font-style:italic;color:var(--hero-sub);}
+
+/* ── Gold Intro Block ────────────────────────────────── */
+.text-body{max-width:860px;margin:0 auto;padding:0 24px 72px;}
+.back-link{display:inline-block;font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);
+  text-decoration:none;margin:28px 0 24px;transition:color 0.2s;}
+.back-link:hover{color:var(--gold);}
+.intro-block{background:rgba(201,168,76,0.06);
+  border:1px solid rgba(201,168,76,0.2);
+  border-left:4px solid var(--gold-dim);
+  border-radius:0 4px 4px 0;
+  padding:24px 28px;margin-bottom:40px;}
+.intro-type{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.18em;color:var(--gold);margin-bottom:10px;opacity:0.9;}
+.intro-occasion{font-family:'Cinzel',serif;font-size:0.8rem;
+  color:var(--gold-light);margin-bottom:12px;letter-spacing:0.03em;}
+.intro-text{font-size:0.96rem;color:var(--text-dim);line-height:1.9;}
+
+/* ── Prayer Text Body ────────────────────────────────── */
+.prayer-body{max-width:720px;}
+.prayer-label{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.16em;color:var(--gold);margin:32px 0 10px;opacity:0.85;}
+.prayer-label:first-child{margin-top:0;}
+.prayer-stanza{font-size:1.05rem;color:var(--text-dim);line-height:2.1;
+  margin-bottom:20px;white-space:pre-wrap;}
+.prayer-stanza em{color:var(--text);font-style:italic;}
+.prayer-refrain{font-size:1rem;color:var(--text);line-height:2;
+  margin-bottom:16px;font-style:italic;
+  padding:12px 18px;
+  border-left:2px solid var(--gold-dim);
+  background:rgba(201,168,76,0.04);}
+.prayer-rubric{font-family:'Cinzel',serif;font-size:0.7rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--text-muted);margin:24px 0 8px;
+  padding-top:20px;border-top:1px solid rgba(42,90,156,0.15);}
+.prayer-ikos{margin-bottom:28px;}
+.prayer-kontakion{margin-bottom:28px;}
+.prayer-ode{margin-bottom:36px;}
+.section-divider{border:none;border-top:1px solid rgba(42,90,156,0.2);margin:36px 0;}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .nav-right .nav-signin-btn{display:none;}
+}
+@media(max-width:600px){
+  .page-hero{padding:28px 16px 22px;}
+  .page-title{font-size:1.3rem;}
+  .text-body{padding:0 16px 48px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+  .intro-block{padding:18px 20px;}
+}
+</style>
+</head>
+<body>
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-cross">&#9766;&#65038;</span>
+    <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
+        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Study</span>
+      <div class="nav-dropdown">
+        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
+        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
+        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
+        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
+        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
+        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
+        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link active has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
+        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
+        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
+        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right">
+    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
+    <div class="nav-account-wrap" id="navAccountWrap">
+      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
+      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
+        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
+          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
+        </button>
+        <div class="nav-user-dropdown" id="navUserDropdown">
+          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
+          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
+          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="parents.html">Guidance for Parents</a>
+  <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+  <a href="about.html">About This Site</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+  <a href="symbol-of-faith.html">Symbol of Faith</a>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="holy-scripture.html">Holy Scripture</a>
+  <a href="bible-reader.html">Bible Reader</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+  <div class="nav-drawer-footer">
+    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
+    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
+  </div>
+</div>
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="prayer.html">Prayer Corner</a><span>&#8250;</span><a href="prayer.html?cat=canons-akathists">Canons &amp; Akathists</a><span>&#8250;</span>Akathist to the Theotokos</div>
+    <h1 class="page-title">Akathist Hymn to the Theotokos</h1>
+    <p class="page-desc">The complete Akathist Hymn to the Most Holy Theotokos — the oldest and most venerable of the Orthodox akathists, chanted on the Fifth Saturday of Great Lent.</p>
+  </div>
+</div>
+<div class="text-body">
+  <a href="prayer.html" class="back-link">&#8592; Back to Prayer Corner</a>
+  <div class="intro-block">
+    <div class="intro-type">Akathist Hymn</div>
+    <div class="intro-occasion">Chanted on the Fifth Saturday of Great Lent (the Saturday of the Akathist) and prayed at home throughout the year.</div>
+    <div class="intro-text">The Akathist Hymn to the Theotokos is the oldest and most venerable of all Orthodox akathists, composed in the 6th century and traditionally attributed to St. Romanos the Melodist or St. Sergios of Constantinople. Its title means "not sitting" — sung standing, as a sign of special reverence. It proceeds through 12 oikoi and 12 kontakia, each oikos concluding with the refrain "Rejoice, O Unwedded Bride!" The 13th kontakion concludes the hymn and is then repeated with the first kontakion and oikos. It is the supreme hymn of praise to the Mother of God in the Orthodox tradition.</div>
+  </div>
+  <div class="prayer-body">
+    <div class="prayer-label">Kontakion 1</div>
+    <div class="prayer-stanza">To thee, the Champion Leader, we thy servants dedicate a feast of victory and of thanksgiving as ones rescued out of sufferings, O Theotokos: but as thou art one with might which is invincible, from all dangers that can be do thou deliver us, that we may cry to thee:</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Oikos 1</div>
+    <div class="prayer-stanza">An archangel was sent from Heaven to say to the Theotokos: Rejoice! And beholding Thee, O Lord, taking bodily form, he stood rapt in wonder, and with his bodiless voice he cried aloud to her such things as these:
+
+Rejoice, thou through whom joy will shine forth:
+Rejoice, thou through whom the curse will cease!
+Rejoice, the restoration of the fallen Adam:
+Rejoice, the redemption of the tears of Eve!
+Rejoice, Height not easily climbed by human thoughts:
+Rejoice, Depth not easily viewed even by angels' eyes!
+Rejoice, thou art the throne of a King:
+Rejoice, thou bearest Him who beareth all!
+Rejoice, Star that causest the Sun to appear:
+Rejoice, Womb of the Divine Incarnation!
+Rejoice, thou through whom creation is renewed:
+Rejoice, thou through whom we worship the Creator!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 2</div>
+    <div class="prayer-stanza">Beholding herself to be chaste, the holy one said boldly to Gabriel: The marvel of thy speech is difficult for my soul to accept. How canst thou speak of a birth from a seedless conception? And she cried:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 2</div>
+    <div class="prayer-stanza">Seeking to know knowledge that cannot be known, the Virgin cried to the ministering one: How is it possible that a son be born from a chaste womb? Tell me. And he said to her with fear, crying aloud thus:
+
+Rejoice, initiate of an ineffable counsel:
+Rejoice, faith in things requiring silence!
+Rejoice, beginning of Christ's miracles:
+Rejoice, crown of His dogmas!
+Rejoice, heavenly ladder by which God came down:
+Rejoice, bridge leading those from earth to Heaven!
+Rejoice, wonder much spoken of by angels:
+Rejoice, wound much lamented by demons!
+Rejoice, thou who ineffably gavest birth to the Light:
+Rejoice, thou who didst tell no one how it was done!
+Rejoice, thou who surpassest the knowledge of the wise:
+Rejoice, thou who givest light to the minds of the faithful!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 3</div>
+    <div class="prayer-stanza">The power of the Most High then overshadowed the Virgin for conception, and showed her fruitful womb as a sweet meadow to all those wishing to reap salvation, as they sing:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 3</div>
+    <div class="prayer-stanza">Having received God within her womb, the Virgin hastened to Elizabeth, whose unborn child at once recognized her embrace and rejoiced, and with leaps as if with songs, cried out to the Theotokos:
+
+Rejoice, Vine of the unfading Blossom:
+Rejoice, Field of the immortal Fruit!
+Rejoice, thou who laborest for the Laborer that loveth mankind:
+Rejoice, thou who givest birth to the Planter of our life!
+Rejoice, Field bringing forth a rich crop of mercies:
+Rejoice, Table bearing a wealth of forgiveness!
+Rejoice, thou who makest to bloom a garden of delight:
+Rejoice, thou who preparest a haven for souls!
+Rejoice, acceptable incense of intercession:
+Rejoice, propitiation of all the world!
+Rejoice, good will of God toward mortals:
+Rejoice, boldness of mortals before God!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 4</div>
+    <div class="prayer-stanza">Having within a storm of doubting thoughts, the chaste Joseph was troubled. For he suspected thee of secret union, O blameless one; but when he learned of thy conception from the Holy Spirit, he said:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 4</div>
+    <div class="prayer-stanza">The shepherds heard the angels singing of Christ's incarnate presence, and running as to a shepherd, they saw Him as a blameless Lamb who had fed upon Mary's womb, and singing to her they said:
+
+Rejoice, Mother of the Lamb and the Shepherd:
+Rejoice, fold of the rational flock!
+Rejoice, torment of invisible enemies:
+Rejoice, opening of the doors of paradise!
+Rejoice, thou because whom heavenly things rejoice with the earthly:
+Rejoice, thou because of whom earthly things join chorus with the heavenly!
+Rejoice, never-silent mouth of the apostles:
+Rejoice, never-conquered courage of the passion-bearers!
+Rejoice, firm foundation of the faith:
+Rejoice, radiant sign of grace!
+Rejoice, thou through whom hades was despoiled:
+Rejoice, thou through whom we are clothed with glory!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 5</div>
+    <div class="prayer-stanza">The star bearing God appeared for the guidance of the Magi, who following its light, found through it the mighty God, and reaching the Unreachable One, they rejoiced and cried to Him:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 5</div>
+    <div class="prayer-stanza">The children of the Chaldeans saw in the hands of the Virgin Him who with His hands made man. And knowing Him to be the Lord, even though He had taken the form of a servant, they hastened to worship with their gifts and to cry to the blessed one:
+
+Rejoice, Mother of the never-setting Star:
+Rejoice, dawn of the mystic day!
+Rejoice, thou who hast extinguished the furnace of delusion:
+Rejoice, thou who dost enlighten the initiates of the Trinity!
+Rejoice, thou who hast expelled from power the inhuman tyrant:
+Rejoice, thou who hast shown us the Lord Christ, the Lover of mankind!
+Rejoice, thou who redeemest from barbarian worship:
+Rejoice, thou who dost snatch us from the works of the mud!
+Rejoice, thou who hast quenched the worship of fire:
+Rejoice, thou who turnest away the flame of passions!
+Rejoice, guide of the faithful unto chastity:
+Rejoice, gladness of all generations!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 6</div>
+    <div class="prayer-stanza">Becoming heralds bearing God, the Magi returned to Babylon, having fulfilled thy prophecy, and having preached thee to all as the Christ, they left Herod as a trifler who knew not how to sing:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 6</div>
+    <div class="prayer-stanza">By shining in Egypt the light of truth, Thou didst dispel the darkness of falsehood; for its idols fell, O Saviour, unable to endure Thy strength, and those who were delivered from them cried to the Theotokos:
+
+Rejoice, uplifting of men:
+Rejoice, downfall of demons!
+Rejoice, thou who didst trample upon the delusion of error:
+Rejoice, thou who didst expose the fraud of idols!
+Rejoice, sea that didst drown the symbolic Pharaoh:
+Rejoice, rock that gavest drink to those who thirst for life!
+Rejoice, pillar of fire guiding those in darkness:
+Rejoice, shelter of the world broader than a cloud!
+Rejoice, food replacing manna:
+Rejoice, minister of holy delight!
+Rejoice, land of promise:
+Rejoice, thou from whom floweth milk and honey!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 7</div>
+    <div class="prayer-stanza">When Simeon was about to depart from this age of delusion, Thou wast brought as a babe to him, but he recognized Thee also as the perfect God and, marveling at Thine ineffable wisdom, he cried:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 7</div>
+    <div class="prayer-stanza">The Creator showed us a new creation when He appeared to us who came from Him; for He sprang from a seedless womb and kept it incorrupt as it was, so that we seeing this miracle might sing to her, crying aloud:
+
+Rejoice, Flower of incorruption:
+Rejoice, Crown of continence!
+Rejoice, thou from whom the Resurrection shineth forth:
+Rejoice, thou through whom we inherit paradise!
+Rejoice, true key of the Kingdom of Christ:
+Rejoice, hope of eternal blessings!
+Rejoice, thou who art the protection of the divine good will:
+Rejoice, thou who art the mirror and adornment of human nature!
+Rejoice, through whom sins are forgiven:
+Rejoice, through whom punishment is turned away!
+Rejoice, refuge of those who come not near unto the throne of grace:
+Rejoice, boldness of those who draw nigh unto the same!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 8</div>
+    <div class="prayer-stanza">Seeing a strange birth, let us estrange ourselves from the world and move our minds to Heaven; for the High God appeared on earth as a humble man, because He wished to draw to the heights those who cry to Him:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 8</div>
+    <div class="prayer-stanza">The all-praised One was wholly present below, yet not at all absent from those on high; and this was a divine condescension and not a change of place, and a birth from a God-receiving Virgin who heard such things as these:
+
+Rejoice, container of the uncontainable God:
+Rejoice, door of a solemn mystery!
+Rejoice, doubtful report of the unbelieving:
+Rejoice, undoubted boast of the faithful!
+Rejoice, most holy chariot of Him who rideth on the Cherubim:
+Rejoice, most glorious abode of Him who is above the Seraphim!
+Rejoice, thou who hast united things opposite:
+Rejoice, thou who hast joined virginity and motherhood!
+Rejoice, thou through whom transgression hath been absolved:
+Rejoice, thou through whom paradise hath been opened!
+Rejoice, key of the Kingdom of Christ:
+Rejoice, hope of eternal blessings!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 9</div>
+    <div class="prayer-stanza">All the angelic natures of Heaven were astonished by the great work of thine incarnation; for they saw the inaccessible God as a man accessible to all and dwelling with us, and hearing from all:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 9</div>
+    <div class="prayer-stanza">We see most eloquent orators dumb as fish before thee, O Theotokos; for they are at a loss to say how thou remainest a Virgin and wast able to give birth. But we, marveling at this mystery, cry faithfully:
+
+Rejoice, receptacle of the Wisdom of God:
+Rejoice, treasury of His Providence!
+Rejoice, thou who showest philosophers to be fools:
+Rejoice, thou who dost convict the word-crafters of folly!
+Rejoice, because the subtle disputers are proved dull:
+Rejoice, because the inventors of myths are faded!
+Rejoice, thou who didst break the webs of the Athenians:
+Rejoice, thou who didst fill the nets of the fishermen!
+Rejoice, thou who drawest out from the depth of ignorance:
+Rejoice, thou who enlightenest many with knowledge!
+Rejoice, ship for those who wish to be saved:
+Rejoice, haven for the sailors on the sea of life!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 10</div>
+    <div class="prayer-stanza">Wishing to save the world, He who ordereth all things came to it of His own will; and as God, He was the shepherd, and yet for our sake He appeared among us as a man; for like calling unto like, as God He heard:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 10</div>
+    <div class="prayer-stanza">Thou art a wall for virgins, O Virgin Theotokos, and for all who run to thee; for the Maker of heaven and earth fashioned thee, O pure one, dwelling within thy womb, and He taught all to cry to thee:
+
+Rejoice, pillar of virginity:
+Rejoice, gate of salvation!
+Rejoice, leader of spiritual reformation:
+Rejoice, bestower of divine goodness!
+Rejoice, thou who didst renewest those conceived in shame:
+Rejoice, thou who instructest those robbed of understanding!
+Rejoice, thou who dost destroy the corrupter of minds:
+Rejoice, thou who barest the Sower of purity!
+Rejoice, bridal chamber of seedless nuptials:
+Rejoice, thou who hast joined the faithful to the Lord!
+Rejoice, beautiful nurturing mother of virgins:
+Rejoice, adorner of holy souls!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 11</div>
+    <div class="prayer-stanza">Every hymn is defeated that attempts to encompass the multitude of Thy many mercies, for if we bring Thee songs holy as the sand O Lord King, yet do we accomplish nothing worthy of that which Thou hast given to those who cry:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 11</div>
+    <div class="prayer-stanza">Shining with the light of divine things, I see the lamp of light which appeared to those in darkness, as the bright Virgin who kindled the divine and immaterial light, and guiding all to the knowledge of God, radiating splendor, she is praised with these words:
+
+Rejoice, ray of the noetic Sun:
+Rejoice, radiance of the never-setting light!
+Rejoice, lightning illumining souls:
+Rejoice, thou who dost thunder upon enemies!
+Rejoice, for thou didst raise up the many-luminous illumination:
+Rejoice, for thou didst cause the all-radiant river to flow!
+Rejoice, thou who dost portray the image of the font:
+Rejoice, thou who dost wash away the filth of sin!
+Rejoice, laver washing conscience clear:
+Rejoice, bowl in which joy is mixed!
+Rejoice, fragrance of the sweet odor of Christ:
+Rejoice, life of the mystical banquet!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 12</div>
+    <div class="prayer-stanza">When the all-hymned One wished to grant remission of ancient debts, He came of His own will to dwell among those who had fallen from His grace; and having torn up the record of debt, He heard from all:</div>
+    <div class="prayer-refrain">Alleluia!</div>
+
+    <div class="prayer-label">Oikos 12</div>
+    <div class="prayer-stanza">Singing thy birth, we all praise thee as a living temple, O Theotokos; for the Lord who holdeth all in His hands dwelt in thy womb, and He sanctified and glorified thee and taught all to cry to thee:
+
+Rejoice, tabernacle of God the Word:
+Rejoice, saint greater than the saints!
+Rejoice, ark gilded by the Spirit:
+Rejoice, inexhaustible treasury of life!
+Rejoice, precious crown of pious kings:
+Rejoice, sacred boast of devout priests!
+Rejoice, unshakeable tower of the Church:
+Rejoice, inviolable wall of the kingdom!
+Rejoice, thou through whom victories are obtained:
+Rejoice, thou through whom enemies fall!
+Rejoice, healing of my body:
+Rejoice, salvation of my soul!</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+
+    <div class="prayer-label">Kontakion 13</div>
+    <div class="prayer-stanza">O all-hymned Mother, who didst bear the Word holiest of all the saints, accepting this our offering, deliver all from every calamity, and rescue from the coming punishment those who cry to thee:</div>
+    <div class="prayer-refrain">Alleluia! Alleluia! Alleluia!</div>
+
+    <hr class="section-divider"/>
+    <div class="prayer-label">Kontakion 1 — Repeated</div>
+    <div class="prayer-stanza">To thee, the Champion Leader, we thy servants dedicate a feast of victory and of thanksgiving as ones rescued out of sufferings, O Theotokos: but as thou art one with might which is invincible, from all dangers that can be do thou deliver us, that we may cry to thee:</div>
+    <div class="prayer-refrain">Rejoice, O Unwedded Bride!</div>
+  </div>
+</div>
+<script>
+(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
+var _drawerOpen=false;
+function toggleDrawer(){_drawerOpen=!_drawerOpen;var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');if(d)d.classList.toggle('open',_drawerOpen);if(h)h.classList.toggle('open',_drawerOpen);}
+function toggleUserMenu(){var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');}
+function signOut(){localStorage.removeItem('oc_user');localStorage.removeItem('oc_token');window.location.href='index.html';}
+function initAccountNav(){var user=null;try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}var signIn=document.getElementById('navSignIn');var userMenu=document.getElementById('navUserMenu');var usernameEl=document.getElementById('navUsername');var drawerSignIn=document.getElementById('drawerSignIn');if(user&&user.username){if(signIn)signIn.style.display='none';if(userMenu)userMenu.style.display='block';if(usernameEl)usernameEl.textContent=user.username;if(drawerSignIn)drawerSignIn.textContent=user.username;}else{if(signIn)signIn.style.display='';if(userMenu)userMenu.style.display='none';}}
+document.addEventListener('click',function(e){if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){_drawerOpen=false;var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');if(d)d.classList.remove('open');if(h)h.classList.remove('open');}if(!e.target.closest('.nav-account-wrap')){var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');if(d)d.classList.remove('open');if(b)b.classList.remove('open');}});
+document.addEventListener('DOMContentLoaded',function(){initAccountNav();});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth-nav.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+<script src="/analytics-tracker.js"></script>
+</body>
+</html>
