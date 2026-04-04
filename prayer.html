@@ -840,14 +840,14 @@ function buildCats() {
   el.innerHTML = CATS.map(function(c) {
     return '<button class="prayer-cat-btn' + (c.id === currentCat ? ' active' : '') + '" data-cat="' + c.id + '">' + c.name + '</button>';
   }).join('');
-  el.addEventListener('click', function(e) {
+  el.onclick = function(e) {
     var btn = e.target.closest('.prayer-cat-btn');
     if (!btn) return;
     currentCat = btn.dataset.cat;
     document.querySelectorAll('.prayer-cat-btn').forEach(function(b) { b.classList.remove('active'); });
     btn.classList.add('active');
     renderPrayers();
-  });
+  };
 }
 
 function togglePrayer(id) {
@@ -959,10 +959,10 @@ function renderPrayers() {
   html += '</div>';
   el.innerHTML = html;
 
-  el.addEventListener('click', function(e) {
+  el.onclick = function(e) {
     var header = e.target.closest('.prayer-card-header');
     if (header && header.dataset.id) togglePrayer(header.dataset.id);
-  });
+  };
 }
 
 function escHtml(str) {
