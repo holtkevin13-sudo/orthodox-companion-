@@ -126,6 +126,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 .tl-tags{display:flex;flex-wrap:wrap;gap:4px;}
 .tl-tag{font-family:"Cinzel",serif;font-size:0.57rem;text-transform:uppercase;letter-spacing:0.07em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:2px 8px;}
 
+/* Patristic intro quote */
+.tl-patristic{border-left:2px solid var(--gold-dim);padding:16px 22px;margin:0 0 36px;background:var(--bg-card);border-radius:0 3px 3px 0;}
+[data-theme="light"] .tl-patristic{background:rgba(232,217,188,0.5);}
+.tl-patristic-quote{font-size:1.02rem;color:var(--text);font-style:italic;line-height:1.85;margin-bottom:8px;}
+.tl-patristic-attr{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold-dim);}
+
+/* East-West Estrangement banner */
+.tl-ewe-banner{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:24px 0 10px;padding:16px 20px;background:rgba(42,90,156,0.1);border:1px solid var(--border-dim);border-left:2px solid var(--gold-dim);border-radius:0 3px 3px 0;text-decoration:none;transition:background 0.2s;}
+.tl-ewe-banner:hover{background:rgba(42,90,156,0.2);}
+.tl-ewe-banner-body{}
+.tl-ewe-banner-label{font-family:"Cinzel",serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:4px;}
+.tl-ewe-banner-sub{font-size:0.88rem;color:var(--text-dim);font-style:italic;line-height:1.5;}
+.tl-ewe-banner-arrow{color:var(--gold-dim);font-size:1.2rem;flex-shrink:0;transition:transform 0.2s;}
+.tl-ewe-banner:hover .tl-ewe-banner-arrow{transform:translateX(4px);}
+@media(max-width:600px){.tl-ewe-banner{flex-direction:column;align-items:flex-start;}}
+
 /* Back to Top */
 #backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;width:38px;height:38px;border-radius:50%;background:var(--dark);border:1px solid var(--gold-dim);color:var(--gold-light);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.5);}
 #backToTop.visible{opacity:1;pointer-events:all;}
@@ -252,7 +268,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 
 <div class="timeline-wrap">
 
-  <p class="tl-intro">Orthodox Christianity does not understand itself as one tradition among many that developed after the New Testament, but as the continuous life of the Church established by Christ and sent forth at Pentecost. This timeline traces the key events, councils, and turning points through which that faith has been preserved, defended, tested, and handed on. Select any event to read more.</p>
+  <p class="tl-intro">Orthodox Christianity does not understand itself as one tradition among many that emerged after the New Testament, but as the continuous and unbroken life of the Body of Christ &mdash; born at Pentecost, sustained by the Holy Spirit, and present in every Divine Liturgy celebrated in His name. This timeline traces the key events, councils, and turning points through which that faith has been preserved, defended, tested, and handed on across twenty centuries. Select any event to read more.</p>
+
+  <div class="tl-patristic">
+    <div class="tl-patristic-quote">&ldquo;Where the Church is, there is the Spirit of God; and where the Spirit of God is, there is the Church and every kind of grace.&rdquo;</div>
+    <div class="tl-patristic-attr">St. Irenaeus of Lyon &mdash; <em>Against Heresies</em>, c. 180</div>
+  </div>
 
   <div class="tl-controls">
     <button class="tl-ctrl-btn" id="expandAllBtn">Expand All</button>
@@ -295,14 +316,36 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
       </div>
       <div class="tl-detail">
         <div class="tl-body">
-          <p>The Apostles scattered throughout the known world, founding churches in Jerusalem, Antioch, Alexandria, Rome, Corinth, Ephesus, and beyond. St. Peter and St. Paul were martyred in Rome. St. John, the last of the Twelve, died in Ephesus around 100 AD. St. Andrew evangelized the regions that would become Greece and Byzantium. St. Thomas reached India. St. Mark founded the Church of Alexandria.</p>
-          <p>The structures of the Church &mdash; bishop, presbyter, deacon &mdash; were established in this period, as were the earliest liturgical patterns and the sacraments. The letters of Ignatius of Antioch (martyred c. 107) reveal a fully episcopal church already in place within a generation of the Apostles.</p>
+          <p>Guided by the Holy Spirit, the Apostles carried the risen Christ to the ends of the known world. St. Peter and St. Paul were martyred in Rome. St. John, the last of the Twelve, died in Ephesus around 100. St. Andrew evangelized the regions that would become Greece and Byzantium. St. Thomas reached India. St. Mark founded the Church of Alexandria. The structures of the Church &mdash; bishop, presbyter, deacon &mdash; were established in this period, as were the earliest liturgical patterns and the sacraments.</p>
+          <p>The letters of St. Ignatius of Antioch (martyred c. 107) reveal a fully episcopal church already in place within a generation of the Apostles &mdash; the bishop as the center of the Eucharistic community, the Eucharist as the true Body and Blood of Christ. The faith was not gradually developed; it was received, lived, and handed on. The same chain of succession &mdash; bishop to bishop, generation to generation &mdash; runs unbroken to the present.</p>
         </div>
         <div class="tl-tag-label">Key Themes</div>
         <div class="tl-tags">
           <span class="tl-tag">Apostolic Succession</span>
           <span class="tl-tag">Church Structure</span>
           <span class="tl-tag">Worldwide Mission</span>
+          <span class="tl-tag">Eucharist</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="jerusalem-council">
+      <div class="tl-header">
+        <span class="tl-year">c. 50</span>
+        <span class="tl-title">Council of Jerusalem</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>When a dispute arose over the requirements for Gentile believers, the Apostles and elders gathered in Jerusalem to discern together how the nations would enter the life of Christ. Their decision carries the defining phrase of all Christian councils: <em>&ldquo;It seemed good to the Holy Spirit and to us&rdquo;</em> (Acts 15:28). The Church does not legislate from human authority alone &mdash; she gathers in prayer and listens to the Spirit who guides her into all truth.</p>
+          <p>This first council establishes the conciliar pattern that the Church carries through every age. The Apostles did not rule by individual authority. They assembled, deliberated, and spoke with one voice. Every Ecumenical Council that follows &mdash; from Nicaea to Nicaea II &mdash; inherits this authority: the Church gathered, guided by the Holy Spirit, proclaiming not new teaching but the faith once delivered to the saints.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Conciliarity</span>
+          <span class="tl-tag">Holy Spirit</span>
+          <span class="tl-tag">Acts 15</span>
+          <span class="tl-tag">Gentile Mission</span>
         </div>
       </div>
     </div>
@@ -437,13 +480,76 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
       <div class="tl-detail">
         <div class="tl-body">
           <p>The largest of the early councils (over 500 bishops), convened against Eutychianism (Monophysitism), which collapsed the two natures of Christ into one. The Definition of Chalcedon proclaimed Christ as one person in two natures &mdash; &ldquo;without confusion, without change, without division, without separation.&rdquo; These four adverbs are among the most precise formulations in Christian theological history.</p>
-          <p>Chalcedon caused a lasting schism: the Oriental Orthodox churches (Coptic, Ethiopian, Armenian, Syriac) did not accept it. The Orthodox Church holds that modern theological dialogue has clarified much of the original disagreement, which was partly rooted in language.</p>
+          <p>This is not philosophical precision for its own sake. If Christ&rsquo;s humanity is absorbed into His divinity, our own humanity cannot truly be assumed, healed, and deified. Chalcedon defends the very ground of our salvation: God truly became one of us so that we might truly become partakers of the divine nature (2 Pet. 1:4). Chalcedon caused a lasting schism with the Oriental Orthodox churches (Coptic, Ethiopian, Armenian, Syriac), though modern theological dialogue has clarified much of the original disagreement.</p>
         </div>
         <div class="tl-tag-label">Key Themes</div>
         <div class="tl-tags">
           <span class="tl-tag">Two Natures of Christ</span>
           <span class="tl-tag">Against Monophysitism</span>
+          <span class="tl-tag">Theosis</span>
           <span class="tl-tag">Oriental Orthodox Schism</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="constantinople-2">
+      <div class="tl-header">
+        <span class="tl-year">553</span>
+        <span class="tl-title">Fifth Ecumenical Council &mdash; Constantinople II</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>Convened under Emperor Justinian, the Fifth Council addressed lingering Nestorian tendencies in certain theological writings known as the &ldquo;Three Chapters.&rdquo; The council reaffirmed that it is always the one eternal Person of the Son who acts &mdash; in His divinity and in His humanity. There is no separation of subjects in Christ: the same Son who was born of the Virgin is the same Son who rose from the dead.</p>
+          <p>The council also sought, with pastoral care, to draw those estranged by Chalcedon back into communion &mdash; a witness to the Church&rsquo;s persistent desire not for theological victory but for unity in the fullness of truth. The Holy Spirit who guides the Church into truth also moves her toward the healing of division. This pastoral concern is itself a mark of the Orthodox phronema.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Against Nestorianism</span>
+          <span class="tl-tag">Unity of Christ&rsquo;s Person</span>
+          <span class="tl-tag">Pastoral Unity</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="constantinople-3">
+      <div class="tl-header">
+        <span class="tl-year">680&ndash;681</span>
+        <span class="tl-title">Sixth Ecumenical Council &mdash; Constantinople III</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>Monothelitism taught that Christ possessed only one will, His human will swallowed up by the divine. Constantinople III proclaimed the truth: Christ has two wills &mdash; divine and human &mdash; perfectly united, His human will freely surrendered to the Father in love: <em>&ldquo;Not My will, but Yours, be done&rdquo;</em> (Lk. 22:42). This is not erasure of the human will but its perfect healing and offering.</p>
+          <p>This truth has direct bearing on our salvation. Our human wills are disordered by sin and need not destruction but restoration. Christ&rsquo;s human will &mdash; perfectly offered to the Father &mdash; is both the model and the means of our own theosis. St. Maximus the Confessor, who suffered exile, imprisonment, and the cutting out of his tongue and right hand for defending this truth, is one of the great confessors of the Orthodox faith. He is venerated on January 21.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Two Wills of Christ</span>
+          <span class="tl-tag">Against Monothelitism</span>
+          <span class="tl-tag">St. Maximus the Confessor</span>
+          <span class="tl-tag">Theosis</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="trullo">
+      <div class="tl-header">
+        <span class="tl-year">692</span>
+        <span class="tl-title">Council in Trullo &mdash; The Quinisext Council</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>The Council in Trullo (so named for the domed hall of the imperial palace) was convened to supply the disciplinary canons that the Fifth and Sixth Ecumenical Councils had left unfinished. Its 102 canons codify the canonical discipline of the Orthodox Church: the liturgical life, iconographic norms, fasting practice, clerical marriage, and the boundaries of episcopal authority. It is recognized by the Orthodox Church as having full canonical authority &mdash; effectively the disciplinary completion of Councils V and VI.</p>
+          <p>Rome refused to ratify the Council in Trullo, rejecting several canons that contradicted emerging Western practice &mdash; particularly those permitting married clergy and mandating the depiction of Christ in human form rather than as a lamb. This refusal is itself an early marker of the liturgical and disciplinary divergence that would deepen over the following centuries. The canons of Trullo remain binding for the Orthodox Church to this day.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Canon Law</span>
+          <span class="tl-tag">Church Discipline</span>
+          <span class="tl-tag">East-West Divergence</span>
+          <span class="tl-tag">Liturgical Norms</span>
         </div>
       </div>
     </div>
@@ -470,7 +576,81 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
 
   </div>
 
-  <!-- ERA 4: Schism -->
+  <!-- ERA 4: Post-Conciliar Byzantine -->
+  <div class="era-header">
+    <span class="era-label">Post-Conciliar Byzantine Era</span>
+    <div class="era-rule"></div>
+    <span class="era-dates">843&ndash;988</span>
+  </div>
+  <div class="era-block">
+
+    <div class="tl-event" data-id="triumph-orthodoxy">
+      <div class="tl-header">
+        <span class="tl-year">843</span>
+        <span class="tl-title">The Triumph of Orthodoxy</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>On the first Sunday of Great Lent, 843, icons were restored to the churches of Constantinople, ending the second period of Iconoclasm. The Empress Theodora, acting as regent, convened a council that vindicated the theology of Nicaea II (787). Patriarch Methodius led a solemn procession through the city with the holy icons. This Sunday has been celebrated ever since as the Triumph of Orthodoxy &mdash; the first Sunday of Great Lent in the Orthodox Church throughout the world.</p>
+          <p>The Triumph is not merely the restoration of religious art. It is the victory of the Incarnation itself &mdash; the Church&rsquo;s proclamation that God truly took on flesh and can be depicted in matter, that the material world is capable of bearing the divine, and that the truth the Holy Spirit has given the Church cannot be extinguished by imperial decree. At the Triumph of Orthodoxy service, the Church still sings: <em>&ldquo;This is the faith of the Apostles; this is the faith of the Fathers; this is the faith of the Orthodox; this faith has established the universe.&rdquo;</em></p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Veneration of Icons</span>
+          <span class="tl-tag">Incarnation</span>
+          <span class="tl-tag">Against Iconoclasm</span>
+          <span class="tl-tag">Great Lent</span>
+          <span class="tl-tag">St. Theodora the Empress</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="cyril-methodius">
+      <div class="tl-header">
+        <span class="tl-year">c. 863</span>
+        <span class="tl-title">Mission of Sts. Cyril and Methodius</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>The brothers Cyril and Methodius, scholars from Thessaloniki, were sent by the Patriarch of Constantinople on a missionary journey to the Slavic peoples of Moravia. Rather than imposing the faith in Greek or Latin, they translated the Scriptures and the Divine Liturgy into the Slavic language &mdash; and created an alphabet (Glagolitic, the precursor to Cyrillic) to do so. The gospel was incarnated into a new tongue, and the Slavic world was opened to the Orthodox faith.</p>
+          <p>The missionary theology of Cyril and Methodius is the theology of Pentecost: the Holy Spirit speaks to every nation in its own language (Acts 2:6). Orthodoxy is not a Greek religion or a Byzantine culture &mdash; it is the faith of the universal Church, offered to every people in their own tongue. Their mission planted the seeds from which Russian, Serbian, Bulgarian, and other Slavic Orthodoxies would grow. They are venerated as Equal-to-the-Apostles, and their feast is celebrated on May 11. Cyril fell asleep in the Lord in Rome in 869; Methodius continued the work among the Slavs until his death in 885.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Slavic Mission</span>
+          <span class="tl-tag">Equal-to-the-Apostles</span>
+          <span class="tl-tag">Liturgical Translation</span>
+          <span class="tl-tag">Pentecost Theology</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-event" data-id="baptism-rus">
+      <div class="tl-header">
+        <span class="tl-year">988</span>
+        <span class="tl-title">Baptism of Rus&rsquo;</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>Prince Vladimir of Kiev, having sent emissaries to investigate the religions of the known world, was drawn by the report of his envoys who had witnessed the Divine Liturgy at Hagia Sophia: <em>&ldquo;We did not know whether we were in heaven or on earth&rdquo;</em> (Primary Chronicle). Vladimir was baptized, married the Byzantine princess Anna, and ordered the Christianization of Kievan Rus&rsquo;. The Dnieper River became a site of mass baptism. The Church of the Rus&rsquo; was born.</p>
+          <p>The Baptism of Rus&rsquo; in 988 is one of the most consequential events in the history of the Orthodox Church. It planted the faith in the soil from which Russian, Ukrainian, and Belarusian Orthodoxy would grow &mdash; and through Russia, would spread across Siberia, Alaska, Japan, and China. The Russian Orthodox Church today is the largest Orthodox church in the world. St. Vladimir is venerated as Equal-to-the-Apostles, and his feast is celebrated on July 15. His grandmother, St. Olga, who had herself been baptized in Constantinople, is celebrated on July 11.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Evangelization of the Slavs</span>
+          <span class="tl-tag">St. Vladimir Equal-to-the-Apostles</span>
+          <span class="tl-tag">Divine Liturgy</span>
+          <span class="tl-tag">Russian Orthodoxy</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ERA 5: Schism & Medieval -->
   <div class="era-header">
     <span class="era-label">Schism &amp; the Medieval Church</span>
     <div class="era-rule"></div>
@@ -498,6 +678,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
       </div>
     </div>
 
+    <div class="tl-event" data-id="photian-council">
+      <div class="tl-header">
+        <span class="tl-year">879&ndash;880</span>
+        <span class="tl-title">Council of Constantinople &mdash; Restoration of St. Photios</span>
+        <span class="tl-arrow">&#9658;</span>
+      </div>
+      <div class="tl-detail">
+        <div class="tl-body">
+          <p>A council of over 380 bishops assembled in Constantinople under the presidency of Patriarch Photios, with papal legates of Pope John VIII in attendance. Photios was formally vindicated and restored. More significantly, the council issued a canon explicitly forbidding any addition or alteration to the Nicene-Constantinopolitan Creed &mdash; condemning the <em>Filioque</em> by name as an unauthorized innovation. Pope John VIII initially accepted the council&rsquo;s decisions. Many Orthodox theologians recognize this council as the Eighth Ecumenical Council.</p>
+          <p>The council&rsquo;s condemnation of the Filioque is the Church&rsquo;s definitive theological and canonical response to the Western addition. It establishes three truths simultaneously: the Holy Spirit proceeds from the Father alone, as taught in the Creed of the Ecumenical Councils; no bishop &mdash; including the Bishop of Rome &mdash; holds authority to alter what the councils have defined; and the conciliar mind of the Church, not any individual hierarch, is the guardian of the Apostolic faith.</p>
+        </div>
+        <div class="tl-tag-label">Key Themes</div>
+        <div class="tl-tags">
+          <span class="tl-tag">Filioque Condemned</span>
+          <span class="tl-tag">Conciliar Authority</span>
+          <span class="tl-tag">St. Photios the Great</span>
+          <span class="tl-tag">Creedal Integrity</span>
+        </div>
+      </div>
+    </div>
+
     <div class="tl-event" data-id="great-schism">
       <div class="tl-header">
         <span class="tl-year">1054</span>
@@ -517,6 +718,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.9
         </div>
       </div>
     </div>
+
+    <a href="east-west-estrangement.html" class="tl-ewe-banner" target="_blank">
+      <div class="tl-ewe-banner-body">
+        <div class="tl-ewe-banner-label">&#9680; The Road to Separation &mdash; A Visual History</div>
+        <div class="tl-ewe-banner-sub">Explore the full arc of Christian division &mdash; from the Filioque to the Reformation &mdash; in an interactive visual timeline.</div>
+      </div>
+      <span class="tl-ewe-banner-arrow">&#9658;</span>
+    </a>
 
     <div class="tl-event" data-id="sack-1204">
       <div class="tl-header">
@@ -697,10 +906,6 @@ function toggleTheme(){
   document.documentElement.setAttribute('data-theme',n);
   localStorage.setItem('oc_theme',n);
 }
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
 
 var _drawerOpen=false;
 function toggleDrawer(){
