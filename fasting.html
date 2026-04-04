@@ -202,16 +202,24 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
 /* ── Fasting Periods ─────────────────────────────────── */
 .fast-periods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:12px;}
-.fast-period{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:20px;border-top:3px solid transparent;}
+.fast-period{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:20px;border-top:3px solid transparent;cursor:pointer;user-select:none;transition:border-color 0.2s;}
+.fast-period:hover{border-color:var(--gold-dim);}
 .fast-period.strict{border-top-color:#8A3A3A;}
 .fast-period.moderate{border-top-color:#5A6A8A;}
+.fast-period-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.fast-period-header-text{flex:1;}
+.fast-period-chevron{font-size:0.65rem;color:var(--gold-dim);transition:transform 0.28s;flex-shrink:0;margin-top:4px;line-height:1;}
+.fast-period.open .fast-period-chevron{transform:rotate(180deg);}
 .fast-period-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:6px;}
-.fast-period-purpose{font-size:0.9rem;color:var(--text-dim);font-style:italic;line-height:1.6;margin-bottom:10px;}
+.fast-period-purpose{font-size:0.88rem;color:var(--text-dim);font-style:italic;line-height:1.6;}
+.fast-period-body{max-height:0;overflow:hidden;transition:max-height 0.38s ease;}
+.fast-period.open .fast-period-body{max-height:500px;}
+.fast-period-body-inner{padding-top:14px;}
 .fast-period-dates{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:10px;}
 .fast-period-level{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid;display:inline-block;margin-bottom:10px;}
 .fast-period.strict .fast-period-level{color:#CA8A8A;border-color:rgba(200,80,80,0.3);}
 .fast-period.moderate .fast-period-level{color:#8ABCDC;border-color:rgba(138,188,220,0.3);}
-.fast-period-desc{font-size:0.86rem;color:var(--text-dim);line-height:1.7;font-style:italic;}
+.fast-period-desc{font-size:0.88rem;color:var(--text);line-height:1.75;font-style:italic;}
 
 /* ── Weekly Grid ─────────────────────────────────────── */
 .weekly-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px;}
@@ -236,9 +244,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .fixed-fasts-block{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 18px;}
 .fixed-fasts-label{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:10px;}
 .fixed-fasts-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.fixed-fasts-list li{font-size:0.84rem;color:var(--text-dim);line-height:1.5;}
-.fixed-fasts-list li em{color:var(--text-muted);font-size:0.8rem;display:block;margin-top:1px;}
-.fixed-fasts-note{margin-top:12px;font-size:0.8rem;color:var(--text-muted);font-style:italic;line-height:1.6;padding-top:10px;border-top:1px solid var(--border-dim);}
+.fixed-fasts-list li{font-size:0.84rem;color:var(--text);line-height:1.5;}
+.fixed-fasts-list li em{color:var(--text-dim);font-size:0.82rem;display:block;margin-top:2px;}
+.fixed-fasts-note{margin-top:12px;font-size:0.82rem;color:var(--text-dim);font-style:italic;line-height:1.6;padding-top:10px;border-top:1px solid var(--border-dim);}
 
 /* ── The Whole Fast ──────────────────────────────────── */
 .fast-whole-intro{font-size:0.92rem;color:var(--text-dim);line-height:1.85;margin-bottom:18px;}
@@ -251,11 +259,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .food-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .food-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px;}
 .food-card-title{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:8px;}
-.food-card-note{font-size:0.8rem;color:var(--text-muted);font-style:italic;line-height:1.6;margin-bottom:10px;}
+.food-card-note{font-size:0.82rem;color:var(--text-dim);font-style:italic;line-height:1.6;margin-bottom:10px;}
 .food-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
-.food-list li{font-size:0.86rem;color:var(--text-dim);line-height:1.5;padding-left:12px;position:relative;}
+.food-list li{font-size:0.88rem;color:var(--text);line-height:1.55;padding-left:12px;position:relative;}
 .food-list li::before{content:"";position:absolute;left:0;top:0.5em;width:5px;height:5px;border-radius:50%;background:var(--gold-dim);}
-.food-note{margin-top:14px;font-size:0.82rem;color:var(--text-muted);font-style:italic;line-height:1.7;padding:12px 16px;border-left:2px solid var(--border-dim);}
+.food-note{margin-top:14px;font-size:0.84rem;color:var(--text-dim);font-style:italic;line-height:1.7;padding:12px 16px;border-left:2px solid var(--border-dim);}
 
 /* ── Theology Quotes ─────────────────────────────────── */
 .theology-block{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:3px;padding:22px 26px;margin-top:16px;}
@@ -283,6 +291,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 @media(max-width:500px){
   .weekly-grid{grid-template-columns:repeat(4,1fr);}
 }
+/* ── Back to Top ─────────────────────────────────────── */
+#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
+  width:38px;height:38px;border-radius:50%;
+  background:var(--dark);border:1px solid var(--gold-dim);
+  color:var(--gold-light);font-size:1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,transform 0.25s;
+  box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
 
 </style>
 </head>
@@ -656,6 +675,13 @@ document.addEventListener('DOMContentLoaded',function(){
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },200);
   }
+  // Back to top
+  var btn=document.getElementById('backToTop');
+  if(btn){
+    window.addEventListener('scroll',function(){
+      btn.classList.toggle('visible',window.scrollY>400);
+    },{passive:true});
+  }
 });
 </script>
 
@@ -745,14 +771,23 @@ var FOOD = [
 ];
 
 function render() {
-  // Fast periods
+  // Fast periods — accordion cards
   document.getElementById('fastPeriods').innerHTML = FAST_PERIODS.map(function(p) {
     return '<div class="fast-period ' + p.cls + '">' +
-      '<div class="fast-period-name">' + p.name + '</div>' +
-      '<div class="fast-period-purpose">' + p.purpose + '</div>' +
-      '<div class="fast-period-dates">' + p.dates + '</div>' +
-      '<div class="fast-period-level">' + p.level + '</div>' +
-      '<div class="fast-period-desc">' + p.desc + '</div>' +
+      '<div class="fast-period-header">' +
+        '<div class="fast-period-header-text">' +
+          '<div class="fast-period-name">' + p.name + '</div>' +
+          '<div class="fast-period-purpose">' + p.purpose + '</div>' +
+        '</div>' +
+        '<span class="fast-period-chevron">&#9660;</span>' +
+      '</div>' +
+      '<div class="fast-period-body">' +
+        '<div class="fast-period-body-inner">' +
+          '<div class="fast-period-dates">' + p.dates + '</div>' +
+          '<div class="fast-period-level">' + p.level + '</div>' +
+          '<div class="fast-period-desc">' + p.desc + '</div>' +
+        '</div>' +
+      '</div>' +
       '</div>';
   }).join('');
 
@@ -779,6 +814,17 @@ function render() {
   }).join('');
 }
 
+/* ── Fasting Period Accordion — event delegation ─────── */
+document.addEventListener('DOMContentLoaded', function() {
+  var periodsEl = document.getElementById('fastPeriods');
+  if (periodsEl) {
+    periodsEl.addEventListener('click', function(e) {
+      var card = e.target.closest('.fast-period');
+      if (card) card.classList.toggle('open');
+    });
+  }
+});
+
 /* ── Saturday Tooltip: hover (CSS) + tap (JS) ────────── */
 document.addEventListener('click', function(e) {
   var tip = e.target.closest('.has-tip');
@@ -794,5 +840,6 @@ document.addEventListener('DOMContentLoaded', render);
 <script src="auth-nav.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
 <script src="/analytics-tracker.js"></script>
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 </body>
 </html>
