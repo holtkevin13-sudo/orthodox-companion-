@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>How to Set Up a Prayer Corner — Orthodox Companion</title>
+<title>Setting Up a Prayer Corner — Orthodox Companion</title>
 <link rel="icon" href="cross.png"/>
-<meta name="description" content="A practical guide to creating an Orthodox home prayer corner — icons, oil lamp, prayer rope, daily rule, and seasonal adjustments."/>
+<meta name="description" content="A complete Orthodox guide to the home prayer corner — its theology, setup, use, and how it connects the Christian home to the life of the Church."/>
+<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 <style>
 /* OC-MASTER-CSS */
-/* ═══════════════════════════════════════════════════════
-   ORTHODOX COMPANION — MASTER CSS v3
-   Applied to every page via clean sweep
-═══════════════════════════════════════════════════════ */
-
-/* ── Theme Variables ─────────────────────────────────── */
 :root {
   --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
   --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
@@ -34,14 +28,10 @@
   --nav-bg:rgba(245,237,216,0.97);
   --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
 }
-
-/* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
   color:var(--text);min-height:100vh;overflow-x:hidden;
   font-size:1.05rem;line-height:1.85;}
-
-/* ── Nav ─────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:600;
   background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
   backdrop-filter:blur(12px);height:var(--nav-h);
@@ -83,13 +73,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
   border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
   text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
+.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
 .nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
   letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
   padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
 .nav-signin-btn:hover{color:var(--text-dim);}
-
-/* ── Account dropdown ────────────────────────────────── */
 .nav-account-wrap{position:relative;}
 .nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
   letter-spacing:0.09em;color:var(--gold-light);background:transparent;
@@ -112,8 +100,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
   padding:9px 18px;transition:color 0.15s,background 0.15s;}
 .nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-
-/* ── Hamburger & Drawer ──────────────────────────────── */
 .nav-hamburger{display:none;background:transparent;border:none;
   color:var(--text-dim);cursor:pointer;padding:8px;
   flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
@@ -123,29 +109,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:var(--dark);border-bottom:1px solid var(--border-dim);
+  background:#0F2035;border-bottom:1px solid #1A3A5C;
   z-index:599;padding:8px 0 20px;
   transform:translateY(-8px);opacity:0;
   transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
 .nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:0.16em;color:#4A7AB8;
   padding:12px 24px 4px;margin-top:4px;}
 .nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
-  text-transform:uppercase;color:var(--text-dim);text-decoration:none;
+  text-transform:uppercase;color:#B8C8DC;text-decoration:none;
   padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
   transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
+.nav-drawer a:hover{color:#E8CB7A;padding-left:38px;}
 .nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
-
-/* ── White Page Hero ─────────────────────────────────── */
-.page-hero{
-  margin-top:var(--nav-h);
-  background:var(--hero-bg);
-  border-bottom:2px solid var(--gold-dim);
-  padding:40px 24px 32px;
-}
+.page-hero{margin-top:var(--nav-h);background:var(--hero-bg);
+  border-bottom:2px solid var(--gold-dim);padding:40px 24px 32px;}
 .page-hero-inner{max-width:1040px;margin:0 auto;}
 .breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
   text-transform:uppercase;letter-spacing:0.12em;
@@ -156,52 +136,81 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .breadcrumb a:hover{color:var(--gold);}
 .breadcrumb span{margin:0 8px;opacity:0.4;}
 .page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
-  letter-spacing:0.08em;margin-bottom:8px;
-  color:var(--hero-text);}
+  letter-spacing:0.08em;margin-bottom:8px;color:var(--hero-text);}
 .page-desc{font-size:0.95rem;line-height:1.75;max-width:640px;
   font-style:italic;color:var(--hero-sub);}
-
-/* ── Content ─────────────────────────────────────────── */
-.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
-
-/* ── Mobile ──────────────────────────────────────────── */
+.guide-body{max-width:800px;margin:0 auto;padding:36px 24px 72px;}
+.back-link{display:inline-block;font-family:'Cinzel',serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);
+  text-decoration:none;margin-bottom:32px;transition:color 0.2s;}
+.back-link:hover{color:var(--gold);}
+.guide-section{margin-bottom:48px;}
+.guide-h2{font-family:'Cinzel',serif;font-size:1.0rem;font-weight:600;
+  letter-spacing:0.07em;color:var(--gold);margin-bottom:16px;
+  padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);}
+.guide-p{color:var(--text-dim);line-height:1.95;margin-bottom:14px;font-size:1rem;}
+.guide-p:last-child{margin-bottom:0;}
+.guide-note{background:rgba(201,168,76,0.06);border-left:3px solid var(--gold-dim);
+  border-radius:0 3px 3px 0;padding:14px 20px;margin:18px 0;
+  font-size:0.93rem;color:var(--text-dim);font-style:italic;line-height:1.8;}
+.guide-note-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.14em;color:var(--gold);margin-bottom:6px;font-style:normal;display:block;}
+.guide-step{display:flex;gap:16px;align-items:flex-start;margin-bottom:14px;
+  padding:16px 18px;background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;}
+.guide-step-num{font-family:'Cinzel',serif;font-size:1.1rem;color:var(--gold);
+  font-weight:700;flex-shrink:0;min-width:28px;margin-top:1px;}
+.guide-step-body{flex:1;}
+.guide-step-title{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--text);
+  margin-bottom:5px;letter-spacing:0.04em;}
+.guide-step-desc{font-size:0.92rem;color:var(--text-dim);line-height:1.8;}
+.guide-icon-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
+.guide-icon-item{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-radius:3px;padding:14px 16px;}
+.guide-icon-name{font-family:'Cinzel',serif;font-size:0.78rem;
+  color:var(--gold-light);margin-bottom:4px;}
+.guide-icon-desc{font-size:0.85rem;color:var(--text-muted);font-style:italic;line-height:1.6;}
+.scripture-block{background:rgba(201,168,76,0.06);border-left:3px solid var(--gold-dim);
+  border-radius:0 3px 3px 0;padding:16px 20px;margin:20px 0;}
+.scripture-text{font-size:1.05rem;font-style:italic;color:var(--text);
+  line-height:1.85;margin-bottom:7px;}
+.scripture-ref{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--gold);opacity:0.85;}
+.guide-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;}
+.guide-link-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
+  letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:8px 16px;text-decoration:none;
+  background:rgba(201,168,76,0.08);white-space:nowrap;transition:all 0.2s;}
+.guide-link-btn:hover{background:rgba(201,168,76,0.2);}
+.week-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
+.week-card{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);border-radius:3px;padding:16px 18px;}
+.week-label{font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;
+  letter-spacing:0.14em;color:var(--gold);margin-bottom:10px;}
+.week-item{font-size:0.9rem;color:var(--text-dim);line-height:1.75;
+  padding:4px 0;border-bottom:1px solid rgba(42,90,156,0.1);}
+.week-item:last-child{border-bottom:none;}
+.closing-callout{background:var(--bg-card);border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);border-radius:3px;
+  padding:22px 24px;margin-top:32px;}
+.closing-callout-label{font-family:'Cinzel',serif;font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:10px;}
+.closing-callout p{color:var(--text-dim);font-style:italic;font-size:0.96rem;line-height:1.85;}
 @media(max-width:860px){
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .nav-drawer{display:block;}
   .nav-right .nav-signin-btn{display:none;}
+  .guide-icon-list,.week-grid{grid-template-columns:1fr;}
 }
 @media(max-width:600px){
   .page-hero{padding:28px 16px 22px;}
   .page-title{font-size:1.3rem;}
-  .content{padding:20px 16px 40px;}
+  .guide-body{padding:24px 16px 48px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
   .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
 }
-
-.guide-body{max-width:760px;margin:0 auto;padding:32px 24px 60px;}
-.guide-section{margin-bottom:40px;}
-.guide-h2{font-family:"Cinzel",serif;font-size:0.95rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold-light);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);}
-.guide-p{color:var(--text-dim);line-height:1.9;margin-bottom:14px;font-size:1rem;}
-.guide-note{background:rgba(201,168,76,0.07);border-left:3px solid var(--gold-dim);border-radius:2px;padding:14px 18px;margin:16px 0;font-size:0.92rem;color:var(--text-dim);font-style:italic;line-height:1.8;}
-.guide-step{display:flex;gap:16px;align-items:flex-start;margin-bottom:16px;padding:16px;background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;}
-.guide-step-num{font-family:"Cinzel",serif;font-size:1.2rem;color:var(--gold);font-weight:700;flex-shrink:0;min-width:28px;}
-.guide-step-body{flex:1;}
-.guide-step-title{font-family:"Cinzel",serif;font-size:0.84rem;color:var(--text);margin-bottom:5px;letter-spacing:0.04em;}
-.guide-step-desc{font-size:0.92rem;color:var(--text-dim);line-height:1.75;}
-.guide-icon-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:14px 0;}
-.guide-icon-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:12px 16px;}
-.guide-icon-name{font-family:"Cinzel",serif;font-size:0.78rem;color:var(--gold-light);margin-bottom:3px;}
-.guide-icon-desc{font-size:0.82rem;color:var(--text-muted);font-style:italic;line-height:1.5;}
-.back-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;transition:color 0.2s;}
-.back-link:hover{color:var(--gold-light);}
-@media(max-width:600px){.guide-icon-list{grid-template-columns:1fr;}.guide-body{padding:20px 16px 40px;}}
 </style>
-<meta property="og:title" content="How to Set Up a Prayer Corner — Orthodox Companion"/>
-<meta property="og:description" content="A practical guide to creating an Orthodox home prayer corner — icons, oil lamp, prayer rope, daily rule, and seasonal adjustments."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://orthodoxcompanion.com/prayer-corner-guide.html"/>
 </head>
 <body>
 <nav id="mainNav">
@@ -253,7 +262,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
     </li>
   </ul>
   <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn ">&#9766; Companion AI</a>
+    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
     <div class="nav-account-wrap" id="navAccountWrap">
       <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
       <div class="nav-user-menu" id="navUserMenu" style="display:none;">
@@ -302,7 +311,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
   <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn">&#9766; Companion AI</a>
+    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
     <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
   </div>
 </div>
@@ -310,166 +319,193 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <div class="page-hero-inner">
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="prayer.html">Prayer Corner</a><span>&#8250;</span>Setting Up a Prayer Corner</div>
     <h1 class="page-title">Setting Up a Prayer Corner</h1>
-    <p class="page-desc">A practical guide to creating a home prayer space in the Orthodox tradition — what to have, where to place it, how to use it, and how it changes through the liturgical year.</p>
+    <p class="page-desc">A complete guide to the Orthodox home prayer corner — its theology, its purpose, how to set it up, how to use it, and how it connects your home to the life of the Church.</p>
   </div>
 </div>
 <div class="guide-body">
   <a href="prayer.html" class="back-link">&#8592; Back to Prayer Corner</a>
 
+  <!-- 1. What Is a Prayer Corner? -->
   <div class="guide-section">
     <h2 class="guide-h2">What Is a Prayer Corner?</h2>
-    <p class="guide-p">In the Orthodox home, one corner of a room — traditionally the eastern corner — is set apart as a sacred space. It is not a decoration or a museum piece; it is the place where the family gathers before God morning and evening, where candles are lit and prayers are offered, and where the home itself becomes a small church.</p>
-    <p class="guide-p">The prayer corner continues a practice that goes back to the early Church, when Christians prayed facing east — the direction of the rising sun, and the traditional direction associated with the coming of Christ.</p>
-    <div class="guide-note">There is no single required arrangement. Speak with your priest about what is appropriate for your home and your family situation. What matters is not the beauty of the corner but the sincerity of the prayer offered before it.</div>
-  </div>
-
-  <div class="guide-section">
-    <h2 class="guide-h2">Getting Started — Step by Step</h2>
-    <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-body"><div class="guide-step-title">Choose a corner or wall</div><div class="guide-step-desc">Ideally the eastern wall or corner of a room. If this is not possible, any quiet, dedicated space will do. The key is consistency — this should be a place you return to every day.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-body"><div class="guide-step-title">Place a shelf or small table</div><div class="guide-step-desc">A simple wooden shelf or small table holds your icons at eye level or slightly above. The icons should face you as you pray, not be so high that you must look up uncomfortably.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-body"><div class="guide-step-title">Begin with the essential icons</div><div class="guide-step-desc">Start simply. An icon of Christ (the Pantocrator) and an icon of the Theotokos are the foundation. These two are traditionally placed together — Christ on the right, Theotokos on the left, as they appear on the iconostasis.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-body"><div class="guide-step-title">Add an oil lamp or candle holder</div><div class="guide-step-desc">A vigil lamp (kandili) burning before the icons is the ancient mark of Orthodox prayer. The light is a symbol of Christ who is the Light of the world, and of our prayers rising before Him. You may light it during prayer times; some families keep it burning continuously.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-body"><div class="guide-step-title">Add a censer or incense holder (optional)</div><div class="guide-step-desc">Incense is not required for home prayer but has been part of Christian worship since the Old Testament. A simple thurible or incense holder with charcoal and frankincense or liturgical incense is appropriate.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-body"><div class="guide-step-title">Keep a prayer book nearby</div><div class="guide-step-desc">An Orthodox prayer book — the standard morning and evening prayers — should be within reach. The <em>Jordanville Prayer Book</em> and the <em>Ancient Faith Prayer Book</em> are widely used in English.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">7</div><div class="guide-step-body"><div class="guide-step-title">Add a prayer rope (chotki or komboskini)</div><div class="guide-step-desc">A prayer rope is used to count repetitions of the Jesus Prayer — "Lord Jesus Christ, Son of God, have mercy on me, a sinner." Keep one near your icons or carry it with you throughout the day.</div></div></div>
-  </div>
-
-  <div class="guide-section">
-    <h2 class="guide-h2">Which Icons to Have</h2>
-    <p class="guide-p">Icons are not decorations — they are windows into the Kingdom, the presence of the person depicted made available to us through the sanctified image. Begin with a few and add others over time as you grow in the faith.</p>
-    <div class="guide-icon-list">
-      <div class="guide-icon-item"><div class="guide-icon-name">Christ the Pantocrator</div><div class="guide-icon-desc">The foundational icon of any prayer corner. Christ as Lord of all, blessing and holding the Gospels.</div></div>
-      <div class="guide-icon-item"><div class="guide-icon-name">The Theotokos</div><div class="guide-icon-desc">The Mother of God, intercessor for all Christians. Often the Hodigitria ("She who shows the Way") or the Eleousa ("Tenderness").</div></div>
-      <div class="guide-icon-item"><div class="guide-icon-name">Your patron saint</div><div class="guide-icon-desc">The saint whose name you bear or whose feast falls on your birthday. Your heavenly intercessor and model.</div></div>
-      <div class="guide-icon-item"><div class="guide-icon-name">The feast icon of your parish</div><div class="guide-icon-desc">The feast to which your parish church is dedicated — a connection between home prayer and parish life.</div></div>
-      <div class="guide-icon-item"><div class="guide-icon-name">The Resurrection (Anastasis)</div><div class="guide-icon-desc">The icon of Pascha — Christ descending into Hades and raising Adam and Eve. The central mystery of the faith.</div></div>
-      <div class="guide-icon-item"><div class="guide-icon-name">The Holy Trinity (Rublev)</div><div class="guide-icon-desc">Andrei Rublev's icon of the three angels visiting Abraham — the most beloved icon of the Holy Trinity in the Orthodox world.</div></div>
+    <p class="guide-p">In the Orthodox home, one corner of a room — traditionally the eastern corner — is set apart as a sacred space. It is not a decoration or a museum piece. It is the place where the family or the individual gathers before God morning and evening, where candles are lit and prayers are offered, and where the home itself participates in the prayer of the Church.</p>
+    <p class="guide-p">The practice of facing east in prayer is among the most ancient Christian customs, defended by St. Basil the Great as an apostolic tradition: we face east because we are facing the rising Sun of Righteousness — Christ Himself — and because the Second Coming will come from the east, as Our Lord promised: <em>"For as the lightning comes from the east and shines as far as the west, so will be the coming of the Son of Man"</em> (Matthew 24:27). The prayer corner, oriented toward the east, places the Christian physically in that posture of expectation.</p>
+    <p class="guide-p">The prayer corner is not private devotion happening alongside Church life — it is the Church's life extended into the home. It is the place where morning and evening the Christian returns to God, not from some private spiritual preference, but as a member of the Body of Christ continuing the unceasing prayer of the whole Church.</p>
+    <div class="guide-note">
+      <span class="guide-note-label">St. Basil the Great — On the Holy Spirit, Ch. 27</span>
+      "We all look to the East in our prayers, but few of us know that we are seeking our own ancient homeland, the Paradise which God planted in Eden, in the East."
     </div>
   </div>
 
+  <!-- 2. The Home as Domestic Church -->
+  <div class="guide-section">
+    <h2 class="guide-h2">The Home as Domestic Church</h2>
+    <p class="guide-p">From the very beginning, the Church has understood the Christian home as a place of worship. The earliest Christians broke bread and prayed together in private houses before any church buildings existed: <em>"And day by day, attending the temple together and breaking bread in their homes, they received their food with glad and generous hearts, praising God"</em> (Acts 2:46). St. Paul greeted "the church in your house" — the church, not merely the family (Romans 16:5; 1 Corinthians 16:19).</p>
+    <p class="guide-p">The Orthodox tradition speaks of the Christian home as the <em>domestic church</em> — not as a metaphor but as a theological reality. The home is not a secular space with a religious corner attached. When it is ordered around prayer, Scripture, the keeping of fasts, the celebration of feasts, and the love of God and neighbor, the home itself becomes a place of the Church's presence in the world. The prayer corner is the visible center of that reality.</p>
+    <p class="guide-p">This means that the prayer corner is not primarily about personal piety or private religious feeling. It is about the family or the individual Christian standing before God as a member of the Body of Christ — continuing, at home, the prayer that was offered at the Divine Liturgy and that will be offered again. Home prayer flows from the Liturgy and returns to it. The prayer corner is the bridge between the altar and the kitchen table.</p>
+    <div class="guide-note">
+      <span class="guide-note-label">St. John of Kronstadt — My Life in Christ</span>
+      "Your home is your church. Consecrate it to God by prayer and holy life, and let the lamp burning before the holy icons be the sign that Christ is the Light of your household."
+    </div>
+  </div>
+
+  <!-- 3. Getting Started — Step by Step -->
+  <div class="guide-section">
+    <h2 class="guide-h2">Getting Started — Step by Step</h2>
+    <p class="guide-p">Begin simply. The prayer corner does not need to be elaborate or expensive. What matters is that it exists, that it is used, and that it grows over time as your prayer life grows.</p>
+    <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-body"><div class="guide-step-title">Choose a corner or wall</div><div class="guide-step-desc">Ideally the eastern wall or corner of a room — a bedroom, a quiet living space, or wherever you will return to consistently. If facing east is not possible in your home, any quiet, dedicated space will do. The key is consistency: this should be a place you return to every day.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-body"><div class="guide-step-title">Place a shelf or small table</div><div class="guide-step-desc">A simple wooden shelf or small table holds your icons at eye level or slightly above. The icons should face you as you pray. They need not be expensive or numerous — one or two icons are sufficient to begin.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-body"><div class="guide-step-title">Begin with the essential icons</div><div class="guide-step-desc">Start simply. An icon of Christ (the Pantocrator) and an icon of the Theotokos are the foundation. These two are traditionally placed together — Christ on the right, the Theotokos on the left, as they appear on the iconostasis of every Orthodox church.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-body"><div class="guide-step-title">Add an oil lamp or candle</div><div class="guide-step-desc">A vigil lamp (<em>kandili</em>) burning before the icons is the ancient mark of Orthodox home prayer. The light speaks of Christ who is the Light of the world, and of our prayers ascending before Him. Some families keep it burning continuously; others light it only during prayer. Either is appropriate.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-body"><div class="guide-step-title">Add incense (optional)</div><div class="guide-step-desc">Incense has been part of Christian worship since the Old Testament. The Psalmist prays: <em>"Let my prayer arise as incense before Thee, the lifting up of my hands as an evening sacrifice"</em> (Psalm 141:2 LXX). A simple incense holder with frankincense or liturgical incense is appropriate. It is optional, but it brings the senses into prayer in the tradition of the Church.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-body"><div class="guide-step-title">Keep a prayer book nearby</div><div class="guide-step-desc">An Orthodox prayer book should be within reach. The <em>Jordanville Prayer Book</em> and the <em>Ancient Faith Prayer Book</em> are both widely used in English. The prayers in these books are not suggestions — they are the received form of Orthodox morning and evening prayer, handed down in the tradition.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">7</div><div class="guide-step-body"><div class="guide-step-title">Add a prayer rope</div><div class="guide-step-desc">A prayer rope (<em>komboskini</em> or <em>chotki</em>) is used to count repetitions of the Jesus Prayer. Keep one near your icons or carry it with you. The prayer rope is not only for monastics — it is a practical instrument of prayer for any faithful Christian.</div></div></div>
+    <div class="guide-note">There is no single required arrangement. The steps above are a guide, not a law. Speak with your priest about what is appropriate for your home and circumstances. What matters is not the beauty or completeness of the corner, but the sincerity and regularity of the prayer offered before it.</div>
+  </div>
+
+  <!-- 4. Which Icons to Have -->
+  <div class="guide-section">
+    <h2 class="guide-h2">Which Icons to Have</h2>
+    <p class="guide-p">Icons are not decorations, and they are not physical presences of the saints. The Seventh Ecumenical Council (Nicaea II, 787) teaches that the honor given to the icon passes to the prototype — the person depicted. The icon is a window into the Kingdom of God: a sacred image through which we venerate the one depicted, asking for their intercession, and through which the person depicted is connected to our prayer. We bow before an icon as we would bow before the saint in person — not worshipping the image, but venerating the one it represents.</p>
+    <p class="guide-p">Begin with one or two icons and add others as you grow. Do not try to acquire every icon at once. An icon should be chosen with care, acquired at the right time, and blessed by a priest before being placed in the prayer corner.</p>
+    <div class="guide-icon-list">
+      <div class="guide-icon-item"><div class="guide-icon-name">Christ the Pantocrator</div><div class="guide-icon-desc">The foundational icon of any prayer corner. Christ as Lord of all, blessing and holding the Gospels. Always placed on the right.</div></div>
+      <div class="guide-icon-item"><div class="guide-icon-name">The Theotokos</div><div class="guide-icon-desc">The Mother of God, the great intercessor. Often depicted as the Hodigitria (She who shows the Way) or the Eleousa (Tenderness). Placed to the left of Christ.</div></div>
+      <div class="guide-icon-item"><div class="guide-icon-name">Your patron saint</div><div class="guide-icon-desc">The saint whose name you bear, or whose feast falls on your birthday. Your heavenly companion, model, and intercessor before God.</div></div>
+      <div class="guide-icon-item"><div class="guide-icon-name">The feast of your parish</div><div class="guide-icon-desc">The feast to which your parish church is dedicated — a visible connection between your home prayer and the life of your parish community.</div></div>
+      <div class="guide-icon-item"><div class="guide-icon-name">The Resurrection (Anastasis)</div><div class="guide-icon-desc">The icon of Pascha — Christ descending into Hades and raising Adam and Eve. The central mystery of the faith, present in every Orthodox home.</div></div>
+      <div class="guide-icon-item"><div class="guide-icon-name">The Holy Trinity (Rublev)</div><div class="guide-icon-desc">Andrei Rublev's icon of the three angels at Abraham's table — the most beloved icon of the Holy Trinity in the Orthodox world.</div></div>
+    </div>
+  </div>
+
+  <!-- 5. How to Pray at the Prayer Corner -->
+  <div class="guide-section">
+    <h2 class="guide-h2">How to Pray at the Prayer Corner</h2>
+    <p class="guide-p">For those new to Orthodoxy, the physical posture and practice of prayer before the icons may be unfamiliar. Here is what the tradition teaches.</p>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Stand</div><div class="guide-step-desc">The normal posture for Orthodox prayer is standing — upright before God, as the redeemed stand in His presence. Standing signifies the Resurrection: we pray as those who have been raised from death with Christ. Kneeling and prostrations are appropriate at other times, but standing is the primary posture. If health makes standing difficult for an extended time, adapt as needed.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Begin with the Sign of the Cross</div><div class="guide-step-desc">Before beginning any prayer, make the Sign of the Cross slowly and deliberately — touching forehead, breast, right shoulder, left shoulder, and joining the hands. This is not a formality. It is a complete act of faith: the Trinity confessed in the three joined fingers, the two natures of Christ in the two fingers against the palm, and the Cross of Christ traced upon the body. Begin and end every prayer session with it.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Make small bows and prostrations</div><div class="guide-step-desc">A small bow from the waist (<em>metania</em>) accompanies many of the prayers — typically at "Glory to the Father," at "Lord have mercy," and after receiving a blessing. Full prostrations (touching the floor with both knees and forehead) are made especially during Great Lent. Prostrations are not made on Sundays, from Pascha through Pentecost, or on the Great Feasts — the Church stands in joy on these days. Your priest can instruct you further.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Venerate the icons</div><div class="guide-step-desc">At the beginning and end of prayer, approach the icons, make the Sign of the Cross, and bow. You may kiss the icon — typically the hand of Christ, the Gospel book He holds, or the border of the icon. You do not kiss the face. This veneration is an act of love and connection with the saint depicted, not worship of the image itself.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Pray with attention</div><div class="guide-step-desc">The most important element of prayer is not its length or its form, but attention. St. Theophan the Recluse taught: "The principal thing is to stand before God with the mind in the heart, and to go on standing before Him unceasingly day and night, until the end of life." If your mind wanders during prayer — and it will — gently return it without distress. The act of returning is itself an act of prayer.</div></div></div>
+  </div>
+
+  <!-- 6. The Daily Prayer Rule -->
   <div class="guide-section">
     <h2 class="guide-h2">The Daily Prayer Rule</h2>
-    <p class="guide-p">The Orthodox tradition gives us a morning and evening prayer rule — a set of prayers to be said daily before the icons. Do not be discouraged if you cannot say them all at first. Speak with your priest and begin with what you can do consistently.</p>
-    <div class="guide-step"><div class="guide-step-num">AM</div><div class="guide-step-body"><div class="guide-step-title">Morning Prayers</div><div class="guide-step-desc">Begin with the Trisagion prayers, then the morning prayers from the prayer book. These typically take 10–20 minutes when read attentively. Light the lamp before you begin.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">PM</div><div class="guide-step-body"><div class="guide-step-title">Evening Prayers</div><div class="guide-step-desc">The evening rule mirrors the morning — Trisagion, evening prayers, and a prayer of examination of conscience. End with the Jesus Prayer on the prayer rope.</div></div></div>
-    <div class="guide-note">St. Theophan the Recluse taught: "The rule exists to serve prayer, not prayer to serve the rule." If you are rushed, say fewer prayers with full attention rather than many prayers hastily.</div>
+    <p class="guide-p">The Orthodox tradition gives us a morning and evening prayer rule — a set of prayers to be said daily before the icons. The morning rule is an offering: you give the coming day to God before it begins. The evening rule is an examination and an entrustment: you review the day before God and place the night in His hands.</p>
+    <div class="guide-step"><div class="guide-step-num">AM</div><div class="guide-step-body"><div class="guide-step-title">Morning Prayers</div><div class="guide-step-desc">Light the lamp, make the Sign of the Cross, and begin. Start with the Trisagion prayers, then the morning prayers from the prayer book. Read them attentively — not quickly. These typically take 10–20 minutes when read with care. The purpose is not to finish the prayers, but to stand before God and offer the day.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">PM</div><div class="guide-step-body"><div class="guide-step-title">Evening Prayers</div><div class="guide-step-desc">The evening rule mirrors the morning — Trisagion, evening prayers, and a brief examination of conscience: what was offered to God today, what was wasted, what was done in sin. End with the Jesus Prayer on the prayer rope. Place yourself in God's hands before sleep.</div></div></div>
+    <div class="guide-note">
+      <span class="guide-note-label">St. Theophan the Recluse</span>
+      "The rule exists to serve prayer, not prayer to serve the rule. If you are rushed, say fewer prayers with full attention rather than many prayers hastily."
+    </div>
+    <div class="guide-links">
+      <a href="prayer.html?cat=morning" class="guide-link-btn">Morning Prayers &#8250;</a>
+      <a href="prayer.html?cat=evening" class="guide-link-btn">Evening Prayers &#8250;</a>
+      <a href="prayer-rule.html" class="guide-link-btn">Building a Prayer Rule &#8250;</a>
+    </div>
   </div>
 
+  <!-- 7. How to Begin — Your First Week -->
+  <div class="guide-section">
+    <h2 class="guide-h2">How to Begin — Your First Week</h2>
+    <p class="guide-p">The most common mistake when beginning a prayer corner is trying to do everything at once. A full morning and evening rule, candles, incense, prostrations — all of it immediately — is too much for a beginner to sustain. Consistency is more important than completeness. Begin with very little and add gradually.</p>
+    <div class="week-grid">
+      <div class="week-card">
+        <div class="week-label">Days 1–2</div>
+        <div class="week-item">Stand before your icons</div>
+        <div class="week-item">Make the Sign of the Cross</div>
+        <div class="week-item">Pray the Lord's Prayer once</div>
+        <div class="week-item">Make the Sign of the Cross to close</div>
+      </div>
+      <div class="week-card">
+        <div class="week-label">Days 3–4</div>
+        <div class="week-item">Add the Trisagion Prayers before the Lord's Prayer</div>
+        <div class="week-item">Light the lamp while you pray</div>
+        <div class="week-item">Read Psalm 50 aloud</div>
+      </div>
+      <div class="week-card">
+        <div class="week-label">Days 5–7</div>
+        <div class="week-item">Add one morning prayer from the prayer book</div>
+        <div class="week-item">Say the Jesus Prayer 10 times on the prayer rope in the evening</div>
+        <div class="week-item">End with a brief word to God in your own words</div>
+      </div>
+      <div class="week-card">
+        <div class="week-label">After the First Week</div>
+        <div class="week-item">Speak with your priest</div>
+        <div class="week-item">Establish the rule together</div>
+        <div class="week-item">Grow one prayer at a time</div>
+        <div class="week-item">Do not rush</div>
+      </div>
+    </div>
+    <div class="guide-note">The goal of the first week is simply to begin. A prayer corner that is used imperfectly every day is worth infinitely more than one that is planned perfectly and used rarely.</div>
+  </div>
+
+  <!-- 8. When You Struggle -->
+  <div class="guide-section">
+    <h2 class="guide-h2">When You Struggle</h2>
+    <p class="guide-p">Every person who prays will encounter difficulty. This is not a sign that something is wrong. It is the normal condition of the Christian prayer life, and the tradition prepares us for it honestly.</p>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">When your mind wanders constantly</div><div class="guide-step-desc">Distraction during prayer is the ordinary experience of every Christian, from beginners to those who have prayed for decades. The act of noticing that your mind has wandered and returning it gently to God — without frustration, without self-condemnation — is itself an act of prayer. Do not fight distraction violently; simply return. The Fathers are unanimous on this.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">When prayer feels dry and lifeless</div><div class="guide-step-desc">Dryness — the absence of feeling, warmth, or consolation in prayer — is not the absence of God. It is often a purification, a time in which the soul is being weaned from its dependence on spiritual feelings and taught to seek God for His own sake. Continue the rule faithfully during dryness. Prayer offered without feeling, simply because God deserves it, is among the purest forms of prayer.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">When life is too busy or chaotic</div><div class="guide-step-desc">Do not abandon the rule when life becomes difficult — reduce it. Say one prayer instead of ten. Stand before the icons for two minutes instead of twenty. Light the lamp and make the Sign of the Cross. Even the smallest act of turning toward God in a moment of chaos is an act of faithfulness. The rule contracts and expands with life's seasons — it does not disappear.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">When you have missed days or weeks</div><div class="guide-step-desc">Simply return. The prayer corner is waiting. God is not keeping a ledger of missed prayers. Rise and pray, as the prodigal son rose and returned to his father without waiting until he had earned the right to return. The greatest mistake is not missing the rule — it is deciding that because you have missed it, you cannot return to it today.</div></div></div>
+    <div class="guide-note">
+      <span class="guide-note-label">St. John Chrysostom</span>
+      "Though you may have missed prayer for many days, do not let shame keep you from returning. God does not count how long you were absent — He rejoices that you have come back."
+    </div>
+  </div>
+
+  <!-- 9. A Word on Simplicity -->
+  <div class="guide-section">
+    <h2 class="guide-h2">A Word on Simplicity</h2>
+    <p class="guide-p">The prayer corner can become its own spiritual trap if it is treated as a project rather than a place of prayer. There is a very human tendency — especially when beginning a new practice — to focus on the appearance and completeness of the corner rather than on the prayer offered before it. This is a mistake the tradition warns against directly.</p>
+    <p class="guide-p">A single blessed icon, a candle, and a sincere heart are more than sufficient for a lifetime of prayer. The most spiritually formed Christians in the Orthodox world have often prayed before the simplest of corners. The beauty of the corner should grow over time as a natural expression of love — not as the precondition for prayer, and not as a substitute for it.</p>
+    <p class="guide-p">Do not delay beginning because the corner is not ready. Do not spend more time arranging it than praying before it. Do not measure your prayer life by the number of icons or the quality of your oil lamp. The prayer corner exists to serve prayer. If it begins to serve aesthetics, it has lost its purpose.</p>
+    <div class="guide-note">
+      <span class="guide-note-label">St. Isaac the Syrian</span>
+      "A man who knows his own weakness has attained something greater than one who sees visions of angels. Begin from where you are, with what you have, and God will lead you further."
+    </div>
+  </div>
+
+  <!-- 10. How It Changes Through the Year -->
   <div class="guide-section">
     <h2 class="guide-h2">How It Changes Through the Year</h2>
-    <p class="guide-p">The prayer corner is not static — it reflects the liturgical season. During the great fasts, the atmosphere becomes more sober; during feast days, more joyful.</p>
-    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Great Lent</div><div class="guide-step-desc">Add the Prayer of St. Ephrem with prostrations to your daily rule. Incense is used more sparingly. The Jesus Prayer becomes central. Read the Great Canon of St. Andrew of Crete in the first week.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">&#9830;</div><div class="guide-step-body"><div class="guide-step-title">Holy Week</div><div class="guide-step-desc">If possible, follow the services of Holy Week at your parish — these are the heart of the Orthodox year and cannot be replaced by home prayer alone.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">&#9733;</div><div class="guide-step-body"><div class="guide-step-title">Pascha and Bright Week</div><div class="guide-step-desc">Replace the usual morning and evening prayers with the Paschal Hours throughout Bright Week. "Christ is Risen" replaces all penitential prayers. Prostrations are forbidden during Bright Week.</div></div></div>
-    <div class="guide-step"><div class="guide-step-num">&#9675;</div><div class="guide-step-body"><div class="guide-step-title">Great Feasts</div><div class="guide-step-desc">On the twelve Great Feasts, if possible light more candles, use incense, and read the troparion and kontakion of the feast in place of or in addition to the regular rule.</div></div></div>
+    <p class="guide-p">The prayer corner is not static — it breathes with the liturgical year. This is one of the ways the home is a domestic church: it reflects, at a smaller scale, the same rhythm of fasting and feasting, mourning and joy, that the Church lives through the year. The corner's atmosphere changes as the seasons change, and the prayer rule adjusts with it.</p>
+    <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Great Lent</div><div class="guide-step-desc">Add the Prayer of St. Ephrem the Syrian with prostrations to the morning and evening rule. Incense, if you use it, is used more sparingly. The Jesus Prayer becomes more central. Read the Great Canon of St. Andrew of Crete in the first week. The corner's atmosphere becomes more sober and penitential, matching the Church's Lenten fast.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9830;</div><div class="guide-step-body"><div class="guide-step-title">Holy Week</div><div class="guide-step-desc">Attend the services of Holy Week at your parish if at all possible. These services cannot be replaced by home prayer — they are the heart of the Orthodox year and the fullest expression of what the prayer corner exists to sustain. Holy Week belongs to the parish; home prayer supports the heart that goes to and from those services.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9733;</div><div class="guide-step-body"><div class="guide-step-title">Pascha and Bright Week</div><div class="guide-step-desc">Replace the usual morning and evening prayers with the Paschal Hours throughout Bright Week. "Christ is Risen" replaces all penitential prayers. Prostrations are completely forbidden during Bright Week — the Church stands before the Risen Christ. Light more candles, use incense freely, and let joy fill the corner and the home.</div></div></div>
+    <div class="guide-step"><div class="guide-step-num">&#9675;</div><div class="guide-step-body"><div class="guide-step-title">Great Feasts</div><div class="guide-step-desc">On the Twelve Great Feasts, light more candles, use incense, and read or chant the troparion and kontakion of the feast in addition to the regular rule. Let the feast enter the home — the icon of the feast, if you have it, can be placed in the center of the corner for the duration of the celebration.</div></div></div>
   </div>
 
-  <div style="background:var(--bg-card);border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:20px 24px;margin-top:8px;">
-    <div style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:10px;">Ask Your Priest</div>
-    <p style="color:var(--text-dim);font-style:italic;font-size:0.96rem;line-height:1.8;">Every family situation is different. Your priest can help you establish a prayer rule suited to your household — whether you live alone, have young children, work irregular hours, or are new to the faith. Home prayer is meant to support your parish life, not replace it.</p>
-    <a href="new-to-orthodoxy.html#how-do-i-find-a-church" style="display:inline-block;margin-top:12px;font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:7px 14px;text-decoration:none;background:rgba(201,168,76,0.08);">Find a Parish Near You &#8250;</a>
+  <!-- 11. Ask Your Priest -->
+  <div class="guide-section">
+    <h2 class="guide-h2">Ask Your Priest</h2>
+    <p class="guide-p">Everything in this guide is a beginning. The prayer corner that will truly form you is one established under the guidance of a priest who knows your household, your circumstances, and the state of your soul. Every family is different. A home with young children, a home where one spouse is not Orthodox, a person living alone, a person who travels constantly — each of these situations calls for a prayer rule that is appropriate and sustainable.</p>
+    <p class="guide-p">Your priest can help you determine which icons are appropriate to begin with, how to establish a prayer rule suited to your household, and how to adjust the rule through the seasons of the year and the seasons of your life. Home prayer is meant to support your parish life and your sacramental life — not to exist alongside them in isolation.</p>
+    <div class="closing-callout">
+      <div class="closing-callout-label">Finding a Parish</div>
+      <p>If you do not yet have an Orthodox parish, the Parish Finder on this site can help you locate one near you. Walk through the doors. Speak with the priest. Everything else — the prayer corner, the rule, the growing life of prayer — follows from that first step.</p>
+      <div class="guide-links">
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church" class="guide-link-btn">Find a Parish Near You &#8250;</a>
+        <a href="prayer-rule.html" class="guide-link-btn">Building a Prayer Rule &#8250;</a>
+        <a href="prayer.html" class="guide-link-btn">Daily Prayers &#8250;</a>
+      </div>
+    </div>
   </div>
+
 </div>
-
 <script>
-/* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
-
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
-function toggleTheme(){
-  var c=document.documentElement.getAttribute('data-theme')||'dark';
-  var n=c==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('oc_theme',n);
-}
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
-
-// Nav drawer
+(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();
 var _drawerOpen=false;
-function toggleDrawer(){
-  _drawerOpen=!_drawerOpen;
-  var d=document.getElementById('navDrawer');
-  var h=document.getElementById('hamburger');
-  if(d)d.classList.toggle('open',_drawerOpen);
-  if(h)h.classList.toggle('open',_drawerOpen);
-}
-
-// User account menu
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
-}
-
-// Sign out
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-
-// Init account state on every page
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
-  }
-}
-
-// Close menus on outside click
-document.addEventListener('click',function(e){
-  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
-    _drawerOpen=false;
-    var d=document.getElementById('navDrawer');
-    var h=document.getElementById('hamburger');
-    if(d)d.classList.remove('open');
-    if(h)h.classList.remove('open');
-  }
-  // Close user dropdown
-  if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
-  }
-});
-
-// Smooth scroll for anchor links
-function scrollToSection(id){
-  var el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  // Handle hash scrolling
-  if(window.location.hash){
-    var id=window.location.hash.replace('#','');
-    setTimeout(function(){
-      var el=document.getElementById(id);
-      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-    },200);
-  }
-});
-
+function toggleDrawer(){_drawerOpen=!_drawerOpen;var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');if(d)d.classList.toggle('open',_drawerOpen);if(h)h.classList.toggle('open',_drawerOpen);}
+function toggleUserMenu(){var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');}
+function signOut(){localStorage.removeItem('oc_user');localStorage.removeItem('oc_token');window.location.href='index.html';}
+function initAccountNav(){var user=null;try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}var signIn=document.getElementById('navSignIn');var userMenu=document.getElementById('navUserMenu');var usernameEl=document.getElementById('navUsername');var drawerSignIn=document.getElementById('drawerSignIn');if(user&&user.username){if(signIn)signIn.style.display='none';if(userMenu)userMenu.style.display='block';if(usernameEl)usernameEl.textContent=user.username;if(drawerSignIn)drawerSignIn.textContent=user.username;}else{if(signIn)signIn.style.display='';if(userMenu)userMenu.style.display='none';}}
+document.addEventListener('click',function(e){if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){_drawerOpen=false;var d=document.getElementById('navDrawer');var h=document.getElementById('hamburger');if(d)d.classList.remove('open');if(h)h.classList.remove('open');}if(!e.target.closest('.nav-account-wrap')){var d=document.getElementById('navUserDropdown');var b=document.getElementById('navUserBtn');if(d)d.classList.remove('open');if(b)b.classList.remove('open');}});
+document.addEventListener('DOMContentLoaded',function(){initAccountNav();if(window.location.hash){var id=window.location.hash.replace('#','');setTimeout(function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'});},200);}});
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth-nav.js"></script>
 <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
 <script src="/analytics-tracker.js"></script>
 </body>
