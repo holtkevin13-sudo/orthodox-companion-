@@ -292,6 +292,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   .prayer-cat-btn{font-size:0.54rem;padding:8px 4px;}
   .lang-item{grid-template-columns:90px 1fr;}
 }
+
+/* ── New Here Block ──────────────────────────────── */
+.new-here-block{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.18);border-radius:4px;padding:20px 24px;margin-bottom:28px;}
+.new-here-label{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);margin-bottom:8px;}
+.new-here-text{font-size:0.9rem;color:var(--text-dim);margin-bottom:14px;line-height:1.75;}
+.new-here-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.new-here-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:14px 16px;text-decoration:none;transition:border-color 0.2s,background 0.2s;display:block;}
+.new-here-card:hover{border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
+.new-here-card-title{font-family:'Cinzel',serif;font-size:0.72rem;color:var(--gold-light);margin-bottom:5px;letter-spacing:0.04em;}
+.new-here-card-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.6;font-style:italic;}
+@media(max-width:540px){.new-here-cards{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -411,7 +422,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 
   <!-- ── Intro Block ─────────────────────────────────── -->
   <div class="prayer-intro">
-    <p class="prayer-intro-text">Orthodox prayer is not a collection of texts to recite — it is a rhythm of life. The Church gives us morning and evening prayers, the Psalter, the Jesus Prayer, and the liturgical cycle not as obligations to fulfill but as a living rule that gradually unites us to God. Begin where you are, remain consistent, and let the prayers of the Church become your own.</p>
+    <p class="prayer-intro-text">Orthodox prayer is not a collection of texts to recite — it is a rhythm of life, and its goal is communion with the living God in Christ Jesus. These prayers are not separate from the worship of the Church: they flow from the Divine Liturgy and return to it, sustaining the Christian life between one Eucharist and the next. It is the Holy Spirit who makes this prayer possible at all — "We do not know how to pray as we ought," St. Paul writes, "but the Spirit Himself intercedes for us" (Romans 8:26). The Church gives us morning and evening prayers, the Psalter, the Jesus Prayer, and the liturgical cycle as the form in which the Holy Spirit prays through us, gradually drawing us into union with Christ. Begin where you are, remain consistent, and let the prayers of the Church become your own.</p>
     <div class="prayer-intro-verse">
       <div class="prayer-intro-verse-text">"Let my prayer arise as incense before Thee, the lifting up of my hands as an evening sacrifice."</div>
       <div class="prayer-intro-verse-ref">Psalm 140:2 (LXX) — chanted at every Orthodox Vespers</div>
@@ -420,9 +431,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       <div class="prayer-intro-patristic-text">"The rule exists to serve prayer, not prayer to serve the rule. If you are rushed, say fewer prayers with full attention rather than many prayers hastily."</div>
       <div class="prayer-intro-patristic-attr">— St. Theophan the Recluse</div>
     </div>
-    <div class="prayer-intro-links">
-      <a href="prayer-corner-guide.html" class="prayer-intro-link">Setting Up a Prayer Corner &#8250;</a>
-      <a href="prayer-rule.html" class="prayer-intro-link">Building a Prayer Rule &#8250;</a>
+    <div class="new-here-block">
+      <div class="new-here-label">New to Orthodox Prayer? Start Here.</div>
+      <p class="new-here-text">Before exploring the prayers below, these two guides will give you the foundation — what the prayer corner is, why it matters, and how to build a rule that will last.</p>
+      <div class="new-here-cards">
+        <a href="prayer-corner-guide.html" class="new-here-card">
+          <div class="new-here-card-title">Setting Up a Prayer Corner</div>
+          <div class="new-here-card-desc">What it is, how to set it up, how to use it, and how it connects your home to the life of the Church.</div>
+        </a>
+        <a href="prayer-rule.html" class="new-here-card">
+          <div class="new-here-card-title">Building a Prayer Rule</div>
+          <div class="new-here-card-desc">How to establish a daily rhythm of prayer — with guidance for inquirers, catechumens, and the faithful.</div>
+        </a>
+      </div>
     </div>
   </div>
 
