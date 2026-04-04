@@ -235,6 +235,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
 .weekly-day.has-tip:hover .weekly-tip-popup,
 .weekly-day.has-tip.tip-open .weekly-tip-popup{display:block;}
 
+/* ── Term Tooltips (theological terms) ──────────────────── */
+.term-tip{position:relative;border-bottom:1px dotted var(--gold-dim);cursor:help;display:inline;}
+.term-tip-popup{display:none;position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);width:250px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:3px;padding:12px 14px;font-size:0.78rem;color:var(--text-dim);line-height:1.6;font-style:normal;z-index:300;pointer-events:auto;text-align:left;}
+.term-tip:hover .term-tip-popup,
+.term-tip.tip-open .term-tip-popup{display:block;}
+.term-tip-link{color:var(--gold);text-decoration:none;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-top:8px;}
+.term-tip-link:hover{text-decoration:underline;}
+
 /* ── Weekly Prose ────────────────────────────────────── */
 .weekly-prose{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
 .weekly-prose p{font-size:0.86rem;color:var(--text-dim);line-height:1.8;font-style:italic;}
@@ -426,7 +434,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <!-- ── 1. Opening Movement ──────────────────────────── -->
   <div class="fast-intro">
     <div class="fast-intro-title">On the Orthodox Fast</div>
-    <div class="fast-intro-text">Fasting is not a technique for self-improvement. It is how the Church, as one body, turns toward God &#8212; quieting the passions, sharpening prayer, and preparing the whole person through repentance toward the salvation He won for us and the joy of the Feast.<br><br>Above all, the fast prepares us to receive Christ Himself in the Holy Mysteries. Through repentance, purification, and the discipline of the body, the Church readies her children to approach the Eucharistic Cup &#8212; to receive the Body and Blood of the Lord with clean hands and a pure heart. The fast and the Eucharist are inseparable: we empty ourselves that He might fill us.</div>
+    <div class="fast-intro-text">Fasting is not a technique for self-improvement. It is how the Church, as one body, turns toward God &#8212; quieting the passions, sharpening prayer, and preparing the whole person through repentance toward the salvation He won for us and the joy of the Feast.<br><br>Above all, the fast prepares us to receive Christ Himself in the Holy Mysteries. Through repentance, purification, and the discipline of the body, the Church readies her children to approach the Eucharistic Cup &#8212; to receive the Body and Blood of the Lord with clean hands and a pure heart. The fast and the Eucharist are inseparable: we empty ourselves that He might fill us. The Church also keeps a fast before receiving the Holy Mysteries &#8212; coming to the Eucharistic Cup without food or drink since the midnight before, a practice the priest will guide according to your health and circumstances.</div>
   </div>
 
   <div class="fast-gold-block">
@@ -512,7 +520,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       </div>
       <div class="fast-whole-item">
         <div class="fast-whole-term">Watchfulness</div>
-        <div class="fast-whole-desc">Fasting is an exercise in nepsis &#8212; attentiveness to the movements of the soul. The passions quieted by hunger become visible. The fast reveals what we actually are, and gives us the tools to struggle.</div>
+        <div class="fast-whole-desc">Fasting is an exercise in <span class="term-tip">nepsis<span class="term-tip-popup">Greek: sobriety and watchfulness of the soul &#8212; the patristic practice of attentiveness to one&#8217;s thoughts and inner movements.<a href="glossary.html#nepsis" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> &#8212; attentiveness to the movements of the soul. The passions quieted by hunger become visible. The fast reveals what we actually are, and gives us the tools to struggle.</div>
       </div>
     </div>
   </div>
@@ -542,7 +550,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
       <div class="theology-attr">&#8212; St. John of the Ladder</div>
     </div>
     <div class="fast-gold-block" style="margin-top:16px;margin-bottom:0;">
-      <div class="fast-gold-label">From the Lenten Triodion &#183; Clean Monday Vespers</div>
+      <div class="fast-gold-label">From the Lenten Triodion &#183; <span class="term-tip">Clean Monday<span class="term-tip-popup">The first day of Great Lent in the Orthodox Church &#8212; the solemn beginning of the great fast before Pascha.<a href="glossary.html#clean-monday" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> Vespers</div>
       <div class="fast-gold-text">&#8220;Let us observe a fast acceptable and pleasing to the Lord. True fasting is to put away all evil, to control the tongue, to forbear from anger, to abstain from lusts, slander, falsehood, and perjury. When we abstain from these things, then is our fasting true and acceptable to God.&#8221;</div>
     </div>
   </div>
@@ -694,7 +702,7 @@ document.addEventListener('DOMContentLoaded',function(){
 var FAST_PERIODS = [
   {
     name: "Great Lent",
-    purpose: "The royal road of repentance \u2014 the Church\u2019s great preparation for Pascha and the victory of the Cross.",
+    purpose: "The royal road of repentance \u2014 the Church\u2019s great preparation for <span class='term-tip'>Pascha<span class='term-tip-popup'>The Orthodox name for Easter \u2014 the Feast of the Resurrection of Christ, the center and fullness of the liturgical year.<a href='glossary.html#pascha' target='_blank' class='term-tip-link'>Glossary \u2192</a></span></span> and the victory of the Cross.",
     dates: "Clean Monday \u00b7 Seven weeks before Pascha",
     cls: "strict",
     level: "More Intensive Fast",
@@ -710,7 +718,7 @@ var FAST_PERIODS = [
   },
   {
     name: "The Dormition Fast",
-    purpose: "A fast of prayer and stillness, joining ourselves to the Theotokos as she fell asleep in the Lord.",
+    purpose: "A fast of prayer and stillness, joining ourselves to the <span class='term-tip'>Theotokos<span class='term-tip-popup'>Greek: \u201cGod-bearer\u201d \u2014 the title given to the Virgin Mary, affirming that the One she bore is truly God.<a href='glossary.html#theotokos' target='_blank' class='term-tip-link'>Glossary \u2192</a></span></span> as she fell asleep in the Lord.",
     dates: "August 1\u201314",
     cls: "strict",
     level: "More Intensive Fast",
@@ -828,13 +836,22 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-/* ── Saturday Tooltip: hover (CSS) + tap (JS) ────────── */
+/* ── Tooltip tap handlers: Saturday + Term Tips ──────── */
 document.addEventListener('click', function(e) {
-  var tip = e.target.closest('.has-tip');
-  document.querySelectorAll('.has-tip.tip-open').forEach(function(el) {
-    if (el !== tip) el.classList.remove('tip-open');
+  // Term tip tap (mobile)
+  var termTip = e.target.closest('.term-tip');
+  document.querySelectorAll('.term-tip.tip-open').forEach(function(el) {
+    if (el !== termTip) el.classList.remove('tip-open');
   });
-  if (tip) tip.classList.toggle('tip-open');
+  if (termTip && !e.target.closest('.term-tip-link')) {
+    termTip.classList.toggle('tip-open');
+  }
+  // Saturday tip tap (mobile)
+  var satTip = e.target.closest('.has-tip');
+  document.querySelectorAll('.has-tip.tip-open').forEach(function(el) {
+    if (el !== satTip) el.classList.remove('tip-open');
+  });
+  if (satTip) satTip.classList.toggle('tip-open');
 });
 
 document.addEventListener('DOMContentLoaded', render);
