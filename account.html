@@ -1842,10 +1842,18 @@ function loadSettings(){
   var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');
   if(s.fontSize) applyFontSize(s.fontSize);
   var sf=document.getElementById('settings-fontsize');if(sf)sf.value=s.fontSize||'normal';
+  var st=document.getElementById('settings-theme');if(st)st.value=s.themePreference||localStorage.getItem('oc_theme')||'dark';
 }
 function applyFontSize(size){
   document.body.style.fontSize=size==='large'?'1.15rem':size==='xlarge'?'1.3rem':'1.05rem';
   var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');s.fontSize=size;
+  localStorage.setItem('oc_settings',JSON.stringify(s));
+}
+function applyThemeSetting(val){
+  var theme=val==='system'?(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):val;
+  document.documentElement.setAttribute('data-theme',theme);
+  localStorage.setItem('oc_theme',theme);
+  var s=JSON.parse(localStorage.getItem('oc_settings')||'{}');s.themePreference=val;
   localStorage.setItem('oc_settings',JSON.stringify(s));
 }
 function saveSettings(){localStorage.setItem('oc_settings',JSON.stringify(JSON.parse(localStorage.getItem('oc_settings')||'{}')));alert('Settings saved.');}
