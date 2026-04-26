@@ -13,23 +13,37 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
 
 <style>
-/* OC-MASTER-CSS — Parchment v1 */
+/* OC-MASTER-CSS — Parchment v3 */
 /* ═══════════════════════════════════════════════════════
    ORTHODOX COMPANION — MASTER CSS
    Parchment / illuminated-manuscript register.
    Single light/parchment system, no dark mode.
 ═══════════════════════════════════════════════════════ */
 
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
 /* ── Palette ─────────────────────────────────────────── */
 :root{
   /* surfaces */
-  --bg-page:#F4EAD3;          /* aged vellum body */
-  --surface:#FAF3E1;          /* card surface, a hair lighter */
-  --bg-card:#FAF3E1;          /* alias kept for inline-styled cards */
-  --hero-bg:#F4EAD3;          /* hero matches body — no white slab */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
 
   /* navy header / nav internals */
   --deep:#0A1628;
@@ -37,28 +51,29 @@
   --panel:#1B3A6B;
   --nav-bg:rgba(10,22,40,0.97);
   --nav-h:68px;
-  --header-rule:#C9A84C;      /* gold hairline below nav */
+  --header-rule:#C9A84C;
 
   /* text on parchment */
-  --text:#1F1B16;             /* warm near-black ink */
-  --text-dim:#3A2F22;         /* slightly lighter ink for body prose */
-  --text-muted:#6B5A3F;       /* muted warm tone for breadcrumbs, captions */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
 
-  /* text on navy (header / drawer) */
-  --logotype:#F0E6CC;         /* cream Cinzel logotype */
-  --nav-text:#E8DCB8;         /* default nav link ink */
-  --nav-text-dim:#A89A72;     /* subtitle / dim items */
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
 
-  /* gold accents */
-  --gold:#C9A84C;             /* primary gold — flourishes, drop cap, crosses */
-  --gold-light:#A8862E;       /* heading gold, readable on parchment */
-  --gold-dim:#8A6A28;         /* darker gold for borders / bullet ornaments */
-  --gold-on-dark:#E8CB7A;     /* lighter gold for nav hover on navy */
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
 
   /* borders / rules */
   --border:#C8B98C;
   --border-dim:rgba(138,106,40,0.22);
-  --rule:rgba(138,106,40,0.14);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
 }
 
 /* ── Base ────────────────────────────────────────────── */
@@ -67,12 +82,35 @@ html{scroll-behavior:smooth;}
 body{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  background:var(--bg-page);
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color:var(--text);
   min-height:100vh;
   overflow-x:hidden;
   font-size:1.06rem;
   line-height:1.75;
+}
+
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho monogram: hero ornament */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 /* ── Nav (navy header, gold hairline) ────────────────── */
@@ -85,7 +123,11 @@ nav{
   display:flex;align-items:center;padding:0 20px;
 }
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
-.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
 .nav-title{
   font-family:'Cinzel',serif;
   font-size:0.95rem;font-weight:700;
@@ -161,13 +203,30 @@ nav{
 }
 .nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
 
-/* ── Page hero (parchment, no white slab) ─────────────── */
+/* ── Page hero (parchment, with ornamental headband) ──── */
 .page-hero{
   margin-top:var(--nav-h);
   background:var(--hero-bg);
-  padding:48px 24px 32px;
+  padding:54px 24px 36px;
 }
 .page-hero-inner{max-width:1040px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
 .breadcrumb{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
@@ -179,7 +238,7 @@ nav{
 .breadcrumb span{margin:0 8px;opacity:0.5;}
 .page-title{
   font-family:'Cinzel',serif;
-  font-size:2.1rem;font-weight:700;
+  font-size:2.15rem;font-weight:700;
   letter-spacing:0.06em;
   margin-bottom:12px;
   color:var(--text);
@@ -190,10 +249,10 @@ nav{
 }
 
 /* ── Content ─────────────────────────────────────────── */
-.content{max-width:1040px;margin:0 auto;padding:36px 24px 64px;}
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
 .content-inner{max-width:720px;}
 
-.about-section{margin-bottom:44px;}
+.about-section{margin-bottom:48px;}
 .about-section p{
   color:var(--text-dim);
   line-height:1.8;
@@ -202,17 +261,27 @@ nav{
 }
 .about-section p:last-child{margin-bottom:0;}
 
-/* Section heading: EB Garamond small caps, gold ink, no Cinzel */
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
 .section-heading{
+  position:relative;
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  font-size:1.1rem;font-weight:600;
+  font-size:1.12rem;font-weight:600;
   text-transform:uppercase;letter-spacing:0.18em;
   color:var(--gold-light);
-  margin-bottom:18px;
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
 }
 
-/* Drop cap (used once on the page, on the opening paragraph only) */
+/* Drop cap (one per page, opening paragraph only) */
 .lede::first-letter{
   font-family:'Cinzel',serif;
   float:left;
@@ -223,26 +292,47 @@ nav{
   font-weight:700;
 }
 
-/* Pull-quote (Irenaeus, Divine Liturgy) */
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
 .pull-quote{
-  margin-bottom:44px;
-  border-left:3px solid var(--gold-dim);
-  padding:18px 22px;
-  background:var(--surface);
-  border-radius:0 3px 3px 0;
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
 }
 .pull-quote-text{
   color:var(--text-dim);
   font-style:italic;
-  font-size:1.06rem;
-  line-height:1.75;
-  margin-bottom:10px;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
 }
 .pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  font-size:0.88rem;text-transform:uppercase;letter-spacing:0.14em;
-  color:var(--gold-light);font-weight:600;
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
 }
 .pull-quote-attr em{
   text-transform:none;letter-spacing:0;
@@ -250,12 +340,21 @@ nav{
   font-size:0.96rem;color:var(--text-dim);
 }
 
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
+
 /* Diamond bullet list */
 .about-list{list-style:none;padding:0;margin:0 0 18px 0;}
 .about-list li{
   color:var(--text-dim);line-height:1.8;
   padding:8px 0 8px 22px;
-  border-bottom:1px solid var(--rule);
+  border-bottom:1px solid var(--rule-soft);
   position:relative;
   font-size:1.04rem;
 }
@@ -266,51 +365,84 @@ nav{
   color:var(--gold-dim);font-size:0.85rem;
 }
 
-/* Inline body links (gold-light underline that warms on hover) */
-.about-section a, .pull-quote a, .contact-card a{
+/* Inline body links */
+.about-section a, .pull-quote a{
   color:var(--gold-light);
   text-decoration:none;
   border-bottom:1px solid rgba(168,134,46,0.40);
   transition:border-color 0.15s,color 0.15s;
 }
-.about-section a:hover, .pull-quote a:hover, .contact-card a:hover{
+.about-section a:hover, .pull-quote a:hover{
   color:var(--gold);
   border-bottom-color:var(--gold);
 }
 
-/* Ornamental cross — the explicit mark closing the article body */
-.ornament-cross{
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
   text-align:center;
-  margin:48px 0 32px;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
   color:var(--gold);
-  font-size:1.7rem;
-  line-height:1;
-  font-family:'Segoe UI Symbol','Apple Symbols',serif;
+  font-size:2rem;line-height:1;
 }
 
-/* Contact card */
+/* ── Contact card (navy — rhymes with footer) ─────────── */
 .contact-card{
-  background:var(--surface);
-  border:1px solid var(--border-dim);
-  border-left:3px solid var(--gold-dim);
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
   border-radius:3px;
-  padding:22px 26px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
 }
 .contact-label{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.16em;
-  color:var(--gold-light);font-weight:600;
-  margin-bottom:10px;
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
 }
 .contact-card p{
-  color:var(--text-dim);
+  color:var(--nav-text);
   font-style:italic;
-  font-size:1.02rem;
+  font-size:1rem;
   line-height:1.7;
 }
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
 
-/* ── Footer (navy, three-column, master pattern for all pages) ── */
+/* ── Footer (navy, three-column, master pattern) ─────── */
 .site-footer{
   background:var(--deep);
   border-top:2px solid var(--header-rule);
@@ -350,12 +482,11 @@ nav{
   padding-top:24px;
 }
 .footer-cross{
-  display:inline-block;
+  display:inline-flex;align-items:center;
   color:var(--gold);
-  font-size:1.05rem;
+  font-size:1.25rem;
   margin-right:10px;
   vertical-align:middle;
-  font-family:'Segoe UI Symbol','Apple Symbols',serif;
 }
 .footer-brand{
   font-family:'Cinzel',serif;
@@ -373,7 +504,7 @@ nav{
   vertical-align:middle;
 }
 
-/* ── Back to top (master pattern from glossary.html spec) ── */
+/* ── Back to top (master pattern from glossary spec) ── */
 #backToTop{
   position:fixed;bottom:28px;right:24px;z-index:700;
   width:42px;height:42px;border-radius:3px;
@@ -398,12 +529,18 @@ nav{
   .footer-col{text-align:center;}
 }
 @media(max-width:600px){
-  .page-hero{padding:36px 18px 24px;}
-  .page-title{font-size:1.6rem;}
-  .content{padding:24px 18px 40px;}
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
   .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
 }
 </style>
 </head>
@@ -411,7 +548,7 @@ nav{
 
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#xFE0E;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
@@ -492,6 +629,11 @@ nav{
 
 <div class="page-hero">
   <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>About This Site</div>
     <h1 class="page-title">About Orthodox Companion</h1>
     <p class="page-desc">A free, independent resource for understanding and living the Orthodox Christian faith — grounded in the patristic tradition, built for inquirers, catechumens, and lifelong Orthodox Christians alike.</p>
@@ -509,10 +651,12 @@ nav{
       <p>It is built for those exploring the faith for the first time, for those preparing for reception, and for those who have walked this path for decades and want a reliable, well-ordered place to study, pray, and prepare.</p>
     </section>
 
-    <div class="pull-quote">
-      <p class="pull-quote-text">&ldquo;Where the Church is, there is the Spirit of God; and where the Spirit of God is, there is the Church and every kind of grace.&rdquo;</p>
-      <p class="pull-quote-attr">St. Irenaeus of Lyons &mdash; <em>Against Heresies</em>, III.24.1</p>
-    </div>
+    <figure class="pull-quote">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">Where the Church is, there is the Spirit of God; and where the Spirit of God is, there is the Church and every kind of grace.</p>
+      <figcaption class="pull-quote-attr">St. Irenaeus of Lyons &mdash; <em>Against Heresies</em>, III.24.1</figcaption>
+    </figure>
+    <div class="fleuron" aria-hidden="true">&#10086;</div>
 
     <section class="about-section">
       <h2 class="section-heading">What This Site Provides</h2>
@@ -548,16 +692,20 @@ nav{
       <p>Use the <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a> to find an Orthodox parish near you.</p>
     </section>
 
-    <div class="pull-quote">
-      <p class="pull-quote-text">&ldquo;We have seen the true Light; we have received the heavenly Spirit; we have found the true faith, worshipping the undivided Trinity, who has saved us.&rdquo;</p>
-      <p class="pull-quote-attr">Divine Liturgy of St. John Chrysostom</p>
+    <figure class="pull-quote">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">We have seen the true Light; we have received the heavenly Spirit; we have found the true faith, worshipping the undivided Trinity, who has saved us.</p>
+      <figcaption class="pull-quote-attr">Divine Liturgy of St. John Chrysostom</figcaption>
+    </figure>
+
+    <div class="colophon">
+      <p class="colophon-text">This is what Orthodox Companion is for &mdash; not to give you the faith, but to bring you to the place where it lives. Everything here points beyond itself: to the parish, to the priest, to the Holy Table, and to the living God who saves us.</p>
+      <div class="colophon-mark" aria-hidden="true">
+        <span class="rule"></span>
+        <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+        <span class="rule"></span>
+      </div>
     </div>
-
-    <section class="about-section">
-      <p>This is what Orthodox Companion is for — not to give you the faith, but to bring you to the place where it lives. Everything here points beyond itself: to the parish, to the priest, to the Holy Table, and to the living God who saves us.</p>
-    </section>
-
-    <div class="ornament-cross" aria-hidden="true">&#9766;&#xFE0E;</div>
 
     <div class="contact-card">
       <div class="contact-label">Contact</div>
@@ -601,7 +749,7 @@ nav{
       </div>
     </div>
     <div class="site-footer-bottom">
-      <span class="footer-cross" aria-hidden="true">&#9766;&#xFE0E;</span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
     </div>
   </div>
 </footer>
@@ -609,7 +757,7 @@ nav{
 <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
-/* OC-MASTER-JS — Parchment v1 */
+/* OC-MASTER-JS — Parchment v3 */
 
 /* ── Nav drawer ─────────────────────────────────── */
 var _drawerOpen=false;
