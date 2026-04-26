@@ -407,6 +407,26 @@ nav{
   font-size:2rem;line-height:1;
 }
 
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:32px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--gold-light);
+  text-decoration:none;
+  border-bottom:1px solid rgba(168,134,46,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+
 /* ── Contact card (navy — rhymes with footer) ─────────── */
 .contact-card{
   background:var(--deep);
@@ -705,6 +725,8 @@ nav{
         <span class="rule"></span>
       </div>
     </div>
+
+    <p class="from-author-link"><a href="note-from-author.html">Read a personal note from the author</a></p>
 
     <div class="contact-card">
       <div class="contact-label">Contact</div>
