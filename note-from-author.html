@@ -68,6 +68,7 @@
   --gold-light:#A8862E;
   --gold-dim:#8A6A28;
   --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
 
   /* borders / rules */
   --border:#C8B98C;
@@ -157,7 +158,7 @@ nav{
   padding:6px 0;
 }
 .nav-dropdown a{
-  display:flex;align-items:center;gap:10px;
+  display:flex;align-items:center;
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
   font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
@@ -165,7 +166,6 @@ nav{
   padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
 }
 .nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
-.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;color:var(--gold);}
 .nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
 
@@ -209,7 +209,7 @@ nav{
   background:var(--hero-bg);
   padding:54px 24px 36px;
 }
-.page-hero-inner{max-width:1040px;margin:0 auto;}
+.page-hero-inner{max-width:720px;margin:0 auto;}
 .hero-ornament{
   display:flex;align-items:center;justify-content:center;
   gap:18px;
@@ -250,7 +250,7 @@ nav{
 
 /* ── Content ─────────────────────────────────────────── */
 .content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
-.content-inner{max-width:720px;}
+.content-inner{max-width:720px;margin:0 auto;}
 
 .about-section{margin-bottom:48px;}
 .about-section p{
@@ -366,15 +366,15 @@ nav{
 }
 
 /* Inline body links */
-.about-section a, .pull-quote a{
-  color:var(--gold-light);
+.about-section a, .pull-quote a, .colophon-text a{
+  color:var(--body-link);
   text-decoration:none;
-  border-bottom:1px solid rgba(168,134,46,0.40);
+  border-bottom:1px solid currentColor;
   transition:border-color 0.15s,color 0.15s;
 }
-.about-section a:hover, .pull-quote a:hover{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
+.about-section a:hover, .pull-quote a:hover, .colophon-text a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
 }
 
 /* ── Closing colophon (centered italic + cross flanked by rules) ── */
@@ -562,6 +562,17 @@ nav{
   .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
   .colophon-text{font-size:1.05rem;}
   .hero-ornament{margin-bottom:24px;}
+  .site-footer{padding:36px 18px 28px;}
+}
+
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
 }
 </style>
 </head>
@@ -577,41 +588,42 @@ nav{
     <li class="nav-item">
       <span class="nav-link active has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
@@ -629,6 +641,7 @@ nav{
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
