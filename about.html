@@ -68,6 +68,7 @@
   --gold-light:#A8862E;
   --gold-dim:#8A6A28;
   --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
 
   /* borders / rules */
   --border:#C8B98C;
@@ -366,14 +367,14 @@ nav{
 
 /* Inline body links */
 .about-section a, .pull-quote a{
-  color:var(--gold-light);
+  color:var(--body-link);
   text-decoration:none;
-  border-bottom:1px solid rgba(168,134,46,0.40);
+  border-bottom:1px solid currentColor;
   transition:border-color 0.15s,color 0.15s;
 }
 .about-section a:hover, .pull-quote a:hover{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
 }
 
 /* ── Closing colophon (centered italic + cross flanked by rules) ── */
@@ -410,21 +411,21 @@ nav{
 /* ── Letter pointer between colophon and contact card ─ */
 .from-author-link{
   text-align:center;
-  margin:32px auto 0;
+  margin:40px auto 0;
   max-width:560px;
   font-style:italic;
-  font-size:1rem;
+  font-size:1.1rem;
   color:var(--text-dim);
 }
 .from-author-link a{
-  color:var(--gold-light);
+  color:var(--body-link);
   text-decoration:none;
-  border-bottom:1px solid rgba(168,134,46,0.40);
+  border-bottom:1px solid currentColor;
   transition:border-color 0.15s,color 0.15s;
 }
 .from-author-link a:hover{
-  color:var(--gold);
-  border-bottom-color:var(--gold);
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
 }
 
 /* ── Contact card (navy — rhymes with footer) ─────────── */
@@ -655,7 +656,7 @@ nav{
     </div>
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>About This Site</div>
     <h1 class="page-title">About Orthodox Companion</h1>
-    <p class="page-desc">A free, independent resource for understanding and living the Orthodox Christian faith — grounded in the patristic tradition, built for inquirers, catechumens, and lifelong Orthodox Christians alike.</p>
+    <p class="page-desc">A small companion to the long road &mdash; free, independent, and grounded in the received Tradition of the Orthodox Church.</p>
   </div>
 </div>
 
@@ -664,8 +665,8 @@ nav{
 
     <section class="about-section">
       <h2 class="section-heading">What Is Orthodox Companion?</h2>
-      <p class="lede">The Orthodox faith is not hard to find online. Clear, trustworthy, patristically grounded guides to it are.</p>
-      <p>Orthodox Companion exists because the internet is full of Orthodox-adjacent content — some of it excellent, much of it contradictory, some of it quietly misleading. Finding your footing as an inquirer, a catechumen, or even a lifelong Orthodox Christian should not require a seminary education to navigate.</p>
+      <p class="lede">The Orthodox faith is not hard to find online. There are excellent books, podcasts, lectures, parish websites, and patristic libraries &mdash; more good resources than any single reader can hold in mind at once. The richness can itself be a hurdle; for someone new to the faith, knowing where to begin is not always obvious.</p>
+      <p>Orthodox Companion is an attempt to bring the major pieces together in one place &mdash; a reference and a starting point that points outward to the deeper resources already at hand. It is a small companion to a long road, not a replacement for what is already there.</p>
       <p>This site was built to faithfully reflect the voice of the Church — not a personality, not a jurisdiction, not an opinion — but the received Tradition: Holy Scripture as the Church reads it, the Seven Ecumenical Councils, the Church Fathers, and the living worship of the Orthodox Church.</p>
       <p>It is built for those exploring the faith for the first time, for those preparing for reception, and for those who have walked this path for decades and want a reliable, well-ordered place to study, pray, and prepare.</p>
     </section>
@@ -679,7 +680,7 @@ nav{
 
     <section class="about-section">
       <h2 class="section-heading">What This Site Provides</h2>
-      <p>Orthodox Companion brings together the major resources of the Orthodox faith in one integrated system — connected to each other, grounded in the same Tradition:</p>
+      <p>Orthodox Companion gathers the major resources of the Orthodox faith in one place &mdash; connected to each other, grounded in the same Tradition:</p>
       <ul class="about-list">
         <li>The liturgical calendar with fasting guidance</li>
         <li>The Twelve Great Feasts and the full Paschal cycle</li>
@@ -730,7 +731,7 @@ nav{
 
     <div class="contact-card">
       <div class="contact-label">Contact</div>
-      <p>For questions, corrections, or feedback &mdash; especially from priests, theologians, and knowledgeable laypeople &mdash; reach us at <a href="mailto:orthodoxcompanion@gmail.com">orthodoxcompanion@gmail.com</a>.</p>
+      <p>For questions, corrections, or feedback &mdash; especially from priests, theologians, and knowledgeable laypeople &mdash; write to me at <a href="mailto:orthodoxcompanion@gmail.com">orthodoxcompanion@gmail.com</a>.</p>
     </div>
 
   </div>
