@@ -775,9 +775,11 @@ body{background:var(--bg-page);color:var(--text);}
 // Features: highlights, notes, bookmarks, journal panel
 // ═══════════════════════════════════════════════════════════════
 
+// API.Bible is reached through the silent-disk-1140 Cloudflare Worker proxy,
+// which adds the api-key header server-side. The api-key never appears in
+// client source. See worker.js handleBibleProxy.
 const BIBLE_CONFIG = {
-  apiBase: 'https://rest.api.bible/v1',
-  apiKey:  'bg79Z1V88eW-e0mQr87q6',
+  apiBase: 'https://silent-disk-1140.holt-kevin13.workers.dev/bible',
   nt:      '63097d2a0a2f7db3-01',
 };
 const LXX_PATH = 'data/lxx/';
@@ -886,9 +888,9 @@ async function loadUserStudyData() {
 
 // ── API Helpers ───────────────────────────────────────────────
 async function apiFetch(path) {
-  const res = await fetch(BIBLE_CONFIG.apiBase + path, {
-    headers: { 'api-key': BIBLE_CONFIG.apiKey }
-  });
+  // No api-key header here — the Worker proxy at BIBLE_CONFIG.apiBase
+  // injects it server-side from a Cloudflare secret.
+  const res = await fetch(BIBLE_CONFIG.apiBase + path);
   if (!res.ok) throw new Error(`API error ${res.status}`);
   const json = await res.json();
   return json.data;
