@@ -776,8 +776,10 @@ body{background:var(--bg-page);color:var(--text);}
 // ═══════════════════════════════════════════════════════════════
 
 const BIBLE_CONFIG = {
-  apiBase: 'https://rest.api.bible/v1',
-  apiKey:  'bg79Z1V88eW-e0mQr87q6',
+  // API.Bible NT calls now route through the Cloudflare Worker proxy
+  // (silent-disk-1140 /bible/*) which adds the api-key header server-side.
+  // OT calls go to local LXX2012 JSON files in data/lxx/.
+  apiBase: 'https://silent-disk-1140.holt-kevin13.workers.dev/bible',
   nt:      '63097d2a0a2f7db3-01',
 };
 const LXX_PATH = 'data/lxx/';
@@ -886,9 +888,8 @@ async function loadUserStudyData() {
 
 // ── API Helpers ───────────────────────────────────────────────
 async function apiFetch(path) {
-  const res = await fetch(BIBLE_CONFIG.apiBase + path, {
-    headers: { 'api-key': BIBLE_CONFIG.apiKey }
-  });
+  // The api-key header is added server-side by the Worker proxy.
+  const res = await fetch(BIBLE_CONFIG.apiBase + path);
   if (!res.ok) throw new Error(`API error ${res.status}`);
   const json = await res.json();
   return json.data;
