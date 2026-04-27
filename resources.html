@@ -2,361 +2,860 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Books &amp; Resources — Orthodox Companion</title>
-<link rel="icon" href="cross.png"/>
-<meta name="description" content="A curated Orthodox Christian library — essential books, patristic texts, podcasts, and websites for inquirers, catechumens, and the faithful."/>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="A trusted library of Orthodox books, patristic texts, podcasts, and websites for inquirers, catechumens, and the faithful."/>
+<meta property="og:title" content="Books &amp; Resources — Orthodox Companion"/>
+<meta property="og:description" content="A trusted library of Orthodox books, patristic texts, podcasts, and websites for inquirers, catechumens, and the faithful."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/resources.html"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
 <style>
-/* OC-MASTER-CSS */
+/* OC-MASTER-CSS — Parchment v3 */
 /* ═══════════════════════════════════════════════════════
-   ORTHODOX COMPANION — MASTER CSS v3
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
 ═══════════════════════════════════════════════════════ */
-:root {
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
-  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
-  --hero-text:#1a0f00;--hero-sub:#3a2800;
+
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
 }
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --nav-bg:rgba(245,237,216,0.97);
-  --hero-text:#1a0f00;--hero-sub:#3a2800;
+
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
 }
+
+/* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
-  color:var(--text);min-height:100vh;overflow-x:hidden;font-size:1.05rem;line-height:1.85;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
+
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho: hero ornament headband */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:3;
+}
 
 /* ── Nav ─────────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
-  border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);
-  height:var(--nav-h);display:flex;align-items:center;padding:0 20px;
-  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:var(--text);letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{font-size:30px;line-height:1;color:var(--gold);display:inline-flex;align-items:center;}
+.nav-title{
+  font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
+  color:var(--logotype);letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
 .nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
 .nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
-  color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;
-  gap:4px;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:color 0.2s;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:220px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;
-  z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;
-  text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
-  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
-  color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;
-  color:var(--gold-light);background:transparent;border:1px solid var(--gold-dim);border-radius:2px;
-  padding:6px 13px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
-.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
-.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
-.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;
-  z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;
-  text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;
-  padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);
-  border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;
-  transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+
+/* ── Mobile drawer ───────────────────────────────────── */
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
-  letter-spacing:0.16em;color:var(--text-muted);padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;
-  color:var(--text-dim);text-decoration:none;padding:10px 24px 10px 32px;
-  border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
-
-/* ── Hero ────────────────────────────────────────────── */
-.page-hero{margin-top:var(--nav-h);background:#ffffff;border-bottom:2px solid var(--gold-dim);padding:40px 24px 36px;}
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--text-muted);margin-bottom:12px;}
-[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
-[data-theme="light"] .breadcrumb{color:#6B4C1A;}
-.breadcrumb a{color:inherit;text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;letter-spacing:0.08em;
-  margin-bottom:4px;color:var(--hero-text);}
-.page-subtitle{font-family:'Cinzel',serif;font-size:0.78rem;font-weight:400;letter-spacing:0.14em;
-  text-transform:uppercase;color:#8A6A28;margin-bottom:18px;}
-.page-intro-bordered{border-left:3px solid #8A6A28;padding-left:18px;max-width:640px;
-  font-size:0.98rem;line-height:1.9;font-style:italic;color:var(--hero-sub);}
-
-/* ── Quote Panel ─────────────────────────────────────── */
-.quote-panel{background:#0A1628;border-bottom:1px solid rgba(42,90,156,0.4);padding:52px 24px 48px;
-  text-align:center;min-height:180px;display:flex;align-items:center;justify-content:center;}
-.quote-inner{max-width:760px;transition:opacity 1.5s ease;}
-.quote-inner.fading{opacity:0;}
-.quote-text{font-family:'EB Garamond',Georgia,serif;font-size:1.38rem;font-style:italic;
-  color:#E8CB7A;line-height:1.9;margin-bottom:18px;}
-.quote-attr{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
-  letter-spacing:0.13em;color:#4A7AB8;display:block;}
-.quote-source{font-family:'EB Garamond',serif;font-size:0.82rem;font-style:italic;
-  color:#2A5A9C;display:block;margin-top:3px;}
-
-/* ── Orientation Bar ─────────────────────────────────── */
-.orientation-bar{border-top:1px solid var(--gold-dim);border-bottom:1px solid var(--gold-dim);
-  padding:14px 24px;text-align:center;background:var(--bg-page);}
-.orientation-bar p{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.1em;color:var(--text-muted);max-width:760px;margin:0 auto;line-height:2;}
-
-/* ── Back to Top ─────────────────────────────────────── */
-#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;width:38px;height:38px;
-  border-radius:50%;background:var(--dark);border:1px solid var(--gold-dim);color:var(--gold-light);
-  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;box-shadow:0 2px 12px rgba(0,0,0,0.5);}
-#backToTop.visible{opacity:1;pointer-events:all;}
-#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
-
-/* ── Pastoral Note ───────────────────────────────────── */
-.pastoral-note{font-family:'EB Garamond',serif;font-size:0.9rem;font-style:italic;
-  color:var(--text-muted);border-left:2px solid var(--gold-dim);padding:8px 16px;
-  margin-top:20px;line-height:1.8;}
-
-/* ═══════════════════════════════════════════════════════
-   LAYER 1 — CATEGORY BAR (sticky)
-═══════════════════════════════════════════════════════ */
-.cat-bar{
-  position:sticky;top:var(--nav-h);z-index:550;
-  background:var(--dark);
-  border-bottom:1px solid var(--gold-dim);
-  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
 }
-.cat-bar-inner{
-  max-width:1040px;margin:0 auto;padding:0 24px;
-  display:flex;align-items:stretch;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
 }
-.cat-bar-inner::-webkit-scrollbar{display:none;}
-.cat-btn{
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--text-muted);background:transparent;border:none;
-  border-bottom:2px solid transparent;
-  padding:16px 18px 14px;cursor:pointer;white-space:nowrap;
-  display:flex;align-items:center;gap:7px;
-  transition:color 0.18s,border-color 0.18s;flex-shrink:0;
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
+
+/* ── Hero block ──────────────────────────────────────── */
+.page-hero{
+  margin-top:var(--nav-h);
+  background:var(--hero-bg);
+  padding:54px 24px 36px;
 }
-.cat-btn:hover{color:var(--text-dim);}
-.cat-btn.active{color:var(--gold-light);border-bottom-color:var(--gold);}
-.cat-btn.cat-empty{color:rgba(74,122,184,0.35);pointer-events:none;}
-.cat-btn.cat-btn-all{
-  margin-left:auto;color:var(--text-muted);
-  border-left:1px solid var(--border-dim);padding-left:18px;
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
 }
-.cat-btn.cat-btn-all:hover,.cat-btn.cat-btn-all.active{color:var(--gold-light);border-bottom-color:var(--gold);}
-.cat-label-mobile{display:none;}
-.cat-count{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:18px;height:18px;padding:0 5px;
-  background:rgba(201,168,76,0.15);border:1px solid var(--gold-dim);
-  border-radius:9px;font-size:0.52rem;letter-spacing:0;
-  color:var(--gold-light);font-family:'Cinzel',serif;
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
 }
-.cat-btn.cat-empty .cat-count{
-  background:rgba(42,90,156,0.08);border-color:rgba(42,90,156,0.15);
-  color:rgba(74,122,184,0.35);
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
 }
 
-/* ═══════════════════════════════════════════════════════
-   LAYER 2 — GLOBAL FILTER BAR
-═══════════════════════════════════════════════════════ */
-.filter-bar{
+/* ── Content block ───────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
+
+/* ── Section heading with hairline marker ────────────── */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin:48px 0 20px;
+}
+.section-heading:first-child{margin-top:0;}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
+
+/* ── Long-form prose section ─────────────────────────── */
+.about-section{margin-bottom:36px;}
+.about-section:last-child{margin-bottom:0;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section p:last-child{margin-bottom:0;}
+.about-section a, .pull-quote a, .colophon-text a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.about-section a:hover, .pull-quote a:hover, .colophon-text a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Drop cap (long-form pages only) ─────────────────── */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* ── Diamond bullet list ─────────────────────────────── */
+.about-list{list-style:none;padding:0;margin:6px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
+
+/* ── Pull-quote frame ────────────────────────────────── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
   background:var(--bg-page);
-  border-bottom:1px solid rgba(42,90,156,0.2);
-  padding:16px 24px 14px;
+  padding:0 14px;
 }
-.filter-bar-inner{max-width:1040px;margin:0 auto;}
-.filter-groups{display:flex;flex-direction:column;gap:10px;}
-.filter-group{display:flex;align-items:flex-start;gap:12px;}
-.filter-group-label{
-  font-family:'Cinzel',serif;font-size:0.52rem;text-transform:uppercase;
-  letter-spacing:0.16em;color:var(--text-muted);
-  white-space:nowrap;padding-top:6px;min-width:64px;flex-shrink:0;
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
 }
-.filter-pills{display:flex;flex-wrap:wrap;gap:5px;}
-.filter-pill{
-  font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;
-  letter-spacing:0.09em;padding:5px 11px;border:1px solid var(--border-dim);
-  border-radius:2px;background:transparent;color:var(--text-muted);
-  cursor:pointer;transition:all 0.15s;white-space:nowrap;
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
 }
-.filter-pill:hover{border-color:var(--gold-dim);color:var(--text-dim);background:rgba(201,168,76,0.05);}
-.filter-pill.active{background:rgba(201,168,76,0.12);border-color:var(--gold-dim);color:var(--gold-light);}
-.filter-actions{
-  display:flex;align-items:center;justify-content:flex-end;gap:12px;
-  margin-top:10px;padding-top:10px;border-top:1px solid rgba(42,90,156,0.12);
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
 }
-.filter-scope-note{
-  font-family:'EB Garamond',serif;font-size:0.85rem;font-style:italic;
-  color:var(--text-muted);margin-right:auto;
-}
-.filter-clear-btn{
-  font-family:'Cinzel',serif;font-size:0.52rem;text-transform:uppercase;
-  letter-spacing:0.1em;color:var(--text-muted);background:transparent;
-  border:1px solid var(--border-dim);border-radius:2px;padding:5px 12px;
-  cursor:pointer;transition:all 0.15s;
-}
-.filter-clear-btn:hover{color:var(--text-dim);border-color:var(--gold-dim);}
 
-/* ═══════════════════════════════════════════════════════
-   LAYER 3 — CONTENT & CARD SYSTEM
-═══════════════════════════════════════════════════════ */
-.content-wrap{max-width:1040px;margin:0 auto;padding:28px 24px 80px;}
-.res-section{}
-.res-cards{display:flex;flex-direction:column;gap:6px;}
+/* ── Fleuron ─────────────────────────────────────────── */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
 
-/* Card */
-.res-card{
-  background:var(--bg-card);border:1px solid var(--border-dim);
-  border-radius:4px;border-left:3px solid var(--gold-dim);overflow:hidden;
-  transition:border-left-color 0.18s;
+/* ── Closing colophon ────────────────────────────────── */
+.colophon{margin:24px 0 44px;text-align:center;}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 24px;
 }
-.res-card:hover{border-left-color:var(--gold);}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
 
-/* Collapsed */
-.card-collapsed{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 18px;cursor:pointer;user-select:none;
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
 }
-.card-title{
-  font-family:'Cinzel',serif;font-size:0.85rem;
-  color:var(--gold-light);letter-spacing:0.04em;flex:1;min-width:0;
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
 }
-.card-primary-tag{flex-shrink:0;}
-.card-chevron{
-  font-family:'Cinzel',serif;font-size:0.8rem;color:var(--text-muted);
-  flex-shrink:0;width:16px;text-align:center;transition:transform 0.2s;line-height:1;
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
 }
-.res-card.open .card-chevron{transform:rotate(45deg);color:var(--gold-light);}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
 
-/* Expanded */
-.card-expanded{
-  display:none;padding:0 18px 16px;
-  border-top:1px solid rgba(42,90,156,0.15);
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
 }
-.res-card.open .card-expanded{display:block;}
-.card-author{
-  font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;
-  letter-spacing:0.08em;color:var(--text-muted);margin:12px 0 10px;
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
 }
-.card-synopsis{
-  font-size:0.92rem;color:var(--text-dim);line-height:1.8;
-  font-style:italic;margin-bottom:12px;
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
 }
-.card-caveat{
-  font-family:'EB Garamond',serif;font-size:0.85rem;font-style:italic;
-  color:var(--gold-dim);border-left:2px solid var(--gold-dim);
-  padding:6px 12px;margin-bottom:12px;line-height:1.7;
-  background:rgba(201,168,76,0.04);
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
 }
-.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
-.card-footer{margin-top:4px;}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
 
-/* Tag Pills */
-.tag-pill{
-  font-family:'Cinzel',serif;font-size:0.5rem;text-transform:uppercase;
-  letter-spacing:0.1em;padding:3px 9px;border-radius:2px;
-  border:1px solid;display:inline-block;white-space:nowrap;
+/* ── Back to top (master pattern from glossary spec) ── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
 }
-.tag-aud{border-color:rgba(42,90,156,0.4);color:var(--text-muted);}
-.tag-aud-inquirer{border-color:rgba(74,122,184,0.5);color:#6A9AD4;}
-.tag-aud-catechumen{border-color:rgba(138,106,40,0.5);color:var(--gold-dim);}
-.tag-aud-faithful{border-color:rgba(201,168,76,0.5);color:var(--gold);}
-.tag-nat{border-color:rgba(42,90,156,0.3);color:var(--text-muted);background:rgba(27,58,107,0.2);}
-.tag-top{border-color:rgba(201,168,76,0.2);color:rgba(201,168,76,0.7);background:rgba(201,168,76,0.04);}
-
-/* Links */
-.res-link{
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
-  border-radius:2px;padding:5px 12px;text-decoration:none;
-  background:rgba(201,168,76,0.08);display:inline-block;transition:all 0.18s;
-}
-.res-link:hover{background:rgba(201,168,76,0.18);border-color:var(--gold);}
-.res-no-link{font-size:0.78rem;color:var(--text-muted);font-style:italic;}
-
-/* Empty state */
-.res-empty{
-  padding:48px 24px;text-align:center;
-  color:var(--text-muted);font-style:italic;font-size:0.95rem;line-height:2;
-}
-.res-empty-action{
-  display:inline-block;margin-top:14px;font-family:'Cinzel',serif;
-  font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;
-  color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;
-  padding:6px 14px;background:rgba(201,168,76,0.08);cursor:pointer;
-  transition:all 0.18s;
-}
-.res-empty-action:hover{background:rgba(201,168,76,0.16);}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:860px){
-  .nav-links{display:none;}.nav-hamburger{display:flex;}
-  .nav-drawer{display:block;}.nav-right .nav-signin-btn{display:none;}
-}
-@media(max-width:680px){
-  .filter-group{flex-direction:column;gap:6px;}
-  .filter-group-label{min-width:auto;padding-top:0;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
 }
 @media(max-width:600px){
-  .page-hero{padding:28px 16px 26px;}.page-title{font-size:1.3rem;}
-  .content-wrap{padding:16px 16px 50px;}nav{padding:0 14px;}
-  .nav-subtitle{display:none;}.nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
-  .quote-panel{padding:36px 16px;}.quote-text{font-size:1.1rem;}
-  .cat-bar-inner{padding:0 14px;}.cat-btn{padding:14px 12px 12px;font-size:0.55rem;}
-  .cat-label-desktop{display:none;}.cat-label-mobile{display:inline;}
-  .filter-bar{padding:14px 16px 12px;}
-  .card-collapsed{padding:12px 14px;}.card-title{font-size:0.8rem;}
-  .card-expanded{padding:0 14px 14px;}
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
+}
+
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+
+/* ── Page-specific CSS ─────────────────────────────── */
+/* resources.html — page-specific surfaces (parchment palette) */
+
+/* Page intro */
+.page-subtitle{
+  font-family:"Cinzel",serif;font-size:0.78rem;
+  text-transform:uppercase;letter-spacing:0.20em;
+  color:var(--gold);font-weight:600;
+  margin-top:6px;margin-bottom:14px;
+}
+.page-intro-bordered{
+  font-size:1.02rem;color:var(--ink-mid);
+  line-height:1.85;font-style:italic;
+  margin-top:14px;padding-left:14px;
+  border-left:2px solid var(--gold-dim);
+  max-width:780px;
+}
+
+/* Revolving quote panel — soft parchment card */
+.quote-panel{
+  background:rgba(255,253,247,0.85);
+  border:1px solid var(--rule-soft);
+  border-top:3px solid var(--gold);
+  border-radius:2px;
+  padding:30px 36px;
+  margin:32px 0 28px;
+  text-align:center;
+  min-height:130px;
+  display:flex;align-items:center;justify-content:center;
+}
+.quote-inner{
+  max-width:760px;
+  transition:opacity 1.5s ease;
+}
+.quote-inner.fading{opacity:0;}
+.quote-text{
+  font-family:"EB Garamond",serif;
+  font-size:1.35rem;line-height:1.65;
+  color:var(--ink);font-style:italic;
+  margin-bottom:14px;
+}
+.quote-attr{
+  font-family:"Cinzel",serif;font-size:0.72rem;
+  text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--gold);font-weight:600;
+  display:block;
+}
+.quote-source{
+  font-family:"EB Garamond",serif;font-size:0.86rem;
+  color:var(--ink-soft);font-style:italic;
+  display:block;margin-top:5px;
+}
+
+/* Orientation bar */
+.orientation-bar{
+  margin:20px 0 24px;
+  padding:14px 22px;
+  background:rgba(201,168,76,0.05);
+  border:1px solid var(--rule-soft);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+}
+.orientation-bar p{
+  margin:0;font-size:0.95rem;
+  color:var(--ink-mid);font-style:italic;
+  line-height:1.7;
+}
+
+/* Layer 1 — Category bar */
+.cat-bar{
+  position:sticky;top:0;z-index:50;
+  background:var(--bg-page);
+  border-bottom:1px solid var(--rule-soft);
+  margin:0 -24px 24px;
+  padding:0 24px;
+}
+.cat-bar-inner{
+  display:flex;gap:0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.cat-bar-inner::-webkit-scrollbar{display:none;}
+.cat-btn{
+  font-family:"Cinzel",serif;font-size:0.72rem;
+  text-transform:uppercase;letter-spacing:0.13em;
+  padding:16px 20px 14px;
+  background:transparent;border:none;
+  color:var(--ink-soft);
+  cursor:pointer;white-space:nowrap;
+  border-bottom:2px solid transparent;
+  transition:all 0.18s;font-weight:600;
+}
+.cat-btn:hover{color:var(--ink);}
+.cat-btn.active{color:var(--gold);border-bottom-color:var(--gold);}
+.cat-btn.cat-empty{color:var(--rule);pointer-events:none;}
+.cat-btn.cat-btn-all{margin-left:auto;border-left:1px solid var(--rule-soft);}
+.cat-btn.cat-btn-all:hover,
+.cat-btn.cat-btn-all.active{color:var(--gold);border-bottom-color:var(--gold);}
+.cat-count{
+  display:inline-block;margin-left:6px;
+  font-size:0.62rem;color:var(--ink-soft);
+  background:var(--bg-card);
+  border:1px solid var(--rule-soft);border-radius:8px;
+  padding:1px 7px;font-weight:400;
+  letter-spacing:0;
+}
+.cat-btn.cat-empty .cat-count{
+  background:transparent;border-color:var(--rule);
+  color:var(--rule);
+}
+
+/* Layer 2 — Filter bar */
+.filter-bar{
+  background:rgba(255,253,247,0.5);
+  border:1px solid var(--rule-soft);
+  border-radius:2px;
+  padding:18px 22px;
+  margin-bottom:28px;
+}
+.filter-bar-inner{max-width:1040px;margin:0 auto;}
+.filter-groups{display:flex;flex-direction:column;gap:12px;}
+.filter-group{display:flex;align-items:flex-start;gap:14px;}
+.filter-group-label{
+  font-family:"Cinzel",serif;font-size:0.66rem;
+  text-transform:uppercase;letter-spacing:0.13em;
+  color:var(--gold);font-weight:600;
+  min-width:88px;padding-top:8px;
+}
+.filter-pills{display:flex;flex-wrap:wrap;gap:6px;}
+.filter-pill{
+  font-family:"Cinzel",serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.10em;
+  padding:6px 13px;border-radius:2px;
+  border:1px solid var(--rule-soft);
+  background:transparent;color:var(--ink-soft);
+  cursor:pointer;transition:all 0.18s;
+  font-weight:600;
+}
+.filter-pill:hover{
+  border-color:var(--gold-dim);color:var(--ink);
+  background:rgba(201,168,76,0.06);
+}
+.filter-pill.active{
+  background:var(--gold);border-color:var(--gold);
+  color:var(--bg-page);
+}
+
+.filter-actions{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;margin-top:14px;padding-top:12px;
+  border-top:1px solid var(--rule-soft);
+}
+.filter-scope-note{
+  font-family:"EB Garamond",serif;font-size:0.95rem;
+  color:var(--ink-mid);font-style:italic;
+}
+.filter-clear-btn{
+  font-family:"Cinzel",serif;font-size:0.62rem;
+  text-transform:uppercase;letter-spacing:0.10em;
+  color:var(--ink-soft);
+  background:transparent;
+  border:1px solid var(--rule-soft);border-radius:2px;
+  padding:6px 14px;cursor:pointer;
+  transition:all 0.2s;font-weight:600;
+}
+.filter-clear-btn:hover{border-color:var(--gold);color:var(--ink);}
+
+/* Layer 3 — Content sections */
+.content-wrap{margin-top:8px;}
+.res-section{margin-bottom:36px;}
+.res-cards{display:flex;flex-direction:column;gap:6px;}
+
+/* Resource cards */
+.res-card{
+  background:var(--bg-card);
+  border:1px solid var(--rule-soft);
+  border-radius:2px;
+  transition:border-color 0.2s,background 0.2s;
+}
+.res-card:hover{border-color:var(--gold-dim);}
+.res-card.open{
+  border-color:var(--gold);
+  background:#fff;
+}
+
+.card-collapsed{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 18px;
+  cursor:pointer;
+}
+.card-title{
+  font-family:"Cinzel",serif;font-size:0.92rem;
+  color:var(--ink);letter-spacing:0.03em;
+  flex:1;font-weight:600;
+}
+.card-primary-tag{flex-shrink:0;}
+.card-chevron{
+  font-size:1.05rem;color:var(--ink-soft);
+  transition:transform 0.25s,color 0.2s;flex-shrink:0;
+  width:18px;text-align:center;
+}
+.res-card.open .card-chevron{
+  transform:rotate(45deg);color:var(--gold);
+}
+
+.card-expanded{
+  display:none;
+  padding:8px 22px 22px;
+  border-top:1px solid var(--rule-soft);
+}
+.res-card.open .card-expanded{display:block;}
+.card-author{
+  font-family:"EB Garamond",serif;font-size:1rem;
+  color:var(--ink-mid);font-style:italic;
+  margin:14px 0 10px;
+}
+.card-synopsis{
+  font-size:1rem;color:var(--ink);
+  line-height:1.8;margin-bottom:14px;
+}
+.card-caveat{
+  font-size:0.92rem;color:#8a5a2a;
+  background:rgba(201,168,76,0.10);
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:9px 14px;margin-bottom:14px;
+  font-style:italic;line-height:1.6;
+}
+.card-tags{
+  display:flex;flex-wrap:wrap;gap:5px;
+  margin-bottom:14px;
+}
+.tag-pill{
+  font-family:"Cinzel",serif;font-size:0.58rem;
+  text-transform:uppercase;letter-spacing:0.08em;
+  border-radius:2px;padding:2px 8px;
+  border:1px solid var(--rule-soft);
+  color:var(--ink-soft);
+  font-weight:600;
+}
+.tag-pill.tag-aud{
+  border-color:var(--gold-dim);color:var(--gold);
+  background:rgba(201,168,76,0.05);
+}
+.tag-pill.tag-aud-inquirer{color:#5a7a5a;border-color:#7a9a7a;background:rgba(122,154,122,0.05);}
+.tag-pill.tag-aud-catechumen{color:#7a5a2a;border-color:#a07028;background:rgba(160,112,40,0.05);}
+.tag-pill.tag-aud-faithful{color:var(--gold);border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
+.tag-pill.tag-nat{color:var(--ink-soft);}
+.tag-pill.tag-top{color:var(--ink-soft);}
+
+.card-footer{
+  display:flex;align-items:center;justify-content:flex-end;
+  padding-top:10px;border-top:1px solid var(--rule-soft);
+}
+.res-link{
+  font-family:"Cinzel",serif;font-size:0.66rem;
+  text-transform:uppercase;letter-spacing:0.11em;
+  color:var(--gold);
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:6px 14px;text-decoration:none;
+  transition:all 0.2s;font-weight:600;
+}
+.res-link:hover{
+  background:var(--gold);color:var(--bg-page);
+  border-color:var(--gold);
+}
+.res-no-link{
+  font-family:"EB Garamond",serif;font-size:0.92rem;
+  color:var(--ink-soft);font-style:italic;
+}
+
+/* Empty state */
+.res-empty{
+  text-align:center;padding:42px 20px;
+  background:rgba(255,253,247,0.5);
+  border:1px dashed var(--rule);border-radius:2px;
+  color:var(--ink-soft);
+}
+.res-empty-action{
+  margin-top:14px;
+  font-family:"Cinzel",serif;font-size:0.66rem;
+  text-transform:uppercase;letter-spacing:0.10em;
+  color:var(--gold);
+  background:transparent;
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:7px 16px;cursor:pointer;
+  transition:all 0.2s;font-weight:600;
+}
+.res-empty-action:hover{
+  background:var(--gold);color:var(--bg-page);
+}
+
+@media(max-width:720px){
+  .filter-group{flex-direction:column;gap:6px;}
+  .filter-group-label{min-width:auto;padding-top:0;}
+  .quote-panel{padding:22px 20px;}
+  .quote-text{font-size:1.1rem;}
+  .cat-bar{margin:0 -16px 20px;padding:0 16px;}
+  .cat-btn{padding:14px 14px 12px;font-size:0.66rem;letter-spacing:0.10em;}
+  .filter-bar{padding:14px 16px;}
+  .card-collapsed{padding:12px 14px;}
+  .card-title{font-size:0.86rem;}
+  .card-expanded{padding:8px 16px 16px;}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══ NAV ════════════════════════════════════════════ -->
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#65038;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
@@ -364,70 +863,51 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
     <li class="nav-item">
       <span class="nav-link has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link active has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
-  <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <div class="nav-account-wrap" id="navAccountWrap">
-      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
-      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
-        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
-          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
-        </button>
-        <div class="nav-user-dropdown" id="navUserDropdown">
-          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
-          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
-          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
-        </div>
-      </div>
-    </div>
-    <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+  <div class="nav-right"></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<!-- ═══ MOBILE DRAWER ══════════════════════════════════ -->
 <div class="nav-drawer" id="navDrawer">
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
@@ -436,6 +916,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
@@ -453,23 +934,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
   <a href="fasting.html">Fasting Guide</a>
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
-  </div>
 </div>
 
-<!-- ═══ PAGE HERO (preserved exactly) ════════════════ -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Books &amp; Resources</div>
-    <h1 class="page-title">Books &amp; Resources</h1>
-    <div class="page-subtitle">Resources for the Journey</div>
-    <p class="page-intro-bordered">These resources are offered to help you begin, grow, and go deeper in the life of the Church. Whether you are new to Orthodoxy, preparing for reception, raising children in the faith, or seeking deeper study — this library is meant to be a trustworthy companion for the journey.</p>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="index.html">Home</a> <span class="breadcrumb-sep">›</span> <span aria-current="page">Books &amp; Resources</span>
+  </nav>
+  <h1 class="page-title">Books &amp; Resources</h1>
+  <div class="page-subtitle">Resources for the Journey</div>
+  <p class="page-intro-bordered">These resources are offered to help you begin, grow, and go deeper in the life of the Church. Whether you are new to Orthodoxy, preparing for reception, raising children in the faith, or seeking deeper study &mdash; this library is meant to be a trustworthy companion for the journey.</p>
   </div>
 </div>
 
-<!-- ═══ DARK QUOTE PANEL (preserved exactly) ════════ -->
+<div class="content">
+  <div class="content-inner">
+
 <div class="quote-panel" id="quotePanel">
   <div class="quote-inner" id="quoteInner">
     <div class="quote-text" id="quoteText"></div>
@@ -478,37 +958,20 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
   </div>
 </div>
 
-<!-- ═══ ORIENTATION BAR ═══════════════════════════════ -->
 <div class="orientation-bar">
   <p>Browse by category, filter by audience or topic, or combine both. New to Orthodoxy? Begin with the Inquirer filter.</p>
 </div>
 
-<!-- ═══ LAYER 1 — CATEGORY BAR (sticky) ══════════════ -->
 <div class="cat-bar" id="catBar">
   <div class="cat-bar-inner">
-    <button class="cat-btn active" data-cat="books">
-      <span class="cat-label-desktop">Books</span>
-      <span class="cat-label-mobile">Books</span>
-    </button>
-    <button class="cat-btn" data-cat="patristic">
-      <span class="cat-label-desktop">Patristic Texts</span>
-      <span class="cat-label-mobile">Patristic</span>
-    </button>
-    <button class="cat-btn" data-cat="podcasts">
-      <span class="cat-label-desktop">Podcasts &amp; Video</span>
-      <span class="cat-label-mobile">Media</span>
-    </button>
-    <button class="cat-btn" data-cat="websites">
-      <span class="cat-label-desktop">Websites</span>
-      <span class="cat-label-mobile">Websites</span>
-    </button>
-    <button class="cat-btn cat-btn-all" data-cat="all" id="catBtnAll" style="display:none">
-      All Categories
-    </button>
+    <button class="cat-btn active" data-cat="books">Books</button>
+    <button class="cat-btn" data-cat="patristic">Patristic Texts</button>
+    <button class="cat-btn" data-cat="podcasts">Podcasts &amp; Video</button>
+    <button class="cat-btn" data-cat="websites">Websites</button>
+    <button class="cat-btn cat-btn-all" data-cat="all" id="catBtnAll" style="display:none">All Categories</button>
   </div>
 </div>
 
-<!-- ═══ LAYER 2 — GLOBAL FILTER BAR ══════════════════ -->
 <div class="filter-bar" id="filterBar">
   <div class="filter-bar-inner">
     <div class="filter-groups">
@@ -560,88 +1023,111 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;background:var(--nav-bg);
   </div>
 </div>
 
-<!-- ═══ LAYER 3 — CONTENT SECTIONS ═══════════════════ -->
 <div class="content-wrap">
-
   <section class="res-section" id="section-books">
     <div class="res-cards" id="section-books-cards"></div>
   </section>
-
   <section class="res-section" id="section-patristic" style="display:none">
     <div class="res-cards" id="section-patristic-cards"></div>
   </section>
-
   <section class="res-section" id="section-podcasts" style="display:none">
     <div class="res-cards" id="section-podcasts-cards"></div>
   </section>
-
   <section class="res-section" id="section-websites" style="display:none">
     <div class="res-cards" id="section-websites-cards"></div>
   </section>
-
 </div>
 
-<!-- ═══ SCRIPTS ════════════════════════════════════════ -->
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
 <script>
-/* OC-MASTER-JS */
-function toggleTheme(){
-  var c=document.documentElement.getAttribute('data-theme')||'dark';
-  var n=c==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('oc_theme',n);
-}
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
+/* OC-MASTER-JS — Parchment v3 */
+
+/* ── Nav drawer ─────────────────────────────────── */
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
-  var d=document.getElementById('navDrawer'),h=document.getElementById('hamburger');
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
   if(d)d.classList.toggle('open',_drawerOpen);
   if(h)h.classList.toggle('open',_drawerOpen);
 }
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown'),b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');if(b)b.classList.toggle('open');
-}
-function signOut(){
-  localStorage.removeItem('oc_user');localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn'),userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername'),drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';if(userMenu)userMenu.style.display='none';
-  }
-}
+
+/* Close drawer on outside click */
 document.addEventListener('click',function(e){
-  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
     _drawerOpen=false;
-    var d=document.getElementById('navDrawer'),h=document.getElementById('hamburger');
-    if(d)d.classList.remove('open');if(h)h.classList.remove('open');
-  }
-  if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown'),b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');if(b)b.classList.remove('open');
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
   }
 });
+
+/* ── Back to top (master pattern from glossary.html spec) ── */
 document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
   var btn=document.getElementById('backToTop');
-  if(btn){window.addEventListener('scroll',function(){btn.classList.toggle('visible',window.scrollY>400);},{passive:true});}
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
 });
 </script>
 
 <script>
-/* ═══ REVOLVING QUOTES ════════════════════════════════ */
 var QUOTES=[
   {text:'\u201cHe was made man that we might be made God.\u201d',attr:'St. Athanasius of Alexandria',source:'On the Incarnation, ch. 54 (c. 318 AD)'},
   {text:'\u201cThis is the foundation of all good things \u2014 the reading of the Scriptures.\u201d',attr:'St. John Chrysostom',source:'Homilies on Matthew, Homily 2 (4th century)'},
@@ -652,56 +1138,33 @@ var QUOTES=[
   {text:'\u201cThe soul that has tasted Thee seeketh Thee; she that hath not tasted seeketh Thee; but she that hath tasted knoweth Thee.\u201d',attr:'St. Gregory of Nyssa',source:'Homilies on the Song of Songs (4th century)'},
   {text:'\u201cNo one can be saved without love.\u201d',attr:'St. John Climacus',source:'The Ladder of Divine Ascent, Step 30 (7th century)'}
 ];
-var _qIdx=0,_qPaused=false;
-function _setQuote(q,fade){
-  var inner=document.getElementById('quoteInner');if(!inner)return;
+
+var _qIdx = 0, _qPaused = false;
+function _setQuote(q, fade){
+  var inner = document.getElementById('quoteInner'); if(!inner) return;
   if(fade){
     inner.classList.add('fading');
     setTimeout(function(){
-      document.getElementById('quoteText').textContent=q.text;
-      document.getElementById('quoteAttr').textContent='\u2014 '+q.attr;
-      document.getElementById('quoteSource').textContent=q.source;
+      document.getElementById('quoteText').textContent = q.text;
+      document.getElementById('quoteAttr').textContent = '\u2014 ' + q.attr;
+      document.getElementById('quoteSource').textContent = q.source;
       inner.classList.remove('fading');
-    },1500);
+    }, 1500);
   } else {
-    document.getElementById('quoteText').textContent=q.text;
-    document.getElementById('quoteAttr').textContent='\u2014 '+q.attr;
-    document.getElementById('quoteSource').textContent=q.source;
+    document.getElementById('quoteText').textContent = q.text;
+    document.getElementById('quoteAttr').textContent = '\u2014 ' + q.attr;
+    document.getElementById('quoteSource').textContent = q.source;
   }
 }
-function _nextQuote(){if(_qPaused)return;_qIdx=(_qIdx+1)%QUOTES.length;_setQuote(QUOTES[_qIdx],true);}
-window.addEventListener('scroll',function(){var p=document.getElementById('quotePanel');if(p)_qPaused=p.getBoundingClientRect().bottom<0;});
-document.addEventListener('DOMContentLoaded',function(){_setQuote(QUOTES[0],false);setInterval(_nextQuote,9500);});
-</script>
-
-<script>
-/* ═══ RESOURCE LIBRARY — THREE-LAYER NAVIGATION
-   Step 3: Architecture complete. Logic wired.
-   Step 4: Inject RESOURCES array below.
-══════════════════════════════════════════════════════ */
-
-/* ── State ───────────────────────────────────────────── */
-var _state={category:'books',audience:[],nature:[],topic:[]};
-var CATS=['books','patristic','podcasts','websites'];
-
-/* ── RESOURCES — Step 4 injects here ────────────────────
-   Schema per resource:
-   {
-     id:        'string',
-     title:     'string',
-     author:    'string',
-     category:  'books' | 'patristic' | 'podcasts' | 'websites',
-     audience:  ['inquirer','catechumen','faithful'],
-     nature:    ['theological','pastoral','devotional','historical','liturgical'],
-     topic:     ['prayer','fasting','theosis','scripture','sacraments','liturgy',
-                 'saints-fathers','tradition-doctrine','christology',
-                 'theotokos','spiritual-life','family-life'],
-     synopsis:  'string',
-     caveat:    null | 'string',
-     link:      'string',
-     linkLabel: 'string'
-   }
-──────────────────────────────────────────────────────── */
+function _nextQuote(){ if(_qPaused) return; _qIdx = (_qIdx + 1) % QUOTES.length; _setQuote(QUOTES[_qIdx], true); }
+window.addEventListener('scroll', function(){
+  var p = document.getElementById('quotePanel');
+  if(p) _qPaused = p.getBoundingClientRect().bottom < 0;
+}, {passive:true});
+document.addEventListener('DOMContentLoaded', function(){
+  _setQuote(QUOTES[0], false);
+  setInterval(_nextQuote, 9500);
+});
 var RESOURCES=[
 
 /* ═══ BOOKS — INQUIRER ══════════════════════════════ */
@@ -1248,155 +1711,160 @@ var RESOURCES=[
 
 ];
 
+/* ── State ───────────────────────────────────────────── */
+var _state = {category:'books', audience:[], nature:[], topic:[]};
+var CATS = ['books','patristic','podcasts','websites'];
+
 /* ── Helpers ─────────────────────────────────────────── */
-function _cap(s){return s?s.charAt(0).toUpperCase()+s.slice(1):'';}
-var _TL={
+function _cap(s){ return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+var _TL = {
   'prayer':'Prayer','fasting':'Fasting','theosis':'Theosis','scripture':'Scripture',
   'sacraments':'Sacraments','liturgy':'Liturgy','saints-fathers':'Saints &amp; Fathers',
   'tradition-doctrine':'Tradition &amp; Doctrine','christology':'Christology',
   'theotokos':'Theotokos','spiritual-life':'Spiritual Life','family-life':'Family Life'
 };
-function _tl(t){return _TL[t]||_cap(t);}
+function _tl(t){ return _TL[t] || _cap(t); }
 
 /* ── Filter logic ────────────────────────────────────── */
-function _hasFilters(){return _state.audience.length>0||_state.nature.length>0||_state.topic.length>0;}
+function _hasFilters(){ return _state.audience.length > 0 || _state.nature.length > 0 || _state.topic.length > 0; }
 function _matches(r){
-  if(_state.audience.length>0){
-    var ok=false;for(var i=0;i<_state.audience.length;i++){if(r.audience.indexOf(_state.audience[i])>-1){ok=true;break;}}
-    if(!ok)return false;
+  if(_state.audience.length > 0){
+    var ok = false; for(var i=0; i<_state.audience.length; i++){ if(r.audience.indexOf(_state.audience[i]) > -1){ ok = true; break; } }
+    if(!ok) return false;
   }
-  if(_state.nature.length>0){
-    var ok=false;for(var i=0;i<_state.nature.length;i++){if(r.nature.indexOf(_state.nature[i])>-1){ok=true;break;}}
-    if(!ok)return false;
+  if(_state.nature.length > 0){
+    var ok = false; for(var i=0; i<_state.nature.length; i++){ if(r.nature.indexOf(_state.nature[i]) > -1){ ok = true; break; } }
+    if(!ok) return false;
   }
-  if(_state.topic.length>0){
-    var ok=false;for(var i=0;i<_state.topic.length;i++){if(r.topic.indexOf(_state.topic[i])>-1){ok=true;break;}}
-    if(!ok)return false;
+  if(_state.topic.length > 0){
+    var ok = false; for(var i=0; i<_state.topic.length; i++){ if(r.topic.indexOf(_state.topic[i]) > -1){ ok = true; break; } }
+    if(!ok) return false;
   }
   return true;
 }
-function _forCat(cat){return RESOURCES.filter(function(r){return r.category===cat&&_matches(r);});}
+function _forCat(cat){ return RESOURCES.filter(function(r){ return r.category === cat && _matches(r); }); }
 
 /* ── Card render ─────────────────────────────────────── */
 function _card(r){
-  var pa=r.audience[0]||'inquirer';
-  var ap=r.audience.map(function(a){return '<span class="tag-pill tag-aud tag-aud-'+a+'">'+_cap(a)+'</span>';}).join('');
-  var np=r.nature.map(function(n){return '<span class="tag-pill tag-nat">'+_cap(n)+'</span>';}).join('');
-  var tp=r.topic.map(function(t){return '<span class="tag-pill tag-top">'+_tl(t)+'</span>';}).join('');
-  var cav=r.caveat?'<div class="card-caveat">&#9888; '+r.caveat+'</div>':'';
-  var lnk=r.link
-    ?'<a href="'+r.link+'" target="_blank" rel="noopener" class="res-link">'+(r.linkLabel||'Visit')+' &#8599;</a>'
-    :'<span class="res-no-link">Available at Orthodox bookstores</span>';
-  var auth=r.author?'<div class="card-author">'+r.author+'</div>':'';
-  return '<div class="res-card" data-id="'+r.id+'">'+
-    '<div class="card-collapsed">'+
-      '<div class="card-title">'+r.title+'</div>'+
-      '<div class="card-primary-tag"><span class="tag-pill tag-aud tag-aud-'+pa+'">'+_cap(pa)+'</span></div>'+
-      '<span class="card-chevron">&#43;</span>'+
-    '</div>'+
-    '<div class="card-expanded">'+
-      auth+
-      '<div class="card-synopsis">'+r.synopsis+'</div>'+
-      cav+
-      '<div class="card-tags">'+ap+np+tp+'</div>'+
-      '<div class="card-footer">'+lnk+'</div>'+
-    '</div>'+
-  '</div>';
+  var pa = r.audience[0] || 'inquirer';
+  var ap = r.audience.map(function(a){ return '<span class="tag-pill tag-aud tag-aud-' + a + '">' + _cap(a) + '</span>'; }).join('');
+  var np = r.nature.map(function(n){ return '<span class="tag-pill tag-nat">' + _cap(n) + '</span>'; }).join('');
+  var tp = r.topic.map(function(t){ return '<span class="tag-pill tag-top">' + _tl(t) + '</span>'; }).join('');
+  var cav = r.caveat ? '<div class="card-caveat">&#9888; ' + r.caveat + '</div>' : '';
+  var lnk = r.link
+    ? '<a href="' + r.link + '" target="_blank" rel="noopener" class="res-link">' + (r.linkLabel || 'Visit') + ' &#8599;</a>'
+    : '<span class="res-no-link">Available at Orthodox bookstores</span>';
+  var auth = r.author ? '<div class="card-author">' + r.author + '</div>' : '';
+  return '<div class="res-card" data-id="' + r.id + '">'
+    + '<div class="card-collapsed">'
+    +   '<div class="card-title">' + r.title + '</div>'
+    +   '<div class="card-primary-tag"><span class="tag-pill tag-aud tag-aud-' + pa + '">' + _cap(pa) + '</span></div>'
+    +   '<span class="card-chevron">&#43;</span>'
+    + '</div>'
+    + '<div class="card-expanded">'
+    +   auth
+    +   '<div class="card-synopsis">' + r.synopsis + '</div>'
+    +   cav
+    +   '<div class="card-tags">' + ap + np + tp + '</div>'
+    +   '<div class="card-footer">' + lnk + '</div>'
+    + '</div>'
+    + '</div>';
 }
 
 /* ── Section render ──────────────────────────────────── */
 function _renderSec(cat){
-  var el=document.getElementById('section-'+cat+'-cards');if(!el)return;
-  var list=_forCat(cat);
-  if(list.length===0){
-    var msg=_hasFilters()?'No resources found for this combination \u2014 try adjusting your filters.':'Resources coming soon.';
-    var act=(_hasFilters()&&_state.category!=='all')?'<div><button class="res-empty-action" onclick="setCategory(\'all\')">Search All Categories</button></div>':'';
-    el.innerHTML='<div class="res-empty">'+msg+act+'</div>';
+  var el = document.getElementById('section-' + cat + '-cards'); if(!el) return;
+  var list = _forCat(cat);
+  if(list.length === 0){
+    var msg = _hasFilters() ? 'No resources found for this combination \u2014 try adjusting your filters.' : 'Resources coming soon.';
+    var act = (_hasFilters() && _state.category !== 'all') ? '<div><button class="res-empty-action" onclick="setCategory(\'all\')">Search All Categories</button></div>' : '';
+    el.innerHTML = '<div class="res-empty">' + msg + act + '</div>';
   } else {
-    el.innerHTML=list.map(_card).join('');
-    var cards=el.querySelectorAll('.card-collapsed');
-    for(var i=0;i<cards.length;i++){cards[i].addEventListener('click',_cardClick);}
+    el.innerHTML = list.map(_card).join('');
+    var cards = el.querySelectorAll('.card-collapsed');
+    for(var i=0; i<cards.length; i++){ cards[i].addEventListener('click', _cardClick); }
   }
 }
 function _cardClick(){
-  var c=this.parentElement,open=c.classList.contains('open');
-  c.classList.toggle('open',!open);
-  var ch=this.querySelector('.card-chevron');
-  if(ch)ch.innerHTML=open?'&#43;':'&#8722;';
+  var c = this.parentElement, open = c.classList.contains('open');
+  c.classList.toggle('open', !open);
+  var ch = this.querySelector('.card-chevron');
+  if(ch) ch.innerHTML = open ? '&#43;' : '&#8722;';
 }
 
 /* ── Full render ─────────────────────────────────────── */
 function _renderAll(){
-  for(var i=0;i<CATS.length;i++){
-    var cat=CATS[i],sec=document.getElementById('section-'+cat);if(!sec)continue;
-    var show=(_state.category==='all'||_state.category===cat);
-    sec.style.display=show?'':'none';
-    if(show)_renderSec(cat);
+  for(var i=0; i<CATS.length; i++){
+    var cat = CATS[i], sec = document.getElementById('section-' + cat); if(!sec) continue;
+    var show = (_state.category === 'all' || _state.category === cat);
+    sec.style.display = show ? '' : 'none';
+    if(show) _renderSec(cat);
   }
-  _updateCatBar();_updateFilterBar();
+  _updateCatBar(); _updateFilterBar();
 }
 
 /* ── Category bar ────────────────────────────────────── */
 function setCategory(cat){
-  _state.category=cat;
-  var btns=document.querySelectorAll('.cat-btn');
-  for(var i=0;i<btns.length;i++)btns[i].classList.toggle('active',btns[i].dataset.cat===cat);
+  _state.category = cat;
+  var btns = document.querySelectorAll('.cat-btn');
+  for(var i=0; i<btns.length; i++) btns[i].classList.toggle('active', btns[i].dataset.cat === cat);
   _renderAll();
-  var wrap=document.querySelector('.content-wrap');
-  if(wrap){var top=wrap.getBoundingClientRect().top+window.scrollY-130;if(window.scrollY>top)window.scrollTo({top:top,behavior:'smooth'});}
+  var wrap = document.querySelector('.content-wrap');
+  if(wrap){ var top = wrap.getBoundingClientRect().top + window.scrollY - 130; if(window.scrollY > top) window.scrollTo({top:top, behavior:'smooth'}); }
 }
 function _updateCatBar(){
-  var af=_hasFilters();
-  for(var i=0;i<CATS.length;i++){
-    var cat=CATS[i],btn=document.querySelector('.cat-btn[data-cat="'+cat+'"]');if(!btn)continue;
-    var cnt=_forCat(cat).length,badge=btn.querySelector('.cat-count');
+  var af = _hasFilters();
+  for(var i=0; i<CATS.length; i++){
+    var cat = CATS[i], btn = document.querySelector('.cat-btn[data-cat="' + cat + '"]'); if(!btn) continue;
+    var cnt = _forCat(cat).length, badge = btn.querySelector('.cat-count');
     if(af){
-      if(!badge){badge=document.createElement('span');badge.className='cat-count';btn.appendChild(badge);}
-      badge.textContent=cnt;btn.classList.toggle('cat-empty',cnt===0);
-    } else {if(badge)badge.remove();btn.classList.remove('cat-empty');}
+      if(!badge){ badge = document.createElement('span'); badge.className = 'cat-count'; btn.appendChild(badge); }
+      badge.textContent = cnt; btn.classList.toggle('cat-empty', cnt === 0);
+    } else { if(badge) badge.remove(); btn.classList.remove('cat-empty'); }
   }
-  var ab=document.getElementById('catBtnAll');
-  if(ab){ab.style.display=af?'':'none';ab.classList.toggle('active',_state.category==='all');}
+  var ab = document.getElementById('catBtnAll');
+  if(ab){ ab.style.display = af ? '' : 'none'; ab.classList.toggle('active', _state.category === 'all'); }
 }
 
 /* ── Filter bar ──────────────────────────────────────── */
-function toggleFilter(group,value){
-  var arr=_state[group],idx=arr.indexOf(value);
-  if(idx>-1)arr.splice(idx,1);else arr.push(value);
+function toggleFilter(group, value){
+  var arr = _state[group], idx = arr.indexOf(value);
+  if(idx > -1) arr.splice(idx, 1); else arr.push(value);
   _renderAll();
 }
-function clearFilters(){_state.audience=[];_state.nature=[];_state.topic=[];_renderAll();}
+function clearFilters(){ _state.audience = []; _state.nature = []; _state.topic = []; _renderAll(); }
 function _updateFilterBar(){
-  var pills=document.querySelectorAll('.filter-pill');
-  for(var i=0;i<pills.length;i++){
-    var p=pills[i],arr=_state[p.dataset.group];
-    p.classList.toggle('active',arr&&arr.indexOf(p.dataset.val)>-1);
+  var pills = document.querySelectorAll('.filter-pill');
+  for(var i=0; i<pills.length; i++){
+    var p = pills[i], arr = _state[p.dataset.group];
+    p.classList.toggle('active', arr && arr.indexOf(p.dataset.val) > -1);
   }
-  var af=_hasFilters(),actions=document.getElementById('filterActions');
-  if(actions)actions.style.display=af?'':'none';
-  var note=document.getElementById('filterScopeNote');
+  var af = _hasFilters(), actions = document.getElementById('filterActions');
+  if(actions) actions.style.display = af ? '' : 'none';
+  var note = document.getElementById('filterScopeNote');
   if(note){
-    var CL={'books':'Books','patristic':'Patristic Texts','podcasts':'Podcasts & Video','websites':'Websites'};
-    if(af&&_state.category!=='all')note.textContent='Filtering within: '+(CL[_state.category]||_state.category);
-    else if(af)note.textContent='Searching all categories';
-    else note.textContent='';
+    var CL = {'books':'Books','patristic':'Patristic Texts','podcasts':'Podcasts &amp; Video','websites':'Websites'};
+    if(af && _state.category !== 'all') note.textContent = 'Filtering within: ' + (CL[_state.category] || _state.category);
+    else if(af) note.textContent = 'Searching all categories';
+    else note.textContent = '';
   }
 }
 
 /* ── Init ────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded',function(){
-  var cb=document.querySelectorAll('.cat-btn');
-  for(var i=0;i<cb.length;i++){cb[i].addEventListener('click',function(){setCategory(this.dataset.cat);});}
-  var fp=document.querySelectorAll('.filter-pill');
-  for(var i=0;i<fp.length;i++){fp[i].addEventListener('click',function(){toggleFilter(this.dataset.group,this.dataset.val);});}
+document.addEventListener('DOMContentLoaded', function(){
+  var cb = document.querySelectorAll('.cat-btn');
+  for(var i=0; i<cb.length; i++){ cb[i].addEventListener('click', function(){ setCategory(this.dataset.cat); }); }
+  var fp = document.querySelectorAll('.filter-pill');
+  for(var i=0; i<fp.length; i++){ fp[i].addEventListener('click', function(){ toggleFilter(this.dataset.group, this.dataset.val); }); }
   _renderAll();
 });
 </script>
 
-<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth-nav.js"></script>
 <script src="/analytics-tracker.js"></script>
+
 </body>
 </html>
