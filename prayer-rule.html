@@ -2,350 +2,989 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Building a Prayer Rule — Orthodox Companion</title>
-<link rel="icon" href="cross.png"/>
-<meta name="description" content="A guide to building an Orthodox prayer rule — for inquirers, catechumens, and the faithful. Morning and evening prayer, the Jesus Prayer, the prayer rope, and the rhythm of a Christ-centered life."/>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
-<style>
-/* OC-MASTER-CSS */
-:root {
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
-  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
-}
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --nav-bg:rgba(245,237,216,0.97);
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
-  color:var(--text);min-height:100vh;overflow-x:hidden;
-  font-size:1.05rem;line-height:1.85;}
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="How to enter the rhythm of Orthodox prayer and sustain it for a lifetime — for inquirers, catechumens, and the faithful."/>
+<meta property="og:title" content="Building a Prayer Rule — Orthodox Companion"/>
+<meta property="og:description" content="How to enter the rhythm of Orthodox prayer and sustain it for a lifetime — for inquirers, catechumens, and the faithful."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/prayer-rule.html"/>
 
-/* ── Nav ─────────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;
-  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
-  backdrop-filter:blur(12px);height:var(--nav-h);
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
+<style>
+/* OC-MASTER-CSS — Parchment v3 */
+/* ═══════════════════════════════════════════════════════
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
+═══════════════════════════════════════════════════════ */
+
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}
+
+/* ── Base ────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
+
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho monogram: hero ornament */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* ── Nav (navy header, gold hairline) ────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
   display:flex;align-items:center;padding:0 20px;
-  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
-  color:var(--text);letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;list-style:none;
-  height:var(--nav-h);margin-left:4px;}
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
+.nav-title{
+  font-family:'Cinzel',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--logotype);
+  letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
 .nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
   padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
   cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
-  transition:color 0.2s;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
-  min-width:220px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
   opacity:0;pointer-events:none;transform:translateY(-6px);
   transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
-  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
-  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
-  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
-  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
-  white-space:nowrap;}
-.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
-.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
-.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
-  min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+
+/* ── Hamburger & Drawer ──────────────────────────────── */
 .nav-hamburger{display:none;background:transparent;border:none;
-  color:var(--text-dim);cursor:pointer;padding:8px;
-  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
 .nav-hamburger span{display:block;width:22px;height:2px;
   background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:#0F2035;border-bottom:1px solid #1A3A5C;
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
   z-index:599;padding:8px 0 20px;
   transform:translateY(-8px);opacity:0;
   transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:#4A7AB8;
-  padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
-  text-transform:uppercase;color:#B8C8DC;text-decoration:none;
-  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
-  transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:#E8CB7A;padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
 
-/* ── Hero ────────────────────────────────────────────── */
-.page-hero{margin-top:var(--nav-h);background:var(--hero-bg);
-  border-bottom:2px solid var(--gold-dim);padding:40px 24px 32px;}
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--text-muted);margin-bottom:12px;}
-[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
-[data-theme="light"] .breadcrumb{color:#6B4C1A;}
-.breadcrumb a{color:inherit;text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
-  letter-spacing:0.08em;margin-bottom:8px;color:var(--hero-text);}
-.page-desc{font-size:0.95rem;line-height:1.75;max-width:640px;
-  font-style:italic;color:var(--hero-sub);}
+/* ── Page hero (parchment, with ornamental headband) ──── */
+.page-hero{
+  margin-top:var(--nav-h);
+  background:var(--hero-bg);
+  padding:54px 24px 36px;
+}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
 
-/* ── Guide Body ──────────────────────────────────────── */
-.guide-body{max-width:800px;margin:0 auto;padding:40px 24px 72px;}
-.back-link{display:inline-block;font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);
-  text-decoration:none;margin-bottom:36px;transition:color 0.2s;}
-.back-link:hover{color:var(--gold);}
-.guide-section{margin-bottom:52px;}
-.guide-h2{font-family:'Cinzel',serif;font-size:1.05rem;font-weight:600;
-  letter-spacing:0.06em;color:var(--gold);margin-bottom:16px;
-  padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.15);}
-.guide-p{color:var(--text-dim);line-height:1.95;margin-bottom:14px;font-size:1rem;}
-.guide-p:last-child{margin-bottom:0;}
-.guide-note{background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);
-  border-left:3px solid var(--gold-dim);border-radius:0 3px 3px 0;
-  padding:16px 20px;margin-top:20px;font-size:0.93rem;
-  color:var(--text-dim);font-style:italic;line-height:1.8;}
-.guide-note-label{font-family:'Cinzel',serif;font-size:0.6rem;
-  text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);
-  margin-bottom:6px;font-style:normal;}
+/* ── Content ─────────────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
 
-/* ── Steps ───────────────────────────────────────────── */
-.guide-step{display:flex;align-items:flex-start;gap:18px;
-  margin-bottom:18px;padding-bottom:18px;
-  border-bottom:1px solid rgba(42,90,156,0.1);}
-.guide-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.guide-step-num{font-family:'Cinzel',serif;font-size:0.85rem;
-  color:var(--gold);min-width:32px;margin-top:2px;
-  font-weight:600;flex-shrink:0;}
-.guide-step-body{flex:1;}
-.guide-step-title{font-family:'Cinzel',serif;font-size:0.82rem;
-  color:var(--text);margin-bottom:5px;letter-spacing:0.03em;}
-.guide-step-desc{font-size:0.95rem;color:var(--text-dim);line-height:1.8;}
+.about-section{margin-bottom:48px;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section p:last-child{margin-bottom:0;}
 
-/* ── Audience Cards ──────────────────────────────────── */
-.audience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px;}
-.audience-card{background:var(--bg-card);border:1px solid var(--border-dim);
-  border-top:2px solid var(--gold-dim);border-radius:4px;padding:20px 18px;}
-.audience-card-label{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);
-  margin-bottom:12px;}
-.audience-card-rule{font-size:0.9rem;color:var(--text-dim);line-height:1.8;}
-.audience-card-rule li{margin-bottom:6px;list-style:none;padding-left:12px;
-  position:relative;}
-.audience-card-rule li::before{content:'—';position:absolute;left:0;
-  color:var(--gold-dim);font-size:0.75rem;}
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
 
-/* ── Scripture Pull Quote ────────────────────────────── */
-.scripture-block{background:rgba(201,168,76,0.06);
-  border-left:3px solid var(--gold-dim);
-  border-radius:0 3px 3px 0;padding:18px 22px;margin:24px 0;}
-.scripture-text{font-size:1.08rem;font-style:italic;
-  color:var(--text);line-height:1.85;margin-bottom:8px;}
-.scripture-ref{font-family:'Cinzel',serif;font-size:0.58rem;
-  text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);opacity:0.85;}
+/* Drop cap (one per page, opening paragraph only) */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
 
-/* ── Jesus Prayer Highlight ──────────────────────────── */
-.jesus-prayer-box{background:rgba(201,168,76,0.05);
-  border:1px solid var(--gold-dim);border-radius:4px;
-  padding:22px 24px;margin:20px 0;text-align:center;}
-.jesus-prayer-text{font-size:1.15rem;font-style:italic;
-  color:var(--text);line-height:1.9;margin-bottom:10px;}
-.jesus-prayer-label{font-family:'Cinzel',serif;font-size:0.58rem;
-  text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);}
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
+}
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}
 
-/* ── Three Pillars ───────────────────────────────────── */
-.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);
-  gap:16px;margin-top:20px;}
-.pillar-card{background:var(--bg-card);border:1px solid var(--border-dim);
-  border-radius:4px;padding:18px 16px;text-align:center;}
-.pillar-title{font-family:'Cinzel',serif;font-size:0.7rem;
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--gold);margin-bottom:8px;}
-.pillar-desc{font-size:0.88rem;color:var(--text-dim);line-height:1.7;}
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
 
-/* ── Seasonal Steps ──────────────────────────────────── */
-.season-item{display:flex;align-items:flex-start;gap:16px;
-  margin-bottom:16px;padding-bottom:16px;
-  border-bottom:1px solid rgba(42,90,156,0.1);}
-.season-item:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
-.season-icon{font-size:1.1rem;min-width:28px;margin-top:2px;text-align:center;}
-.season-body{flex:1;}
-.season-title{font-family:'Cinzel',serif;font-size:0.78rem;
-  color:var(--text);margin-bottom:4px;letter-spacing:0.03em;}
-.season-desc{font-size:0.93rem;color:var(--text-dim);line-height:1.8;}
+/* Diamond bullet list */
+.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
 
-/* ── Closing Prayer ──────────────────────────────────── */
-.closing-prayer{background:var(--bg-card);border:1px solid var(--border-dim);
-  border-top:2px solid var(--gold-dim);border-radius:4px;
-  padding:28px 28px 24px;margin-top:32px;text-align:center;}
-.closing-prayer-label{font-family:'Cinzel',serif;font-size:0.6rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);
-  margin-bottom:16px;}
-.closing-prayer-text{font-size:1rem;font-style:italic;color:var(--text-dim);
-  line-height:2;max-width:560px;margin:0 auto;}
+/* Inline body links */
+.about-section a, .pull-quote a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.about-section a:hover, .pull-quote a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
 
-/* ── Guide Links ─────────────────────────────────────── */
-.guide-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
-.guide-link-btn{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);
-  border:1px solid var(--gold-dim);border-radius:2px;padding:8px 16px;
-  text-decoration:none;background:rgba(201,168,76,0.08);
-  white-space:nowrap;transition:all 0.2s;}
-.guide-link-btn:hover{background:rgba(201,168,76,0.2);}
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
+  text-align:center;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
+
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
+}
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
+}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
+}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
+
+/* ── Back to top (master pattern from glossary spec) ── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:860px){
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .nav-drawer{display:block;}
-  .nav-right .nav-signin-btn{display:none;}
-  .audience-grid{grid-template-columns:1fr;}
-  .pillars-grid{grid-template-columns:1fr;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
 }
 @media(max-width:600px){
-  .page-hero{padding:28px 16px 22px;}
-  .page-title{font-size:1.3rem;}
-  .guide-body{padding:28px 16px 48px;}
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
-  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
 }
 
-/* ── Back to Top ─────────────────────────────────── */
-.back-to-top{position:fixed;bottom:28px;right:24px;width:42px;height:42px;
-  background:rgba(201,168,76,0.12);border:1px solid var(--gold-dim);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  color:var(--gold);font-size:1.2rem;cursor:pointer;z-index:500;
-  opacity:0;pointer-events:none;transition:opacity 0.3s,background 0.2s;
-  text-decoration:none;line-height:1;}
-.back-to-top.visible{opacity:1;pointer-events:all;}
-.back-to-top:hover{background:rgba(201,168,76,0.28);}
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+
+/* ── Page-specific: prayer guide patterns (parchment recolor) ─── */
+.about-section .guide-p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section .guide-p:last-child{margin-bottom:0;}
+
+/* Pastoral note callout */
+.guide-note{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 22px;
+  margin:18px 0 6px;
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.75;
+}
+.guide-note-label{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  font-style:normal;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:8px;
+}
+
+/* Numbered/symboled step row */
+.guide-step{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.guide-step:last-of-type{border-bottom:none;}
+.guide-step-num{
+  flex-shrink:0;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;
+  font-weight:600;
+  color:var(--gold-light);
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  line-height:1;
+}
+.guide-step-body{flex:1;}
+.guide-step-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:600;
+  font-size:1.04rem;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.guide-step-desc{
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--text-dim);
+}
+
+/* Inline body links inside guide context (master rule covers .about-section / .pull-quote) */
+.guide-section a, .closing-callout a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.guide-section a:hover, .closing-callout a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* Scripture block — italic centered scripture verse + reference */
+.scripture-block{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 22px;
+  margin:18px 0 6px;
+  text-align:center;
+}
+.scripture-text{
+  font-style:italic;
+  font-size:1.06rem;
+  line-height:1.75;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.scripture-ref{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+}
+
+/* Audience grid — 3-column (inquirer / catechumen / faithful) */
+.audience-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+  margin:18px 0 6px;
+}
+.audience-card{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 20px;
+}
+.audience-card-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:12px;
+}
+.audience-card-rule{
+  list-style:none;
+  padding:0;margin:0;
+}
+.audience-card-rule li{
+  font-size:0.96rem;
+  line-height:1.65;
+  color:var(--text-dim);
+  padding:5px 0 5px 18px;
+  position:relative;
+  border-bottom:1px solid var(--rule-soft);
+}
+.audience-card-rule li:last-child{border-bottom:none;}
+.audience-card-rule li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:7px;
+  color:var(--gold-dim);
+  font-size:0.72rem;
+}
+
+/* Pillars grid — 3-column (prayer / fasting / almsgiving) */
+.pillars-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin:18px 0 6px;
+}
+.pillar-card{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 20px;
+}
+.pillar-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.94rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  margin-bottom:8px;
+}
+.pillar-desc{
+  font-size:0.98rem;
+  line-height:1.7;
+  color:var(--text-dim);
+}
+
+/* Season item — same shape as guide-step */
+.season-item{
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.season-item:last-of-type{border-bottom:none;}
+.season-icon{
+  flex-shrink:0;
+  width:36px;height:36px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.9rem;
+  color:var(--gold-light);
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+}
+.season-body{flex:1;}
+.season-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:600;
+  font-size:1.04rem;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.season-desc{
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--text-dim);
+}
+
+/* Jesus Prayer highlighted block */
+.jesus-prayer-box{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:2px solid var(--gold);
+  border-radius:2px;
+  padding:24px 28px;
+  margin:24px 0 18px;
+  text-align:center;
+}
+.jesus-prayer-text{
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  color:var(--text);
+  margin-bottom:10px;
+}
+.jesus-prayer-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  font-weight:600;
+}
+
+/* Closing-prayer block — the authored "A Prayer for Those Beginning" */
+.closing-prayer{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:2px solid var(--gold);
+  border-radius:2px;
+  padding:26px 30px;
+  margin:32px 0 36px;
+  text-align:center;
+}
+.closing-prayer-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  font-weight:600;
+  margin-bottom:14px;
+}
+.closing-prayer-text{
+  font-style:italic;
+  font-size:1.1rem;
+  line-height:1.85;
+  color:var(--text);
+  max-width:560px;
+  margin:0 auto;
+}
+
+/* Hand-off / Finding-a-Parish callout — navy contact-card register */
+.closing-callout{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:28px 30px;
+  margin:36px 0 0;
+  text-align:center;
+}
+.closing-callout-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--gold);
+  font-weight:600;
+  margin-bottom:12px;
+}
+.closing-callout p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+  margin-bottom:18px;
+  max-width:560px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.guide-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-top:8px;
+}
+.guide-link-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--gold-on-dark);
+  border:1px solid rgba(201,168,76,0.40);
+  border-radius:2px;
+  padding:8px 16px;
+  text-decoration:none;
+  background:transparent;
+  transition:color 0.15s,border-color 0.15s,background 0.15s;
+}
+.guide-link-btn:hover{
+  color:var(--gold);
+  border-color:var(--gold);
+  background:rgba(201,168,76,0.06);
+}
+
+/* The closing-callout is navy; guide-links inside body sections (light parchment) get parchment buttons */
+.about-section .guide-links .guide-link-btn{
+  color:var(--body-link);
+  border-color:var(--gold-dim);
+}
+.about-section .guide-links .guide-link-btn:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-light);
+  background:var(--surface);
+}
+
+/* Back-link above the content */
+.back-link{
+  display:inline-block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--text-muted);
+  text-decoration:none;
+  border:none;
+  margin-bottom:24px;
+  transition:color 0.15s;
+}
+.back-link:hover{color:var(--gold-light);}
 </style>
 </head>
 <body>
+
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#65038;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
     <li class="nav-item">
-      <span class="nav-link has-drop">New Here?</span>
+      <span class="nav-link active has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
-      <span class="nav-link active has-drop">Worship &amp; Life</span>
+      <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
-  <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <div class="nav-account-wrap" id="navAccountWrap">
-      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
-      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
-        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
-          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
-        </button>
-        <div class="nav-user-dropdown" id="navUserDropdown">
-          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
-          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
-          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="nav-right"></div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -359,6 +998,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
@@ -376,433 +1016,376 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="fasting.html">Fasting Guide</a>
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
-  </div>
 </div>
 
 <div class="page-hero">
   <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="prayer.html">Prayer Corner</a><span>&#8250;</span>Building a Prayer Rule</div>
     <h1 class="page-title">Building a Prayer Rule</h1>
-    <p class="page-desc">A guide for inquirers, catechumens, and the faithful — how to enter the rhythm of Orthodox prayer and sustain it for a lifetime.</p>
+    <p class="page-desc">A guide for inquirers, catechumens, and the faithful &mdash; how to enter the rhythm of Orthodox prayer and sustain it for a lifetime.</p>
   </div>
 </div>
 
-<div class="guide-body">
-  <a href="prayer.html" class="back-link">&#8592; Back to Prayer Corner</a>
+<div class="content">
+  <div class="content-inner">
 
-  <!-- 1. What Is a Prayer Rule? -->
-  <div class="guide-section">
-    <h2 class="guide-h2">What Is a Prayer Rule?</h2>
-    <p class="guide-p">A prayer rule is not a religious task to complete. It is a structure of love — a daily rhythm of turning toward God that the Church gives us not as a burden but as a gift. Prayer is the soul's breathing: without it, the soul suffocates slowly, unaware of its own condition. The rule is the form that keeps the breath steady.</p>
-    <p class="guide-p">Christ Himself prayed — rising before dawn, withdrawing to the wilderness, spending whole nights in prayer before the great decisions of His earthly ministry. He gave us the Lord's Prayer not as a formula to recite once, but as a pattern: daily bread, daily forgiveness, daily deliverance. A prayer rule is the lived response to that pattern, made consistent by structure.</p>
-    <p class="guide-p">The Orthodox Church gives us inherited prayers — the morning and evening rules, the psalms, the Jesus Prayer, the liturgical hymns — not because our own words are unworthy, but because the prayers of the saints carry theological depth and a form of prayer we could not construct alone. We enter these prayers as into a river already flowing. The current is larger than us, and it carries us toward God.</p>
-    <p class="guide-p">This is possible because prayer is not a human effort directed upward but a divine gift given downward. St. Paul writes: <em>"We do not know how to pray as we ought, but the Spirit Himself intercedes for us with groanings too deep for words"</em> (Romans 8:26). Orthodox prayer is Trinitarian in its very structure — offered to the Father, through the Son, in the Holy Spirit. The prayer rule is the form in which we make ourselves available to that divine action. We bring the words and the faithfulness; the Holy Spirit brings the prayer to God.</p>
-    <div class="scripture-block">
-      <div class="scripture-text">"Pray without ceasing."</div>
-      <div class="scripture-ref">1 Thessalonians 5:17 — the calling of every Christian in every generation</div>
+<a href="prayer.html" class="back-link">&#8592; Back to Prayer Corner</a>
+
+    <!-- 1. What Is a Prayer Rule? -->
+    <section class="about-section">
+      <h2 class="section-heading" id="what-is-a-prayer-rule">What Is a Prayer Rule?</h2>
+      <p class="lede">A prayer rule is not a religious task to complete. It is a structure of love &mdash; a daily rhythm of turning toward God that the Church gives us not as a burden but as a gift. Prayer is the soul's breathing: without it, the soul suffocates slowly, unaware of its own condition. The rule is the form that keeps the breath steady.</p>
+      <p>Christ Himself prayed &mdash; rising before dawn, withdrawing to the wilderness, spending whole nights in prayer before the great decisions of His earthly ministry. He gave us the Lord's Prayer not as a formula to recite once, but as a pattern: daily bread, daily forgiveness, daily deliverance. A prayer rule is the lived response to that pattern, made consistent by structure.</p>
+      <p>The Orthodox Church gives us inherited prayers &mdash; the morning and evening rules, the psalms, the Jesus Prayer, the liturgical hymns &mdash; not because our own words are unworthy, but because the prayers of the saints carry theological depth and a form of prayer we could not construct alone. We enter these prayers as into a river already flowing. The current is larger than us, and it carries us toward God.</p>
+      <p>This is possible because prayer is not a human effort directed upward but a divine gift given downward. St. Paul writes: <em>"We do not know how to pray as we ought, but the Spirit Himself intercedes for us with groanings too deep for words"</em> (Romans 8:26). Orthodox prayer is Trinitarian in its very structure &mdash; offered to the Father, through the Son, in the Holy Spirit. The prayer rule is the form in which we make ourselves available to that divine action. We bring the words and the faithfulness; the Holy Spirit brings the prayer to God.</p>
+      <div class="scripture-block">
+        <div class="scripture-text">"Pray without ceasing."</div>
+        <div class="scripture-ref">1 Thessalonians 5:17 &mdash; the calling of every Christian in every generation</div>
+      </div>
+      <div class="scripture-block">
+        <div class="scripture-text">"Abide in me, and I in you. As the branch cannot bear fruit by itself, unless it abides in the vine, neither can you, unless you abide in me. I am the vine; you are the branches. Whoever abides in me and I in him, he it is that bears much fruit, for apart from me you can do nothing."</div>
+        <div class="scripture-ref">John 15:4&ndash;5 &mdash; the Christological root of all prayer</div>
+      </div>
+      <div class="scripture-block">
+        <div class="scripture-text">Prayer is not a technique, but a relationship given and sustained by the grace of God in the life of the Church.</div>
+        <div class="scripture-ref">The foundation of this page &mdash; return to it as you read</div>
+      </div>
+    </section>
+
+    <figure class="pull-quote">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">Prayer is the light of the soul, true knowledge of God, a mediating agent between God and man. Separate yourself from prayer, and you have separated yourself from God.</p>
+      <figcaption class="pull-quote-attr">St. John Chrysostom</figcaption>
+    </figure>
+    <div class="fleuron" aria-hidden="true">&#10086;</div>
+
+    <!-- 2. Why a Rule Matters -->
+    <section class="about-section">
+      <h2 class="section-heading" id="why-a-rule-matters">Why a Rule Matters</h2>
+      <p>Without a rule, prayer tends to disappear. Not all at once &mdash; gradually, crowded out by the demands of ordinary life, until the soul that intended to pray "when it felt ready" finds that readiness never arrives. The great teachers of prayer are unanimous on this point: structure protects us from ourselves.</p>
+      <p>A rule also protects us from a subtler danger &mdash; self-deception. Without a definite structure, it is easy to believe we have prayed more than we have. We mistake a moment of religious feeling for actual prayer, let our attention drift while reciting words, and conclude that the obligation is met. The rule does not allow this. It asks plainly: did you stand before God this morning? Did you end the day in His presence?</p>
+      <p>At the same time, the rule is a servant, never a master. The goal is not the completion of prayers but the meeting of the soul with God. A small rule kept faithfully and with full attention is worth infinitely more than a large rule abandoned or hurried through with a distracted mind.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">St. Theophan the Recluse</span>
+        "Without established prayers, we would not know how to pray at all. Without them, we would be left entirely without prayer. The rule exists to serve prayer, not prayer to serve the rule."
+      </div>
+      <div class="guide-note">
+        <span class="guide-note-label">A Word of Encouragement</span>
+        Do not be discouraged if you miss a day or a season. The prayer rule is not a ledger of spiritual debt. Every morning is a new beginning. The prodigal son did not wait until he had gathered enough virtue to return &mdash; he rose and went to his father. Rise, and pray.
+      </div>
+    </section>
+
+    <!-- 3. Prayer and the Life of the Church -->
+    <section class="about-section">
+      <h2 class="section-heading" id="prayer-and-the-life-of-the-church">Prayer and the Life of the Church</h2>
+      <p>Private prayer does not exist in isolation. In the Orthodox understanding, the prayer you offer at home is an extension of the prayer the Church has always offered &mdash; and it flows from and returns to the common life of worship. Christ warns us plainly: "Apart from me you can do nothing" (John 15:5). A prayer rule built apart from the Church's sacramental life is incomplete precisely in this sense &mdash; a branch separated from the vine it cannot bear fruit, however sincerely it reaches toward the light.</p>
+      <p>The center of Orthodox life is the <strong>Divine Liturgy</strong> &mdash; the corporate act of worship in which heaven and earth are united, and in which the faithful receive the Body and Blood of Christ. Every prayer said at home is oriented toward this: morning prayer prepares you to live the day in the light of the Liturgy; evening prayer closes the day in the same light. The prayer corner is not a substitute for the Church &mdash; it is the Church's presence carried into the home.</p>
+      <p><strong>Holy Communion</strong> is the summit and goal of the Christian prayer life. The pre-communion canons, the fasting, the evening prayers of preparation, the examination of conscience &mdash; all of these converge on the moment of receiving the Holy Gifts. Your prayer rule should be consciously oriented toward the frequency with which you receive Communion, and should deepen in intensity as that day approaches.</p>
+      <p><strong>Confession</strong> is the condition for the health of prayer. A soul burdened by unconfessed sin prays from behind a wall. Confession does not make us worthy &mdash; nothing makes us worthy &mdash; but it removes the obstruction, reorients the soul toward God, and restores the relationship on which all prayer depends. The practice of frequent Confession, established in consultation with your priest, is inseparable from a living prayer rule.</p>
+      <p>The <strong>liturgical cycle</strong> &mdash; the feasts and fasts, the seasons of repentance and rejoicing &mdash; is the larger rhythm into which the daily rule is set. Great Lent deepens the rule; Pascha transforms it; the Great Feasts elevate it. A prayer rule that does not breathe with the liturgical year is a private exercise. One that does is participation in the living prayer of the whole Church.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">St. Ignatius Brianchaninov</span>
+        "Participation in the Divine Services of the Church is the greatest support for private prayer. The one who regularly attends the Divine Services has his soul constantly renewed and enlightened by the grace that operates through them."
+      </div>
+    </section>
+
+    <!-- 4. The Two Anchors -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-two-anchors">The Two Anchors &mdash; Morning and Evening</h2>
+      <p>The foundation of the Orthodox prayer rule is morning and evening prayer. These two moments frame the entire day &mdash; the day is offered to God before it begins, and returned to God before it ends. Without these two anchors, the day drifts.</p>
+      <p><strong>Morning prayer</strong> is an offering. You rise from sleep &mdash; which the Fathers called a nightly image of death and resurrection &mdash; and the first act of the day is to stand before God. You bring nothing yet: no accomplishments, no accumulated burdens. You bring only the day itself, held open, and offer it to Christ. The morning prayers of the Church &mdash; the Trisagion, Psalm 50, the Creed, the Lord's Prayer, the prayers of the saints &mdash; are the form this offering takes.</p>
+      <p><strong>Evening prayer</strong> is an examination and an entrustment. The day is reviewed before God &mdash; not with anxiety, but with honesty: what was given, what was wasted, what was done poorly. Sins are acknowledged and released into the mercy of Christ. Then the body in sleep and the soul at rest are entrusted to God's keeping. You did not preserve yourself through the day by your own strength. He did. And He will keep you through the night.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">On Length</span>
+        The full morning and evening rules of the prayer books take 15&ndash;25 minutes each when prayed with full attention. Begin with what you can sustain with complete sincerity &mdash; even five minutes of sincere prayer is far more valuable than twenty minutes of mechanical recitation. Speak with your priest about what is right for your present circumstances.
+      </div>
+      <div class="guide-links">
+        <a href="prayer.html?cat=morning" class="guide-link-btn">Morning Prayers &#8250;</a>
+        <a href="prayer.html?cat=evening" class="guide-link-btn">Evening Prayers &#8250;</a>
+      </div>
+    </section>
+
+    <!-- 5. Where to Begin -->
+    <section class="about-section">
+      <h2 class="section-heading" id="where-to-begin">Where to Begin</h2>
+      <p>Every person comes to prayer from a different place. The Church does not demand the same rule of everyone &mdash; it asks for sincerity, consistency, and growth. Here is a starting point for each stage of the journey.</p>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="audience-card-label">For the Inquirer</div>
+          <ul class="audience-card-rule">
+            <li>Begin each day with the Sign of the Cross</li>
+            <li>Pray the Lord's Prayer once in the morning</li>
+            <li>Read Psalm 22 &mdash; "The Lord is my shepherd"</li>
+            <li>End the day with a brief honest word to God</li>
+            <li>Make the Sign of the Cross before meals and before sleep</li>
+            <li>Attend the Divine Liturgy and observe how the Church prays</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-card-label">For the Catechumen</div>
+          <ul class="audience-card-rule">
+            <li>Morning: Trisagion, Psalm 50 [51], Lord's Prayer, one morning prayer</li>
+            <li>Evening: Trisagion, one evening prayer, examination of conscience</li>
+            <li>Begin the Jesus Prayer on a prayer rope &mdash; 33 or 50 repetitions</li>
+            <li>Read one psalm each day from the Psalter</li>
+            <li>Attend all services during your catechumenate</li>
+            <li>Establish the rule with your priest before Baptism</li>
+          </ul>
+        </div>
+        <div class="audience-card">
+          <div class="audience-card-label">For the Faithful</div>
+          <ul class="audience-card-rule">
+            <li>Full morning and evening rule from the prayer book</li>
+            <li>Daily Psalm 50 and additional psalms</li>
+            <li>Jesus Prayer throughout the day on the prayer rope</li>
+            <li>Pre-Communion canons before receiving Holy Communion</li>
+            <li>Regular Confession under a priest's guidance</li>
+            <li>Review and adjust the rule with your spiritual father</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Building Your Rule -->
+    <section class="about-section">
+      <h2 class="section-heading" id="building-your-rule">Building Your Rule &mdash; Step by Step</h2>
+      <p>A prayer rule is not assembled all at once. It grows gradually &mdash; one prayer added, then another, as the soul becomes capable of bearing more. This is the consistent teaching of the Fathers: begin small, remain consistent, grow under guidance.</p>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-body"><div class="guide-step-title">Begin with one prayer, said with full attention</div><div class="guide-step-desc">Do not begin with ambition. Begin with one prayer &mdash; perhaps the Lord's Prayer, or a single morning prayer &mdash; and say it from beginning to end with your full mind. When you can do that consistently, add another. A small rule kept faithfully is worth more than a large rule abandoned.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-body"><div class="guide-step-title">Establish a time and a place</div><div class="guide-step-desc">Prayer without a designated time tends to be pushed out by everything else. Choose a time in the morning and a time in the evening and protect them. If you have a prayer corner, use it &mdash; the dedicated physical space becomes a powerful cue for the soul. Stand if you are able. The body participates in prayer.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-body"><div class="guide-step-title">Read the prayers before you pray them</div><div class="guide-step-desc">Before adding a new prayer to your rule, read it slowly outside of prayer time. Think through its words. What is it asking? What vision of God does it carry? When you then pray it in your rule, you will not be encountering it for the first time &mdash; you will be returning to familiar ground with understanding.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-body"><div class="guide-step-title">Memorize the prayers over time</div><div class="guide-step-desc">St. Theophan urged the faithful to memorize their prayers so that they are never without them &mdash; no book to find, no page to distract. Begin with the Lord's Prayer and Psalm 50 [Psalm 51 in Western bibles], then add others as they take root. (Orthodox psalm numbering throughout this page follows the Septuagint, the Greek translation of Scripture used by the Church; Western bibles number the psalms one higher from Psalm 10 onward.) A memorized prayer is always with you &mdash; in the car, in a waiting room, lying awake at night.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-body"><div class="guide-step-title">Grow gradually, under the guidance of your priest</div><div class="guide-step-desc">As your prayer life deepens, the rule will grow. Add one element at a time, always with the blessing of your priest or spiritual father. The rule that is established under guidance has roots. The rule assembled by oneself, on one's own initiative, is built on uncertain ground.</div></div></div>
+      <div class="guide-note">
+        <span class="guide-note-label">What to Expect</span>
+        Every person who prays will encounter two unavoidable realities: <strong>distraction</strong> and <strong>dryness</strong>. Distraction &mdash; the mind wandering during prayer, pulled toward plans, anxieties, and idle thoughts &mdash; is not a sign of failure. The Greek ascetical tradition calls these wandering thoughts <em>logismoi</em>. They are not a disease of the soul but the ordinary condition of the fallen mind, one that prayer gradually heals. The act of noticing the distraction and gently returning the mind to God is itself an act of prayer &mdash; the Fathers say this unanimously. Do not be ashamed of it; simply return. Dryness &mdash; the absence of feeling, warmth, or consolation in prayer &mdash; is equally normal, and equally not a sign of failure. The psalmist cried: "Out of the depths I cry to Thee, O Lord" (Psalm 129 [130 in Western bibles]). Prayer offered in dryness, without any sense of God's presence, without consolation or reward, is often the most pure prayer of all &mdash; because it is offered for God's sake alone, not for the feeling it produces. Persevere through both. They are not obstacles to prayer; they are the ground in which the praying soul is formed.
+      </div>
+    </section>
+
+    <!-- 7. Carrying Christ Through the Day -->
+    <section class="about-section">
+      <h2 class="section-heading" id="carrying-christ">Carrying Christ Through the Day &mdash; The Jesus Prayer and the Sign of the Cross</h2>
+      <p>The morning and evening rule frames the day, but the calling of every Christian is deeper than two moments of prayer. St. Paul writes: "Pray without ceasing" (1 Thessalonians 5:17). The Fathers did not understand this as a command to be in a prayer corner all day. They understood it as the cultivation of a continuous interior orientation toward Christ &mdash; an attention that runs beneath all the ordinary activities of life.</p>
+      <p>The Orthodox tradition gives us two instruments for this: the <strong>Jesus Prayer</strong> and the <strong>Sign of the Cross</strong>. Neither requires stopping what you are doing. Neither requires a set time or a fixed frequency. They require only a willing heart and the habit of returning to God's presence throughout the day.</p>
+      <div class="jesus-prayer-box">
+        <div class="jesus-prayer-text">"Lord Jesus Christ, Son of God, have mercy on me, a sinner."</div>
+        <div class="jesus-prayer-label">The Jesus Prayer</div>
+      </div>
+      <p>The Jesus Prayer can be prayed in a single breath &mdash; while walking, working, waiting, lying awake at night. It is not a technique for achieving inner calm or spiritual experience. It is an act of faith and of repentance: you are naming Christ, confessing His identity, and bringing the truth of your own need before His mercy. This is the proper disposition for praying it &mdash; not seeking any particular feeling or state, but simply calling upon His name.</p>
+      <p>The tradition speaks of the Jesus Prayer "descending from the mind into the heart" &mdash; meaning that through the grace of God and the patient practice of repentance, the prayer gradually becomes more than words on the lips or thoughts in the mind, and begins to arise from the deeper center of the person. The human effort of faithfully praying is real and necessary &mdash; it is our part of the cooperation with grace. But the fruit of that effort, the transformation of the heart's attention toward God, belongs entirely to God to give. It cannot be manufactured by any method, forced by any intensity of effort, or sought as a spiritual experience to be obtained. It is given &mdash; by grace, to the humble and the persistent, in God's time and not our own. St. Isaac the Syrian describes this poverty of spirit as the very ground in which God works: "My soul thirsts for Thee like a parched land" (Psalm 62 [63 in Western bibles]) &mdash; the thirst is ours to bring; the rain is His to send.</p>
+      <p>Begin simply and without ambition: pray the Jesus Prayer as an act of turning toward Christ. Pray it when a moment of quiet opens in the day. Pray it when temptation or anxiety arises. Do not measure your progress or watch for results. Trust only in God's mercy and continue.</p>
+      <p>The <strong>Sign of the Cross</strong> is its natural companion. Made slowly and with awareness &mdash; forehead, breast, right shoulder, left shoulder &mdash; it is a complete act of faith: the Trinity confessed, the Cross of Christ traced upon the self. It can be made entering a car, passing a church, beginning a task, waking in the night. Each time it is made with attention, it is a complete act of prayer &mdash; the whole person, body and soul, turned toward God.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">St. Isaac the Syrian</span>
+        "Blessed is the man who knows his own weakness, because this knowledge becomes to him the foundation, root, and beginning of all goodness."
+      </div>
+      <div class="guide-links">
+        <a href="prayer.html?cat=jesus-prayer" class="guide-link-btn">The Jesus Prayer &#8250;</a>
+      </div>
+    </section>
+
+    <!-- 8. Prayer Throughout the Day -->
+    <section class="about-section">
+      <h2 class="section-heading" id="prayer-throughout-the-day">Prayer Throughout the Day</h2>
+      <p>Beyond the Jesus Prayer and the Sign of the Cross, the tradition gives us several other ways to keep the thread of prayer alive between the morning and evening anchors.</p>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Short prayers at the moment of need</div><div class="guide-step-desc">Before beginning work: "O Lord, bless this work." Before a difficult conversation: "Lord, have mercy." After a moment of anger: "O God, cleanse me a sinner." These short prayers &mdash; which the Fathers called "arrow prayers" &mdash; can be prayed in any moment and from any condition of the soul. They do not require preparation. They require only honesty.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">The Psalms as companions</div><div class="guide-step-desc">St. Theophan encouraged the faithful to memorize psalms and recite them while working or traveling &mdash; not as a duty but as a way of keeping the mind inhabited by holy words. Psalm 50 [51], Psalm 90 [91], and Psalm 22 [23] are natural starting points. A psalm prayed while the hands are at work is among the most ancient forms of Christian prayer, going back to the desert Fathers of Egypt.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Prayer before and after meals</div><div class="guide-step-desc">The blessing before meals and the thanksgiving after are not formalities &mdash; they are a daily reminder that everything we receive comes from the hand of God. In an Orthodox home, no meal begins without prayer. The table becomes an altar; the act of eating, an echo of the Eucharist; and gratitude, a form of worship.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Remembrance of God in all things</div><div class="guide-step-desc">The deepest form of prayer throughout the day is not a specific act but what the Fathers called the remembrance of God &mdash; a quiet, steady awareness that He is present, that nothing is outside His knowledge, that all things are held in His hands. This awareness grows slowly, over years, through the faithful practice of the rule. It cannot be manufactured. But it can be invited, and it grows in the soil of humility and consistency.</div></div></div>
+    </section>
+
+    <!-- 9. The Prayer Rope -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-prayer-rope">The Prayer Rope</h2>
+      <p>The prayer rope &mdash; called the <em>komboskini</em> in Greek or <em>chotki</em> in Russian &mdash; is a knotted cord of wool used to count repetitions of the Jesus Prayer. It is not a decoration or a devotional object to be displayed. It is a practical instrument of humble prayer.</p>
+      <p>The Fathers commended the prayer rope for a simple reason: without it, the mind deceives itself. When we pray without counting, a few minutes can feel like many &mdash; and we stop too soon, convinced we have done enough. The prayer rope is a correction to this self-deception. Each knot counted is one prayer actually prayed, one turning toward God actually made.</p>
+      <p>To use it: hold it in the left hand. Move one knot between the fingers with each repetition of the Jesus Prayer. Begin with a number you can sustain with full attention &mdash; 33 (for the years of Christ's earthly life), 50, or 100. Keep it in your pocket or on your wrist so it is always within reach. When temptation, anxiety, or distraction comes, the prayer rope is at hand.</p>
+      <p>Remember that what matters is not the number completed but the quality of attention and the spirit of repentance brought to each prayer. The count exists to serve humility &mdash; to keep you honest about how much you have actually prayed &mdash; not to measure achievement or mark progress. A single Jesus Prayer said with full awareness of one's need before God is worth more than a hundred said while the mind wanders elsewhere.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">Note</span>
+        The prayer rope is not only for monastics. St. Theophan the Recluse noted explicitly that he first learned of praying with the prayer rope from a lay person, not a monk. Many Orthodox Christians &mdash; teachers, parents, doctors, laborers &mdash; carry one through their daily lives. Ask your priest or a trusted Orthodox Christian to help you begin.
+      </div>
+    </section>
+
+    <!-- 10. Common Mistakes in Prayer -->
+    <section class="about-section">
+      <h2 class="section-heading" id="common-mistakes">Common Mistakes in Prayer</h2>
+      <p>The Orthodox ascetical tradition is remarkably candid about the ways in which prayer can go wrong, even for those who are sincere. These are not reasons to be discouraged &mdash; they are warnings given precisely so that the beginner can avoid them.</p>
+      <div class="guide-step"><div class="guide-step-num">1</div><div class="guide-step-body"><div class="guide-step-title">Overloading the rule too quickly</div><div class="guide-step-desc">The enthusiasm of a new beginning often leads to an ambitious rule that collapses within weeks. It is far better to begin with three prayers said with complete attention than thirty prayers said in haste. Build the rule slowly. What you can sustain for a month is more valuable than what you can manage for a week.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div class="guide-step-body"><div class="guide-step-title">Treating prayer as a checklist</div><div class="guide-step-desc">The purpose of the prayer rule is not the completion of the rule. It is the meeting of the soul with God. When prayer is approached as a task to be finished &mdash; words to be gotten through so that the obligation is discharged &mdash; it has already lost its character. The rule is a door, not a destination. What matters is passing through it with awareness.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div class="guide-step-body"><div class="guide-step-title">Seeking spiritual feelings or experiences</div><div class="guide-step-desc">One of the most dangerous errors in prayer is praying in order to feel something &mdash; warmth, consolation, peace, closeness to God. These may be given as gifts of God's grace, and they should not be refused when they come; but to seek them, to make them the goal of prayer, is to place oneself at the center rather than God. Pray without seeking any result except the offering of yourself to God. Trust Him with the rest.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div class="guide-step-body"><div class="guide-step-title">Neglecting consistency in favor of intensity</div><div class="guide-step-desc">A long, fervent prayer said once a week is less valuable than a brief, sincere prayer said every day. The Fathers consistently emphasize consistency over intensity. The soul is formed by habit, and the habit of daily prayer &mdash; even when it is dry, distracted, and apparently fruitless &mdash; is building something that a single remarkable prayer experience cannot.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div class="guide-step-body"><div class="guide-step-title">Practicing without guidance</div><div class="guide-step-desc">No aspect of the spiritual life is more in need of a guide than prayer. The same practices that are beneficial under guidance can become harmful when pursued alone and without accountability. This is not a reason to delay beginning &mdash; it is a reason to seek a confessor and establish the rule together. Prayer practiced in obedience is prayer practiced safely.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">6</div><div class="guide-step-body"><div class="guide-step-title">Measuring progress</div><div class="guide-step-desc">The moment we begin to measure our spiritual progress, we have placed ourselves in a position of judgment over our own souls &mdash; a position that belongs to God alone. St. Isaac the Syrian taught that the knowledge of one's own weakness is the foundation of all genuine spiritual growth. A soul that considers itself to be advancing is in greater danger than one that sees only its poverty before God.</div></div></div>
+    </section>
+
+    <!-- 11. Spiritual Guidance and Safety -->
+    <section class="about-section">
+      <h2 class="section-heading" id="spiritual-guidance">Spiritual Guidance and Safety</h2>
+      <p>Orthodox Christianity is not a solitary spiritual path. The Christian life is lived in the Church, under the guidance of a priest or spiritual father, within the rhythm of the sacraments. This is especially true of the prayer life, where the dangers of self-deception are most acute.</p>
+      <p>The Orthodox ascetical tradition warns extensively about <strong>prelest</strong> &mdash; a Greek word meaning spiritual delusion or deception. Prelest refers to the condition in which a person believes they have attained a spiritual state or experience that they have not, or in which they mistake the workings of their own fallen imagination &mdash; or the influence of the evil one &mdash; for the grace of God. It is not an exotic danger for advanced monks only. It is a constant possibility for anyone who pursues the spiritual life without humility and without guidance.</p>
+      <p>The signs of prelest include: a sense of one's own spiritual advancement; contempt for others who do not share one's piety; attachment to spiritual experiences, feelings, or visions; an unwillingness to submit one's prayer life to a confessor; and a certainty about one's own spiritual state that admits no doubt. None of these signs are obvious to the person who has fallen into prelest &mdash; which is precisely what makes it dangerous.</p>
+      <p>The protection against prelest is not complicated. It is the ordinary life of the Church: regular Confession, obedience to a confessor, humility before the judgment of others, and a persistent distrust of one's own spiritual assessments. The person who approaches prayer with the attitude of a beggar before God &mdash; asking for mercy, not claiming merit &mdash; is the person least likely to fall into delusion.</p>
+      <div class="guide-note">
+        <span class="guide-note-label">St. Ignatius Brianchaninov</span>
+        "Prelest is the damage done to human nature through the acceptance of illusion as reality. All of us are in a degree of prelest. The knowledge of this is the greatest protection against it."
+      </div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Never alter your prayer rule without your priest's blessing</div><div class="guide-step-desc">This includes increasing it, decreasing it, or adding new practices. A rule established in obedience is a rule under God's protection. A rule assembled on one's own authority is subject to one's own errors of judgment &mdash; which are considerable, even in the sincere.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Treat all spiritual experiences with sobriety</div><div class="guide-step-desc">If during prayer you experience unusual warmth, visions, voices, feelings of divine presence, or extraordinary peace &mdash; do not cling to these or seek their repetition. Report them to your confessor. The standard Orthodox teaching, from the Fathers of the Philokalia to the modern elders, is unanimous: do not trust spiritual experiences, however beautiful they seem. Trust only God's mercy and the guidance of the Church.</div></div></div>
+      <div class="guide-step"><div class="guide-step-num">&#9632;</div><div class="guide-step-body"><div class="guide-step-title">Pray with the disposition of the publican, not the Pharisee</div><div class="guide-step-desc">The Pharisee prayed and listed his accomplishments before God. The publican stood at a distance and would not even lift his eyes to heaven, but beat his breast and said: "God, be merciful to me, a sinner" (Luke 18:13). Christ declared the publican &mdash; not the Pharisee &mdash; justified. The entire prayer rule, however long or short, is only rightly prayed in that same spirit: not the spirit of spiritual achievement or religious identity, but of poverty before God's mercy.</div></div></div>
+    </section>
+
+    <!-- 12. Fasting, Almsgiving, and Prayer -->
+    <section class="about-section">
+      <h2 class="section-heading" id="fasting-almsgiving-and-prayer">Fasting, Almsgiving, and Prayer</h2>
+      <p>The Lord Himself joined these three: "When you fast... when you pray... when you give alms" (Matthew 6:2&ndash;17). They are not three separate religious activities. They are one movement of the soul toward God &mdash; three expressions of the same turning away from self and toward God and neighbor. Each strengthens the others; and each, practiced without the others, becomes incomplete.</p>
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-title">Prayer</div>
+          <div class="pillar-desc">The soul turned toward God in praise, petition, repentance, and silence. Prayer is the breath of the Christian life &mdash; its absence is the slow suffocation of the soul, often unfelt until the damage is severe.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-title">Fasting</div>
+          <div class="pillar-desc">The body brought under the governance of the spirit. Fasting weakens the grip of the passions and sharpens the soul's attention. Without fasting, prayer is heavier; with it, the soul rises more freely toward God.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-title">Almsgiving</div>
+          <div class="pillar-desc">Love of neighbor made concrete. Almsgiving is the outward expression of the mercy we ask for in prayer &mdash; the mercy of God flowing through us toward those in need. It breaks the illusion that we are the center of our own lives.</div>
+        </div>
+      </div>
+      <p style="margin-top:20px;">A prayer rule established in isolation &mdash; without the discipline of fasting and the practice of generosity &mdash; is incomplete. Speak with your priest about the Orthodox fasting discipline and how these three practices work together as a unified way of life.</p>
+      <div class="guide-links">
+        <a href="fasting.html" class="guide-link-btn">Fasting Guide &#8250;</a>
+      </div>
+    </section>
+
+    <!-- 13. Seasonal Adjustments -->
+    <section class="about-section">
+      <h2 class="section-heading" id="seasonal-adjustments">Seasonal Adjustments &mdash; The Rule Breathes with the Year</h2>
+      <p>The Orthodox prayer rule is not static. It breathes with the liturgical year &mdash; deepening in the great fasting seasons, expanding in joy at the great feasts, and shifting in character as the Church moves through the mysteries of Christ's life, death, and resurrection. The rule that does not change with the year is a rule cut off from the Church's living rhythm.</p>
+      <div class="season-item">
+        <div class="season-icon">&#9632;</div>
+        <div class="season-body">
+          <div class="season-title">Great Lent</div>
+          <div class="season-desc">Add the Prayer of St. Ephrem the Syrian with prostrations to the daily rule. The Jesus Prayer becomes more central. Attend the weekday services &mdash; the Presanctified Liturgy, the Great Canon of St. Andrew of Crete in the first week, the Akathist on the Fifth Saturday. The rule intensifies not as a burden but as the Church's preparation of the soul for Pascha.</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-icon">&#9830;</div>
+        <div class="season-body">
+          <div class="season-title">Holy Week</div>
+          <div class="season-desc">Attend the services of Holy Week at your parish if at all possible. They cannot be replaced by home prayer &mdash; they are the heart of the Orthodox year and the fullest expression of the prayer rule itself. The Bridegroom Matins, the Holy Friday Lamentations, and the Paschal Midnight Service are not supplementary to the Christian life. They are its center.</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-icon">&#9733;</div>
+        <div class="season-body">
+          <div class="season-title">Pascha and Bright Week</div>
+          <div class="season-desc">The entire morning and evening rule is replaced by the Paschal Hours throughout Bright Week. "Christ is Risen" takes the place of all penitential prayers. Prostrations are forbidden &mdash; the Church stands in joy before the Risen Christ. The Jesus Prayer continues, but in the key of Paschal gladness rather than compunction.</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-icon">&#9675;</div>
+        <div class="season-body">
+          <div class="season-title">Great Feasts</div>
+          <div class="season-desc">On the Twelve Great Feasts, add the troparion and kontakion of the feast to the morning and evening rule. Light the lamp at the prayer corner, use incense if you have it, and let the feast enter the home. The feast is not only observed at church &mdash; it is carried home and lived for the duration of its celebration.</div>
+        </div>
+      </div>
+      <div class="season-item">
+        <div class="season-icon">&#9670;</div>
+        <div class="season-body">
+          <div class="season-title">Dormition Fast (August 1&ndash;14)</div>
+          <div class="season-desc">A lesser-known but beautiful fasting season before the Dormition of the Theotokos (August 15). Add the Paraklesis &mdash; the Small Supplication Canon to the Theotokos &mdash; to the evening rule, prayed especially in times of sorrow or urgent need. A season of Marian prayer before the Church's greatest feast of the Mother of God.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 14. Your Priest Is Your Guide -->
+    <section class="about-section">
+      <h2 class="section-heading" id="your-priest-is-your-guide">Your Priest Is Your Guide</h2>
+      <p>Everything on this page is a beginning. The prayer rule that will actually form you, correct you, challenge you, and carry you toward God is not the one assembled from a website &mdash; it is the one established in conversation with a confessor who knows you and who will answer for your soul before God. The Orthodox tradition has always understood the Christian life as lived in relationship: with Christ, with the Church, and with a guide who can see what we cannot see in ourselves.</p>
+      <p>Do not wait until you feel ready or until your life is ordered enough to be presented to a priest. Go as you are. Describe where you are. Ask for a rule. That conversation is itself the beginning of prayer &mdash; and the beginning of the kind of obedience that makes prayer safe.</p>
+      <div class="scripture-block" style="margin-top:24px;">
+        <div class="scripture-text">Prayer is not a technique, but a relationship given and sustained by the grace of God in the life of the Church.</div>
+        <div class="scripture-ref">This is where every prayer rule begins, and where it ends</div>
+      </div>
+      <div class="closing-callout">
+        <div class="closing-callout-label">Finding a Parish</div>
+        <p>If you do not yet have an Orthodox parish, the Parish Finder on this site can help you locate one near you. Your first step is to walk through the doors &mdash; the priest, the community, the services, and the sacraments are all waiting for you there. Everything else follows from that.</p>
+        <div class="guide-links">
+          <a href="new-to-orthodoxy.html#how-do-i-find-a-church" class="guide-link-btn">Find a Parish Near You &#8250;</a>
+          <a href="prayer-corner-guide.html" class="guide-link-btn">Setting Up a Prayer Corner &#8250;</a>
+          <a href="prayer.html" class="guide-link-btn">Daily Prayers &#8250;</a>
+        </div>
+      </div>
+
+      <div class="closing-prayer">
+        <div class="closing-prayer-label">A Prayer for Those Beginning</div>
+        <div class="closing-prayer-text">O Lord Jesus Christ, teach me to pray. I do not know how to begin, and I know that without Thee I can do nothing. Open my lips in the morning and close them at night with Thy name upon them. Let the desire for Thee grow in me until prayer is no longer something I do but something I am. Have mercy on me, a sinner, and lead me into the life of prayer that is communion with Thee. Amen.</div>
+      </div>
+    </section>
+
+    <div class="colophon">
+      <p class="colophon-text">Through the prayers of our holy fathers, O Lord Jesus Christ our God, have mercy on us. Amen.</p>
+      <div class="colophon-mark" aria-hidden="true">
+        <span class="rule"></span>
+        <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+        <span class="rule"></span>
+      </div>
     </div>
-    <div class="scripture-block">
-      <div class="scripture-text">"Abide in me, and I in you. As the branch cannot bear fruit by itself, unless it abides in the vine, neither can you, unless you abide in me. I am the vine; you are the branches. Whoever abides in me and I in him, he it is that bears much fruit, for apart from me you can do nothing."</div>
-      <div class="scripture-ref">John 15:4–5 — the Christological root of all prayer</div>
-    </div>
-    <div class="scripture-block">
-      <div class="scripture-text">Prayer is not a technique, but a relationship given and sustained by the grace of God in the life of the Church.</div>
-      <div class="scripture-ref">The foundation of this page — return to it as you read</div>
-    </div>
-    <div class="guide-note">
-      <div class="guide-note-label">St. John Chrysostom</div>
-      "Prayer is the light of the soul, true knowledge of God, a mediating agent between God and man. Separate yourself from prayer, and you have separated yourself from God."
-    </div>
+
   </div>
-
-  <!-- 2. Why a Rule Matters -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Why a Rule Matters</h2>
-    <p class="guide-p">Without a rule, prayer tends to disappear. Not all at once — gradually, crowded out by the demands of ordinary life, until the soul that intended to pray "when it felt ready" finds that readiness never arrives. The great teachers of prayer are unanimous on this point: structure protects us from ourselves.</p>
-    <p class="guide-p">A rule also protects us from a subtler danger — self-deception. Without a definite structure, it is easy to believe we have prayed more than we have. We mistake a moment of religious feeling for actual prayer, let our attention drift while reciting words, and conclude that the obligation is met. The rule does not allow this. It asks plainly: did you stand before God this morning? Did you end the day in His presence?</p>
-    <p class="guide-p">At the same time, the rule is a servant, never a master. The goal is not the completion of prayers but the meeting of the soul with God. A small rule kept faithfully and with full attention is worth infinitely more than a large rule abandoned or hurried through with a distracted mind.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">St. Theophan the Recluse</div>
-      "Without established prayers, we would not know how to pray at all. Without them, we would be left entirely without prayer. The rule exists to serve prayer, not prayer to serve the rule."
-    </div>
-    <div class="guide-note">
-      <div class="guide-note-label">A Word of Encouragement</div>
-      Do not be discouraged if you miss a day or a season. The prayer rule is not a ledger of spiritual debt. Every morning is a new beginning. The prodigal son did not wait until he had gathered enough virtue to return — he rose and went to his father. Rise, and pray.
-    </div>
-  </div>
-
-  <!-- 3. Prayer and the Life of the Church — NEW -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Prayer and the Life of the Church</h2>
-    <p class="guide-p">Private prayer does not exist in isolation. In the Orthodox understanding, the prayer you offer at home is an extension of the prayer the Church has always offered — and it flows from and returns to the common life of worship. Christ warns us plainly: "Apart from me you can do nothing" (John 15:5). A prayer rule built apart from the Church's sacramental life is incomplete precisely in this sense — a branch separated from the vine it cannot bear fruit, however sincerely it reaches toward the light.</p>
-    <p class="guide-p">The center of Orthodox life is the <strong>Divine Liturgy</strong> — the corporate act of worship in which heaven and earth are united, and in which the faithful receive the Body and Blood of Christ. Every prayer said at home is oriented toward this: morning prayer prepares you to live the day in the light of the Liturgy; evening prayer closes the day in the same light. The prayer corner is not a substitute for the Church — it is the Church's presence carried into the home.</p>
-    <p class="guide-p"><strong>Holy Communion</strong> is the summit and goal of the Christian prayer life. The pre-communion canons, the fasting, the evening prayers of preparation, the examination of conscience — all of these converge on the moment of receiving the Holy Gifts. Your prayer rule should be consciously oriented toward the frequency with which you receive Communion, and should deepen in intensity as that day approaches.</p>
-    <p class="guide-p"><strong>Confession</strong> is the condition for the health of prayer. A soul burdened by unconfessed sin prays from behind a wall. Confession does not make us worthy — nothing makes us worthy — but it removes the obstruction, reorients the soul toward God, and restores the relationship on which all prayer depends. The practice of frequent Confession, established in consultation with your priest, is inseparable from a living prayer rule.</p>
-    <p class="guide-p">The <strong>liturgical cycle</strong> — the feasts and fasts, the seasons of repentance and rejoicing — is the larger rhythm into which the daily rule is set. Great Lent deepens the rule; Pascha transforms it; the Great Feasts elevate it. A prayer rule that does not breathe with the liturgical year is a private exercise. One that does is participation in the living prayer of the whole Church.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">St. Ignatius Brianchaninov</div>
-      "Participation in the Divine Services of the Church is the greatest support for private prayer. The one who regularly attends the Divine Services has his soul constantly renewed and enlightened by the grace that operates through them."
-    </div>
-  </div>
-
-  <!-- 4. The Two Anchors -->
-  <div class="guide-section">
-    <h2 class="guide-h2">The Two Anchors — Morning and Evening</h2>
-    <p class="guide-p">The foundation of the Orthodox prayer rule is morning and evening prayer. These two moments frame the entire day — the day is offered to God before it begins, and returned to God before it ends. Without these two anchors, the day drifts.</p>
-    <p class="guide-p"><strong>Morning prayer</strong> is an offering. You rise from sleep — which the Fathers called a nightly image of death and resurrection — and the first act of the day is to stand before God. You bring nothing yet: no accomplishments, no accumulated burdens. You bring only the day itself, held open, and offer it to Christ. The morning prayers of the Church — the Trisagion, Psalm 50, the Creed, the Lord's Prayer, the prayers of the saints — are the form this offering takes.</p>
-    <p class="guide-p"><strong>Evening prayer</strong> is an examination and an entrustment. The day is reviewed before God — not with anxiety, but with honesty: what was given, what was wasted, what was done poorly. Sins are acknowledged and released into the mercy of Christ. Then the body in sleep and the soul at rest are entrusted to God's keeping. You did not preserve yourself through the day by your own strength. He did. And He will keep you through the night.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">On Length</div>
-      The full morning and evening rules of the prayer books take 15–25 minutes each when prayed with full attention. Begin with what you can sustain with complete sincerity — even five minutes of sincere prayer is far more valuable than twenty minutes of mechanical recitation. Speak with your priest about what is right for your present circumstances.
-    </div>
-    <div class="guide-links">
-      <a href="prayer.html?cat=morning" class="guide-link-btn">Morning Prayers &#8250;</a>
-      <a href="prayer.html?cat=evening" class="guide-link-btn">Evening Prayers &#8250;</a>
-    </div>
-  </div>
-
-  <!-- 5. Where to Begin -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Where to Begin</h2>
-    <p class="guide-p">Every person comes to prayer from a different place. The Church does not demand the same rule of everyone — it asks for sincerity, consistency, and growth. Here is a starting point for each stage of the journey.</p>
-    <div class="audience-grid">
-      <div class="audience-card">
-        <div class="audience-card-label">For the Inquirer</div>
-        <ul class="audience-card-rule">
-          <li>Begin each day with the Sign of the Cross</li>
-          <li>Pray the Lord's Prayer once in the morning</li>
-          <li>Read Psalm 22 — "The Lord is my shepherd"</li>
-          <li>End the day with a brief honest word to God</li>
-          <li>Make the Sign of the Cross before meals and before sleep</li>
-          <li>Attend the Divine Liturgy and observe how the Church prays</li>
-        </ul>
-      </div>
-      <div class="audience-card">
-        <div class="audience-card-label">For the Catechumen</div>
-        <ul class="audience-card-rule">
-          <li>Morning: Trisagion, Psalm 50 [51], Lord's Prayer, one morning prayer</li>
-          <li>Evening: Trisagion, one evening prayer, examination of conscience</li>
-          <li>Begin the Jesus Prayer on a prayer rope — 33 or 50 repetitions</li>
-          <li>Read one psalm each day from the Psalter</li>
-          <li>Attend all services during your catechumenate</li>
-          <li>Establish the rule with your priest before Baptism</li>
-        </ul>
-      </div>
-      <div class="audience-card">
-        <div class="audience-card-label">For the Faithful</div>
-        <ul class="audience-card-rule">
-          <li>Full morning and evening rule from the prayer book</li>
-          <li>Daily Psalm 50 and additional psalms</li>
-          <li>Jesus Prayer throughout the day on the prayer rope</li>
-          <li>Pre-Communion canons before receiving Holy Communion</li>
-          <li>Regular Confession under a priest's guidance</li>
-          <li>Review and adjust the rule with your spiritual father</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 6. Building Your Rule -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Building Your Rule — Step by Step</h2>
-    <p class="guide-p">A prayer rule is not assembled all at once. It grows gradually — one prayer added, then another, as the soul becomes capable of bearing more. This is the consistent teaching of the Fathers: begin small, remain consistent, grow under guidance.</p>
-    <div class="guide-step">
-      <div class="guide-step-num">1</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Begin with one prayer, said with full attention</div>
-        <div class="guide-step-desc">Do not begin with ambition. Begin with one prayer — perhaps the Lord's Prayer, or a single morning prayer — and say it from beginning to end with your full mind. When you can do that consistently, add another. A small rule kept faithfully is worth more than a large rule abandoned.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">2</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Establish a time and a place</div>
-        <div class="guide-step-desc">Prayer without a designated time tends to be pushed out by everything else. Choose a time in the morning and a time in the evening and protect them. If you have a prayer corner, use it — the dedicated physical space becomes a powerful cue for the soul. Stand if you are able. The body participates in prayer.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">3</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Read the prayers before you pray them</div>
-        <div class="guide-step-desc">Before adding a new prayer to your rule, read it slowly outside of prayer time. Think through its words. What is it asking? What vision of God does it carry? When you then pray it in your rule, you will not be encountering it for the first time — you will be returning to familiar ground with understanding.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">4</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Memorize the prayers over time</div>
-        <div class="guide-step-desc">St. Theophan urged the faithful to memorize their prayers so that they are never without them — no book to find, no page to distract. Begin with the Lord's Prayer and Psalm 50 [Psalm 51 in Western bibles], then add others as they take root. (Orthodox psalm numbering throughout this page follows the Septuagint, the Greek translation of Scripture used by the Church; Western bibles number the psalms one higher from Psalm 10 onward.) A memorized prayer is always with you — in the car, in a waiting room, lying awake at night.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">5</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Grow gradually, under the guidance of your priest</div>
-        <div class="guide-step-desc">As your prayer life deepens, the rule will grow. Add one element at a time, always with the blessing of your priest or spiritual father. The rule that is established under guidance has roots. The rule assembled by oneself, on one's own initiative, is built on uncertain ground.</div>
-      </div>
-    </div>
-    <div class="guide-note">
-      <div class="guide-note-label">What to Expect</div>
-      Every person who prays will encounter two unavoidable realities: <strong>distraction</strong> and <strong>dryness</strong>. Distraction — the mind wandering during prayer, pulled toward plans, anxieties, and idle thoughts — is not a sign of failure. The Greek ascetical tradition calls these wandering thoughts <em>logismoi</em>. They are not a disease of the soul but the ordinary condition of the fallen mind, one that prayer gradually heals. The act of noticing the distraction and gently returning the mind to God is itself an act of prayer — the Fathers say this unanimously. Do not be ashamed of it; simply return. Dryness — the absence of feeling, warmth, or consolation in prayer — is equally normal, and equally not a sign of failure. The psalmist cried: "Out of the depths I cry to Thee, O Lord" (Psalm 129 [130 in Western bibles]). Prayer offered in dryness, without any sense of God's presence, without consolation or reward, is often the most pure prayer of all — because it is offered for God's sake alone, not for the feeling it produces. Persevere through both. They are not obstacles to prayer; they are the ground in which the praying soul is formed.
-    </div>
-  </div>
-
-  <!-- 7. Carrying Christ Through the Day — REFINED -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Carrying Christ Through the Day — The Jesus Prayer and the Sign of the Cross</h2>
-    <p class="guide-p">The morning and evening rule frames the day, but the calling of every Christian is deeper than two moments of prayer. St. Paul writes: "Pray without ceasing" (1 Thessalonians 5:17). The Fathers did not understand this as a command to be in a prayer corner all day. They understood it as the cultivation of a continuous interior orientation toward Christ — an attention that runs beneath all the ordinary activities of life.</p>
-    <p class="guide-p">The Orthodox tradition gives us two instruments for this: the <strong>Jesus Prayer</strong> and the <strong>Sign of the Cross</strong>. Neither requires stopping what you are doing. Neither requires a set time or a fixed frequency. They require only a willing heart and the habit of returning to God's presence throughout the day.</p>
-    <div class="jesus-prayer-box">
-      <div class="jesus-prayer-text">"Lord Jesus Christ, Son of God, have mercy on me, a sinner."</div>
-      <div class="jesus-prayer-label">The Jesus Prayer</div>
-    </div>
-    <p class="guide-p">The Jesus Prayer can be prayed in a single breath — while walking, working, waiting, lying awake at night. It is not a technique for achieving inner calm or spiritual experience. It is an act of faith and of repentance: you are naming Christ, confessing His identity, and bringing the truth of your own need before His mercy. This is the proper disposition for praying it — not seeking any particular feeling or state, but simply calling upon His name.</p>
-    <p class="guide-p">The tradition speaks of the Jesus Prayer "descending from the mind into the heart" — meaning that through the grace of God and the patient practice of repentance, the prayer gradually becomes more than words on the lips or thoughts in the mind, and begins to arise from the deeper center of the person. The human effort of faithfully praying is real and necessary — it is our part of the cooperation with grace. But the fruit of that effort, the transformation of the heart's attention toward God, belongs entirely to God to give. It cannot be manufactured by any method, forced by any intensity of effort, or sought as a spiritual experience to be obtained. It is given — by grace, to the humble and the persistent, in God's time and not our own. St. Isaac the Syrian describes this poverty of spirit as the very ground in which God works: "My soul thirsts for Thee like a parched land" (Psalm 62 [63 in Western bibles]) — the thirst is ours to bring; the rain is His to send.</p>
-    <p class="guide-p">Begin simply and without ambition: pray the Jesus Prayer as an act of turning toward Christ. Pray it when a moment of quiet opens in the day. Pray it when temptation or anxiety arises. Do not measure your progress or watch for results. Trust only in God's mercy and continue.</p>
-    <p class="guide-p">The <strong>Sign of the Cross</strong> is its natural companion. Made slowly and with awareness — forehead, breast, right shoulder, left shoulder — it is a complete act of faith: the Trinity confessed, the Cross of Christ traced upon the self. It can be made entering a car, passing a church, beginning a task, waking in the night. Each time it is made with attention, it is a complete act of prayer — the whole person, body and soul, turned toward God.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">St. Isaac the Syrian</div>
-      "Blessed is the man who knows his own weakness, because this knowledge becomes to him the foundation, root, and beginning of all goodness."
-    </div>
-    <div class="guide-links">
-      <a href="prayer.html?cat=jesus-prayer" class="guide-link-btn">The Jesus Prayer &#8250;</a>
-    </div>
-  </div>
-
-  <!-- 8. Prayer Throughout the Day -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Prayer Throughout the Day</h2>
-    <p class="guide-p">Beyond the Jesus Prayer and the Sign of the Cross, the tradition gives us several other ways to keep the thread of prayer alive between the morning and evening anchors.</p>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Short prayers at the moment of need</div>
-        <div class="guide-step-desc">Before beginning work: "O Lord, bless this work." Before a difficult conversation: "Lord, have mercy." After a moment of anger: "O God, cleanse me a sinner." These short prayers — which the Fathers called "arrow prayers" — can be prayed in any moment and from any condition of the soul. They do not require preparation. They require only honesty.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">The Psalms as companions</div>
-        <div class="guide-step-desc">St. Theophan encouraged the faithful to memorize psalms and recite them while working or traveling — not as a duty but as a way of keeping the mind inhabited by holy words. Psalm 50 [51], Psalm 90 [91], and Psalm 22 [23] are natural starting points. A psalm prayed while the hands are at work is among the most ancient forms of Christian prayer, going back to the desert Fathers of Egypt.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Prayer before and after meals</div>
-        <div class="guide-step-desc">The blessing before meals and the thanksgiving after are not formalities — they are a daily reminder that everything we receive comes from the hand of God. In an Orthodox home, no meal begins without prayer. The table becomes an altar; the act of eating, an echo of the Eucharist; and gratitude, a form of worship.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Remembrance of God in all things</div>
-        <div class="guide-step-desc">The deepest form of prayer throughout the day is not a specific act but what the Fathers called the remembrance of God — a quiet, steady awareness that He is present, that nothing is outside His knowledge, that all things are held in His hands. This awareness grows slowly, over years, through the faithful practice of the rule. It cannot be manufactured. But it can be invited, and it grows in the soil of humility and consistency.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 9. The Prayer Rope -->
-  <div class="guide-section">
-    <h2 class="guide-h2">The Prayer Rope</h2>
-    <p class="guide-p">The prayer rope — called the <em>komboskini</em> in Greek or <em>chotki</em> in Russian — is a knotted cord of wool used to count repetitions of the Jesus Prayer. It is not a decoration or a devotional object to be displayed. It is a practical instrument of humble prayer.</p>
-    <p class="guide-p">The Fathers commended the prayer rope for a simple reason: without it, the mind deceives itself. When we pray without counting, a few minutes can feel like many — and we stop too soon, convinced we have done enough. The prayer rope is a correction to this self-deception. Each knot counted is one prayer actually prayed, one turning toward God actually made.</p>
-    <p class="guide-p">To use it: hold it in the left hand. Move one knot between the fingers with each repetition of the Jesus Prayer. Begin with a number you can sustain with full attention — 33 (for the years of Christ's earthly life), 50, or 100. Keep it in your pocket or on your wrist so it is always within reach. When temptation, anxiety, or distraction comes, the prayer rope is at hand.</p>
-    <p class="guide-p">Remember that what matters is not the number completed but the quality of attention and the spirit of repentance brought to each prayer. The count exists to serve humility — to keep you honest about how much you have actually prayed — not to measure achievement or mark progress. A single Jesus Prayer said with full awareness of one's need before God is worth more than a hundred said while the mind wanders elsewhere.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">Note</div>
-      The prayer rope is not only for monastics. St. Theophan the Recluse noted explicitly that he first learned of praying with the prayer rope from a lay person, not a monk. Many Orthodox Christians — teachers, parents, doctors, laborers — carry one through their daily lives. Ask your priest or a trusted Orthodox Christian to help you begin.
-    </div>
-  </div>
-
-  <!-- 10. Common Mistakes in Prayer — NEW -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Common Mistakes in Prayer</h2>
-    <p class="guide-p">The Orthodox ascetical tradition is remarkably candid about the ways in which prayer can go wrong, even for those who are sincere. These are not reasons to be discouraged — they are warnings given precisely so that the beginner can avoid them.</p>
-    <div class="guide-step">
-      <div class="guide-step-num">1</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Overloading the rule too quickly</div>
-        <div class="guide-step-desc">The enthusiasm of a new beginning often leads to an ambitious rule that collapses within weeks. It is far better to begin with three prayers said with complete attention than thirty prayers said in haste. Build the rule slowly. What you can sustain for a month is more valuable than what you can manage for a week.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">2</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Treating prayer as a checklist</div>
-        <div class="guide-step-desc">The purpose of the prayer rule is not the completion of the rule. It is the meeting of the soul with God. When prayer is approached as a task to be finished — words to be gotten through so that the obligation is discharged — it has already lost its character. The rule is a door, not a destination. What matters is passing through it with awareness.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">3</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Seeking spiritual feelings or experiences</div>
-        <div class="guide-step-desc">One of the most dangerous errors in prayer is praying in order to feel something — warmth, consolation, peace, closeness to God. These may be given as gifts of God's grace, and they should not be refused when they come; but to seek them, to make them the goal of prayer, is to place oneself at the center rather than God. Pray without seeking any result except the offering of yourself to God. Trust Him with the rest.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">4</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Neglecting consistency in favor of intensity</div>
-        <div class="guide-step-desc">A long, fervent prayer said once a week is less valuable than a brief, sincere prayer said every day. The Fathers consistently emphasize consistency over intensity. The soul is formed by habit, and the habit of daily prayer — even when it is dry, distracted, and apparently fruitless — is building something that a single remarkable prayer experience cannot.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">5</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Practicing without guidance</div>
-        <div class="guide-step-desc">No aspect of the spiritual life is more in need of a guide than prayer. The same practices that are beneficial under guidance can become harmful when pursued alone and without accountability. This is not a reason to delay beginning — it is a reason to seek a confessor and establish the rule together. Prayer practiced in obedience is prayer practiced safely.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">6</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Measuring progress</div>
-        <div class="guide-step-desc">The moment we begin to measure our spiritual progress, we have placed ourselves in a position of judgment over our own souls — a position that belongs to God alone. St. Isaac the Syrian taught that the knowledge of one's own weakness is the foundation of all genuine spiritual growth. A soul that considers itself to be advancing is in greater danger than one that sees only its poverty before God.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 11. Spiritual Guidance and Safety — NEW -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Spiritual Guidance and Safety</h2>
-    <p class="guide-p">Orthodox Christianity is not a solitary spiritual path. The Christian life is lived in the Church, under the guidance of a priest or spiritual father, within the rhythm of the sacraments. This is especially true of the prayer life, where the dangers of self-deception are most acute.</p>
-    <p class="guide-p">The Orthodox ascetical tradition warns extensively about <strong>prelest</strong> — a Greek word meaning spiritual delusion or deception. Prelest refers to the condition in which a person believes they have attained a spiritual state or experience that they have not, or in which they mistake the workings of their own fallen imagination — or the influence of the evil one — for the grace of God. It is not an exotic danger for advanced monks only. It is a constant possibility for anyone who pursues the spiritual life without humility and without guidance.</p>
-    <p class="guide-p">The signs of prelest include: a sense of one's own spiritual advancement; contempt for others who do not share one's piety; attachment to spiritual experiences, feelings, or visions; an unwillingness to submit one's prayer life to a confessor; and a certainty about one's own spiritual state that admits no doubt. None of these signs are obvious to the person who has fallen into prelest — which is precisely what makes it dangerous.</p>
-    <p class="guide-p">The protection against prelest is not complicated. It is the ordinary life of the Church: regular Confession, obedience to a confessor, humility before the judgment of others, and a persistent distrust of one's own spiritual assessments. The person who approaches prayer with the attitude of a beggar before God — asking for mercy, not claiming merit — is the person least likely to fall into delusion.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">St. Ignatius Brianchaninov</div>
-      "Prelest is the damage done to human nature through the acceptance of illusion as reality. All of us are in a degree of prelest. The knowledge of this is the greatest protection against it."
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Never alter your prayer rule without your priest's blessing</div>
-        <div class="guide-step-desc">This includes increasing it, decreasing it, or adding new practices. A rule established in obedience is a rule under God's protection. A rule assembled on one's own authority is subject to one's own errors of judgment — which are considerable, even in the sincere.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Treat all spiritual experiences with sobriety</div>
-        <div class="guide-step-desc">If during prayer you experience unusual warmth, visions, voices, feelings of divine presence, or extraordinary peace — do not cling to these or seek their repetition. Report them to your confessor. The standard Orthodox teaching, from the Fathers of the Philokalia to the modern elders, is unanimous: do not trust spiritual experiences, however beautiful they seem. Trust only God's mercy and the guidance of the Church.</div>
-      </div>
-    </div>
-    <div class="guide-step">
-      <div class="guide-step-num">&#9632;</div>
-      <div class="guide-step-body">
-        <div class="guide-step-title">Pray with the disposition of the publican, not the Pharisee</div>
-        <div class="guide-step-desc">The Pharisee prayed and listed his accomplishments before God. The publican stood at a distance and would not even lift his eyes to heaven, but beat his breast and said: "God, be merciful to me, a sinner" (Luke 18:13). Christ declared the publican — not the Pharisee — justified. The entire prayer rule, however long or short, is only rightly prayed in that same spirit: not the spirit of spiritual achievement or religious identity, but of poverty before God's mercy.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 12. Fasting, Almsgiving, and Prayer -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Fasting, Almsgiving, and Prayer</h2>
-    <p class="guide-p">The Lord Himself joined these three: "When you fast... when you pray... when you give alms" (Matthew 6:2–17). They are not three separate religious activities. They are one movement of the soul toward God — three expressions of the same turning away from self and toward God and neighbor. Each strengthens the others; and each, practiced without the others, becomes incomplete.</p>
-    <div class="pillars-grid">
-      <div class="pillar-card">
-        <div class="pillar-title">Prayer</div>
-        <div class="pillar-desc">The soul turned toward God in praise, petition, repentance, and silence. Prayer is the breath of the Christian life — its absence is the slow suffocation of the soul, often unfelt until the damage is severe.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-title">Fasting</div>
-        <div class="pillar-desc">The body brought under the governance of the spirit. Fasting weakens the grip of the passions and sharpens the soul's attention. Without fasting, prayer is heavier; with it, the soul rises more freely toward God.</div>
-      </div>
-      <div class="pillar-card">
-        <div class="pillar-title">Almsgiving</div>
-        <div class="pillar-desc">Love of neighbor made concrete. Almsgiving is the outward expression of the mercy we ask for in prayer — the mercy of God flowing through us toward those in need. It breaks the illusion that we are the center of our own lives.</div>
-      </div>
-    </div>
-    <p class="guide-p" style="margin-top:20px;">A prayer rule established in isolation — without the discipline of fasting and the practice of generosity — is incomplete. Speak with your priest about the Orthodox fasting discipline and how these three practices work together as a unified way of life.</p>
-    <div class="guide-links">
-      <a href="fasting.html" class="guide-link-btn">Fasting Guide &#8250;</a>
-    </div>
-  </div>
-
-  <!-- 13. Seasonal Adjustments -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Seasonal Adjustments — The Rule Breathes with the Year</h2>
-    <p class="guide-p">The Orthodox prayer rule is not static. It breathes with the liturgical year — deepening in the great fasting seasons, expanding in joy at the great feasts, and shifting in character as the Church moves through the mysteries of Christ's life, death, and resurrection. The rule that does not change with the year is a rule cut off from the Church's living rhythm.</p>
-    <div class="season-item">
-      <div class="season-icon">&#9632;</div>
-      <div class="season-body">
-        <div class="season-title">Great Lent</div>
-        <div class="season-desc">Add the Prayer of St. Ephrem the Syrian with prostrations to the daily rule. The Jesus Prayer becomes more central. Attend the weekday services — the Presanctified Liturgy, the Great Canon of St. Andrew of Crete in the first week, the Akathist on the Fifth Saturday. The rule intensifies not as a burden but as the Church's preparation of the soul for Pascha.</div>
-      </div>
-    </div>
-    <div class="season-item">
-      <div class="season-icon">&#9830;</div>
-      <div class="season-body">
-        <div class="season-title">Holy Week</div>
-        <div class="season-desc">Attend the services of Holy Week at your parish if at all possible. They cannot be replaced by home prayer — they are the heart of the Orthodox year and the fullest expression of the prayer rule itself. The Bridegroom Matins, the Holy Friday Lamentations, and the Paschal Midnight Service are not supplementary to the Christian life. They are its center.</div>
-      </div>
-    </div>
-    <div class="season-item">
-      <div class="season-icon">&#9733;</div>
-      <div class="season-body">
-        <div class="season-title">Pascha and Bright Week</div>
-        <div class="season-desc">The entire morning and evening rule is replaced by the Paschal Hours throughout Bright Week. "Christ is Risen" takes the place of all penitential prayers. Prostrations are forbidden — the Church stands in joy before the Risen Christ. The Jesus Prayer continues, but in the key of Paschal gladness rather than compunction.</div>
-      </div>
-    </div>
-    <div class="season-item">
-      <div class="season-icon">&#9675;</div>
-      <div class="season-body">
-        <div class="season-title">Great Feasts</div>
-        <div class="season-desc">On the Twelve Great Feasts, add the troparion and kontakion of the feast to the morning and evening rule. Light the lamp at the prayer corner, use incense if you have it, and let the feast enter the home. The feast is not only observed at church — it is carried home and lived for the duration of its celebration.</div>
-      </div>
-    </div>
-    <div class="season-item">
-      <div class="season-icon">&#9670;</div>
-      <div class="season-body">
-        <div class="season-title">Dormition Fast (August 1–14)</div>
-        <div class="season-desc">A lesser-known but beautiful fasting season before the Dormition of the Theotokos (August 15). Add the Paraklesis — the Small Supplication Canon to the Theotokos — to the evening rule, prayed especially in times of sorrow or urgent need. A season of Marian prayer before the Church's greatest feast of the Mother of God.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 14. Your Priest Is Your Guide -->
-  <div class="guide-section">
-    <h2 class="guide-h2">Your Priest Is Your Guide</h2>
-    <p class="guide-p">Everything on this page is a beginning. The prayer rule that will actually form you, correct you, challenge you, and carry you toward God is not the one assembled from a website — it is the one established in conversation with a confessor who knows you and who will answer for your soul before God. The Orthodox tradition has always understood the Christian life as lived in relationship: with Christ, with the Church, and with a guide who can see what we cannot see in ourselves.</p>
-    <p class="guide-p">Do not wait until you feel ready or until your life is ordered enough to be presented to a priest. Go as you are. Describe where you are. Ask for a rule. That conversation is itself the beginning of prayer — and the beginning of the kind of obedience that makes prayer safe.</p>
-    <div class="guide-note">
-      <div class="guide-note-label">Finding a Parish</div>
-      If you do not yet have an Orthodox parish, the Parish Finder on this site can help you locate one near you. Your first step is to walk through the doors — the priest, the community, the services, and the sacraments are all waiting for you there. Everything else follows from that.
-    </div>
-    <div class="guide-links">
-      <a href="new-to-orthodoxy.html#how-do-i-find-a-church" class="guide-link-btn">Find a Parish Near You &#8250;</a>
-      <a href="prayer-corner-guide.html" class="guide-link-btn">Setting Up a Prayer Corner &#8250;</a>
-      <a href="prayer.html" class="guide-link-btn">Daily Prayers &#8250;</a>
-    </div>
-
-    <div class="scripture-block" style="margin-top:24px;">
-      <div class="scripture-text">Prayer is not a technique, but a relationship given and sustained by the grace of God in the life of the Church.</div>
-      <div class="scripture-ref">This is where every prayer rule begins, and where it ends</div>
-    </div>
-    <div class="closing-prayer">
-      <div class="closing-prayer-label">A Prayer for Those Beginning</div>
-      <div class="closing-prayer-text">O Lord Jesus Christ, teach me to pray. I do not know how to begin, and I know that without Thee I can do nothing. Open my lips in the morning and close them at night with Thy name upon them. Let the desire for Thee grow in me until prayer is no longer something I do but something I am. Have mercy on me, a sinner, and lead me into the life of prayer that is communion with Thee. Amen.</div>
-    </div>
-  </div>
-
 </div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
 <script>
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
-function toggleTheme(){
-  var c=document.documentElement.getAttribute('data-theme')||'dark';
-  var n=c==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('oc_theme',n);
-}
+/* OC-MASTER-JS — Parchment v3 */
+
+/* ── Nav drawer ─────────────────────────────────── */
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
@@ -811,56 +1394,29 @@ function toggleDrawer(){
   if(d)d.classList.toggle('open',_drawerOpen);
   if(h)h.classList.toggle('open',_drawerOpen);
 }
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
-}
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
-  }
-}
+
+/* Close drawer on outside click */
 document.addEventListener('click',function(e){
-  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
     _drawerOpen=false;
     var d=document.getElementById('navDrawer');
     var h=document.getElementById('hamburger');
     if(d)d.classList.remove('open');
     if(h)h.classList.remove('open');
   }
-  if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
-  }
 });
+
+/* ── Back to top (master pattern from glossary.html spec) ── */
 document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  var _btt=document.getElementById('backToTop');
-  if(_btt){
-    window.addEventListener('scroll',function(){_btt.classList.toggle('visible',window.scrollY>300);});
-    _btt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
-  }
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
     setTimeout(function(){
@@ -870,10 +1426,11 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth-nav.js"></script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 <script src="/analytics-tracker.js"></script>
-<a href="#" class="back-to-top" id="backToTop" aria-label="Back to top">&#8679;</a>
 </body>
 </html>
