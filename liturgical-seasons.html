@@ -2,329 +2,817 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Liturgical Seasons — Orthodox Companion</title>
-<link rel="icon" href="cross.png"/>
-<meta name="description" content="The liturgical seasons of the Orthodox Church — Great Lent, Pascha, Pentecostarion, the Apostles' Fast, the Nativity Fast, and more."/>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="The Orthodox year is a sacred spiral — fasting and feasting, mourning and joy, each season with its own character, fasting rule, and theological focus."/>
 <meta property="og:title" content="Liturgical Seasons — Orthodox Companion"/>
+<meta property="og:description" content="The Orthodox year is a sacred spiral — fasting and feasting, mourning and joy, each season with its own character, fasting rule, and theological focus."/>
+<meta property="og:type" content="website"/>
 <meta property="og:url" content="https://orthodoxcompanion.com/liturgical-seasons.html"/>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
 <style>
-/* OC-MASTER-CSS */
+/* OC-MASTER-CSS — Parchment v3 */
 /* ═══════════════════════════════════════════════════════
-   ORTHODOX COMPANION — MASTER CSS v3
-   Applied to every page via clean sweep
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
 ═══════════════════════════════════════════════════════ */
 
-/* ── Theme Variables ─────────────────────────────────── */
-:root {
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
-  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
 }
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --nav-bg:rgba(245,237,216,0.97);
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
 }
 
 /* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
-  color:var(--text);min-height:100vh;overflow-x:hidden;
-  font-size:1.05rem;line-height:1.85;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
 
-/* ── Nav ─────────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;
-  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
-  backdrop-filter:blur(12px);height:var(--nav-h);
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho monogram: hero ornament */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* ── Nav (navy header, gold hairline) ────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
   display:flex;align-items:center;padding:0 20px;
-  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
-  color:var(--text);letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;list-style:none;
-  height:var(--nav-h);margin-left:4px;}
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
+.nav-title{
+  font-family:'Cinzel',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--logotype);
+  letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
 .nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
   padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
   cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
-  transition:color 0.2s;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
-  min-width:220px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
   opacity:0;pointer-events:none;transform:translateY(-6px);
   transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
-  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
-  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
-  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-
-/* ── Account dropdown ────────────────────────────────── */
-.nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
-  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
-  white-space:nowrap;}
-.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
-.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
-.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
-  min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
 
 /* ── Hamburger & Drawer ──────────────────────────────── */
 .nav-hamburger{display:none;background:transparent;border:none;
-  color:var(--text-dim);cursor:pointer;padding:8px;
-  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
 .nav-hamburger span{display:block;width:22px;height:2px;
   background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:var(--dark);border-bottom:1px solid var(--border-dim);
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
   z-index:599;padding:8px 0 20px;
   transform:translateY(-8px);opacity:0;
   transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);
-  padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
-  text-transform:uppercase;color:var(--text-dim);text-decoration:none;
-  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
-  transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
 
-/* ── White Page Hero ─────────────────────────────────── */
+/* ── Page hero (parchment, with ornamental headband) ──── */
 .page-hero{
   margin-top:var(--nav-h);
   background:var(--hero-bg);
-  border-bottom:2px solid var(--gold-dim);
-  padding:40px 24px 32px;
+  padding:54px 24px 36px;
 }
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--text-muted);margin-bottom:12px;}
-[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
-[data-theme="light"] .breadcrumb{color:#6B4C1A;}
-.breadcrumb a{color:inherit;text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
-  letter-spacing:0.08em;margin-bottom:8px;
-  color:var(--hero-text);}
-.page-desc{font-size:0.95rem;line-height:1.75;max-width:640px;
-  font-style:italic;color:var(--hero-sub);}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
 
 /* ── Content ─────────────────────────────────────────── */
-.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
 
-/* ── Closing colophon ────────────────────────────────── */
-.season-closing{
-  max-width:1040px;margin:0 auto;padding:40px 24px 56px;
+.about-section{margin-bottom:48px;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section p:last-child{margin-bottom:0;}
+
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
+
+/* Drop cap (one per page, opening paragraph only) */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
   text-align:center;
 }
-.season-closing-rule{
-  border:none;border-top:1px solid rgba(201,168,76,0.3);
-  max-width:320px;margin:0 auto 36px;
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
 }
-.season-closing-statement{
-  font-family:'Cinzel',serif;font-size:1.0rem;
-  color:var(--gold-light);letter-spacing:0.04em;
-  line-height:1.75;margin-bottom:32px;
-  padding:0 16px;
+
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
 }
-.season-closing-quote{
-  font-size:1.0rem;color:var(--text-dim);
-  font-style:italic;line-height:1.95;
-  max-width:620px;margin:0 auto 14px;
-  padding:0 16px;
+
+/* Diamond bullet list */
+.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
 }
-.season-closing-attr{
-  font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--text-muted);
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
 }
-.season-intro{
-  max-width:1040px;margin:0 auto;padding:0 24px 8px;
+
+/* Inline body links */
+.about-section a, .pull-quote a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
 }
-.season-intro-panel{
-  background:rgba(27,58,107,0.22);
-  border-left:3px solid var(--gold-dim);
+.about-section a:hover, .pull-quote a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
+  text-align:center;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
+
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
   border-radius:3px;
-  padding:22px 28px;
-  margin-bottom:4px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
 }
-.season-intro-panel p{
-  font-size:1.0rem;color:var(--text-dim);
-  line-height:1.9;font-style:italic;
-  margin:0;
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
 }
-.season-intro-panel p + p{margin-top:12px;}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
+}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
+
+/* ── Back to top (master pattern from glossary spec) ── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:860px){
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .nav-drawer{display:block;}
-  .nav-right .nav-signin-btn{display:none;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
 }
 @media(max-width:600px){
-  .page-hero{padding:28px 16px 22px;}
-  .page-title{font-size:1.3rem;}
-  .content{padding:20px 16px 40px;}
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
-  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
 }
 
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
 
-.season-wheel{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:48px;}
-.season-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:22px 20px;cursor:pointer;transition:border-color 0.2s,transform 0.2s;display:flex;flex-direction:column;gap:8px;border-top:3px solid transparent;}
-.season-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2);}
-.season-card-name{font-family:"Cinzel",serif;font-size:0.88rem;color:var(--gold-light);letter-spacing:0.05em;font-weight:600;}
-.season-card-fasting{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--text-muted);}
-.season-card-desc{font-size:0.84rem;color:var(--text-dim);line-height:1.65;font-style:italic;}
-#season-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+/* ── Page-specific: liturgical-seasons (parchment recolor) ─── */
+
+.season-intro-panel{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:22px 26px;
+  margin-bottom:32px;
+}
+.season-intro-panel p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.04rem;
+}
+.season-intro-panel p:last-child{margin-bottom:0;}
+
+/* Season wheel — uniform parchment grid, single gold-dim accent per card */
+.season-wheel{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+  margin-bottom:36px;
+}
+.season-card{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:20px 22px 18px;
+  cursor:pointer;
+  transition:border-color 0.18s,background 0.18s,transform 0.15s;
+}
+.season-card:hover{
+  border-color:var(--gold-light);
+  border-top-color:var(--gold);
+  transform:translateY(-2px);
+}
+.season-card-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:6px;
+}
+.season-card-fasting{
+  font-size:0.82rem;
+  font-style:italic;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+.season-card-desc{
+  font-size:0.96rem;
+  line-height:1.65;
+  color:var(--text-dim);
+}
+
+/* Season modal — parchment surface, gold-dim accent */
+#season-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:800;
+  background:rgba(31,27,22,0.50);
+  backdrop-filter:blur(6px);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
 #season-modal.open{display:flex;}
-.sm2-box{background:linear-gradient(160deg,var(--dark),var(--bg-page));border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:4px;width:100%;max-width:600px;margin:auto;}
-.sm2-header{padding:20px 26px 14px;border-bottom:1px solid rgba(201,168,76,0.12);background:rgba(0,0,0,0.2);}
-.sm2-title{font-family:"Cinzel",serif;font-size:1.1rem;color:var(--gold-light);letter-spacing:0.06em;}
-.sm2-fast{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-top:4px;}
-.sm2-body{padding:22px 26px;}
-.sm2-desc{font-size:1rem;color:var(--text-dim);line-height:1.9;margin-bottom:18px;}
-.sm2-links{display:flex;flex-wrap:wrap;gap:8px;}
-.sm2-link{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:6px 14px;text-decoration:none;transition:all 0.2s;}
-.sm2-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.sm2-link-btn{background:transparent;cursor:pointer;}
-.sm2-footer{padding:12px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;justify-content:flex-end;}
-.sm2-close{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;}
-.sm2-close:hover{color:var(--gold-light);}
-@media(max-width:768px){.season-wheel{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:480px){.season-wheel{grid-template-columns:1fr;}}
+.sm2-box{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:3px solid var(--gold);
+  border-radius:3px;
+  max-width:540px;
+  width:100%;
+  max-height:85vh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 24px 60px rgba(31,27,22,0.30);
+}
+.sm2-header{
+  padding:22px 28px 16px;
+  border-bottom:1px solid var(--rule-soft);
+}
+.sm2-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:4px;
+}
+.sm2-fast{
+  font-size:0.86rem;
+  font-style:italic;
+  color:var(--text-muted);
+}
+.sm2-body{
+  padding:18px 28px 4px;
+  overflow-y:auto;
+  flex:1;
+}
+.sm2-desc{
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  margin-bottom:18px;
+}
+.sm2-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:18px;
+}
+.sm2-link, .sm2-link-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--body-link);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:8px 16px;
+  text-decoration:none;
+  background:transparent;
+  cursor:pointer;
+  font-weight:600;
+  transition:color 0.15s,border-color 0.15s,background 0.15s;
+}
+.sm2-link:hover, .sm2-link-btn:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-light);
+  background:rgba(201,168,76,0.06);
+}
+.sm2-footer{
+  padding:14px 28px 22px;
+  border-top:1px solid var(--rule-soft);
+  display:flex;
+  justify-content:flex-end;
+}
+.sm2-close{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--text-muted);
+  border:1px solid var(--border-dim);
+  border-radius:2px;
+  padding:8px 18px;
+  background:transparent;
+  cursor:pointer;
+  transition:color 0.15s,border-color 0.15s;
+}
+.sm2-close:hover{
+  color:var(--gold-light);
+  border-color:var(--gold-light);
+}
 
+/* Closing — italic prose lead-in above the master pull-quote */
+.season-closing-leadin{
+  font-style:italic;
+  text-align:center;
+  font-size:1.02rem;
+  line-height:1.75;
+  color:var(--text-muted);
+  max-width:560px;
+  margin:32px auto 18px;
+}
 </style>
 </head>
 <body>
+
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#65038;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
     <li class="nav-item">
-      <span class="nav-link has-drop">New Here?</span>
+      <span class="nav-link active has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
-      <span class="nav-link active has-drop">Worship &amp; Life</span>
+      <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html" class="active"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
-  <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <div class="nav-account-wrap" id="navAccountWrap">
-      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
-      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
-        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
-          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
-        </button>
-        <div class="nav-user-dropdown" id="navUserDropdown">
-          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
-          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
-          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="nav-right"></div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="nav-drawer" id="navDrawer">
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
@@ -333,6 +821,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
@@ -349,72 +838,102 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="prayer.html">Prayer Corner</a>
   <a href="fasting.html">Fasting Guide</a>
   <a href="feasts.html">Feasts</a>
-  <a href="liturgical-seasons.html" class="active">Liturgical Seasons</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
-  </div>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
 </div>
+
 <div class="page-hero">
   <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
     <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Liturgical Seasons</div>
     <h1 class="page-title">Liturgical Seasons</h1>
-    <p class="page-desc">The Orthodox year is a sacred spiral — fasting and feasting, mourning and joy, each season with its own character, fasting rule, and theological focus. Select any season to learn more.</p>
+    <p class="page-desc">The Orthodox year is a sacred spiral &mdash; fasting and feasting, mourning and joy, each season with its own character, fasting rule, and theological focus. Select any season to learn more.</p>
   </div>
 </div>
-<div class="season-intro">
-  <div class="season-intro-panel">
-    <p>In the Orthodox Church, time is not a line moving toward a secular horizon — it is a sacred spiral, returning each year to Pascha and, through Pascha, to the life of the age to come. The feasts anchor the seasons: the Nativity Fast exists because the Nativity of Christ exists; Great Lent exists because Pascha exists. The seasons are the Church&#8217;s approach to the feasts, not the other way around.</p>
-    <p>The Church does not merely remember the events of salvation — she enters into them. At each feast, what is commemorated becomes present. Fasting, prayer, and worship are not three separate disciplines but one integrated movement of the whole person toward God. Select any season below to learn more.</p>
-  </div>
-</div>
+
 <div class="content">
-  <div class="season-wheel" id="seasonWheel"></div>
-</div>
-<div id="season-modal">
-  <div class="sm2-box">
-    <div class="sm2-header">
-      <div class="sm2-title" id="sm2-title"></div>
-      <div class="sm2-fast" id="sm2-fast"></div>
+  <div class="content-inner">
+
+<div class="season-intro-panel">
+      <p>In the Orthodox Church, time is not a line moving toward a secular horizon &mdash; it is a sacred spiral, returning each year to Pascha and, through Pascha, to the life of the age to come. The feasts anchor the seasons: the Nativity Fast exists because the Nativity of Christ exists; Great Lent exists because Pascha exists. The seasons are the Church's approach to the feasts, not the other way around.</p>
+      <p>The Church does not merely remember the events of salvation &mdash; she enters into them. At each feast, what is commemorated becomes present. Fasting, prayer, and worship are not three separate disciplines but one integrated movement of the whole person toward God. Select any season below to learn more.</p>
     </div>
-    <div class="sm2-body">
-      <div class="sm2-desc" id="sm2-desc"></div>
-      <div class="sm2-links" id="sm2-links"></div>
+
+    <div class="season-wheel" id="seasonWheel"></div>
+
+    <div id="season-modal">
+      <div class="sm2-box">
+        <div class="sm2-header">
+          <div class="sm2-title" id="sm2-title"></div>
+          <div class="sm2-fast" id="sm2-fast"></div>
+        </div>
+        <div class="sm2-body">
+          <div class="sm2-desc" id="sm2-desc"></div>
+          <div class="sm2-links" id="sm2-links"></div>
+        </div>
+        <div class="sm2-footer"><button class="sm2-close" onclick="closeModal()">Close &#10005;</button></div>
+      </div>
     </div>
-    <div class="sm2-footer"><button class="sm2-close" onclick="closeModal()">Close &#10005;</button></div>
+
+    <p class="season-closing-leadin">Through this rhythm, the faithful do not simply mark time, but are gradually conformed to the life of Christ.</p>
+
+    <figure class="pull-quote">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">Yesterday I was crucified with Him; today I am glorified with Him. Yesterday I died with Him; today I am made alive with Him. Yesterday I was buried with Him; today I am raised with Him.</p>
+      <figcaption class="pull-quote-attr">St. Gregory the Theologian &mdash; Second Oration on Holy Pascha</figcaption>
+    </figure>
+
   </div>
 </div>
-<div class="season-closing">
-  <hr class="season-closing-rule"/>
-  <div class="season-closing-statement">
-    Through this rhythm, the faithful do not simply mark time,<br>but are gradually conformed to the life of Christ.
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
   </div>
-  <div class="season-closing-quote">
-    &#8220;Yesterday I was crucified with Him; today I am glorified with Him.
-    Yesterday I died with Him; today I am made alive with Him.
-    Yesterday I was buried with Him; today I am raised with Him.&#8221;
-  </div>
-  <div class="season-closing-attr">St. Gregory the Theologian &mdash; Second Oration on Holy Pascha</div>
-</div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
 <script>
-/* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
+/* OC-MASTER-JS — Parchment v3 */
 
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
-function toggleTheme(){
-  var c=document.documentElement.getAttribute('data-theme')||'dark';
-  var n=c==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('oc_theme',n);
-}
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
-
-// Nav drawer
+/* ── Nav drawer ─────────────────────────────────── */
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
@@ -424,67 +943,28 @@ function toggleDrawer(){
   if(h)h.classList.toggle('open',_drawerOpen);
 }
 
-// User account menu
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
-}
-
-// Sign out
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-
-// Init account state on every page
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
-  }
-}
-
-// Close menus on outside click
+/* Close drawer on outside click */
 document.addEventListener('click',function(e){
-  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
     _drawerOpen=false;
     var d=document.getElementById('navDrawer');
     var h=document.getElementById('hamburger');
     if(d)d.classList.remove('open');
     if(h)h.classList.remove('open');
   }
-  // Close user dropdown
-  if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
-  }
 });
 
-// Smooth scroll for anchor links
-function scrollToSection(id){
-  var el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
+/* ── Back to top (master pattern from glossary.html spec) ── */
 document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  // Handle hash scrolling
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
     setTimeout(function(){
@@ -493,13 +973,13 @@ document.addEventListener('DOMContentLoaded',function(){
     },200);
   }
 });
-
 </script>
 
 <script>
+/* ── Liturgical Seasons — data + render + modal ──────── */
 
-var SEASONS = [{"id": "pre_lenten", "label": "Pre-Lenten Season", "description": "The preparatory period governed by the Triodion — four Sundays leading the Church into Great Lent. The Publican & Pharisee teaches that fasting without humility profits nothing. The Prodigal Son holds out the Father’s mercy to all who return. Meatfare Sunday confronts the faithful with the Last Judgment, stirring charity and almsgiving. Forgiveness Sunday opens the Fast with a mutual exchange of forgiveness: you cannot enter Great Lent holding a grudge."}, {"id": "great_lent", "label": "Great Lent", "description": "The Holy Forty Days beginning on Clean Monday — the Church’s annual ascetic pilgrimage toward Pascha, marked by strict fasting, the Great Canon of St. Andrew of Crete, and the five Sundays of Lent: Orthodoxy, St. Gregory Palamas, the Veneration of the Cross, St. John Climacus, and St. Mary of Egypt. Lazarus Saturday and Palm Sunday stand at its threshold, opening into Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The Great and Holy Week — from Palm Sunday through Holy Saturday — the most solemn days of the Orthodox year. The Bridegroom Services of Holy Monday through Wednesday, the Mystical Supper on Holy Thursday, the Crucifixion on Great and Holy Friday, and the Descent into Hades on Holy Saturday lead the whole Church to the threshold of the Resurrection."}, {"id": "pascha", "label": "Pascha", "description": "The Feast of Feasts and the Celebration of Celebrations — the Resurrection of Christ from the dead. Pascha is not one feast among many but the center and foundation of the entire Orthodox year. Every Sunday is a little Pascha; every liturgical season finds its meaning in relation to this singular event. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life."}, {"id": "bright_week", "label": "Bright Week", "description": "The week immediately following Pascha — entirely fast-free, with the Royal Doors remaining open throughout and no kneeling permitted. The Paschal troparion replaces all ordinary hymnody at every service. Bright Week is an extension of Pascha itself: the Church dwells in the light of the Resurrection before the ordinary rhythm of the world resumes."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season from Pascha through All Saints Sunday — fifty days culminating in Pentecost and crowned by All Saints Sunday. Its arc: the Resurrection proclaimed to Thomas, the Ascension of Christ on the 40th day, the descent of the Holy Spirit at Pentecost on the 50th, and the glorification of all the saints on the Sunday following. Throughout, the Pentecostarion governs the Church’s worship; fasting gradually resumes after Bright Week."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following All Saints Sunday, continuing until the Triodion begins — governed by the Octoechos (the eight-tone weekly cycle), the Menaion (fixed feasts and saints’ commemorations), and the ordinary rhythm of Wednesday and Friday fasting. The tone cycle resets to Tone 1 at Pascha and progresses continuously, shaping every week’s worship with a distinct theological voice."}, {"id": "apostles_fast", "label": "Apostles’ Fast", "description": "A moderate fast beginning on the Monday after All Saints Sunday and ending on the eve of June 29, the Feast of the Holy Apostles Peter and Paul. Its length varies considerably from year to year — as few as eight days when Pascha falls late, as many as six weeks when Pascha falls early. It prepares the faithful to honor the chief Apostles and continues the Pentecostal spirit of witness to the world."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "A strict fast from August 1–14, preparing the faithful for the Dormition of the Most Holy Theotokos on August 15. Observed with rules comparable to Great Lent — no meat, fish, oil, or wine on most days, with wine and oil permitted on weekends and fish permitted on the Feast of the Transfiguration (August 6), which falls within it. It is the most rigorous of the summer fasts."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "A forty-day moderate fast from November 15 through December 24, preparing the faithful for the Nativity of Christ. Known in Orthodox tradition as Philip’s Fast — beginning the day after the Feast of the Holy Apostle Philip (November 14). It grows in intensity as the Nativity approaches, paralleling in spirit the Lenten discipline, though more moderate in its fasting rules."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal cycle from the Nativity of Christ (December 25) through the Theophany (January 6) — a fast-free season of sustained celebration. Within it: the Circumcision of Christ and the memory of St. Basil the Great (January 1), the Eve of Theophany (January 5 — a strict fast day), and the Theophany itself, when the Holy Trinity is revealed at the Jordan and the waters of creation are sanctified."}];
-var META = {"pre_lenten": {"color": "#8A6A3A", "fasting": "Preparatory"}, "great_lent": {"color": "#5A8A5A", "fasting": "Strict Fast"}, "holy_week": {"color": "#8A3A3A", "fasting": "Strictest Fast"}, "pascha": {"color": "#C9A84C", "fasting": "Fast Free"}, "bright_week": {"color": "#D4A84C", "fasting": "Fast Free"}, "pentecostarion": {"color": "#4A7AB8", "fasting": "Reduced fasting"}, "after_pentecost": {"color": "#6A6A9A", "fasting": "Wed & Fri"}, "apostles_fast": {"color": "#6A8A6A", "fasting": "Moderate Fast"}, "dormition_fast": {"color": "#7A5A8A", "fasting": "Strict Fast"}, "nativity_fast": {"color": "#5A6A8A", "fasting": "Moderate Fast"}, "nativity_season": {"color": "#C9A84C", "fasting": "Fast Free"}};
+var SEASONS = [{"id": "pre_lenten", "label": "Pre-Lenten Season", "description": "The preparatory period governed by the Triodion \u2014 four Sundays leading the Church into Great Lent. The Publican & Pharisee teaches that fasting without humility profits nothing. The Prodigal Son holds out the Father\u2019s mercy to all who return. Meatfare Sunday confronts the faithful with the Last Judgment, stirring charity and almsgiving. Forgiveness Sunday opens the Fast with a mutual exchange of forgiveness: you cannot enter Great Lent holding a grudge."}, {"id": "great_lent", "label": "Great Lent", "description": "The Holy Forty Days beginning on Clean Monday \u2014 the Church\u2019s annual ascetic pilgrimage toward Pascha, marked by strict fasting, the Great Canon of St. Andrew of Crete, and the five Sundays of Lent: Orthodoxy, St. Gregory Palamas, the Veneration of the Cross, St. John Climacus, and St. Mary of Egypt. Lazarus Saturday and Palm Sunday stand at its threshold, opening into Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The Great and Holy Week \u2014 from Palm Sunday through Holy Saturday \u2014 the most solemn days of the Orthodox year. The Bridegroom Services of Holy Monday through Wednesday, the Mystical Supper on Holy Thursday, the Crucifixion on Great and Holy Friday, and the Descent into Hades on Holy Saturday lead the whole Church to the threshold of the Resurrection."}, {"id": "pascha", "label": "Pascha", "description": "The Feast of Feasts and the Celebration of Celebrations \u2014 the Resurrection of Christ from the dead. Pascha is not one feast among many but the center and foundation of the entire Orthodox year. Every Sunday is a little Pascha; every liturgical season finds its meaning in relation to this singular event. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life."}, {"id": "bright_week", "label": "Bright Week", "description": "The week immediately following Pascha \u2014 entirely fast-free, with the Royal Doors remaining open throughout and no kneeling permitted. The Paschal troparion replaces all ordinary hymnody at every service. Bright Week is an extension of Pascha itself: the Church dwells in the light of the Resurrection before the ordinary rhythm of the world resumes."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season from Pascha through All Saints Sunday \u2014 fifty days culminating in Pentecost and crowned by All Saints Sunday. Its arc: the Resurrection proclaimed to Thomas, the Ascension of Christ on the 40th day, the descent of the Holy Spirit at Pentecost on the 50th, and the glorification of all the saints on the Sunday following. Throughout, the Pentecostarion governs the Church\u2019s worship; fasting gradually resumes after Bright Week."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following All Saints Sunday, continuing until the Triodion begins \u2014 governed by the Octoechos (the eight-tone weekly cycle), the Menaion (fixed feasts and saints\u2019 commemorations), and the ordinary rhythm of Wednesday and Friday fasting. The tone cycle resets to Tone 1 at Pascha and progresses continuously, shaping every week\u2019s worship with a distinct theological voice."}, {"id": "apostles_fast", "label": "Apostles\u2019 Fast", "description": "A moderate fast beginning on the Monday after All Saints Sunday and ending on the eve of June 29, the Feast of the Holy Apostles Peter and Paul. Its length varies considerably from year to year \u2014 as few as eight days when Pascha falls late, as many as six weeks when Pascha falls early. It prepares the faithful to honor the chief Apostles and continues the Pentecostal spirit of witness to the world."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "A strict fast from August 1\u201314, preparing the faithful for the Dormition of the Most Holy Theotokos on August 15. Observed with rules comparable to Great Lent \u2014 no meat, fish, oil, or wine on most days, with wine and oil permitted on weekends and fish permitted on the Feast of the Transfiguration (August 6), which falls within it. It is the most rigorous of the summer fasts."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "A forty-day moderate fast from November 15 through December 24, preparing the faithful for the Nativity of Christ. Known in Orthodox tradition as Philip\u2019s Fast \u2014 beginning the day after the Feast of the Holy Apostle Philip (November 14). It grows in intensity as the Nativity approaches, paralleling in spirit the Lenten discipline, though more moderate in its fasting rules."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal cycle from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration. Within it: the Circumcision of Christ and the memory of St. Basil the Great (January 1), the Eve of Theophany (January 5 \u2014 a strict fast day), and the Theophany itself, when the Holy Trinity is revealed at the Jordan and the waters of creation are sanctified."}];
+var META = {"pre_lenten": {"fasting": "Preparatory"}, "great_lent": {"fasting": "Strict Fast"}, "holy_week": {"fasting": "Strictest Fast"}, "pascha": {"fasting": "Fast Free"}, "bright_week": {"fasting": "Fast Free"}, "pentecostarion": {"fasting": "Reduced fasting"}, "after_pentecost": {"fasting": "Wed & Fri"}, "apostles_fast": {"fasting": "Moderate Fast"}, "dormition_fast": {"fasting": "Strict Fast"}, "nativity_fast": {"fasting": "Moderate Fast"}, "nativity_season": {"fasting": "Fast Free"}};
 
 function openSeason(id) {
   var s = null;
@@ -510,25 +990,21 @@ function openSeason(id) {
   document.getElementById('sm2-fast').textContent = 'Fasting: ' + (m.fasting || 'See Church calendar');
   document.getElementById('sm2-desc').textContent = s.description;
   document.getElementById('sm2-links').innerHTML =
-    '<a href="calendar.html" class="sm2-link">Liturgical Calendar</a>' +
-    '<a href="fasting.html" class="sm2-link">Fasting Guide</a>' +
-    '<button class="sm2-link sm2-link-btn" onclick="closeModal();showComingSoon()">Ask Companion</button>';
+    '<a href="calendar.html" class="sm2-link" target="_blank">Liturgical Calendar</a>' +
+    '<a href="fasting.html" class="sm2-link" target="_blank">Fasting Guide</a>' +
+    '<a href="feasts.html" class="sm2-link" target="_blank">See Feasts</a>';
   document.getElementById('season-modal').classList.add('open');
 }
 function closeModal() { document.getElementById('season-modal').classList.remove('open'); }
-function showComingSoon() {
-  var el = document.getElementById('coming-soon-modal');
-  if (el) { el.style.display = 'flex'; }
-}
 document.getElementById('season-modal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
 document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 
-function render() {
+function renderSeasons() {
   var html = '';
   for (var i = 0; i < SEASONS.length; i++) {
     var s = SEASONS[i];
     var m = META[s.id] || {};
-    html += '<div class="season-card" style="border-top-color:' + (m.color || '#4A7AB8') + '" data-id="' + s.id + '">';
+    html += '<div class="season-card" data-id="' + s.id + '">';
     html += '<div class="season-card-name">' + s.label + '</div>';
     html += '<div class="season-card-fasting">' + (m.fasting || '') + '</div>';
     html += '<div class="season-card-desc">' + s.description.substring(0, 140) + '&hellip;</div>';
@@ -541,23 +1017,13 @@ function render() {
     if (card) openSeason(card.dataset.id);
   });
 }
-document.addEventListener('DOMContentLoaded', render);
-
+document.addEventListener('DOMContentLoaded', renderSeasons);
 </script>
-<div id="coming-soon-modal" style="display:none;position:fixed;inset:0;z-index:800;background:rgba(6,14,26,0.88);backdrop-filter:blur(8px);align-items:center;justify-content:center;">
-  <div style="background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:4px;padding:36px 40px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.6);">
-    <div style="font-size:1.6rem;color:var(--gold);margin-bottom:16px;font-family:'Segoe UI Symbol','Apple Symbols',serif;">☦&#xFE0E;</div>
-    <div style="font-family:'Cinzel',serif;font-size:1rem;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:10px;">Companion AI</div>
-    <div style="font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.8;margin-bottom:24px;">The Companion AI is available to members. Sign in or create an account to ask questions about the liturgical seasons and the Orthodox faith.</div>
-    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
-      <a href="account.html" style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:9px 20px;text-decoration:none;background:rgba(201,168,76,0.1);">Sign In</a>
-      <button onclick="document.getElementById('coming-soon-modal').style.display='none';" style="font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);border:1px solid var(--border-dim);border-radius:2px;padding:9px 20px;background:transparent;cursor:pointer;">Close</button>
-    </div>
-  </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth-nav.js"></script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 <script src="/analytics-tracker.js"></script>
 </body>
 </html>
