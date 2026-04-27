@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Search — Orthodox Companion</title>
 <link rel="icon" href="cross.png" type="image/png"/>
-<meta name="description" content="Search Orthodox Companion — topics, saints, feasts, glossary terms, and pages across the site."/>
+<meta name="description" content="Search Orthodox Companion — topics, saints, feasts, glossary, and more."/>
 <meta property="og:title" content="Search — Orthodox Companion"/>
-<meta property="og:description" content="Search Orthodox Companion — topics, saints, feasts, glossary terms, and pages across the site."/>
+<meta property="og:description" content="Search Orthodox Companion — topics, saints, feasts, glossary, and more."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://orthodoxcompanion.com/search.html"/>
 
@@ -24,6 +24,9 @@
 ═══════════════════════════════════════════════════════ */
 
 /* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
 @font-face{
   font-family:'OC Ornaments';
   src:url('/fonts/Junicode-subset.woff2') format('woff2');
@@ -65,7 +68,7 @@
   --gold-light:#A8862E;
   --gold-dim:#8A6A28;
   --gold-on-dark:#E8CB7A;
-  --body-link:#7A5C1F;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
 
   /* borders / rules */
   --border:#C8B98C;
@@ -80,6 +83,7 @@ html{scroll-behavior:smooth;}
 body{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
   background-color:var(--bg-page);
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color:var(--text);
@@ -90,6 +94,7 @@ body{
 }
 
 /* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
 .cross-orth{
   display:inline-block;
   vertical-align:middle;
@@ -97,6 +102,7 @@ body{
   width:auto;
   fill:currentColor;
 }
+/* Chi-rho monogram: hero ornament */
 .chi-rho{
   display:inline-block;
   vertical-align:middle;
@@ -242,97 +248,31 @@ nav{
   font-style:italic;color:var(--text-dim);
 }
 
-/* ── Search interface ────────────────────────────────── */
-.search-wrap{
-  max-width:760px;
-  margin:0 auto;
-  padding:42px 24px 64px;
-}
-.search-bar-wrap{
-  display:flex;
-  gap:0;
-  margin-bottom:28px;
-  border:1px solid var(--gold-dim);
-  border-radius:2px;
-  overflow:hidden;
-  background:var(--surface);
-}
-.search-bar{
-  flex:1;
-  background:transparent;
-  border:none;
-  color:var(--text);
-  font-family:'EB Garamond',Georgia,serif;
-  font-feature-settings:"onum";
-  font-size:1.08rem;
-  padding:15px 18px;
-  outline:none;
-}
-.search-bar::placeholder{
-  color:var(--text-muted);
-  font-style:italic;
-}
-.search-btn{
-  font-family:'Cinzel',serif;
-  font-size:0.65rem;
-  text-transform:uppercase;
-  letter-spacing:0.12em;
-  color:var(--gold-light);
-  background:rgba(201,168,76,0.08);
-  border:none;
-  border-left:1px solid var(--gold-dim);
-  padding:0 22px;
-  cursor:pointer;
-  transition:background 0.2s,color 0.2s;
-}
-.search-btn:hover{
-  background:rgba(201,168,76,0.18);
-  color:var(--gold);
-}
+/* ── Content ─────────────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
 
-.search-filters{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
-  margin-bottom:28px;
-}
-.search-filter{
-  font-family:'Cinzel',serif;
-  font-size:0.6rem;
-  text-transform:uppercase;
-  letter-spacing:0.1em;
-  padding:6px 13px;
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  background:transparent;
-  color:var(--text-muted);
-  cursor:pointer;
-  transition:border-color 0.2s,color 0.2s,background 0.2s;
-}
-.search-filter:hover{
-  border-color:var(--gold-dim);
-  color:var(--gold-light);
-}
-.search-filter.active{
-  border-color:var(--gold-dim);
-  color:var(--gold-light);
-  background:rgba(201,168,76,0.08);
-}
-
-.search-suggestions{margin-bottom:28px;}
-.suggestions-title{
-  font-family:'EB Garamond',Georgia,serif;
-  font-feature-settings:"onum";
-  font-size:0.92rem;
-  font-weight:600;
-  text-transform:uppercase;
-  letter-spacing:0.18em;
-  color:var(--gold-light);
+.about-section{margin-bottom:48px;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
   margin-bottom:14px;
-  padding-top:18px;
-  position:relative;
+  font-size:1.06rem;
 }
-.suggestions-title::before{
+.about-section p:last-child{margin-bottom:0;}
+
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
   content:'';
   position:absolute;
   top:0;left:0;
@@ -340,90 +280,186 @@ nav{
   background:var(--gold-dim);
   opacity:0.7;
 }
-.suggestion-chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.chip{
-  font-family:'EB Garamond',Georgia,serif;
-  font-feature-settings:"onum";
-  font-size:0.94rem;
-  letter-spacing:0.06em;
-  color:var(--text-dim);
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  padding:6px 14px;
-  cursor:pointer;
-  transition:border-color 0.2s,color 0.2s,background 0.2s;
-  background:transparent;
-}
-.chip:hover{
-  border-color:var(--gold-dim);
-  color:var(--gold-light);
-  background:rgba(201,168,76,0.06);
+
+/* Drop cap (one per page, opening paragraph only) */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
 }
 
-.search-results{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-.search-result{
-  background:var(--bg-card);
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  padding:18px 20px;
-  cursor:pointer;
-  transition:border-color 0.2s,background 0.2s;
-  text-decoration:none;
-  display:block;
-}
-.search-result:hover{
-  border-color:var(--gold-dim);
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
   background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
 }
-.sr-type{
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  font-size:0.78rem;
-  font-weight:600;
+  font-size:0.86rem;
   text-transform:uppercase;
   letter-spacing:0.16em;
   color:var(--gold-light);
-  margin-bottom:6px;
-}
-.sr-title{
-  font-family:'Cinzel',serif;
-  font-size:1rem;
   font-weight:600;
-  color:var(--text);
-  letter-spacing:0.04em;
-  margin-bottom:5px;
-}
-.sr-excerpt{
-  font-size:0.96rem;
-  color:var(--text-muted);
-  font-style:italic;
-  line-height:1.65;
-}
-.search-empty{
-  padding:48px 24px;
   text-align:center;
-  color:var(--text-muted);
-  font-style:italic;
-  font-size:1rem;
-  line-height:1.7;
 }
-.search-empty a{
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}
+
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
+
+/* Diamond bullet list */
+.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
+
+/* Inline body links */
+.about-section a, .pull-quote a{
   color:var(--body-link);
   text-decoration:none;
   border-bottom:1px solid currentColor;
   transition:border-color 0.15s,color 0.15s;
 }
-.search-empty a:hover{
+.about-section a:hover, .pull-quote a:hover{
   color:var(--gold-light);
   border-bottom-color:var(--gold-light);
+}
+
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
+  text-align:center;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
+
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
+}
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
+}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
 }
 
 /* ── Footer (navy, three-column, master pattern) ─────── */
@@ -488,7 +524,7 @@ nav{
   vertical-align:middle;
 }
 
-/* ── Back to top ──────────────────────────────────────── */
+/* ── Back to top (master pattern from glossary spec) ── */
 #backToTop{
   position:fixed;bottom:28px;right:24px;z-index:700;
   width:42px;height:42px;border-radius:3px;
@@ -515,13 +551,18 @@ nav{
 @media(max-width:600px){
   .page-hero{padding:42px 18px 28px;}
   .page-title{font-size:1.65rem;}
-  .search-wrap{padding:28px 18px 40px;}
+  .content{padding:28px 18px 40px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
   .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
   .site-footer{padding:36px 18px 28px;}
-  .search-bar{font-size:1rem;padding:13px 14px;}
-  .search-btn{padding:0 16px;}
 }
 
 /* ── Honor prefers-reduced-motion (accessibility) ──── */
@@ -533,6 +574,132 @@ nav{
     animation-iteration-count:1 !important;
   }
 }
+
+/* ── Page-specific: search ─────────────────────────── */
+.search-wrap{max-width:760px;margin:0 auto;padding:32px 24px 60px;}
+.search-bar-wrap{
+  display:flex;gap:0;margin-bottom:28px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-radius:3px;
+  overflow:hidden;
+}
+.search-bar{
+  flex:1;background:transparent;border:none;
+  color:var(--text);
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.05rem;padding:14px 18px;outline:none;
+}
+.search-bar::placeholder{color:var(--text-muted);font-style:italic;}
+.search-btn{
+  font-family:'Cinzel',serif;font-size:0.65rem;
+  text-transform:uppercase;letter-spacing:0.1em;
+  color:var(--gold-light);
+  background:rgba(201,168,76,0.07);
+  border:none;border-left:1px solid var(--rule);
+  padding:0 22px;cursor:pointer;
+  transition:background 0.2s,color 0.2s;
+}
+.search-btn:hover{background:rgba(201,168,76,0.15);color:var(--gold);}
+
+.search-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px;}
+.search-filter{
+  font-family:'Cinzel',serif;font-size:0.6rem;
+  text-transform:uppercase;letter-spacing:0.08em;
+  padding:6px 13px;
+  border:1px solid var(--rule);
+  border-radius:2px;
+  background:transparent;
+  color:var(--text-muted);
+  cursor:pointer;
+  transition:border-color 0.2s,color 0.2s,background 0.2s;
+}
+.search-filter:hover{border-color:var(--gold-dim);color:var(--gold-light);}
+.search-filter.active{
+  border-color:var(--gold-dim);
+  color:var(--gold-light);
+  background:rgba(201,168,76,0.07);
+}
+
+.search-suggestions{margin-bottom:32px;}
+.suggestions-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:14px;
+}
+.suggestion-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;letter-spacing:0.04em;
+  color:var(--text-dim);
+  border:1px solid var(--rule);
+  border-radius:2px;
+  padding:6px 13px;
+  cursor:pointer;
+  background:transparent;
+  transition:border-color 0.2s,color 0.2s,background 0.2s;
+}
+.chip:hover{
+  border-color:var(--gold-dim);
+  color:var(--gold-light);
+  background:rgba(201,168,76,0.05);
+}
+
+.search-results{display:flex;flex-direction:column;gap:10px;}
+.search-result{
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  padding:18px 20px;
+  cursor:pointer;
+  text-decoration:none;
+  display:block;
+  transition:border-color 0.2s,background 0.2s;
+}
+.search-result:hover{
+  border-color:var(--gold-dim);
+  background:var(--bg-card);
+}
+.sr-type{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.74rem;text-transform:uppercase;letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:5px;
+}
+.sr-title{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;
+  color:var(--text);
+  letter-spacing:0.04em;
+  margin-bottom:5px;
+}
+.sr-excerpt{
+  font-size:0.96rem;
+  color:var(--text-dim);
+  font-style:italic;
+  line-height:1.65;
+}
+.search-empty{
+  padding:48px 24px;
+  text-align:center;
+  color:var(--text-muted);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.search-empty a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:color 0.15s,border-color 0.15s;
+}
+.search-empty a:hover{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+
 </style>
 </head>
 <body>
@@ -545,7 +712,7 @@ nav{
   <ul class="nav-links">
     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
     <li class="nav-item">
-      <span class="nav-link has-drop">New Here?</span>
+      <span class="nav-link active has-drop">New Here?</span>
       <div class="nav-dropdown">
         <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
         <a href="parents.html">Guidance for Parents</a>
@@ -620,6 +787,7 @@ nav{
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
 </div>
 
+
 <div class="page-hero">
   <div class="page-hero-inner">
     <div class="hero-ornament" aria-hidden="true">
@@ -635,14 +803,14 @@ nav{
 
 <div class="search-wrap">
   <div class="search-bar-wrap">
-    <input class="search-bar" type="text" id="searchInput" placeholder="Search topics, saints, feasts, prayers, glossary&hellip;" autocomplete="off" onkeydown="if(event.key==='Enter')doSearch()"/>
+    <input class="search-bar" type="text" id="searchInput" placeholder="Search topics, saints, feasts, prayers, glossary..." autocomplete="off" onkeydown="if(event.key==='Enter')doSearch()"/>
     <button class="search-btn" onclick="doSearch()">Search</button>
   </div>
   <div class="search-filters">
     <button class="search-filter active" data-filter="all" onclick="setFilter('all',this)">All</button>
-    <button class="search-filter" data-filter="topic" onclick="setFilter('topic',this)">Topics</button>
-    <button class="search-filter" data-filter="saint" onclick="setFilter('saint',this)">Saints</button>
-    <button class="search-filter" data-filter="feast" onclick="setFilter('feast',this)">Feasts</button>
+    <button class="search-filter" data-filter="topics" onclick="setFilter('topics',this)">Topics</button>
+    <button class="search-filter" data-filter="saints" onclick="setFilter('saints',this)">Saints</button>
+    <button class="search-filter" data-filter="feasts" onclick="setFilter('feasts',this)">Feasts</button>
     <button class="search-filter" data-filter="glossary" onclick="setFilter('glossary',this)">Glossary</button>
   </div>
   <div class="search-suggestions" id="searchSuggestions">
@@ -702,6 +870,7 @@ nav{
   </div>
 </footer>
 
+
 <button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
@@ -728,7 +897,7 @@ document.addEventListener('click',function(e){
   }
 });
 
-/* ── Back to top ──────────────────────────────── */
+/* ── Back to top (master pattern from glossary.html spec) ── */
 document.addEventListener('DOMContentLoaded',function(){
   var btn=document.getElementById('backToTop');
   if(!btn) return;
@@ -736,35 +905,47 @@ document.addEventListener('DOMContentLoaded',function(){
     btn.classList.toggle('visible', window.scrollY > 400);
   },{passive:true});
 });
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+});
 </script>
 
 <script>
-/* ── Search index + interaction ─────────────────── */
+
 var INDEX = [
-  {type:'topic',    title:'Theosis',             url:'topics.html?topic=theosis',          excerpt:'The Orthodox doctrine of deification — the process by which the faithful come to participate in the divine nature.'},
-  {type:'topic',    title:'Holy Trinity',        url:'topics.html?topic=trinity',          excerpt:'The foundational Christian doctrine: one God in three Persons — Father, Son, and Holy Spirit.'},
-  {type:'topic',    title:'Incarnation',         url:'topics.html?topic=incarnation',      excerpt:'The eternal Son of God taking human flesh in the womb of the Theotokos.'},
-  {type:'topic',    title:'Soteriology',         url:'topics.html',                        excerpt:'The Orthodox theology of salvation — theosis, atonement, and the healing of human nature.'},
-  {type:'topic',    title:'Hesychasm',           url:'topics.html?topic=hesychasm',        excerpt:'The Orthodox tradition of interior prayer and stillness, defended by St. Gregory Palamas.'},
-  {type:'topic',    title:'Theotokos',           url:'topics.html?topic=theotokos',        excerpt:'The title of the Virgin Mary meaning God-bearer — defined at the Council of Ephesus in 431.'},
-  {type:'saint',    title:'St. John Chrysostom', url:'saints.html?saint=john_chrysostom',  excerpt:'Archbishop of Constantinople, one of the Three Holy Hierarchs. Feast: November 13.'},
+  {type:'topic',    title:'Theosis',          url:'topics.html?topic=theosis',         excerpt:'The Orthodox doctrine of deification — the process by which the faithful come to participate in the divine nature.'},
+  {type:'topic',    title:'Holy Trinity',      url:'topics.html?topic=trinity',          excerpt:'The foundational Christian doctrine: one God in three Persons — Father, Son, and Holy Spirit.'},
+  {type:'topic',    title:'Incarnation',       url:'topics.html?topic=incarnation',      excerpt:'The eternal Son of God taking human flesh in the womb of the Theotokos.'},
+  {type:'topic',    title:'Soteriology',       url:'topics.html',                        excerpt:'The Orthodox theology of salvation — theosis, atonement, and the healing of human nature.'},
+  {type:'topic',    title:'Hesychasm',         url:'topics.html?topic=hesychasm',        excerpt:'The Orthodox tradition of interior prayer and stillness, defended by St. Gregory Palamas.'},
+  {type:'topic',    title:'Theotokos',         url:'topics.html?topic=theotokos',        excerpt:'The title of the Virgin Mary meaning God-bearer — defined at the Council of Ephesus in 431.'},
+  {type:'saint',    title:'St. John Chrysostom', url:'saints.html?saint=john_chrysostom', excerpt:'Archbishop of Constantinople, one of the Three Holy Hierarchs. Feast: November 13.'},
   {type:'saint',    title:'St. Seraphim of Sarov', url:'saints.html?saint=seraphim_of_sarov', excerpt:'Russian monastic and wonderworker. Feast: January 2.'},
-  {type:'saint',    title:'St. Mary Magdalene',  url:'saints.html?saint=mary_magdalene',   excerpt:'Equal to the Apostles and Myrrhbearer. Feast: July 22.'},
-  {type:'feast',    title:'Holy Pascha',         url:'feasts.html',                        excerpt:'The Feast of Feasts — the Resurrection of Christ. The central celebration of the Orthodox year.'},
-  {type:'feast',    title:'Theophany',           url:'feasts.html',                        excerpt:'The Baptism of Christ and the revelation of the Holy Trinity. January 6/19.'},
-  {type:'feast',    title:'Transfiguration',     url:'feasts.html',                        excerpt:'The glorification of Christ on Mount Tabor before His three disciples. August 6/19.'},
-  {type:'glossary', title:'Theosis',             url:'glossary.html#term-theosis',         excerpt:'Greek: deification. The process of participating in the divine energies.'},
-  {type:'glossary', title:'Hesychia',            url:'glossary.html#term-hesychia',        excerpt:'Greek: stillness, silence. The interior stillness cultivated in Orthodox prayer.'},
-  {type:'glossary', title:'Nepsis',              url:'glossary.html#term-nepsis',          excerpt:'Greek: watchfulness. The vigilant attention to thoughts in the Orthodox ascetical tradition.'},
-  {type:'glossary', title:'Kenosis',             url:'glossary.html#term-kenosis',         excerpt:'Greek: self-emptying. The condescension of the Son of God in taking human flesh.'},
-  {type:'glossary', title:'Oikonomia',           url:'glossary.html#term-oikonomia',       excerpt:'Greek: economy, dispensation. The plan of God for the salvation of humanity.'},
-  {type:'glossary', title:'Logos',               url:'glossary.html#term-logos',           excerpt:'Greek: word, reason. The Second Person of the Holy Trinity who became incarnate.'},
-  {type:'page',     title:'Liturgical Calendar', url:'calendar.html',                      excerpt:'Daily saints, feast days, fasting rules, and Scripture readings.'},
-  {type:'page',     title:'Church Fathers',      url:'church-fathers.html',                excerpt:'The great theological minds of the patristic era — from Ignatius to Gregory Palamas.'},
-  {type:'page',     title:'Reading Plans',       url:'reading-plans.html',                 excerpt:'Bible reading plans for daily Orthodox Scripture reading.'},
-  {type:'page',     title:'Fasting Guide',       url:'fasting.html',                       excerpt:'The Orthodox fasting calendar and theology of fasting.'},
-  {type:'page',     title:'Prayer Corner',       url:'prayer.html',                        excerpt:'Morning, evening, and seasonal prayers of the Orthodox tradition.'},
+  {type:'saint',    title:'St. Mary Magdalene', url:'saints.html?saint=mary_magdalene',  excerpt:'Equal to the Apostles and Myrrhbearer. Feast: July 22.'},
+  {type:'feast',    title:'Holy Pascha',       url:'feasts.html',                        excerpt:'The Feast of Feasts — the Resurrection of Christ. The central celebration of the Orthodox year.'},
+  {type:'feast',    title:'Theophany',         url:'feasts.html',                        excerpt:'The Baptism of Christ and the revelation of the Holy Trinity. January 6/19.'},
+  {type:'feast',    title:'Transfiguration',   url:'feasts.html',                        excerpt:'The glorification of Christ on Mount Tabor before His three disciples. August 6/19.'},
+  {type:'glossary', title:'Theosis',           url:'glossary.html#term-theosis',         excerpt:'Greek: deification. The process of participating in the divine energies.'},
+  {type:'glossary', title:'Hesychia',          url:'glossary.html#term-hesychia',        excerpt:'Greek: stillness, silence. The interior stillness cultivated in Orthodox prayer.'},
+  {type:'glossary', title:'Nepsis',            url:'glossary.html#term-nepsis',          excerpt:'Greek: watchfulness. The vigilant attention to thoughts in the Orthodox ascetical tradition.'},
+  {type:'glossary', title:'Kenosis',           url:'glossary.html#term-kenosis',         excerpt:'Greek: self-emptying. The condescension of the Son of God in taking human flesh.'},
+  {type:'glossary', title:'Oikonomia',         url:'glossary.html#term-oikonomia',       excerpt:'Greek: economy, dispensation. The plan of God for the salvation of humanity.'},
+  {type:'glossary', title:'Logos',             url:'glossary.html#term-logos',           excerpt:'Greek: word, reason. The Second Person of the Holy Trinity who became incarnate.'},
+  {type:'page',     title:'Liturgical Calendar', url:'calendar.html',                   excerpt:'Daily saints, feast days, fasting rules, and Scripture readings.'},
+  {type:'page',     title:'Church Fathers',    url:'church-fathers.html',                excerpt:'The great theological minds of the patristic era — from Ignatius to Gregory Palamas.'},
+  {type:'page',     title:'Reading Plans',     url:'reading-plans.html',                 excerpt:'Bible reading plans for daily Orthodox Scripture reading.'},
+  {type:'page',     title:'Fasting Guide',     url:'fasting.html',                       excerpt:'The Orthodox fasting calendar and theology of fasting.'},
+  {type:'page',     title:'Prayer Corner',     url:'prayer.html',                        excerpt:'Morning, evening, and seasonal prayers of the Orthodox tradition.'},
 ];
+
 
 var currentFilter = 'all';
 var currentQuery  = '';
@@ -805,12 +986,13 @@ function doSearch() {
   }).join('');
 }
 
-/* Handle URL query param */
-document.addEventListener('DOMContentLoaded', function() {
+// Handle URL query param
+(function() {
   var p = new URLSearchParams(window.location.search);
   var q = p.get('q');
   if (q) { document.getElementById('searchInput').value = q; doSearch(); }
-});
+})();
+
 </script>
 
 <!-- Cloudflare Web Analytics -->
