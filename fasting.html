@@ -2,392 +2,1093 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Fasting Guide — Orthodox Companion</title>
-<link rel="icon" href="cross.png"/>
-<meta name="description" content="The Orthodox fasting guide — the four great fasts, weekly rhythm, what is permitted, and the theology of fasting."/>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="The Church fasts together — through the four great seasons, every Wednesday and Friday, and on appointed days throughout the year. A guide to the Orthodox fast: its practice, its theology, and its life."/>
+<meta property="og:title" content="Fasting Guide — Orthodox Companion"/>
+<meta property="og:description" content="The Church fasts together — through the four great seasons, every Wednesday and Friday, and on appointed days throughout the year. A guide to the Orthodox fast: its practice, its theology, and its life."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/fasting.html"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
 <style>
-/* OC-MASTER-CSS */
+/* OC-MASTER-CSS — Parchment v3 */
 /* ═══════════════════════════════════════════════════════
-   ORTHODOX COMPANION — MASTER CSS v3
-   Applied to every page via clean sweep
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
 ═══════════════════════════════════════════════════════ */
 
-/* ── Theme Variables ─────────────────────────────────── */
-:root {
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.6);
-  --nav-bg:rgba(10,22,40,0.97);--nav-h:68px;
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
 }
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --nav-bg:rgba(245,237,216,0.97);
-  --hero-bg:#ffffff;--hero-text:#1a0f00;--hero-sub:#3a2800;
+
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
 }
 
 /* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'EB Garamond',Georgia,serif;background:var(--bg-page);
-  color:var(--text);min-height:100vh;overflow-x:hidden;
-  font-size:1.05rem;line-height:1.85;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
 
-/* ── Nav ─────────────────────────────────────────────── */
-nav{position:fixed;top:0;left:0;right:0;z-index:600;
-  background:var(--nav-bg);border-bottom:1px solid rgba(42,90,156,0.5);
-  backdrop-filter:blur(12px);height:var(--nav-h);
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho monogram: hero ornament */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* ── Nav (navy header, gold hairline) ────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
   display:flex;align-items:center;padding:0 20px;
-  box-shadow:0 2px 30px rgba(0,0,0,0.4);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;
-  flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:24px;color:var(--gold);line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
-  color:var(--text);letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;list-style:none;
-  height:var(--nav-h);margin-left:4px;}
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
+.nav-title{
+  font-family:'Cinzel',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--logotype);
+  letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
 .nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
   padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
   cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
-  transition:color 0.2s;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
 .nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;
-  min-width:220px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
   opacity:0;pointer-events:none;transform:translateY(-6px);
   transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.dd-icon{font-size:0.85rem;width:16px;text-align:center;flex-shrink:0;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);
-  border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);
-  text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover,.nav-ai-btn.active{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;
-  padding:6px 10px;transition:color 0.2s;white-space:nowrap;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-
-/* ── Account dropdown ────────────────────────────────── */
-.nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
-  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;
-  white-space:nowrap;}
-.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
-.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
-.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
-  min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
 
 /* ── Hamburger & Drawer ──────────────────────────────── */
 .nav-hamburger{display:none;background:transparent;border:none;
-  color:var(--text-dim);cursor:pointer;padding:8px;
-  flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
 .nav-hamburger span{display:block;width:22px;height:2px;
   background:currentColor;border-radius:1px;transition:all 0.25s;}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .nav-hamburger.open span:nth-child(2){opacity:0;}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 .nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
-  background:var(--dark);border-bottom:1px solid var(--border-dim);
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
   z-index:599;padding:8px 0 20px;
   transform:translateY(-8px);opacity:0;
   transition:transform 0.25s,opacity 0.25s;pointer-events:none;
   max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
 .nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;
-  text-transform:uppercase;letter-spacing:0.16em;color:var(--text-muted);
-  padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;
-  text-transform:uppercase;color:var(--text-dim);text-decoration:none;
-  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);
-  transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:var(--gold-light);padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;flex-wrap:wrap;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
 
-/* ── White Page Hero ─────────────────────────────────── */
+/* ── Page hero (parchment, with ornamental headband) ──── */
 .page-hero{
   margin-top:var(--nav-h);
   background:var(--hero-bg);
-  border-bottom:2px solid var(--gold-dim);
-  padding:40px 24px 32px;
+  padding:54px 24px 36px;
 }
-.page-hero-inner{max-width:1040px;margin:0 auto;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;
-  text-transform:uppercase;letter-spacing:0.12em;
-  color:var(--text-muted);margin-bottom:12px;}
-[data-theme="dark"] .breadcrumb{color:#4A7AB8;}
-[data-theme="light"] .breadcrumb{color:#6B4C1A;}
-.breadcrumb a{color:inherit;text-decoration:none;}
-.breadcrumb a:hover{color:var(--gold);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.8rem;font-weight:700;
-  letter-spacing:0.08em;margin-bottom:8px;
-  color:var(--hero-text);}
-.page-desc{font-size:0.95rem;line-height:1.75;max-width:640px;
-  font-style:italic;color:var(--hero-sub);}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
 
 /* ── Content ─────────────────────────────────────────── */
-.content{max-width:1040px;margin:0 auto;padding:32px 24px 60px;}
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
+
+.about-section{margin-bottom:48px;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section p:last-child{margin-bottom:0;}
+
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
+
+/* Drop cap (one per page, opening paragraph only) */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
+}
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}
+
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
+
+/* Diamond bullet list */
+.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
+
+/* Inline body links */
+.about-section a, .pull-quote a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.about-section a:hover, .pull-quote a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
+  text-align:center;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
+
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
+}
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
+}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
+}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
+
+/* ── Back to top (master pattern from glossary spec) ── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media(max-width:860px){
   .nav-links{display:none;}
   .nav-hamburger{display:flex;}
   .nav-drawer{display:block;}
-  .nav-right .nav-signin-btn{display:none;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
 }
 @media(max-width:600px){
-  .page-hero{padding:28px 16px 22px;}
-  .page-title{font-size:1.3rem;}
-  .content{padding:20px 16px 40px;}
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
   nav{padding:0 14px;}
   .nav-subtitle{display:none;}
-  .nav-ai-btn{padding:5px 9px;font-size:0.55rem;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
 }
 
-/* ── Page Layout ─────────────────────────────────────── */
-.fast-wrap{max-width:980px;margin:0 auto;padding:28px 24px 60px;}
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
 
-/* ── Intro Block ─────────────────────────────────────── */
-.fast-intro{background:linear-gradient(160deg,rgba(27,58,107,0.3),rgba(10,22,40,0.5));border:1px solid var(--border-dim);border-left:3px solid var(--gold-dim);border-radius:3px;padding:20px 24px;margin-bottom:16px;}
-.fast-intro-title{font-family:"Cinzel",serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold);margin-bottom:8px;}
-.fast-intro-text{font-size:0.96rem;color:var(--text-dim);line-height:1.85;font-style:italic;}
+/* ── Page-specific: fasting (parchment recolor of fast-* class system) ─── */
 
-/* ── Gold Offset Blocks (Scripture + Patristic) ──────── */
-.fast-gold-block{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.22);border-left:3px solid var(--gold-dim);border-radius:3px;padding:22px 26px;margin-bottom:16px;}
-.fast-gold-label{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold-dim);margin-bottom:10px;}
-.fast-gold-text{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.9;margin-bottom:10px;}
-.fast-gold-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
+/* Intro lede prose */
+.fast-intro-text{
+  font-size:1.06rem;
+  line-height:1.85;
+  color:var(--text-dim);
+}
 
-/* ── Section ─────────────────────────────────────────── */
-.fast-section{margin-bottom:44px;}
-.fast-section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
-.fast-section-title{font-family:"Cinzel",serif;font-size:0.78rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--gold);white-space:nowrap;}
-.fast-section-line{flex:1;height:1px;background:linear-gradient(90deg,var(--gold-dim),transparent);}
+/* Inline italic citation — parchment-tinted block for demoted gold blocks */
+.fast-citation{
+  margin:18px 0;
+  padding:14px 22px;
+  border-left:3px solid var(--gold-dim);
+  background:var(--surface);
+  border-radius:2px;
+}
+.fast-citation .fast-citation-text{
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--text);
+  margin-bottom:6px;
+}
+.fast-citation .fast-citation-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+}
 
-/* ── Fasting Periods ─────────────────────────────────── */
-.fast-periods{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:12px;}
-.fast-period{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:4px;padding:20px;border-top:3px solid transparent;cursor:pointer;user-select:none;transition:border-color 0.2s;}
-.fast-period:hover{border-color:var(--gold-dim);}
-.fast-period.strict{border-top-color:#8A3A3A;}
-.fast-period.moderate{border-top-color:#5A6A8A;}
-.fast-period-header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+/* Term-tip inline glossary popup (preserve interaction; recolor for parchment) */
+.term-tip{
+  position:relative;
+  border-bottom:1px dotted var(--gold-dim);
+  cursor:help;
+  display:inline;
+}
+.term-tip-popup{
+  display:none;
+  position:absolute;
+  bottom:calc(100% + 7px);
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:3px;
+  padding:12px 14px;
+  font-size:0.86rem;
+  color:var(--text-dim);
+  line-height:1.65;
+  font-style:normal;
+  font-family:'EB Garamond',Georgia,serif;
+  text-transform:none;
+  letter-spacing:normal;
+  z-index:300;
+  pointer-events:auto;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(31,27,22,0.12);
+}
+.term-tip:hover .term-tip-popup,
+.term-tip.tip-open .term-tip-popup{display:block;}
+.term-tip-link{
+  color:var(--body-link);
+  text-decoration:none;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;
+  text-transform:uppercase;
+  letter-spacing:0.12em;
+  font-weight:600;
+  display:block;
+  margin-top:8px;
+  border-bottom:1px solid currentColor;
+  width:fit-content;
+}
+.term-tip-link:hover{color:var(--gold-light);}
+
+/* Fasting period accordion cards (single muted gold-dim accent, no per-period vestment colors) */
+.fast-period{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:border-color 0.18s;
+}
+.fast-period:hover{border-left-color:var(--gold-light);}
+.fast-period-header{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:14px;
+  padding:18px 22px;
+  cursor:pointer;
+}
 .fast-period-header-text{flex:1;}
-.fast-period-chevron{font-size:0.65rem;color:var(--gold-dim);transition:transform 0.28s;flex-shrink:0;margin-top:4px;line-height:1;}
+.fast-period-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.06rem;
+  font-weight:600;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.fast-period-purpose{
+  font-size:0.96rem;
+  font-style:italic;
+  color:var(--text-dim);
+  line-height:1.6;
+}
+.fast-period-chevron{
+  flex-shrink:0;
+  color:var(--gold-dim);
+  font-size:0.72rem;
+  margin-top:6px;
+  transition:transform 0.2s;
+}
 .fast-period.open .fast-period-chevron{transform:rotate(180deg);}
-.fast-period-name{font-family:"Cinzel",serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.04em;margin-bottom:6px;}
-.fast-period-purpose{font-size:0.88rem;color:var(--text-dim);font-style:italic;line-height:1.6;}
-.fast-period-body{max-height:0;overflow:hidden;transition:max-height 0.38s ease;}
-.fast-period.open .fast-period-body{max-height:500px;}
-.fast-period-body-inner{padding-top:14px;}
-.fast-period-dates{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);margin-bottom:10px;}
-.fast-period-level{font-family:"Cinzel",serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.08em;padding:2px 7px;border-radius:2px;border:1px solid;display:inline-block;margin-bottom:10px;}
-.fast-period.strict .fast-period-level{color:#CA8A8A;border-color:rgba(200,80,80,0.3);}
-.fast-period.moderate .fast-period-level{color:#8ABCDC;border-color:rgba(138,188,220,0.3);}
-.fast-period-desc{font-size:0.88rem;color:var(--text);line-height:1.75;font-style:italic;}
+.fast-period-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.3s ease-out;
+}
+.fast-period.open .fast-period-body{max-height:600px;}
+.fast-period-body-inner{
+  padding:0 22px 20px;
+  border-top:1px solid var(--rule-soft);
+  padding-top:16px;
+  margin-top:6px;
+}
+.fast-period-dates{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  margin-bottom:8px;
+}
+.fast-period-level{
+  font-size:0.88rem;
+  font-style:italic;
+  color:var(--text-muted);
+  margin-bottom:10px;
+}
+.fast-period-desc{
+  font-size:1rem;
+  line-height:1.75;
+  color:var(--text-dim);
+}
 
-/* ── Weekly Grid ─────────────────────────────────────── */
-.weekly-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:16px;}
-.weekly-day{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:14px 8px;text-align:center;}
-.weekly-day.fast-day{background:rgba(90,58,138,0.15);border-color:rgba(138,138,200,0.3);}
-.weekly-day-name{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:5px;}
-.weekly-day.fast-day .weekly-day-name{color:var(--text-dim);}
-.weekly-day-rule{font-size:0.78rem;color:var(--text-dim);line-height:1.4;font-style:italic;}
-
-/* ── Saturday Tooltip ────────────────────────────────── */
-.weekly-day.has-tip{position:relative;cursor:pointer;}
-.weekly-tip-popup{display:none;position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);width:220px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:3px;padding:11px 14px;font-size:0.78rem;color:var(--text-dim);line-height:1.55;font-style:italic;z-index:200;pointer-events:none;text-align:left;}
+/* Weekly fasting rhythm grid */
+.weekly-grid{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin-bottom:24px;
+}
+.weekly-day{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-radius:2px;
+  padding:14px 8px;
+  text-align:center;
+  position:relative;
+}
+.weekly-day.fast-day{
+  border-color:var(--gold-dim);
+  background:rgba(201,168,76,0.06);
+}
+.weekly-day.has-tip{cursor:help;}
+.weekly-day-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--gold-light);
+  margin-bottom:6px;
+}
+.weekly-day-rule{
+  font-size:0.92rem;
+  color:var(--text-dim);
+  font-style:italic;
+}
+.weekly-day.fast-day .weekly-day-rule{color:var(--text);font-weight:500;}
+.weekly-tip-popup{
+  display:none;
+  position:absolute;
+  bottom:calc(100% + 7px);
+  left:50%;
+  transform:translateX(-50%);
+  width:240px;
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:3px;
+  padding:12px 14px;
+  font-size:0.86rem;
+  color:var(--text-dim);
+  line-height:1.65;
+  font-style:italic;
+  z-index:300;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(31,27,22,0.12);
+}
 .weekly-day.has-tip:hover .weekly-tip-popup,
 .weekly-day.has-tip.tip-open .weekly-tip-popup{display:block;}
 
-/* ── Term Tooltips (theological terms) ──────────────────── */
-.term-tip{position:relative;border-bottom:1px dotted var(--gold-dim);cursor:help;display:inline;}
-.term-tip-popup{display:none;position:absolute;bottom:calc(100% + 7px);left:50%;transform:translateX(-50%);width:250px;background:var(--dark);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:3px;padding:12px 14px;font-size:0.78rem;color:var(--text-dim);line-height:1.6;font-style:normal;font-family:'EB Garamond',Georgia,serif;text-transform:none;letter-spacing:normal;z-index:300;pointer-events:auto;text-align:left;}
-.term-tip:hover .term-tip-popup,
-.term-tip.tip-open .term-tip-popup{display:block;}
-.term-tip-link{color:var(--gold);text-decoration:none;font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-top:8px;}
-.term-tip-link:hover{text-decoration:underline;}
+/* Weekly prose */
+.weekly-prose p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.04rem;
+}
+.weekly-prose p:last-child{margin-bottom:0;}
 
-/* ── Weekly Prose ────────────────────────────────────── */
-.weekly-prose{display:flex;flex-direction:column;gap:8px;margin-bottom:20px;}
-.weekly-prose p{font-size:0.86rem;color:var(--text-dim);line-height:1.8;font-style:italic;}
+/* Fixed fasts + fast-free seasons */
+.fixed-fasts-wrap{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:14px;
+  margin-top:24px;
+}
+.fixed-fasts-block{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 20px;
+}
+.fixed-fasts-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:12px;
+}
+.fixed-fasts-list{
+  list-style:none;
+  padding:0;margin:0;
+}
+.fixed-fasts-list li{
+  font-size:0.96rem;
+  line-height:1.6;
+  color:var(--text-dim);
+  padding:8px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.fixed-fasts-list li:last-child{border-bottom:none;}
+.fixed-fasts-list li strong{
+  display:block;
+  color:var(--text);
+  font-weight:600;
+  margin-bottom:2px;
+}
+.fixed-fasts-list li em{
+  display:block;
+  font-style:italic;
+  font-size:0.9rem;
+  color:var(--text-muted);
+  margin-top:2px;
+}
+.fixed-fasts-note{
+  font-size:0.86rem;
+  font-style:italic;
+  color:var(--text-muted);
+  margin-top:12px;
+  line-height:1.55;
+}
 
-/* ── Fixed Fasts Compact Block ───────────────────────── */
-.fixed-fasts-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.fixed-fasts-block{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 18px;}
-.fixed-fasts-label{font-family:"Cinzel",serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:12px;}
-.fixed-fasts-list{list-style:none;display:flex;flex-direction:column;gap:0;}
-.fixed-fasts-list li{font-size:0.86rem;color:var(--text);line-height:1.5;padding:10px 0;border-bottom:1px solid rgba(42,90,156,0.12);}
-.fixed-fasts-list li:first-child{padding-top:0;}
-.fixed-fasts-list li:last-child{padding-bottom:0;border-bottom:none;}
-.fixed-fasts-list li em{color:var(--text-dim);font-size:0.83rem;display:block;margin-top:5px;font-style:italic;line-height:1.6;}
-.fixed-fasts-note{margin-top:14px;font-size:0.82rem;color:var(--text-dim);font-style:italic;line-height:1.6;padding-top:12px;border-top:1px solid var(--border-dim);}
+/* Whole-fast 5-item grid */
+.fast-whole-intro{
+  font-size:1.04rem;
+  line-height:1.8;
+  color:var(--text-dim);
+  margin-bottom:18px;
+}
+.fast-whole-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+}
+.fast-whole-item{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 20px;
+}
+.fast-whole-term{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.94rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:8px;
+}
+.fast-whole-desc{
+  font-size:0.98rem;
+  line-height:1.7;
+  color:var(--text-dim);
+}
 
-/* ── The Whole Fast ──────────────────────────────────── */
-.fast-whole-intro{font-size:0.92rem;color:var(--text-dim);line-height:1.85;margin-bottom:18px;}
-.fast-whole-grid{display:flex;flex-direction:column;gap:10px;}
-.fast-whole-item{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px 20px;display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:start;}
-.fast-whole-term{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);padding-top:2px;}
-.fast-whole-desc{font-size:0.88rem;color:var(--text-dim);line-height:1.75;font-style:italic;}
+/* Food permitted/abstained 3-card grid */
+.food-guide{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:14px;
+}
+.food-card{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-top:2px solid var(--gold-dim);
+  border-radius:2px;
+  padding:18px 20px;
+}
+.food-card-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  margin-bottom:8px;
+}
+.food-card-note{
+  font-size:0.88rem;
+  font-style:italic;
+  color:var(--text-muted);
+  margin-bottom:10px;
+  line-height:1.55;
+}
+.food-list{
+  list-style:none;
+  padding:0;margin:0;
+}
+.food-list li{
+  font-size:0.96rem;
+  line-height:1.6;
+  color:var(--text-dim);
+  padding:6px 0 6px 18px;
+  position:relative;
+  border-bottom:1px solid var(--rule-soft);
+}
+.food-list li:last-child{border-bottom:none;}
+.food-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:7px;
+  color:var(--gold-dim);
+  font-size:0.68rem;
+}
+.food-note{
+  margin-top:18px;
+  font-size:0.96rem;
+  font-style:italic;
+  color:var(--text-muted);
+  line-height:1.7;
+}
 
-/* ── Food Guide ──────────────────────────────────────── */
-.food-guide{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.food-card{background:var(--bg-card);border:1px solid var(--border-dim);border-radius:3px;padding:16px;}
-.food-card-title{font-family:"Cinzel",serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gold);margin-bottom:8px;}
-.food-card-note{font-size:0.82rem;color:var(--text-dim);font-style:italic;line-height:1.6;margin-bottom:10px;}
-.food-list{list-style:none;display:flex;flex-direction:column;gap:4px;}
-.food-list li{font-size:0.88rem;color:var(--text);line-height:1.55;padding-left:12px;position:relative;}
-.food-list li::before{content:"";position:absolute;left:0;top:0.5em;width:5px;height:5px;border-radius:50%;background:var(--gold-dim);}
-.food-note{margin-top:14px;font-size:0.84rem;color:var(--text-dim);font-style:italic;line-height:1.7;padding:12px 16px;border-left:2px solid var(--border-dim);}
+/* Theology section quote blocks */
+.theology-block{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:16px 22px;
+  margin-bottom:12px;
+}
+.theology-quote{
+  font-style:italic;
+  font-size:1.02rem;
+  line-height:1.75;
+  color:var(--text);
+  margin-bottom:8px;
+}
+.theology-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+}
 
-/* ── Theology Quotes ─────────────────────────────────── */
-.theology-block{background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:3px;padding:22px 26px;margin-top:16px;}
-.theology-quote{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:1.9;margin-bottom:10px;}
-.theology-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
-
-/* ── Pastoral Block ──────────────────────────────────── */
-.pastoral-block{background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);border-left:3px solid var(--border);border-radius:3px;padding:22px 26px;}
-.pastoral-block p{font-size:0.9rem;color:var(--text-dim);line-height:1.85;margin-bottom:12px;}
+/* Pastoral block */
+.pastoral-block p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.04rem;
+}
 .pastoral-block p:last-child{margin-bottom:0;}
 
-/* ── Prayer / Devotional Close ───────────────────────── */
-.fast-prayer-block{background:rgba(201,168,76,0.04);border:1px solid rgba(201,168,76,0.18);border-radius:3px;padding:26px 30px;}
-.fast-prayer-label{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--gold-dim);margin-bottom:16px;}
-.fast-prayer-text{font-size:1rem;color:var(--text-dim);font-style:italic;line-height:2.1;margin-bottom:14px;}
-.fast-prayer-attr{font-family:"Cinzel",serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);}
-
-/* ── Responsive ──────────────────────────────────────── */
-@media(max-width:768px){
-  .fast-periods{grid-template-columns:1fr;}
-  .food-guide{grid-template-columns:1fr;}
-  .fixed-fasts-wrap{grid-template-columns:1fr;}
-  .fast-whole-item{grid-template-columns:1fr;gap:6px;}
+/* Final prayer block — St. Ephraim Prayer (byte-identical preservation) */
+.fast-prayer-block{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:2px solid var(--gold);
+  border-radius:2px;
+  padding:26px 30px;
+  text-align:center;
 }
-@media(max-width:500px){
-  .weekly-grid{grid-template-columns:repeat(4,1fr);}
+.fast-prayer-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  font-weight:600;
+  margin-bottom:14px;
 }
-/* ── Back to Top ─────────────────────────────────────── */
-#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--dark);border:1px solid var(--gold-dim);
-  color:var(--gold-light);font-size:1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;pointer-events:none;
-  transition:opacity 0.25s,transform 0.25s;
-  box-shadow:0 2px 12px rgba(0,0,0,0.5);}
-#backToTop.visible{opacity:1;pointer-events:all;}
-#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
+.fast-prayer-text{
+  font-style:italic;
+  font-size:1.1rem;
+  line-height:1.85;
+  color:var(--text);
+  max-width:560px;
+  margin:0 auto 14px;
+}
+.fast-prayer-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+}
 
+/* Mobile breakpoints */
+@media(max-width:600px){
+  .weekly-grid{grid-template-columns:repeat(7,1fr);gap:3px;}
+  .weekly-day{padding:10px 4px;}
+  .weekly-day-name{font-size:0.7rem;}
+  .weekly-day-rule{font-size:0.78rem;}
+}
 </style>
 </head>
 <body>
+
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#65038;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
     <li class="nav-item">
-      <span class="nav-link has-drop">New Here?</span>
+      <span class="nav-link active has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
-      <span class="nav-link active has-drop">Worship &amp; Life</span>
+      <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html" class="active"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
-  <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <div class="nav-account-wrap" id="navAccountWrap">
-      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
-      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
-        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
-          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
-        </button>
-        <div class="nav-user-dropdown" id="navUserDropdown">
-          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
-          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
-          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="nav-right"></div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="nav-drawer" id="navDrawer">
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
@@ -396,6 +1097,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
@@ -410,205 +1112,211 @@ nav{position:fixed;top:0;left:0;right:0;z-index:600;
   <div class="nav-drawer-section">Worship &amp; Life</div>
   <a href="calendar.html">Liturgical Calendar</a>
   <a href="prayer.html">Prayer Corner</a>
-  <a href="fasting.html" class="active">Fasting Guide</a>
+  <a href="fasting.html">Fasting Guide</a>
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
-  </div>
 </div>
 
-<!-- ═══ HERO ═══════════════════════════════════════════ -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span><a href="fasting.html">Fasting Guide</a></div>
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Fasting Guide</div>
     <h1 class="page-title">Fasting Guide</h1>
-    <p class="page-desc">The Church fasts together &#8212; through the four great seasons, every Wednesday and Friday, and on appointed days throughout the year. A guide to the Orthodox fast: its practice, its theology, and its life.</p>
+    <p class="page-desc">The Church fasts together &mdash; through the four great seasons, every Wednesday and Friday, and on appointed days throughout the year. A guide to the Orthodox fast: its practice, its theology, and its life.</p>
   </div>
 </div>
 
-<!-- ═══ PAGE BODY ═══════════════════════════════════════ -->
-<div class="fast-wrap">
+<div class="content">
+  <div class="content-inner">
 
-  <!-- ── 1. Opening Movement ──────────────────────────── -->
-  <div class="fast-intro">
-    <div class="fast-intro-title">On the Orthodox Fast</div>
-    <div class="fast-intro-text">Fasting is not a technique for self-improvement. It is how the Church, as one body, turns toward God &#8212; quieting the passions, sharpening prayer, and preparing the whole person through repentance toward the salvation He won for us and the joy of the Feast.<br><br>Above all, the fast prepares us to receive Christ Himself in the Holy Mysteries. Through repentance, purification, and the discipline of the body, the Church readies her children to approach the Eucharistic Cup &#8212; to receive the Body and Blood of the Lord with clean hands and a pure heart. The fast and the Eucharist are inseparable: we empty ourselves that He might fill us. The Church also keeps a fast before receiving the Holy Mysteries &#8212; coming to the Eucharistic Cup without food or drink since the midnight before, a practice the priest will guide according to your health and circumstances.</div>
-  </div>
+<!-- 1. Opening Movement -->
+    <section class="about-section">
+      <h2 class="section-heading" id="on-the-orthodox-fast">On the Orthodox Fast</h2>
+      <p class="lede fast-intro-text">Fasting is not a technique for self-improvement. It is how the Church, as one body, turns toward God &mdash; quieting the passions, sharpening prayer, and preparing the whole person through repentance toward the salvation He won for us and the joy of the Feast.</p>
+      <p>Above all, the fast prepares us to receive Christ Himself in the Holy Mysteries. Through repentance, purification, and the discipline of the body, the Church readies her children to approach the Eucharistic Cup &mdash; to receive the Body and Blood of the Lord with clean hands and a pure heart. The fast and the Eucharist are inseparable: we empty ourselves that He might fill us. The Church also keeps a fast before receiving the Holy Mysteries &mdash; coming to the Eucharistic Cup without food or drink since the midnight before, a practice the priest will guide according to your health and circumstances.</p>
+    </section>
 
-  <div class="fast-gold-block">
-    <div class="fast-gold-label">The Lord&#8217;s Teaching on Fasting</div>
-    <div class="fast-gold-text">&#8220;When you fast, do not be like the hypocrites, with a sad countenance. For they disfigure their faces that they may appear to men to be fasting. But you, when you fast, anoint your head and wash your face, so that you do not appear to men to be fasting, but to your Father who is in the secret place; and your Father who sees in secret will reward you openly.&#8221;</div>
-    <div class="fast-gold-attr">&#8212; Matthew 6:16&#8211;18</div>
-  </div>
+    <figure class="pull-quote">
+      <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+      <p class="pull-quote-text">When you fast, do not be like the hypocrites, with a sad countenance. For they disfigure their faces that they may appear to men to be fasting. But you, when you fast, anoint your head and wash your face, so that you do not appear to men to be fasting, but to your Father who is in the secret place; and your Father who sees in secret will reward you openly.</p>
+      <figcaption class="pull-quote-attr">Matthew 6:16&ndash;18 &mdash; the Lord's teaching on fasting</figcaption>
+    </figure>
+    <div class="fleuron" aria-hidden="true">&#10086;</div>
 
-  <div class="fast-gold-block" style="margin-bottom:36px;">
-    <div class="fast-gold-label">St. Basil the Great &#183; On Fasting</div>
-    <div class="fast-gold-text">&#8220;Fasting was ordained in Paradise. The first commandment was delivered to Adam concerning fasting. Because we did not fast, we fell &#8212; let us fast, therefore, that we may return.&#8221;</div>
-    <div class="fast-gold-attr">&#8212; St. Basil the Great</div>
-  </div>
-
-  <!-- ── 2. The Four Fasting Seasons ─────────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">The Four Fasting Seasons</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="fast-periods" id="fastPeriods"></div>
-  </div>
-
-  <!-- ── 3. The Weekly Fasting Rhythm ───────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">The Weekly Fasting Rhythm</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="weekly-grid" id="weeklyGrid"></div>
-    <div class="weekly-prose">
-      <p>Wednesday commemorates the betrayal of Christ into the hands of sinners. Friday commemorates His Crucifixion. These are not merely dietary customs &#8212; they are the Church&#8217;s weekly participation in the Passion. To fast on Wednesday and Friday is to keep watch at Gethsemane, to stand at Golgotha. Every week the Church dies and rises with her Lord.</p>
-      <p>To fast on these days is more than not eating. It is a posture of the whole person &#8212; a turning of the heart toward repentance and prayer.</p>
-      <p>The Church does not fast on Sunday. Sunday is the Day of Resurrection &#8212; to fast on Sunday is to refuse to celebrate the victory of Christ. Every Sunday is a small Pascha.</p>
-      <p>Even on days without a formal fast, the Church calls her children to sobriety of body and soul &#8212; moderation in food, watchfulness in prayer, and a constant remembrance of God.</p>
+    <div class="fast-citation">
+      <div class="fast-citation-text">"Fasting was ordained in Paradise. The first commandment was delivered to Adam concerning fasting. Because we did not fast, we fell &mdash; let us fast, therefore, that we may return."</div>
+      <div class="fast-citation-attr">St. Basil the Great &middot; On Fasting</div>
     </div>
 
-    <!-- Fixed Fasts + Fast-Free Seasons compact block -->
-    <div class="fixed-fasts-wrap">
-      <div class="fixed-fasts-block">
-        <div class="fixed-fasts-label">Days of Fasting and Abstinence</div>
-        <ul class="fixed-fasts-list">
-          <li><strong>January 5</strong> &#183; Eve of Theophany<em>We fast on the eve of Christ&#8217;s Baptism, preparing to receive the grace of the feast &#8212; the revelation of the Holy Trinity at the Jordan, where He sanctified the waters and renewed our nature.</em></li>
-          <li><strong>August 29</strong> &#183; Beheading of St. John the Baptist<em>We fast in mourning for the Forerunner, whose whole life was a fast of repentance. His death by the sword bears witness to the cost of proclaiming the truth and pointing to the Lamb of God.</em></li>
-          <li><strong>September 14</strong> &#183; Elevation of the Holy Cross<em>As the Cross is raised before the whole Church and we bow to the ground, the fast unites our bodies to the Church&#8217;s prostration &#8212; adoring the tree of life on which Christ conquered death and opened Paradise.</em></li>
+    <!-- 2. The Four Fasting Seasons -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-four-fasting-seasons">The Four Fasting Seasons</h2>
+      <div class="fast-periods" id="fastPeriods"></div>
+    </section>
+
+    <!-- 3. The Weekly Fasting Rhythm -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-weekly-fasting-rhythm">The Weekly Fasting Rhythm</h2>
+      <div class="weekly-grid" id="weeklyGrid"></div>
+      <div class="weekly-prose">
+        <p>Wednesday commemorates the betrayal of Christ into the hands of sinners. Friday commemorates His Crucifixion. These are not merely dietary customs &mdash; they are the Church's weekly participation in the Passion. To fast on Wednesday and Friday is to keep watch at Gethsemane, to stand at Golgotha. Every week the Church dies and rises with her Lord.</p>
+        <p>To fast on these days is more than not eating. It is a posture of the whole person &mdash; a turning of the heart toward repentance and prayer.</p>
+        <p>The Church does not fast on Sunday. Sunday is the Day of Resurrection &mdash; to fast on Sunday is to refuse to celebrate the victory of Christ. Every Sunday is a small Pascha.</p>
+        <p>Even on days without a formal fast, the Church calls her children to sobriety of body and soul &mdash; moderation in food, watchfulness in prayer, and a constant remembrance of God.</p>
+      </div>
+
+      <div class="fixed-fasts-wrap">
+        <div class="fixed-fasts-block">
+          <div class="fixed-fasts-label">Days of Fasting and Abstinence</div>
+          <ul class="fixed-fasts-list">
+            <li><strong>January 5</strong> &middot; Eve of Theophany<em>We fast on the eve of Christ's Baptism, preparing to receive the grace of the feast &mdash; the revelation of the Holy Trinity at the Jordan, where He sanctified the waters and renewed our nature.</em></li>
+            <li><strong>August 29</strong> &middot; Beheading of St. John the Baptist<em>We fast in mourning for the Forerunner, whose whole life was a fast of repentance. His death by the sword bears witness to the cost of proclaiming the truth and pointing to the Lamb of God.</em></li>
+            <li><strong>September 14</strong> &middot; Elevation of the Holy Cross<em>As the Cross is raised before the whole Church and we bow to the ground, the fast unites our bodies to the Church's prostration &mdash; adoring the tree of life on which Christ conquered death and opened Paradise.</em></li>
+          </ul>
+        </div>
+        <div class="fixed-fasts-block">
+          <div class="fixed-fasts-label">Seasons Without Fasting</div>
+          <ul class="fixed-fasts-list">
+            <li><strong>Bright Week</strong><em>the week following Pascha</em></li>
+            <li><strong>December 25 &ndash; January 4</strong><em>from the Nativity to the Eve of Theophany</em></li>
+            <li><strong>Week of the Publican and Pharisee</strong><em>a reminder that fasting without humility profits nothing</em></li>
+          </ul>
+          <div class="fixed-fasts-note">During these seasons all fasting &mdash; including the Wednesday and Friday fast &mdash; is set aside by the Church.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. The Whole Fast -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-whole-fast">The Whole Fast</h2>
+      <p class="fast-whole-intro">Fasting from food is only one part of what the Church means by fasting. The Fathers are clear: to abstain from meat while feeding on anger, gossip, or pride is not a fast &mdash; it is a diet. True fasting involves the whole person.</p>
+      <div class="fast-whole-grid">
+        <div class="fast-whole-item">
+          <div class="fast-whole-term">Prayer</div>
+          <div class="fast-whole-desc">The fast sharpens prayer. The body, quieted by abstinence, no longer pulls the attention downward. The Church's fasting seasons are seasons of intensified prayer &mdash; more prostrations, more services, more silence.</div>
+        </div>
+        <div class="fast-whole-item">
+          <div class="fast-whole-term">Repentance</div>
+          <div class="fast-whole-desc">Fasting opens the heart to see itself clearly. It is preparation for confession &mdash; for the honest examination of the soul before God. Without repentance, fasting becomes spiritual theatre.</div>
+        </div>
+        <div class="fast-whole-item">
+          <div class="fast-whole-term">Almsgiving</div>
+          <div class="fast-whole-desc">What we save by fasting, we give away. The Fathers teach this consistently: fasting and almsgiving are inseparable. To fast and hoard is a contradiction. To fast and give is to share in the mercy of God.</div>
+        </div>
+        <div class="fast-whole-item">
+          <div class="fast-whole-term">Forgiveness</div>
+          <div class="fast-whole-desc">The Church begins Great Lent with Forgiveness Vespers &mdash; every Orthodox Christian asking forgiveness of every other, face to face. No fast is received by God from a heart that holds unforgiveness.</div>
+        </div>
+        <div class="fast-whole-item">
+          <div class="fast-whole-term">Watchfulness</div>
+          <div class="fast-whole-desc">Fasting is an exercise in <span class="term-tip">nepsis<span class="term-tip-popup">Greek: sobriety and watchfulness of the soul &mdash; the patristic practice of attentiveness to one's thoughts and inner movements.<a href="glossary.html#nepsis" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> &mdash; attentiveness to the movements of the soul. The passions quieted by hunger become visible. The fast reveals what we actually are, and gives us the tools to struggle.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. What Is Permitted -->
+    <section class="about-section">
+      <h2 class="section-heading" id="what-is-permitted">What Is Permitted</h2>
+      <div class="food-guide" id="foodGuide"></div>
+      <p class="food-note">These guidelines reflect the common practice of the Orthodox Church. Specific allowances vary by feast day, jurisdiction, and the guidance of your priest. The rules exist to serve the fast &mdash; not to become a burden.</p>
+    </section>
+
+    <!-- 6. The Theology of Fasting -->
+    <section class="about-section">
+      <h2 class="section-heading" id="the-theology-of-fasting">The Theology of Fasting</h2>
+      <div class="theology-block">
+        <div class="theology-quote">"The Church, by a long training of fasting and instruction, prepares you for the sacred mysteries."</div>
+        <div class="theology-attr">St. Cyril of Jerusalem &mdash; Catechetical Lectures</div>
+      </div>
+      <div class="theology-block">
+        <div class="theology-quote">"When the stomach is contracted and does not desire much food, the mind becomes sharp and light for prayer. When the stomach is weighed down with food, thoughts become heavy and the mind becomes dull."</div>
+        <div class="theology-attr">St. John of the Ladder</div>
+      </div>
+      <div class="fast-citation">
+        <div class="fast-citation-text">"Let us observe a fast acceptable and pleasing to the Lord. True fasting is to put away all evil, to control the tongue, to forbear from anger, to abstain from lusts, slander, falsehood, and perjury. When we abstain from these things, then is our fasting true and acceptable to God."</div>
+        <div class="fast-citation-attr">From the Lenten Triodion &middot; <span class="term-tip">Clean Monday<span class="term-tip-popup">The first day of Great Lent in the Orthodox Church &mdash; the solemn beginning of the great fast before Pascha.<a href="glossary.html#term-clean_monday" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> Vespers</div>
+      </div>
+    </section>
+
+    <!-- 7. A Pastoral Note -->
+    <section class="about-section">
+      <h2 class="section-heading" id="a-pastoral-note">A Pastoral Note</h2>
+      <div class="pastoral-block">
+        <p>The Orthodox fast is not a law to be enforced but a medicine to be received. The Church adapts her fasting rule with compassion for those with illness, pregnancy, young children, demanding physical labor, or other difficult circumstances of life. No one should fast in a way that damages their health or becomes a source of pride.</p>
+        <p>Fasting without a spiritual father is fasting without a compass. Consult your priest about your personal fasting rule &mdash; he will help you find the measure appropriate to your life, your health, and your spiritual maturity.</p>
+        <p>Guard against three dangers the Fathers always name together: <strong>pride</strong> in your fasting, <strong>comparison</strong> with others, and <strong>legalism</strong> &mdash; the reduction of a living spiritual discipline to a checklist. The Lord's words are the measure: <em>"Do not be like the hypocrites."</em> The fast is between you and God.</p>
+      </div>
+    </section>
+
+    <!-- 8. A Prayer for the Fast — St. Ephraim Prayer (byte-identical) -->
+    <section class="about-section" style="margin-bottom:0;">
+      <h2 class="section-heading" id="a-prayer-for-the-fast">A Prayer for the Fast</h2>
+      <div class="fast-prayer-block">
+        <div class="fast-prayer-label">The Prayer of St. Ephraim the Syrian</div>
+        <div class="fast-prayer-text">
+          O Lord and Master of my life,<br>
+          take from me the spirit of sloth, despair, lust of power, and idle talk.<br><br>
+          But give rather the spirit of chastity, humility, patience, and love to Thy servant.<br><br>
+          Yea, O Lord and King, grant me to see my own transgressions,<br>
+          and not to judge my brother,<br>
+          for blessed art Thou, unto ages of ages. Amen.
+        </div>
+        <div class="fast-prayer-attr">Prayed with prostrations throughout Great Lent</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
         </ul>
       </div>
-      <div class="fixed-fasts-block">
-        <div class="fixed-fasts-label">Seasons Without Fasting</div>
-        <ul class="fixed-fasts-list">
-          <li><strong>Bright Week</strong><em>the week following Pascha</em></li>
-          <li><strong>December 25 &#8211; January 4</strong><em>from the Nativity to the Eve of Theophany</em></li>
-          <li><strong>Week of the Publican and Pharisee</strong><em>a reminder that fasting without humility profits nothing</em></li>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
         </ul>
-        <div class="fixed-fasts-note">During these seasons all fasting &#8212; including the Wednesday and Friday fast &#8212; is set aside by the Church.</div>
       </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
     </div>
   </div>
+</footer>
 
-  <!-- ── 4. The Whole Fast ───────────────────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">The Whole Fast</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <p class="fast-whole-intro">Fasting from food is only one part of what the Church means by fasting. The Fathers are clear: to abstain from meat while feeding on anger, gossip, or pride is not a fast &#8212; it is a diet. True fasting involves the whole person.</p>
-    <div class="fast-whole-grid">
-      <div class="fast-whole-item">
-        <div class="fast-whole-term">Prayer</div>
-        <div class="fast-whole-desc">The fast sharpens prayer. The body, quieted by abstinence, no longer pulls the attention downward. The Church&#8217;s fasting seasons are seasons of intensified prayer &#8212; more prostrations, more services, more silence.</div>
-      </div>
-      <div class="fast-whole-item">
-        <div class="fast-whole-term">Repentance</div>
-        <div class="fast-whole-desc">Fasting opens the heart to see itself clearly. It is preparation for confession &#8212; for the honest examination of the soul before God. Without repentance, fasting becomes spiritual theatre.</div>
-      </div>
-      <div class="fast-whole-item">
-        <div class="fast-whole-term">Almsgiving</div>
-        <div class="fast-whole-desc">What we save by fasting, we give away. The Fathers teach this consistently: fasting and almsgiving are inseparable. To fast and hoard is a contradiction. To fast and give is to share in the mercy of God.</div>
-      </div>
-      <div class="fast-whole-item">
-        <div class="fast-whole-term">Forgiveness</div>
-        <div class="fast-whole-desc">The Church begins Great Lent with Forgiveness Vespers &#8212; every Orthodox Christian asking forgiveness of every other, face to face. No fast is received by God from a heart that holds unforgiveness.</div>
-      </div>
-      <div class="fast-whole-item">
-        <div class="fast-whole-term">Watchfulness</div>
-        <div class="fast-whole-desc">Fasting is an exercise in <span class="term-tip">nepsis<span class="term-tip-popup">Greek: sobriety and watchfulness of the soul &#8212; the patristic practice of attentiveness to one&#8217;s thoughts and inner movements.<a href="glossary.html#nepsis" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> &#8212; attentiveness to the movements of the soul. The passions quieted by hunger become visible. The fast reveals what we actually are, and gives us the tools to struggle.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 5. What Is Permitted ───────────────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">What Is Permitted</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="food-guide" id="foodGuide"></div>
-    <p class="food-note">These guidelines reflect the common practice of the Orthodox Church. Specific allowances vary by feast day, jurisdiction, and the guidance of your priest. The rules exist to serve the fast &#8212; not to become a burden.</p>
-  </div>
-
-  <!-- ── 6. The Theology of Fasting ────────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">The Theology of Fasting</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="theology-block">
-      <div class="theology-quote">&#8220;The Church, by a long training of fasting and instruction, prepares you for the sacred mysteries.&#8221;</div>
-      <div class="theology-attr">&#8212; St. Cyril of Jerusalem, Catechetical Lectures</div>
-    </div>
-    <div class="theology-block" style="margin-top:12px;">
-      <div class="theology-quote">&#8220;When the stomach is contracted and does not desire much food, the mind becomes sharp and light for prayer. When the stomach is weighed down with food, thoughts become heavy and the mind becomes dull.&#8221;</div>
-      <div class="theology-attr">&#8212; St. John of the Ladder</div>
-    </div>
-    <div class="fast-gold-block" style="margin-top:16px;margin-bottom:0;">
-      <div class="fast-gold-label">From the Lenten Triodion &#183; <span class="term-tip">Clean Monday<span class="term-tip-popup">The first day of Great Lent in the Orthodox Church &#8212; the solemn beginning of the great fast before Pascha.<a href="glossary.html#term-clean_monday" target="_blank" class="term-tip-link">Glossary &#8594;</a></span></span> Vespers</div>
-      <div class="fast-gold-text">&#8220;Let us observe a fast acceptable and pleasing to the Lord. True fasting is to put away all evil, to control the tongue, to forbear from anger, to abstain from lusts, slander, falsehood, and perjury. When we abstain from these things, then is our fasting true and acceptable to God.&#8221;</div>
-    </div>
-  </div>
-
-  <!-- ── 7. A Pastoral Note ─────────────────────────── -->
-  <div class="fast-section">
-    <div class="fast-section-header">
-      <div class="fast-section-title">A Pastoral Note</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="pastoral-block">
-      <p>The Orthodox fast is not a law to be enforced but a medicine to be received. The Church adapts her fasting rule with compassion for those with illness, pregnancy, young children, demanding physical labor, or other difficult circumstances of life. No one should fast in a way that damages their health or becomes a source of pride.</p>
-      <p>Fasting without a spiritual father is fasting without a compass. Consult your priest about your personal fasting rule &#8212; he will help you find the measure appropriate to your life, your health, and your spiritual maturity.</p>
-      <p>Guard against three dangers the Fathers always name together: <strong>pride</strong> in your fasting, <strong>comparison</strong> with others, and <strong>legalism</strong> &#8212; the reduction of a living spiritual discipline to a checklist. The Lord&#8217;s words are the measure: <em>&#8220;Do not be like the hypocrites.&#8221;</em> The fast is between you and God.</p>
-    </div>
-  </div>
-
-  <!-- ── 8. A Prayer for the Fast ───────────────────── -->
-  <div class="fast-section" style="margin-bottom:0;">
-    <div class="fast-section-header">
-      <div class="fast-section-title">A Prayer for the Fast</div>
-      <div class="fast-section-line"></div>
-    </div>
-    <div class="fast-prayer-block">
-      <div class="fast-prayer-label">The Prayer of St. Ephraim the Syrian</div>
-      <div class="fast-prayer-text">
-        O Lord and Master of my life,<br>
-        take from me the spirit of sloth, despair, lust of power, and idle talk.<br><br>
-        But give rather the spirit of chastity, humility, patience, and love to Thy servant.<br><br>
-        Yea, O Lord and King, grant me to see my own transgressions,<br>
-        and not to judge my brother,<br>
-        for blessed art Thou, unto ages of ages. Amen.
-      </div>
-      <div class="fast-prayer-attr">Prayed with prostrations throughout Great Lent</div>
-    </div>
-  </div>
-
-</div><!-- end .fast-wrap -->
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
-/* OC-MASTER-JS */
-/* ── Anti-flash (inline in <head>) ──────────────────── */
-// Anti-flash: inline script in <head> sets data-theme before render
+/* OC-MASTER-JS — Parchment v3 */
 
-/* ── Theme + Nav + Account JS ───────────────────────── */
-// Theme
-function toggleTheme(){
-  var c=document.documentElement.getAttribute('data-theme')||'dark';
-  var n=c==='dark'?'light':'dark';
-  document.documentElement.setAttribute('data-theme',n);
-  localStorage.setItem('oc_theme',n);
-}
-(function(){
-  var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
-  document.documentElement.setAttribute('data-theme',t);
-})();
-
-// Nav drawer
+/* ── Nav drawer ─────────────────────────────────── */
 var _drawerOpen=false;
 function toggleDrawer(){
   _drawerOpen=!_drawerOpen;
@@ -618,80 +1326,34 @@ function toggleDrawer(){
   if(h)h.classList.toggle('open',_drawerOpen);
 }
 
-// User account menu
-function toggleUserMenu(){
-  var d=document.getElementById('navUserDropdown');
-  var b=document.getElementById('navUserBtn');
-  if(d)d.classList.toggle('open');
-  if(b)b.classList.toggle('open');
-}
-
-// Sign out
-function signOut(){
-  localStorage.removeItem('oc_user');
-  localStorage.removeItem('oc_token');
-  window.location.href='index.html';
-}
-
-// Init account state on every page
-function initAccountNav(){
-  var user=null;
-  try{user=JSON.parse(localStorage.getItem('oc_user')||'null');}catch(e){}
-  var signIn=document.getElementById('navSignIn');
-  var userMenu=document.getElementById('navUserMenu');
-  var usernameEl=document.getElementById('navUsername');
-  var drawerSignIn=document.getElementById('drawerSignIn');
-  if(user&&user.username){
-    if(signIn)signIn.style.display='none';
-    if(userMenu)userMenu.style.display='block';
-    if(usernameEl)usernameEl.textContent=user.username;
-    if(drawerSignIn)drawerSignIn.textContent=user.username;
-  } else {
-    if(signIn)signIn.style.display='';
-    if(userMenu)userMenu.style.display='none';
-  }
-}
-
-// Close menus on outside click
+/* Close drawer on outside click */
 document.addEventListener('click',function(e){
-  if(_drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
     _drawerOpen=false;
     var d=document.getElementById('navDrawer');
     var h=document.getElementById('hamburger');
     if(d)d.classList.remove('open');
     if(h)h.classList.remove('open');
   }
-  // Close user dropdown
-  if(!e.target.closest('.nav-account-wrap')){
-    var d=document.getElementById('navUserDropdown');
-    var b=document.getElementById('navUserBtn');
-    if(d)d.classList.remove('open');
-    if(b)b.classList.remove('open');
-  }
 });
 
-// Smooth scroll for anchor links
-function scrollToSection(id){
-  var el=document.getElementById(id);
-  if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
+/* ── Back to top (master pattern from glossary.html spec) ── */
 document.addEventListener('DOMContentLoaded',function(){
-  initAccountNav();
-  // Handle hash scrolling
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
   if(window.location.hash){
     var id=window.location.hash.replace('#','');
     setTimeout(function(){
       var el=document.getElementById(id);
       if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
     },200);
-  }
-  // Back to top
-  var btn=document.getElementById('backToTop');
-  if(btn){
-    window.addEventListener('scroll',function(){
-      btn.classList.toggle('visible',window.scrollY>400);
-    },{passive:true});
   }
 });
 </script>
@@ -825,7 +1487,9 @@ function render() {
   }).join('');
 }
 
-/* ── Fasting Period Accordion — event delegation ─────── */
+document.addEventListener('DOMContentLoaded', render);
+
+/* Fasting period accordion — event delegation */
 document.addEventListener('DOMContentLoaded', function() {
   var periodsEl = document.getElementById('fastPeriods');
   if (periodsEl) {
@@ -836,9 +1500,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-/* ── Tooltip tap handlers: Saturday + Term Tips ──────── */
+/* Tooltip tap handlers: term-tip + Saturday */
 document.addEventListener('click', function(e) {
-  // Term tip tap (mobile)
   var termTip = e.target.closest('.term-tip');
   document.querySelectorAll('.term-tip.tip-open').forEach(function(el) {
     if (el !== termTip) el.classList.remove('tip-open');
@@ -846,20 +1509,18 @@ document.addEventListener('click', function(e) {
   if (termTip && !e.target.closest('.term-tip-link')) {
     termTip.classList.toggle('tip-open');
   }
-  // Saturday tip tap (mobile)
   var satTip = e.target.closest('.has-tip');
   document.querySelectorAll('.has-tip.tip-open').forEach(function(el) {
     if (el !== satTip) el.classList.remove('tip-open');
   });
   if (satTip) satTip.classList.toggle('tip-open');
 });
-
-document.addEventListener('DOMContentLoaded', render);
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth-nav.js"></script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 <script src="/analytics-tracker.js"></script>
-<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 </body>
 </html>
