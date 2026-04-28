@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Reading Plans &mdash; Orthodox Companion</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+<meta name="description" content="Fourteen Orthodox Bible reading plans &mdash; the full Bible, the New Testament, the Psalter, the Gospels, and seasonal plans for Lent, the Nativity Fast, and Holy Week."/>
+<meta property="og:title" content="Reading Plans &mdash; Orthodox Companion"/>
+<meta property="og:description" content="Fourteen Orthodox Bible reading plans &mdash; the full Bible, the New Testament, the Psalter, the Gospels, and seasonal plans for Lent, the Nativity Fast, and Holy Week."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/reading-plans.html"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
+<style>
+<style>
+/* OC-MASTER-CSS — Parchment v3 */
+/* ═══════════════════════════════════════════════════════
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
+═══════════════════════════════════════════════════════ */
+
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+/* Original font: Peter S. Baker — https://junicode.sourceforge.io
+   Subset includes only U+2766, U+2767, U+271D for ornamental use.
+   License: see /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}
+
+/* ── Base ────────────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  /* parchment + subtle vellum noise (CSS-only, ~5% alpha) */
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
+
+/* ── Inline-SVG ornament classes ─────────────────────── */
+/* Orthodox cross (Byzantine three-bar): nav, colophon, footer */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+/* Chi-rho monogram: hero ornament */
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* ── Nav (navy header, gold hairline) ────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
+.nav-title{
+  font-family:'Cinzel',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--logotype);
+  letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+
+/* ── Hamburger & Drawer ──────────────────────────────── */
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
+
+/* ── Page hero (parchment, with ornamental headband) ──── */
+.page-hero{
+  margin-top:var(--nav-h);
+  background:var(--hero-bg);
+  padding:54px 24px 36px;
+}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
+
+/* ── Content ─────────────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.content-inner{max-width:720px;margin:0 auto;}
+
+.about-section{margin-bottom:48px;}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}
+.about-section p:last-child{margin-bottom:0;}
+
+/* Section heading: gold-hairline marker above, EB Garamond small caps */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
+
+/* Drop cap (one per page, opening paragraph only) */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+
+/* ── Pull-quote (framed, with floating opening glyph) ─── */
+.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
+}
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}
+
+/* Fleuron — Junicode-rendered ornamental exhale */
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}
+
+/* Diamond bullet list */
+.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
+
+/* Inline body links */
+.about-section a, .pull-quote a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.about-section a:hover, .pull-quote a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Closing colophon (centered italic + cross flanked by rules) ── */
+.colophon{
+  margin:24px 0 44px;
+  text-align:center;
+}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}
+
+/* ── Letter pointer between colophon and contact card ─ */
+.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
+
+/* ── Contact card (navy — rhymes with footer) ─────────── */
+.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
+}
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
+}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
+}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
+
+/* ── Back to top (master pattern from glossary spec) ── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
+}
+@media(max-width:600px){
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
+}
+
+/* ── Honor prefers-reduced-motion (accessibility) ──── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+
+
+/* ── Page-specific: reading-plans ───────────────────── */
+.plans-wrap{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+.section-header{
+  display:flex;align-items:center;gap:14px;
+  margin:36px 0 18px;
+}
+.section-header:first-child{margin-top:8px;}
+.section-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:1.05rem;font-weight:600;
+  text-transform:lowercase;letter-spacing:0.14em;
+  color:var(--gold-light);
+  white-space:nowrap;
+}
+.section-line{
+  flex:1;height:1px;background:var(--gold-dim);opacity:0.45;
+}
+
+/* Today's reading panel — quiet parchment card with gold top rule */
+.today-panel{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:3px solid var(--gold);
+  border-radius:2px;
+  padding:24px 28px;margin-bottom:28px;
+}
+.today-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.16em;
+  color:var(--gold-light);margin-bottom:10px;
+}
+.today-readings{margin-bottom:14px;}
+.today-reading-row{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:10px 0;border-bottom:1px solid rgba(138,106,40,0.18);
+}
+.today-reading-row:last-child{border-bottom:none;}
+.today-reading-meta{display:flex;align-items:center;gap:12px;flex:1;min-width:0;}
+.today-reading-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.14em;
+  color:var(--text-muted);flex-shrink:0;width:64px;
+}
+.today-reading-ref{
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1.05rem;color:var(--text);
+  font-style:italic;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.today-plan-name{
+  font-size:0.92rem;color:var(--text-muted);font-style:italic;
+  margin-bottom:14px;
+}
+.today-actions{display:flex;gap:10px;flex-wrap:wrap;}
+.today-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.82rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text-dim);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:7px 16px;
+  background:transparent;cursor:pointer;
+  transition:background 0.15s,color 0.15s;
+  text-decoration:none;display:inline-block;
+}
+.today-btn:hover,.today-btn.primary{
+  background:rgba(201,168,76,0.10);
+  color:var(--text);
+}
+
+/* Plans grid — 3 col → 2 col → 1 col */
+.plans-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-bottom:8px;
+}
+.plan-card{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-top:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:22px 22px;
+  display:flex;flex-direction:column;gap:8px;
+  transition:background 0.15s,border-color 0.15s;
+}
+.plan-card:hover{background:#FBF6E8;border-color:var(--gold-light);}
+.plan-card.active{
+  border-top-color:var(--gold);
+  background:rgba(201,168,76,0.06);
+}
+.plan-card.completed{
+  border-top-color:var(--gold);
+}
+.plan-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1.18rem;font-weight:600;
+  color:var(--text);
+  letter-spacing:0.01em;
+}
+.plan-duration{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.82rem;text-transform:lowercase;letter-spacing:0.12em;
+  color:var(--text-muted);
+}
+.plan-desc{
+  font-size:0.96rem;color:var(--text-dim);
+  line-height:1.6;font-style:italic;
+}
+.plan-progress-wrap{display:flex;flex-direction:column;gap:5px;}
+.plan-progress-bar{
+  background:rgba(138,106,40,0.15);
+  border-radius:1px;height:3px;overflow:hidden;
+}
+.plan-progress-fill{
+  height:100%;background:var(--gold);
+  border-radius:1px;transition:width 0.3s;
+}
+.plan-progress-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text-muted);
+}
+.plan-start-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.86rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:8px 14px;
+  background:transparent;
+  cursor:pointer;
+  transition:background 0.15s;
+  text-align:center;margin-top:6px;
+}
+.plan-start-btn:hover{background:rgba(201,168,76,0.10);}
+.plan-pdf-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--gold-light);
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  padding:6px 0 0;
+  text-align:center;
+  text-decoration:none;
+  font-style:italic;
+  transition:color 0.15s;
+}
+.plan-pdf-btn:hover{color:var(--gold);text-decoration:underline;text-decoration-thickness:0.5px;text-underline-offset:3px;}
+.plan-complete-badge{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.12em;
+  color:var(--gold-light);margin-bottom:2px;
+}
+.plan-next-nudge{
+  border-top:1px solid rgba(138,106,40,0.20);
+  margin-top:6px;padding-top:12px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.plan-next-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text-muted);
+}
+.plan-next-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.86rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--deep);
+  background:var(--gold);
+  border:none;border-radius:2px;
+  padding:8px 14px;cursor:pointer;
+  transition:background 0.15s;text-align:center;
+}
+.plan-next-btn:hover{background:var(--gold-light);}
+
+/* Fasting tracker affordance — small line below the plans grid offering
+   the printable companion for the year-round Wed/Fri rule and four fasts. */
+.fasting-tracker-affordance{
+  margin:18px 0 8px;padding:18px 20px;
+  border-top:1px solid var(--gold-dim);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  text-align:center;
+}
+.fasting-tracker-line{
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:0.95rem;color:var(--text-dim);
+  font-style:italic;line-height:1.5;
+  max-width:520px;
+}
+.fasting-tracker-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.84rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:8px 18px;
+  background:transparent;
+  cursor:pointer;
+  transition:background 0.15s;
+}
+.fasting-tracker-btn:hover{background:rgba(201,168,76,0.10);}
+
+/* Reading calendar — mini-month grid, sage tint for read days */
+.calendar-section{margin-top:36px;}
+.cal-month-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.92rem;text-transform:lowercase;letter-spacing:0.14em;
+  color:var(--gold-light);margin-bottom:12px;
+}
+.reading-calendar{
+  display:grid;grid-template-columns:repeat(7,1fr);gap:4px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:14px;
+}
+.cal-day-header{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.74rem;text-transform:lowercase;letter-spacing:0.10em;
+  color:var(--text-muted);
+  text-align:center;padding:4px 0;
+}
+.cal-day{
+  background:var(--surface-deep);
+  border:1px solid rgba(138,106,40,0.20);
+  border-radius:2px;
+  padding:8px 4px;min-height:42px;
+  text-align:center;
+  transition:background 0.15s,border-color 0.15s;
+}
+.cal-day.read{
+  background:rgba(108,138,84,0.18);
+  border-color:#7A9460;
+}
+.cal-day.today-day{border-color:var(--gold) !important;}
+.cal-day.empty{
+  background:transparent;
+  border-color:transparent;
+}
+.cal-day-num{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;color:var(--text-dim);
+}
+.cal-day.read .cal-day-num{color:#3F5A2C;font-weight:600;}
+
+/* Note line at top — “a rule, not a race” */
+.plan-note{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  text-align:center;
+  color:var(--text-muted);
+  margin:0 0 28px;
+  font-size:0.98rem;
+}
+
+@media (max-width:900px){
+  .plans-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:620px){
+  .plans-grid{grid-template-columns:1fr;}
+  .plans-wrap{padding:32px 18px 56px;}
+  .today-panel{padding:20px 18px;}
+  .today-reading-row{flex-direction:column;align-items:flex-start;gap:6px;}
+  .today-reading-meta{width:100%;}
+  .today-btn.primary{align-self:stretch;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-brand">
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+    <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link active has-drop">Study</span>
+      <div class="nav-dropdown">
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right"></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="parents.html">Guidance for Parents</a>
+  <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+  <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+  <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+  <a href="symbol-of-faith.html">Symbol of Faith</a>
+  <a href="topics.html">Topics &amp; Doctrine</a>
+  <a href="glossary.html">Glossary</a>
+  <a href="saints.html">Saints</a>
+  <a href="church-fathers.html">Church Fathers</a>
+  <a href="holy-scripture.html">Holy Scripture</a>
+  <a href="bible-reader.html">Bible Reader</a>
+  <a href="reading-plans.html">Reading Plans</a>
+  <a href="resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="calendar.html">Liturgical Calendar</a>
+  <a href="prayer.html">Prayer Corner</a>
+  <a href="fasting.html">Fasting Guide</a>
+  <a href="feasts.html">Feasts</a>
+  <a href="liturgical-seasons.html">Liturgical Seasons</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Reading Plans</div>
+    <h1 class="page-title">Reading Plans</h1>
+    <p class="page-desc">Fourteen Bible reading plans for daily Orthodox Scripture reading &mdash; from the full Bible in a year to the Psalter read monthly in the kathisma tradition.</p>
+  </div>
+</div>
+
+<div class="plans-wrap">
+
+  <p class="plan-note">A rule, not a race. If you miss a day, take it up again the next.</p>
+
+  <!-- Today's reading panel (visible only when a plan is active) -->
+  <div class="today-panel" id="todayPanel" style="display:none;">
+    <div class="today-label">Today's Reading</div>
+    <div class="today-readings" id="todayReadings">Loading&hellip;</div>
+    <div class="today-plan-name" id="todayPlanName"></div>
+    <div class="today-actions">
+      <button class="today-btn" id="todayMarkBtn" onclick="markTodayRead()">Mark as Read</button>
+      <button class="today-btn" onclick="stopPlan()">Change Plan</button>
+    </div>
+  </div>
+
+  <!-- Plans grid -->
+  <div class="section-header">
+    <span class="section-title">Choose a Reading Plan</span>
+    <span class="section-line"></span>
+  </div>
+  <div class="plans-grid" id="plansGrid"></div>
+
+  <!-- Fasting tracker — printable companion for the year-round rule -->
+  <div class="fasting-tracker-affordance">
+    <p class="fasting-tracker-line">Or print the fasting tracker &mdash; the four great fasts of the year, and every Wednesday and Friday, kept with the Church.</p>
+    <div class="fasting-tracker-btn" id="fastingTrackerBtn">Download fasting tracker (PDF)</div>
+  </div>
+
+  <!-- Reading calendar -->
+  <div class="calendar-section">
+    <div class="section-header">
+      <span class="section-title">Reading Calendar</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="cal-month-title" id="calMonthTitle"></div>
+    <div class="reading-calendar" id="readingCal"></div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</footer>
+
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+/* OC-MASTER-JS — Parchment v3 */
+
+/* ── Nav drawer ─────────────────────────────────── */
+var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);
+  if(h)h.classList.toggle('open',_drawerOpen);
+}
+
+/* Close drawer on outside click */
+document.addEventListener('click',function(e){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
+    _drawerOpen=false;
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
+  }
+});
+
+/* ── Back to top (master pattern from glossary.html spec) ── */
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+});
+</script>
+<script src="data/reading-plans/plan-2year.js"></script>
+<script src="data/reading-plans/plan-1year.js"></script>
+<script src="data/reading-plans/plan-ot-1year.js"></script>
+<script src="data/reading-plans/plan-nt-1year.js"></script>
+<script src="data/reading-plans/plan-nt-90.js"></script>
+<script src="data/reading-plans/plan-gospels.js"></script>
+<script src="data/reading-plans/plan-epistles.js"></script>
+<script src="data/reading-plans/plan-psalter.js"></script>
+<script src="data/reading-plans/plan-wisdom.js"></script>
+<script src="data/reading-plans/plan-prophets.js"></script>
+<script src="data/reading-plans/plan-lenten.js"></script>
+<script src="data/reading-plans/plan-nativity.js"></script>
+<script src="data/reading-plans/plan-holy-week.js"></script>
+<script src="data/reading-plans/plan-catechumen.js"></script>
+<script src="pdf-generator.js" defer></script>
+<script>
+
+var PLANS = [
+  {id:'bible-2yr',    icon:'📖', name:'Full Bible — 2 Years',        duration:'730 days', total:730, desc:'The complete Scripture at a gentle pace — ideal for first-time readers.'},
+  {id:'bible-1yr',    icon:'📖', name:'Full Bible — 1 Year',         duration:'365 days', total:365, desc:'The complete Old and New Testament in one year. Four passages every day.'},
+  {id:'ot-1yr',       icon:'🕎', name:'Old Testament — 1 Year',      duration:'365 days', total:365, desc:'The full Orthodox Old Testament in LXX order, including all deuterocanonicals.'},
+  {id:'nt-1yr',       icon:'✝',  name:'New Testament — 1 Year',      duration:'365 days', total:365, desc:'The New Testament read at a gentle pace, with Psalm reflections throughout.'},
+  {id:'nt-90',        icon:'✝',  name:'New Testament — 90 Days',     duration:'90 days',  total:90,  desc:'The entire New Testament in three months. Ideal for Great Lent.'},
+  {id:'gospels-60',   icon:'✝',  name:'Gospels — 60 Days',           duration:'60 days',  total:60,  desc:'All four Gospels in sequence — Matthew, Mark, Luke, and John — over two months.'},
+  {id:'epistles-30',  icon:'✉',  name:'Epistles — 30 Days',          duration:'30 days',  total:30,  desc:'All the Apostolic Epistles, Romans through Jude, in one month.'},
+  {id:'psalter',      icon:'♪',  name:'Psalter Monthly',                 duration:'30 days',  total:30,  desc:'The complete Psalter each month in the ancient kathisma tradition.'},
+  {id:'wisdom-30',    icon:'📜', name:'Wisdom Literature — 30 Days', duration:'30 days',  total:30,  desc:'Job, Proverbs, Ecclesiastes, Song of Songs, Wisdom, and Sirach in sequence.'},
+  {id:'prophets-60',  icon:'🕊', name:'Prophets — 60 Days',          duration:'60 days',  total:60,  desc:'Isaiah through Malachi — all the major and minor prophets in LXX order.'},
+  {id:'lenten',       icon:'✙',  name:'Lenten Plan — 48 Days',       duration:'48 days',  total:48,  desc:"Aligned with the Triodion. Genesis, Proverbs, Isaiah, and Mark's Gospel."},
+  {id:'nativity-40',  icon:'⭐', name:'Nativity Fast — 40 Days',     duration:'40 days',  total:40,  desc:'Isaiah and the Epistles for the 40-day fast before the Nativity of Christ.'},
+  {id:'holy-week',    icon:'✞',  name:'Holy Week — 8 Days',          duration:'8 days',   total:8,   desc:'Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.'},
+  {id:'catechumen-40',icon:'☦',  name:'Catechumen Plan — 40 Days',   duration:'40 days',  total:40,  desc:"For those entering the Faith. John's Gospel, Acts, Psalms, and Wisdom of Solomon."},
+];
+
+var NT_PASSAGES = [
+  "Matthew 1-2","Matthew 3-4","Matthew 5-6","Matthew 7-8","Matthew 9-10",
+  "Matthew 11-12","Matthew 13-14","Matthew 15-16","Matthew 17-18","Matthew 19-20",
+  "Matthew 21-22","Matthew 23-24","Matthew 25-26","Matthew 27-28","Mark 1-2",
+  "Mark 3-4","Mark 5-6","Mark 7-8","Mark 9-10","Mark 11-12",
+  "Mark 13-14","Mark 15-16","Luke 1-2","Luke 3-4","Luke 5-6",
+  "Luke 7-8","Luke 9-10","Luke 11-12","Luke 13-14","Luke 15-16",
+  "Luke 17-18","Luke 19-20","Luke 21-22","Luke 23-24","John 1-2",
+  "John 3-4","John 5-6","John 7-8","John 9-10","John 11-12",
+  "John 13-14","John 15-16","John 17-18","John 19-20","John 21",
+  "Acts 1-2","Acts 3-4","Acts 5-6","Acts 7-8","Acts 9-10",
+  "Acts 11-12","Acts 13-14","Acts 15-16","Acts 17-18","Acts 19-20",
+  "Acts 21-22","Acts 23-24","Acts 25-26","Acts 27-28","Romans 1-4",
+  "Romans 5-8","Romans 9-11","Romans 12-16","1 Cor 1-4","1 Cor 5-8",
+  "1 Cor 9-11","1 Cor 12-14","1 Cor 15-16","2 Cor 1-4","2 Cor 5-8",
+  "2 Cor 9-13","Galatians","Ephesians","Philippians","Colossians",
+  "1 Thess","2 Thess & 1 Tim","2 Tim & Titus","Philemon & Hebrews 1-4","Hebrews 5-10",
+  "Hebrews 11-13","James & 1 Peter","2 Peter & 1 John","2-3 John, Jude","Revelation 1-6",
+  "Revelation 7-13","Revelation 14-22","Psalm 1-30","Psalm 31-60","Psalm 61-90"
+];
+
+function getStore(key, def) { try { return JSON.parse(localStorage.getItem(key)||'null')||def; } catch(e) { return def; } }
+function setStore(key, val) { try { localStorage.setItem(key, JSON.stringify(val)); } catch(e) {} }
+
+function getTodayKey() {
+  var d = new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+
+function getDaysSince(startDate) {
+  var start = new Date(startDate);
+  var now = new Date(); now.setHours(0,0,0,0); start.setHours(0,0,0,0);
+  return Math.max(0, Math.floor((now - start) / 86400000));
+}
+
+// Plan data registry — const variables don't attach to window[],
+// so we reference them by name via typeof checks.
+function buildPlanRegistry() {
+  var r = {};
+  if (typeof PLAN_2YEAR      !== 'undefined') r['bible-2yr']     = PLAN_2YEAR;
+  if (typeof PLAN_1YEAR      !== 'undefined') r['bible-1yr']     = PLAN_1YEAR;
+  if (typeof PLAN_OT_1YEAR   !== 'undefined') r['ot-1yr']        = PLAN_OT_1YEAR;
+  if (typeof PLAN_NT_1YEAR   !== 'undefined') r['nt-1yr']        = PLAN_NT_1YEAR;
+  if (typeof PLAN_NT_90      !== 'undefined') r['nt-90']         = PLAN_NT_90;
+  if (typeof PLAN_GOSPELS    !== 'undefined') r['gospels-60']    = PLAN_GOSPELS;
+  if (typeof PLAN_EPISTLES   !== 'undefined') r['epistles-30']   = PLAN_EPISTLES;
+  if (typeof PLAN_PSALTER    !== 'undefined') r['psalter']       = PLAN_PSALTER;
+  if (typeof PLAN_WISDOM     !== 'undefined') r['wisdom-30']     = PLAN_WISDOM;
+  if (typeof PLAN_PROPHETS   !== 'undefined') r['prophets-60']   = PLAN_PROPHETS;
+  if (typeof PLAN_LENTEN     !== 'undefined') r['lenten']        = PLAN_LENTEN;
+  if (typeof PLAN_NATIVITY   !== 'undefined') r['nativity-40']   = PLAN_NATIVITY;
+  if (typeof PLAN_HOLY_WEEK  !== 'undefined') r['holy-week']     = PLAN_HOLY_WEEK;
+  if (typeof PLAN_CATECHUMEN !== 'undefined') r['catechumen-40'] = PLAN_CATECHUMEN;
+  return r;
+}
+
+function getPlanEntry(planId, dayNum) {
+  var registry = buildPlanRegistry();
+  var arr = registry[planId];
+  if (!arr) return null;
+  var day = dayNum + 1; // 1-indexed; index 0 is null
+  return arr[day] || null;
+}
+
+function renderPlanDay(planId, dayNum) {
+  var entry = getPlanEntry(planId, dayNum);
+  if (!entry) return '<div class="today-reading-ref">Day ' + (dayNum + 1) + '</div>';
+  var html = '';
+  if (entry.ot) html += renderReadingRow('OT',       entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
+  if (entry.ps) html += renderReadingRow('Psalms',   entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
+  if (entry.pr) html += renderReadingRow('Proverbs', entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
+  if (entry.nt) html += renderReadingRow('NT',       entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
+  if (!html)    html  = '<div class="today-reading-ref">Day ' + (dayNum + 1) + ' &mdash; day of rest</div>';
+  return html;
+}
+
+function buildReaderLink(book, ch) {
+  return 'bible-reader.html?book=' + book + '&chapter=' + ch;
+}
+
+function renderReadingRow(label, ref, link) {
+  return '<div class="today-reading-row">' +
+    '<div class="today-reading-meta">' +
+    '<span class="today-reading-label">' + label + '</span>' +
+    '<span class="today-reading-ref">' + ref + '</span>' +
+    '</div>' +
+    '<a href="' + link + '" class="today-btn primary" target="_blank">Open</a>' +
+    '</div>';
+}
+
+function render2YearDay(dayNum) {
+  var day = Math.min(dayNum + 1, 730);
+  var entry = (typeof PLAN_2YEAR !== 'undefined') ? PLAN_2YEAR[day] : null;
+  if (!entry) return '<div class="today-reading-ref">Day ' + day + '</div>';
+  var html = '';
+  if (entry.ot) {
+    html += renderReadingRow('OT', entry.ot.ref, buildReaderLink(entry.ot.book, entry.ot.ch));
+  }
+  if (entry.ps) {
+    html += renderReadingRow('Psalms', entry.ps.ref, buildReaderLink('PSA', entry.ps.ch));
+  }
+  if (entry.pr) {
+    html += renderReadingRow('Proverbs', entry.pr.ref, buildReaderLink('PRO', entry.pr.ch));
+  }
+  if (entry.nt) {
+    html += renderReadingRow('NT', entry.nt.ref, buildReaderLink(entry.nt.book, entry.nt.ch));
+  }
+  return html;
+}
+
+function stopPlan() {
+  if (!confirm('Stop your current reading plan? Your progress will be saved.')) return;
+  localStorage.removeItem('oc_reading_plan');
+  localStorage.removeItem('oc_plan_start');
+  renderPlans();
+  renderTodayPanel();
+  buildCalendar();
+}
+
+function startPlan(planId) {
+  localStorage.setItem('oc_reading_plan', planId);
+  localStorage.setItem('oc_plan_start', new Date().toISOString().split('T')[0]);
+  renderPlans();
+  renderTodayPanel();
+  buildCalendar();
+}
+
+function markTodayRead() {
+  var plan = localStorage.getItem('oc_reading_plan');
+  if (!plan) return;
+  var log = getStore('oc_reading_log', {});
+  if (!log[plan]) log[plan] = {};
+  log[plan][getTodayKey()] = true;
+  setStore('oc_reading_log', log);
+  buildCalendar();
+  var btn = document.getElementById('todayMarkBtn');
+  btn.textContent = 'Read ✓';
+  btn.classList.add('primary');
+}
+
+function renderTodayPanel() {
+  var plan = localStorage.getItem('oc_reading_plan');
+  var panel = document.getElementById('todayPanel');
+  if (!plan) { panel.style.display = 'none'; return; }
+  var start = localStorage.getItem('oc_plan_start');
+  var dayNum = start ? getDaysSince(start) : 0;
+  var planData = PLANS.find(function(p) { return p.id === plan; });
+  document.getElementById('todayPlanName').textContent = (planData ? planData.name : plan) + ' — Day ' + (dayNum + 1);
+
+  var readingsEl = document.getElementById('todayReadings');
+  readingsEl.innerHTML = renderPlanDay(plan, dayNum);
+
+  panel.style.display = '';
+  var log = getStore('oc_reading_log', {});
+  var readToday = log[plan] && log[plan][getTodayKey()];
+  var btn = document.getElementById('todayMarkBtn');
+  btn.textContent = readToday ? 'Read ✓' : 'Mark as Read';
+  if (readToday) btn.classList.add('primary'); else btn.classList.remove('primary');
+}
+
+// Sequential pathway map — what to suggest when a plan is completed
+var NEXT_PLAN = {
+  'holy-week':    'catechumen-40',
+  'catechumen-40':'gospels-60',
+  'gospels-60':   'epistles-30',
+  'epistles-30':  'nt-90',
+  'nt-90':        'nt-1yr',
+  'nt-1yr':       'bible-1yr',
+  'bible-1yr':    'bible-2yr',
+  'psalter':      'wisdom-30',
+  'wisdom-30':    'prophets-60',
+  'prophets-60':  'ot-1yr',
+  'ot-1yr':       'bible-1yr',
+  'lenten':       'nativity-40',
+  'nativity-40':  'lenten',
+  'bible-2yr':    null,
+};
+
+function renderPlans() {
+  var activePlan = localStorage.getItem('oc_reading_plan');
+  var log = getStore('oc_reading_log', {});
+  var html = '';
+  PLANS.forEach(function(p) {
+    var isActive = p.id === activePlan;
+    var planLog = log[p.id] || {};
+    var daysRead = Object.keys(planLog).length;
+    var pct = Math.min(Math.round(daysRead / p.total * 100), 100);
+    var isComplete = daysRead >= p.total;
+
+    var cardClass = 'plan-card';
+    if (isActive) cardClass += ' active';
+    if (isComplete) cardClass += ' completed';
+    html += '<div class="' + cardClass + '">';
+
+    if (isComplete) {
+      html += '<div class="plan-complete-badge">✓ Completed</div>';
+    }
+    html += '<div class="plan-name">' + p.name + '</div>';
+    html += '<div class="plan-duration">' + p.duration + '</div>';
+    html += '<div class="plan-desc">' + p.desc + '</div>';
+    if (isActive || daysRead > 0) {
+      html += '<div class="plan-progress-wrap">';
+      html += '<div class="plan-progress-bar"><div class="plan-progress-fill" style="width:' + pct + '%"></div></div>';
+      html += '<div class="plan-progress-label">' + pct + '% complete — ' + daysRead + ' of ' + p.total + ' days</div>';
+      html += '</div>';
+    }
+
+    if (isComplete) {
+      // Start over button
+      html += '<div class="plan-start-btn" data-planid="' + p.id + '">Start Over</div>';
+      // Next plan nudge
+      var nextId = NEXT_PLAN[p.id];
+      if (nextId) {
+        var nextPlan = PLANS.find(function(x) { return x.id === nextId; });
+        if (nextPlan) {
+          html += '<div class="plan-next-nudge">';
+          html += '<div class="plan-next-label">Up next</div>';
+          html += '<div class="plan-next-btn" data-planid="' + nextId + '">' + nextPlan.name + ' →</div>';
+          html += '</div>';
+        }
+      }
+      html += '<div class="plan-pdf-btn" data-pdfid="' + p.id + '">Download printable plan (PDF)</div>';
+    } else {
+      html += '<div class="plan-start-btn" data-planid="' + p.id + '">' + (isActive ? 'Current Plan' : daysRead > 0 ? 'Continue' : 'Start This Plan') + '</div>';
+      html += '<div class="plan-pdf-btn" data-pdfid="' + p.id + '">Download printable plan (PDF)</div>';
+    }
+
+    html += '</div>';
+  });
+  var el = document.getElementById('plansGrid');
+  el.innerHTML = html;
+  el.addEventListener('click', function(e) {
+    var pdfBtn = e.target.closest('.plan-pdf-btn');
+    if (pdfBtn && pdfBtn.dataset.pdfid) {
+      generatePlanPdf(pdfBtn, pdfBtn.dataset.pdfid);
+      return;
+    }
+    var btn = e.target.closest('.plan-start-btn, .plan-next-btn');
+    if (btn && btn.dataset.planid) startPlan(btn.dataset.planid);
+  });
+  var fastBtn = document.getElementById('fastingTrackerBtn');
+  if (fastBtn) {
+    fastBtn.addEventListener('click', function() {
+      generatePlanPdf(fastBtn, 'fasting-tracker');
+    });
+  }
+}
+
+// PDF generation — surfaces a "Preparing..." label on the click target while
+// pdf-generator.js lazy-loads pdfmake + pdf-fonts.js, then triggers download.
+// All localStorage state (oc_reading_plan / oc_plan_start / oc_reading_log)
+// is left untouched — printing the rule is decoupled from keeping the rule.
+function generatePlanPdf(btnEl, pdfId) {
+  if (!window.OCPDF || typeof window.OCPDF.generate !== 'function') {
+    console.error('OCPDF not loaded');
+    return;
+  }
+  var originalText = btnEl.textContent;
+  btnEl.textContent = 'Preparing PDF…';
+  btnEl.style.pointerEvents = 'none';
+  window.OCPDF.generate(pdfId).then(function() {
+    btnEl.textContent = originalText;
+    btnEl.style.pointerEvents = '';
+  }).catch(function(err) {
+    console.error('PDF generation failed:', err);
+    btnEl.textContent = 'PDF unavailable — try again';
+    btnEl.style.pointerEvents = '';
+    setTimeout(function() { btnEl.textContent = originalText; }, 2400);
+  });
+}
+
+function buildCalendar() {
+  var now = new Date();
+  var year = now.getFullYear(); var month = now.getMonth();
+  var plan = localStorage.getItem('oc_reading_plan');
+  var log = getStore('oc_reading_log', {});
+  var planLog = (plan && log[plan]) ? log[plan] : {};
+  var monthName = now.toLocaleDateString('en-US', {month:'long',year:'numeric'});
+  document.getElementById('calMonthTitle').textContent = monthName;
+  var daysInMonth = new Date(year, month+1, 0).getDate();
+  var firstDow = new Date(year, month, 1).getDay();
+  var todayKey = getTodayKey();
+  var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var html = days.map(function(d) { return '<div class="cal-day-header">'+d+'</div>'; }).join('');
+  for (var p = 0; p < firstDow; p++) html += '<div class="cal-day empty"></div>';
+  for (var d = 1; d <= daysInMonth; d++) {
+    var key = year+'-'+String(month+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var cls = 'cal-day';
+    if (planLog[key]) cls += ' read';
+    if (key === todayKey) cls += ' today-day';
+    html += '<div class="'+cls+'"><div class="cal-day-num">'+d+'</div></div>';
+  }
+  document.getElementById('readingCal').innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  renderPlans();
+  renderTodayPanel();
+  buildCalendar();
+});
+
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+<script src="/analytics-tracker.js"></script>
+
+</body>
+</html>
