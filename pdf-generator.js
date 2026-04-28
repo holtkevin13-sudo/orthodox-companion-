@@ -920,8 +920,8 @@
       var planArr = root[meta.globalVar];
       if (!planArr) {
         throw new Error('Plan data global ' + meta.globalVar +
-                        ' is not loaded. Make sure ' + planId +
-                        '.js is included before pdf-generator.js calls.');
+                        ' is not loaded. Ensure the corresponding plan-*.js file ' +
+                        'is included before pdf-generator.js executes.');
       }
       var docDef = buildPlanDocDef(planId, planArr);
       return downloadPdf(docDef, meta.filename);
