@@ -609,6 +609,49 @@ nav{
   font-weight:600;
 }
 
+/* Printable fasting tracker affordance (rhymes with .plan-pdf-btn on reading-plans.html) */
+.fast-pdf-affordance{
+  margin:8px 0 32px;
+  padding:18px 20px 4px;
+  border-top:1px solid var(--rule);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  text-align:center;
+}
+.fast-pdf-line{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1rem;
+  color:var(--text-dim);
+  line-height:1.55;
+  max-width:540px;
+}
+.fast-pdf-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.86rem;
+  text-transform:lowercase;
+  letter-spacing:0.10em;
+  color:var(--text);
+  background:transparent;
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:9px 18px;
+  cursor:pointer;
+  transition:background 0.15s, border-color 0.15s;
+}
+.fast-pdf-btn:hover,
+.fast-pdf-btn:focus-visible{
+  background:rgba(201,168,76,0.10);
+  border-color:var(--gold);
+}
+.fast-pdf-btn:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+
 /* Term-tip inline glossary popup (preserve interaction; recolor for parchment) */
 .term-tip{
   position:relative;
@@ -1152,6 +1195,12 @@ nav{
       <div class="fast-citation-attr">St. Basil the Great &middot; On Fasting</div>
     </div>
 
+    <!-- Printable fasting tracker -->
+    <div class="fast-pdf-affordance">
+      <p class="fast-pdf-line">A printable fasting tracker &mdash; the four great fasts of the year, and every Wednesday and Friday, kept with the Church.</p>
+      <button type="button" class="fast-pdf-btn" id="fastingTrackerBtn">Download fasting tracker (PDF)</button>
+    </div>
+
     <!-- 2. The Four Fasting Seasons -->
     <section class="about-section">
       <h2 class="section-heading" id="the-four-fasting-seasons">The Four Fasting Seasons</h2>
@@ -1515,7 +1564,33 @@ document.addEventListener('click', function(e) {
   });
   if (satTip) satTip.classList.toggle('tip-open');
 });
+
+/* ── Fasting tracker PDF button ──────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('fastingTrackerBtn');
+  if (!btn) return;
+  btn.addEventListener('click', function() {
+    if (!window.OCPDF || typeof window.OCPDF.generate !== 'function') {
+      console.error('OCPDF not loaded');
+      return;
+    }
+    var original = btn.textContent;
+    btn.textContent = 'Preparing PDF…';
+    btn.disabled = true;
+    window.OCPDF.generate('fasting-tracker').then(function() {
+      btn.textContent = original;
+      btn.disabled = false;
+    }).catch(function(err) {
+      console.error('PDF generation failed:', err);
+      btn.textContent = 'PDF unavailable — try again';
+      btn.disabled = false;
+      setTimeout(function() { btn.textContent = original; }, 2400);
+    });
+  });
+});
 </script>
+
+<script src="pdf-generator.js" defer></script>
 
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
