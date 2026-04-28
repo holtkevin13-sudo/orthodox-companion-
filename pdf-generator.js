@@ -600,15 +600,14 @@
     return parts.join('  \u00B7  ');
   }
 
-  /* Read each plan-*.js file's source and pull "// Day N — note" comments
-     so PDFs carry the same per-day human notes the source carefully wrote.
-     In the browser, we get this from a globally-registered table built at
-     load time; in Node, the runner injects it. Falls back to no notes. */
-  function getDayNote(planId, dayNum) {
-    if (root.OC_PLAN_DAY_NOTES && root.OC_PLAN_DAY_NOTES[planId]) {
-      return root.OC_PLAN_DAY_NOTES[planId][dayNum] || null;
-    }
-    return null;
+  /* Pull the per-day note (if any) directly from the data object. The
+     plan-*.js source files carry an authored `note` string on each day
+     that has one; days without a note get no italic line under the
+     citation. The note text becomes the source of truth — no comment
+     parsing at runtime. */
+  function getDayNote(planArr, dayNum) {
+    var entry = planArr[dayNum];
+    return (entry && typeof entry.note === 'string' && entry.note) || null;
   }
 
   /* Build the body content for one plan: section openings, day rows,
@@ -639,7 +638,7 @@
         for (var k2 = 0; k2 < stick; k2++) {
           var d = i + k2;
           var entry = planArr[d];
-          firstRows.push(dayRow(d, formatRefs(entry), getDayNote(planId, d)));
+          firstRows.push(dayRow(d, formatRefs(entry), getDayNote(planArr, d)));
         }
         content.push(sectionOpening(sectionDays[i], firstRows));
         // Advance, suppressing any week break that would have fired
@@ -658,7 +657,7 @@
 
       // Normal day row
       var entry2 = planArr[i];
-      content.push(dayRow(i, formatRefs(entry2), getDayNote(planId, i)));
+      content.push(dayRow(i, formatRefs(entry2), getDayNote(planArr, i)));
 
       // Week break every 7 days, except adjacent to a section start
       if (i % 7 === 0 && i < totalDays) {
@@ -873,8 +872,13 @@
   /* ════════════════════════════════════════════════════════════
      LAZY LOADER (browser only) — pulls pdfmake from cdnjs and
      pdf-fonts.js (the base64 vfs) on first OCPDF.generate() call.
+     Pinned to 0.2.12 — cdnjs's latest published pdfmake. The 0.2.18
+     and 0.2.20 npm releases were never mirrored to cdnjs (as of the
+     last verification: 2026-04-28). Our docDef uses no APIs newer
+     than 0.2.12; verified by re-rendering the full sample set under
+     pdfmake@0.2.12 server-side.
      ════════════════════════════════════════════════════════════ */
-  var PDFMAKE_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.20/pdfmake.min.js';
+  var PDFMAKE_URL = 'https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.12/pdfmake.min.js';
   var FONTS_URL   = 'pdf-fonts.js';
 
   function loadScript(url) {
