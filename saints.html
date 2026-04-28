@@ -1,433 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){var t=localStorage.getItem('oc_theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t);})();</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Saints — Orthodox Companion</title>
 <link rel="icon" href="cross.png" type="image/png"/>
 <meta name="theme-color" content="#0A1628"/>
-<meta name="description" content="The saints of the Orthodox Church — Saint of the Day, 1212 saints with feast days, profiles, and liturgical calendar connections."/>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
+<meta name="description" content="The saints of the Orthodox Church — Saint of the Day, with feast days, profiles, and liturgical calendar connections."/>
+<meta property="og:title" content="Saints — Orthodox Companion"/>
+<meta property="og:description" content="The saints of the Orthodox Church — Saint of the Day, with feast days, profiles, and liturgical calendar connections."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/saints.html"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
 <style>
-/* ── Account dropdown ────────────────────────────────── */
-.nav-account-wrap{position:relative;}
-.nav-user-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--gold-light);background:transparent;
-  border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;
-  cursor:pointer;display:flex;align-items:center;gap:5px;transition:all 0.2s;white-space:nowrap;}
-.nav-user-btn:hover{background:rgba(201,168,76,0.1);}
-.nav-user-arrow{font-size:0.55rem;opacity:0.7;transition:transform 0.2s;}
-.nav-user-btn.open .nav-user-arrow{transform:rotate(180deg);}
-.nav-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;
-  min-width:200px;background:var(--dark);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:0 0 4px 4px;z-index:601;
-  opacity:0;pointer-events:none;transform:translateY(-6px);
-  transition:opacity 0.18s,transform 0.18s;
-  padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-user-dropdown.open{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-user-dropdown a{display:flex;align-items:center;gap:10px;
-  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;
-  padding:9px 18px;transition:color 0.15s,background 0.15s;}
-.nav-user-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
+/* OC-MASTER-CSS — Parchment v3 */
+/* ═══════════════════════════════════════════════════════
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
+═══════════════════════════════════════════════════════ */
 
+/* ── Ornament font (subset of Junicode, SIL OFL 1.1) ─── */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
 
+/* ── Palette ─────────────────────────────────────────── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
 
+  /* navy header / nav internals */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
 
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}
+
+/* ── Base ────────────────────────────────────────────── */
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-:root{
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --nav-h:68px;
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
 }
-body{font-family:'EB Garamond',Georgia,serif;background:var(--deep);color:var(--text);min-height:100vh;overflow-x:hidden;}
 
+/* ── Inline-SVG ornament classes ─────────────────────── */
+.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}
+.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 
-/* ── Saint of the Day ──────────────────────────────────────── */
-.sotd-banner{
+/* ── Nav (navy header, gold hairline) ────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{
+  font-size:30px;line-height:1;
+  color:var(--gold);
+  display:inline-flex;align-items:center;
+}
+.nav-title{
+  font-family:'Cinzel',serif;
+  font-size:0.95rem;font-weight:700;
+  color:var(--logotype);
+  letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+
+/* ── Hamburger & Drawer ──────────────────────────────── */
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
+
+/* ── Page hero (parchment, with ornamental headband) ──── */
+.page-hero{
   margin-top:var(--nav-h);
   background:var(--hero-bg);
-  border-bottom:2px solid var(--gold-dim);
+  padding:54px 24px 36px;
+}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
+
+/* ── Content wrapper ─────────────────────────────────── */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}
+
+/* ── Section heading ─────────────────────────────────── */
+.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SAINTS — page-specific component styles, parchment-recolored
+═══════════════════════════════════════════════════════ */
+
+/* ── Saint of the Day banner ─────────────────────────── */
+.sotd-banner{
+  margin-top:var(--nav-h);
+  background:var(--bg-page);
+  border-bottom:1px solid var(--gold-dim);
   padding:36px 24px;
 }
 .sotd-inner{max-width:1040px;margin:0 auto;display:flex;gap:32px;align-items:center;}
-.sotd-icon-wrap{flex-shrink:0;position:relative;}
-.sotd-icon{
-  width:120px;height:150px;object-fit:cover;
-  border:2px solid rgba(201,168,76,0.4);border-radius:3px;
-  background:linear-gradient(160deg,var(--panel),var(--deep));
-  display:flex;align-items:center;justify-content:center;
-  font-size:3rem;color:var(--gold-dim);
+.sotd-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);font-weight:600;
+  margin-bottom:8px;
 }
-.sotd-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
-.sotd-icon-placeholder{width:120px;height:150px;background:linear-gradient(160deg,rgba(27,58,107,0.6),rgba(10,22,40,0.8));border:1px solid rgba(201,168,76,0.25);border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.sotd-icon-placeholder span{font-size:3.2rem;color:rgba(201,168,76,0.55);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;}
-.sotd-label{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:8px;}
-.sotd-name{font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;color:#1a0f00;letter-spacing:0.06em;line-height:1.1;margin-bottom:8px;}
-.sotd-feast{font-size:0.85rem;color:var(--text-muted);font-family:'Cinzel',serif;letter-spacing:0.06em;margin-bottom:12px;}
-.sotd-bio{font-size:1rem;color:#3a2800;line-height:1.85;font-style:italic;max-width:580px;}
-.sotd-link{display:inline-block;margin-top:16px;font-family:'Cinzel',serif;font-size:0.65rem;text-transform:uppercase;letter-spacing:0.12em;color:#E8CB7A;border:1px solid #2A5A9C;border-radius:2px;padding:9px 20px;text-decoration:none;transition:all 0.2s;background:#1B3A6B;cursor:pointer;}
-.sotd-link:hover{background:#2A4A7A;border-color:#4A7AB8;color:#F0E6CC;}
+.sotd-name{
+  font-family:'Cinzel',serif;font-size:1.7rem;font-weight:700;
+  color:var(--text);letter-spacing:0.06em;line-height:1.1;
+  margin-bottom:8px;
+}
+.sotd-feast{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.86rem;color:var(--text-muted);
+  letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:14px;
+}
+.sotd-bio{
+  font-size:1.04rem;color:var(--text-dim);
+  line-height:1.85;font-style:italic;max-width:580px;
+}
+.sotd-link{
+  display:inline-block;margin-top:18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.16em;
+  color:var(--gold-light);font-weight:600;
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:9px 20px;text-decoration:none;
+  background:var(--surface);cursor:pointer;
+  transition:background 0.15s,color 0.15s,border-color 0.15s;
+}
+.sotd-link:hover{background:var(--surface-deep);color:var(--gold-light);border-color:var(--gold);}
 
-/* ── Page header ───────────────────────────────────────────── */
+/* ── Page header (Saints) ────────────────────────────── */
 .page-top{max-width:1040px;margin:0 auto;padding:32px 24px 20px;}
-.breadcrumb{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:10px;}
-.breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color 0.2s;}
-.breadcrumb a:hover{color:var(--gold-light);}
-.breadcrumb span{margin:0 8px;opacity:0.4;}
-.page-title{font-family:'Cinzel',serif;font-size:1.6rem;font-weight:700;color:var(--gold-light);letter-spacing:0.08em;margin-bottom:6px;}
-.page-desc{font-size:0.95rem;color:var(--text-dim);font-style:italic;line-height:1.7;}
 
-/* ── Category Grid ─────────────────────────────────────────── */
+/* ── Section block (Browse by Category) ──────────────── */
 .section{padding:0 24px 60px;max-width:1040px;margin:0 auto;}
-.section-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;}
-.section-label{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);white-space:nowrap;}
-.section-rule{flex:1;height:1px;background:linear-gradient(to right,rgba(201,168,76,0.35),transparent);}
+.section-header{display:flex;align-items:center;gap:16px;margin-bottom:22px;}
+.section-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);font-weight:600;white-space:nowrap;
+}
+.section-rule{flex:1;height:1px;background:var(--rule);}
+
+/* ── Category chip grid ──────────────────────────────── */
 .cat-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
 .cat-card{
-  font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;
-  letter-spacing:0.09em;color:var(--text-dim);
-  background:transparent;border:1px solid var(--border-dim);
-  border-radius:2px;padding:7px 14px;cursor:pointer;
-  display:flex;align-items:center;gap:6px;
-  transition:color 0.2s,border-color 0.2s,background 0.2s;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.94rem;text-transform:uppercase;
+  letter-spacing:0.10em;color:var(--text-dim);
+  background:var(--surface);border:1px solid var(--gold-dim);
+  border-radius:2px;padding:9px 16px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;
+  transition:color 0.15s,border-color 0.15s,background 0.15s;
   white-space:nowrap;
 }
-.cat-card:hover{color:var(--gold-light);border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
-.cat-card.active{color:var(--deep);background:var(--gold);border-color:var(--gold);}
-.cat-count{font-size:0.58rem;opacity:0.75;}
+.cat-card:hover{color:var(--gold-light);border-color:var(--gold);background:var(--surface-deep);}
+.cat-card.active{color:var(--logotype);background:var(--deep);border-color:var(--gold);}
+.cat-count{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.82rem;font-style:italic;
+  text-transform:none;letter-spacing:0;
+  color:var(--text-muted);
+}
+.cat-card.active .cat-count{color:var(--gold-on-dark);}
 
-/* ── Saints List Panel ─────────────────────────────────────── */
+/* ── Saints list panel ───────────────────────────────── */
 .saints-list-wrap{
   margin-top:24px;
-  background:rgba(15,32,53,0.5);
-  border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);
-  border-radius:4px;overflow:hidden;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);border-top:2px solid var(--gold);
+  border-radius:3px;overflow:hidden;
   display:none;
   animation:slideDown 0.3s ease;
 }
 .saints-list-wrap.open{display:block;}
 @keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
 .saints-list-header{
-  padding:16px 22px;border-bottom:1px solid rgba(201,168,76,0.1);
+  padding:16px 22px;border-bottom:1px solid var(--rule);
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(0,0,0,0.2);
+  background:var(--surface-deep);
 }
-.saints-list-title{font-family:'Cinzel',serif;font-size:0.9rem;color:var(--gold-light);letter-spacing:0.06em;}
-.saints-list-close{background:transparent;border:none;color:var(--text-dim);font-size:1.2rem;cursor:pointer;padding:0;transition:color 0.2s;}
-.saints-list-close:hover{color:var(--gold);}
-.saints-search-wrap{padding:12px 22px;border-bottom:1px solid rgba(42,90,156,0.15);}
+.saints-list-title{
+  font-family:'Cinzel',serif;font-size:1.05rem;
+  color:var(--text);letter-spacing:0.06em;font-weight:600;
+}
+.saints-list-close{
+  background:transparent;border:none;color:var(--text-muted);
+  font-size:1.3rem;cursor:pointer;padding:0;line-height:1;
+  transition:color 0.2s;
+}
+.saints-list-close:hover{color:var(--gold-light);}
+.saints-search-wrap{padding:14px 22px;border-bottom:1px solid var(--rule-soft);}
 .saints-search{
-  width:100%;background:rgba(27,58,107,0.4);border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text);font-family:'EB Garamond',serif;font-size:0.95rem;
-  padding:8px 14px;outline:none;transition:border-color 0.2s;
+  width:100%;background:var(--bg-page);border:1px solid var(--gold-dim);
+  border-radius:2px;color:var(--text);
+  font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";
+  font-size:1rem;padding:9px 14px;outline:none;
+  transition:border-color 0.2s;
 }
-.saints-search:focus{border-color:var(--gold-dim);}
+.saints-search:focus{border-color:var(--gold);}
 .saints-search::placeholder{color:var(--text-muted);font-style:italic;}
 .alpha-bar{
-  padding:8px 22px;border-bottom:1px solid rgba(42,90,156,0.12);
+  padding:8px 22px;border-bottom:1px solid var(--rule-soft);
   display:flex;flex-wrap:wrap;gap:3px;
 }
 .alpha-btn{
-  font-family:'Cinzel',serif;font-size:0.6rem;color:var(--text-muted);
-  background:transparent;border:none;cursor:pointer;padding:3px 6px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.84rem;font-weight:600;color:var(--text-muted);
+  background:transparent;border:none;cursor:pointer;padding:3px 7px;
   border-radius:2px;transition:all 0.15s;
 }
-.alpha-btn:hover,.alpha-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.1);}
-.saints-list-body{padding:12px 0;max-height:400px;overflow-y:auto;}
-.saints-list-body::-webkit-scrollbar{width:4px;}
-.saints-list-body::-webkit-scrollbar-thumb{background:var(--border-dim);border-radius:2px;}
-.alpha-section{margin-bottom:4px;}
-.alpha-letter{font-family:'Cinzel',serif;font-size:0.62rem;color:var(--gold);text-transform:uppercase;letter-spacing:0.14em;padding:6px 22px 4px;border-top:1px solid rgba(42,90,156,0.1);margin-top:8px;}
+.alpha-btn:hover,.alpha-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.10);}
+.saints-list-body{padding:8px 0;max-height:480px;overflow-y:auto;}
+.saints-list-body::-webkit-scrollbar{width:5px;}
+.saints-list-body::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;opacity:0.4;}
+.alpha-letter{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.88rem;font-weight:600;color:var(--gold-light);
+  text-transform:uppercase;letter-spacing:0.16em;
+  padding:8px 22px 4px;
+  border-top:1px solid var(--rule-soft);margin-top:6px;
+}
 .alpha-letter:first-child{border-top:none;margin-top:0;}
 .saint-list-item{
   display:flex;align-items:center;gap:14px;
-  padding:10px 22px;cursor:pointer;
-  transition:background 0.15s;border-bottom:1px solid rgba(42,90,156,0.06);
+  padding:11px 22px;cursor:pointer;
+  transition:background 0.15s;
+  border-bottom:1px solid var(--rule-soft);
   text-decoration:none;
 }
-.saint-list-item:hover{background:rgba(27,58,107,0.35);}
+.saint-list-item:hover{background:var(--surface-deep);}
 .saint-list-item:last-child{border-bottom:none;}
-.sli-icon{width:36px;height:44px;flex-shrink:0;background:linear-gradient(160deg,var(--panel),var(--deep));border:1px solid var(--border-dim);border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-.sli-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
-.sli-name{font-family:'Cinzel',serif;font-size:0.84rem;color:var(--text);letter-spacing:0.04em;margin-bottom:2px;}
-.sli-feast{font-size:0.74rem;color:var(--text-muted);font-style:italic;}
-.sli-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2);border-radius:2px;padding:1px 6px;margin-left:6px;vertical-align:middle;}
-.saints-empty{padding:28px 22px;text-align:center;color:var(--text-muted);font-style:italic;font-size:0.9rem;}
+.sli-name{
+  font-family:'Cinzel',serif;font-size:0.94rem;font-weight:600;
+  color:var(--text);letter-spacing:0.04em;margin-bottom:3px;
+}
+.sli-feast{
+  font-size:0.86rem;color:var(--text-muted);font-style:italic;
+}
+.sli-badge{
+  display:inline-block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.74rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--gold-light);background:rgba(201,168,76,0.10);
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:1px 7px;margin-left:8px;vertical-align:middle;
+}
+.saints-empty{
+  padding:28px 22px;text-align:center;
+  color:var(--text-muted);font-style:italic;font-size:0.96rem;
+}
 
-/* ── Saint Profile Modal ───────────────────────────────────── */
-#saint-modal{display:none;position:fixed;inset:0;z-index:800;background:rgba(0,0,0,0.88);align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;}
+/* ── Saint profile modal ─────────────────────────────── */
+#saint-modal{
+  display:none;position:fixed;inset:0;z-index:800;
+  background:rgba(31,27,22,0.72);
+  align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;
+}
 #saint-modal.open{display:flex;}
 .saint-modal-box{
-  background:linear-gradient(160deg,#0D1E38,#0A1628);
-  border:1px solid var(--border);border-top:3px solid var(--gold);
-  border-radius:4px;width:100%;max-width:680px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);border-top:3px solid var(--gold);
+  border-radius:3px;width:100%;max-width:680px;
   margin:auto;
   animation:fadeUp 0.3s ease;
 }
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 .sm-header{
-  padding:20px 26px 16px;border-bottom:1px solid rgba(201,168,76,0.12);
-  display:flex;gap:20px;align-items:flex-start;background:rgba(0,0,0,0.2);
+  padding:20px 26px 16px;border-bottom:1px solid var(--rule);
+  display:flex;gap:20px;align-items:flex-start;
+  background:var(--surface-deep);
 }
-.sm-icon{width:90px;height:110px;flex-shrink:0;background:linear-gradient(160deg,var(--panel),var(--deep));border:1px solid rgba(201,168,76,0.3);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;color:var(--gold-dim);font-family:"Segoe UI Symbol","Apple Symbols",serif;}
-.sm-icon img{width:100%;height:100%;object-fit:cover;border-radius:2px;}
 .sm-title-wrap{flex:1;}
-.sm-breadcrumb{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:6px;}
-.sm-name{font-family:'Cinzel',serif;font-size:1.3rem;font-weight:700;color:var(--gold-light);letter-spacing:0.06em;line-height:1.2;margin-bottom:6px;}
-.sm-feast{font-family:'Cinzel',serif;font-size:0.68rem;color:var(--text-muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:10px;}
-.sm-badges{display:flex;flex-wrap:wrap;gap:5px;}
-.sm-badge{display:inline-block;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.08em;border-radius:2px;padding:2px 9px;border:1px solid;}
-.sm-badge.father{color:var(--gold);border-color:rgba(201,168,76,0.35);background:rgba(201,168,76,0.08);}
-.sm-badge.category{color:var(--text-muted);border-color:var(--border-dim);background:rgba(42,90,156,0.1);}
-.sm-close{background:transparent;border:none;color:var(--text-dim);font-size:1.4rem;cursor:pointer;padding:0;flex-shrink:0;transition:color 0.2s;}
-.sm-close:hover{color:var(--gold);}
-.sm-body{padding:20px 26px;}
-.sm-meta-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid rgba(42,90,156,0.2);}
-.sm-meta-item{}
-.sm-meta-label{font-family:'Cinzel',serif;font-size:0.58rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:3px;}
-.sm-meta-value{font-size:0.88rem;color:var(--text-dim);font-style:italic;line-height:1.5;}
-.sm-section{margin-bottom:20px;}
-.sm-section-title{font-family:'Cinzel',serif;font-size:0.68rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--gold);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.12);}
-.sm-bio{font-size:0.96rem;color:var(--text-dim);line-height:1.9;}
+.sm-breadcrumb{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:7px;
+}
+.sm-name{
+  font-family:'Cinzel',serif;font-size:1.4rem;font-weight:700;
+  color:var(--text);letter-spacing:0.06em;line-height:1.2;margin-bottom:7px;
+}
+.sm-feast{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.84rem;color:var(--text-muted);
+  letter-spacing:0.10em;text-transform:uppercase;margin-bottom:10px;
+}
+.sm-badges{display:flex;flex-wrap:wrap;gap:6px;}
+.sm-badge{
+  display:inline-block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;
+  border-radius:2px;padding:2px 9px;border:1px solid;
+}
+.sm-badge.father{color:var(--gold-light);border-color:var(--gold-dim);background:rgba(201,168,76,0.08);}
+.sm-badge.category{color:var(--text-muted);border-color:var(--gold-dim);background:transparent;}
+.sm-close{
+  background:transparent;border:none;color:var(--text-muted);
+  font-size:1.5rem;cursor:pointer;padding:0;flex-shrink:0;line-height:1;
+  transition:color 0.2s;
+}
+.sm-close:hover{color:var(--gold-light);}
+.sm-body{padding:24px 26px;}
+.sm-meta-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:12px 28px;
+  margin-bottom:24px;padding-bottom:22px;
+  border-bottom:1px solid var(--rule);
+}
+.sm-meta-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--gold-light);margin-bottom:4px;
+}
+.sm-meta-value{
+  font-size:0.98rem;color:var(--text-dim);font-style:italic;line-height:1.6;
+}
+.sm-section{margin-bottom:22px;}
+.sm-section-title{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.96rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:14px;margin-bottom:12px;
+}
+.sm-section-title::before{
+  content:'';position:absolute;
+  top:0;left:0;width:48px;height:1px;
+  background:var(--gold-dim);opacity:0.7;
+}
+.sm-bio{
+  font-size:1.02rem;color:var(--text-dim);line-height:1.85;
+}
 .sm-troparion{
-  background:rgba(27,58,107,0.3);border:1px solid var(--border-dim);
-  border-left:3px solid var(--gold-dim);border-radius:3px;
-  padding:16px 18px;font-size:0.95rem;color:var(--text);
-  font-style:italic;line-height:1.9;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-left:3px solid var(--gold);
+  border-radius:2px;
+  padding:18px 22px;
+  font-size:1.02rem;color:var(--text);
+  font-style:italic;line-height:1.85;
 }
 .sm-writings{display:flex;flex-direction:column;gap:8px;}
 .sm-writing-link{
-  display:flex;align-items:center;gap:10px;padding:10px 14px;
-  background:rgba(27,58,107,0.2);border:1px solid var(--border-dim);
-  border-radius:3px;text-decoration:none;transition:border-color 0.2s,background 0.2s;
+  display:flex;align-items:center;gap:12px;padding:11px 14px;
+  background:var(--bg-page);border:1px solid var(--gold-dim);
+  border-radius:2px;text-decoration:none;
+  transition:border-color 0.2s,background 0.2s;
 }
-.sm-writing-link:hover{border-color:var(--gold-dim);background:rgba(201,168,76,0.05);}
-.sm-writing-title{font-size:0.88rem;color:var(--text);line-height:1.4;}
-.sm-writing-source{font-size:0.74rem;color:var(--text-muted);font-style:italic;}
-.sm-writing-arrow{margin-left:auto;color:var(--text-muted);font-size:0.8rem;flex-shrink:0;}
-.sm-footer{padding:14px 26px;border-top:1px solid rgba(42,90,156,0.2);display:flex;gap:10px;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.15);}
-.sm-share-btn{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;cursor:pointer;transition:all 0.2s;}
-.sm-share-btn:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-.sm-chatbot-link{font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);text-decoration:none;border:1px solid var(--border-dim);border-radius:2px;padding:7px 14px;transition:all 0.2s;}
-.sm-chatbot-link:hover{border-color:var(--gold-dim);color:var(--gold-light);}
-
-/* ── Responsive ────────────────────────────────────────────── */
-@media(max-width:900px){
-  .nav-links{display:none;}.nav-hamburger{display:flex;}.nav-drawer{display:block;}.nav-right .nav-signin-btn{display:none;}
-  .sotd-inner{flex-direction:column;gap:20px;}
-  .sotd-icon-placeholder{width:80px;height:100px;}
-  .sm-meta-grid{grid-template-columns:1fr;}
+.sm-writing-link:hover{border-color:var(--gold);background:var(--surface-deep);}
+.sm-writing-title{
+  font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";
+  font-size:0.98rem;color:var(--text);line-height:1.4;
 }
-@media(max-width:600px){
-  .page-top{padding:24px 16px 16px;}
-  .section{padding:0 16px 40px;}
-  .sotd-banner{padding:24px 16px;}
-  .sm-header{flex-direction:column;}
-  .sm-icon{width:100%;height:100px;}
+.sm-writing-source{
+  font-size:0.84rem;color:var(--text-muted);font-style:italic;
 }
-.fade-in{opacity:0;transform:translateY(12px);transition:opacity 0.5s ease,transform 0.5s ease;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-
-/* ── Nav v2 — Option C (Study / Worship & Life) ─────────────────── */
-:root{--nav-h:68px;}
-nav{position:fixed;top:0;left:0;right:0;z-index:600;background:rgba(10,22,40,0.97);border-bottom:1px solid rgba(42,90,156,0.5);backdrop-filter:blur(12px);height:var(--nav-h);display:flex;align-items:center;padding:0 20px;gap:0;box-shadow:0 2px 30px rgba(0,0,0,0.5);}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;}
-.nav-cross{font-size:26px;color:var(--gold);font-family:"Segoe UI Symbol","Apple Symbols",serif;font-style:normal;line-height:1;}
-.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:#E8F0F8;letter-spacing:0.07em;line-height:1;}
-.nav-subtitle{font-size:0.6rem;color:var(--text-muted);font-style:italic;margin-top:2px;}
-.nav-links{display:flex;align-items:stretch;gap:0;margin-left:4px;list-style:none;height:var(--nav-h);}
-.nav-item{position:relative;display:flex;align-items:center;}
-.nav-link{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s;white-space:nowrap;border-bottom:2px solid transparent;}
-.nav-link:hover,.nav-link.active{color:var(--gold-light);border-bottom-color:var(--gold-dim);}
-.nav-link.has-drop::after{content:'▾';font-size:0.45rem;opacity:0.55;margin-left:1px;}
-/* Dropdown */
-.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
-.nav-dropdown{position:absolute;top:calc(var(--nav-h) + 1px);left:0;min-width:210px;background:linear-gradient(160deg,#0D1E38,#0A1628);border:1px solid var(--border-dim);border-top:2px solid var(--gold-dim);border-radius:0 0 4px 4px;z-index:601;opacity:0;pointer-events:none;transform:translateY(-6px);transition:opacity 0.18s ease,transform 0.18s ease;padding:6px 0;box-shadow:0 16px 48px rgba(0,0,0,0.7);}
-.nav-dropdown a{display:flex;align-items:center;gap:10px;font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-dim);text-decoration:none;padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;}
-.nav-dropdown a:hover{color:var(--gold-light);background:rgba(201,168,76,0.07);}
-.nav-dropdown a .dd-icon{font-size:0.8rem;width:14px;text-align:center;flex-shrink:0;font-style:normal;}
-.nav-dropdown-divider{border:none;border-top:1px solid rgba(42,90,156,0.18);margin:4px 0;}
-/* Right side */
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
-.nav-ai-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--gold-light);border:1px solid var(--gold-dim);border-radius:2px;padding:6px 13px;background:rgba(201,168,76,0.08);text-decoration:none;transition:all 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-ai-btn:hover{background:rgba(201,168,76,0.2);}
-.nav-signin-btn{font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.09em;color:var(--text-muted);text-decoration:none;padding:6px 10px;transition:color 0.2s;white-space:nowrap;flex-shrink:0;}
-.nav-signin-btn:hover{color:var(--text-dim);}
-.nav-search-btn{background:transparent;border:1px solid var(--border-dim);border-radius:2px;color:var(--text-muted);padding:5px 9px;cursor:pointer;font-size:0.95rem;transition:all 0.2s;flex-shrink:0;}
-.nav-search-btn:hover{border-color:var(--border);color:var(--gold);}
-/* Hamburger */
-.nav-hamburger{display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:8px;flex-shrink:0;}
-.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-hamburger.open span:nth-child(2){opacity:0;}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-/* Drawer */
-.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:#0A1830;border-bottom:1px solid var(--border-dim);z-index:599;padding:8px 0 20px;box-shadow:0 8px 30px rgba(0,0,0,0.6);transform:translateY(-8px);opacity:0;transition:transform 0.25s ease,opacity 0.25s ease;pointer-events:none;}
-.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
-.nav-drawer-section{font-family:'Cinzel',serif;font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:#4A7AB8;padding:12px 24px 4px;margin-top:4px;}
-.nav-drawer a{display:block;font-family:'Cinzel',serif;font-size:0.72rem;text-transform:uppercase;letter-spacing:0.09em;color:#B8C8DC;text-decoration:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(42,90,156,0.08);transition:color 0.2s,padding-left 0.2s;}
-.nav-drawer a:hover{color:#E8CB7A;padding-left:38px;}
-.nav-drawer-footer{padding:14px 24px 0;display:flex;gap:8px;}
-@media(max-width:860px){.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-right .nav-signin-btn,.nav-right .nav-search-btn{display:none;}}
-
-
-/* ═══════════════════════════════════════════════════════
-   THEME SYSTEM — Dark (default) + Light (parchment)
-   Respects prefers-color-scheme, saved to localStorage
-═══════════════════════════════════════════════════════ */
-:root {
-  /* Dark theme (default) */
-  --gold:#C9A84C;--gold-light:#E8CB7A;--gold-dim:#8A6A28;
-  --deep:#0A1628;--dark:#0F2035;--panel:#1B3A6B;
-  --border:#2A5A9C;--border-dim:#1A3A5C;
-  --text:#F0E6CC;--text-dim:#B8C8DC;--text-muted:#4A7AB8;
-  --bg-page:#0A1628;--bg-card:rgba(15,32,53,0.55);
-  --bg-panel:rgba(27,58,107,0.3);
-  --shadow:rgba(0,0,0,0.5);
-  --nav-bg:rgba(10,22,40,0.97);
-  --nav-h:68px;
+.sm-writing-arrow{margin-left:auto;color:var(--text-muted);font-size:0.9rem;flex-shrink:0;}
+.sm-footer{
+  padding:14px 26px;border-top:1px solid var(--rule);
+  display:flex;gap:10px;justify-content:space-between;align-items:center;
+  background:var(--surface-deep);
 }
-[data-theme="light"] {
-  --gold:#8A5A00;--gold-light:#6A4200;--gold-dim:#A07020;
-  --deep:#F5EDD8;--dark:#EDE0C4;--panel:#E8D9BC;
-  --border:#C4A882;--border-dim:#D4BC96;
-  --text:#1A0F00;--text-dim:#3A2800;--text-muted:#6B4C1A;
-  --bg-page:#F5EDD8;--bg-card:rgba(232,217,188,0.8);
-  --bg-panel:rgba(212,188,150,0.4);
-  --shadow:rgba(100,70,20,0.15);
-  --nav-bg:rgba(245,237,216,0.97);
+.sm-share-btn{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.84rem;font-weight:600;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--gold-light);background:transparent;
+  border:1px solid var(--gold-dim);border-radius:2px;
+  padding:8px 14px;cursor:pointer;
+  transition:border-color 0.2s,background 0.2s;
 }
+.sm-share-btn:hover{border-color:var(--gold);background:rgba(201,168,76,0.05);}
 
-/* ── Theme toggle button ─────────────────────────────── */
-.theme-toggle {
-  background:transparent;border:1px solid var(--border-dim);
-  border-radius:2px;color:var(--text-muted);padding:5px 9px;
-  cursor:pointer;font-size:0.82rem;transition:all 0.2s;
-  flex-shrink:0;line-height:1;
+/* ── Saint-icon mat (riza echo) ──────────────────────── */
+/* Echoes the thin gold riza/oklad treatment found on physical
+   Orthodox icons. Applies to all saint-icon containers:
+   SOTD banner, saint list rows, saint profile modal. */
+.sotd-icon-placeholder,
+.sli-icon,
+.sm-icon{
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  border-radius:2px;
+  padding:4px;
+  flex-shrink:0;
 }
-.theme-toggle:hover{border-color:var(--border);color:var(--gold);}
-
-/* ── Body background ─────────────────────────────────── */
-body{background:var(--bg-page);color:var(--text);}
-
-/* ── Smooth theme transition ─────────────────────────── */
-*, *::before, *::after {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+.sotd-icon-placeholder img,
+.sli-icon img,
+.sm-icon img{
+  display:block;
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:0;
 }
-/* But NOT transitions on transforms/opacity (breaks animations) */
-.fade-in, .nav-dropdown, [class*="modal"], [class*="panel"] {
-  transition: none !important;
+.sotd-icon-placeholder span,
+.sli-icon span,
+.sm-icon span{
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+  color:var(--gold-dim);
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:100%;
 }
-.fade-in { transition: opacity 0.5s ease, transform 0.5s ease !important; }
-.fade-in.visible { opacity:1; transform:translateY(0); }
+/* Per-context dimensions */
+.sotd-icon-placeholder{width:120px;height:150px;}
+.sotd-icon-placeholder span{font-size:3.2rem;}
+.sli-icon{width:38px;height:46px;}
+.sli-icon span{font-size:1.2rem;}
+.sm-icon{width:96px;height:118px;}
+.sm-icon span{font-size:2.4rem;}
 
-/* ── Saints SOTD white background ───────────────────── */
-.sotd-banner{background:#ffffff;border-bottom:2px solid var(--gold-dim);}
-.sotd-label{color:#8A5A00;}
-.sotd-name{color:#1a0f00;}
-.sotd-feast{color:#5a4a20;}
-.sotd-bio{color:#3a2800;}
-[data-theme="dark"] .sotd-name{color:#1a0f00;}
-[data-theme="dark"] .sotd-bio{color:#3a2800;}
-
-/* ── Browse by Category ornament ────────────────────── */
-.cat-section-label{
-  display:flex;align-items:center;gap:16px;
-  font-family:"Cinzel",serif;font-size:0.75rem;
-  text-transform:uppercase;letter-spacing:0.22em;color:var(--gold);
-  margin-bottom:20px;
+/* ── Closing colophon ────────────────────────────────── */
+.colophon{
+  margin:24px auto 44px;
+  text-align:center;
+  max-width:720px;
+  padding:0 24px;
 }
-.cat-section-label::before,.cat-section-label::after{
-  content:"";flex:1;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-dim),transparent);
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:600px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
 }
 
-/* ── Category cards gold ─────────────────────────────── */
-.cat-card{
-  background:linear-gradient(160deg,#C9A84C,#A07828)!important;
-  border:1px solid #E8CB7A!important;
+/* ── Footer (navy, three-column, master pattern) ─────── */
+.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
 }
-.cat-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(201,168,76,0.3);}
-.cat-name{color:#1a0f00!important;}
-.cat-desc{color:#3a2800!important;}
-.cat-count{color:#5a3a00!important;}
-.cat-icon{filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3));}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
 
-/* ═══════════════════════════════════════════════════════
-   MOBILE IMPROVEMENTS
-═══════════════════════════════════════════════════════ */
-@media(max-width:768px){
-  /* Better touch targets */
-  .nav-link,.cat-item,.prayer-item,.saint-list-item{min-height:44px;}
-  
-  /* Calendar mobile */
-  .cal-day{min-height:44px;padding:4px;}
-  .cal-day-num{font-size:0.75rem;}
-  .cal-grid{gap:2px;}
-  .cal-outer{padding:8px 10px 40px;}
-  
-  /* Better modal sizing */
-  .saint-modal-box,.pm-box,.tm-box,.rm-box{
-    width:100%;max-height:92vh;margin:auto 0 0;
-    border-radius:12px 12px 0 0;
-  }
-  #saint-modal,#prayer-modal,#topic-modal,#reading-modal{
-    align-items:flex-end;padding:0;
-  }
-  
-  /* Typography */
-  body{font-size:1.05rem;line-height:1.85;}
-  .page-title{font-size:1.4rem;}
-  
-  /* Cards stack */
-  .rules-grid,.seasons-grid{grid-template-columns:1fr;}
-  .cat-grid{gap:10px;}
-  
-  /* Day panel full width */
-  .day-panel{width:100%;border-left:none;border-top:2px solid var(--gold-dim);}
-  
-  /* Wider modals */
-  .sm-header{flex-direction:column;gap:12px;}
-  .sm-icon{width:100%;height:90px;flex-direction:row;justify-content:center;}
-  
-  /* Better spacing */
-  .content,.section{padding:20px 16px 40px;}
-  .page-hero{padding:28px 16px 24px;}
-}
-@media(max-width:480px){
-  .cat-grid{gap:8px;}
-  .main-layout{grid-template-columns:1fr;}
-  nav{padding:0 14px;}
-  .nav-brand .nav-subtitle{display:none;}
-}
-/* ── Back to Top ─────────────────────────────────────────── */
-#backToTop{position:fixed;bottom:1.5rem;right:1.5rem;z-index:900;
-  width:38px;height:38px;border-radius:50%;
-  background:var(--dark);border:1px solid var(--gold-dim);
-  color:var(--gold-light);font-size:1rem;cursor:pointer;
+/* ── Back to top ─────────────────────────────────────── */
+#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   opacity:0;pointer-events:none;
-  transition:opacity 0.25s,transform 0.25s;
-  box-shadow:0 2px 12px rgba(0,0,0,0.5);}
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
 #backToTop.visible{opacity:1;pointer-events:all;}
-#backToTop:hover{background:rgba(201,168,76,0.12);transform:translateY(-2px);}
-#search-overlay{display:none;position:fixed;inset:0;z-index:700;background:rgba(0,0,0,0.75);backdrop-filter:blur(4px);align-items:flex-start;justify-content:center;padding-top:120px;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
+
+/* ── Mobile ──────────────────────────────────────────── */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .sotd-inner{flex-direction:column;gap:20px;align-items:flex-start;}
+  .sotd-icon-placeholder{width:100px;height:124px;}
+  .sotd-icon-placeholder span{font-size:2.6rem;}
+  .sm-meta-grid{grid-template-columns:1fr;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
+}
+@media(max-width:600px){
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content,.section{padding-left:18px;padding-right:18px;}
+  .sotd-banner{padding:24px 18px;}
+  .page-top{padding:24px 18px 16px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .sm-header{flex-direction:column;}
+  .sm-icon{width:100px;height:120px;}
+  .sm-body{padding:20px 22px;}
+  .sm-footer{padding:14px 22px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .site-footer{padding:36px 18px 28px;}
+}
+
+/* ── Honor prefers-reduced-motion ────────────────────── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
 </style>
-<meta property="og:title" content="Saints — Orthodox Companion"/>
-<meta property="og:description" content="The saints of the Orthodox Church — Saint of the Day, 1212 saints with feast days, profiles, and liturgical calendar connections."/>
-<meta property="og:type" content="website"/>
-<meta property="og:url" content="https://orthodoxcompanion.com/saints.html"/>
 </head>
 <body>
+
 <nav id="mainNav">
   <a href="index.html" class="nav-brand">
-    <span class="nav-cross">&#9766;&#65038;</span>
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
     <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
   </a>
   <ul class="nav-links">
@@ -435,68 +769,51 @@ body{background:var(--bg-page);color:var(--text);}
     <li class="nav-item">
       <span class="nav-link has-drop">New Here?</span>
       <div class="nav-dropdown">
-        <a href="new-to-orthodoxy.html"><span class="dd-icon">&#9875;</span>What Is Orthodoxy?</a>
-        <a href="parents.html"><span class="dd-icon">&#10022;</span>Guidance for Parents</a>
+        <a href="new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="parents.html">Guidance for Parents</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="new-to-orthodoxy.html#how-do-i-find-a-church"><span class="dd-icon">&#9906;</span>Parish Finder</a>
-        <a href="new-to-orthodoxy.html#faq"><span class="dd-icon">&#10067;</span>Frequently Asked Questions</a>
+        <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="about.html"><span class="dd-icon">&#9432;</span>About This Site</a>
+        <a href="about.html">About This Site</a>
+        <a href="note-from-author.html">Note from the Author</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link active has-drop">Study</span>
       <div class="nav-dropdown">
-        <a href="history-of-orthodoxy.html"><span class="dd-icon">&#9680;</span>History of Orthodoxy</a>
-        <a href="symbol-of-faith.html"><span class="dd-icon">&#9767;</span>Symbol of Faith</a>
+        <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="symbol-of-faith.html">Symbol of Faith</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="topics.html"><span class="dd-icon">&#10022;</span>Topics &amp; Doctrine</a>
-        <a href="glossary.html"><span class="dd-icon">&#913;</span>Glossary</a>
-        <a href="saints.html"><span class="dd-icon">&#9766;</span>Saints</a>
-        <a href="church-fathers.html"><span class="dd-icon">&#9998;</span>Church Fathers</a>
-        <a href="holy-scripture.html"><span class="dd-icon">&#9636;</span>Holy Scripture</a>
-        <a href="bible-reader.html"><span class="dd-icon">&#9636;</span>Bible Reader</a>
+        <a href="topics.html">Topics &amp; Doctrine</a>
+        <a href="glossary.html">Glossary</a>
+        <a href="saints.html">Saints</a>
+        <a href="church-fathers.html">Church Fathers</a>
+        <a href="holy-scripture.html">Holy Scripture</a>
+        <a href="bible-reader.html">Bible Reader</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="reading-plans.html"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-        <a href="resources.html"><span class="dd-icon">&#9641;</span>Books &amp; Resources</a>
+        <a href="reading-plans.html">Reading Plans</a>
+        <a href="resources.html">Books &amp; Resources</a>
       </div>
     </li>
     <li class="nav-item">
       <span class="nav-link has-drop">Worship &amp; Life</span>
       <div class="nav-dropdown">
-        <a href="calendar.html"><span class="dd-icon">&#9670;</span>Liturgical Calendar</a>
-        <a href="prayer.html"><span class="dd-icon">&#9753;</span>Prayer Corner</a>
-        <a href="fasting.html"><span class="dd-icon">&#9632;</span>Fasting Guide</a>
+        <a href="calendar.html">Liturgical Calendar</a>
+        <a href="prayer.html">Prayer Corner</a>
+        <a href="fasting.html">Fasting Guide</a>
         <hr class="nav-dropdown-divider"/>
-        <a href="feasts.html"><span class="dd-icon">&#9733;</span>Feasts</a>
-        <a href="liturgical-seasons.html"><span class="dd-icon">&#9680;</span>Liturgical Seasons</a>
+        <a href="feasts.html">Feasts</a>
+        <a href="liturgical-seasons.html">Liturgical Seasons</a>
       </div>
     </li>
   </ul>
-  <div class="nav-right">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <div class="nav-account-wrap" id="navAccountWrap">
-      <a href="account.html" class="nav-signin-btn" id="navSignIn">Sign In</a>
-      <div class="nav-user-menu" id="navUserMenu" style="display:none;">
-        <button class="nav-user-btn" id="navUserBtn" onclick="toggleUserMenu()">
-          <span id="navUsername">Account</span> <span class="nav-user-arrow">&#9662;</span>
-        </button>
-        <div class="nav-user-dropdown" id="navUserDropdown">
-          <a href="account.html#journal"><span class="dd-icon">&#9997;</span>Journal</a>
-          <a href="account.html#bookmarks"><span class="dd-icon">&#9673;</span>Bookmarks</a>
-          <a href="account.html#reading-plans"><span class="dd-icon">&#9636;</span>Reading Plans</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="account.html#settings"><span class="dd-icon">&#9881;</span>Account &amp; Settings</a>
-          <hr class="nav-dropdown-divider"/>
-          <a href="#" onclick="signOut();return false;"><span class="dd-icon">&#9099;</span>Sign Out</a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="nav-right"></div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
+
 <div class="nav-drawer" id="navDrawer">
   <a href="index.html">Home</a>
   <div class="nav-drawer-section">New Here?</div>
@@ -505,6 +822,7 @@ body{background:var(--bg-page);color:var(--text);}
   <a href="new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
   <a href="new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
   <a href="about.html">About This Site</a>
+  <a href="note-from-author.html">Note from the Author</a>
   <div class="nav-drawer-section">Study</div>
   <a href="history-of-orthodoxy.html">History of Orthodoxy</a>
   <a href="symbol-of-faith.html">Symbol of Faith</a>
@@ -522,28 +840,13 @@ body{background:var(--bg-page);color:var(--text);}
   <a href="fasting.html">Fasting Guide</a>
   <a href="feasts.html">Feasts</a>
   <a href="liturgical-seasons.html">Liturgical Seasons</a>
-  <div class="nav-drawer-footer">
-    <a href="chatbot.html" class="nav-ai-btn"><span style="font-family:'Segoe UI Symbol','Apple Symbols',serif;font-style:normal;">&#9766;&#xFE0E;</span> Companion AI</a>
-    <a href="account.html" class="nav-signin-btn" id="drawerSignIn">Sign In</a>
-  </div>
-</div>
-
-<div id="search-overlay">
-  <div style="width:100%;max-width:640px;padding:0 20px;">
-    <div style="display:flex;align-items:center;background:var(--panel);border:1px solid var(--border);border-radius:3px;padding:14px 18px;gap:12px;">
-      <span style="color:var(--text-muted);font-size:1.1rem;">&#9901;</span>
-      <input type="text" id="searchInput" placeholder="Search saints, prayers, topics, feasts..." autocomplete="off" style="flex:1;background:transparent;border:none;outline:none;color:var(--text);font-family:'EB Garamond',serif;font-size:1.15rem;caret-color:var(--gold);"/>
-      <button onclick="closeSearch()" style="background:transparent;border:none;color:var(--text-dim);font-size:1.3rem;cursor:pointer;">&#x2715;</button>
-    </div>
-    <p style="font-size:0.75rem;color:var(--text-muted);font-style:italic;margin-top:12px;text-align:center;">Press Enter to search &nbsp;&#183;&nbsp; Esc to close</p>
-  </div>
 </div>
 
 <!-- SAINT OF THE DAY -->
 <div class="sotd-banner" id="sotdBanner">
   <div class="sotd-inner">
     <div class="sotd-icon-placeholder" id="sotdIcon">
-      <span>☦</span>
+      <span>&#9766;</span>
     </div>
     <div>
       <div class="sotd-label">Saint of the Day</div>
@@ -555,53 +858,60 @@ body{background:var(--bg-page);color:var(--text);}
   </div>
 </div>
 
-<!-- PAGE HEADER -->
-<div class="page-top fade-in">
-  <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Saints</div>
-  <h1 class="page-title">The Saints</h1>
-  <p class="page-desc">The holy men and women of the Church — apostles, martyrs, monastics, hierarchs, and all who have shone forth in the faith from every age and every land.</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
+    <div class="breadcrumb"><a href="index.html">Home</a><span>&#8250;</span>Saints</div>
+    <h1 class="page-title">The Saints</h1>
+    <p class="page-desc">The holy men and women of the Church &mdash; apostles, martyrs, monastics, hierarchs, and all who have shone forth in the faith from every age and every land.</p>
+  </div>
 </div>
 
 <!-- CATEGORY GRID -->
 <div class="section">
-  <div class="section-header fade-in">
+  <div class="section-header">
     <span class="section-label">Browse by Category</span>
     <div class="section-rule"></div>
   </div>
   <div class="cat-grid" id="catGrid">
-    <div class="cat-card fade-in" onclick="openCategory('apostles')">
+    <div class="cat-card" onclick="openCategory('apostles')">
       <span class="cat-name">Apostles &amp; Evangelists</span>
       <span class="cat-count" id="count-apostles"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('prophets')">
+    <div class="cat-card" onclick="openCategory('prophets')">
       <span class="cat-name">Prophets</span>
       <span class="cat-count" id="count-prophets"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('martyrs')">
+    <div class="cat-card" onclick="openCategory('martyrs')">
       <span class="cat-name">Martyrs &amp; Confessors</span>
       <span class="cat-count" id="count-martyrs"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('monastics')">
+    <div class="cat-card" onclick="openCategory('monastics')">
       <span class="cat-name">Monastics &amp; Desert Fathers</span>
       <span class="cat-count" id="count-monastics"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('hierarchs')">
+    <div class="cat-card" onclick="openCategory('hierarchs')">
       <span class="cat-name">Hierarchs &amp; Bishops</span>
       <span class="cat-count" id="count-hierarchs"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('women')">
+    <div class="cat-card" onclick="openCategory('women')">
       <span class="cat-name">Holy Women</span>
       <span class="cat-count" id="count-women"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('wonderworkers')">
+    <div class="cat-card" onclick="openCategory('wonderworkers')">
       <span class="cat-name">Wonderworkers</span>
       <span class="cat-count" id="count-wonderworkers"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('equal-to-apostles')">
+    <div class="cat-card" onclick="openCategory('equal-to-apostles')">
       <span class="cat-name">Equal-to-the-Apostles</span>
       <span class="cat-count" id="count-equal-to-apostles"></span>
     </div>
-    <div class="cat-card fade-in" onclick="openCategory('old-testament')">
+    <div class="cat-card" onclick="openCategory('old-testament')">
       <span class="cat-name">Old Testament Saints</span>
       <span class="cat-count" id="count-old-testament"></span>
     </div>
@@ -625,7 +935,7 @@ body{background:var(--bg-page);color:var(--text);}
 <div id="saint-modal">
   <div class="saint-modal-box">
     <div class="sm-header">
-      <div class="sm-icon" id="sm-icon"><span></span></div>
+      <div class="sm-icon" id="sm-icon"><span>&#9766;</span></div>
       <div class="sm-title-wrap">
         <div class="sm-breadcrumb" id="sm-breadcrumb">Saints</div>
         <div class="sm-name" id="sm-name">&mdash;</div>
@@ -636,14 +946,106 @@ body{background:var(--bg-page);color:var(--text);}
     </div>
     <div class="sm-body" id="sm-body"></div>
     <div class="sm-footer">
-      <div style="display:flex;gap:8px;">
-        <button class="sm-share-btn" onclick="shareSaint()">&#9650; Share</button>
-        <a href="chatbot.html" class="sm-chatbot-link" id="sm-chatbot-link">Ask the Companion</a>
-      </div>
-      <button onclick="closeSaintModal()" style="font-family:'Cinzel',serif;font-size:0.62rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);background:transparent;border:none;cursor:pointer;">Close</button>
+      <button class="sm-share-btn" onclick="shareSaint()">&#9650; Share</button>
+      <button class="sm-share-btn" onclick="closeSaintModal()">Close</button>
     </div>
   </div>
 </div>
+
+<!-- CLOSING COLOPHON -->
+<div class="colophon">
+  <p class="colophon-text">The saints are not heroes of a distant past, but living members of the Body of Christ who pray with us, around the same Holy Table. Speak to them as you would speak to a beloved elder of the Church. Better still, find a parish, light a candle before their icons, and ask them to pray for you.</p>
+  <div class="colophon-mark" aria-hidden="true">
+    <span class="rule"></span>
+    <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+    <span class="rule"></span>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="calendar.html">Calendar</a></li>
+          <li><a href="saints.html">Saints</a></li>
+          <li><a href="prayer.html">Prayer Corner</a></li>
+          <li><a href="fasting.html">Fasting Guide</a></li>
+          <li><a href="reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="topics.html">Topics</a></li>
+          <li><a href="history-of-orthodoxy.html">History</a></li>
+          <li><a href="church-fathers.html">Church Fathers</a></li>
+          <li><a href="glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="resources.html">Resources</a></li>
+          <li><a href="new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+<script>
+/* OC-MASTER-JS — Parchment v3 */
+
+/* ── Nav drawer ─────────────────────────────────── */
+var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);
+  if(h)h.classList.toggle('open',_drawerOpen);
+}
+
+/* Close drawer on outside click */
+document.addEventListener('click',function(e){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
+    _drawerOpen=false;
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
+  }
+});
+
+/* ── Back to top ────────────────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+
+/* ── Hash scrolling on load ─────────────────────── */
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+});
+</script>
 
 <!-- Calendar engine loads first so SOTD can use it immediately -->
 <script src="calendar-engine-v2.js"></script>
@@ -688,11 +1090,11 @@ var SAINTS = [
     bio: 'Saint John Chrysostom, Archbishop of Constantinople, is one of the Three Holy Hierarchs and a Doctor of the Church. Born in Antioch around 349, he received an exceptional education under the pagan rhetor Libanius, but was drawn to the ascetic life and Christian learning. He spent several years as a monk in the desert before his health compelled his return to Antioch.\n\nOrdained priest in 386, John became renowned throughout the Church for his brilliant preaching — earning the title Chrysostom ("Golden-Mouthed") from later generations. His homiletical works on Scripture, especially his commentaries on Matthew, John, Romans, and the Pauline Epistles, remain unsurpassed in the patristic tradition.\n\nElected Archbishop of Constantinople in 398, he undertook sweeping reforms of the clergy and distributed the wealth of the episcopal household to care for the poor. His fearless preaching against the moral corruption of the imperial court brought him into conflict with Empress Eudoxia and led to two exiles. He died in exile at Comana in Pontus in 407. His relics were returned to Constantinople in 438, where they were received with great honor.',
     troparion: 'Grace shining forth from your lips like a beacon of fire, enlightened the universe; not by love of wealth was the world illumined, but by the treasury of poverty. You showed us the heights of humility. But as you instruct us by your words, Father John Chrysostom, intercede with the Word, Christ our God, for the salvation of our souls.',
     writings: [
-      { title: 'Homilies on the Gospel of Matthew\', source: \'NPNF Series I, Vol. X\', url: \'https://www.newadvent.org/fathers/2001.htm' },
-      { title: 'Homilies on the Gospel of John\', source: \'NPNF Series I, Vol. XIV\', url: \'https://www.newadvent.org/fathers/2401.htm' },
-      { title: 'Homilies on Romans\', source: \'NPNF Series I, Vol. XI\', url: \'https://www.newadvent.org/fathers/2102.htm' },
-      { title: 'On the Priesthood\', source: \'NPNF Series I, Vol. IX\', url: \'https://www.newadvent.org/fathers/1900.htm' },
-      { title: 'Paschal Homily\', source: \'Public Domain\', url: \'https://orthodoxwiki.org/Paschal_Homily' },
+      { title: 'Homilies on the Gospel of Matthew', source: 'NPNF Series I, Vol. X', url: 'https://www.newadvent.org/fathers/2001.htm' },
+      { title: 'Homilies on the Gospel of John', source: 'NPNF Series I, Vol. XIV', url: 'https://www.newadvent.org/fathers/2401.htm' },
+      { title: 'Homilies on Romans', source: 'NPNF Series I, Vol. XI', url: 'https://www.newadvent.org/fathers/2102.htm' },
+      { title: 'On the Priesthood', source: 'NPNF Series I, Vol. IX', url: 'https://www.newadvent.org/fathers/1900.htm' },
+      { title: 'Paschal Homily', source: 'Public Domain', url: 'https://orthodoxwiki.org/Paschal_Homily' },
     ]
   },
   {
@@ -710,10 +1112,10 @@ var SAINTS = [
     bio: 'Saint Basil the Great, Archbishop of Caesarea in Cappadocia, is numbered among the Three Holy Hierarchs and is called "the Great" both for his theological brilliance and his extraordinary works of charity. Born into a remarkable Christian family — his grandmother, mother, sister, and two brothers are also venerated as saints — Basil received the finest philosophical and theological education available in his day, studying at Caesarea, Constantinople, and Athens.\n\nAfter embracing the monastic life and traveling to the great ascetic communities of Egypt, Palestine, and Syria, Basil returned to Cappadocia and helped organize monastic communities that would become foundational for Eastern Christian monasticism. His Asketikon remains the primary rule of Orthodox monasticism to this day.\n\nElected Archbishop of Caesarea in 370, Basil was a towering figure in the defense of Nicene Orthodoxy against the Arian heresy during the reign of the emperor Valens. His theological writings — especially his treatise On the Holy Spirit and his work against Eunomius — are cornerstones of the Church\'s trinitarian theology. He is also known for his extraordinary social ministry, having built a great complex of charitable institutions outside Caesarea — hospital, hospice, and training school — which became a model for Christian charity for centuries.',
     troparion: 'Your voice has gone out to all the earth, which received your word. You explained the Faith in a God-befitting manner; you showed forth the nature of all created things; and you adorned human conduct with virtuous ways. O royal priesthood, O venerable father, intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'On the Holy Spirit\', source: \'NPNF Series II, Vol. VIII\', url: \'https://www.newadvent.org/fathers/3202.htm' },
-      { title: 'Hexaemeron (On the Six Days of Creation)\', source: \'NPNF Series II, Vol. VIII\', url: \'https://www.newadvent.org/fathers/3201.htm' },
-      { title: 'Address to Young Men\', source: \'NPNF Series II, Vol. VIII\', url: \'https://www.newadvent.org/fathers/3205.htm' },
-      { title: 'The Long Rules (Asketikon)\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
+      { title: 'On the Holy Spirit', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3202.htm' },
+      { title: 'Hexaemeron (On the Six Days of Creation)', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3201.htm' },
+      { title: 'Address to Young Men', source: 'NPNF Series II, Vol. VIII', url: 'https://www.newadvent.org/fathers/3205.htm' },
+      { title: 'The Long Rules (Asketikon)', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
     ]
   },
   {
@@ -731,9 +1133,9 @@ var SAINTS = [
     bio: 'Saint Gregory the Theologian — called "the Theologian" by the Church along with only St. John the Evangelist — is numbered among the Three Holy Hierarchs and is considered the supreme poet-theologian of the Greek patristic tradition. Born in Cappadocia and educated at Caesarea, Alexandria, and Athens, where he formed his lifelong friendship with St. Basil the Great, Gregory was a reluctant churchman who longed above all for the contemplative life.\n\nHis five Theological Orations, preached in Constantinople in 380, represent perhaps the greatest sustained theological achievement of the patristic era. Against the Arian and Pneumatomachian controversies, Gregory articulated with unparalleled precision the Church\'s faith in the Holy Trinity and the full divinity of the Holy Spirit. Called to become Archbishop of Constantinople, he presided over the Second Ecumenical Council (381) before resigning and retiring to his estate in Arianzus.\n\nGregory was also a poet of rare gifts, leaving hundreds of theological and autobiographical poems that illuminate both his inner spiritual life and the dogmatic teaching of the Church.',
     troparion: 'The shepherd\'s flute of your theology vanquished the trumpets of the orators; for having searched the depths of the Spirit, the beauty of eloquence was added to you. Intercede with Christ God, O Father Gregory, that our souls may be saved.',
     writings: [
-      { title: 'The Five Theological Orations\', source: \'NPNF Series II, Vol. VII\', url: \'https://www.newadvent.org/fathers/3102.htm' },
-      { title: 'Orations on the Theophany\', source: \'NPNF Series II, Vol. VII\', url: \'https://www.newadvent.org/fathers/3101.htm' },
-      { title: 'On His Own Life (Autobiographical Poems)\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
+      { title: 'The Five Theological Orations', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3102.htm' },
+      { title: 'Orations on the Theophany', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3101.htm' },
+      { title: 'On His Own Life (Autobiographical Poems)', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
     ]
   },
   {
@@ -751,9 +1153,9 @@ var SAINTS = [
     bio: 'Saint Athanasius the Great, Archbishop of Alexandria, is the great champion of Nicene Orthodoxy and is called "Athanasius against the World" (Athanasius contra mundum) for his steadfast defense of the divinity of Christ against the Arian heresy. As a young deacon, he attended the First Ecumenical Council at Nicaea in 325, and his theological acumen was evident even then.\n\nElected Archbishop of Alexandria in 328, Athanasius would spend seventeen years of his forty-five-year episcopate in exile — exiled five times by four different emperors under Arian pressure — yet never wavered in his confession of the Nicene faith. His masterpiece On the Incarnation, written while still a young man, remains one of the most beautiful and accessible presentations of Orthodox Christology.\n\nHis Life of Antony, the biography of the great desert father, played an enormous role in the spread of monasticism throughout the Christian world. Augustine of Hippo records that it was the reading of this book that catalyzed his own conversion.',
     troparion: 'You were a pillar of Orthodoxy, supporting the Church with divine doctrines, O righteous one. You proclaimed the Son to be consubstantial with the Father, putting to shame Arius. O Father Athanasius, intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'On the Incarnation\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
-      { title: 'Against the Arians (Four Orations)\', source: \'NPNF Series II, Vol. IV\', url: \'https://www.newadvent.org/fathers/2806.htm' },
-      { title: 'Life of Antony\', source: \'NPNF Series II, Vol. IV\', url: \'https://www.newadvent.org/fathers/2811.htm' },
+      { title: 'On the Incarnation', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+      { title: 'Against the Arians (Four Orations)', source: 'NPNF Series II, Vol. IV', url: 'https://www.newadvent.org/fathers/2806.htm' },
+      { title: 'Life of Antony', source: 'NPNF Series II, Vol. IV', url: 'https://www.newadvent.org/fathers/2811.htm' },
     ]
   },
   {
@@ -835,10 +1237,10 @@ var SAINTS = [
     bio: 'Saint Paul the Apostle, called the "Apostle to the Gentiles," is the great theologian of the early Church and the author of fourteen epistles in the New Testament. Born Saul of Tarsus, a Pharisee and Roman citizen, he was an early persecutor of the Church until his dramatic encounter with the Risen Christ on the road to Damascus, which transformed him into one of the most tireless missionaries in history.\n\nPaul\'s three great missionary journeys carried the Gospel throughout Asia Minor, Greece, and eventually to Rome. His epistles — Romans, Corinthians, Galatians, Ephesians, Philippians, Colossians, Thessalonians, Timothy, Titus, Philemon, and Hebrews — constitute the most systematic theological reflection on the meaning of the death and resurrection of Christ in the entire New Testament.\n\nPaul\'s teaching on grace, justification, the body of Christ, the gifts of the Spirit, and the resurrection of the dead has been foundational for all subsequent Orthodox theology. He was martyred by beheading in Rome under the Emperor Nero, commemorated together with St. Peter on June 29.',
     troparion: 'You were a vessel of election, O Apostle Paul, a preacher of faith to the nations. Intercede with the God who is merciful that He may grant the remission of sins to those who celebrate your holy memory with love.',
     writings: [
-      { title: 'Letter to the Romans\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Romans+1&version=NKJV' },
-      { title: 'First Letter to the Corinthians\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=1+Corinthians+1&version=NKJV' },
-      { title: 'Letter to the Galatians\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Galatians+1&version=NKJV' },
-      { title: 'Letter to the Ephesians\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Ephesians+1&version=NKJV' },
+      { title: 'Letter to the Romans', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Romans+1&version=NKJV' },
+      { title: 'First Letter to the Corinthians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=1+Corinthians+1&version=NKJV' },
+      { title: 'Letter to the Galatians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Galatians+1&version=NKJV' },
+      { title: 'Letter to the Ephesians', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Ephesians+1&version=NKJV' },
     ]
   },
   {
@@ -872,7 +1274,7 @@ var SAINTS = [
     bio: 'Saint John Climacus, Abbot of the Monastery of St. Catherine at Mount Sinai, is the author of the Ladder of Divine Ascent — one of the most widely read books in Eastern Christian monasticism. Receiving the name "Climacus" (from the Greek klimax, "ladder") from his famous work, John entered Sinai as a teenager, was tonsured a monk, and spent approximately forty years as a hermit near the monastery.\n\nIn his later years he was elected Abbot of the Sinai Monastery. At the request of John, Abbot of Raïthu, he wrote the Ladder — thirty steps corresponding to the thirty years of Christ\'s hidden life, guiding the soul from its departure from the world through purification and illumination to the heights of love, apatheia, and union with God.\n\nThe Ladder of Divine Ascent is read aloud in Orthodox monasteries throughout Great Lent and is one of the primary texts for the Orthodox spiritual life. Its teachings on prayer, silence, humility, discernment, and the passions have shaped Orthodox spirituality for fifteen centuries.',
     troparion: 'With the streams of your tears, you made the barren desert fertile; and with sighs from deep within you, your labors bore fruit a hundredfold. You became a star shining over the world with miracles. O John our holy Father, intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'The Ladder of Divine Ascent\', source: \'Holy Transfiguration Monastery Press\', url: \'https://www.amazon.com' },
+      { title: 'The Ladder of Divine Ascent', source: 'Holy Transfiguration Monastery Press', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -890,9 +1292,9 @@ var SAINTS = [
     bio: 'Saint Maximus the Confessor is considered the last great theologian of the patristic era and the supreme synthesizer of Greek patristic thought. Born in Constantinople in 580 and educated at the imperial court, he served as secretary to the Emperor Heraclius before abandoning his career to become a monk.\n\nMaximus became the chief theological opponent of Monothelitism — the heresy that Christ had only one will — defending the complete human will and freedom of Christ as necessary for our salvation. His theological work on the two wills of Christ was vindicated at the Sixth Ecumenical Council (680-681).\n\nFor his defense of Orthodoxy, Maximus was arrested, tried, and subjected to brutal torture by the imperial authorities. His tongue was cut out and his right hand severed so that he could neither speak nor write in defense of the faith. He died in exile in 662. His Centuries on Love, his Mystagogy, and his Ambigua (on the difficult passages in St. Gregory the Theologian and St. Dionysius) are cornerstones of Orthodox theology.',
     troparion: 'Champion of the Faith and teacher of Orthodoxy, light and adornment of those who live a life consecrated to God, most wise Maximus, by your writings you inspired all men with love of divine wisdom; therefore we cry out: Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Centuries on Love\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
-      { title: 'Mystagogy\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
-      { title: 'The Philokalia (Selected Works)\', source: \'Faber & Faber\', url: \'https://www.amazon.com' },
+      { title: 'Centuries on Love', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+      { title: 'Mystagogy', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+      { title: 'The Philokalia (Selected Works)', source: 'Faber & Faber', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -944,8 +1346,8 @@ var SAINTS = [
     bio: 'Saint Peter the Apostle, called Simon by birth and renamed Cephas ("Rock") by Christ, was the leader of the Twelve and the first to confess Jesus as the Christ, the Son of the living God. A fisherman from Bethsaida, Peter was called by Christ along with his brother Andrew from the shores of the Sea of Galilee.\n\nThough he denied Christ three times during the Passion, Peter was restored after the Resurrection and entrusted three times with the charge: "Feed my sheep." After Pentecost, Peter led the Jerusalem church, performed miracles, and preached boldly to both Jews and Gentiles. His epistles in the New Testament remain foundational for the theology of suffering, baptism, and the Church as a royal priesthood.\n\nPeter eventually made his way to Rome, where he became the bishop and was ultimately martyred by crucifixion upside down — at his own request, feeling unworthy to die in the same position as his Lord — under the Emperor Nero. He is commemorated together with St. Paul on June 29.',
     troparion: 'O first-enthroned of the Apostles and teachers of the universe, intercede with the Master of all to grant peace to the world and to our souls great mercy.',
     writings: [
-      { title: 'First Epistle of Peter\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=1+Peter+1&version=NKJV' },
-      { title: 'Second Epistle of Peter\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=2+Peter+1&version=NKJV' },
+      { title: 'First Epistle of Peter', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=1+Peter+1&version=NKJV' },
+      { title: 'Second Epistle of Peter', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=2+Peter+1&version=NKJV' },
     ]
   },
   {
@@ -963,8 +1365,8 @@ var SAINTS = [
     bio: 'Saint Luke the Apostle and Evangelist was a physician by profession, a companion of St. Paul, and the author of the third Gospel and the Acts of the Apostles — together the longest single contribution to the New Testament. A Gentile by birth from Antioch in Syria, Luke was a man of culture, education, and literary skill.\n\nHis Gospel is especially notable for its emphasis on mercy, prayer, women, and the Holy Spirit. It contains the parables of the Prodigal Son and the Good Samaritan, as well as the most detailed account of the Nativity. The Acts of the Apostles preserves the irreplaceable history of the early Church from Pentecost through Paul\'s first imprisonment in Rome.\n\nOrthodox tradition venerates Luke as the first iconographer — said to have painted the original icons of the Theotokos from life. He traveled with Paul on his second and third missionary journeys. After Paul\'s martyrdom, Luke continued preaching in Greece, and is said to have been martyred at Thebes in Boeotia.',
     troparion: 'O Holy Apostle and Evangelist Luke, intercede with the merciful God that He may grant our souls forgiveness of sins.',
     writings: [
-      { title: 'The Gospel of Luke\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Luke+1&version=NKJV' },
-      { title: 'The Acts of the Apostles\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Acts+1&version=NKJV' },
+      { title: 'The Gospel of Luke', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Luke+1&version=NKJV' },
+      { title: 'The Acts of the Apostles', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Acts+1&version=NKJV' },
     ]
   },
   {
@@ -982,8 +1384,8 @@ var SAINTS = [
     bio: 'Saint John the Theologian and Beloved Disciple is the last surviving Apostle and the author of the Fourth Gospel, three epistles, and the Book of Revelation. Called "the Theologian" by the Church — an honor shared only with Gregory Nazianzen — John was the son of Zebedee, a Galilean fisherman, and was called together with his brother James from mending their nets.\n\nJohn was the disciple who reclined at the Last Supper next to Jesus, the one who stood at the foot of the Cross with the Theotokos, and the first to believe in the Resurrection when he saw the empty tomb. Christ entrusted His mother to John\'s care from the Cross: "Behold your mother."\n\nAfter the Dormition of the Theotokos, John lived and taught in Ephesus. He was exiled to the island of Patmos under the Emperor Domitian, where he received the Apocalypse. He returned to Ephesus and died peacefully in old age — the only one of the Twelve not to be martyred. His Fourth Gospel, opening with the eternal Logos, is the supreme theological document of the New Testament.',
     troparion: 'Beloved Apostle of Christ our God, hasten to deliver your defenseless people; for he who permitted you to recline upon his breast accepts you as an intercessor. Beseech him, O Theologian, to dispel the persistent cloud of the heathen, asking for us peace and great mercy.',
     writings: [
-      { title: 'The Gospel of John\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=John+1&version=NKJV' },
-      { title: 'The Book of Revelation\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Revelation+1&version=NKJV' },
+      { title: 'The Gospel of John', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=John+1&version=NKJV' },
+      { title: 'The Book of Revelation', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Revelation+1&version=NKJV' },
     ]
   },
   {
@@ -1017,7 +1419,7 @@ var SAINTS = [
     bio: 'Saint Matthew the Apostle and Evangelist, also called Levi, was a tax collector in Capernaum when Christ called him with two words: "Follow me." He rose immediately, left everything, and became one of the Twelve. His dramatic conversion — and the feast he gave for Jesus, attended by tax collectors and sinners, which scandalized the Pharisees — is recorded in his own Gospel with characteristic brevity.\n\nMatthew\'s Gospel, the first in canonical order, was addressed primarily to Jewish Christians and is saturated with Old Testament quotations and fulfillments, presenting Jesus as the new Moses and the fulfillment of all the Law and the Prophets. It contains the Sermon on the Mount, the Lord\'s Prayer, and the Great Commission.\n\nAfter Pentecost, Matthew preached in Judea, Ethiopia, Persia, and Parthia. He is believed to have been martyred, though accounts vary on the location and manner. His symbol in iconography is the man or angel, representing the Gospel\'s emphasis on the humanity of Christ.',
     troparion: 'With eager resolve you forsook the tax collector\'s table and followed in the steps of Christ the Master. By the grace of God you received the power to heal the sick. Through your holy Gospel you have enriched the world. O Matthew, Apostle and Evangelist, entreat merciful God to grant our souls salvation.',
     writings: [
-      { title: 'The Gospel of Matthew\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Matthew+1&version=NKJV' },
+      { title: 'The Gospel of Matthew', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Matthew+1&version=NKJV' },
     ]
   },
   {
@@ -1035,7 +1437,7 @@ var SAINTS = [
     bio: 'Saint Mark the Apostle and Evangelist, also called John Mark, was the author of the second and earliest Gospel and the founder of the Church of Alexandria. A companion of both Peter and Paul, Mark is believed to have written his Gospel based primarily on the eyewitness testimony of St. Peter, whose interpreter he served in Rome. The Gospel of Mark is characterized by its urgency and directness.\n\nMark accompanied Paul and Barnabas on the first missionary journey but turned back at Perga — a departure that led to a rift between Paul and Barnabas and the formation of two separate missionary teams. He was later reconciled with Paul and served him again during his imprisonment in Rome.\n\nMark is especially venerated as the founder of the ancient and apostolic Church of Alexandria, one of the great patriarchal sees of antiquity. He preached in Egypt, Libya, and the Pentapolis, and is said to have been martyred in Alexandria by dragging through the streets on Easter Day.',
     troparion: 'O Holy Apostle and Evangelist Mark, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
     writings: [
-      { title: 'The Gospel of Mark\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Mark+1&version=NKJV' },
+      { title: 'The Gospel of Mark', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Mark+1&version=NKJV' },
     ]
   },
   {
@@ -1117,7 +1519,7 @@ var SAINTS = [
     bio: 'Saint Jude the Apostle, also called Thaddaeus, was the brother of James the Less and a kinsman of Christ. At the Last Supper he asked Christ: "Lord, how is it that You will manifest Yourself to us, and not to the world?" — receiving the profound answer about the mutual indwelling of the Father, Son, and the believer who loves and keeps His word.\n\nAfter Pentecost, Jude preached in Judea, Samaria, Idumaea, Syria, Mesopotamia, and Persia. Together with St. Bartholomew, he is venerated as one of the apostles of Armenia. His brief Epistle in the New Testament is a fierce defense of the apostolic faith against false teachers who distort grace into licentiousness.\n\nJude is venerated in Western Christianity as the patron saint of hopeless causes — attributed to his feast day sharing proximity with that of Simon the Zealot in the Western calendar, and to confusion with Judas Iscariot discouraging his invocation. In Orthodoxy he is simply venerated as one of the holy Apostles.',
     troparion: 'O Holy Apostle Jude, intercede with the merciful God that He may grant to our souls forgiveness of sins.',
     writings: [
-      { title: 'The Epistle of Jude\', source: \'New Testament\', url: \'https://www.biblegateway.com/passage/?search=Jude+1&version=NKJV' },
+      { title: 'The Epistle of Jude', source: 'New Testament', url: 'https://www.biblegateway.com/passage/?search=Jude+1&version=NKJV' },
     ]
   },
   {
@@ -1219,7 +1621,7 @@ var SAINTS = [
     bio: 'Saint Ignatius of Antioch, the second bishop of Antioch after St. Peter, is one of the Apostolic Fathers and a martyr of exceptional significance. Condemned to death in Rome, he was transported across Asia Minor and Greece under armed escort — and used every stop along the way to write seven letters to Christian communities that remain among the most important early Christian documents.\n\nIgnatius\'s letters reveal a church with a clear episcopal structure, a sacramental life centered on the Eucharist, and a profound theology of martyrdom. His letters to the Ephesians, Magnesians, Trallians, Romans, Philadelphians, Smyrnaeans, and to Polycarp are the first clear evidence of the threefold ministry of bishop, presbyter, and deacon in the early Church.\n\nHis letter to the Romans contains his famous plea not to be saved from martyrdom: "Let me be food for the wild beasts, through whom it is possible to attain to God. I am God\'s wheat, and I am ground by the teeth of wild beasts, that I may be found to be pure bread." He was devoured by lions in the Colosseum around 107 AD.',
     troparion: 'You participated in the ways of the Apostles and succeeded to their thrones; through practice you found the path to divine contemplation, O God-inspired one; teaching the word of truth aright, you suffered for the faith even unto blood, O hieromartyr Ignatius. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Letters (Seven Epistles)\', source: \'Early Church Fathers, Vol. 1\', url: \'https://www.newadvent.org/fathers/0105.htm' },
+      { title: 'Letters (Seven Epistles)', source: 'Early Church Fathers, Vol. 1', url: 'https://www.newadvent.org/fathers/0105.htm' },
     ]
   },
   {
@@ -1253,7 +1655,7 @@ var SAINTS = [
     bio: 'The Holy Martyrs Perpetua and Felicity, together with their companions Saturus, Saturninus, Secundulus, and Revocatus, were martyred in Carthage in 203 AD under the Emperor Septimius Severus. Vibia Perpetua was a young noblewoman of 22, recently married and nursing an infant son. Felicity was her pregnant slave, who gave birth to a daughter in prison days before the martyrdom.\n\nThe Passion of Perpetua and Felicity is one of the most extraordinary documents from the ancient Church — in part because it includes a first-person diary written by Perpetua herself, making it among the earliest texts known to be authored by a Christian woman. Her diary records her father\'s anguished pleas for her to renounce her faith, her visions, and her unwavering determination to die for Christ.\n\nIn the arena, Perpetua and Felicity were thrown to a wild cow, then finished with the sword. Their witness is a powerful testimony to the equal dignity of women in martyrdom. Augustine of Hippo wrote and preached extensively about them. Their feast on February 1 precedes the feast of the Presentation of Christ into the Temple, drawing a connection between sacrifice and faith.',
     troparion: 'O holy martyrs Perpetua and Felicity, you counted not your lives dear for the sake of Christ, and by your blood you watered the seed of faith in Africa. Intercede for us who honor your holy memory, that we may have courage to confess Christ in every circumstance.',
     writings: [
-      { title: 'The Passion of Perpetua and Felicity\', source: \'Early Christian Writings\', url: \'https://www.earlychristianwritings.com/text/perpetua.html' },
+      { title: 'The Passion of Perpetua and Felicity', source: 'Early Christian Writings', url: 'https://www.earlychristianwritings.com/text/perpetua.html' },
     ]
   },
 
@@ -1289,7 +1691,7 @@ var SAINTS = [
     bio: 'Saint Silouan the Athonite is one of the most beloved saints of the 20th century — a Russian peasant monk who spent nearly fifty years on Mount Athos and whose life and writings have shaped the spirituality of the modern Orthodox world. Born Simeon Antonov in a village in the Tambov region of Russia, he was known in his youth for great physical strength and was given to drunkenness and sinful living.\n\nAfter a vision warning him of his path toward destruction, Silouan underwent a profound conversion and entered the Russian Monastery of St. Panteleimon on Mount Athos. There he received a direct experience of the living Christ — a vision of such blazing light that he fell to the floor — and was simultaneously shown his own poverty and unworthiness.\n\nHis life was characterized by an extraordinarily intense spiritual struggle, periods of darkness and desolation lasting years, and a central theological insight preserved in his writings: "Keep your mind in hell, and despair not." His disciple Archimandrite Sophrony (Sakharov) edited and published his notes, and Silouan was canonized in 1988. His teaching on love for enemies — "love your enemies" as the mark of the Christian — has become central to Orthodox spiritual discourse.',
     troparion: 'In you, O Father, the image was preserved with care; for you took up the Cross and followed Christ, teaching by example how to disregard the flesh, for it is transient, but to care for the soul as immortal. Therefore your spirit, Venerable Silouan, rejoices with the Angels.',
     writings: [
-      { title: 'Saint Silouan the Athonite\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
+      { title: 'Saint Silouan the Athonite', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
     ]
   },
   {
@@ -1307,8 +1709,8 @@ var SAINTS = [
     bio: 'Saint Ephrem the Syrian is the greatest poet-theologian of the Syriac Christian tradition and one of the most prolific of all the Church Fathers. Born in Nisibis in Mesopotamia (modern Turkey/Syria border region), he spent the last years of his life as a monk in Edessa, where he cared for plague victims and wrote his extraordinary theological poetry.\n\nEphrem composed hundreds of hymns — called madrashe — in a sophisticated Syriac poetic form that he virtually invented for theological purposes. His hymns on the Nativity, on Paradise, on Faith, and on the Church are treasuries of Orthodox theology expressed in lyric form. He also wrote extensive biblical commentaries, homilies, and polemical works against various heresies.\n\nEphrem\'s Prayer of St. Ephrem — "O Lord and Master of my life, take from me the spirit of sloth, despondency, lust of power, and idle talk..." — is the central penitential prayer of Orthodox Great Lent, repeated with prostrations at every service throughout the season. It is one of the most beloved and widely prayed texts in all of Orthodox Christianity.',
     troparion: 'Distributor of divine gifts, O Ephrem, you gladdened the Church with your sacred writings, O venerable one. You distributed richly of God\'s grace, and you watered with the streams of your tears the dry ground of our hearts. O God-bearing Father, intercede with Christ God that He may save our souls.',
     writings: [
-      { title: 'Hymns on Paradise\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
-      { title: 'Hymns on the Nativity\', source: \'St. Vladimir\'s Seminary Press\', url: \'https://svspress.com' },
+      { title: 'Hymns on Paradise', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
+      { title: 'Hymns on the Nativity', source: 'St. Vladimir\'s Seminary Press', url: 'https://svspress.com' },
     ]
   },
 
@@ -1328,8 +1730,8 @@ var SAINTS = [
     bio: 'Saint Gregory Palamas, Archbishop of Thessaloniki, is the great defender of hesychasm and the theologian of the uncreated divine energies — the last of the great dogmatic Fathers of the Church. Born in Constantinople and educated at court, Gregory chose the monastic life on Mount Athos in his early twenties, where he devoted himself to the hesychast practice of pure prayer and the vision of the divine light.\n\nIn the 1330s, the monk Barlaam of Calabria launched a philosophical attack on the hesychast monks, denying that the divine light perceived in prayer could be genuinely uncreated and divine. Gregory\'s response — articulated in his Triads in Defense of the Holy Hesychasts and his One Hundred and Fifty Chapters — drew the crucial distinction between God\'s unknowable essence and His real, participable uncreated energies. The Councils of Constantinople (1341, 1347, 1351) vindicated Gregory\'s theology.\n\nElected Archbishop of Thessaloniki in 1347, Gregory continued to teach and preach until his repose in 1359. He was canonized in 1368. The second Sunday of Great Lent is dedicated to his memory as a second Sunday of Orthodoxy — linking the confession of the uncreated energies with the Triumph of Orthodoxy celebrated on the first Sunday.',
     troparion: 'O light of Orthodoxy, pillar and teacher of the Church, adornment of monastics and invincible champion of theologians, O Gregory the Wonderworker, glory of Thessaloniki and preacher of grace, intercede with the Lord unceasingly for the salvation of our souls.',
     writings: [
-      { title: 'Triads in Defense of the Holy Hesychasts\', source: \'Paulist Press\', url: \'https://www.amazon.com' },
-      { title: 'One Hundred and Fifty Chapters\', source: \'Pontifical Institute of Mediaeval Studies\', url: \'https://www.amazon.com' },
+      { title: 'Triads in Defense of the Holy Hesychasts', source: 'Paulist Press', url: 'https://www.amazon.com' },
+      { title: 'One Hundred and Fifty Chapters', source: 'Pontifical Institute of Mediaeval Studies', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -1363,7 +1765,7 @@ var SAINTS = [
     bio: 'Saint Innocent of Alaska, Equal-to-the-Apostles, is the great missionary of the Orthodox Church in North America and one of the most extraordinary figures in the history of Christian mission. Born Ivan Popov in a small Siberian village in 1797, he accepted a mission appointment to the Aleutian Islands in 1823 and spent decades among the indigenous peoples of Alaska, the Aleutians, and Siberia.\n\nInnocent was a linguist, craftsman, naturalist, and theologian. He created alphabets for the Aleut, Tlingit, and other Alaskan languages, translated the Gospels and liturgical texts, and wrote the celebrated Indication of the Way into the Kingdom of Heaven in Aleut — the first book printed in an Alaskan language. He built churches, schools, and a weather station, and his scientific observations were published by the Russian Academy of Sciences.\n\nOrdained bishop in 1840, Innocent became Metropolitan of Moscow in 1868 — the highest position in the Russian Orthodox Church. Under his leadership the Russian Ecclesiastical Mission expanded its North American work. He was canonized in 1977 by the Russian Orthodox Church and by the Orthodox Church in America. His relics rest in the Dormition Cathedral of the Trinity-Sergius Lavra.',
     troparion: 'Praising the holy hierarch Innocent, let us cry aloud: You were a true and faithful servant of God. As a new apostle, you enlightened the peoples of North America and Siberia with the light of the Gospel, and by your tireless missionary work, you brought the nations to the knowledge of the truth. Intercede with Christ God that He may save our souls.',
     writings: [
-      { title: 'Indication of the Way into the Kingdom of Heaven\', source: \'St. Herman of Alaska Brotherhood\', url: \'https://www.amazon.com' },
+      { title: 'Indication of the Way into the Kingdom of Heaven', source: 'St. Herman of Alaska Brotherhood', url: 'https://www.amazon.com' },
     ]
   },
 
@@ -1449,8 +1851,8 @@ var SAINTS = [
     bio: 'Saint Luke of Crimea, Archbishop of Simferopol and Crimea, is one of the most remarkable saints of the 20th century — a distinguished surgeon, a bishop, and a confessor who endured eleven years of imprisonment and exile in Soviet labor camps while continuing to practice both medicine and priestly ministry. Born Valentin Feliksovich Voyno-Yasenetsky in Kerch in 1877, he trained as a physician and became one of the leading surgeons in Russia, pioneering techniques in regional anesthesia.\n\nValentin was ordained a deacon, then priest, then tonsured a monk and consecrated bishop — all within a few years — while continuing his medical career. He was arrested three times by Soviet authorities, sent to labor camps in Siberia, and subjected to brutal interrogations. He continued to perform surgery even in the camps, and when his interrogators demanded he remove his pectoral cross before examining patients, he refused.\n\nUpon his release after World War II, he returned to surgery and episcopal ministry, writing his celebrated Essais on Purulent Surgery — a standard medical text — simultaneously with his theological writings. Despite his near-blindness in his final years, he continued to preach and perform episcopal duties. He was glorified by the Russian Orthodox Church in 1996. His relics rest in the Holy Trinity Cathedral of Simferopol.',
     troparion: 'Apostolic rule was your lot, O Hierarch Luke; for you appeared as a great physician to those who were ill, a champion of Christ\'s flock in the time of persecutions, a confessor of the faith by the grace of God. We the faithful glorify you.',
     writings: [
-      { title: 'Essais on Purulent Surgery\', source: \'Medical Classic\', url: \'https://www.amazon.com' },
-      { title: 'Spirit, Soul and Body\', source: \'Holy Trinity Publications\', url: \'https://www.amazon.com' },
+      { title: 'Essais on Purulent Surgery', source: 'Medical Classic', url: 'https://www.amazon.com' },
+      { title: 'Spirit, Soul and Body', source: 'Holy Trinity Publications', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -1468,7 +1870,7 @@ var SAINTS = [
     bio: 'Saint Paisios of the Holy Mountain is the most beloved Greek Orthodox saint of the 20th century — a simple Athonite monk of Cappadocian descent whose extraordinary spiritual gifts, practical wisdom, and burning love for every person drew pilgrims from throughout the world to his cell at the Monastery of Koutloumousiou on Mount Athos.\n\nBorn Arsenios Eznepidis in Farasa, Cappadocia — the birthplace of St. Arsenios the Cappadocian, after whom he was named — Paisios served in the Greek army during the Civil War and then pursued a monastic vocation with singular intensity. He lived as a hermit in various cells on Athos and on Mount Sinai, enduring severe ascetical struggles and physical illnesses.\n\nHis spiritual gifts included clairvoyance, prophecy, healing, and what visitors consistently described as a deep and immediate sense of being loved and understood. Pilgrims waited for days in a queue outside his cell for a few minutes of conversation. His collected sayings — in the multi-volume Spiritual Counsels — are among the most widely read Orthodox spiritual books of the contemporary world. He was canonized by the Ecumenical Patriarchate in 2015.',
     troparion: 'An angel in the flesh and a wonderworker was revealed to be our righteous Father Paisios the Athonite, for he gladdened all who came to him with spiritual counsel and healing of infirmities. He was consumed with love for all people and was made worthy to commune with the angels and the saints. O blessed Paisios, intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Spiritual Counsels (5 vols.)\', source: \'Holy Monastery of the Evangelist John the Theologian\', url: \'https://www.amazon.com' },
+      { title: 'Spiritual Counsels (5 vols.)', source: 'Holy Monastery of the Evangelist John the Theologian', url: 'https://www.amazon.com' },
     ]
   },
 
@@ -1554,7 +1956,7 @@ var SAINTS = [
     bio: 'The Holy Prophet and King David is venerated by the Orthodox Church as the greatest of the royal prophets — the ancestor of Christ according to the flesh, the author of the Psalms, and the repentant sinner whose life encompasses both the heights of divine friendship and the depths of human failure.\n\nChosen by God as a youth in Bethlehem, David was anointed king by Samuel while still a shepherd boy. He killed the giant Goliath with a sling and stone, served and fled from King Saul, united the tribes of Israel, conquered Jerusalem and made it the holy city, and brought the Ark of the Covenant to Jerusalem in a dance of ecstatic joy.\n\nDavid\'s great sin — his adultery with Bathsheba and his effective murder of her husband Uriah — and his profound repentance, expressed in Psalm 51 ("Have mercy on me, O God"), make him an icon of the penitent who does not despair. The Psalms — attributed to David throughout the Church\'s tradition — are the prayer book of Orthodox Christianity, prayed at every Vespers, Matins, and Divine Liturgy, and form the foundation of all Christian hymnography.',
     troparion: 'O holy Prophet-King David, you were called a man after God\'s own heart, and through your Psalms you have given the Church her eternal song. Teach us to cry out with you: Have mercy on me, O God, and restore to us the joy of your salvation.',
     writings: [
-      { title: 'The Psalms of David\', source: \'Old Testament\', url: \'https://www.biblegateway.com/passage/?search=Psalm+1&version=NKJV' },
+      { title: 'The Psalms of David', source: 'Old Testament', url: 'https://www.biblegateway.com/passage/?search=Psalm+1&version=NKJV' },
     ]
   },
   {
@@ -1724,8 +2126,8 @@ var SAINTS = [
     bio: 'Saint Augustine of Hippo is one of the most influential theologians in Christian history, venerated by the Orthodox Church as a saint of the undivided Church. Born to a pagan father and the devout Christian Monica, Augustine pursued philosophy before his famous conversion in Milan in 386, recorded in his Confessions.\n\nBaptized by Ambrose of Milan, Augustine became Bishop of Hippo, where he served for thirty-five years. His writings against the Donatists, Pelagians, and Manichees shaped Western theology for over a millennium. His City of God and his Confessions remain among the most universally read works of Christian literature.\n\nThe Orthodox Church venerates Augustine as a Blessed Father while maintaining theological reservations about certain aspects of his legacy — particularly his developments on grace, predestination, and the Filioque. His opening words ring through the centuries: "Our heart is restless until it repose in Thee."',
     troparion: 'O Blessed Augustine, your heart burned for God from youth until its rest in Him. Through your Confessions you led countless souls to seek the Lord. Intercede with Christ God that our souls may find in Him their true rest.',
     writings: [
-      { title: 'Confessions\', source: \'Various editions\', url: \'https://www.newadvent.org/fathers/1101.htm' },
-      { title: 'City of God\', source: \'Various editions\', url: \'https://www.newadvent.org/fathers/1201.htm' },
+      { title: 'Confessions', source: 'Various editions', url: 'https://www.newadvent.org/fathers/1101.htm' },
+      { title: 'City of God', source: 'Various editions', url: 'https://www.newadvent.org/fathers/1201.htm' },
     ]
   },
   {
@@ -1791,7 +2193,7 @@ var SAINTS = [
     bio: 'Saint Irenaeus of Lyons is the first great systematic theologian of the Church — a disciple of Polycarp (who was himself a disciple of John the Apostle) who preserved the apostolic tradition and refuted the Gnostic heresies. Born in Smyrna and educated under Polycarp, Irenaeus became Bishop of Lyons in Gaul.\n\nHis great work Against Heresies refutes the Gnostic systems comprehensively, articulating the unity of the Old and New Testaments, the goodness of creation, the reality of the Incarnation, and apostolic succession as the guarantee of tradition.\n\nIrenaeus also gave the Church the concept of recapitulation (anakephalaiosis) — Christ summing up and restoring all of humanity in Himself — which became foundational for Orthodox soteriology. He was martyred around 202 AD.',
     troparion: 'O holy Irenaeus, disciple of disciples of the Lord, you preserved the apostolic tradition and refuted Gnostic errors with the sword of truth. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Against Heresies\', source: \'Ante-Nicene Fathers, Vol. I\', url: \'https://www.newadvent.org/fathers/0103.htm' },
+      { title: 'Against Heresies', source: 'Ante-Nicene Fathers, Vol. I', url: 'https://www.newadvent.org/fathers/0103.htm' },
     ]
   },
 
@@ -1829,7 +2231,7 @@ var SAINTS = [
     bio: 'Saint Cyril of Jerusalem is one of the great Fathers of the Church and the author of the Catechetical Lectures — the most complete surviving guide to the catechumenate of the ancient Church, still read by those preparing for Orthodox baptism. Bishop of Jerusalem for nearly forty years, exiled three times for resisting Arianism.\n\nHis Catechetical Lectures — eighteen prebaptismal and five mystagogical lectures delivered in the Church of the Holy Sepulchre — are a precious window into 4th century Christian worship and sacramental theology. The mystagogical lectures, delivered to the newly baptized during Bright Week, explain baptism, chrismation, and the Eucharist with extraordinary depth.\n\nCyril also reported to the Emperor the miraculous appearance of a luminous cross over Jerusalem stretching from Golgotha to the Mount of Olives in 351 — commemorated in the Orthodox Church on May 7.',
     troparion: 'By your life and your luminous teachings, O holy Cyril, you shepherded Jerusalem and illumined the faithful with your catechetical words. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Catechetical Lectures\', source: \'NPNF Series II, Vol. VII\', url: \'https://www.newadvent.org/fathers/3101.htm' },
+      { title: 'Catechetical Lectures', source: 'NPNF Series II, Vol. VII', url: 'https://www.newadvent.org/fathers/3101.htm' },
     ]
   },
   {
@@ -1863,7 +2265,7 @@ var SAINTS = [
     bio: 'Saint Gregory of Nyssa, the youngest of the three Cappadocian Fathers, is the most speculative and mystical theologian of the group — the younger brother of Basil the Great whose insights into apophatic theology and the soul\'s endless ascent toward God have shaped Orthodox mysticism to this day.\n\nHis Life of Moses reads Moses\'s ascent into the divine darkness on Sinai as the paradigm of the soul\'s encounter with the incomprehensible God. His concept of epektasis — the soul\'s ceaseless stretching forward into God, who is infinite and therefore inexhaustible — is one of the most important contributions to Christian mystical theology.\n\nBecause God is infinite, the soul\'s union with God never reaches a static end but is an eternal dynamic of deeper participation in divine life.',
     troparion: 'O holy Gregory, your mind soared to the heights of divine contemplation and you led the faithful into the darkness where God dwells. Intercede with Christ God for our salvation.',
     writings: [
-      { title: 'The Life of Moses\', source: \'Paulist Press\', url: \'https://www.amazon.com' },
+      { title: 'The Life of Moses', source: 'Paulist Press', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -1897,7 +2299,7 @@ var SAINTS = [
     bio: 'Saint John Maximovitch of Tobolsk is a Ukrainian-born hierarch who served as Metropolitan of Tobolsk and is the ancestor of the 20th century wonderworker St. John Maximovitch of Shanghai. Educated at the Kyiv Mohyla Academy, he became a monk and then bishop, serving in Chernigov and then as Metropolitan of Tobolsk — the ecclesiastical center of Siberia.\n\nHe was a prolific spiritual writer, composing theological meditations and a celebrated work Theotokos — meditations on the Mother of God for each day of the liturgical year. He supported missionary activity among the indigenous peoples of Siberia and was known for personal sanctity.\n\nGlorified in 1916, his kinsman St. John of Shanghai consciously drew upon his tradition.',
     troparion: 'O holy John, illuminator of the Siberian land, you served God with all your gifts and nourished your flock with writings full of wisdom. Through your intercessions, grant peace to the world and salvation to our souls.',
     writings: [
-      { title: 'Theotokos (Iliotrópion)\', source: \'Holy Trinity Monastery\', url: \'https://www.amazon.com' },
+      { title: 'Theotokos (Iliotrópion)', source: 'Holy Trinity Monastery', url: 'https://www.amazon.com' },
     ]
   },
 
@@ -1917,7 +2319,7 @@ var SAINTS = [
     bio: 'Saint Justin the Philosopher and Martyr is the first great Christian apologist — the philosopher who studied every school of Greek thought before finding truth in Christ, then devoted his life to showing that Christianity fulfilled all genuine philosophical inquiry. Born in Samaria to a pagan family, Justin was converted by an elderly Christian by the seashore.\n\nAfter his conversion Justin continued to wear his philosopher\'s cloak, declaring himself a Christian philosopher. His two Apologies addressed to the Emperor Antoninus Pius argue for the truth of Christianity on rational grounds. His Dialogue with Trypho is the first extended Christian apologia addressed to a Jewish audience.\n\nJustin was martyred by beheading under the prefect Rusticus around 165 AD, together with six companions.',
     troparion: 'O holy Justin, you sought wisdom through all the schools of philosophy and found it in the incarnate Word of God. By your life and words you showed that reason and faith are not enemies. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'First and Second Apology\', source: \'Ante-Nicene Fathers, Vol. I\', url: \'https://www.newadvent.org/fathers/0126.htm' },
+      { title: 'First and Second Apology', source: 'Ante-Nicene Fathers, Vol. I', url: 'https://www.newadvent.org/fathers/0126.htm' },
     ]
   },
   {
@@ -1969,7 +2371,7 @@ var SAINTS = [
     bio: 'Saint Macarius the Great of Egypt is one of the greatest Desert Fathers — a disciple of St. Antony who spent sixty years in the Egyptian desert of Scetis and became one of the founding fathers of Christian monasticism. Born in Upper Egypt, he established himself in Scetis (Wadi el Natrun) gathering a great community of hermits.\n\nMacarius was ordained priest against his will and served as spiritual father of the entire Scetis community. His discernment, gentleness with sinners, and the depth of his inner life made him one of the most sought-after spiritual guides of antiquity. He was briefly exiled by the Arian Emperor Valens for defending Nicene Orthodoxy.\n\nThe Fifty Spiritual Homilies attributed to him present the heart as the battlefield of spiritual warfare and the place of the soul\'s encounter with the divine light.',
     troparion: 'O Father Macarius, equal to the angels, you shone in the desert of Scetis as a great luminary of monasticism. By fasting and prayer you obtained divine gifts. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'The Fifty Spiritual Homilies\', source: \'SPCK / Paulist Press\', url: \'https://www.amazon.com' },
+      { title: 'The Fifty Spiritual Homilies', source: 'SPCK / Paulist Press', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -2023,7 +2425,7 @@ var SAINTS = [
     bio: 'Saint James the Brother of the Lord was the first Bishop of Jerusalem and the presiding figure at the Council of Jerusalem described in Acts 15 — the first council of the Church. He is called the "Brother of the Lord" because of his close relationship to Jesus, interpreted by the Orthodox Church as referring to a half-brother (son of Joseph by a prior marriage) or a cousin according to different patristic traditions.\n\nJames did not follow Jesus during His public ministry but was among those to whom the Risen Christ appeared (1 Corinthians 15:7). After the Resurrection and Pentecost, he became the undisputed head of the Jerusalem church, governing it for over thirty years with such strict Jewish piety that he earned the title "James the Just." He wore only linen, never wool, and spent so much time in prayer that his knees were said to be calloused like a camel\'s.\n\nIn 62 AD, the high priest Ananus convened an illegal council and had James thrown from the temple pinnacle, then beaten to death with a fuller\'s club when the fall did not kill him. He died praying for his murderers. The Liturgy of Saint James, bearing his name, is one of the oldest eucharistic rites in Christendom and is celebrated on his feast day in Jerusalem and in Orthodox churches worldwide.',
     troparion: 'O James, brother of the Lord and first bishop of Jerusalem, you led the Church of God with wisdom and holiness, and sealed your witness with your blood. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'Epistle of James\', source: \'New Testament\', url: \'https://www.biblegateway.com' },
+      { title: 'Epistle of James', source: 'New Testament', url: 'https://www.biblegateway.com' },
     ]
   },
   {
@@ -2057,8 +2459,8 @@ var SAINTS = [
     bio: 'Saint Timothy the Apostle was the closest disciple and most trusted companion of the Apostle Paul — the young man from Lystra whom Paul called "my true child in the faith," who traveled with him on his missionary journeys, was sent as his representative to the most difficult churches, and to whom Paul addressed two of his most personal and theologically rich epistles.\n\nTimothy was born of a Greek father and a devout Jewish mother, Eunice, and grandmother, Lois — both of whom the Church venerates as saints. Paul circumcised Timothy to make him acceptable to Jewish communities and brought him into his missionary team. Over the following years Timothy carried Paul\'s letters to Corinth, strengthened the Thessalonians, and served as Paul\'s emissary in moments of pastoral crisis throughout the churches.\n\nTimothy eventually became the first Bishop of Ephesus, where he served for many years. He was martyred around 97 AD during a pagan festival — stoned and beaten with clubs when he rebuked the procession honoring the goddess Diana. His relics were later transferred to Constantinople. His two epistles from Paul, with their instructions on church order, episcopal qualifications, and pastoral care, remain foundational texts for Christian ministry.',
     troparion: 'O holy Apostle Timothy, beloved disciple of the great Paul, you faithfully served the Church through every trial. As first bishop of Ephesus you shepherded the flock with love. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'First Epistle to Timothy (by St. Paul)\', source: \'New Testament\', url: \'https://www.biblegateway.com' },
-      { title: 'Second Epistle to Timothy (by St. Paul)\', source: \'New Testament\', url: \'https://www.biblegateway.com' },
+      { title: 'First Epistle to Timothy (by St. Paul)', source: 'New Testament', url: 'https://www.biblegateway.com' },
+      { title: 'Second Epistle to Timothy (by St. Paul)', source: 'New Testament', url: 'https://www.biblegateway.com' },
     ]
   },
   {
@@ -2076,7 +2478,7 @@ var SAINTS = [
     bio: 'Saint Titus the Apostle was one of Paul\'s most trusted companions and emissaries — a Gentile convert who accompanied Paul to Jerusalem for the Council (Galatians 2:1-3), served as his troubleshooter in the fractious Corinthian church, and became the first Bishop of Crete. Paul\'s Epistle to Titus, one of the Pastoral Epistles, was written to guide him in organizing the Church on Crete and contains some of the most concentrated teaching on the qualifications for church leadership in the New Testament.\n\nTitus is notable in the apostolic record as a pure Gentile who was not compelled to be circumcised even at the Jerusalem Council — a living proof of the sufficiency of faith in Christ for full membership in the people of God. Paul describes him as "my true child in a common faith" and praises him as a man of initiative, love, and practical wisdom.\n\nTitus spent his episcopate on Crete organizing the churches there, ordaining presbyters, and combating false teachers. He is venerated as the founder and patron of the Church of Crete, where his relics — his head — are preserved in the Cathedral of Saint Titus in Heraklion, one of the most revered relics in Greece.',
     troparion: 'O holy Apostle Titus, true child in the faith of the great Paul, you shepherded Crete with apostolic wisdom and established the Church there on firm foundations. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'Epistle to Titus (by St. Paul)\', source: \'New Testament\', url: \'https://www.biblegateway.com' },
+      { title: 'Epistle to Titus (by St. Paul)', source: 'New Testament', url: 'https://www.biblegateway.com' },
     ]
   },
 
@@ -2112,8 +2514,8 @@ var SAINTS = [
     bio: 'Saint Cyprian of Carthage is one of the most important bishops and theologians of the 3rd century Church — the shepherd who led the African church through the devastation of the Decian persecution, the controversy over the lapsed, and the plague of 252-254, and who was martyred under Valerian in 258. His famous phrase "He cannot have God for his father who does not have the Church for his mother" remains one of the most quoted statements in ecclesiology.\n\nConverted from paganism in mid-life, Cyprian was almost immediately elected Bishop of Carthage by the acclamation of clergy and people. The Decian persecution forced him into hiding, from which he governed his diocese by letter — a correspondence that survives and illuminates the Church of his time in extraordinary detail. The controversy that followed concerned how to treat Christians who had lapsed under persecution, and Cyprian steered a middle course between rigorism and laxity.\n\nHis treatise On the Unity of the Church, written to combat schism, articulates the organic unity of the episcopate and the Church with a clarity that shaped centuries of ecclesiology in both East and West. He was arrested during the Valerian persecution, tried before the proconsul, and beheaded on September 14, 258 AD in a grove outside Carthage, surrounded by his clergy and people.',
     troparion: 'O holy Cyprian, martyr and teacher of the unity of the Church, you shepherded your flock through persecution and plague with apostolic courage. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'On the Unity of the Church\', source: \'Ante-Nicene Fathers, Vol. V\', url: \'https://www.newadvent.org/fathers/0504.htm' },
-      { title: 'On the Lord\'s Prayer\', source: \'Ante-Nicene Fathers, Vol. V\', url: \'https://www.newadvent.org/fathers/0507.htm' },
+      { title: 'On the Unity of the Church', source: 'Ante-Nicene Fathers, Vol. V', url: 'https://www.newadvent.org/fathers/0504.htm' },
+      { title: 'On the Lord\'s Prayer', source: 'Ante-Nicene Fathers, Vol. V', url: 'https://www.newadvent.org/fathers/0507.htm' },
     ]
   },
   {
@@ -2265,7 +2667,7 @@ var SAINTS = [
     bio: 'Saint Nectarios of Aegina is one of the most beloved saints of the modern Greek Orthodox Church and is venerated throughout the Orthodox world as a wonderworker and healer. Born Anastasios Kephalas in Thrace, he rose through the church hierarchy to become Metropolitan of Pentapolis in Egypt under the Patriarchate of Alexandria — only to be the victim of a slander campaign that led to his unjust removal and his return to Greece in poverty and disgrace.\n\nFor the rest of his life, Nectarios bore his unjust treatment with extraordinary patience, never retaliating or defending himself publicly. He served as director of a theological school in Athens for many years, and then retired to the island of Aegina where he founded a convent for women and lived in great simplicity, devoting himself to prayer, writing, and the spiritual guidance of his nuns.\n\nMiracles began during his lifetime and multiplied enormously after his death in 1920. He is particularly associated with the healing of cancer. He was officially canonized in 1961 — only forty-one years after his death — making him one of the most recently canonized saints in the Orthodox Church. His feast on November 9 is celebrated with great joy throughout Greece and the Orthodox diaspora.',
     troparion: 'O holy Nectarios, you bore unjust suffering with meekness and patience, and were glorified by God with the gift of healing. As a wonderworker you shine forth to all the faithful. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'A Study of the Soul\', source: \'Orthodox publications\', url: \'https://www.amazon.com' },
+      { title: 'A Study of the Soul', source: 'Orthodox publications', url: 'https://www.amazon.com' },
     ]
   },
   {
@@ -2283,7 +2685,7 @@ var SAINTS = [
     bio: 'Saint Clement of Rome, the third or fourth Bishop of Rome (the exact sequence is disputed), is one of the Apostolic Fathers — a direct disciple of the Apostles who bridges the New Testament generation and the early Church. He is traditionally identified with the Clement mentioned by Paul in Philippians 4:3 and is said to have known both Peter and Paul personally.\n\nHis First Epistle to the Corinthians (c. 96 AD) is the earliest Christian document outside the New Testament that can be securely dated and attributed to a named author. Written to address a schism in the Corinthian church where the congregation had deposed its presbyters, the letter appeals with great pastoral authority to the principle of apostolic succession and orderly church structure. It was so highly regarded in the early Church that it was read in some communities as Scripture.\n\nClement was exiled by the Emperor Trajan and martyred around 99 AD, thrown into the sea with an anchor around his neck — which is why he is depicted in iconography with an anchor and is the patron of sailors. His relics were reportedly brought to Kiev by Saints Cyril and Methodius in the 9th century, where they were translated to the Tithe Church by St. Vladimir.',
     troparion: 'O holy Clement, disciple of the Apostles and shepherd of Rome, your letter preserved the Church\'s order and apostolic tradition. You sealed your witness with martyrdom by sea. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'First Epistle to the Corinthians\', source: \'Ante-Nicene Fathers, Vol. I\', url: \'https://www.newadvent.org/fathers/1010.htm' },
+      { title: 'First Epistle to the Corinthians', source: 'Ante-Nicene Fathers, Vol. I', url: 'https://www.newadvent.org/fathers/1010.htm' },
     ]
   },
   {
@@ -2301,8 +2703,8 @@ var SAINTS = [
     bio: 'Saint Ambrose of Milan is one of the great Fathers of the undivided Church — the bishop who baptized Augustine, faced down emperors, and shaped the liturgical life of the Western Church in ways still felt today. Born to a noble Roman family in Gaul, Ambrose was serving as the Roman governor of Milan when the Arian bishop of Milan died and the people — to Ambrose\'s own astonishment — acclaimed him as bishop, though he was not yet even baptized.\n\nAmbrose was baptized, ordained, and consecrated bishop in rapid succession in 374 AD, gave away his wealth to the poor, and threw himself into theological study and pastoral care with remarkable energy. He became the leading champion of Nicene Orthodoxy in the West, resisting the Arian Empress Justina\'s demands for churches with the famous sit-in resistance of his congregation — staying in the basilica day and night, singing hymns he himself composed.\n\nAmbrose\'s confrontation with Emperor Theodosius after the massacre of Thessalonica (390 AD) — refusing him Communion until he had done public penance — is one of the defining moments in the history of Church-State relations. His hymns (including the great Te Deum, traditionally attributed to him) shaped Western liturgical music. The "Ambrosian Rite" of Milan, still used today, preserves his liturgical legacy.',
     troparion: 'O holy Ambrose, you governed the Church of Milan with apostolic boldness, baptized the great Augustine, and confronted emperors in defense of justice and the faith. Intercede with Christ God for the salvation of our souls.',
     writings: [
-      { title: 'On the Duties of the Clergy\', source: \'NPNF Series II, Vol. X\', url: \'https://www.newadvent.org/fathers/3401.htm' },
-      { title: 'On the Holy Spirit\', source: \'NPNF Series II, Vol. X\', url: \'https://www.newadvent.org/fathers/3403.htm' },
+      { title: 'On the Duties of the Clergy', source: 'NPNF Series II, Vol. X', url: 'https://www.newadvent.org/fathers/3401.htm' },
+      { title: 'On the Holy Spirit', source: 'NPNF Series II, Vol. X', url: 'https://www.newadvent.org/fathers/3403.htm' },
     ]
   },
   {
@@ -2368,7 +2770,7 @@ var SAINTS = [
     bio: 'Saint Nilus of Sora is the father of the hesychast tradition in Russia and the founder of the "Non-Possessor" movement — the monastic school that argued that monasteries should own no property and that monks should support themselves by manual labor and live in small sketes rather than large institutional monasteries. His position brought him into conflict with the "Possessors" led by Joseph of Volotsk, creating one of the most significant theological debates in Russian Orthodox history.\n\nNilus traveled to Mount Athos and Constantinople, absorbing the hesychast tradition of inner prayer that had been developed by Gregory Palamas and others. Returning to Russia, he established a skete on the Sora River in the Vologda region — a small community of hermit-monks living apart in individual cells but gathering for the Divine Liturgy on Sundays, precisely modeled on the Athonite practice.\n\nHis Monastic Rule (Ustav) and his Tradition (Predanie) are the primary texts of Russian hesychasm — teaching watchfulness of the heart, the practice of the Jesus Prayer, and the paramount importance of inner transformation over external religious observance. He was canonized in 1903 and is one of the great spiritual authorities of the Russian monastic tradition.',
     troparion: 'O venerable Nilus, you brought the hesychast tradition from the Holy Mountain to Russia and taught the prayer of the heart with your words and your life. Through your poverty you became rich in God. Intercede with Christ God that our souls may be saved.',
     writings: [
-      { title: 'Monastic Rule (Ustav)\', source: \'Orthodox translations\', url: \'https://www.amazon.com' },
+      { title: 'Monastic Rule (Ustav)', source: 'Orthodox translations', url: 'https://www.amazon.com' },
     ]
   },
 
@@ -2460,10 +2862,7 @@ var currentSaint = null;
 var drawerOpen = false;
 function toggleDrawer(){drawerOpen=!drawerOpen;document.getElementById('navDrawer').classList.toggle('open',drawerOpen);document.getElementById('hamburger').classList.toggle('open',drawerOpen);}
 document.addEventListener('click',function(e){if(drawerOpen&&!e.target.closest('nav')&&!e.target.closest('.nav-drawer')){drawerOpen=false;document.getElementById('navDrawer').classList.remove('open');document.getElementById('hamburger').classList.remove('open');}});
-function openSearch(){document.getElementById('search-overlay').style.display='flex';setTimeout(function(){document.getElementById('searchInput').focus();},50);}
-function closeSearch(){document.getElementById('search-overlay').style.display='none';}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSearch();closeSaintModal();}});
-document.getElementById('searchInput').addEventListener('keydown',function(e){if(e.key==='Enter'){var q=this.value.trim();if(q)window.location.href='search.html?q='+encodeURIComponent(q);}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeSaintModal();}});
 
 // ── Category counts ───────────────────────────────────────────
 function updateCounts(){
@@ -2567,11 +2966,12 @@ async function loadSaintOfTheDay(){
     document.getElementById('sotdFeast').textContent = displayDate + (calSeason ? '  ·  ' + calSeason : '');
     document.getElementById('sotdBio').textContent = saintNames.length > 1
       ? 'Also commemorated today: ' + saintNames.slice(1,3).join(', ') + '. Full profiles coming soon.'
-      : 'Full profile coming soon. Ask the Companion to learn about this saint.';
+      : 'Full profile coming soon.';
     document.getElementById('sotdBtn').style.display = 'inline-block';
-    document.getElementById('sotdBtn').textContent = 'Ask the Companion \u2192';
+    document.getElementById('sotdBtn').textContent = 'View all saints \u2192';
     document.getElementById('sotdBtn').onclick = function(){
-      window.location.href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + primaryName);
+      var grid = document.getElementById('catGrid');
+      if(grid) grid.scrollIntoView({behavior:'smooth', block:'start'});
     };
     return;
   }
@@ -2703,9 +3103,6 @@ function openSaint(saint){
   badges += '<span class="sm-badge category">' + catName + '</span>';
   document.getElementById('sm-badges').innerHTML = badges;
 
-  // Chatbot link
-  document.getElementById('sm-chatbot-link').href = 'chatbot.html?q=' + encodeURIComponent('Tell me about ' + saint.name);
-
   // Body
   var html = '';
 
@@ -2775,21 +3172,10 @@ function shareSaint(){
   }
 }
 
-// ── Fade-in on scroll ─────────────────────────────────────────
-function initFadeIn(){
-  var obs = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); obs.unobserve(entry.target); }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.fade-in').forEach(function(el){ obs.observe(el); });
-}
-
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
   updateCounts();
   loadSaintOfTheDay();   // async — uses calendar engine
-  initFadeIn();
 
   var params = new URLSearchParams(window.location.search);
   var cat = params.get('cat');
@@ -2802,19 +3188,14 @@ document.addEventListener('DOMContentLoaded', function(){
     if(s) setTimeout(function(){ openSaint(s); }, 200);
   }
 
-  // Back to top
-  var btn=document.getElementById('backToTop');
-  if(btn){
-    window.addEventListener('scroll',function(){
-      btn.classList.toggle('visible',window.scrollY>400);
-    },{passive:true});
-  }
 });
 </script>
-<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth-nav.js"></script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script><!-- End Cloudflare Web Analytics -->
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
 <script src="/analytics-tracker.js"></script>
+
 </body>
 </html>
