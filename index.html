@@ -538,6 +538,74 @@ nav{
   font-family:'EB Garamond',Georgia,serif;
 }
 
+/* ── Today in the Church (navy band overrides) ───────── */
+/* Single navy zone mid-page. The band is bracketed by 1px --header-rule
+   hairlines so it rhymes with the masthead-below seam and the footer-above
+   border. The .lday-card becomes a translucent panel within the band,
+   byte-identical to the hero quote-carousel's parchment-on-navy treatment. */
+.section-today{
+  background:var(--deep);
+  border-top:1px solid var(--header-rule);
+  border-bottom:1px solid var(--header-rule);
+  padding:48px 24px 56px;
+}
+.section-today .ornament-divider::before,
+.section-today .ornament-divider::after{
+  background:var(--gold-on-dark);
+  opacity:0.40;
+}
+.section-today .ornament-glyph{color:var(--gold-on-dark);}
+.section-today .ornament-divider-text{color:var(--gold-on-dark);}
+.section-today .lday-card{
+  background:rgba(15,32,53,0.55);
+  border:1px solid rgba(201,168,76,0.22);
+  border-top:1px solid rgba(201,168,76,0.22);
+}
+.section-today .lday-header{
+  background:transparent;
+  border-bottom-color:rgba(232,203,122,0.18);
+}
+.section-today .lday-footer{
+  background:transparent;
+  border-top-color:rgba(232,203,122,0.18);
+}
+.section-today .lday-chips{border-bottom-color:rgba(232,203,122,0.18);}
+.section-today .lday-col{border-right-color:rgba(232,203,122,0.18);}
+.section-today .lday-date{color:var(--gold-on-dark);}
+.section-today .lday-feast{color:var(--logotype);}
+.section-today .lday-chip{
+  border-color:var(--gold-on-dark);
+  color:var(--gold-on-dark);
+}
+.section-today .lday-chip-feast{
+  border-color:var(--gold-on-dark);
+  color:var(--gold-on-dark);
+  background:rgba(232,203,122,0.10);
+}
+.section-today .lday-col-title{color:var(--gold-on-dark);}
+.section-today .lday-col-value{color:var(--nav-text);}
+.section-today .lday-reading-btn{
+  color:var(--nav-text);
+  text-decoration-color:rgba(232,203,122,0.30);
+}
+.section-today .lday-reading-btn:hover{color:var(--gold-on-dark);}
+.section-today .lday-reading-type{color:var(--gold-on-dark);}
+.section-today .lday-cal-note{color:var(--nav-text-dim);}
+.section-today .lday-more-link{color:var(--gold-on-dark);}
+.section-today .lday-more-link:hover{color:var(--gold);}
+.section-today .lday-loading{color:var(--nav-text-dim);}
+
+/* ── Drop cap (one per page, opening paragraph only) ──── */
+.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+
 /* ── Reading Modal (parchment, recolored) ───────────── */
 #reading-modal{
   display:none;position:fixed;inset:0;z-index:800;
@@ -827,6 +895,9 @@ nav{
   .lday-body{grid-template-columns:1fr;}
   .lday-col{border-right:none;border-bottom:1px solid var(--rule);}
   .lday-col:last-child{border-bottom:none;}
+  .section-today .lday-col{border-bottom-color:rgba(232,203,122,0.18);}
+  .section-today{padding:36px 18px 44px;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
   .section{padding:24px 18px 40px;}
   .ornament-divider{padding:24px 18px 4px;}
   nav{padding:0 14px;}
@@ -985,9 +1056,8 @@ nav{
 </section>
 
 <!-- ══ TODAY IN THE CHURCH ════════════════════════════════════════════════ -->
-<div class="ornament-divider"><div class="ornament-divider-inner"><span class="ornament-glyph">&#10022;</span><span class="ornament-divider-text">Today in the Church</span><span class="ornament-glyph">&#10022;</span></div></div>
-
-<section class="section">
+<section class="section section-today">
+  <div class="ornament-divider"><div class="ornament-divider-inner"><span class="ornament-glyph">&#10022;</span><span class="ornament-divider-text">Today in the Church</span><span class="ornament-glyph">&#10022;</span></div></div>
   <div class="section-inner">
     <div class="lday-card" id="ldayCard">
       <div class="lday-loading">Consulting the calendar&hellip;</div>
@@ -1004,7 +1074,7 @@ nav{
       <div class="intro-text">
         <p class="section-label">For the Inquirer</p>
         <h2 class="section-title">What is Orthodox Christianity?</h2>
-        <p>Orthodox Christianity is the ancient, unbroken expression of the Christian faith &mdash; the Church of the Apostles, the Church Fathers, and the Seven Ecumenical Councils. It is not a reformation or a return, but a continuous living tradition stretching from Pentecost to the present day.</p>
+        <p class="lede">Orthodox Christianity is the ancient, unbroken expression of the Christian faith &mdash; the Church of the Apostles, the Church Fathers, and the Seven Ecumenical Councils. It is not a reformation or a return, but a continuous living tradition stretching from Pentecost to the present day.</p>
         <p>At the heart of Orthodoxy is <span class="intro-em">theosis</span> &mdash; union with God. The Christian life is not merely moral improvement or doctrinal assent, but a transformative journey into the life of the Holy Trinity, made possible through the Incarnation of Jesus Christ.</p>
         <p>The Orthodox Church holds together Scripture and Holy Tradition as one unbroken river of revelation, expressed through the Divine Liturgy, the Sacraments, the Councils, and the writings of the Holy Fathers.</p>
         <a href="new-to-orthodoxy.html" class="intro-cta">begin the journey &rarr;</a>
