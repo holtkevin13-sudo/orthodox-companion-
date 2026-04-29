@@ -619,16 +619,14 @@ body{display:flex;flex-direction:column;min-height:100vh;}
   color:var(--text);
   flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
-.translation-badge{
+.reader-translation{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"smcp","onum";
-  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.14em;
-  color:var(--gold-light);
-  border:1px solid var(--gold-dim);
-  border-radius:2px;
-  padding:3px 9px;
-  background:var(--surface-deep);
-  flex-shrink:0;
+  font-size:0.78rem;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--gold-dim);
+  margin-left:6px;
 }
 .reader-search-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0;}
 .reader-search{
@@ -648,93 +646,48 @@ body{display:flex;flex-direction:column;min-height:100vh;}
 .chapter-nav{display:flex;align-items:center;gap:5px;flex-shrink:0;}
 .ch-btn{
   background:transparent;
-  border:1px solid var(--border-dim);
-  border-radius:2px;
-  color:var(--text-muted);
-  padding:5px 10px;cursor:pointer;
-  font-size:0.9rem;transition:all 0.2s;
-}
-.ch-btn:hover:not(:disabled){border-color:var(--gold-dim);color:var(--gold-light);}
-.ch-btn:disabled{opacity:0.3;cursor:not-allowed;}
-.ch-trigger-wrap{position:relative;flex-shrink:0;}
-.ch-trigger{
-  display:inline-flex;align-items:center;gap:6px;
-  background:transparent;
   border:none;
-  border-bottom:1px solid var(--gold-dim);
-  border-radius:0;
-  color:var(--text);
-  font-family:'EB Garamond',Georgia,serif;
-  font-feature-settings:"smcp","onum";
-  font-size:0.84rem;
-  text-transform:uppercase;
-  letter-spacing:0.14em;
-  padding:5px 4px;
-  cursor:pointer;
-  outline:none;
-  transition:border-bottom-color 0.2s;
-}
-.ch-trigger:hover,
-.ch-trigger:focus-visible{border-bottom-color:var(--gold);}
-.ch-trigger-caret{
-  font-family:'OC Ornaments','EB Garamond',serif;
-  font-size:0.85rem;
   color:var(--gold-dim);
-  line-height:1;
+  padding:4px 8px;cursor:pointer;
+  font-size:1.4rem;line-height:1;
   transition:color 0.2s;
 }
-.ch-trigger:hover .ch-trigger-caret,
-.ch-trigger[aria-expanded="true"] .ch-trigger-caret{color:var(--gold);}
+.ch-btn:hover:not(:disabled){color:var(--gold);}
+.ch-btn:disabled{opacity:0.3;cursor:not-allowed;}
 
-/* Chapter overlay panel (rendered as sibling of .reader-shell;
-   position:fixed escapes .reader-main's overflow:hidden clipping;
-   coords computed on open via getBoundingClientRect) */
-.ch-overlay{
-  position:fixed;
-  background:var(--surface);
-  border:1px solid var(--gold-dim);
-  border-radius:2px;
-  padding:14px 16px;
-  width:max-content;
-  max-width:min(480px, calc(100vw - 24px));
-  max-height:min(60vh, 480px);
-  overflow-y:auto;
-  z-index:600;
-}
-.ch-overlay.hidden{display:none;}
-.ch-overlay::-webkit-scrollbar{width:4px;}
-.ch-overlay::-webkit-scrollbar-thumb{background:var(--border-dim);border-radius:2px;}
-
-.ch-overlay-grid{
+/* Rail chapter grid — appears under the active book in the rail */
+.rail-ch-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(44px, 1fr));
-  gap:6px;
+  grid-template-columns:repeat(auto-fit, minmax(34px, 1fr));
+  gap:4px;
+  padding:8px 16px 12px 22px;
+  background:var(--surface-deep);
+  border-left:2px solid var(--gold);
 }
-.ch-overlay-cell{
+.rail-ch-cell{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"onum";
-  font-size:0.95rem;
+  font-size:0.85rem;
   color:var(--text-dim);
-  background:transparent;
+  background:var(--surface);
   border:1px solid var(--border-dim);
   border-radius:2px;
-  padding:8px 0;
+  padding:4px 0;
   cursor:pointer;
   text-align:center;
   transition:color 0.15s, border-color 0.15s, background 0.15s;
 }
-.ch-overlay-cell:hover{
+.rail-ch-cell:hover{
   color:var(--gold-dim);
   border-color:var(--gold-dim);
-  background:var(--surface-deep);
 }
-.ch-overlay-cell.active{
+.rail-ch-cell.active{
   color:var(--text);
   border-color:var(--gold);
   background:var(--surface-deep);
   font-weight:500;
 }
-.ch-overlay-cell:focus-visible{
+.rail-ch-cell:focus-visible{
   outline:1px solid var(--gold);
   outline-offset:1px;
 }
@@ -768,16 +721,27 @@ body{display:flex;flex-direction:column;min-height:100vh;}
   line-height:1.7;
 }
 
-/* Chapter heading */
+/* Rubricated chapter heading (manuscript convention: large gold numeral,
+   book name set as a small-caps annotation baseline-aligned to the numeral). */
 .chapter-heading{
+  display:flex;align-items:baseline;gap:18px;
+  margin-bottom:32px;
+}
+.chapter-heading-num{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:3.5rem;
+  font-weight:600;
+  line-height:1;
+  color:var(--gold-light);
+  flex-shrink:0;
+}
+.chapter-heading-book{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"smcp","onum";
-  font-size:1.2rem;
+  font-size:1.1rem;
   text-transform:uppercase;
-  letter-spacing:0.16em;
-  color:var(--gold-light);
-  margin-bottom:28px;padding-bottom:16px;
-  border-bottom:1px solid var(--gold-dim);
+  letter-spacing:0.18em;
+  color:var(--gold-dim);
 }
 
 /* Verse styles — clean span, no actions, no highlights, no notes */
@@ -796,6 +760,29 @@ body{display:flex;flex-direction:column;min-height:100vh;}
   font-size:0.78rem;
   color:var(--gold-dim);letter-spacing:0.08em;
   user-select:none;
+}
+
+/* Verse-1 drop cap — illuminated initial in the manuscript convention.
+   This extends Pattern 1.3's Cinzel scope: the first letter of verse 1 of
+   any chapter on bible-reader.html is the sixth canonical Cinzel surface. */
+.verse-first::first-letter{
+  font-family:'Cinzel',Georgia,serif;
+  font-size:3.4rem;
+  font-weight:600;
+  color:var(--gold-light);
+  float:left;
+  line-height:0.85;
+  padding:0.18rem 0.5rem 0 0;
+}
+
+/* End-of-chapter fleuron (manuscript "explicit" mark) */
+.chapter-explicit{
+  font-family:'OC Ornaments','EB Garamond',serif;
+  font-size:1.5rem;
+  color:var(--gold-dim);
+  text-align:center;
+  margin:32px 0 0;
+  line-height:1;
 }
 
 /* ── Mobile sidebar slide-in ──────────────────────── */
@@ -939,18 +926,10 @@ body{display:flex;flex-direction:column;min-height:100vh;}
     <div class="reader-toolbar">
       <button class="sidebar-toggle" id="sidebarToggle" title="Toggle sidebar">&#9776;</button>
       <div class="reader-location" id="readerLocation"></div>
-      <span class="translation-badge" id="translationBadge" style="display:none;"></span>
 
       <div class="chapter-nav" id="chapterNav" style="display:none;">
-        <button class="ch-btn" id="prevChBtn" title="Previous chapter" disabled>&#8592;</button>
-        <div class="ch-trigger-wrap">
-          <button class="ch-trigger" id="chapterTrigger" type="button"
-                  aria-haspopup="true" aria-expanded="false" aria-controls="chapterOverlay">
-            <span class="ch-trigger-label" id="chapterTriggerLabel">Chapter 1</span>
-            <span class="ch-trigger-caret" id="chapterTriggerCaret" aria-hidden="true">&#10087;</span>
-          </button>
-        </div>
-        <button class="ch-btn" id="nextChBtn" title="Next chapter">&#8594;</button>
+        <button class="ch-btn" id="prevChBtn" title="Previous chapter" disabled>&#8249;</button>
+        <button class="ch-btn" id="nextChBtn" title="Next chapter">&#8250;</button>
       </div>
 
       <div class="reader-search-wrap">
@@ -974,11 +953,6 @@ body{display:flex;flex-direction:column;min-height:100vh;}
     </div>
 
   </div>
-</div>
-
-<!-- Chapter overlay (sibling of .reader-shell so it escapes .reader-main's overflow:hidden) -->
-<div class="ch-overlay hidden" id="chapterOverlay" role="dialog" aria-label="Choose a chapter">
-  <div class="ch-overlay-grid" id="chapterOverlayGrid"></div>
 </div>
 
 <footer class="site-footer">
@@ -1210,8 +1184,6 @@ async function selectBook(bookId, bookName, el) {
   currentBibleId = getBibleId(bookId);
 
   showReaderLoading();
-  document.getElementById('translationBadge').textContent = getTranslationLabel(bookId);
-  document.getElementById('translationBadge').style.display = '';
   document.getElementById('chapterNav').style.display = '';
 
   try {
@@ -1241,86 +1213,57 @@ async function selectBook(bookId, bookName, el) {
 }
 
 function buildChapterSelect() {
-  // Populates the chapter overlay grid and updates the trigger label.
-  // Function name preserved (single caller in selectBook).
-  const grid = document.getElementById('chapterOverlayGrid');
+  // Renders the chapter grid as a sibling immediately following the active
+  // book in the rail. Function name preserved (single caller in selectBook).
+  // Removes any prior chapter grid first — only one active book at a time.
+  document.querySelectorAll('.rail-ch-grid').forEach(el => el.remove());
+  const activeBook = document.querySelector('.book-item.active');
+  if (!activeBook || !currentChapters.length) return;
+  const grid = document.createElement('div');
+  grid.className = 'rail-ch-grid';
   grid.innerHTML = currentChapters.map((c, i) =>
-    `<button type="button" class="ch-overlay-cell" data-idx="${i}">${c.number}</button>`
+    `<button type="button" class="rail-ch-cell${i === currentChapterIdx ? ' active' : ''}" data-idx="${i}">${c.number}</button>`
   ).join('');
-  grid.querySelectorAll('.ch-overlay-cell').forEach(btn => {
+  grid.querySelectorAll('.rail-ch-cell').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = parseInt(btn.getAttribute('data-idx'), 10);
       loadChapter(idx);
-      closeChapterOverlay();
     });
   });
-  updateChapterTriggerLabel();
+  activeBook.parentNode.insertBefore(grid, activeBook.nextSibling);
+  // Scroll active cell into view (relevant for chapter-deep loads via URL)
+  const active = grid.querySelector('.rail-ch-cell.active');
+  if (active) active.scrollIntoView({ block: 'nearest' });
 }
 
-function updateChapterTriggerLabel() {
-  const label = document.getElementById('chapterTriggerLabel');
-  const ch = currentChapters[currentChapterIdx];
-  if (label && ch) label.textContent = `Chapter ${ch.number}`;
-  // Sync active-cell highlight inside the overlay
-  document.querySelectorAll('.ch-overlay-cell').forEach((cell, i) => {
+function updateRailActiveChapter() {
+  document.querySelectorAll('.rail-ch-cell').forEach((cell, i) => {
     cell.classList.toggle('active', i === currentChapterIdx);
   });
 }
 
-function openChapterOverlay() {
-  const trigger = document.getElementById('chapterTrigger');
-  const overlay = document.getElementById('chapterOverlay');
-  const caret   = document.getElementById('chapterTriggerCaret');
-  if (!trigger || !overlay) return;
-  // Unhide first to measure width, then position with viewport-edge guard
-  overlay.classList.remove('hidden');
-  const rect = trigger.getBoundingClientRect();
-  const overlayWidth = overlay.offsetWidth;
-  let left = rect.left;
-  if (left + overlayWidth > window.innerWidth - 12) {
-    left = Math.max(12, window.innerWidth - overlayWidth - 12);
-  }
-  overlay.style.top = (rect.bottom + 6) + 'px';
-  overlay.style.left = left + 'px';
-  trigger.setAttribute('aria-expanded', 'true');
-  if (caret) caret.textContent = '\u2766'; // ❦ open
-  // Scroll active cell into view (relevant for Psalms 119, etc.)
-  const active = overlay.querySelector('.ch-overlay-cell.active');
-  if (active) active.scrollIntoView({ block: 'center', inline: 'nearest' });
-}
-
-function closeChapterOverlay() {
-  const overlay = document.getElementById('chapterOverlay');
-  const trigger = document.getElementById('chapterTrigger');
-  const caret   = document.getElementById('chapterTriggerCaret');
-  if (!overlay) return;
-  overlay.classList.add('hidden');
-  if (trigger) trigger.setAttribute('aria-expanded', 'false');
-  if (caret) caret.textContent = '\u2767'; // ❧ closed
-}
-
-function toggleChapterOverlay() {
-  const overlay = document.getElementById('chapterOverlay');
-  if (!overlay) return;
-  if (overlay.classList.contains('hidden')) openChapterOverlay();
-  else closeChapterOverlay();
-}
-
 async function loadChapter(idx) {
   currentChapterIdx = idx;
-  updateChapterTriggerLabel();
+  updateRailActiveChapter();
   document.getElementById('prevChBtn').disabled = idx === 0;
   document.getElementById('nextChBtn').disabled = idx === currentChapters.length - 1;
 
   const ch = currentChapters[idx];
   const ref = `${currentBook.name} ${ch.number}`;
-  document.getElementById('readerLocation').textContent = currentBook.name;
+  // Write book + chapter to .reader-location, with the translation marker as
+  // a quiet inline suffix (e.g. "JOHN 3 · NKJV", "GENESIS 1 · LXX 2012").
+  const loc = document.getElementById('readerLocation');
+  loc.textContent = ref;
+  const trSpan = document.createElement('span');
+  trSpan.className = 'reader-translation';
+  trSpan.textContent = ` · ${getTranslationLabel(currentBook.id)}`;
+  loc.appendChild(trSpan);
   document.title = `${ref} — Bible Reader — Orthodox Companion`;
 
   showReaderLoading();
   try {
     if (lxxBookData) {
-      renderLocalChapter(currentBook.id, ch.number, ref);
+      renderLocalChapter(currentBook.id, ch.number, currentBook.name);
       updateUrl(currentBook.id, ch.number);
     } else {
       const data = await apiFetch(
@@ -1328,7 +1271,7 @@ async function loadChapter(idx) {
         `?content-type=html&include-notes=false&include-titles=false` +
         `&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=true`
       );
-      renderChapter(data, ref);
+      renderChapter(data, currentBook.name, ch.number);
       updateUrl(currentBook.id, ch.number);
     }
   } catch(e) {
@@ -1345,42 +1288,51 @@ function stripUSFM(text) {
   return text.trim();
 }
 
-function renderLocalChapter(bookId, chapterNum, ref) {
+function renderLocalChapter(bookId, chapterNum, bookName) {
   const content = document.getElementById('readerContent');
   const verses = lxxBookData && lxxBookData.chapters[chapterNum];
+  const heading = `<div class="chapter-heading"><span class="chapter-heading-num">${chapterNum}</span><span class="chapter-heading-book">${bookName}</span></div>`;
   if (!verses) {
-    content.innerHTML = `<div class="chapter-heading">${ref}</div><div class="reader-state-sub">No content available.</div>`;
+    content.innerHTML = heading + '<div class="reader-state-sub">No content available.</div>';
     return;
   }
 
-  let html = `<div class="chapter-heading">${ref}</div>`;
+  let html = heading;
 
-  function verseHTML(vNum, vId, text) {
+  function verseHTML(vNum, vId, text, isFirst) {
     if (!text.trim()) return '';
-    return `<span class="verse" data-vid="${vId}" data-vnum="${vNum}"><span class="verse-num">${vNum}</span>${text}</span>`;
+    const cls = isFirst ? 'verse verse-first' : 'verse';
+    return `<span class="${cls}" data-vid="${vId}" data-vnum="${vNum}"><span class="verse-num">${vNum}</span>${text}</span>`;
   }
 
   const verseNums = Object.keys(verses).map(n => parseInt(n)).sort((a, b) => a - b);
+  let firstEmitted = false;
   verseNums.forEach(vNum => {
     const vId   = `${bookId}.${chapterNum}.${vNum}`;
     const text  = stripUSFM(verses[String(vNum)] || '');
-    html += verseHTML(String(vNum), vId, text);
+    if (!text.trim()) return;
+    html += verseHTML(String(vNum), vId, text, !firstEmitted);
+    firstEmitted = true;
   });
+
+  // End-of-chapter fleuron — manuscript "explicit" mark
+  html += '<div class="chapter-explicit" aria-hidden="true">&#10086;</div>';
 
   content.innerHTML = html;
   content.scrollTop = 0;
 }
 
-function renderChapter(data, ref) {
+function renderChapter(data, bookName, chapterNum) {
   const content = document.getElementById('readerContent');
   const parser  = new DOMParser();
   const doc     = parser.parseFromString(data.content || '', 'text/html');
 
-  let html = `<div class="chapter-heading">${ref}</div>`;
+  let html = `<div class="chapter-heading"><span class="chapter-heading-num">${chapterNum}</span><span class="chapter-heading-book">${bookName}</span></div>`;
 
-  function verseHTML(vNum, vId, text) {
+  function verseHTML(vNum, vId, text, isFirst) {
     if (!text.trim()) return '';
-    return `<span class="verse" data-vid="${vId}" data-vnum="${vNum}"><span class="verse-num">${vNum}</span>${text}</span>`;
+    const cls = isFirst ? 'verse verse-first' : 'verse';
+    return `<span class="${cls}" data-vid="${vId}" data-vnum="${vNum}"><span class="verse-num">${vNum}</span>${text}</span>`;
   }
 
   // API.Bible structure: each verse has two sibling .verse-span elements
@@ -1402,11 +1354,16 @@ function renderChapter(data, ref) {
       }
     });
 
+    let firstEmitted = false;
     verseMap.forEach((entry, vid) => {
       if (!entry.text.trim()) return;
       const vNum = entry.num || vid.split('.').pop();
-      html += verseHTML(vNum, vid, entry.text.trim());
+      html += verseHTML(vNum, vid, entry.text.trim(), !firstEmitted);
+      firstEmitted = true;
     });
+
+    // End-of-chapter fleuron — manuscript "explicit" mark
+    html += '<div class="chapter-explicit" aria-hidden="true">&#10086;</div>';
 
     content.innerHTML = html;
     content.scrollTop = 0;
@@ -1416,6 +1373,7 @@ function renderChapter(data, ref) {
   // Fallback: render raw text content
   const rawText = doc.body ? doc.body.innerHTML : (data.content || '');
   html += `<div style="line-height:2;font-size:1.05rem;color:var(--text);">${rawText || '<em>No content available.</em>'}</div>`;
+  html += '<div class="chapter-explicit" aria-hidden="true">&#10086;</div>';
   content.innerHTML = html;
   content.scrollTop = 0;
 }
@@ -1542,13 +1500,12 @@ function restoreEmptyState() {
     '</div>';
   // Toolbar reverts to its post-Group-1 boot shape
   const cn = document.getElementById('chapterNav');
-  const tb = document.getElementById('translationBadge');
   const rl = document.getElementById('readerLocation');
   if (cn) cn.style.display = 'none';
-  if (tb) tb.style.display = 'none';
   if (rl) rl.textContent = '';
-  // Clear active state in rail
+  // Clear active state in rail and remove any rail chapter grid
   document.querySelectorAll('.book-item.active').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.rail-ch-grid').forEach(el => el.remove());
 }
 
 // ── Utility ───────────────────────────────────────────────────
@@ -1567,28 +1524,14 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('sidebarToggle').addEventListener('click', toggleSidebar);
   document.getElementById('prevChBtn').addEventListener('click', prevChapter);
   document.getElementById('nextChBtn').addEventListener('click', nextChapter);
-  document.getElementById('chapterTrigger').addEventListener('click', toggleChapterOverlay);
   document.getElementById('verseSearch').addEventListener('keydown', function(e) {
     if (e.key === 'Enter') handleVerseSearch();
   });
 
-  // Click outside the chapter overlay closes it (early-return when hidden
-  // so this listener is essentially free while the overlay is closed).
-  document.addEventListener('click', function(e) {
-    const overlay = document.getElementById('chapterOverlay');
-    if (!overlay || overlay.classList.contains('hidden')) return;
-    if (e.target.closest('#chapterOverlay') || e.target.closest('#chapterTrigger')) return;
-    closeChapterOverlay();
-  });
-
-  // Keyboard shortcuts: Alt+Arrow for chapter nav; Escape closes the overlay
+  // Keyboard shortcuts: Alt+Arrow for chapter nav
   document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight' && e.altKey) nextChapter();
     if (e.key === 'ArrowLeft'  && e.altKey) prevChapter();
-    if (e.key === 'Escape') {
-      const overlay = document.getElementById('chapterOverlay');
-      if (overlay && !overlay.classList.contains('hidden')) closeChapterOverlay();
-    }
   });
 
   // Boot the reader (loadFromUrl defaults to John 1 when no URL params)
