@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The New Testament — 90 Days · Orthodox Companion</title>
+<link rel="icon" href="/cross.png" type="image/png"/>
+<meta name="description" content="The entire New Testament in three months — one or two chapters daily through the Gospels, Acts, the Epistles, and Revelation. Often kept during Great Lent."/>
+<meta property="og:title" content="The New Testament — 90 Days · Orthodox Companion"/>
+<meta property="og:description" content="The entire New Testament in three months — one or two chapters daily through the Gospels, Acts, the Epistles, and Revelation. Often kept during Great Lent."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://orthodoxcompanion.com/plans/new-testament-ninety-days.html"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
+<style>
+/* OC-MASTER-CSS — Parchment v3 */
+/* ═══════════════════════════════════════════════════════
+   ORTHODOX COMPANION — MASTER CSS
+   Parchment / illuminated-manuscript register.
+   Single light/parchment system, no dark mode.
+═══════════════════════════════════════════════════════ */
+
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
+:root{
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;
+
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
+
+.cross-orth{display:inline-block;vertical-align:middle;height:1em;width:auto;fill:currentColor;}
+.chi-rho{display:inline-block;vertical-align:middle;height:1em;width:auto;stroke:currentColor;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{font-size:30px;line-height:1;color:var(--gold);display:inline-flex;align-items:center;}
+.nav-title{font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;color:var(--logotype);letter-spacing:0.07em;line-height:1;}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown a[aria-current="page"]{color:var(--gold-on-dark);background:rgba(201,168,76,0.10);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+
+.nav-hamburger{display:none;background:transparent;border:none;color:var(--nav-text);cursor:pointer;padding:8px;flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);z-index:599;padding:8px 0 20px;transform:translateY(-8px);opacity:0;transition:transform 0.25s,opacity 0.25s;pointer-events:none;max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;color:var(--nav-text-dim);padding:14px 24px 6px;margin-top:4px;}
+.nav-drawer a{display:block;font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--nav-text);text-decoration:none;border:none;padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);transition:color 0.2s,padding-left 0.2s;}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}
+.nav-drawer a[aria-current="page"]{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+
+.page-hero{margin-top:var(--nav-h);background:var(--hero-bg);padding:54px 24px 36px;}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.hero-ornament{display:flex;align-items:center;justify-content:center;gap:18px;max-width:300px;margin:0 auto 30px;}
+.hero-ornament .rule{flex:1;height:1px;background:var(--gold-dim);opacity:0.55;}
+.hero-ornament .mark{display:inline-flex;align-items:center;font-size:1.6rem;line-height:1;color:var(--gold);stroke-width:3;}
+.breadcrumb{font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--text-muted);margin-bottom:14px;}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}
+.page-title{font-family:'Cinzel',serif;font-size:2.15rem;font-weight:700;letter-spacing:0.06em;margin-bottom:12px;color:var(--text);}
+.page-desc{font-size:1.06rem;line-height:1.7;max-width:640px;font-style:italic;color:var(--text-dim);}
+
+.lede::first-letter{font-family:'Cinzel',serif;float:left;font-size:4.6rem;line-height:0.85;padding:0.35rem 0.7rem 0 0;color:var(--gold);font-weight:700;}
+
+.site-footer{background:var(--deep);border-top:2px solid var(--header-rule);padding:48px 24px 32px;margin-top:48px;}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-bottom:36px;}
+.footer-col h3{font-family:'EB Garamond',Georgia,serif;font-feature-settings:"onum";font-size:0.92rem;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;color:var(--gold);margin-bottom:14px;}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{display:block;font-family:'EB Garamond',Georgia,serif;font-size:1rem;color:var(--nav-text);text-decoration:none;border:none;padding:5px 0;transition:color 0.15s;}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{text-align:center;border-top:1px solid rgba(201,168,76,0.18);padding-top:24px;}
+.footer-cross{display:inline-flex;align-items:center;color:var(--gold);font-size:1.25rem;margin-right:10px;vertical-align:middle;}
+.footer-brand{font-family:'Cinzel',serif;font-size:0.96rem;font-weight:600;color:var(--logotype);letter-spacing:0.08em;margin-right:14px;vertical-align:middle;}
+.footer-tagline{font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:0.96rem;color:var(--nav-text-dim);vertical-align:middle;}
+
+#backToTop{position:fixed;bottom:28px;right:24px;z-index:700;width:42px;height:42px;border-radius:3px;background:var(--surface);border:1px solid var(--gold-dim);color:var(--gold-light);font-size:1.2rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s,background 0.2s,color 0.2s;}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}
+
+/* ═══════════════════════════════════════════════════════
+   VIEW-PAGE-SPECIFIC STYLES
+═══════════════════════════════════════════════════════ */
+
+.plan-view-wrap{max-width:720px;margin:0 auto;padding:42px 24px 56px;}
+
+.plan-view-wrap .lede{
+  color:var(--text-dim);
+  line-height:1.8;
+  font-size:1.06rem;
+  margin-bottom:18px;
+}
+.rule-not-race{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.02rem;
+  line-height:1.7;
+  color:var(--text-muted);
+  text-align:center;
+  margin:14px auto 24px;
+  max-width:540px;
+}
+
+.opening-prayer-block,
+.closing-prayer-block{
+  margin:24px auto 28px;
+  max-width:600px;
+  padding:24px 30px;
+  background:var(--surface);
+  border-top:1px solid var(--gold-dim);
+  border-bottom:1px solid var(--gold-dim);
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.04rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  text-align:center;
+}
+.prayer-label{
+  display:block;
+  font-style:normal;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;
+  text-transform:lowercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  margin-bottom:10px;
+}
+
+.plan-pdf-affordance{
+  margin:8px 0 36px;
+  display:flex;
+  justify-content:center;
+}
+.plan-pdf-btn{
+  display:inline-block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.95rem;
+  letter-spacing:0.10em;
+  text-transform:lowercase;
+  color:var(--gold-light);
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--gold-dim);
+  padding:8px 22px 6px;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+  transition:color 0.15s, border-color 0.15s, background 0.15s;
+}
+.plan-pdf-btn:hover,
+.plan-pdf-btn:focus-visible{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+  background:rgba(201,168,76,0.06);
+}
+.plan-pdf-btn:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:2px;
+}
+
+.plan-day-list{margin:18px 0 28px;}
+
+.day-section-heading{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:1.06rem;
+  font-weight:600;
+  text-transform:lowercase;
+  letter-spacing:0.18em;
+  color:var(--gold-light);
+  margin:42px 0 18px;
+  padding-top:16px;
+  border-top:1px solid var(--gold-dim);
+  text-align:center;
+}
+.plan-day-list > .day-section-heading:first-child{
+  margin-top:8px;padding-top:0;border-top:none;
+}
+
+.day-row{
+  display:grid;
+  grid-template-columns:108px 1fr;
+  gap:18px;
+  padding:14px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.day-row:last-child{border-bottom:none;}
+.day-num{
+  font-family:'Cinzel',serif;
+  font-size:0.78rem;
+  font-weight:700;
+  color:var(--gold-light);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  padding-top:4px;
+}
+.day-body{min-width:0;}
+.day-refs{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.04rem;
+  color:var(--text);
+  margin-bottom:4px;
+}
+.day-note{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  line-height:1.6;
+  color:var(--text-dim);
+  margin:0;
+}
+
+.week-break{
+  margin:36px 0;
+  text-align:center;
+}
+.week-break-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:240px;
+  margin:0 auto 14px;
+}
+.week-break-mark .rule{flex:1;height:1px;background:var(--gold-dim);opacity:0.55;}
+.week-break-mark .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.15rem;line-height:1;
+  color:var(--gold);
+  stroke-width:3;
+}
+.week-break-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.06rem;
+  line-height:1.7;
+  color:var(--text-dim);
+  max-width:540px;
+  margin:0 auto 8px;
+}
+.week-break-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;
+  text-transform:lowercase;
+  letter-spacing:0.16em;
+  color:var(--text-muted);
+  margin:0;
+}
+
+.colophon{margin:32px 0 36px;text-align:center;}
+.colophon-mark{display:flex;align-items:center;justify-content:center;gap:18px;max-width:300px;margin:0 auto;}
+.colophon-mark .rule{flex:1;height:1px;background:var(--gold-dim);opacity:0.65;}
+.colophon-mark .cross{display:inline-flex;align-items:center;color:var(--gold);font-size:2rem;line-height:1;}
+
+.parish-line{
+  text-align:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.02rem;
+  line-height:1.7;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:8px auto 18px;
+}
+.parish-line a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:color 0.15s,border-color 0.15s;
+}
+.parish-line a:hover{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+
+.plan-end-brand{
+  text-align:center;
+  margin:14px 0 8px;
+  font-family:'Cinzel',serif;
+  font-size:0.92rem;
+  font-weight:600;
+  letter-spacing:0.10em;
+  color:var(--gold-light);
+}
+.plan-end-brand .tag{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-weight:400;
+  letter-spacing:0;
+  color:var(--text-muted);
+  margin-left:10px;
+}
+
+.plan-day-list noscript p{
+  text-align:center;
+  font-style:italic;
+  color:var(--text-muted);
+  padding:24px 0;
+}
+
+@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
+}
+@media(max-width:600px){
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .plan-view-wrap{padding:30px 18px 44px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .day-row{grid-template-columns:1fr;gap:4px;padding:12px 0;}
+  .day-num{padding-top:0;}
+  .opening-prayer-block,.closing-prayer-block{padding:20px 22px;margin:22px 0 24px;}
+  .site-footer{padding:36px 18px 28px;}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="/index.html" class="nav-brand">
+    <span class="nav-cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+    <div><div class="nav-title">Orthodox Companion</div><div class="nav-subtitle">orthodoxcompanion.com</div></div>
+  </a>
+  <ul class="nav-links">
+    <li class="nav-item"><a href="/index.html" class="nav-link">Home</a></li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">New Here?</span>
+      <div class="nav-dropdown">
+        <a href="/new-to-orthodoxy.html">What Is Orthodoxy?</a>
+        <a href="/parents.html">Guidance for Parents</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="/new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+        <a href="/new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="/about.html">About This Site</a>
+        <a href="/note-from-author.html">Note from the Author</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link active has-drop">Study</span>
+      <div class="nav-dropdown">
+        <a href="/history-of-orthodoxy.html">History of Orthodoxy</a>
+        <a href="/symbol-of-faith.html">Symbol of Faith</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="/topics.html">Topics &amp; Doctrine</a>
+        <a href="/glossary.html">Glossary</a>
+        <a href="/saints.html">Saints</a>
+        <a href="/church-fathers.html">Church Fathers</a>
+        <a href="/holy-scripture.html">Holy Scripture</a>
+        <a href="/bible-reader.html">Bible Reader</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="/reading-plans.html" aria-current="page">Reading Plans</a>
+        <a href="/resources.html">Books &amp; Resources</a>
+      </div>
+    </li>
+    <li class="nav-item">
+      <span class="nav-link has-drop">Worship &amp; Life</span>
+      <div class="nav-dropdown">
+        <a href="/calendar.html">Liturgical Calendar</a>
+        <a href="/prayer.html">Prayer Corner</a>
+        <a href="/fasting.html">Fasting Guide</a>
+        <hr class="nav-dropdown-divider"/>
+        <a href="/feasts.html">Feasts</a>
+        <a href="/liturgical-seasons.html">Liturgical Seasons</a>
+      </div>
+    </li>
+  </ul>
+  <div class="nav-right"></div>
+  <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-drawer" id="navDrawer">
+  <a href="/index.html">Home</a>
+  <div class="nav-drawer-section">New Here?</div>
+  <a href="/new-to-orthodoxy.html">What Is Orthodoxy?</a>
+  <a href="/parents.html">Guidance for Parents</a>
+  <a href="/new-to-orthodoxy.html#how-do-i-find-a-church">Parish Finder</a>
+  <a href="/new-to-orthodoxy.html#faq">Frequently Asked Questions</a>
+  <a href="/about.html">About This Site</a>
+  <a href="/note-from-author.html">Note from the Author</a>
+  <div class="nav-drawer-section">Study</div>
+  <a href="/history-of-orthodoxy.html">History of Orthodoxy</a>
+  <a href="/symbol-of-faith.html">Symbol of Faith</a>
+  <a href="/topics.html">Topics &amp; Doctrine</a>
+  <a href="/glossary.html">Glossary</a>
+  <a href="/saints.html">Saints</a>
+  <a href="/church-fathers.html">Church Fathers</a>
+  <a href="/holy-scripture.html">Holy Scripture</a>
+  <a href="/bible-reader.html">Bible Reader</a>
+  <a href="/reading-plans.html" aria-current="page">Reading Plans</a>
+  <a href="/resources.html">Books &amp; Resources</a>
+  <div class="nav-drawer-section">Worship &amp; Life</div>
+  <a href="/calendar.html">Liturgical Calendar</a>
+  <a href="/prayer.html">Prayer Corner</a>
+  <a href="/fasting.html">Fasting Guide</a>
+  <a href="/feasts.html">Feasts</a>
+  <a href="/liturgical-seasons.html">Liturgical Seasons</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="hero-ornament" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+      <span class="rule"></span>
+    </div>
+    <div class="breadcrumb"><a href="/index.html">Home</a><span>&#8250;</span><a href="/reading-plans.html">Reading Plans</a><span>&#8250;</span>The New Testament — 90 Days</div>
+    <h1 class="page-title">The New Testament — 90 Days</h1>
+    <p class="page-desc">90 days · The New Covenant</p>
+  </div>
+</div>
+
+<div class="plan-view-wrap">
+
+  <p class="lede">The entire New Testament in three months. Each day takes one or two chapters; the Gospels, Acts, the Apostolic Epistles, and the Revelation move past at a brisker pace than the year-long plan. Often kept during Great Lent, when the Church reads heavily and listens deeply. Well-suited to the faithful prepared for a sustained, immersive reading, and to catechumens who wish to encounter the whole apostolic preaching before their reception into the Church.</p>
+
+  <p class="rule-not-race">This is a rule, not a race. Miss a day; begin again the next. The Church does not measure us by speed.</p>
+
+  <div class="opening-prayer-block">
+    <span class="prayer-label">Opening Prayer</span>
+    Open my eyes, that I may behold wondrous things from Your law. Bless, O Lord, this rule of reading. Plant Your Word in my heart that I may not sin against You. Lead me, through this Scripture, to the parish where You are present in the Mysteries; to the Fathers who taught Your saints; to the priest who shepherds Your flock; and to You, the Word made flesh, our Savior Jesus Christ. Amen.
+  </div>
+
+  <div class="plan-pdf-affordance">
+    <a href="../data/reading-plan-pdfs/orthodox-companion-the-new-testament-ninety-days.pdf" download class="plan-pdf-btn">Download printable plan (PDF)</a>
+  </div>
+
+  <div id="dayList" class="plan-day-list">
+    <noscript><p>This reading plan requires JavaScript to render the day-by-day list. You can still download the printable PDF using the link above.</p></noscript>
+  </div>
+
+  <div class="closing-prayer-block">
+    <span class="prayer-label">Closing Prayer</span>
+    Glory to You, O Lord, who has fed me from the storehouse of Your Word. What I have read, plant in my life. What I have not understood, send Your Holy Spirit to teach. What I have understood, give me grace to live. Bring me, by these readings, deeper into Your Holy Church, to the parish where Your Body is present in the Mysteries. For You are the Word, and apart from You there is no life. Amen.
+  </div>
+
+  <div class="plan-pdf-affordance">
+    <a href="../data/reading-plan-pdfs/orthodox-companion-the-new-testament-ninety-days.pdf" download class="plan-pdf-btn">Download printable plan (PDF)</a>
+  </div>
+
+  <div class="colophon" aria-hidden="true">
+    <div class="colophon-mark">
+      <span class="rule"></span>
+      <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+
+  <p class="parish-line">When you have walked this rule, walk into a parish. Find one near you at <a href="/new-to-orthodoxy.html">orthodoxcompanion.com/new-to-orthodoxy.html</a></p>
+
+  <p class="plan-end-brand">Orthodox Companion<span class="tag">In service of the Church.</span></p>
+
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer-inner">
+    <div class="site-footer-cols">
+      <div class="footer-col">
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="/calendar.html">Calendar</a></li>
+          <li><a href="/saints.html">Saints</a></li>
+          <li><a href="/prayer.html">Prayer Corner</a></li>
+          <li><a href="/fasting.html">Fasting Guide</a></li>
+          <li><a href="/reading-plans.html">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Learn</h3>
+        <ul>
+          <li><a href="/new-to-orthodoxy.html">New to Orthodoxy</a></li>
+          <li><a href="/topics.html">Topics</a></li>
+          <li><a href="/history-of-orthodoxy.html">History</a></li>
+          <li><a href="/church-fathers.html">Church Fathers</a></li>
+          <li><a href="/glossary.html">Glossary</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/resources.html">Resources</a></li>
+          <li><a href="/new-to-orthodoxy.html#how-do-i-find-a-church">Find a Parish</a></li>
+          <li><a href="mailto:orthodoxcompanion@gmail.com">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer-bottom">
+      <span class="footer-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="footer-brand">Orthodox Companion</span><span class="footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
+
+<script>
+/* OC-MASTER-JS — Parchment v3 */
+
+var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);
+  if(h)h.classList.toggle('open',_drawerOpen);
+}
+document.addEventListener('click',function(e){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
+    _drawerOpen=false;
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
+  }
+});
+
+document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});
+</script>
+
+<!-- Plan data: bare-reference globals (const / no global-object attach) -->
+<script src="../data/reading-plans/plan-nt-90.js"></script>
+<script src="../data/reading-plans/week-break-pools.js"></script>
+
+<!-- Render script: reads PLAN_NT_90 and PLAN_NT_90_META by bare reference,
+     reads OC_WEEK_BREAK_POOLS the same way. No bracketed property lookups
+     on the global object anywhere — const-declared globals share the Global
+     Lexical Environment Record across classic script tags but do not attach
+     to the global object. -->
+<script>
+(function(){
+  var plan  = (typeof PLAN_NT_90      !== 'undefined') ? PLAN_NT_90      : null;
+  var meta  = (typeof PLAN_NT_90_META        !== 'undefined') ? PLAN_NT_90_META        : null;
+  var pools = (typeof OC_WEEK_BREAK_POOLS !== 'undefined') ? OC_WEEK_BREAK_POOLS : null;
+
+  var listEl = document.getElementById('dayList');
+  if(!listEl) return;
+  if(!plan || !meta || !pools){
+    listEl.innerHTML = '<p style="text-align:center;color:var(--text-muted);font-style:italic;padding:24px 0;">The plan failed to load. Please refresh the page or download the printable PDF above.</p>';
+    return;
+  }
+
+  var keyOrder = ['ot','ps','pr','nt'];
+
+  function escape(s){
+    return String(s)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  function formatRefs(day){
+    var parts = [];
+    for(var i=0;i<keyOrder.length;i++){
+      var k = keyOrder[i];
+      if(day[k] && day[k].ref) parts.push(day[k].ref);
+    }
+    return parts.join(' \u00B7 ');
+  }
+
+  var CHI_RHO_SVG =
+    '<svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true">'
+    + '<line x1="6" y1="14" x2="26" y2="34"/>'
+    + '<line x1="26" y1="14" x2="6" y2="34"/>'
+    + '<line x1="16" y1="4" x2="16" y2="36"/>'
+    + '<path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/>'
+    + '</svg>';
+
+  var html = '';
+  var weekBreakIdx = 0;
+  var bucketOrder = [pools.scripture, pools.fathers, pools.prayers];
+
+  for(var i=1; i<plan.length; i++){
+    var day = plan[i];
+    if(!day) continue;
+
+    if(meta.sections && meta.sections[i]){
+      html += '<h2 class="day-section-heading">' + escape(meta.sections[i]) + '</h2>';
+    }
+
+    html += '<div class="day-row">';
+    html +=   '<span class="day-num">Day ' + i + '</span>';
+    html +=   '<div class="day-body">';
+    var refs = formatRefs(day);
+    if(refs) html += '<span class="day-refs">' + escape(refs) + '</span>';
+    if(day.note) html += '<p class="day-note">' + escape(day.note) + '</p>';
+    html +=   '</div>';
+    html += '</div>';
+
+    if(i % 7 === 0 && i < plan.length - 1){
+      var nextHasSection = !!(meta.sections && meta.sections[i + 1]);
+      if(!nextHasSection){
+        var bucket = bucketOrder[weekBreakIdx % 3];
+        var item = bucket[Math.floor(weekBreakIdx / 3) % bucket.length];
+        html += '<div class="week-break">';
+        html +=   '<div class="week-break-mark" aria-hidden="true">';
+        html +=     '<span class="rule"></span>';
+        html +=     '<span class="mark">' + CHI_RHO_SVG + '</span>';
+        html +=     '<span class="rule"></span>';
+        html +=   '</div>';
+        html +=   '<p class="week-break-text">' + escape(item.text) + '</p>';
+        if(item.attr){
+          html += '<p class="week-break-attr">' + escape(item.attr) + '</p>';
+        }
+        html += '</div>';
+      }
+      weekBreakIdx++;
+    }
+  }
+
+  listEl.innerHTML = html;
+})();
+</script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c60c8b59423c45a8a4773eec3a8d5b6e"}'></script>
+<!-- End Cloudflare Web Analytics -->
+
+<script src="/analytics-tracker.js"></script>
+
+</body>
+</html>
