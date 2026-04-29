@@ -606,8 +606,8 @@ nav{
   border:1px solid var(--gold-dim);
   border-top:3px solid var(--gold-dim);
   border-radius:2px;
-  padding:22px 22px;
-  display:flex;flex-direction:column;gap:8px;
+  padding:22px 22px 18px;
+  display:flex;flex-direction:column;gap:10px;
   transition:background 0.15s,border-color 0.15s;
 }
 .plan-card:hover{background:#FBF6E8;border-color:var(--gold-light);}
@@ -623,35 +623,49 @@ nav{
   font-size:0.82rem;text-transform:lowercase;letter-spacing:0.12em;
   color:var(--text-muted);
 }
-.plan-desc{
-  font-size:0.96rem;color:var(--text-dim);
-  line-height:1.6;font-style:italic;
+.plan-summary{
+  font-size:0.97rem;color:var(--text-dim);
+  line-height:1.55;
 }
-}
-.plan-pdf-btn{
-  display:block;
-  width:100%;
+
+/* Two-affordance row — View + Download. Option A: ghost ruled-letter
+   affordance. Both anchors are visual peers with a gold-dim hairline above. */
+.plan-affordances{
+  display:flex;
+  flex-direction:row;
+  gap:18px;
   margin-top:auto;
+  padding-top:14px;
+  border-top:1px solid var(--rule-soft);
+}
+.plan-view-btn,
+.plan-pdf-btn{
+  flex:1;
+  display:block;
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"smcp","onum";
-  font-size:0.86rem;
-  text-transform:lowercase;
+  font-size:0.95rem;
   letter-spacing:0.10em;
-  color:var(--text);
+  text-transform:lowercase;
+  color:var(--gold-light);
   background:transparent;
-  border:1px solid var(--gold-dim);
-  border-radius:2px;
-  padding:9px 14px;
+  border:none;
+  border-bottom:1px solid var(--gold-dim);
+  padding:8px 4px 6px;
   text-align:center;
   text-decoration:none;
   cursor:pointer;
-  transition:background 0.15s, border-color 0.15s;
+  transition:color 0.15s, border-color 0.15s, background 0.15s;
 }
+.plan-view-btn:hover,
+.plan-view-btn:focus-visible,
 .plan-pdf-btn:hover,
 .plan-pdf-btn:focus-visible{
-  background:rgba(201,168,76,0.10);
-  border-color:var(--gold);
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+  background:rgba(201,168,76,0.06);
 }
+.plan-view-btn:focus-visible,
 .plan-pdf-btn:focus-visible{
   outline:2px solid var(--gold);
   outline-offset:2px;
@@ -669,6 +683,11 @@ nav{
 
 @media (max-width:900px){
   .plans-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media (max-width:699px){
+  .plan-affordances{flex-direction:column;gap:0;}
+  .plan-view-btn,
+  .plan-pdf-btn{padding:10px 4px 8px;}
 }
 @media (max-width:620px){
   .plans-grid{grid-template-columns:1fr;}
@@ -872,96 +891,159 @@ document.addEventListener('DOMContentLoaded',function(){
   }
 });
 </script>
-<script src="plan-2year.js"></script>
-<script src="plan-1year.js"></script>
-<script src="plan-ot-1year.js"></script>
-<script src="plan-nt-1year.js"></script>
-<script src="plan-nt-90.js"></script>
-<script src="plan-gospels.js"></script>
-<script src="plan-epistles.js"></script>
-<script src="plan-psalter.js"></script>
-<script src="plan-wisdom.js"></script>
-<script src="plan-prophets.js"></script>
-<script src="plan-lenten.js"></script>
-<script src="plan-nativity.js"></script>
-<script src="plan-holy-week.js"></script>
-<script src="plan-catechumen.js"></script>
-<script src="pdf-generator.js" defer></script>
 <script>
 
-/* PLANS — id, name, duration, description.
-   The id maps to a global plan-data variable as follows
-   (preserved for the PDF generator's PLAN_META lookup):
-     bible-2yr     -> PLAN_2YEAR        bible-1yr      -> PLAN_1YEAR
-     ot-1yr        -> PLAN_OT_1YEAR     nt-1yr         -> PLAN_NT_1YEAR
-     nt-90         -> PLAN_NT_90        gospels-60     -> PLAN_GOSPELS
-     epistles-30   -> PLAN_EPISTLES     psalter        -> PLAN_PSALTER
-     wisdom-30     -> PLAN_WISDOM       prophets-60    -> PLAN_PROPHETS
-     lenten        -> PLAN_LENTEN       nativity-40    -> PLAN_NATIVITY
-     holy-week     -> PLAN_HOLY_WEEK    catechumen-40  -> PLAN_CATECHUMEN
-*/
+/* PLANS — id, name, duration, summary, viewHref, pdfHref.
+   The summary is the same authored prose that appears on each
+   View page lede and on each PDF cover. The View page slug and
+   the PDF filename follow the canonical map. */
 var PLANS = [
-  {id:'bible-2yr',     name:'Full Bible — 2 Years',         duration:'730 days', desc:'The complete Scripture at a gentle pace — ideal for first-time readers.'},
-  {id:'bible-1yr',     name:'Full Bible — 1 Year',          duration:'365 days', desc:'The complete Old and New Testament in one year. Four passages every day.'},
-  {id:'ot-1yr',        name:'Old Testament — 1 Year',       duration:'365 days', desc:'The full Orthodox Old Testament in LXX order, including all deuterocanonicals.'},
-  {id:'nt-1yr',        name:'New Testament — 1 Year',       duration:'365 days', desc:'The New Testament read at a gentle pace, with Psalm reflections throughout.'},
-  {id:'nt-90',         name:'New Testament — 90 Days',      duration:'90 days',  desc:'The entire New Testament in three months. Ideal for Great Lent.'},
-  {id:'gospels-60',    name:'Gospels — 60 Days',            duration:'60 days',  desc:'All four Gospels in sequence — Matthew, Mark, Luke, and John — over two months.'},
-  {id:'epistles-30',   name:'Epistles — 30 Days',           duration:'30 days',  desc:'All the Apostolic Epistles, Romans through Jude, in one month.'},
-  {id:'psalter',       name:'Psalter Monthly',                    duration:'30 days',  desc:'The complete Psalter each month in the ancient kathisma tradition.'},
-  {id:'wisdom-30',     name:'Wisdom Literature — 30 Days',  duration:'30 days',  desc:'Job, Proverbs, Ecclesiastes, Song of Songs, Wisdom, and Sirach in sequence.'},
-  {id:'prophets-60',   name:'Prophets — 60 Days',           duration:'60 days',  desc:'Isaiah through Malachi — all the major and minor prophets in LXX order.'},
-  {id:'lenten',        name:'Lenten Plan — 48 Days',        duration:'48 days',  desc:"Aligned with the Triodion. Genesis, Proverbs, Isaiah, and Mark's Gospel."},
-  {id:'nativity-40',   name:'Nativity Fast — 40 Days',      duration:'40 days',  desc:'Isaiah and the Epistles for the 40-day fast before the Nativity of Christ.'},
-  {id:'holy-week',     name:'Holy Week — 8 Days',           duration:'8 days',   desc:'Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.'},
-  {id:'catechumen-40', name:'Catechumen Plan — 40 Days',    duration:'40 days',  desc:"For those entering the Faith. John's Gospel, Acts, Psalms, and Wisdom of Solomon."},
+  {
+    id:       'bible-2yr',
+    name:     'The Whole Bible — 2 Years',
+    duration: '730 days',
+    summary:  'The whole of Holy Scripture, Old Testament and New, read once across two years. Odd-numbered days take an Old Testament passage; even-numbered days carry the day\u2019s Psalms, a few verses of Proverbs, and a chapter of the New Testament. Roughly two to three chapters daily, leaving room to sit with what is read. Well-suited to those approaching Scripture for the first time, and to the faithful who want to walk through the whole canon at the pace of breath rather than haste.',
+    viewHref: 'plans/whole-bible-two-years.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-whole-bible-two-years.pdf'
+  },
+  {
+    id:       'bible-1yr',
+    name:     'The Whole Bible — 1 Year',
+    duration: '365 days',
+    summary:  'The full Old and New Testaments, the Psalms, and Proverbs read in one year. Each day carries four passages \u2014 one from each \u2014 covering the entire Orthodox canon, including the Deuterocanonical books. The pace is steady but not light: roughly four chapters daily across the year. Well-suited to the faithful who want a complete annual reading of the whole Bible alongside the daily Church.',
+    viewHref: 'plans/whole-bible-one-year.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-whole-bible-one-year.pdf'
+  },
+  {
+    id:       'ot-1yr',
+    name:     'The Old Testament — 1 Year',
+    duration: '365 days',
+    summary:  'The complete Old Testament read in one year, in the order of the Septuagint, with the Deuterocanonical books \u2014 Tobit, Judith, Wisdom, Sirach, Baruch, the Maccabees, and others \u2014 read alongside the books of the Hebrew canon. Roughly three chapters daily. Well-suited to the faithful who want to know the Scriptures of the Church in their fullness, and to inquirers who already know the New Testament and wish to discover its roots.',
+    viewHref: 'plans/old-testament-one-year.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-old-testament-one-year.pdf'
+  },
+  {
+    id:       'nt-1yr',
+    name:     'The New Testament — 1 Year',
+    duration: '365 days',
+    summary:  'The whole New Testament read across one year, slowly enough to dwell on each Gospel, each Epistle, each chapter, with the Psalms threaded through as the prayer of the Church. Roughly one chapter daily, with time to read again, to ask, to pray. Well-suited to inquirers reading the New Testament for the first time, to catechumens preparing for baptism, and to the faithful returning to the apostolic witness with fresh attention.',
+    viewHref: 'plans/new-testament-one-year.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-new-testament-one-year.pdf'
+  },
+  {
+    id:       'nt-90',
+    name:     'The New Testament — 90 Days',
+    duration: '90 days',
+    summary:  'The entire New Testament in three months. Each day takes one or two chapters; the Gospels, Acts, the Apostolic Epistles, and the Revelation move past at a brisker pace than the year-long plan. Often kept during Great Lent, when the Church reads heavily and listens deeply. Well-suited to the faithful prepared for a sustained, immersive reading, and to catechumens who wish to encounter the whole apostolic preaching before their reception into the Church.',
+    viewHref: 'plans/new-testament-ninety-days.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-new-testament-ninety-days.pdf'
+  },
+  {
+    id:       'gospels-60',
+    name:     'The Four Gospels',
+    duration: '60 days',
+    summary:  'All four Gospels read in canonical order \u2014 Matthew, Mark, Luke, and John \u2014 over two months. The pace is roughly one chapter daily, slow enough to walk with our Lord through His earthly ministry, His Passion, and His Resurrection. Well-suited to inquirers encountering Christ in the witness of the apostles for the first time, and to the faithful returning to the Gospels with fresh attention. A short note accompanies each day to orient the reader.',
+    viewHref: 'plans/four-gospels.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-four-gospels.pdf'
+  },
+  {
+    id:       'epistles-30',
+    name:     'The Apostolic Epistles',
+    duration: '30 days',
+    summary:  'All the apostolic Epistles read in one month \u2014 Romans through Jude, in the order they sit in the New Testament. Roughly four chapters daily, paced briskly enough to feel the cumulative weight of the apostolic teaching. Well-suited to the faithful working through the epistles as a single arc, and to catechumens beginning to learn the doctrinal voice of the Church. Hebrews is included with the Pauline corpus, as the Church has received it.',
+    viewHref: 'plans/apostolic-epistles.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-apostolic-epistles.pdf'
+  },
+  {
+    id:       'psalter',
+    name:     'The Psalter — Monthly',
+    duration: '30 days',
+    summary:  'The whole Psalter, all hundred and fifty Psalms, read every month in the ancient kathisma tradition. The Psalms are divided into twenty kathismata distributed across thirty days, with longer kathismata split at the natural stasis boundaries observed in the Orthodox office. Well-suited to the faithful who pray the Psalms as the Church prays them \u2014 daily, monthly, year after year. The Psalter is the prayer book of the Church before all others; this rule places it back in your hands.',
+    viewHref: 'plans/psalter-monthly.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-psalter-monthly.pdf'
+  },
+  {
+    id:       'wisdom-30',
+    name:     'Wisdom Literature — 30 Days',
+    duration: '30 days',
+    summary:  'The wisdom literature of the Old Testament read in thirty days \u2014 Job, Proverbs, Ecclesiastes, the Song of Songs, the Wisdom of Solomon, and Sirach \u2014 moved through in the order the Church has received them. Roughly five chapters daily. The wisdom books are the Old Testament\u2019s voice on suffering, on prayer, on the fear of the Lord, on what it means to live well before God. Well-suited to the faithful seeking the heart of the Old Testament\u2019s prayer, and to inquirers who want to encounter Scripture\u2019s quieter, more contemplative voice.',
+    viewHref: 'plans/wisdom-books.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-wisdom-books.pdf'
+  },
+  {
+    id:       'prophets-60',
+    name:     'The Prophets — 60 Days',
+    duration: '60 days',
+    summary:  'All the prophets \u2014 major and minor \u2014 read across two months in Septuagint order. Isaiah, Jeremiah and Lamentations, Baruch and the Letter of Jeremiah, Ezekiel, Daniel and his additions, then the Twelve, through Malachi. Roughly four chapters daily. The prophets are the Old Testament\u2019s preaching of Christ; every chapter is read with His face in view. Well-suited to the faithful ready to dwell in the prophetic voice, and to catechumens approaching baptism.',
+    viewHref: 'plans/prophets.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-prophets.pdf'
+  },
+  {
+    id:       'lenten',
+    name:     'Great Lent',
+    duration: '48 days',
+    summary:  'A reading kept with the Church through the holy forty days and Holy Week, from Clean Monday to Holy Saturday \u2014 forty-eight days in all. Genesis and Proverbs accompany Vespers in the early weeks; Isaiah carries the Royal Hours; Mark\u2019s Gospel is the Lenten Gospel, read through the final two weeks. The pace is unhurried at first and quickens as Holy Week approaches. Well-suited to catechumens preparing for baptism at the Paschal Liturgy, and to all the faithful who walk the Lenten road with the Church.',
+    viewHref: 'plans/great-lent.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-great-lent-plan.pdf'
+  },
+  {
+    id:       'nativity-40',
+    name:     'The Nativity Fast — 40 Days',
+    duration: '40 days',
+    summary:  'A reading for the forty days of the Nativity Fast, from November 15 through December 24. Isaiah \u2014 the great prophet of the Incarnation \u2014 is read straight through, paired with the Epistles and selected Psalms of waiting and hope. Roughly two to three chapters daily, deepening in solemnity as the great feast approaches. Well-suited to the faithful keeping the fast, and to catechumens approaching their first Nativity in the Church. The plan ends on the eve of Christmas, the night the Word becomes flesh.',
+    viewHref: 'plans/nativity-fast.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-nativity-fast-plan.pdf'
+  },
+  {
+    id:       'holy-week',
+    name:     'Holy Week — 8 Days',
+    duration: '8 days',
+    summary:  'Eight days of reading kept hour by hour with the Church through Holy Week, from the triumphal entry on Palm Sunday to the empty tomb on Pascha. Each day carries an Old Testament passage prefiguring Christ\u2019s Passion, a Psalm the Church prays at the services, and a Gospel chapter from the day\u2019s narrative. Well-suited to all three audiences during this single week of the year. The plan is dense; the rule is to walk slowly with our Lord, not to finish first.',
+    viewHref: 'plans/holy-week.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-holy-week-plan.pdf'
+  },
+  {
+    id:       'catechumen-40',
+    name:     'The Catechumen Plan — 40 Days',
+    duration: '40 days',
+    summary:  'A forty-day reading shaped for those preparing for baptism. The Gospel of John is read first, one chapter daily \u2014 the catechetical Gospel the early Church gave to inquirers. Then Acts is read alongside the Wisdom of Solomon, the apostolic Church and the Old Testament\u2019s most direct address to seekers, in parallel. Each day carries a Psalm. Well-suited to catechumens, and to inquirers walking toward baptism. Where you cannot yet receive the Mysteries, you can already hear the Word.',
+    viewHref: 'plans/catechumen.html',
+    pdfHref:  'data/reading-plan-pdfs/orthodox-companion-the-catechumen-plan.pdf'
+  }
 ];
 
-/* PDF generation — surfaces a "Preparing PDF…" label on the click
-   target while the PDF generator lazy-loads pdfmake and the font vfs,
-   then triggers download. */
-function generatePlanPdf(btnEl, pdfId) {
-  if (!window.OCPDF || typeof window.OCPDF.generate !== 'function') {
-    console.error('OCPDF not loaded');
-    return;
-  }
-  var originalText = btnEl.textContent;
-  btnEl.textContent = 'Preparing PDF…';
-  btnEl.disabled = true;
-  window.OCPDF.generate(pdfId).then(function() {
-    btnEl.textContent = originalText;
-    btnEl.disabled = false;
-  }).catch(function(err) {
-    console.error('PDF generation failed:', err);
-    btnEl.textContent = 'PDF unavailable — try again';
-    btnEl.disabled = false;
-    setTimeout(function() { btnEl.textContent = originalText; }, 2400);
-  });
+/* HTML-escape user-visible string content. The PLANS array is authored,
+   not user-supplied — but we escape defensively. */
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-/* Render the 14 plan cards. Each card: name, duration, description, one
-   Download button. The grid-level click handler delegates to .plan-pdf-btn. */
+/* Render the 14 plan cards. Each card: name, duration, full summary,
+   and two anchor affordances (View + Download). No click handlers — both
+   are anchors with the appropriate hrefs and the download attribute on
+   the PDF anchor. */
 function renderPlans() {
   var html = '';
   PLANS.forEach(function(p) {
     html += '<div class="plan-card">';
-    html +=   '<div class="plan-name">' + p.name + '</div>';
-    html +=   '<div class="plan-duration">' + p.duration + '</div>';
-    html +=   '<div class="plan-desc">' + p.desc + '</div>';
-    html +=   '<button type="button" class="plan-pdf-btn" data-pdfid="' + p.id + '">Download printable plan (PDF)</button>';
+    html +=   '<div class="plan-name">' + escapeHtml(p.name) + '</div>';
+    html +=   '<div class="plan-duration">' + escapeHtml(p.duration) + '</div>';
+    html +=   '<p class="plan-summary">' + escapeHtml(p.summary) + '</p>';
+    html +=   '<div class="plan-affordances">';
+    html +=     '<a href="' + escapeHtml(p.viewHref) + '" class="plan-view-btn">View plan</a>';
+    html +=     '<a href="' + escapeHtml(p.pdfHref) + '" download class="plan-pdf-btn">Download (PDF)</a>';
+    html +=   '</div>';
     html += '</div>';
   });
-  var el = document.getElementById('plansGrid');
-  el.innerHTML = html;
-  el.addEventListener('click', function(e) {
-    var btn = e.target.closest('.plan-pdf-btn');
-    if (btn && btn.dataset.pdfid) generatePlanPdf(btn, btn.dataset.pdfid);
-  });
+  document.getElementById('plansGrid').innerHTML = html;
 }
 
 document.addEventListener('DOMContentLoaded', renderPlans);
-
-</script>
 
 </script>
 
