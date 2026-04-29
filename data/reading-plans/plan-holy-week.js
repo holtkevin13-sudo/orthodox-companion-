@@ -96,5 +96,7 @@ const PLAN_HOLY_WEEK_META = {
   audience:     ["Inquirer", "Catechumen", "The Faithful"],
   summary:      "Eight days of reading kept hour by hour with the Church through Holy Week, from the triumphal entry on Palm Sunday to the empty tomb on Pascha. Each day carries an Old Testament passage prefiguring Christ’s Passion, a Psalm the Church prays at the services, and a Gospel chapter from the day’s narrative. Well-suited to all three audiences during this single week of the year. The plan is dense; the rule is to walk slowly with our Lord, not to finish first.",
   description:  "Palm Sunday through Pascha. Passion narratives, Lamentations, and the Resurrection.",
-  sections:     {}
+  sections:     {
+    8: "PASCHA"
+  }
 };
