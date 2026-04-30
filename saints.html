@@ -397,6 +397,8 @@ nav{
 .alpha-bar{
   padding:8px 22px;border-bottom:1px solid var(--rule-soft);
   display:flex;flex-wrap:wrap;gap:3px;
+  position:sticky;top:var(--nav-h);
+  background:var(--surface);z-index:5;
 }
 .alpha-btn{
   font-family:'EB Garamond',Georgia,serif;
@@ -406,9 +408,7 @@ nav{
   border-radius:2px;transition:all 0.15s;
 }
 .alpha-btn:hover,.alpha-btn.active{color:var(--gold-light);background:rgba(201,168,76,0.10);}
-.saints-list-body{padding:8px 0;max-height:480px;overflow-y:auto;}
-.saints-list-body::-webkit-scrollbar{width:5px;}
-.saints-list-body::-webkit-scrollbar-thumb{background:var(--gold-dim);border-radius:2px;opacity:0.4;}
+.saints-list-body{padding:8px 0;}
 .alpha-letter{
   font-family:'EB Garamond',Georgia,serif;
   font-feature-settings:"smcp","onum";
