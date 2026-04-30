@@ -407,6 +407,33 @@ nav{
   color:var(--gold);
   font-size:2rem;line-height:1;
 }
+.colophon-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.78rem;
+  text-transform:none;
+  letter-spacing:0.14em;
+  color:var(--gold-dim);
+  margin:18px auto 0;
+  text-align:center;
+  max-width:580px;
+}
+
+/* ── Closing prose section (long-form pastoral landing) ── */
+.closing-prose{
+  margin:64px 0 0;
+  padding-top:40px;
+  border-top:1px solid var(--gold-dim);
+}
+.closing-prose p{
+  color:var(--text-dim);
+  line-height:1.9;
+  font-size:1.02rem;
+  margin-bottom:1.1em;
+}
+.closing-prose p:last-of-type{
+  margin-bottom:36px;
+}
 
 /* ── Letter pointer between colophon and contact card ─ */
 .from-author-link{
@@ -1530,6 +1557,25 @@ nav{
     </div>
 
     </div>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!--  CLOSING PROSE — pastoral landing after the timeline -->
+    <!-- ══════════════════════════════════════════════ -->
+    <section class="closing-prose">
+      <p>Twenty centuries do not exhaust the life of the Church. The same Liturgy that the Apostles received from the Lord is celebrated in every parish where Orthodox Christians gather; the same Eucharist that sustained the martyrs of the early centuries sustains the faithful today; the same Spirit who descended at Pentecost continues to guide the conciliar life of the Church through every age. What the timeline above records is not a chain of survivals but a single, unbroken life &mdash; the Body of Christ enduring, by the Holy Spirit, all that history can do to her.</p>
+      <p>Yet the Church does not hide her wounds. The twentieth century alone produced an immense number of Orthodox martyrs &mdash; tens of thousands canonized as the New Martyrs of Russia, with countless Serbs, Romanians, Greeks, Syrians, and others who refused to deny Christ under communist and other modern regimes. At the same time, the diaspora that scattered Orthodox Christians across the world has produced an overlapping ecclesiastical geography that the ancient canons did not foresee: multiple jurisdictions in the same city, the unresolved question of primacy among the autocephalous churches, the temptation to confuse national identity with the catholicity of the faith. These are not abstractions. They are real burdens carried by living bishops, priests, and faithful, and the Church does not pretend otherwise.</p>
+      <p>And yet she abides. She abides because Christ promised to be with her until the end of the age, and because the Holy Spirit who guided her into all truth has not withdrawn. She abides in every Divine Liturgy where bread and wine become the Body and Blood of the Lord, in every confession where a priest stands in the place of Christ, in every monastery where prayer continues unbroken through the night. The history recorded above is the work of that Spirit through twenty centuries; the same Spirit works now, and will work until the Lord comes. The Church endures, and prays without ceasing for the salvation of the world and the healing of every Christian division.</p>
+
+      <div class="colophon">
+        <p class="colophon-text">&ldquo;Many are the waves and great is the storm, but we fear not, for we stand upon the Rock. Let the waves rise; they cannot sink the ship of Jesus.&rdquo;</p>
+        <div class="colophon-mark" aria-hidden="true">
+          <span class="rule"></span>
+          <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+          <span class="rule"></span>
+        </div>
+        <p class="colophon-attr">St. John Chrysostom &mdash; Homily before his exile, c. 403</p>
+      </div>
+    </section>
 
   </div>
 </div>
