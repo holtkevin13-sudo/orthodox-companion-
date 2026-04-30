@@ -3,6 +3,11 @@ Allow: /
 
 Sitemap: https://orthodoxcompanion.com/sitemap.xml
 
-# Block crawling of account and auth pages
-Disallow: /account.html
+# Block crawling of developer-reference pages (preserved in repo for version
+# history but not user-facing).
+Disallow: /parchment-patterns.html
+
+# Defensive: block any future internal API routes if added under the main
+# domain. The Cloudflare Worker proxy currently lives at
+# silent-disk-1140.holt-kevin13.workers.dev, not under orthodoxcompanion.com/api/.
 Disallow: /api/
