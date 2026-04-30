@@ -255,6 +255,10 @@ nav{
   margin-bottom:22px;
 }
 
+/* ── First Liturgy section — body prose ──────────────── */
+.first-liturgy p{margin-bottom:16px;}
+.first-liturgy p:last-child{margin-bottom:0;}
+
 /* ── Section heading with hairline marker ────────────── */
 .section-heading{
   position:relative;
@@ -371,33 +375,6 @@ nav{
   text-transform:uppercase;letter-spacing:0.18em;
   color:var(--gold-light);
   margin-top:18px;
-}
-
-/* ── Author note (closing pastoral block) ────────────── */
-.author-note{
-  margin:40px auto 32px;
-  max-width:580px;
-  border-top:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  padding:30px 16px;
-  text-align:center;
-}
-.author-note p{
-  font-family:'EB Garamond',Georgia,serif;
-  font-style:italic;
-  font-size:1.06rem;
-  line-height:1.8;
-  color:var(--text-dim);
-  margin-bottom:18px;
-}
-.author-note p:last-child{margin-bottom:0;}
-.author-note .author-note-attr{
-  font-feature-settings:"onum";
-  font-size:0.88rem;
-  font-style:italic;
-  color:var(--text-muted);
-  margin-top:22px;
-  letter-spacing:0.04em;
 }
 
 /* ── Body links (AA contrast on parchment) ───────────── */
@@ -904,7 +881,6 @@ nav{
   .life-grid{grid-template-columns:1fr 1fr;gap:12px;}
   .life-card{padding:16px 14px;}
   .start-here{padding:22px 20px;}
-  .author-note{padding:24px 14px;}
   .parents-callout{padding:20px 22px;}
   .parish-search{padding:14px 16px;}
   .parish-item{padding:12px 16px;}
@@ -1115,6 +1091,22 @@ nav{
       </div>
     </section>
 
+    <section class="oc-section first-liturgy">
+      <h2 class="section-heading">Your First Liturgy</h2>
+
+      <p>The Divine Liturgy is the central act of the Orthodox Church. It is not a service the parish offers for visitors to evaluate; it is the Church&rsquo;s prayer and offering &mdash; to God, before God, in the company of all who have gone before. You are welcome to enter. The Church will not perform for you, and she will not be embarrassed in your presence. Bring what you bring; she will pray.</p>
+
+      <p>Most parishes celebrate Matins (Orthros) before the Liturgy itself; if you arrive when worship has already begun, that is fine &mdash; the doors stay open, and you are not late for what matters. Modest, unremarkable clothing is the norm. Some parishes are more traditional, others less so; nothing you wear will be wrong if it is not deliberately distracting. Sit where you can see; standing is the older Orthodox practice, but visitors are not expected to stand for two hours.</p>
+
+      <p>The Liturgy is sung from beginning to end. There is incense &mdash; the censer carries the prayers of the saints rising before God (<span class="sv" data-ref="Ps. 141:2">Ps. 141:2</span>). There are icons, which the faithful kiss and bow before; these are venerated, not worshiped &mdash; the honor passes to the one depicted. There are candles, lit before icons as small offerings of prayer for the living and the dead. The priest will pass through the doors of the icon screen carrying the Gospel, and later the bread and wine, in two great processions. If you do not know what is happening, watch the people; do as they do, or remain quietly seated. No one is grading you.</p>
+
+      <p>When the time comes for Holy Communion, the faithful approach to receive the Body and Blood of Christ. <strong>Holy Communion in the Orthodox Church is given only to the baptized and chrismated Orthodox who have prepared through Confession, fasting, and prayer.</strong> Visitors and catechumens do not receive. This is the Church&rsquo;s discipline &mdash; not exclusion of the inquirer, but care for the Mystery and for the inquirer&rsquo;s own readiness. At the end of the Liturgy, many parishes offer antidoron, blessed bread distinct from the consecrated Eucharist, given to all who come forward. You are warmly welcome to receive antidoron.</p>
+
+      <p>When the Liturgy ends, introduce yourself to the priest. He will be glad you came. Most parishes hold coffee hour or fellowship after the service &mdash; you are welcome there, and the people will be happy to meet you. If you have questions &mdash; about anything you saw, about how to attend again, about catechumenate or baptism &mdash; ask the priest. He has heard those questions before.</p>
+
+      <p>One Liturgy will not give you the faith, and it is not meant to. The Liturgy is something you grow into across a lifetime &mdash; the saints have grown into it for two thousand years and are still growing. The first visit is the doorway; the parish locator below points to the doorways nearest you; the priest at any of those doorways is the next step. Come and see.</p>
+    </section>
+
     <section class="oc-section" id="how-do-i-find-a-church">
       <h2 class="section-heading">How Do I Find a Church?</h2>
 
@@ -1183,12 +1175,6 @@ nav{
         <p class="start-here-more"><a href="resources.html">View All Resources &rarr;</a></p>
       </div>
     </section>
-
-    <div class="author-note">
-      <p>I built this site because I know what it feels like to stand at the threshold &mdash; drawn by something you cannot fully name, unsure whether you belong, uncertain where to begin. The Orthodox Church is ancient, vast, and at first glance, a little overwhelming. Icons. Incense. Candles. A liturgy that feels like it comes from another world. Because it does.</p>
-      <p>Orthodox Companion exists to be a gentle companion for that journey &mdash; not to replace the parish, the priest, or the community, but to help you find your footing, answer your questions, and walk with you until you do. Whether you become Orthodox, or simply learn from her tradition, I hope you find what you are looking for here. May God guide your seeking.</p>
-      <p class="author-note-attr">&mdash; A note from the author</p>
-    </div>
 
   </div>
 </div>
@@ -1319,15 +1305,15 @@ var FAQS = [
 ];
 
 /* ═══════════════════════════════════════════════════════════════
-   START HERE RESOURCES — preserved byte-identical from prior version
+   START HERE RESOURCES — curated introductory arc for inquirers
 ═══════════════════════════════════════════════════════════════ */
 var START_RESOURCES = [
+  { name: 'Beginning to Pray', author: 'Metropolitan Anthony Bloom', link: 'https://www.amazon.com/Beginning-Pray-Anthony-Bloom/dp/0809120755' },
+  { name: 'The Orthodox Way', author: 'Metropolitan Kallistos Ware', link: 'https://www.amazon.com/Orthodox-Way-Kallistos/dp/0881416282' },
   { name: 'The Orthodox Church', author: 'Metropolitan Kallistos Ware', link: 'https://www.amazon.com/Orthodox-Church-Timothy-Ware/dp/0140146563' },
   { name: 'For the Life of the World', author: 'Fr. Alexander Schmemann', link: 'https://store.ancientfaith.com/for-the-life-of-the-world/' },
-  { name: 'On the Incarnation', author: 'St. Athanasius the Great', link: 'https://www.newadvent.org/fathers/2802.htm' },
-  { name: 'Ancient Faith Radio', author: 'Dozens of Orthodox podcasts', link: 'https://www.ancientfaith.com/radio' },
-  { name: 'Beginning to Pray', author: 'Metropolitan Anthony Bloom', link: 'https://www.amazon.com/Beginning-Pray-Anthony-Bloom/dp/0809120755' },
-  { name: 'OrthodoxWiki', author: 'Online encyclopedia', link: 'https://orthodoxwiki.org' }
+  { name: 'On the Incarnation', author: 'St. Athanasius the Great', link: 'https://www.amazon.com/Incarnation-Saint-Athanasius-Popular-Patristics/dp/0881414271' },
+  { name: 'Ancient Faith Radio', author: 'Dozens of Orthodox podcasts', link: 'https://www.ancientfaith.com/radio' }
 ];
 
 /* ═══════════════════════════════════════════════════════════════
