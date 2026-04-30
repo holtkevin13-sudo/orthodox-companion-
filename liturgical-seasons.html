@@ -75,6 +75,14 @@
   --border-dim:rgba(138,106,40,0.22);
   --rule:rgba(138,106,40,0.18);
   --rule-soft:rgba(138,106,40,0.12);
+
+  /* vestment colors (parchment-tuned, desaturated) */
+  --vestment-gold:#C9A84C;     /* alias of --gold for explicitness */
+  --vestment-white:#F5EFE0;
+  --vestment-red:#A8453A;
+  --vestment-purple:#5E3A6B;
+  --vestment-green:#4F6B3A;
+  --vestment-blue:#3E587A;
 }
 
 /* ── Base ────────────────────────────────────────────── */
@@ -754,6 +762,144 @@ nav{
   max-width:560px;
   margin:32px auto 18px;
 }
+
+/* ── Vestment color rendering (legend + per-card swatches + modal row) ── */
+
+/* Legend block — visually rhymes with .season-intro-panel */
+.vestment-legend{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:22px 26px;
+  margin-bottom:32px;
+}
+.vestment-legend-prologue{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:18px;
+  font-size:1.02rem;
+}
+.vestment-legend-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.02rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:14px;
+  margin-bottom:14px;
+  border-top:1px solid var(--rule-soft);
+}
+.vestment-legend-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:10px 22px;
+}
+.vestment-legend-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:6px 0;
+}
+.vestment-legend-text{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  flex:1;
+}
+.vestment-legend-color-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.84rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--text-dim);
+}
+.vestment-legend-gloss{
+  font-size:0.94rem;
+  line-height:1.55;
+  color:var(--text-dim);
+}
+
+/* Swatch — base shape, modifier classes set background per color */
+.vestment-swatch{
+  display:inline-block;
+  width:14px;height:14px;
+  border-radius:50%;
+  border:1px solid var(--gold-dim);
+  flex-shrink:0;
+  margin-top:4px;
+  vertical-align:middle;
+}
+.v-color-gold{background:var(--vestment-gold);}
+.v-color-white{background:var(--vestment-white);}
+.v-color-red{background:var(--vestment-red);}
+.v-color-purple{background:var(--vestment-purple);}
+.v-color-green{background:var(--vestment-green);}
+.v-color-blue{background:var(--vestment-blue);}
+
+/* Per-card swatch slot — sits before the season name */
+.season-card-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:6px;
+}
+.season-card-header .vestment-swatch{
+  width:12px;height:12px;
+  margin-top:0;
+}
+.season-card-header .season-card-name{
+  margin-bottom:0;
+}
+
+/* Modal vestment row — primary swatch + name (+ secondary), gloss, confidence note */
+.sm2-vestment{
+  margin-bottom:16px;
+  padding:12px 14px;
+  background:var(--bg-page);
+  border:1px solid var(--rule-soft);
+  border-left:2px solid var(--gold-dim);
+  border-radius:2px;
+}
+.sm2-vestment-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.sm2-vestment-row .vestment-swatch{
+  margin-top:0;
+}
+.sm2-vestment-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.84rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--gold-light);
+}
+.sm2-vestment-secondary{
+  font-size:0.86rem;
+  font-style:italic;
+  color:var(--text-muted);
+}
+.sm2-vestment-gloss{
+  font-size:0.94rem;
+  line-height:1.6;
+  color:var(--text-dim);
+  margin-bottom:6px;
+}
+.sm2-vestment-confidence{
+  font-size:0.82rem;
+  font-style:italic;
+  color:var(--text-muted);
+}
+.sm2-vestment-confidence:empty{display:none;}
+
 </style>
 </head>
 <body>
@@ -862,6 +1008,55 @@ nav{
       <p>The Church does not merely remember the events of salvation &mdash; she enters into them. At each feast, what is commemorated becomes present. Fasting, prayer, and worship are not three separate disciplines but one integrated movement of the whole person toward God. Select any season below to learn more.</p>
     </div>
 
+    <aside class="vestment-legend" aria-labelledby="vestment-legend-title">
+      <p class="vestment-legend-prologue">Vestment color in the Orthodox Church is liturgical practice, not doctrine. The colors below reflect Greek Orthodox Archdiocese (GOA) usage, which is the reference practice for this site. Antiochian, OCA, ROCOR, Serbian, and Romanian parishes diverge in specific cases &mdash; most visibly in the days of Holy Week, the use of black, and the colors worn during the four fasts. The GOA itself observes that no formal rubric governs vestment color across the Orthodox world; common practice has shaped the scheme named here, and your own parish is the local authority.</p>
+      <div class="vestment-legend-title" id="vestment-legend-title">Vestment Colors</div>
+      <div class="vestment-legend-grid">
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-gold" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">Gold</span>
+            <span class="vestment-legend-gloss">The default of the year &mdash; joy, glory, and the divine light; worn on Sundays in ordinary time and on most feasts of the Lord.</span>
+          </div>
+        </div>
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-white" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">White</span>
+            <span class="vestment-legend-gloss">The color of Pascha, of light, and of the Lord's burial cloth &mdash; worn at Theophany, the Transfiguration, Pascha, and at funerals, because the funeral is a passing into life.</span>
+          </div>
+        </div>
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-red" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">Red</span>
+            <span class="vestment-legend-gloss">The color of the martyrs' blood and of royal joy &mdash; worn on the feasts of the martyrs and, in some uses, for Pascha itself.</span>
+          </div>
+        </div>
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-purple" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">Purple</span>
+            <span class="vestment-legend-gloss">The penitential color &mdash; worn through the weekdays of Great Lent. The bright color of Sunday returns each week, because every Sunday is a little Pascha.</span>
+          </div>
+        </div>
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-green" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">Green</span>
+            <span class="vestment-legend-gloss">The color of life and of the Spirit &mdash; worn on Pentecost, Palm Sunday, and the feasts of the Cross in Greek and American practice.</span>
+          </div>
+        </div>
+        <div class="vestment-legend-item">
+          <span class="vestment-swatch v-color-blue" aria-hidden="true"></span>
+          <div class="vestment-legend-text">
+            <span class="vestment-legend-color-name">Blue</span>
+            <span class="vestment-legend-gloss">The color of the Theotokos &mdash; worn on her feasts, after the iconographic tradition of the Mother of God in blue.</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
     <div class="season-wheel" id="seasonWheel"></div>
 
     <div id="season-modal">
@@ -871,6 +1066,15 @@ nav{
           <div class="sm2-fast" id="sm2-fast"></div>
         </div>
         <div class="sm2-body">
+          <div class="sm2-vestment" id="sm2-vestment" hidden>
+            <div class="sm2-vestment-row">
+              <span class="vestment-swatch" id="sm2-vestment-swatch" aria-hidden="true"></span>
+              <span class="sm2-vestment-name" id="sm2-vestment-name"></span>
+              <span class="sm2-vestment-secondary" id="sm2-vestment-secondary"></span>
+            </div>
+            <div class="sm2-vestment-gloss" id="sm2-vestment-gloss"></div>
+            <div class="sm2-vestment-confidence" id="sm2-vestment-confidence"></div>
+          </div>
           <div class="sm2-desc" id="sm2-desc"></div>
           <div class="sm2-links" id="sm2-links"></div>
         </div>
@@ -978,8 +1182,63 @@ document.addEventListener('DOMContentLoaded',function(){
 <script>
 /* ── Liturgical Seasons — data + render + modal ──────── */
 
-var SEASONS = [{"id": "pre_lenten", "label": "Pre-Lenten Season", "description": "The preparatory period governed by the Triodion \u2014 four Sundays leading the Church into Great Lent. The Publican & Pharisee teaches that fasting without humility profits nothing. The Prodigal Son holds out the Father\u2019s mercy to all who return. Meatfare Sunday confronts the faithful with the Last Judgment, stirring charity and almsgiving. Forgiveness Sunday opens the Fast with a mutual exchange of forgiveness: you cannot enter Great Lent holding a grudge."}, {"id": "great_lent", "label": "Great Lent", "description": "The Holy Forty Days beginning on Clean Monday \u2014 the Church\u2019s annual ascetic pilgrimage toward Pascha, marked by strict fasting, the Great Canon of St. Andrew of Crete, and the five Sundays of Lent: Orthodoxy, St. Gregory Palamas, the Veneration of the Cross, St. John Climacus, and St. Mary of Egypt. Lazarus Saturday and Palm Sunday stand at its threshold, opening into Holy Week."}, {"id": "holy_week", "label": "Holy Week", "description": "The Great and Holy Week \u2014 from Palm Sunday through Holy Saturday \u2014 the most solemn days of the Orthodox year. The Bridegroom Services of Holy Monday through Wednesday, the Mystical Supper on Holy Thursday, the Crucifixion on Great and Holy Friday, and the Descent into Hades on Holy Saturday lead the whole Church to the threshold of the Resurrection."}, {"id": "pascha", "label": "Pascha", "description": "The Feast of Feasts and the Celebration of Celebrations \u2014 the Resurrection of Christ from the dead. Pascha is not one feast among many but the center and foundation of the entire Orthodox year. Every Sunday is a little Pascha; every liturgical season finds its meaning in relation to this singular event. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life."}, {"id": "bright_week", "label": "Bright Week", "description": "The week immediately following Pascha \u2014 entirely fast-free, with the Royal Doors remaining open throughout and no kneeling permitted. The Paschal troparion replaces all ordinary hymnody at every service. Bright Week is an extension of Pascha itself: the Church dwells in the light of the Resurrection before the ordinary rhythm of the world resumes."}, {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season from Pascha through All Saints Sunday \u2014 fifty days culminating in Pentecost and crowned by All Saints Sunday. Its arc: the Resurrection proclaimed to Thomas, the Ascension of Christ on the 40th day, the descent of the Holy Spirit at Pentecost on the 50th, and the glorification of all the saints on the Sunday following. Throughout, the Pentecostarion governs the Church\u2019s worship; fasting gradually resumes after Bright Week."}, {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following All Saints Sunday, continuing until the Triodion begins \u2014 governed by the Octoechos (the eight-tone weekly cycle), the Menaion (fixed feasts and saints\u2019 commemorations), and the ordinary rhythm of Wednesday and Friday fasting. The tone cycle resets to Tone 1 at Pascha and progresses continuously, shaping every week\u2019s worship with a distinct theological voice."}, {"id": "apostles_fast", "label": "Apostles\u2019 Fast", "description": "A moderate fast beginning on the Monday after All Saints Sunday and ending on the eve of June 29, the Feast of the Holy Apostles Peter and Paul. Its length varies considerably from year to year \u2014 as few as eight days when Pascha falls late, as many as six weeks when Pascha falls early. It prepares the faithful to honor the chief Apostles and continues the Pentecostal spirit of witness to the world."}, {"id": "dormition_fast", "label": "Dormition Fast", "description": "A strict fast from August 1\u201314, preparing the faithful for the Dormition of the Most Holy Theotokos on August 15. Observed with rules comparable to Great Lent \u2014 no meat, fish, oil, or wine on most days, with wine and oil permitted on weekends and fish permitted on the Feast of the Transfiguration (August 6), which falls within it. It is the most rigorous of the summer fasts."}, {"id": "nativity_fast", "label": "Nativity Fast", "description": "A forty-day moderate fast from November 15 through December 24, preparing the faithful for the Nativity of Christ. Known in Orthodox tradition as Philip\u2019s Fast \u2014 beginning the day after the Feast of the Holy Apostle Philip (November 14). It grows in intensity as the Nativity approaches, paralleling in spirit the Lenten discipline, though more moderate in its fasting rules."}, {"id": "nativity_season", "label": "Nativity Season", "description": "The festal cycle from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration. Within it: the Circumcision of Christ and the memory of St. Basil the Great (January 1), the Eve of Theophany (January 5 \u2014 a strict fast day), and the Theophany itself, when the Holy Trinity is revealed at the Jordan and the waters of creation are sanctified."}];
+var SEASONS = [
+  {"id": "pre_lenten", "label": "Pre-Lenten Season", "description": "The preparatory period governed by the Triodion \u2014 four Sundays leading the Church into Great Lent. The Publican & Pharisee teaches that fasting without humility profits nothing. The Prodigal Son holds out the Father\u2019s mercy to all who return. Meatfare Sunday confronts the faithful with the Last Judgment, stirring charity and almsgiving. Forgiveness Sunday opens the Fast with a mutual exchange of forgiveness: you cannot enter Great Lent holding a grudge.", "vestment_id": "pre_lenten"},
+  {"id": "great_lent", "label": "Great Lent", "description": "The Holy Forty Days beginning on Clean Monday \u2014 the Church\u2019s annual ascetic pilgrimage toward Pascha, marked by strict fasting, the Great Canon of St. Andrew of Crete, and the five Sundays of Lent: Orthodoxy, St. Gregory Palamas, the Veneration of the Cross, St. John Climacus, and St. Mary of Egypt. Lazarus Saturday and Palm Sunday stand at its threshold, opening into Holy Week.", "vestment_id": "great_lent"},
+  {"id": "holy_week", "label": "Holy Week", "description": "The Great and Holy Week \u2014 from Palm Sunday through Holy Saturday \u2014 the most solemn days of the Orthodox year. The Bridegroom Services of Holy Monday through Wednesday, the Mystical Supper on Holy Thursday, the Crucifixion on Great and Holy Friday, and the Descent into Hades on Holy Saturday lead the whole Church to the threshold of the Resurrection.", "vestment_id": "holy_week"},
+  {"id": "pascha", "label": "Pascha", "description": "The Feast of Feasts and the Celebration of Celebrations \u2014 the Resurrection of Christ from the dead. Pascha is not one feast among many but the center and foundation of the entire Orthodox year. Every Sunday is a little Pascha; every liturgical season finds its meaning in relation to this singular event. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.", "vestment_id": "pascha"},
+  {"id": "bright_week", "label": "Bright Week", "description": "The week immediately following Pascha \u2014 entirely fast-free, with the Royal Doors remaining open throughout and no kneeling permitted. The Paschal troparion replaces all ordinary hymnody at every service. Bright Week is an extension of Pascha itself: the Church dwells in the light of the Resurrection before the ordinary rhythm of the world resumes.", "vestment_id": "bright_week"},
+  {"id": "pentecostarion", "label": "Pentecostarion", "description": "The Paschal season from Pascha through All Saints Sunday \u2014 fifty days culminating in Pentecost and crowned by All Saints Sunday. Its arc: the Resurrection proclaimed to Thomas, the Ascension of Christ on the 40th day, the descent of the Holy Spirit at Pentecost on the 50th, and the glorification of all the saints on the Sunday following. Throughout, the Pentecostarion governs the Church\u2019s worship; fasting gradually resumes after Bright Week.", "vestment_id": "pentecostarion"},
+  {"id": "after_pentecost", "label": "After Pentecost", "description": "The long season following All Saints Sunday, continuing until the Triodion begins \u2014 governed by the Octoechos (the eight-tone weekly cycle), the Menaion (fixed feasts and saints\u2019 commemorations), and the ordinary rhythm of Wednesday and Friday fasting. The tone cycle resets to Tone 1 at Pascha and progresses continuously, shaping every week\u2019s worship with a distinct theological voice.", "vestment_id": "after_pentecost"},
+  {"id": "apostles_fast", "label": "Apostles\u2019 Fast", "description": "A moderate fast beginning on the Monday after All Saints Sunday and ending on the eve of June 29, the Feast of the Holy Apostles Peter and Paul. Its length varies considerably from year to year \u2014 as few as eight days when Pascha falls late, as many as six weeks when Pascha falls early. It prepares the faithful to honor the chief Apostles and continues the Pentecostal spirit of witness to the world.", "vestment_id": "apostles_fast"},
+  {"id": "dormition_fast", "label": "Dormition Fast", "description": "A strict fast from August 1\u201314, preparing the faithful for the Dormition of the Most Holy Theotokos on August 15. Observed with rules comparable to Great Lent \u2014 no meat, fish, oil, or wine on most days, with wine and oil permitted on weekends and fish permitted on the Feast of the Transfiguration (August 6), which falls within it. It is the most rigorous of the summer fasts.", "vestment_id": "dormition_fast"},
+  {"id": "nativity_fast", "label": "Nativity Fast", "description": "A forty-day moderate fast from November 15 through December 24, preparing the faithful for the Nativity of Christ. Known in Orthodox tradition as Philip\u2019s Fast \u2014 beginning the day after the Feast of the Holy Apostle Philip (November 14). It grows in intensity as the Nativity approaches, paralleling in spirit the Lenten discipline, though more moderate in its fasting rules.", "vestment_id": "nativity_fast"},
+  {"id": "nativity_season", "label": "Nativity Season", "description": "The festal cycle from the Nativity of Christ (December 25) through the Theophany (January 6) \u2014 a fast-free season of sustained celebration. Within it: the Circumcision of Christ and the memory of St. Basil the Great (January 1), the Eve of Theophany (January 5 \u2014 a strict fast day), and the Theophany itself, when the Holy Trinity is revealed at the Jordan and the waters of creation are sanctified.", "vestment_id": "nativity_season"}
+];
 var META = {"pre_lenten": {"fasting": "Preparatory"}, "great_lent": {"fasting": "Strict Fast"}, "holy_week": {"fasting": "Strictest Fast"}, "pascha": {"fasting": "Fast Free"}, "bright_week": {"fasting": "Fast Free"}, "pentecostarion": {"fasting": "Reduced fasting"}, "after_pentecost": {"fasting": "Wed & Fri"}, "apostles_fast": {"fasting": "Moderate Fast"}, "dormition_fast": {"fasting": "Strict Fast"}, "nativity_fast": {"fasting": "Moderate Fast"}, "nativity_season": {"fasting": "Fast Free"}};
+
+/* ── Vestment colors — canonical GOA practice (per Magoulias, The Priest as Liturgist,
+   Greek Orthodox Metropolis of San Francisco, 2010, p. 20, as published by goarch.org).
+   This object carries seasons AND great feasts in one place; Stage 2 chats lift it
+   byte-identical and filter by `scope`. ─── */
+var VESTMENT_COLORS = {
+  /* Season-scope entries (rendered on this page) */
+  "pre_lenten":      { primary: "gold",   secondary: null,    scope: "season", confidence: "low",    confidence_note: "Common GOA practice; the Triodion is liturgically distinct but not yet penitential in the Lenten sense.", gloss: "The Triodion Sundays still belong to ordinary time; Lenten purple begins at Forgiveness Vespers." },
+  "great_lent":      { primary: "purple", secondary: "gold",  scope: "season", confidence: "high",   confidence_note: "", gloss: "Purple marks the season's penitential weight; on every Sunday, the bright color of the Resurrection returns." },
+  "holy_week":       { primary: "purple", secondary: "white", scope: "season", confidence: "low",    confidence_note: "Common GOA practice; some parishes shift colors day-by-day through Holy Week, particularly at the Holy Thursday Liturgy and the Twelve Gospels.", gloss: "Purple carries the Church through the Bridegroom Services and the Crucifixion; at Holy Saturday Liturgy, the vestments shift to white at the prokeimenon." },
+  "pascha":          { primary: "white",  secondary: "red",   scope: "season", confidence: "high",   confidence_note: "", gloss: "White for the linen of the empty tomb; in some uses, red is also worn for the royal joy of the Feast of Feasts." },
+  "bright_week":     { primary: "white",  secondary: null,    scope: "season", confidence: "high",   confidence_note: "", gloss: "White through the whole week as a single day of Resurrection." },
+  "pentecostarion":  { primary: "white",  secondary: "gold",  scope: "season", confidence: "low",    confidence_note: "Common GOA practice; some parishes shift to gold after Ascension.", gloss: "White through Bright Week and on into the paschal season; some parishes shift to gold after Ascension as the Church awaits the Spirit." },
+  "after_pentecost": { primary: "gold",   secondary: null,    scope: "season", confidence: "high",   confidence_note: "", gloss: "Gold is the long color of the year \u2014 every Sunday a little Pascha." },
+  "apostles_fast":   { primary: "gold",   secondary: null,    scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues the season after All Saints; red is commonly worn at the feast of Saints Peter and Paul." },
+  "dormition_fast":  { primary: "gold",   secondary: "blue",  scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues the summer rhythm; blue marks the Dormition itself on August 15, and white is worn at the Transfiguration on August 6." },
+  "nativity_fast":   { primary: "gold",   secondary: null,    scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues through the fast as the Church approaches the feast of the Nativity." },
+  "nativity_season": { primary: "white",  secondary: "gold",  scope: "season", confidence: "medium", confidence_note: "", gloss: "White in some GOA uses for the Nativity itself; gold from the second day of Christmas through Theophany." },
+
+  /* Great-feast-scope entries (carried for Stage 2 lift to feasts.html; not rendered on this page) */
+  "nativity_theotokos":  { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue, after the iconographic tradition that clothes the Mother of God in the color of the heavens." },
+  "exaltation_cross":    { primary: "green", secondary: "red",  scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green in Greek and American practice \u2014 the Cross as the tree of life; red in Jerusalem and on Mt. Athos, after the blood of the Crucified." },
+  "entrance_theotokos":  { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the Theotokos, who as a small child entered the Temple to become herself the living temple of God." },
+  "nativity_christ":     { primary: "white", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White in some uses for the day itself; gold from the second day of Christmas forward." },
+  "theophany":           { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the revelation of the Holy Trinity at the Jordan and the sanctification of the waters." },
+  "presentation_christ": { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the Lord brought into the Temple, met by the elder Symeon and Anna the Prophetess." },
+  "annunciation":        { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the feast of the Theotokos, who heard the angel and answered yes." },
+  "palm_sunday":         { primary: "green", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green for the palms \u2014 the same life-giving color worn at Pentecost." },
+  "ascension":           { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the Lord taken up in glory, the first-fruits of our humanity entering heaven." },
+  "pentecost":           { primary: "green", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green for the descent of the Spirit and the birth of the Church into the world." },
+  "transfiguration":     { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the uncreated light revealed to the disciples on Tabor \u2014 the glory of the Lord made visible." },
+  "dormition":           { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the falling-asleep of the Theotokos \u2014 her passing into life, where she goes before us all." }
+};
+
+/* Color-name lookup: id used in markup → display name shown in legend and modal */
+var VESTMENT_COLOR_NAMES = {
+  "gold":   "Gold",
+  "white":  "White",
+  "red":    "Red",
+  "purple": "Purple",
+  "green":  "Green",
+  "blue":   "Blue"
+};
 
 function openSeason(id) {
   var s = null;
@@ -989,6 +1248,24 @@ function openSeason(id) {
   document.getElementById('sm2-title').textContent = s.label;
   document.getElementById('sm2-fast').textContent = 'Fasting: ' + (m.fasting || 'See Church calendar');
   document.getElementById('sm2-desc').textContent = s.description;
+
+  /* Vestment block — populate or hide */
+  var v = VESTMENT_COLORS[s.vestment_id || s.id];
+  var vBlock = document.getElementById('sm2-vestment');
+  if (v) {
+    var vSwatch = document.getElementById('sm2-vestment-swatch');
+    vSwatch.className = 'vestment-swatch v-color-' + v.primary;
+    document.getElementById('sm2-vestment-name').textContent =
+      'Vestments: ' + (VESTMENT_COLOR_NAMES[v.primary] || v.primary);
+    document.getElementById('sm2-vestment-secondary').textContent =
+      v.secondary ? '(also ' + (VESTMENT_COLOR_NAMES[v.secondary] || v.secondary) + ')' : '';
+    document.getElementById('sm2-vestment-gloss').textContent = v.gloss || '';
+    document.getElementById('sm2-vestment-confidence').textContent = v.confidence_note || '';
+    vBlock.hidden = false;
+  } else {
+    vBlock.hidden = true;
+  }
+
   document.getElementById('sm2-links').innerHTML =
     '<a href="calendar.html" class="sm2-link" target="_blank">Liturgical Calendar</a>' +
     '<a href="fasting.html" class="sm2-link" target="_blank">Fasting Guide</a>' +
@@ -1004,8 +1281,14 @@ function renderSeasons() {
   for (var i = 0; i < SEASONS.length; i++) {
     var s = SEASONS[i];
     var m = META[s.id] || {};
+    var v = VESTMENT_COLORS[s.vestment_id || s.id];
+    var swatchHtml = v
+      ? '<span class="vestment-swatch v-color-' + v.primary + '" aria-hidden="true"></span>'
+      : '';
     html += '<div class="season-card" data-id="' + s.id + '">';
-    html += '<div class="season-card-name">' + s.label + '</div>';
+    html += '<div class="season-card-header">' + swatchHtml +
+              '<div class="season-card-name">' + s.label + '</div>' +
+            '</div>';
     html += '<div class="season-card-fasting">' + (m.fasting || '') + '</div>';
     html += '<div class="season-card-desc">' + s.description.substring(0, 140) + '&hellip;</div>';
     html += '</div>';
