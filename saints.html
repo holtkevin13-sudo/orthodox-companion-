@@ -351,32 +351,39 @@ nav{
 }
 .cat-card.active .cat-count{color:var(--gold-on-dark);}
 
-/* ── Saints list panel ───────────────────────────────── */
+/* ── Clear-filters affordance (chip-row right edge) ─── */
+.cat-grid-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:28px;}
+.cat-grid-row .cat-grid{flex:1;margin-bottom:0;}
+.clear-filters{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-style:italic;
+  color:var(--body-link, #7A5C1F);
+  background:transparent;border:none;cursor:pointer;padding:4px 2px;
+  border-bottom:1px solid currentColor;
+  transition:color 0.15s,border-color 0.15s;
+  display:none;flex-shrink:0;
+}
+.clear-filters.visible{display:inline-block;}
+.clear-filters:hover{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+
+/* ── Saints list panel (always visible) ──────────────── */
 .saints-list-wrap{
   margin-top:24px;
   background:var(--surface);
-  border:1px solid var(--gold-dim);border-top:2px solid var(--gold);
+  border:1px solid var(--gold-dim);
   border-radius:3px;overflow:hidden;
-  display:none;
-  animation:slideDown 0.3s ease;
 }
-.saints-list-wrap.open{display:block;}
-@keyframes slideDown{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
 .saints-list-header{
   padding:16px 22px;border-bottom:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:space-between;
   background:var(--surface-deep);
 }
 .saints-list-title{
-  font-family:'Cinzel',serif;font-size:1.05rem;
-  color:var(--text);letter-spacing:0.06em;font-weight:600;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1rem;font-style:italic;
+  color:var(--gold-light);letter-spacing:0.02em;font-weight:500;
 }
-.saints-list-close{
-  background:transparent;border:none;color:var(--text-muted);
-  font-size:1.3rem;cursor:pointer;padding:0;line-height:1;
-  transition:color 0.2s;
-}
-.saints-list-close:hover{color:var(--gold-light);}
 .saints-search-wrap{padding:14px 22px;border-bottom:1px solid var(--rule-soft);}
 .saints-search{
   width:100%;background:var(--bg-page);border:1px solid var(--gold-dim);
@@ -872,59 +879,61 @@ nav{
   </div>
 </div>
 
-<!-- CATEGORY GRID -->
+<!-- CATEGORY FILTERS + ALPHABETICAL LIST -->
 <div class="section">
   <div class="section-header">
-    <span class="section-label">Browse by Category</span>
+    <span class="section-label">Filter by Category</span>
     <div class="section-rule"></div>
   </div>
-  <div class="cat-grid" id="catGrid">
-    <div class="cat-card" onclick="openCategory('apostles')">
-      <span class="cat-name">Apostles &amp; Evangelists</span>
-      <span class="cat-count" id="count-apostles"></span>
+  <div class="cat-grid-row">
+    <div class="cat-grid" id="catGrid">
+      <div class="cat-card" onclick="toggleCategoryFilter('apostles')">
+        <span class="cat-name">Apostles &amp; Evangelists</span>
+        <span class="cat-count" id="count-apostles"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('prophets')">
+        <span class="cat-name">Prophets</span>
+        <span class="cat-count" id="count-prophets"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('martyrs')">
+        <span class="cat-name">Martyrs &amp; Confessors</span>
+        <span class="cat-count" id="count-martyrs"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('monastics')">
+        <span class="cat-name">Monastics &amp; Desert Fathers</span>
+        <span class="cat-count" id="count-monastics"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('hierarchs')">
+        <span class="cat-name">Hierarchs &amp; Bishops</span>
+        <span class="cat-count" id="count-hierarchs"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('women')">
+        <span class="cat-name">Holy Women</span>
+        <span class="cat-count" id="count-women"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('wonderworkers')">
+        <span class="cat-name">Wonderworkers</span>
+        <span class="cat-count" id="count-wonderworkers"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('equal-to-apostles')">
+        <span class="cat-name">Equal-to-the-Apostles</span>
+        <span class="cat-count" id="count-equal-to-apostles"></span>
+      </div>
+      <div class="cat-card" onclick="toggleCategoryFilter('old-testament')">
+        <span class="cat-name">Old Testament Saints</span>
+        <span class="cat-count" id="count-old-testament"></span>
+      </div>
     </div>
-    <div class="cat-card" onclick="openCategory('prophets')">
-      <span class="cat-name">Prophets</span>
-      <span class="cat-count" id="count-prophets"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('martyrs')">
-      <span class="cat-name">Martyrs &amp; Confessors</span>
-      <span class="cat-count" id="count-martyrs"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('monastics')">
-      <span class="cat-name">Monastics &amp; Desert Fathers</span>
-      <span class="cat-count" id="count-monastics"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('hierarchs')">
-      <span class="cat-name">Hierarchs &amp; Bishops</span>
-      <span class="cat-count" id="count-hierarchs"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('women')">
-      <span class="cat-name">Holy Women</span>
-      <span class="cat-count" id="count-women"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('wonderworkers')">
-      <span class="cat-name">Wonderworkers</span>
-      <span class="cat-count" id="count-wonderworkers"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('equal-to-apostles')">
-      <span class="cat-name">Equal-to-the-Apostles</span>
-      <span class="cat-count" id="count-equal-to-apostles"></span>
-    </div>
-    <div class="cat-card" onclick="openCategory('old-testament')">
-      <span class="cat-name">Old Testament Saints</span>
-      <span class="cat-count" id="count-old-testament"></span>
-    </div>
+    <button class="clear-filters" id="clearFiltersBtn" onclick="clearFilters()">Clear filters</button>
   </div>
 
-  <!-- Saints list (opens below the grid) -->
+  <!-- Saints list (always visible; filtered by chip selection) -->
   <div class="saints-list-wrap" id="saintsListWrap">
     <div class="saints-list-header">
-      <div class="saints-list-title" id="saintsListTitle">Saints</div>
-      <button class="saints-list-close" onclick="closeCategory()">&#x2715;</button>
+      <div class="saints-list-title" id="saintsListTitle">Showing all saints</div>
     </div>
     <div class="saints-search-wrap">
-      <input class="saints-search" type="text" id="saintsSearch" placeholder="Search within this category&hellip;" oninput="filterSaints(this.value)" autocomplete="off"/>
+      <input class="saints-search" type="text" id="saintsSearch" placeholder="Search by name or feast day&hellip;" oninput="filterSaints(this.value)" autocomplete="off"/>
     </div>
     <div class="alpha-bar" id="alphaBar"></div>
     <div class="saints-list-body" id="saintsListBody"></div>
@@ -2855,8 +2864,10 @@ var CATEGORIES = {
 };
 
 // ── State ─────────────────────────────────────────────────────
-var currentCategory = null;
+var activeFilters = [];   // categories currently included in the filter (empty = show all)
+var currentQuery = '';    // current search query
 var currentSaint = null;
+var SAINTS_SORTED = [];   // populated on init: all saints sorted alphabetically by name
 
 // ── NAV ───────────────────────────────────────────────────────
 var drawerOpen = false;
@@ -2989,52 +3000,83 @@ async function loadSaintOfTheDay(){
   document.getElementById('sotdBtn').onclick = function(){ openSaint(saint); };
 }
 
-// ── Category list ─────────────────────────────────────────────
+// ── Category filters (multi-select, union semantics) ─────────
 var filteredSaints = [];
 
-function openCategory(cat){
-  currentCategory = cat;
-  // Highlight active card
-  document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
-  event.currentTarget.classList.add('active');
-
-  var catConfig = CATEGORIES[cat];
-  document.getElementById('saintsListTitle').textContent = catConfig.name;
-  document.getElementById('saintsSearch').value = '';
-
-  filteredSaints = SAINTS.filter(function(s){ return s.category === cat; })
-    .sort(function(a,b){ return a.name.localeCompare(b.name); });
-
-  renderSaintsList(filteredSaints);
-  buildAlphaBar(filteredSaints);
-
-  var wrap = document.getElementById('saintsListWrap');
-  wrap.classList.add('open');
-  wrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+function applyFilters(filters, query){
+  // base: empty filter array → all saints; otherwise union of selected categories
+  var base = (!filters || !filters.length)
+    ? SAINTS_SORTED
+    : SAINTS_SORTED.filter(function(s){ return filters.indexOf(s.category) !== -1; });
+  var q = (query || '').toLowerCase().trim();
+  if(!q) return base;
+  return base.filter(function(s){
+    return s.name.toLowerCase().includes(q) || s.feastDay.toLowerCase().includes(q);
+  });
 }
 
-function closeCategory(){
-  document.getElementById('saintsListWrap').classList.remove('open');
+function toggleCategoryFilter(cat){
+  var idx = activeFilters.indexOf(cat);
+  if(idx === -1) activeFilters.push(cat);
+  else activeFilters.splice(idx, 1);
+
+  // Update chip active state
+  document.querySelectorAll('.cat-card').forEach(function(c){
+    var inAttr = c.getAttribute('onclick') || '';
+    var match = inAttr.match(/toggleCategoryFilter\('([^']+)'\)/);
+    if(!match) return;
+    if(activeFilters.indexOf(match[1]) !== -1) c.classList.add('active');
+    else c.classList.remove('active');
+  });
+
+  // Show/hide "Clear filters" affordance
+  var clearBtn = document.getElementById('clearFiltersBtn');
+  if(clearBtn) clearBtn.classList.toggle('visible', activeFilters.length > 0);
+
+  rerender();
+}
+
+function clearFilters(){
+  activeFilters = [];
   document.querySelectorAll('.cat-card').forEach(function(c){ c.classList.remove('active'); });
-  currentCategory = null;
+  var clearBtn = document.getElementById('clearFiltersBtn');
+  if(clearBtn) clearBtn.classList.remove('visible');
+  rerender();
 }
 
 function filterSaints(query){
-  var base = currentCategory
-    ? SAINTS.filter(function(s){ return s.category === currentCategory; })
-    : SAINTS;
-  var q = query.toLowerCase().trim();
-  filteredSaints = base.filter(function(s){
-    return !q || s.name.toLowerCase().includes(q) || s.feastDay.toLowerCase().includes(q);
-  }).sort(function(a,b){ return a.name.localeCompare(b.name); });
+  currentQuery = query || '';
+  rerender();
+}
+
+function rerender(){
+  filteredSaints = applyFilters(activeFilters, currentQuery);
   renderSaintsList(filteredSaints);
   buildAlphaBar(filteredSaints);
+  updateListTitle(filteredSaints);
+}
+
+function updateListTitle(saints){
+  var el = document.getElementById('saintsListTitle');
+  if(!el) return;
+  var n = saints.length;
+  var noun = (n === 1) ? 'saint' : 'saints';
+  var text;
+  if(activeFilters.length === 0){
+    text = 'Showing all ' + n + ' ' + noun;
+  } else if(activeFilters.length === 1){
+    var catName = (CATEGORIES[activeFilters[0]] && CATEGORIES[activeFilters[0]].name) || activeFilters[0];
+    text = 'Showing ' + n + ' ' + noun + ' \u2014 ' + catName;
+  } else {
+    text = 'Showing ' + n + ' ' + noun + ' across ' + activeFilters.length + ' categories';
+  }
+  el.textContent = text;
 }
 
 function renderSaintsList(saints){
   var body = document.getElementById('saintsListBody');
   if(!saints.length){
-    body.innerHTML = '<div class="saints-empty">No saints found.</div>';
+    body.innerHTML = '<div class="saints-empty">No saints in the selected categories.</div>';
     return;
   }
   var html = '';
@@ -3174,14 +3216,23 @@ function shareSaint(){
 
 // ── Init ──────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function(){
+  // Build the alphabetically-sorted master list (used by every render)
+  SAINTS_SORTED = SAINTS.slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
+
   updateCounts();
   loadSaintOfTheDay();   // async — uses calendar engine
 
+  // Paint the always-visible alphabetical list on first load (Phase 2A default-view rebuild)
+  rerender();
+
+  // Deep-link: ?cat=hierarchs activates that single chip on load. After load,
+  // user clicks update in-page state only; URL is not re-written.
   var params = new URLSearchParams(window.location.search);
   var cat = params.get('cat');
   if(cat && CATEGORIES[cat]){
-    setTimeout(function(){ openCategory(cat); }, 300);
+    toggleCategoryFilter(cat);
   }
+  // Deep-link: ?saint=<id> opens the profile modal directly
   var saintId = params.get('saint');
   if(saintId){
     var s = SAINTS.find(function(x){ return x.id === saintId; });
