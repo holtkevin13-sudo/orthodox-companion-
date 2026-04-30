@@ -91,24 +91,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orthodoxcompanion.com/blog.html</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://orthodoxcompanion.com/chatbot.html</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://orthodoxcompanion.com/account.html</loc>
-    <lastmod>2026-03-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://orthodoxcompanion.com/search.html</loc>
     <lastmod>2026-03-29</lastmod>
     <changefreq>monthly</changefreq>
