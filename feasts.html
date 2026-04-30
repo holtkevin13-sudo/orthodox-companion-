@@ -75,6 +75,14 @@
   --border-dim:rgba(138,106,40,0.22);
   --rule:rgba(138,106,40,0.18);
   --rule-soft:rgba(138,106,40,0.12);
+
+  /* vestment colors (parchment-tuned, desaturated) */
+  --vestment-gold:#C9A84C;     /* alias of --gold for explicitness */
+  --vestment-white:#F5EFE0;
+  --vestment-red:#A8453A;
+  --vestment-purple:#5E3A6B;
+  --vestment-green:#4F6B3A;
+  --vestment-blue:#3E587A;
 }
 
 /* ── Base ────────────────────────────────────────────── */
@@ -552,10 +560,11 @@ nav{
   transform:translateY(-1px);
 }
 .feast-name{
-  font-family:'Cinzel',Georgia,serif;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
   font-size:1rem;font-weight:600;
   color:var(--text);
-  letter-spacing:0.04em;
+  letter-spacing:0.06em;
   margin-bottom:5px;
 }
 .feast-greek-full{
@@ -648,9 +657,10 @@ nav{
   background:var(--surface-deep);
 }
 .fm-title{
-  font-family:'Cinzel',Georgia,serif;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
   font-size:1.25rem;font-weight:600;
-  color:var(--text);letter-spacing:0.05em;
+  color:var(--text);letter-spacing:0.06em;
   margin-bottom:6px;
 }
 .fm-greek-full{
@@ -711,6 +721,176 @@ nav{
   transition:color 0.2s;
 }
 .fm-close:hover{color:var(--gold-light);}
+
+/* ── Vestment color rendering (legend + per-card swatches + modal row) ── */
+
+/* Legend block — visually rhymes with .season-intro-panel */
+.vestment-legend{
+  background:var(--bg-page);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  border-radius:2px;
+  padding:22px 26px;
+  margin-bottom:32px;
+}
+.vestment-legend-prologue{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:18px;
+  font-size:1.02rem;
+}
+.vestment-legend-title{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.02rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:14px;
+  margin-bottom:14px;
+  border-top:1px solid var(--rule-soft);
+}
+.vestment-legend-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:10px 22px;
+}
+.vestment-legend-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  padding:6px 0;
+}
+.vestment-legend-text{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  flex:1;
+}
+.vestment-legend-color-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.84rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--text-dim);
+}
+.vestment-legend-gloss{
+  font-size:0.94rem;
+  line-height:1.55;
+  color:var(--text-dim);
+}
+.vestment-legend-attribution{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--rule-soft);
+  font-size:0.86rem;
+  font-style:italic;
+  color:var(--text-muted);
+  text-align:center;
+}
+
+/* Swatch — base shape, modifier classes set background per color */
+.vestment-swatch{
+  display:inline-block;
+  width:14px;height:14px;
+  border-radius:50%;
+  border:1px solid var(--gold-dim);
+  flex-shrink:0;
+  margin-top:4px;
+  vertical-align:middle;
+}
+.v-color-gold{background:var(--vestment-gold);}
+.v-color-white{background:var(--vestment-white);}
+.v-color-red{background:var(--vestment-red);}
+.v-color-purple{background:var(--vestment-purple);}
+.v-color-green{background:var(--vestment-green);}
+.v-color-blue{background:var(--vestment-blue);}
+
+/* Per-card swatch — sized for inline placement before the feast name
+   (lifted from .season-card-header .vestment-swatch with selector renamed only) */
+.feast-card .vestment-swatch{
+  width:12px;height:12px;
+  margin-top:0;
+}
+/* Feast-page scaffolding: horizontal spacing for the inline swatch
+   (no flex parent on feast cards; replaces what .season-card-header's gap provided) */
+.feast-name .vestment-swatch{
+  margin-right:8px;
+}
+
+/* Modal vestment row — primary swatch + name (+ secondary), gloss, confidence note */
+.sm2-vestment{
+  margin-bottom:16px;
+  padding:12px 14px;
+  background:var(--bg-page);
+  border:1px solid var(--rule-soft);
+  border-left:2px solid var(--gold-dim);
+  border-radius:2px;
+}
+.sm2-vestment-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:6px;
+}
+.sm2-vestment-row .vestment-swatch{
+  margin-top:0;
+}
+.sm2-vestment-name{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.84rem;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.14em;
+  color:var(--gold-light);
+}
+.sm2-vestment-secondary{
+  font-size:0.86rem;
+  font-style:italic;
+  color:var(--text-muted);
+}
+.sm2-vestment-gloss{
+  font-size:0.94rem;
+  line-height:1.6;
+  color:var(--text-dim);
+  margin-bottom:6px;
+}
+.sm2-vestment-confidence{
+  font-size:0.82rem;
+  font-style:italic;
+  color:var(--text-muted);
+}
+.sm2-vestment-confidence:empty{display:none;}
+
+/* ── Page-intro lede wrapper ── */
+.feast-intro{
+  margin-bottom:32px;
+}
+
+/* ── Group handoff line (paschal_cycle hospitality pointer to liturgical-seasons.html;
+   register lifted from .season-closing-leadin on liturgical-seasons.html) ── */
+.feast-handoff-line{
+  font-style:italic;
+  text-align:center;
+  font-size:1.02rem;
+  line-height:1.75;
+  color:var(--text-muted);
+  max-width:560px;
+  margin:0 auto 18px;
+}
+.feast-handoff-line a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.feast-handoff-line a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}
 
 /* Mobile */
 @media(max-width:860px){
@@ -829,6 +1009,62 @@ nav{
 
 <div class="feast-wrap">
 
+  <div class="feast-intro">
+    <p class="lede">In the Orthodox Church, a feast is not the memory of something done but the day it becomes present. The Church sings <em>today</em> &mdash; today the Virgin gives birth; today the Lord is baptized in the Jordan; today death is trampled down. What follows is the year as she keeps it.</p>
+  </div>
+
+  <aside class="vestment-legend" aria-labelledby="vestment-legend-title">
+    <p class="vestment-legend-prologue">Vestment color in the Orthodox Church is liturgical practice, not doctrine. The colors below reflect Greek Orthodox Archdiocese (GOA) usage, which is the reference practice for this site. Antiochian, OCA, ROCOR, Serbian, and Romanian parishes diverge in specific cases &mdash; most visibly in the days of Holy Week, the use of black, and the colors worn during the four fasts. The GOA itself observes that no formal rubric governs vestment color across the Orthodox world; common practice has shaped the scheme named here, and your own parish is the local authority.</p>
+    <div class="vestment-legend-title" id="vestment-legend-title">Vestment Colors</div>
+    <div class="vestment-legend-grid">
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-gold" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">Gold</span>
+          <span class="vestment-legend-gloss">The default of the year &mdash; joy, glory, and the divine light; worn on Sundays in ordinary time and on most feasts of the Lord.</span>
+        </div>
+      </div>
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-white" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">White</span>
+          <span class="vestment-legend-gloss">The color of Pascha, of light, and of the Lord's burial cloth &mdash; worn at Theophany, the Transfiguration, Pascha, and at funerals, because the funeral is a passing into life.</span>
+        </div>
+      </div>
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-red" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">Red</span>
+          <span class="vestment-legend-gloss">The color of the martyrs' blood and of royal joy &mdash; worn on the feasts of the martyrs and, in some uses, for Pascha itself.</span>
+        </div>
+      </div>
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-purple" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">Purple</span>
+          <span class="vestment-legend-gloss">The penitential color &mdash; worn through the weekdays of Great Lent. The bright color of Sunday returns each week, because every Sunday is a little Pascha.</span>
+        </div>
+      </div>
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-green" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">Green</span>
+          <span class="vestment-legend-gloss">The color of life and of the Spirit &mdash; worn on Pentecost, Palm Sunday, and the feasts of the Cross in Greek and American practice.</span>
+        </div>
+      </div>
+      <div class="vestment-legend-item">
+        <span class="vestment-swatch v-color-blue" aria-hidden="true"></span>
+        <div class="vestment-legend-text">
+          <span class="vestment-legend-color-name">Blue</span>
+          <span class="vestment-legend-gloss">The color of the Theotokos &mdash; worn on her feasts, after the iconographic tradition of the Mother of God in blue.</span>
+        </div>
+      </div>
+    </div>
+    <div class="vestment-legend-attribution">
+      Greek Orthodox Archdiocese practice; your parish is the local authority.
+    </div>
+  </aside>
+
   <div id="feastContent"></div>
 
   <div class="colophon">
@@ -851,6 +1087,15 @@ nav{
       <div class="fm-greek-pills" id="fm-greek-pills"></div>
     </div>
     <div class="fm-body">
+      <div class="sm2-vestment" id="sm2-vestment" hidden>
+        <div class="sm2-vestment-row">
+          <span class="vestment-swatch" id="sm2-vestment-swatch" aria-hidden="true"></span>
+          <span class="sm2-vestment-name" id="sm2-vestment-name"></span>
+          <span class="sm2-vestment-secondary" id="sm2-vestment-secondary"></span>
+        </div>
+        <div class="sm2-vestment-gloss" id="sm2-vestment-gloss"></div>
+        <div class="sm2-vestment-confidence" id="sm2-vestment-confidence"></div>
+      </div>
       <div class="fm-desc" id="fm-desc"></div>
       <div class="fm-links" id="fm-links"></div>
     </div>
@@ -946,6 +1191,49 @@ document.addEventListener('DOMContentLoaded',function(){
 
 <script>
 
+/* ── Vestment colors — canonical GOA practice (per Magoulias, The Priest as Liturgist,
+   Greek Orthodox Metropolis of San Francisco, 2010, p. 20, as published by goarch.org).
+   This object carries seasons AND great feasts in one place; Stage 2 chats lift it
+   byte-identical and filter by `scope`. ─── */
+var VESTMENT_COLORS = {
+  /* Season-scope entries (rendered on this page) */
+  "pre_lenten":      { primary: "gold",   secondary: null,    scope: "season", confidence: "low",    confidence_note: "Common GOA practice; the Triodion is liturgically distinct but not yet penitential in the Lenten sense.", gloss: "The Triodion Sundays still belong to ordinary time; Lenten purple begins at Forgiveness Vespers." },
+  "great_lent":      { primary: "purple", secondary: "gold",  scope: "season", confidence: "high",   confidence_note: "", gloss: "Purple marks the season's penitential weight; on every Sunday, the bright color of the Resurrection returns." },
+  "holy_week":       { primary: "purple", secondary: "white", scope: "season", confidence: "low",    confidence_note: "Common GOA practice; some parishes shift colors day-by-day through Holy Week, particularly at the Holy Thursday Liturgy and the Twelve Gospels.", gloss: "Purple carries the Church through the Bridegroom Services and the Crucifixion; at Holy Saturday Liturgy, the vestments shift to white at the prokeimenon." },
+  "pascha":          { primary: "white",  secondary: "red",   scope: "season", confidence: "high",   confidence_note: "", gloss: "White for the linen of the empty tomb; in some uses, red is also worn for the royal joy of the Feast of Feasts." },
+  "bright_week":     { primary: "white",  secondary: null,    scope: "season", confidence: "high",   confidence_note: "", gloss: "White through the whole week as a single day of Resurrection." },
+  "pentecostarion":  { primary: "white",  secondary: "gold",  scope: "season", confidence: "low",    confidence_note: "Common GOA practice; some parishes shift to gold after Ascension.", gloss: "White through Bright Week and on into the paschal season; some parishes shift to gold after Ascension as the Church awaits the Spirit." },
+  "after_pentecost": { primary: "gold",   secondary: null,    scope: "season", confidence: "high",   confidence_note: "", gloss: "Gold is the long color of the year \u2014 every Sunday a little Pascha." },
+  "apostles_fast":   { primary: "gold",   secondary: null,    scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues the season after All Saints; red is commonly worn at the feast of Saints Peter and Paul." },
+  "dormition_fast":  { primary: "gold",   secondary: "blue",  scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues the summer rhythm; blue marks the Dormition itself on August 15, and white is worn at the Transfiguration on August 6." },
+  "nativity_fast":   { primary: "gold",   secondary: null,    scope: "fast",   confidence: "low",    confidence_note: "Common GOA practice; the Archdiocese does not formally specify a fast color.", gloss: "Gold continues through the fast as the Church approaches the feast of the Nativity." },
+  "nativity_season": { primary: "white",  secondary: "gold",  scope: "season", confidence: "medium", confidence_note: "", gloss: "White in some GOA uses for the Nativity itself; gold from the second day of Christmas through Theophany." },
+
+  /* Great-feast-scope entries (carried for Stage 2 lift to feasts.html; not rendered on this page) */
+  "nativity_theotokos":  { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue, after the iconographic tradition that clothes the Mother of God in the color of the heavens." },
+  "exaltation_cross":    { primary: "green", secondary: "red",  scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green in Greek and American practice \u2014 the Cross as the tree of life; red in Jerusalem and on Mt. Athos, after the blood of the Crucified." },
+  "entrance_theotokos":  { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the Theotokos, who as a small child entered the Temple to become herself the living temple of God." },
+  "nativity_christ":     { primary: "white", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White in some uses for the day itself; gold from the second day of Christmas forward." },
+  "theophany":           { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the revelation of the Holy Trinity at the Jordan and the sanctification of the waters." },
+  "presentation_christ": { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the Lord brought into the Temple, met by the elder Symeon and Anna the Prophetess." },
+  "annunciation":        { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the feast of the Theotokos, who heard the angel and answered yes." },
+  "palm_sunday":         { primary: "green", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green for the palms \u2014 the same life-giving color worn at Pentecost." },
+  "ascension":           { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the Lord taken up in glory, the first-fruits of our humanity entering heaven." },
+  "pentecost":           { primary: "green", secondary: "gold", scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Green for the descent of the Spirit and the birth of the Church into the world." },
+  "transfiguration":     { primary: "white", secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "White for the uncreated light revealed to the disciples on Tabor \u2014 the glory of the Lord made visible." },
+  "dormition":           { primary: "blue",  secondary: null,   scope: "great_feast", confidence: "high", confidence_note: "", gloss: "Blue for the falling-asleep of the Theotokos \u2014 her passing into life, where she goes before us all." }
+};
+
+/* Color-name lookup: id used in markup → display name shown in legend and modal */
+var VESTMENT_COLOR_NAMES = {
+  "gold":   "Gold",
+  "white":  "White",
+  "red":    "Red",
+  "purple": "Purple",
+  "green":  "Green",
+  "blue":   "Blue"
+};
+
 /* ── Feast Data ───────────────────────────────────── */
 var FEASTS = {
   "holy_pascha": {
@@ -954,7 +1242,8 @@ var FEASTS = {
     greek_terms: ["anastasis","nike","soteria","stauros","thysia"],
     primary_topic: "pascha",
     description: "Pascha celebrates the Resurrection of Christ — the victory over death and sin, and the foundation of all Christian life and hope. Standing above every feast of the liturgical year as the Feast of Feasts, it is the center around which all of Orthodox worship revolves. Christ is risen from the dead, trampling down death by death, and upon those in the tombs bestowing life.",
-    tags: []
+    tags: [],
+    vestment_id: "pascha"
   },
   "nativity_of_the_theotokos": {
     name: "Nativity of the Theotokos",
@@ -962,7 +1251,8 @@ var FEASTS = {
     greek_terms: ["theotokos","enanthropesis","charis","oikonomia"],
     primary_topic: "theotokos",
     description: "The Nativity of the Theotokos marks the beginning of the immediate preparation for the Incarnation. Through her who would bear the eternal Word in the flesh, the divine plan of salvation enters its final and decisive stage. The birth of Mary is therefore the dawn of redemption — the first movement of the new creation toward its fulfillment in Christ.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "nativity_theotokos"
   },
   "elevation_of_the_holy_cross": {
     name: "Exaltation of the Holy Cross",
@@ -970,7 +1260,8 @@ var FEASTS = {
     greek_terms: ["stauros","soteria","nike","anakephalaiosis"],
     primary_topic: "atonement",
     description: "The Exaltation of the Holy Cross celebrates the recovery and solemn elevation of the life-giving Cross of Christ, and proclaims it as the instrument of salvation and the sign of cosmic victory over death. The Cross is not merely a symbol of suffering but the throne of the King — the tree of eternal life through which God recapitulates all things in Christ.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "exaltation_cross"
   },
   "entrance_of_the_theotokos": {
     name: "Entrance of the Theotokos",
@@ -978,7 +1269,8 @@ var FEASTS = {
     greek_terms: ["eisodos","naos","theotokos","enanthropesis"],
     primary_topic: "theotokos_incarnation",
     description: "The Entrance of the Theotokos reveals her dedication to God in the Jerusalem Temple at the age of three — the beginning of her preparation to become the living Temple of the incarnate Word. She who was offered to God in the earthly sanctuary became herself the naos, the holy dwelling through whom the eternal Logos took flesh and entered the world.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "entrance_theotokos"
   },
   "nativity_of_christ": {
     name: "Nativity of Christ",
@@ -986,7 +1278,8 @@ var FEASTS = {
     greek_terms: ["logos","enanthropesis","sarx","theotokos"],
     primary_topic: "incarnation",
     description: "The Nativity celebrates the birth in the flesh of the eternal Word of God — the Logos who, without ceasing to be God, becomes truly and fully man for the salvation of the world. God enters human history not as an appearance but as a reality: born of a woman, laid in a manger, and worshipped by angels and shepherds alike.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "nativity_christ"
   },
   "holy_theophany": {
     name: "Holy Theophany",
@@ -994,7 +1287,8 @@ var FEASTS = {
     greek_terms: ["theophania","trias","baptisma","pneuma","epiphaneia"],
     primary_topic: "trinity",
     description: "The Theophany commemorates the Baptism of Christ in the Jordan — the supreme manifestation of the Holy Trinity in history: the Father speaks from heaven, the Son is baptized, and the Holy Spirit descends as a dove. Christ does not enter the waters to be cleansed but to hallow them, sanctifying all of creation through His presence.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "theophany"
   },
   "presentation_of_christ": {
     name: "Presentation of Christ",
@@ -1002,7 +1296,8 @@ var FEASTS = {
     greek_terms: ["enanthropesis","logos","nomos"],
     primary_topic: "incarnation",
     description: "The Presentation reveals the incarnate Christ entering the Temple in obedience to the Law — the one who gave the Law submitting to it for our sake. The righteous Simeon, having received the promise of God, takes the infant into his arms and recognizes in Him the light of the nations and the salvation prepared before all peoples.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "presentation_christ"
   },
   "annunciation_of_the_theotokos": {
     name: "Annunciation",
@@ -1010,7 +1305,8 @@ var FEASTS = {
     greek_terms: ["enanthropesis","theotokos","synergia"],
     primary_topic: "incarnation",
     description: "The Annunciation reveals the moment of the Incarnation — when the angel Gabriel brings the divine message and the Theotokos, in free and willing obedience, gives her fiat: 'Be it unto me according to thy word.' Her assent is the supreme act of human cooperation with divine grace in all of history, through which the eternal Word takes flesh.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "annunciation"
   },
   "transfiguration_of_christ": {
     name: "Transfiguration",
@@ -1018,7 +1314,8 @@ var FEASTS = {
     greek_terms: ["energeia","doxa","phos","theoria"],
     primary_topic: "divine_energies",
     description: "The Transfiguration on Mount Tabor reveals the uncreated light of Christ's divine glory shining through His human nature — the same light that the hesychast saints behold in prayer and that St. Gregory Palamas defended as the uncreated energies of God. Creation itself is transfigured in Christ, and the feast anticipates the eschatological transformation of all things.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "transfiguration"
   },
   "dormition_of_the_theotokos": {
     name: "Dormition of the Theotokos",
@@ -1026,7 +1323,8 @@ var FEASTS = {
     greek_terms: ["koimesis","anastasis","theotokos","doxa"],
     primary_topic: "dormition",
     description: "The Dormition proclaims the falling asleep of the Most Holy Theotokos and her bodily translation into heavenly glory — her participation in the resurrectional hope given by her Son. As she bore Christ into the world, so Christ now bears her into His Kingdom. The Dormition is the supreme icon of theosis: what was promised to all the faithful, first accomplished in her.",
-    tags: ["twelve_great_feasts"]
+    tags: ["twelve_great_feasts"],
+    vestment_id: "dormition"
   },
   "palm_sunday": {
     name: "Palm Sunday",
@@ -1034,7 +1332,8 @@ var FEASTS = {
     greek_terms: ["christos","basileia","soteria"],
     primary_topic: "messianic_fulfillment",
     description: "Palm Sunday reveals Christ as the promised King entering Jerusalem in the humility of peace — fulfilling the prophecy of Zechariah and inaugurating the final days of His earthly ministry. The crowd spreads palms and cloaks before Him, crying Hosanna. Yet the King who enters in triumph will be enthroned upon the Cross.",
-    tags: ["twelve_great_feasts","paschal_cycle"]
+    tags: ["twelve_great_feasts","paschal_cycle"],
+    vestment_id: "palm_sunday"
   },
   "holy_ascension": {
     name: "Holy Ascension",
@@ -1042,7 +1341,8 @@ var FEASTS = {
     greek_terms: ["analepsis","anastasis","doxa","enanthropesis"],
     primary_topic: "ascension",
     description: "The Ascension reveals Christ exalted and enthroned in glory at the right hand of the Father — carrying glorified human nature into the divine life itself. This is not a departure but a completion: the Incarnation reaches its fullness as humanity is taken into the Trinity in the Person of Christ. His Ascension is the ground of Christian hope for the resurrection of the body.",
-    tags: ["twelve_great_feasts","paschal_cycle"]
+    tags: ["twelve_great_feasts","paschal_cycle"],
+    vestment_id: "ascension"
   },
   "holy_pentecost": {
     name: "Holy Pentecost",
@@ -1050,7 +1350,8 @@ var FEASTS = {
     greek_terms: ["pneuma","ekklesia","trias","epiklesis","koinonia"],
     primary_topic: "pentecost_theology",
     description: "Pentecost reveals the descent of the Holy Spirit upon the apostles fifty days after Pascha — completing the revelation of the Holy Trinity and giving birth to the Church. The Spirit given at Pentecost is not a gift apart from God but God Himself in His uncreated life, dwelling in the baptized and transforming them into temples of the living God.",
-    tags: ["twelve_great_feasts","paschal_cycle"]
+    tags: ["twelve_great_feasts","paschal_cycle"],
+    vestment_id: "pentecost"
   },
   "lazarus_saturday": {
     name: "Lazarus Saturday",
@@ -1261,6 +1562,7 @@ var GROUPS = [
   {id:"twelve", label:"The Twelve Great Feasts", subtitle:"Δωδεκάορτον", type:"standard",
    keys:["nativity_of_the_theotokos","elevation_of_the_holy_cross","entrance_of_the_theotokos","nativity_of_christ","holy_theophany","presentation_of_christ","annunciation_of_the_theotokos","transfiguration_of_christ","dormition_of_the_theotokos","palm_sunday","holy_ascension","holy_pentecost"]},
   {id:"paschal_cycle", label:"The Paschal Cycle", type:"standard",
+   handoff:'Holy Week and Bright Week move through several vestment colors across the days. See the <a href="liturgical-seasons.html">Liturgical Seasons</a> page for the full arc.',
    keys:["lazarus_saturday","holy_monday","holy_tuesday","holy_wednesday","holy_thursday","holy_friday","holy_saturday","bright_week","thomas_sunday","all_saints_sunday"]},
   {id:"triodion", label:"Triodion Sundays", type:"standard",
    keys:["sunday_of_the_publican_and_pharisee","sunday_of_the_prodigal_son","sunday_of_last_judgment","sunday_of_forgiveness","sunday_of_orthodoxy","sunday_of_st_gregory_palamas","sunday_of_the_holy_cross","sunday_of_st_john_climacus","sunday_of_st_mary_of_egypt"]},
@@ -1296,8 +1598,13 @@ function fmtName(k) {
 function buildCard(key, f, isPascha) {
   var cardClass = isPascha ? 'feast-card pascha-card' : 'feast-card';
   var topicUrl = 'topics.html?topic=' + f.primary_topic;
+  var swatchHtml = '';
+  if (f.vestment_id) {
+    var v = VESTMENT_COLORS[f.vestment_id];
+    if (v) swatchHtml = '<span class="vestment-swatch v-color-' + v.primary + '" aria-hidden="true"></span>';
+  }
   var html = '<div class="'+cardClass+'" data-key="'+key+'" data-feast-id="'+key+'" data-feast-name="'+f.name+'">';
-  html += '<div class="feast-name">'+f.name+'</div>';
+  html += '<div class="feast-name">'+swatchHtml+f.name+'</div>';
   html += '<div class="feast-greek-full">'+f.full_greek_name+'</div>';
   html += '<div class="feast-desc">'+f.description.substring(0,150)+'&hellip;</div>';
   html += '<a href="'+topicUrl+'" class="feast-topic-link" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+f.primary_topic.replace(/_/g,' ')+'</a>';
@@ -1332,6 +1639,22 @@ function openFeast(key) {
     a.textContent=t;
     pillsEl.appendChild(a);
   }
+  /* Vestment block — populate or hide */
+  var v = VESTMENT_COLORS[f.vestment_id];
+  var vBlock = document.getElementById('sm2-vestment');
+  if (v) {
+    var vSwatch = document.getElementById('sm2-vestment-swatch');
+    vSwatch.className = 'vestment-swatch v-color-' + v.primary;
+    document.getElementById('sm2-vestment-name').textContent =
+      'Vestments: ' + (VESTMENT_COLOR_NAMES[v.primary] || v.primary);
+    document.getElementById('sm2-vestment-secondary').textContent =
+      v.secondary ? '(also ' + (VESTMENT_COLOR_NAMES[v.secondary] || v.secondary) + ')' : '';
+    document.getElementById('sm2-vestment-gloss').textContent = v.gloss || '';
+    document.getElementById('sm2-vestment-confidence').textContent = v.confidence_note || '';
+    vBlock.hidden = false;
+  } else {
+    vBlock.hidden = true;
+  }
   document.getElementById('fm-desc').textContent = f.description;
   // Action links
   var topicUrl = 'topics.html?topic='+f.primary_topic;
@@ -1365,6 +1688,7 @@ function render() {
     html += '<div class="feast-group">';
     html += '<div class="feast-group-title">'+g.label+'</div>';
     if (g.subtitle) html += '<div class="feast-group-subtitle">'+g.subtitle+'</div>';
+    if (g.handoff) html += '<p class="feast-handoff-line">'+g.handoff+'</p>';
 
     if (g.type === 'standard') {
       html += '<div class="feast-grid">';
