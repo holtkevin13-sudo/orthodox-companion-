@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Orthodox Companion — Parchment Patterns Reference</title>
+<link rel="icon" href="cross.png" type="image/png"/>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ═══════════════════════════════════════════════════════
+   PARCHMENT PATTERNS REFERENCE
+   Internal style guide for the Orthodox Companion design sweep.
+   Self-contained: ships with the full parchment palette so demo
+   boxes render in their final state. The file's own chrome uses
+   a parallel set of `.guide-*` classes to avoid demo bleed.
+═══════════════════════════════════════════════════════ */
+
+/* ── Junicode subset for the fleuron ──────────────────── */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
+/* ── Canonical palette (reproduced verbatim — the live spec) ── */
+:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;
+  --surface:#FAF3E1;
+  --surface-deep:#EFE2BF;
+  --bg-card:#FAF3E1;
+  --hero-bg:#F4EAD3;
+  /* navy */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;
+  /* text on parchment */
+  --text:#1F1B16;
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+  /* text on navy */
+  --logotype:#F0E6CC;
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+  /* gold */
+  --gold:#C9A84C;
+  --gold-light:#A8862E;
+  --gold-dim:#8A6A28;
+  --gold-on-dark:#E8CB7A;
+  --body-link:#7A5C1F;
+  /* rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}
+
+/* ── Reset + base ─────────────────────────────────────── */
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  color:var(--text);
+  min-height:100vh;
+  font-size:1rem;
+  line-height:1.65;
+}
+
+/* ── Style-guide-only chrome (.guide-* classes) ───────── */
+.guide-shell{max-width:920px;margin:0 auto;padding:48px 24px 80px;}
+.guide-header{
+  border-bottom:2px solid var(--gold);
+  padding-bottom:24px;margin-bottom:32px;
+}
+.guide-eyebrow{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.22em;
+  color:var(--gold-light);
+  margin-bottom:10px;
+}
+.guide-h1{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:1.9rem;letter-spacing:0.05em;
+  color:var(--text);margin-bottom:14px;
+}
+.guide-lede{
+  font-style:italic;color:var(--text-dim);
+  font-size:1.05rem;line-height:1.65;max-width:620px;
+}
+.guide-h2{
+  font-family:'EB Garamond',serif;font-weight:700;
+  font-size:1.5rem;color:var(--text);
+  margin:48px 0 6px;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border-dim);
+  letter-spacing:0.01em;
+}
+.guide-h2 .num{color:var(--gold-light);font-weight:600;margin-right:10px;}
+.guide-h2 + .guide-cluster-desc{
+  font-style:italic;color:var(--text-muted);
+  font-size:0.96rem;margin-bottom:20px;
+}
+.guide-h3{
+  font-family:'EB Garamond',serif;font-weight:600;
+  font-size:1.18rem;color:var(--text);
+  margin:32px 0 8px;
+}
+.guide-h3 .pattern-num{
+  display:inline-block;min-width:30px;
+  font-family:'SF Mono','Menlo','Consolas',monospace;
+  font-size:0.78rem;font-weight:600;
+  color:var(--gold-light);
+  vertical-align:middle;margin-right:6px;
+}
+.guide-prose p{margin-bottom:12px;color:var(--text-dim);font-size:0.98rem;line-height:1.65;}
+.guide-prose strong{color:var(--text);font-weight:600;}
+
+/* TOC */
+.guide-toc{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold-dim);
+  padding:18px 22px;margin:24px 0 36px;
+  border-radius:2px;
+}
+.guide-toc-head{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.84rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);font-weight:600;margin-bottom:12px;
+}
+.guide-toc-cluster{margin-bottom:10px;}
+.guide-toc-cluster-name{
+  font-weight:600;color:var(--text);font-size:0.94rem;
+  margin-bottom:4px;
+}
+.guide-toc-list{list-style:none;padding-left:14px;}
+.guide-toc-list li{
+  font-size:0.9rem;line-height:1.55;color:var(--text-dim);
+}
+.guide-toc-list a{color:var(--body-link);text-decoration:none;border-bottom:1px solid currentColor;}
+.guide-toc-list a:hover{color:var(--gold-light);border-bottom-color:var(--gold-light);}
+
+/* Demo box — where rendered examples live */
+.demo{
+  background:var(--bg-page);
+  border:1px solid var(--border-dim);
+  border-radius:3px;
+  padding:24px;
+  margin:14px 0;
+  position:relative;
+}
+.demo::before{
+  content:'RENDERED';
+  position:absolute;top:-8px;left:14px;
+  background:var(--bg-page);
+  padding:0 8px;
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.7rem;letter-spacing:0.18em;
+  color:var(--gold-dim);
+}
+.demo-dark{ background:var(--deep); }
+.demo-dark::before{ background:var(--deep); color:var(--gold); }
+
+/* Code blocks */
+pre.guide-code{
+  background:var(--surface-deep);
+  border:1px solid var(--border-dim);
+  border-radius:3px;
+  padding:18px 20px;
+  margin:14px 0;
+  overflow-x:auto;
+  font-family:'SF Mono','Menlo','Consolas','Liberation Mono',monospace;
+  font-size:0.82rem;line-height:1.55;
+  color:var(--text);
+  position:relative;
+}
+pre.guide-code::before{
+  content:attr(data-lang);
+  position:absolute;top:-8px;left:14px;
+  background:var(--surface-deep);
+  padding:0 8px;
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.7rem;letter-spacing:0.18em;
+  color:var(--gold-dim);
+}
+pre.guide-code code{font-family:inherit;font-size:inherit;}
+.copy-btn{
+  position:absolute;top:8px;right:8px;
+  background:var(--bg-page);
+  border:1px solid var(--border-dim);
+  color:var(--gold-light);
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;
+  padding:5px 10px;border-radius:2px;
+  cursor:pointer;
+  transition:background 0.15s,color 0.15s;
+}
+.copy-btn:hover{background:var(--surface);color:var(--gold);}
+.copy-btn.copied{color:var(--text);background:var(--gold);}
+
+/* Usage notes table */
+.usage{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-radius:3px;
+  padding:14px 18px;margin:14px 0 32px;
+  font-size:0.92rem;
+}
+.usage-row{
+  display:grid;
+  grid-template-columns:140px 1fr;
+  gap:14px;
+  padding:6px 0;
+  border-bottom:1px solid var(--rule-soft);
+}
+.usage-row:last-child{border-bottom:none;}
+.usage-key{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.12em;
+  color:var(--gold-light);font-weight:600;
+  padding-top:2px;
+}
+.usage-val{color:var(--text-dim);line-height:1.55;}
+.usage-val code{
+  font-family:'SF Mono','Menlo','Consolas',monospace;
+  font-size:0.86em;
+  background:var(--bg-page);
+  padding:1px 5px;
+  border-radius:2px;
+  border:1px solid var(--border-dim);
+}
+
+/* Orientation block */
+.orient{
+  background:var(--surface);
+  border:1px solid var(--border-dim);
+  border-left:3px solid var(--gold);
+  padding:24px 28px;
+  margin-bottom:32px;
+  border-radius:2px;
+}
+.orient h3{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);font-weight:600;margin-bottom:10px;
+}
+.orient p{color:var(--text-dim);margin-bottom:10px;line-height:1.65;font-size:0.96rem;}
+.orient ul{padding-left:22px;margin-bottom:10px;color:var(--text-dim);font-size:0.96rem;line-height:1.65;}
+.orient li{margin-bottom:6px;}
+.orient code{
+  font-family:'SF Mono','Menlo','Consolas',monospace;
+  font-size:0.86em;
+  background:var(--bg-page);
+  padding:1px 5px;
+  border-radius:2px;
+  border:1px solid var(--border-dim);
+}
+
+/* Propagation checklist at bottom */
+.checklist{
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-radius:3px;
+  padding:24px 28px;
+  margin-top:48px;
+}
+.checklist h3{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);font-weight:600;margin-bottom:14px;
+}
+.checklist ol{padding-left:22px;color:var(--text-dim);line-height:1.7;font-size:0.96rem;}
+.checklist li{margin-bottom:8px;}
+.checklist code{
+  font-family:'SF Mono','Menlo','Consolas',monospace;
+  font-size:0.86em;
+  background:var(--bg-page);
+  padding:1px 5px;
+  border-radius:2px;
+  border:1px solid var(--border-dim);
+}
+
+/* For the inline nav demo, neutralize position:fixed */
+.demo .demo-nav-wrap{
+  position:relative;
+  height:80px;
+  overflow:hidden;
+  border-radius:2px;
+}
+.demo .demo-nav-wrap nav.demo-nav{
+  position:absolute;left:0;right:0;top:0;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  height:68px;
+  display:flex;align-items:center;padding:0 20px;
+  backdrop-filter:blur(12px);
+}
+.demo .demo-nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;border:none;}
+.demo .demo-nav-cross{font-size:30px;color:var(--gold);line-height:1;display:inline-flex;align-items:center;}
+.demo .demo-nav-title{font-family:'Cinzel',serif;font-weight:700;font-size:0.95rem;color:var(--logotype);letter-spacing:0.07em;}
+.demo .demo-nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.demo .demo-nav-links{
+  display:flex;list-style:none;height:68px;margin-left:24px;align-items:stretch;
+}
+.demo .demo-nav-links li{display:flex;align-items:center;}
+.demo .demo-nav-links a, .demo .demo-nav-links span{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;display:flex;align-items:center;border-bottom:2px solid transparent;
+}
+
+/* SVG ornament classes — exactly as on production pages */
+.cross-orth{
+  display:inline-block;vertical-align:middle;
+  height:1em;width:auto;fill:currentColor;
+}
+.chi-rho{
+  display:inline-block;vertical-align:middle;
+  height:1em;width:auto;
+  stroke:currentColor;fill:none;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-width:3;
+}
+
+/* Patterns demonstrated inline (these are the LIVE classes from production) */
+.demo .page-title{
+  font-family:'Cinzel',serif;font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;margin-bottom:10px;color:var(--text);
+}
+.demo .page-desc{
+  font-size:1.06rem;font-style:italic;color:var(--text-dim);
+  line-height:1.7;max-width:640px;
+}
+.demo .breadcrumb{
+  font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.demo .breadcrumb a{color:inherit;text-decoration:none;border-bottom:1px solid currentColor;}
+.demo .breadcrumb span{margin:0 8px;opacity:0.5;}
+.demo .hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;max-width:300px;margin:0 auto 30px;
+}
+.demo .hero-ornament .rule{flex:1;height:1px;background:var(--gold-dim);opacity:0.55;}
+.demo .hero-ornament .mark{
+  display:inline-flex;align-items:center;font-size:1.6rem;line-height:1;
+  color:var(--gold);
+}
+.demo .section-heading{
+  position:relative;font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);padding-top:18px;margin-bottom:20px;
+}
+.demo .section-heading::before{
+  content:'';position:absolute;top:0;left:0;
+  width:64px;height:1px;background:var(--gold-dim);opacity:0.7;
+}
+.demo .lede{font-size:1.06rem;line-height:1.8;color:var(--text-dim);}
+.demo .lede::first-letter{
+  font-family:'Cinzel',serif;float:left;
+  font-size:4.6rem;line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);font-weight:700;
+}
+.demo .pull-quote{
+  position:relative;margin:28px 0 8px;padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;border-bottom-width:2px;
+  border-radius:2px;
+}
+.demo .pull-quote-mark{
+  position:absolute;top:-26px;left:22px;
+  font-family:'EB Garamond',serif;font-weight:700;font-size:4.6rem;line-height:1;
+  color:var(--gold);background:var(--bg-page);padding:0 14px;
+}
+.demo .pull-quote-text{
+  color:var(--text-dim);font-style:italic;font-size:1.18rem;line-height:1.7;
+  text-align:center;margin:0 0 28px;
+}
+.demo .pull-quote-attr{
+  border-top:1px solid var(--rule);margin:0 -36px;padding:14px 36px 18px;
+  font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.16em;
+  color:var(--gold-light);font-weight:600;text-align:center;
+}
+.demo .pull-quote-attr em{
+  text-transform:none;letter-spacing:0;font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}
+.demo .fleuron{
+  text-align:center;margin:18px 0 24px;color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',serif;
+}
+.demo .colophon{margin:14px 0 24px;text-align:center;}
+.demo .colophon-text{
+  font-style:italic;font-size:1.14rem;line-height:1.75;
+  color:var(--text-dim);max-width:580px;margin:0 auto 24px;
+}
+.demo .colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;max-width:300px;margin:0 auto;
+}
+.demo .colophon-mark .rule{flex:1;height:1px;background:var(--gold-dim);opacity:0.65;}
+.demo .colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);font-size:2rem;line-height:1;
+}
+.demo .about-list{list-style:none;padding:0;margin:6px 0;}
+.demo .about-list li{
+  color:var(--text-dim);line-height:1.8;padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);position:relative;font-size:1.04rem;
+}
+.demo .about-list li:last-child{border-bottom:none;}
+.demo .about-list li::before{
+  content:'\25C6';position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}
+.demo .body-link-demo{color:var(--text-dim);font-size:1rem;line-height:1.7;}
+.demo .body-link-demo a{
+  color:var(--body-link);text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.demo .body-link-demo a:hover{
+  color:var(--gold-light);border-bottom-color:var(--gold-light);
+}
+.demo .contact-card{
+  background:var(--deep);border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;padding:26px 28px;max-width:560px;
+  margin:14px auto 0;text-align:center;
+}
+.demo .contact-card .label{
+  font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;margin-bottom:12px;
+}
+.demo .contact-card p{color:var(--nav-text);font-style:italic;font-size:1rem;line-height:1.7;}
+.demo .contact-card a{
+  color:var(--gold-on-dark);text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+}
+.demo .from-author-link{
+  text-align:center;margin:14px auto;max-width:560px;
+  font-style:italic;font-size:1.1rem;color:var(--text-dim);
+}
+.demo .from-author-link a{
+  color:var(--body-link);text-decoration:none;border-bottom:1px solid currentColor;
+}
+.demo .demo-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:32px 24px 24px;border-radius:2px;
+  margin-top:14px;
+}
+.demo .demo-footer-cols{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px;
+}
+.demo .demo-footer-cols h4{
+  font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:0.86rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);margin-bottom:10px;
+}
+.demo .demo-footer-cols ul{list-style:none;}
+.demo .demo-footer-cols a{
+  display:block;font-family:'EB Garamond',serif;font-size:0.95rem;
+  color:var(--nav-text);text-decoration:none;padding:3px 0;
+}
+.demo .demo-footer-bottom{
+  text-align:center;border-top:1px solid rgba(201,168,76,0.18);padding-top:18px;
+}
+.demo .demo-footer-cross{
+  display:inline-flex;color:var(--gold);font-size:1.15rem;
+  margin-right:10px;vertical-align:middle;
+}
+.demo .demo-footer-brand{
+  font-family:'Cinzel',serif;font-size:0.95rem;font-weight:600;
+  color:var(--logotype);letter-spacing:0.08em;margin-right:14px;vertical-align:middle;
+}
+.demo .demo-footer-tagline{
+  font-style:italic;font-size:0.95rem;color:var(--nav-text-dim);vertical-align:middle;
+}
+@media(max-width:640px){
+  .demo .demo-footer-cols{grid-template-columns:1fr;gap:18px;}
+  .demo .demo-footer-cols div{text-align:center;}
+}
+
+/* Saint-icon mat (riza-echo) demo — Pattern 5.5 */
+.demo .saint-icon-mat-row{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;
+}
+.demo .saint-icon-mat{
+  width:64px;height:64px;
+  border:1px solid var(--gold-dim);
+  background:var(--surface);
+  padding:4px;border-radius:2px;
+  display:flex;align-items:center;justify-content:center;
+}
+.demo .saint-icon-mat svg{
+  width:100%;height:100%;color:var(--gold-light);opacity:0.85;fill:currentColor;
+}
+.demo .saint-icon-mat-large{width:96px;height:96px;}
+
+/* Closing-colophon attribution demo — Pattern 4.11 */
+.demo .colophon-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  text-transform:uppercase;letter-spacing:0.18em;
+  font-size:0.86rem;font-weight:600;
+  color:var(--gold-dim);text-align:center;
+  max-width:580px;margin:24px auto 0;
+}
+
+/* Closing-prose wrapper demo — Pattern 4.12 */
+.demo .closing-prose{
+  margin-top:32px;padding-top:28px;
+  border-top:1px solid var(--gold-dim);
+}
+.demo .closing-prose p{
+  color:var(--text-dim);line-height:1.85;
+  font-size:1.02rem;margin-bottom:1em;
+}
+.demo .closing-prose p:last-child{margin-bottom:0;}
+
+/* Anti-pattern register */
+.antipattern{
+  background:#fdf3e3;
+  border:1px solid #c8a95a;
+  border-left:3px solid #b87a3c;
+  padding:18px 22px;margin:24px 0;border-radius:2px;
+}
+.antipattern h4{
+  font-family:'EB Garamond',serif;font-feature-settings:"onum";
+  font-size:0.84rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:#9a5520;font-weight:700;margin-bottom:10px;
+}
+.antipattern ul{padding-left:22px;color:var(--text-dim);font-size:0.94rem;line-height:1.65;}
+.antipattern li{margin-bottom:6px;}
+.antipattern code{
+  font-family:'SF Mono','Menlo','Consolas',monospace;
+  font-size:0.86em;background:var(--bg-page);
+  padding:1px 5px;border-radius:2px;border:1px solid var(--border-dim);
+}
+
+@media(max-width:600px){
+  .guide-shell{padding:32px 16px 60px;}
+  .guide-h1{font-size:1.5rem;}
+  .guide-h2{font-size:1.25rem;}
+  .demo{padding:18px;}
+  pre.guide-code{padding:14px 16px;font-size:0.78rem;}
+  .usage-row{grid-template-columns:1fr;gap:4px;}
+}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="guide-shell">
+
+<header class="guide-header">
+  <div class="guide-eyebrow">Internal &middot; Style Guide</div>
+  <h1 class="guide-h1">Parchment Patterns Reference</h1>
+  <p class="guide-lede">The canonical implementation reference for Orthodox Companion. Every pattern below is rendered as it appears in production, with copy-ready source and usage notes. This file is the bridge between the about.html pilot and the design sweep waves.</p>
+</header>
+
+<div class="orient">
+  <h3>What this file is</h3>
+  <p>An internal reference document. <strong>Not a public-facing page.</strong> It lives in the project folder and is read by future Orthodox Companion work chats as their canonical implementation source. Open it in a browser to see every pattern rendered in its final state, with copy-paste source and usage notes alongside.</p>
+
+  <h3 style="margin-top:18px;">What's universal vs situational</h3>
+  <ul>
+    <li><strong>Universal</strong> (every page): the palette, body typography baseline, vellum noise texture, navy header with gold hairline, mobile drawer, three-column footer, back-to-top button, reduced-motion media query, 720px inner column, hero ornament headband (chi-rho), <code>@font-face</code> declaration for OC Ornaments, all SVG ornament classes, <code>--body-link</code> styling for inline links.</li>
+    <li><strong>Situational:</strong> drop cap (long-form pages only, used <em>once</em> per page on the opening paragraph), pull-quote frame (articles with cited sources only), fleuron (after pull-quotes that flow back into running prose, skipped before colophons), closing colophon (long-form articles only), <strong>closing-colophon attribution</strong> (Pattern 4.11 &mdash; when colophon italic line is a quoted source; earned Group 4 Stage 2A), <strong>closing-prose wrapper</strong> (Pattern 4.12 &mdash; long-form articles needing a synthesis landing before the colophon; earned Group 4 Stage 2A), navy contact card (pages with contact info only), from-author link (threshold pages only &mdash; <code>about.html</code> currently), <strong>saint-icon mat</strong> (Pattern 5.5 &mdash; any icon-bearing surface; canonical from Wave 3C forward).</li>
+  </ul>
+
+  <h3 style="margin-top:18px;">Required repo state</h3>
+  <ul>
+    <li><code>/fonts/Junicode-subset.woff2</code> must exist for the fleuron to render.</li>
+    <li><code>/fonts/OFL.txt</code> must accompany the WOFF2 (SIL Open Font License 1.1 distribution requirement).</li>
+    <li>Cinzel and EB Garamond load via Google Fonts with <code>preconnect</code> and <code>display=swap</code>. Self-hosting is a held-back follow-up.</li>
+  </ul>
+</div>
+
+<div class="guide-toc">
+  <div class="guide-toc-head">Contents</div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">1. Foundation</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p01">1.1 Palette (<code>:root</code>)</a></li>
+      <li><a href="#p02">1.2 Body and typography baseline</a></li>
+      <li><a href="#p03">1.3 Cinzel scope rules</a></li>
+      <li><a href="#p04">1.4 Vellum noise texture</a></li>
+      <li><a href="#p05">1.5 Vertical rhythm scale</a></li>
+      <li><a href="#p06">1.6 <code>--surface-deep</code> token usage rule</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">2. Layout</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p07">2.1 Inner column 720px constraint</a></li>
+      <li><a href="#p08">2.2 <code>.page-hero</code> block</a></li>
+      <li><a href="#p09">2.3 Mobile breakpoints</a></li>
+      <li><a href="#p10">2.4 Reduced-motion media query</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">3. Navigation</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p11">3.1 Navy header with gold hairline</a></li>
+      <li><a href="#p12">3.2 Mobile drawer (markup, CSS, JS)</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">4. Ornaments</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p13">4.1 Hero ornament (chi-rho headband)</a></li>
+      <li><a href="#p14">4.2 Chi-rho SVG</a></li>
+      <li><a href="#p15">4.3 Byzantine three-bar Orthodox cross SVG</a></li>
+      <li><a href="#p16">4.4 SVG ornament sizing convention</a></li>
+      <li><a href="#p17">4.5 Drop cap (<code>.lede::first-letter</code>)</a></li>
+      <li><a href="#p18">4.6 Section heading with hairline marker</a></li>
+      <li><a href="#p19">4.7 Fleuron (Junicode subset + <code>@font-face</code>)</a></li>
+      <li><a href="#p20">4.8 Closing colophon</a></li>
+      <li><a href="#p21">4.9 Diamond bullet list</a></li>
+      <li><a href="#p22">4.10 <code>aria-hidden</code> rule for decorative ornaments</a></li>
+      <li><a href="#p30">4.11 Closing colophon attribution (<code>.colophon-attr</code>)</a></li>
+      <li><a href="#p31">4.12 Closing prose wrapper (<code>.closing-prose</code>)</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">5. Content components</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p23">5.1 Pull-quote frame</a></li>
+      <li><a href="#p24">5.2 Inline body-link styling</a></li>
+      <li><a href="#p25">5.3 Navy contact card</a></li>
+      <li><a href="#p26">5.4 From-author link</a></li>
+      <li><a href="#p32">5.5 Saint-icon mat (riza-echo)</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">6. Page chrome</div>
+    <ul class="guide-toc-list">
+      <li><a href="#p27">6.1 Standardized three-column footer</a></li>
+      <li><a href="#p28">6.2 Back-to-top button</a></li>
+      <li><a href="#p29">6.3 Meta description regression rule</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">7. Anti-patterns</div>
+    <ul class="guide-toc-list">
+      <li><a href="#anti">7.1 What to remove from pre-pilot files</a></li>
+    </ul>
+  </div>
+
+  <div class="guide-toc-cluster">
+    <div class="guide-toc-cluster-name">8. Site-wide propagation checklist</div>
+    <ul class="guide-toc-list">
+      <li><a href="#checklist">For the design sweep waves</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 1 — FOUNDATION -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">1</span>Foundation</h2>
+<p class="guide-cluster-desc">Palette, typography, body texture, and the rules that govern them. These declarations belong on every page.</p>
+
+<!-- 1.1 Palette -->
+<h3 class="guide-h3" id="p01"><span class="pattern-num">1.1</span>Palette (<code>:root</code>)</h3>
+<div class="guide-prose">
+  <p>The canonical palette. Variable names are stable — redefining values is fine, renaming variables breaks inline styles inherited from older pages. The token <code>--body-link</code> was added in v3.1 for AA-compliant inline link contrast on parchment.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>:root{
+  /* surfaces */
+  --bg-page:#F4EAD3;          /* aged vellum body */
+  --surface:#FAF3E1;          /* card surface, a hair lighter */
+  --surface-deep:#EFE2BF;     /* pull-quote interior, slightly more saturated */
+  --bg-card:#FAF3E1;          /* alias kept for inline-styled cards */
+  --hero-bg:#F4EAD3;          /* hero matches body — no white slab */
+
+  /* navy header / footer */
+  --deep:#0A1628;
+  --dark:#0F2035;
+  --panel:#1B3A6B;
+  --nav-bg:rgba(10,22,40,0.97);
+  --nav-h:68px;
+  --header-rule:#C9A84C;      /* gold hairline below nav, above footer */
+
+  /* text on parchment */
+  --text:#1F1B16;             /* warm near-black ink */
+  --text-dim:#3A2F22;
+  --text-muted:#6B5A3F;
+
+  /* text on navy */
+  --logotype:#F0E6CC;         /* cream Cinzel logotype */
+  --nav-text:#E8DCB8;
+  --nav-text-dim:#A89A72;
+
+  /* gold */
+  --gold:#C9A84C;             /* primary gold — flourishes, drop cap, crosses */
+  --gold-light:#A8862E;       /* heading gold */
+  --gold-dim:#8A6A28;         /* darker gold for borders / bullet ornaments */
+  --gold-on-dark:#E8CB7A;     /* lighter gold for nav hover on navy */
+  --body-link:#7A5C1F;        /* darker gold for inline body-prose links — AA contrast on parchment */
+
+  /* borders / rules */
+  --border:#C8B98C;
+  --border-dim:rgba(138,106,40,0.22);
+  --rule:rgba(138,106,40,0.18);
+  --rule-soft:rgba(138,106,40,0.12);
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Drop into <code>:root</code> on every page. Single source of truth for color.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't rename variables — inline styles on older pages reference them. Redefine values if needed; keep names stable.</div></div>
+  <div class="usage-row"><div class="usage-key">Gotcha</div><div class="usage-val"><code>--hero-bg</code> must be parchment, not white. The <code>--hero-bg:#ffffff</code> override from the legacy palette is a recurring-bug item.</div></div>
+</div>
+
+<!-- 1.2 Body baseline -->
+<h3 class="guide-h3" id="p02"><span class="pattern-num">1.2</span>Body and typography baseline</h3>
+<div class="guide-prose">
+  <p>EB Garamond at 1.06rem with line-height 1.75. Old-style figures enabled at the body level via <code>font-feature-settings:"onum"</code> so paginated numerals appear correctly throughout. Section paragraphs go to 1.8 line-height.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  background-color:var(--bg-page);
+  /* vellum noise — see pattern 1.4 for the full data URI */
+  color:var(--text);
+  min-height:100vh;
+  overflow-x:hidden;
+  font-size:1.06rem;
+  line-height:1.75;
+}
+.about-section p{
+  color:var(--text-dim);
+  line-height:1.8;
+  margin-bottom:14px;
+  font-size:1.06rem;
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Drop the <code>body</code> rule on every page. Section paragraph rule applies wherever long-form prose lives.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't drop the <code>"onum"</code> setting — old-style figures are part of the manuscript register.</div></div>
+</div>
+
+<!-- 1.3 Cinzel scope -->
+<h3 class="guide-h3" id="p03"><span class="pattern-num">1.3</span>Cinzel scope rules</h3>
+<div class="guide-prose">
+  <p>Cinzel is reserved for exactly five surfaces. Everywhere else uses EB Garamond. Future chats sometimes drift Cinzel into section H2s or attributions; that's a regression.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>/* Cinzel is allowed ONLY on these five elements: */
+.nav-title          /* masthead logotype, cream */
+.nav-link           /* top-level nav links only */
+.page-title         /* h1 of every page */
+.lede::first-letter /* drop cap — gold, used once per long-form page */
+.footer-brand       /* centered footer brand line */
+
+/* Everything else uses EB Garamond:
+   - section H2s
+   - pull-quote attributions
+   - breadcrumbs
+   - dropdown items
+   - drawer items
+   - footer column headers
+   - contact label
+   - all body prose */</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Why</div><div class="usage-val">Cinzel = title-bearing surfaces. EB Garamond = navigation and prose. The split creates clean visual hierarchy.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't put Cinzel on dropdown items, section headings, or attribution lines. Use EB Garamond uppercase with widened letter-spacing instead.</div></div>
+  <div class="usage-row"><div class="usage-key">Carve-out</div><div class="usage-val"><code>saints.html</code> carries 7 Cinzel declarations: 4 of the canonical surfaces above (the page omits <code>.lede::first-letter</code> per pre-Group-7 state &mdash; standardize per Pattern 4.5 site-wide note) plus 3 saint-name page-specific exception surfaces &mdash; <code>.sotd-name</code> (Saint of the Day banner), <code>.sli-name</code> (saint-list row), <code>.sm-name</code> (saint profile modal). The exception is structurally driven: a saint's name above the icon is the title-bearing surface in the Orthodox iconographic register (the saint's name is to the icon what the page-title is to the page). Earned at Wave 3C; verified at 7 declarations through Group 3 Phase 2A and preserved through Phase 2B.</div></div>
+</div>
+
+<!-- 1.4 Vellum noise -->
+<h3 class="guide-h3" id="p04"><span class="pattern-num">1.4</span>Vellum noise texture</h3>
+<div class="guide-prose">
+  <p>An inline-SVG <code>feTurbulence</code> data URI overlays the body background at ~5% alpha in a warm-brown tone. Adds the feel of paper without becoming visible texture. CSS-only, no external file. <code>stitchTiles='stitch'</code> prevents tile seams.</p>
+</div>
+<div class="demo">
+  <p style="font-style:italic;color:var(--text-muted);font-size:0.9rem;">The page background you're reading right now is the texture. Look closely.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>body{
+  background-color:var(--bg-page);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='1' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.58  0 0 0 0 0.44  0 0 0 0 0.20  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Every page. Universal.</div></div>
+  <div class="usage-row"><div class="usage-key">Tuning</div><div class="usage-val">The alpha is the last value in <code>feColorMatrix</code> (currently <code>0.05</code>). Drop to <code>0.04</code> if it reads too noisy on any display; raise to <code>0.06–0.07</code> if you want it more visible.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't remove <code>stitchTiles='stitch'</code> — without it, you get visible seams between tiles.</div></div>
+</div>
+
+<!-- 1.5 Vertical rhythm scale -->
+<h3 class="guide-h3" id="p05"><span class="pattern-num">1.5</span>Vertical rhythm scale</h3>
+<div class="guide-prose">
+  <p>Margin and padding values follow a fixed scale. Reach for these rather than guessing arbitrary values.</p>
+</div>
+<pre class="guide-code" data-lang="REFERENCE"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>14px  — tight gaps, paragraph margin-bottom
+18px  — mobile padding minimums
+24px  — page padding (mobile→tablet)
+28px  — card padding (mobile)
+32px  — content section spacing
+40px  — major separators
+44px  — section bottom-margin
+48px  — pull-quote vertical margin, hero padding
+56px  — pull-quote top-margin
+64px  — section heading hairline width
+
+vertical sequence on a long-form page:
+  hero  → 42px (mobile) / 54px (desktop) top
+  content → 28px (mobile) / 42px (desktop) top
+  section → 48px between
+  pull-quote → 56px above, 18px below
+  fleuron → 18px above, 44px below
+  colophon → 24px above, 44px below
+  contact card → 36px above
+  footer → 48px above</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Why</div><div class="usage-val">Consistent rhythm across pages. Without a scale, future chats invent values and pages drift visually.</div></div>
+</div>
+
+<!-- 1.6 surface-deep token rule -->
+<h3 class="guide-h3" id="p06"><span class="pattern-num">1.6</span><code>--surface-deep</code> token usage rule</h3>
+<div class="guide-prose">
+  <p><strong>Use <code>--surface-deep</code> only on pull-quote interiors.</strong> It exists in the palette specifically because pull-quotes need a half-step more saturation than regular cards to read as a distinct surface.</p>
+</div>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Only on <code>.pull-quote</code> background. Possibly on the orientation block of internal documents like this one.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't use it on regular cards — that's <code>--surface</code>'s job. Don't use it on sections that should match body parchment — that's <code>--bg-page</code>.</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 2 — LAYOUT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">2</span>Layout</h2>
+<p class="guide-cluster-desc">Column constraints, hero structure, mobile breakpoints, and accessibility primitives.</p>
+
+<!-- 2.1 Inner column -->
+<h3 class="guide-h3" id="p07"><span class="pattern-num">2.1</span>Inner column 720px constraint</h3>
+<div class="guide-prose">
+  <p>Both <code>.page-hero-inner</code> and <code>.content-inner</code> use <code>max-width:720px; margin:0 auto</code>. This is the master inner-column width. It fixes a real layout-centering bug from earlier versions where <code>.content-inner</code> was missing <code>margin:0 auto</code> and <code>.page-hero-inner</code> was 1040px — title and body left-edges were 24px apart.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.page-hero-inner{max-width:720px;margin:0 auto;}
+.content-inner{max-width:720px;margin:0 auto;}
+
+/* outer wrapper kept as benign guard for very wide viewports */
+.content{max-width:1040px;margin:0 auto;padding:42px 24px 64px;}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Why 720</div><div class="usage-val">Optimal column width for long-form prose at 1.06rem EB Garamond — about 65–75 characters per line.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't widen for "more breathing room." 720px is correct for reading. Wider is for hero-image pages only.</div></div>
+</div>
+
+<!-- 2.2 Hero block -->
+<h3 class="guide-h3" id="p08"><span class="pattern-num">2.2</span><code>.page-hero</code> block</h3>
+<div class="guide-prose">
+  <p>Parchment background (no white slab between header and body), with the hero ornament headband above the breadcrumb. Vertical order inside <code>.page-hero-inner</code>: ornament → breadcrumb → page-title → page-desc.</p>
+</div>
+<div class="demo">
+  <div class="hero-ornament" aria-hidden="true">
+    <span class="rule"></span>
+    <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+    <span class="rule"></span>
+  </div>
+  <div class="breadcrumb"><a href="#">Home</a><span>&#8250;</span>Page Title</div>
+  <h2 class="page-title">Page Title in Cinzel</h2>
+  <p class="page-desc">A small italic subtitle in EB Garamond, max-width 640px, sitting under the H1.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="page-hero"&gt;
+  &lt;div class="page-hero-inner"&gt;
+    &lt;div class="hero-ornament" aria-hidden="true"&gt;
+      &lt;span class="rule"&gt;&lt;/span&gt;
+      &lt;span class="mark"&gt;&lt;svg class="chi-rho" viewBox="0 0 32 40"&gt;...&lt;/svg&gt;&lt;/span&gt;
+      &lt;span class="rule"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="breadcrumb"&gt;
+      &lt;a href="index.html"&gt;Home&lt;/a&gt;&lt;span&gt;&amp;#8250;&lt;/span&gt;Page Title
+    &lt;/div&gt;
+    &lt;h1 class="page-title"&gt;Page Title&lt;/h1&gt;
+    &lt;p class="page-desc"&gt;Subtitle.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.page-hero{
+  margin-top:var(--nav-h);
+  background:var(--hero-bg);
+  padding:54px 24px 36px;
+}
+.page-hero-inner{max-width:720px;margin:0 auto;}
+.page-title{
+  font-family:'Cinzel',serif;
+  font-size:2.15rem;font-weight:700;
+  letter-spacing:0.06em;
+  margin-bottom:12px;
+  color:var(--text);
+}
+.page-desc{
+  font-size:1.06rem;line-height:1.7;max-width:640px;
+  font-style:italic;color:var(--text-dim);
+}
+.breadcrumb{
+  font-family:'EB Garamond',serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;text-transform:uppercase;letter-spacing:0.14em;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.breadcrumb a{color:inherit;text-decoration:none;border:none;}
+.breadcrumb a:hover{color:var(--gold-light);}
+.breadcrumb span{margin:0 8px;opacity:0.5;}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Carve-out</div><div class="usage-val"><code>saints.html</code> diverges from the canonical <code>padding:54px 24px 36px;</code> (desktop) and <code>padding:42px 18px 28px;</code> (mobile) values, dropping <code>margin-top:var(--nav-h)</code> entirely and using <code>padding:36px 24px 36px;</code> (desktop) and <code>padding:24px 18px 28px;</code> (mobile). The divergence is structurally driven: saints.html is the only page on the site with a content banner (<code>.sotd-banner</code>) above <code>.page-hero</code>. The SOTD widget already carries the nav-clearing margin and lands the eye in the page; the canonical 54px hero-top breathing room would create a 122px-tall dead band between the SOTD's bottom rule and the chi-rho ornament. The 36px/24px values mirror the SOTD's own bottom padding for symmetric breathing across the gold-dim divider. Earned at Group 3 Phase 2A Round 3.</div></div>
+</div>
+
+<!-- 2.3 Mobile breakpoints -->
+<h3 class="guide-h3" id="p09"><span class="pattern-num">2.3</span>Mobile breakpoints</h3>
+<div class="guide-prose">
+  <p>Two breakpoints. <code>860px</code> swaps the desktop nav for the hamburger and collapses the footer to one column. <code>600px</code> tightens hero, title, drop cap, pull-quote, contact card, and footer paddings.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>@media(max-width:860px){
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-drawer{display:block;}
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
+}
+@media(max-width:600px){
+  .page-hero{padding:42px 18px 28px;}
+  .page-title{font-size:1.65rem;}
+  .content{padding:28px 18px 40px;}
+  nav{padding:0 14px;}
+  .nav-subtitle{display:none;}
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+  .pull-quote{padding:42px 22px 0;margin:48px 0 16px;}
+  .pull-quote-mark{font-size:3.8rem;top:-22px;left:14px;padding:0 10px;}
+  .pull-quote-text{font-size:1.08rem;}
+  .pull-quote-attr{margin:0 -22px;padding:12px 22px 16px;}
+  .colophon-text{font-size:1.05rem;}
+  .hero-ornament{margin-bottom:24px;}
+  .contact-card{padding:22px 20px;}
+  .site-footer{padding:36px 18px 28px;}
+}</code></pre>
+
+<!-- 2.4 Reduced motion -->
+<h3 class="guide-h3" id="p10"><span class="pattern-num">2.4</span>Reduced-motion media query</h3>
+<div class="guide-prose">
+  <p>Honors users who set "Reduce Motion" in OS preferences (vestibular sensitivity, migraine triggers). Disables smooth scroll, hover transitions, and the back-to-top fade. Universal pattern — every page.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    transition-duration:0.01ms !important;
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+  }
+}</code></pre>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 3 — NAVIGATION -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">3</span>Navigation</h2>
+<p class="guide-cluster-desc">Navy fixed header with a 2px gold hairline. Cinzel masthead and top-level links. EB Garamond uppercase dropdown items. No icons in dropdowns (icons removed in v3.1).</p>
+
+<!-- 3.1 Navy header -->
+<h3 class="guide-h3" id="p11"><span class="pattern-num">3.1</span>Navy header with gold hairline</h3>
+<div class="guide-prose">
+  <p>Fixed at top, <code>position:fixed</code>, height 68px, gold 2px <code>border-bottom</code>. The Byzantine cross SVG sits next to the masthead Cinzel logotype. Three top-level dropdowns: <strong>New Here?</strong>, <strong>Study</strong>, <strong>Worship &amp; Life</strong>. The <strong>Note from the Author</strong> link sits directly below "About This Site" in New Here?. <strong>No <code>&lt;span class="dd-icon"&gt;</code> spans</strong> in the dropdown items — those were removed.</p>
+</div>
+<div class="demo">
+  <div class="demo-nav-wrap">
+    <nav class="demo-nav">
+      <a href="#" class="demo-nav-brand">
+        <span class="demo-nav-cross"><svg class="cross-orth" viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+        <div><div class="demo-nav-title">Orthodox Companion</div><div class="demo-nav-subtitle">orthodoxcompanion.com</div></div>
+      </a>
+      <ul class="demo-nav-links">
+        <li><a href="#">Home</a></li>
+        <li><span>New Here? &#9662;</span></li>
+        <li><span>Study &#9662;</span></li>
+        <li><span>Worship &amp; Life &#9662;</span></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;nav id="mainNav"&gt;
+  &lt;a href="index.html" class="nav-brand"&gt;
+    &lt;span class="nav-cross"&gt;&lt;svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"&gt;&lt;rect x="14" y="4" width="4" height="40"/&gt;&lt;rect x="10" y="8" width="12" height="3"/&gt;&lt;rect x="4" y="14" width="24" height="4"/&gt;&lt;rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/&gt;&lt;/svg&gt;&lt;/span&gt;
+    &lt;div&gt;&lt;div class="nav-title"&gt;Orthodox Companion&lt;/div&gt;&lt;div class="nav-subtitle"&gt;orthodoxcompanion.com&lt;/div&gt;&lt;/div&gt;
+  &lt;/a&gt;
+  &lt;ul class="nav-links"&gt;
+    &lt;li class="nav-item"&gt;&lt;a href="index.html" class="nav-link"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+      &lt;span class="nav-link has-drop"&gt;New Here?&lt;/span&gt;
+      &lt;div class="nav-dropdown"&gt;
+        &lt;a href="new-to-orthodoxy.html"&gt;What Is Orthodoxy?&lt;/a&gt;
+        &lt;a href="parents.html"&gt;Guidance for Parents&lt;/a&gt;
+        &lt;hr class="nav-dropdown-divider"/&gt;
+        &lt;a href="new-to-orthodoxy.html#how-do-i-find-a-church"&gt;Parish Finder&lt;/a&gt;
+        &lt;a href="new-to-orthodoxy.html#faq"&gt;Frequently Asked Questions&lt;/a&gt;
+        &lt;hr class="nav-dropdown-divider"/&gt;
+        &lt;a href="about.html"&gt;About This Site&lt;/a&gt;
+        &lt;a href="note-from-author.html"&gt;Note from the Author&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+      &lt;span class="nav-link has-drop"&gt;Study&lt;/span&gt;
+      &lt;div class="nav-dropdown"&gt;
+        &lt;a href="history-of-orthodoxy.html"&gt;History of Orthodoxy&lt;/a&gt;
+        &lt;a href="symbol-of-faith.html"&gt;Symbol of Faith&lt;/a&gt;
+        &lt;hr class="nav-dropdown-divider"/&gt;
+        &lt;a href="topics.html"&gt;Topics &amp;amp; Doctrine&lt;/a&gt;
+        &lt;a href="glossary.html"&gt;Glossary&lt;/a&gt;
+        &lt;a href="saints.html"&gt;Saints&lt;/a&gt;
+        &lt;a href="church-fathers.html"&gt;Church Fathers&lt;/a&gt;
+        &lt;a href="holy-scripture.html"&gt;Holy Scripture&lt;/a&gt;
+        &lt;a href="bible-reader.html"&gt;Bible Reader&lt;/a&gt;
+        &lt;hr class="nav-dropdown-divider"/&gt;
+        &lt;a href="reading-plans.html"&gt;Reading Plans&lt;/a&gt;
+        &lt;a href="resources.html"&gt;Books &amp;amp; Resources&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="nav-item"&gt;
+      &lt;span class="nav-link has-drop"&gt;Worship &amp;amp; Life&lt;/span&gt;
+      &lt;div class="nav-dropdown"&gt;
+        &lt;a href="calendar.html"&gt;Liturgical Calendar&lt;/a&gt;
+        &lt;a href="prayer.html"&gt;Prayer Corner&lt;/a&gt;
+        &lt;a href="fasting.html"&gt;Fasting Guide&lt;/a&gt;
+        &lt;hr class="nav-dropdown-divider"/&gt;
+        &lt;a href="feasts.html"&gt;Feasts&lt;/a&gt;
+        &lt;a href="liturgical-seasons.html"&gt;Liturgical Seasons&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="nav-right"&gt;&lt;/div&gt;
+  &lt;button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu"&gt;
+    &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>nav{
+  position:fixed;top:0;left:0;right:0;z-index:600;
+  background:var(--nav-bg);
+  border-bottom:2px solid var(--header-rule);
+  backdrop-filter:blur(12px);
+  height:var(--nav-h);
+  display:flex;align-items:center;padding:0 20px;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;margin-right:8px;border:none;}
+.nav-cross{font-size:30px;line-height:1;color:var(--gold);display:inline-flex;align-items:center;}
+.nav-title{
+  font-family:'Cinzel',serif;font-size:0.95rem;font-weight:700;
+  color:var(--logotype);letter-spacing:0.07em;line-height:1;
+}
+.nav-subtitle{font-size:0.6rem;color:var(--nav-text-dim);font-style:italic;margin-top:2px;}
+.nav-links{display:flex;align-items:stretch;list-style:none;height:var(--nav-h);margin-left:4px;}
+.nav-item{position:relative;display:flex;align-items:center;}
+.nav-link{
+  font-family:'Cinzel',serif;font-size:0.6rem;text-transform:uppercase;
+  letter-spacing:0.09em;color:var(--nav-text);text-decoration:none;
+  padding:0 10px;height:100%;display:flex;align-items:center;gap:4px;
+  cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;
+  transition:color 0.2s;
+}
+.nav-link:hover,.nav-link.active{color:var(--gold-on-dark);border-bottom-color:var(--gold);}
+.nav-link.has-drop::after{content:'\25BE';font-size:0.45rem;opacity:0.55;margin-left:1px;}
+.nav-item:hover>.nav-dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.nav-dropdown{
+  position:absolute;top:calc(var(--nav-h) + 1px);left:0;
+  min-width:230px;background:var(--dark);
+  border:1px solid rgba(138,106,40,0.35);border-top:2px solid var(--gold);
+  z-index:601;
+  opacity:0;pointer-events:none;transform:translateY(-6px);
+  transition:opacity 0.18s,transform 0.18s;
+  padding:6px 0;
+}
+.nav-dropdown a{
+  display:flex;align-items:center;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.88rem;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:9px 18px;transition:color 0.15s,background 0.15s;white-space:nowrap;
+}
+.nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
+.nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
+.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger{display:none;background:transparent;border:none;
+  color:var(--nav-text);cursor:pointer;padding:8px;
+  flex-direction:column;gap:5px;margin-left:auto;flex-shrink:0;}
+.nav-hamburger span{display:block;width:22px;height:2px;
+  background:currentColor;border-radius:1px;transition:all 0.25s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}</code></pre>
+
+<!-- 3.2 Mobile drawer -->
+<h3 class="guide-h3" id="p12"><span class="pattern-num">3.2</span>Mobile drawer</h3>
+<div class="guide-prose">
+  <p>Slides down from below the nav. Plain text items, no icons. Closes on outside click. JS attaches the toggle and outside-click handlers.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="nav-drawer" id="navDrawer"&gt;
+  &lt;a href="index.html"&gt;Home&lt;/a&gt;
+  &lt;div class="nav-drawer-section"&gt;New Here?&lt;/div&gt;
+  &lt;a href="new-to-orthodoxy.html"&gt;What Is Orthodoxy?&lt;/a&gt;
+  &lt;a href="parents.html"&gt;Guidance for Parents&lt;/a&gt;
+  &lt;a href="new-to-orthodoxy.html#how-do-i-find-a-church"&gt;Parish Finder&lt;/a&gt;
+  &lt;a href="new-to-orthodoxy.html#faq"&gt;Frequently Asked Questions&lt;/a&gt;
+  &lt;a href="about.html"&gt;About This Site&lt;/a&gt;
+  &lt;a href="note-from-author.html"&gt;Note from the Author&lt;/a&gt;
+  &lt;div class="nav-drawer-section"&gt;Study&lt;/div&gt;
+  &lt;a href="history-of-orthodoxy.html"&gt;History of Orthodoxy&lt;/a&gt;
+  &lt;a href="symbol-of-faith.html"&gt;Symbol of Faith&lt;/a&gt;
+  &lt;a href="topics.html"&gt;Topics &amp;amp; Doctrine&lt;/a&gt;
+  &lt;a href="glossary.html"&gt;Glossary&lt;/a&gt;
+  &lt;a href="saints.html"&gt;Saints&lt;/a&gt;
+  &lt;a href="church-fathers.html"&gt;Church Fathers&lt;/a&gt;
+  &lt;a href="holy-scripture.html"&gt;Holy Scripture&lt;/a&gt;
+  &lt;a href="bible-reader.html"&gt;Bible Reader&lt;/a&gt;
+  &lt;a href="reading-plans.html"&gt;Reading Plans&lt;/a&gt;
+  &lt;a href="resources.html"&gt;Books &amp;amp; Resources&lt;/a&gt;
+  &lt;div class="nav-drawer-section"&gt;Worship &amp;amp; Life&lt;/div&gt;
+  &lt;a href="calendar.html"&gt;Liturgical Calendar&lt;/a&gt;
+  &lt;a href="prayer.html"&gt;Prayer Corner&lt;/a&gt;
+  &lt;a href="fasting.html"&gt;Fasting Guide&lt;/a&gt;
+  &lt;a href="feasts.html"&gt;Feasts&lt;/a&gt;
+  &lt;a href="liturgical-seasons.html"&gt;Liturgical Seasons&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.nav-drawer{display:none;position:fixed;top:var(--nav-h);left:0;right:0;
+  background:var(--dark);border-bottom:1px solid rgba(138,106,40,0.35);
+  z-index:599;padding:8px 0 20px;
+  transform:translateY(-8px);opacity:0;
+  transition:transform 0.25s,opacity 0.25s;pointer-events:none;
+  max-height:calc(100vh - var(--nav-h));overflow-y:auto;}
+.nav-drawer.open{transform:translateY(0);opacity:1;pointer-events:all;}
+.nav-drawer-section{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.78rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--nav-text-dim);
+  padding:14px 24px 6px;margin-top:4px;
+}
+.nav-drawer a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.96rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--nav-text);text-decoration:none;border:none;
+  padding:10px 24px 10px 32px;border-bottom:1px solid rgba(138,106,40,0.10);
+  transition:color 0.2s,padding-left 0.2s;
+}
+.nav-drawer a:hover{color:var(--gold-on-dark);padding-left:38px;}</code></pre>
+<pre class="guide-code" data-lang="JS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>var _drawerOpen=false;
+function toggleDrawer(){
+  _drawerOpen=!_drawerOpen;
+  var d=document.getElementById('navDrawer');
+  var h=document.getElementById('hamburger');
+  if(d)d.classList.toggle('open',_drawerOpen);
+  if(h)h.classList.toggle('open',_drawerOpen);
+}
+document.addEventListener('click',function(e){
+  if(_drawerOpen && !e.target.closest('nav') && !e.target.closest('.nav-drawer')){
+    _drawerOpen=false;
+    var d=document.getElementById('navDrawer');
+    var h=document.getElementById('hamburger');
+    if(d)d.classList.remove('open');
+    if(h)h.classList.remove('open');
+  }
+});
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.location.hash){
+    var id=window.location.hash.replace('#','');
+    setTimeout(function(){
+      var el=document.getElementById(id);
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },200);
+  }
+});</code></pre>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 4 — ORNAMENTS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">4</span>Ornaments</h2>
+<p class="guide-cluster-desc">Drawn-by-hand SVG crosses and chi-rho, Junicode-rendered fleuron, drop cap, hairline section markers, ornamental colophon, and the diamond bullet list. Together these create the manuscript register.</p>
+
+<!-- 4.1 Hero ornament -->
+<h3 class="guide-h3" id="p13"><span class="pattern-num">4.1</span>Hero ornament (chi-rho headband)</h3>
+<div class="guide-prose">
+  <p><strong>Universal:</strong> appears on every page at the top of the hero block. Three pieces: gold rule + chi-rho SVG + gold rule. Announces the page like a manuscript headpiece.</p>
+</div>
+<div class="demo">
+  <div class="hero-ornament" aria-hidden="true">
+    <span class="rule"></span>
+    <span class="mark"><svg class="chi-rho" viewBox="0 0 32 40"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+    <span class="rule"></span>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="hero-ornament" aria-hidden="true"&gt;
+  &lt;span class="rule"&gt;&lt;/span&gt;
+  &lt;span class="mark"&gt;
+    &lt;svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"&gt;
+      &lt;line x1="6" y1="14" x2="26" y2="34"/&gt;
+      &lt;line x1="26" y1="14" x2="6" y2="34"/&gt;
+      &lt;line x1="16" y1="4" x2="16" y2="36"/&gt;
+      &lt;path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/&gt;
+    &lt;/svg&gt;
+  &lt;/span&gt;
+  &lt;span class="rule"&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.hero-ornament{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto 30px;
+}
+.hero-ornament .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.55;
+}
+.hero-ornament .mark{
+  display:inline-flex;align-items:center;
+  font-size:1.6rem;line-height:1;
+  color:var(--gold);
+}</code></pre>
+
+<!-- 4.2 Chi-rho SVG -->
+<h3 class="guide-h3" id="p14"><span class="pattern-num">4.2</span>Chi-rho SVG</h3>
+<div class="guide-prose">
+  <p>Stroke-based, inherits color via <code>currentColor</code>. The chi (X) and rho (P) share the centerline at <code>x=16</code>; the rho loop curves out to <code>x=27</code> and back to the stem. Used only for the hero headband.</p>
+</div>
+<div class="demo" style="text-align:center;">
+  <span style="font-size:3rem;color:var(--gold);"><svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"><line x1="6" y1="14" x2="26" y2="34"/><line x1="26" y1="14" x2="6" y2="34"/><line x1="16" y1="4" x2="16" y2="36"/><path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/></svg></span>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;svg class="chi-rho" viewBox="0 0 32 40" aria-hidden="true"&gt;
+  &lt;line x1="6" y1="14" x2="26" y2="34"/&gt;     &lt;!-- chi diagonal 1 --&gt;
+  &lt;line x1="26" y1="14" x2="6" y2="34"/&gt;     &lt;!-- chi diagonal 2 --&gt;
+  &lt;line x1="16" y1="4" x2="16" y2="36"/&gt;     &lt;!-- rho stem --&gt;
+  &lt;path d="M 16 4 Q 27 4 27 12 Q 27 20 16 20"/&gt; &lt;!-- rho loop --&gt;
+&lt;/svg&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.chi-rho{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  stroke:currentColor;
+  fill:none;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-width:3;
+}</code></pre>
+
+<!-- 4.3 Cross SVG -->
+<h3 class="guide-h3" id="p15"><span class="pattern-num">4.3</span>Byzantine three-bar Orthodox cross SVG</h3>
+<div class="guide-prose">
+  <p>Used in three places: nav masthead, closing colophon, and footer brand line. <strong>The +15° suppedaneum rotation is the Byzantine convention</strong> — viewer's left rises (good thief, paradise) and viewer's right descends (unrepentant thief). Don't reverse the rotation.</p>
+</div>
+<div class="demo" style="text-align:center;">
+  <span style="font-size:3rem;color:var(--gold);"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"&gt;
+  &lt;rect x="14" y="4" width="4" height="40"/&gt;           &lt;!-- vertical post --&gt;
+  &lt;rect x="10" y="8" width="12" height="3"/&gt;           &lt;!-- titulus (INRI) --&gt;
+  &lt;rect x="4" y="14" width="24" height="4"/&gt;           &lt;!-- main crossbeam --&gt;
+  &lt;rect x="8" y="30" width="16" height="3"
+        transform="rotate(15 16 31.5)"/&gt;                &lt;!-- slanted suppedaneum --&gt;
+&lt;/svg&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.cross-orth{
+  display:inline-block;
+  vertical-align:middle;
+  height:1em;
+  width:auto;
+  fill:currentColor;
+}</code></pre>
+
+<!-- 4.4 Sizing convention -->
+<h3 class="guide-h3" id="p16"><span class="pattern-num">4.4</span>SVG ornament sizing convention</h3>
+<div class="guide-prose">
+  <p>Both <code>.cross-orth</code> and <code>.chi-rho</code> use <code>height:1em; width:auto</code> and inherit color via <code>currentColor</code>. Size is controlled by setting <code>font-size</code> (and color) on the <em>parent</em>. This is non-obvious and easy to break.</p>
+</div>
+<pre class="guide-code" data-lang="REFERENCE"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>To size an ornament, set font-size + color on the wrapping element:
+
+  .nav-cross         { font-size:30px;   color:var(--gold); }      /* masthead */
+  .colophon-mark .cross { font-size:2rem; color:var(--gold); }      /* colophon */
+  .footer-cross      { font-size:1.25rem; color:var(--gold); }      /* footer */
+  .hero-ornament .mark { font-size:1.6rem; color:var(--gold); }     /* hero */
+
+The SVG itself does not change. The wrapper does.</code></pre>
+
+<!-- 4.5 Drop cap -->
+<h3 class="guide-h3" id="p17"><span class="pattern-num">4.5</span>Drop cap (<code>.lede::first-letter</code>)</h3>
+<div class="guide-prose">
+  <p>Cinzel, gold, three lines tall. Pure CSS <code>::first-letter</code> — no extra HTML. <strong>Used once per long-form page only</strong>, on the opening paragraph after the page title. Letters/personal notes don't use a drop cap (would undercut the intimate register).</p>
+</div>
+<div class="demo">
+  <p class="lede">The Orthodox faith is not hard to find online. There are excellent books, podcasts, lectures, parish websites, and patristic libraries — more good resources than any single reader can hold in mind at once.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;p class="lede"&gt;The opening paragraph of the page...&lt;/p&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.lede::first-letter{
+  font-family:'Cinzel',serif;
+  float:left;
+  font-size:4.6rem;
+  line-height:0.85;
+  padding:0.35rem 0.7rem 0 0;
+  color:var(--gold);
+  font-weight:700;
+}
+@media(max-width:600px){
+  .lede::first-letter{font-size:3.6rem;padding:0.3rem 0.55rem 0 0;}
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Universal</div><div class="usage-val">The <code>.lede::first-letter</code> rule belongs in OC-MASTER-CSS on every page, not only on pages that currently use it. Reasons: (a) any page may add a <code>.lede</code> opener in a future content sweep without page-level CSS additions; (b) keeping the master CSS uniform across all pages reduces drift; (c) the rule is dead CSS only on pages without a <code>.lede</code> anchor &mdash; it imposes zero cost when unused. Group 3 Phase 1 surfaced that <code>saints.html</code> currently lacks the rule (Phase 2A's standing-rule check passed at 7 Cinzel declarations rather than expected 8 because of this gap). Standardize the rule across all OC-MASTER-CSS pages in the Group 7 sweep &mdash; this is also propagation checklist item #3.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't add a <code>.lede</code> opener on letters or personal notes (would undercut the intimate register). Don't use a drop cap more than once per page &mdash; subsequent paragraphs use plain prose.</div></div>
+</div>
+
+<!-- 4.6 Section heading -->
+<h3 class="guide-h3" id="p18"><span class="pattern-num">4.6</span>Section heading with hairline marker</h3>
+<div class="guide-prose">
+  <p>EB Garamond uppercase small-caps gold. A 64px gold-dim hairline sits 18px above each H2 via a <code>::before</code> pseudo-element — no extra markup. Marks each section as a chapter break.</p>
+</div>
+<div class="demo">
+  <h3 class="section-heading">What This Site Provides</h3>
+  <p style="color:var(--text-dim);">Body prose follows. Each H2 carries the hairline above it.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;h2 class="section-heading"&gt;What This Site Provides&lt;/h2&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.section-heading{
+  position:relative;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.12rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold-light);
+  padding-top:18px;
+  margin-bottom:20px;
+}
+.section-heading::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:64px;height:1px;
+  background:var(--gold-dim);
+  opacity:0.7;
+}</code></pre>
+
+<!-- 4.7 Fleuron -->
+<h3 class="guide-h3" id="p19"><span class="pattern-num">4.7</span>Fleuron (Junicode subset + <code>@font-face</code>)</h3>
+<div class="guide-prose">
+  <p>The fleuron ❦ glyph (U+2766) renders via a self-hosted 3.8 KB subset of Junicode, declared as <code>@font-face</code> with the family name <code>'OC Ornaments'</code>. The internal name avoids OFL Reserved Font Name complications when distributing a modified (subsetted) version. <code>/fonts/OFL.txt</code> must accompany the WOFF2 in the repo.</p>
+</div>
+<div class="demo" style="text-align:center;">
+  <div class="fleuron" aria-hidden="true">&#10086;</div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="fleuron" aria-hidden="true"&gt;&amp;#10086;&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>/* Subset of Junicode (SIL OFL 1.1) — original by Peter S. Baker */
+/* https://junicode.sourceforge.io — license at /fonts/OFL.txt */
+@font-face{
+  font-family:'OC Ornaments';
+  src:url('/fonts/Junicode-subset.woff2') format('woff2');
+  font-display:swap;
+  font-weight:normal;
+  font-style:normal;
+  unicode-range:U+2766, U+2767, U+271D;
+}
+
+.fleuron{
+  text-align:center;
+  margin:18px 0 44px;
+  color:var(--gold);
+  font-size:1.4rem;line-height:1;
+  font-family:'OC Ornaments','EB Garamond',Georgia,serif;
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">After pull-quotes that flow back into running prose. Skip when a pull-quote leads into a colophon (the colophon has its own ornament).</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't use the bare <code>&amp;#10086;</code> without the <code>OC Ornaments</code> font — the system fallback renders as an emoji blob.</div></div>
+  <div class="usage-row"><div class="usage-key">Required</div><div class="usage-val"><code>/fonts/Junicode-subset.woff2</code> and <code>/fonts/OFL.txt</code> must exist in the repo.</div></div>
+</div>
+
+<!-- 4.8 Closing colophon -->
+<h3 class="guide-h3" id="p20"><span class="pattern-num">4.8</span>Closing colophon</h3>
+<div class="guide-prose">
+  <p>Centered italic prose at 1.14rem, then a centered Orthodox cross flanked by two thin gold rules. The article's <em>amen</em>. One per long-form page maximum.</p>
+</div>
+<div class="demo">
+  <div class="colophon">
+    <p class="colophon-text">This is what Orthodox Companion is for &mdash; not to give you the faith, but to bring you to the place where it lives.</p>
+    <div class="colophon-mark" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="colophon"&gt;
+  &lt;p class="colophon-text"&gt;Closing italic prose, centered, max-width 580px.&lt;/p&gt;
+  &lt;div class="colophon-mark" aria-hidden="true"&gt;
+    &lt;span class="rule"&gt;&lt;/span&gt;
+    &lt;span class="cross"&gt;&lt;svg class="cross-orth" viewBox="0 0 32 48"&gt;...&lt;/svg&gt;&lt;/span&gt;
+    &lt;span class="rule"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.colophon{margin:24px 0 44px;text-align:center;}
+.colophon-text{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:1.14rem;
+  line-height:1.75;
+  color:var(--text-dim);
+  max-width:580px;
+  margin:0 auto 32px;
+}
+.colophon-mark{
+  display:flex;align-items:center;justify-content:center;
+  gap:18px;
+  max-width:300px;
+  margin:0 auto;
+}
+.colophon-mark .rule{
+  flex:1;height:1px;
+  background:var(--gold-dim);
+  opacity:0.65;
+}
+.colophon-mark .cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:2rem;line-height:1;
+}</code></pre>
+
+<!-- 4.9 Diamond bullets -->
+<h3 class="guide-h3" id="p21"><span class="pattern-num">4.9</span>Diamond bullet list</h3>
+<div class="guide-prose">
+  <p>Pseudo-element <code>::before</code> with <code>\25C6</code> ◆ in gold-dim. No extra markup, no <code>&lt;span&gt;</code> wrappers.</p>
+</div>
+<div class="demo">
+  <ul class="about-list">
+    <li>The liturgical calendar with fasting guidance</li>
+    <li>The Twelve Great Feasts and the full Paschal cycle</li>
+    <li>The Church Fathers and the saints with theological context</li>
+  </ul>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.about-list{list-style:none;padding:0;margin:0 0 18px 0;}
+.about-list li{
+  color:var(--text-dim);line-height:1.8;
+  padding:8px 0 8px 22px;
+  border-bottom:1px solid var(--rule-soft);
+  position:relative;
+  font-size:1.04rem;
+}
+.about-list li:last-child{border-bottom:none;}
+.about-list li::before{
+  content:'\25C6';
+  position:absolute;left:0;top:8px;
+  color:var(--gold-dim);font-size:0.85rem;
+}</code></pre>
+
+<!-- 4.10 aria-hidden rule -->
+<h3 class="guide-h3" id="p22"><span class="pattern-num">4.10</span><code>aria-hidden</code> rule for decorative ornaments</h3>
+<div class="guide-prose">
+  <p>Every decorative ornament carries <code>aria-hidden="true"</code>. Required for screen-reader hygiene — these elements are visual flourish, not content.</p>
+</div>
+<pre class="guide-code" data-lang="REFERENCE"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>aria-hidden="true" is required on:
+  • The hero ornament wrapper (.hero-ornament)
+  • The fleuron div (.fleuron)
+  • The colophon mark wrapper (.colophon-mark)
+  • The footer cross span (.footer-cross)
+  • All standalone .cross-orth and .chi-rho SVGs
+  • The pull-quote opening glyph (.pull-quote-mark)
+
+NOT required on:
+  • The masthead nav-cross (it's part of the brand link, screen readers read "Orthodox Companion")
+  • Any cross/ornament that's part of meaningful text content</code></pre>
+
+<!-- 4.11 Closing colophon attribution -->
+<h3 class="guide-h3" id="p30"><span class="pattern-num">4.11</span>Closing colophon attribution (<code>.colophon-attr</code>)</h3>
+<div class="guide-prose">
+  <p>An EB Garamond uppercase smcp gold-dim attribution line below the cross-orth ornament, used when the colophon italic line is a quoted source needing attribution &mdash; vs. <code>about.html</code>'s pilot pattern, where the colophon is original prose and needs no attribution. Sits below <code>.colophon-mark</code>, max-width 580px centered, 24px above. Earned in Group 4 Stage 2A on history-of-orthodoxy.html (St. John Chrysostom, <em>Homily before his exile</em>, c. 403). Extension of Pattern 4.8.</p>
+</div>
+<div class="demo">
+  <div class="colophon">
+    <p class="colophon-text">Many are the waves and great is the storm, but we fear not, for we stand upon the Rock. Let the waves rise; they cannot sink the ship of Jesus.</p>
+    <div class="colophon-mark" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+  <div class="colophon-attr">St. John Chrysostom &mdash; Homily before his exile, c. 403</div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="colophon"&gt;
+  &lt;p class="colophon-text"&gt;Quoted source line, italic, centered, max-width 580px.&lt;/p&gt;
+  &lt;div class="colophon-mark" aria-hidden="true"&gt;
+    &lt;span class="rule"&gt;&lt;/span&gt;
+    &lt;span class="cross"&gt;&lt;svg class="cross-orth" viewBox="0 0 32 48"&gt;...&lt;/svg&gt;&lt;/span&gt;
+    &lt;span class="rule"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="colophon-attr"&gt;Author Name &amp;mdash; Source, citation&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.colophon-attr{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  text-transform:uppercase;
+  letter-spacing:0.18em;
+  font-size:0.86rem;
+  font-weight:600;
+  color:var(--gold-dim);
+  text-align:center;
+  max-width:580px;
+  margin:24px auto 0;
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Article colophon's italic line is a quoted source &mdash; a Father, a Liturgy, Scripture. Skip when the colophon is original pastoral prose (about.html's pattern).</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't use Cinzel &mdash; the attribution is a small-caps EB Garamond surface per Pattern 1.3. The east-west <code>.ewe-closing-attr</code> currently uses Cinzel; that's logged as a Group 7 retone candidate.</div></div>
+</div>
+
+<!-- 4.12 Closing prose wrapper -->
+<h3 class="guide-h3" id="p31"><span class="pattern-num">4.12</span>Closing prose wrapper (<code>.closing-prose</code>)</h3>
+<div class="guide-prose">
+  <p>A long-form pastoral landing wrapper that precedes a closing colophon. Carries a manuscript-headband break (64px top-margin + 40px padding-top + 1px gold-dim hairline rule above) and a slightly looser closing-prose paragraph rhythm than the page's <code>.about-section</code> body. Used when an article needs a synthesis paragraph or two between the last content section and the colophon &mdash; the rhetorical equivalent of a manuscript scribe's closing benediction before the <em>explicit</em>. Earned in Group 4 Stage 2A on history-of-orthodoxy.html. Extension of Pattern 4.8.</p>
+</div>
+<div class="demo">
+  <section class="closing-prose">
+    <p>Twenty centuries do not exhaust the life of the Church. The same Liturgy that the Apostles received from the Lord is still celebrated this morning in every Orthodox parish in the world; the same Eucharist that sustained the martyrs sustains the faithful today; the same Spirit who descended at Pentecost still descends.</p>
+    <p>What the timeline reveals is not the survival of an institution but the Body of Christ enduring, by the Holy Spirit, all that history can do to her.</p>
+  </section>
+  <div class="colophon" style="margin-top:32px;">
+    <div class="colophon-mark" aria-hidden="true">
+      <span class="rule"></span>
+      <span class="cross"><svg class="cross-orth" viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
+      <span class="rule"></span>
+    </div>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;section class="closing-prose"&gt;
+  &lt;p&gt;First synthesis paragraph...&lt;/p&gt;
+  &lt;p&gt;Second synthesis paragraph...&lt;/p&gt;
+&lt;/section&gt;
+&lt;div class="colophon"&gt;
+  &lt;p class="colophon-text"&gt;...&lt;/p&gt;
+  &lt;div class="colophon-mark" aria-hidden="true"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.closing-prose{
+  margin-top:64px;
+  padding-top:40px;
+  border-top:1px solid var(--gold-dim);
+}
+.closing-prose p{
+  color:var(--text-dim);
+  line-height:1.9;
+  font-size:1.02rem;
+  margin-bottom:1.1em;
+}
+.closing-prose p:last-child{
+  margin-bottom:36px;
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Long-form articles needing a synthesis paragraph or two between the last content section and the colophon. Currently used on history-of-orthodoxy.html.</div></div>
+  <div class="usage-row"><div class="usage-key">Skip</div><div class="usage-val">Skip when the article closes naturally on its last content section without needing a synthesis (about.html's pattern &mdash; the colophon stands directly under the last section). Skip on letters and personal notes.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't nest <code>&lt;h2&gt;</code> headings inside <code>.closing-prose</code> &mdash; the wrapper is for synthesis prose, not for new sections. If a new section is needed, use <code>.about-section</code> with <code>.section-heading</code> (Pattern 4.6) and let <code>.closing-prose</code> follow it.</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 5 — CONTENT COMPONENTS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">5</span>Content components</h2>
+<p class="guide-cluster-desc">Pull-quotes, body links, contact cards, and the from-author bridge — situational components used where their content type calls for them.</p>
+
+<!-- 5.1 Pull-quote -->
+<h3 class="guide-h3" id="p23"><span class="pattern-num">5.1</span>Pull-quote frame</h3>
+<div class="guide-prose">
+  <p>Framed <code>&lt;figure&gt;</code> with full top + bottom 2px gold borders, side 1px gold-dim hairlines, slightly more saturated parchment surface (<code>--surface-deep</code>). Oversized EB Garamond bold gold opening-quote glyph absolutely positioned at the upper-left, "punching through" the top border. Centered italic text. Attribution <code>&lt;figcaption&gt;</code> sits under its own thin internal hairline at the bottom. Curly quotes are removed from inner text — the frame is the punctuation.</p>
+</div>
+<div class="demo">
+  <figure class="pull-quote">
+    <span class="pull-quote-mark" aria-hidden="true">&ldquo;</span>
+    <p class="pull-quote-text">Where the Church is, there is the Spirit of God; and where the Spirit of God is, there is the Church and every kind of grace.</p>
+    <figcaption class="pull-quote-attr">St. Irenaeus of Lyons &mdash; <em>Against Heresies</em>, III.24.1</figcaption>
+  </figure>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;figure class="pull-quote"&gt;
+  &lt;span class="pull-quote-mark" aria-hidden="true"&gt;&amp;ldquo;&lt;/span&gt;
+  &lt;p class="pull-quote-text"&gt;Quote text without curly quotes — the frame is the punctuation.&lt;/p&gt;
+  &lt;figcaption class="pull-quote-attr"&gt;Author Name &amp;mdash; &lt;em&gt;Source&lt;/em&gt;, citation&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.pull-quote{
+  position:relative;
+  margin:56px 0 18px;
+  padding:48px 36px 0;
+  background:var(--surface-deep);
+  border:1px solid var(--gold-dim);
+  border-top-width:2px;
+  border-bottom-width:2px;
+  border-radius:2px;
+}
+.pull-quote-mark{
+  position:absolute;
+  top:-26px;left:22px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-weight:700;
+  font-size:4.6rem;line-height:1;
+  color:var(--gold);
+  background:var(--bg-page);
+  padding:0 14px;
+}
+.pull-quote-text{
+  color:var(--text-dim);
+  font-style:italic;
+  font-size:1.18rem;
+  line-height:1.7;
+  text-align:center;
+  margin:0 0 28px;
+}
+.pull-quote-attr{
+  border-top:1px solid var(--rule);
+  margin:0 -36px;
+  padding:14px 36px 18px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.86rem;
+  text-transform:uppercase;
+  letter-spacing:0.16em;
+  color:var(--gold-light);
+  font-weight:600;
+  text-align:center;
+}
+.pull-quote-attr em{
+  text-transform:none;letter-spacing:0;
+  font-style:italic;font-weight:400;
+  font-size:0.96rem;color:var(--text-dim);
+}</code></pre>
+
+<!-- 5.2 Body links -->
+<h3 class="guide-h3" id="p24"><span class="pattern-num">5.2</span>Inline body-link styling</h3>
+<div class="guide-prose">
+  <p><strong>This is a contrast-critical pattern.</strong> Use <code>var(--body-link)</code> (#7A5C1F) for inline body-prose links — passes WCAG AA at ~5:1 contrast on parchment. The earlier <code>--gold-light</code> styling computed to ~2.6:1 (fails AA). Underline is <code>1px solid currentColor</code> at full opacity. Hover swaps to <code>--gold-light</code> for a clear interactive warming.</p>
+</div>
+<div class="demo">
+  <p class="body-link-demo">Use the <a href="#">Parish Finder</a> to find an Orthodox parish near you. The link should read as text-that's-navigable, not as decorative gold. Hover any link to see it warm.</p>
+</div>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.about-section a, .pull-quote a, .colophon-text a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.about-section a:hover, .pull-quote a:hover, .colophon-text a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">Required</div><div class="usage-val">Apply to all inline links in body prose contexts. Add additional selectors for any new prose-block class.</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't revert to <code>--gold-light</code> as the default link color — it fails AA contrast on parchment.</div></div>
+</div>
+
+<!-- 5.3 Contact card -->
+<h3 class="guide-h3" id="p25"><span class="pattern-num">5.3</span>Navy contact card</h3>
+<div class="guide-prose">
+  <p>Flipped from parchment to navy (<code>var(--deep)</code>) with cream text. Centered, max-width 560px. Visually rhymes with the navy footer below it.</p>
+</div>
+<div class="demo demo-dark" style="background:var(--bg-page);">
+  <div class="contact-card">
+    <div class="label">Contact</div>
+    <p>For questions, corrections, or feedback — write to me at <a href="#">orthodoxcompanion@gmail.com</a>.</p>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;div class="contact-card"&gt;
+  &lt;div class="contact-label"&gt;Contact&lt;/div&gt;
+  &lt;p&gt;For questions, corrections, or feedback &amp;mdash; write to me at &lt;a href="mailto:orthodoxcompanion@gmail.com"&gt;orthodoxcompanion@gmail.com&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.contact-card{
+  background:var(--deep);
+  border:1px solid rgba(201,168,76,0.30);
+  border-radius:3px;
+  padding:26px 28px;
+  max-width:560px;
+  margin:36px auto 0;
+  text-align:center;
+}
+.contact-label{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);font-weight:600;
+  margin-bottom:12px;
+}
+.contact-card p{
+  color:var(--nav-text);
+  font-style:italic;
+  font-size:1rem;
+  line-height:1.7;
+}
+.contact-card a{
+  color:var(--gold-on-dark);
+  text-decoration:none;
+  border-bottom:1px solid rgba(232,203,122,0.40);
+  transition:border-color 0.15s,color 0.15s;
+}
+.contact-card a:hover{
+  color:var(--gold);
+  border-bottom-color:var(--gold);
+}
+@media(max-width:600px){
+  .contact-card{padding:22px 20px;}
+}</code></pre>
+
+<!-- 5.4 From-author link -->
+<h3 class="guide-h3" id="p26"><span class="pattern-num">5.4</span>From-author link</h3>
+<div class="guide-prose">
+  <p>A small italic centered line pointing to <code>note-from-author.html</code>. Sits between the closing colophon and the contact card — the article's <em>amen</em> followed by the bridge to the author's note, then metadata. Currently used on <code>about.html</code> only.</p>
+</div>
+<div class="demo">
+  <p class="from-author-link"><a href="#">Read a personal note from the author</a></p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;p class="from-author-link"&gt;&lt;a href="note-from-author.html"&gt;Read a personal note from the author&lt;/a&gt;&lt;/p&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.from-author-link{
+  text-align:center;
+  margin:40px auto 0;
+  max-width:560px;
+  font-style:italic;
+  font-size:1.1rem;
+  color:var(--text-dim);
+}
+.from-author-link a{
+  color:var(--body-link);
+  text-decoration:none;
+  border-bottom:1px solid currentColor;
+  transition:border-color 0.15s,color 0.15s;
+}
+.from-author-link a:hover{
+  color:var(--gold-light);
+  border-bottom-color:var(--gold-light);
+}</code></pre>
+
+<!-- 5.5 Saint-icon mat -->
+<h3 class="guide-h3" id="p32"><span class="pattern-num">5.5</span>Saint-icon mat (riza-echo)</h3>
+<div class="guide-prose">
+  <p>A 1px gold-dim border + 4px parchment padding + 2px radius around saint-icon containers, echoing the metal <em>riza</em> (oklad) traditionally placed over icons in Russian and some Greek practice &mdash; a thin frame revealing only the face and hands. The CSS register lifts that visual treatment without literally depicting metalwork. Earned in Wave 3C (saints.html, April 27, 2026); applied at three CSS targets &mdash; <code>.sotd-icon-placeholder</code> (Saint of the Day banner), <code>.sli-icon</code> (saint-list row), <code>.sm-icon</code> (saint profile modal). The pattern is canonical from Wave 3C forward for any icon-bearing surface.</p>
+</div>
+<div class="demo">
+  <div class="saint-icon-mat-row">
+    <div class="saint-icon-mat" aria-hidden="true">
+      <svg viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg>
+    </div>
+    <div class="saint-icon-mat saint-icon-mat-large" aria-hidden="true">
+      <svg viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg>
+    </div>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;!-- with icon image --&gt;
+&lt;div class="sli-icon"&gt;
+  &lt;img src="assets/images/saints/[saint-slug].jpg" alt=""/&gt;
+&lt;/div&gt;
+
+&lt;!-- placeholder when no icon available --&gt;
+&lt;div class="sli-icon"&gt;
+  &lt;span class="cross-orth-placeholder"&gt;&amp;#9766;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>/* Master pattern &mdash; apply to any saint-icon container */
+.sotd-icon-placeholder, .sli-icon, .sm-icon{
+  border:1px solid var(--gold-dim);
+  background:var(--surface);
+  padding:4px;
+  border-radius:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.sotd-icon-placeholder img,
+.sli-icon img,
+.sm-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:2px;
+}</code></pre>
+<div class="usage">
+  <div class="usage-row"><div class="usage-key">When</div><div class="usage-val">Any saint-icon, feast-icon, or iconographic image surface. The mat reads as the icon's frame &mdash; a CSS-register echo of the riza tradition.</div></div>
+  <div class="usage-row"><div class="usage-key">Sizing</div><div class="usage-val">Size the mat container externally (e.g. <code>width:64px; height:64px</code> for list rows; <code>width:120px; height:120px</code> for SOTD; <code>width:160px; height:160px</code> for modal). The mat CSS itself is size-agnostic &mdash; it adapts to whatever the wrapper provides.</div></div>
+  <div class="usage-row"><div class="usage-key">Placeholder</div><div class="usage-val">When no icon is available, render a centered Orthodox cross glyph (<code>&amp;#9766;</code> &#9766;) at <code>--gold-light</code> color. The mat treatment still applies &mdash; empty state stays consistent with the populated one.</div></div>
+  <div class="usage-row"><div class="usage-key">Defense-in-depth</div><div class="usage-val">For surfaces where icon-extension drift is a real risk (e.g. SOTD, where the rendered icon is the page's headline), wrap the loader in a fallback chain that tries alternate extensions (<code>.jpg / .jpeg / .webp / .png</code>) before falling back to the placeholder. SOTD on saints.html implements this via <code>tryLoadIconWithFallback()</code>; list rows and modal use the data-level discipline (Group 3 Phase 2B option-(ii)).</div></div>
+  <div class="usage-row"><div class="usage-key">Don't</div><div class="usage-val">Don't add drop shadows, gradients, or larger border-radius &mdash; the mat is intentionally flat and monastic, matching the manuscript register. Don't use <code>--gold</code> (primary) for the border &mdash; use <code>--gold-dim</code>; the riza is a quiet frame, not a halo.</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLUSTER 6 — PAGE CHROME -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">6</span>Page chrome</h2>
+<p class="guide-cluster-desc">The footer, the back-to-top button, and the meta-description regression rule. Site-wide consistency.</p>
+
+<!-- 6.1 Footer -->
+<h3 class="guide-h3" id="p27"><span class="pattern-num">6.1</span>Standardized three-column footer</h3>
+<div class="guide-prose">
+  <p>Navy with 2px gold hairline at top. Three columns: <strong>Explore</strong>, <strong>Learn</strong>, <strong>Site</strong>. Centered bottom line: U+2626 Orthodox cross + Cinzel cream brand "Orthodox Companion" + EB Garamond italic <em>"In service of the Church."</em> tagline. Mobile collapses to a single centered column.</p>
+</div>
+<div class="demo">
+  <div class="demo-footer">
+    <div class="demo-footer-cols">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#">Calendar</a></li>
+          <li><a href="#">Saints</a></li>
+          <li><a href="#">Prayer Corner</a></li>
+          <li><a href="#">Fasting Guide</a></li>
+          <li><a href="#">Reading Plans</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Learn</h4>
+        <ul>
+          <li><a href="#">New to Orthodoxy</a></li>
+          <li><a href="#">Topics</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Church Fathers</a></li>
+          <li><a href="#">Glossary</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Site</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Resources</a></li>
+          <li><a href="#">Find a Parish</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="demo-footer-bottom">
+      <span class="demo-footer-cross"><svg class="cross-orth" viewBox="0 0 32 48"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span><span class="demo-footer-brand">Orthodox Companion</span><span class="demo-footer-tagline">In service of the Church.</span>
+    </div>
+  </div>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;footer class="site-footer"&gt;
+  &lt;div class="site-footer-inner"&gt;
+    &lt;div class="site-footer-cols"&gt;
+      &lt;div class="footer-col"&gt;
+        &lt;h3&gt;Explore&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="calendar.html"&gt;Calendar&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="saints.html"&gt;Saints&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="prayer.html"&gt;Prayer Corner&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="fasting.html"&gt;Fasting Guide&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="reading-plans.html"&gt;Reading Plans&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="footer-col"&gt;
+        &lt;h3&gt;Learn&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="new-to-orthodoxy.html"&gt;New to Orthodoxy&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="topics.html"&gt;Topics&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="history-of-orthodoxy.html"&gt;History&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="church-fathers.html"&gt;Church Fathers&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="glossary.html"&gt;Glossary&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;div class="footer-col"&gt;
+        &lt;h3&gt;Site&lt;/h3&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="about.html"&gt;About&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="resources.html"&gt;Resources&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="new-to-orthodoxy.html#how-do-i-find-a-church"&gt;Find a Parish&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="mailto:orthodoxcompanion@gmail.com"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="site-footer-bottom"&gt;
+      &lt;span class="footer-cross" aria-hidden="true"&gt;&lt;svg class="cross-orth" viewBox="0 0 32 48"&gt;...&lt;/svg&gt;&lt;/span&gt;&lt;span class="footer-brand"&gt;Orthodox Companion&lt;/span&gt;&lt;span class="footer-tagline"&gt;In service of the Church.&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>.site-footer{
+  background:var(--deep);
+  border-top:2px solid var(--header-rule);
+  padding:48px 24px 32px;
+  margin-top:48px;
+}
+.site-footer-inner{max-width:1040px;margin:0 auto;}
+.site-footer-cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:36px;
+  margin-bottom:36px;
+}
+.footer-col h3{
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:0.92rem;font-weight:600;
+  text-transform:uppercase;letter-spacing:0.18em;
+  color:var(--gold);
+  margin-bottom:14px;
+}
+.footer-col ul{list-style:none;padding:0;margin:0;}
+.footer-col li{margin:0;}
+.footer-col a{
+  display:block;
+  font-family:'EB Garamond',Georgia,serif;
+  font-size:1rem;
+  color:var(--nav-text);
+  text-decoration:none;border:none;
+  padding:5px 0;
+  transition:color 0.15s;
+}
+.footer-col a:hover{color:var(--gold-on-dark);}
+.site-footer-bottom{
+  text-align:center;
+  border-top:1px solid rgba(201,168,76,0.18);
+  padding-top:24px;
+}
+.footer-cross{
+  display:inline-flex;align-items:center;
+  color:var(--gold);
+  font-size:1.25rem;
+  margin-right:10px;
+  vertical-align:middle;
+}
+.footer-brand{
+  font-family:'Cinzel',serif;
+  font-size:0.96rem;font-weight:600;
+  color:var(--logotype);
+  letter-spacing:0.08em;
+  margin-right:14px;
+  vertical-align:middle;
+}
+.footer-tagline{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.96rem;
+  color:var(--nav-text-dim);
+  vertical-align:middle;
+}
+@media(max-width:860px){
+  .site-footer-cols{grid-template-columns:1fr;gap:28px;}
+  .footer-col{text-align:center;}
+}
+@media(max-width:600px){
+  .site-footer{padding:36px 18px 28px;}
+}</code></pre>
+
+<!-- 6.2 Back to top -->
+<h3 class="guide-h3" id="p28"><span class="pattern-num">6.2</span>Back-to-top button</h3>
+<div class="guide-prose">
+  <p>Parchment surface, gold-dim border, fades in past 400px scroll. <strong>JS attaches the scroll listener on <code>DOMContentLoaded</code></strong> — this avoids the IIFE-runs-before-button-exists bug from the original glossary spec.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;button id="backToTop" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})"&gt;&amp;#8679;&lt;/button&gt;</code></pre>
+<pre class="guide-code" data-lang="CSS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>#backToTop{
+  position:fixed;bottom:28px;right:24px;z-index:700;
+  width:42px;height:42px;border-radius:3px;
+  background:var(--surface);
+  border:1px solid var(--gold-dim);
+  color:var(--gold-light);
+  font-size:1.2rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.25s,background 0.2s,color 0.2s;
+}
+#backToTop.visible{opacity:1;pointer-events:all;}
+#backToTop:hover{background:var(--bg-page);color:var(--gold);}</code></pre>
+<pre class="guide-code" data-lang="JS"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>document.addEventListener('DOMContentLoaded',function(){
+  var btn=document.getElementById('backToTop');
+  if(!btn) return;
+  window.addEventListener('scroll',function(){
+    btn.classList.toggle('visible', window.scrollY > 400);
+  },{passive:true});
+});</code></pre>
+
+<!-- 6.3 Meta description regression rule -->
+<h3 class="guide-h3" id="p29"><span class="pattern-num">6.3</span>Meta description regression rule</h3>
+<div class="guide-prose">
+  <p><strong>Whenever a visible page subtitle (<code>.page-desc</code>) changes, both <code>&lt;meta name="description"&gt;</code> and <code>&lt;meta property="og:description"&gt;</code> must change with it.</strong> Search-engine snippets and social-share previews (Slack, Discord, iMessage, Facebook, Twitter) read the meta. Drift between visible page-desc and meta is a real regression target.</p>
+</div>
+<pre class="guide-code" data-lang="HTML"><button class="copy-btn" onclick="copyCode(this)">Copy</button><code>&lt;meta name="description" content="Page Title — visible subtitle text repeated verbatim or paraphrased."/&gt;
+&lt;meta property="og:title" content="Page Title — Orthodox Companion"/&gt;
+&lt;meta property="og:description" content="Page Title — visible subtitle text repeated verbatim or paraphrased."/&gt;
+&lt;meta property="og:type" content="website"/&gt;
+&lt;meta property="og:url" content="https://orthodoxcompanion.com/page-name.html"/&gt;</code></pre>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- ANTI-PATTERNS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<h2 class="guide-h2"><span class="num">7</span>Anti-patterns</h2>
+<p class="guide-cluster-desc">Things that exist on pre-pilot files and need to be removed during the design sweep. Don't preserve any of these.</p>
+
+<div class="antipattern" id="anti">
+  <h4>Remove from every pre-pilot file during the design sweep</h4>
+  <ul>
+    <li><strong>Duplicate <code>OC-MASTER-CSS</code> blocks</strong> — keep only the consolidated parchment-v3 block.</li>
+    <li><strong><code>--hero-bg:#ffffff</code> override</strong> — recurring-bug item; the hero must be parchment.</li>
+    <li><strong>All <code>[data-theme="light"]</code> and <code>[data-theme="dark"]</code> selectors</strong> — single-mode site, no theme switching.</li>
+    <li><strong>Anti-flash dark-mode IIFE in <code>&lt;head&gt;</code></strong> — the <code>(function(){var t=localStorage.getItem('oc_theme')...})()</code> block.</li>
+    <li><strong><code>toggleTheme()</code>, <code>signOut()</code>, <code>initAccountNav()</code></strong> — dead JS functions from the legacy account system.</li>
+    <li><strong>Sign In nav button</strong> (<code>#navSignIn</code>) and the entire account dropdown shell (<code>#navUserMenu</code>, <code>#navUserBtn</code>, <code>#navUserDropdown</code> with Journal/Bookmarks/Reading-Plans/Account/Sign-Out items).</li>
+    <li><strong>Companion AI nav button</strong> (<code>.nav-ai-btn</code>) — both desktop and drawer.</li>
+    <li><strong>Companion AI body sections</strong> in any prose — delete entirely, don't rewrite.</li>
+    <li><strong>Cloudflare email obfuscation</strong> — the <code>cfemail</code> span, the <code>/cdn-cgi/l/email-protection</code> href, the <code>cloudflare-static/email-decode.min.js</code> script tag. Replace with plain <code>mailto:orthodoxcompanion@gmail.com</code>.</li>
+    <li><strong>All <code>&lt;span class="dd-icon"&gt;</code> spans</strong> in nav dropdowns + the <code>.dd-icon</code> CSS rule + <code>gap:10px</code> on <code>.nav-dropdown a</code>.</li>
+    <li><strong>Orphaned drawer fragments</strong> — empty <code>.nav-drawer-footer</code> wrappers, fragments of removed elements rendering as visible body text.</li>
+    <li><strong>JS leaking past <code>&lt;/html&gt;</code></strong> — closing tag must come last.</li>
+    <li><strong>Duplicate anti-flash scripts</strong> in <code>&lt;head&gt;</code>.</li>
+    <li><strong>References to <code>auth-nav.js</code></strong> — script tag and any inline references.</li>
+    <li><strong>Hardcoded <code>SUPA_URL</code> / <code>SUPA_KEY</code></strong> or any Supabase CDN script tags.</li>
+    <li><strong>Dead <code>#backToTop</code> JS handlers</strong> on pages without the actual button — either add the button (preferred) or strip the handler.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CHECKLIST -->
+<!-- ═══════════════════════════════════════════════════════ -->
+
+<div class="checklist" id="checklist">
+  <h3>Site-wide propagation checklist (for the design sweep waves)</h3>
+  <ol>
+    <li>Strip all <code>&lt;span class="dd-icon"&gt;…&lt;/span&gt;</code> markup from desktop nav dropdowns, remove the <code>.dd-icon</code> CSS rule, strip <code>gap:10px</code> from <code>.nav-dropdown a</code>.</li>
+    <li>Add the <code>--body-link:#7A5C1F</code> palette token to <code>:root</code> on every page; replace any remaining <code>var(--gold-light)</code> in inline-link contexts with <code>var(--body-link)</code>.</li>
+    <li>Standardize the <code>.lede::first-letter</code> rule (Pattern 4.5) into OC-MASTER-CSS on every page, including pages that currently lack it (e.g. <code>saints.html</code>). The rule imposes zero cost when no <code>.lede</code> anchor exists; standardizing keeps master CSS uniform and ensures any future content sweep adding a <code>.lede</code> opener works without page-level CSS additions.</li>
+    <li>Apply the 720px inner column to every page: <code>.page-hero-inner{max-width:720px;margin:0 auto;}</code> and <code>.content-inner{max-width:720px;margin:0 auto;}</code>.</li>
+    <li>Drop in the <code>@media(prefers-reduced-motion:reduce)</code> media query at the end of every stylesheet.</li>
+    <li>Update <code>&lt;meta name="description"&gt;</code> and <code>og:description</code> on any page where the visible subtitle was changed.</li>
+    <li>Ensure the <code>@font-face</code> block for <code>'OC Ornaments'</code> is on every page that uses the fleuron, and confirm <code>/fonts/Junicode-subset.woff2</code> + <code>/fonts/OFL.txt</code> exist in the repo.</li>
+    <li>Add the <strong>Note from the Author</strong> link to every page's nav: locate <code>&lt;a href="about.html"&gt;About This Site&lt;/a&gt;</code> in both the desktop dropdown and the mobile drawer; append <code>&lt;a href="note-from-author.html"&gt;Note from the Author&lt;/a&gt;</code> directly after each.</li>
+    <li>Add the chi-rho hero ornament headband to every page's <code>.page-hero</code>.</li>
+    <li>Apply the navy three-column footer to every page (replace whatever footer is currently there).</li>
+    <li>Run the anti-pattern checklist (§7) on every file before declaring it done.</li>
+  </ol>
+</div>
+
+</div>
+
+<script>
+function copyCode(btn){
+  var pre = btn.closest('pre');
+  if(!pre) return;
+  var code = pre.querySelector('code');
+  if(!code) return;
+  var text = code.innerText;
+  navigator.clipboard.writeText(text).then(function(){
+    var orig = btn.textContent;
+    btn.textContent = 'Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.textContent = orig;
+      btn.classList.remove('copied');
+    }, 1400);
+  }).catch(function(){
+    var orig = btn.textContent;
+    btn.textContent = 'Press Ctrl+C';
+    setTimeout(function(){ btn.textContent = orig; }, 1400);
+  });
+}
+</script>
+
+</body>
+</html>
