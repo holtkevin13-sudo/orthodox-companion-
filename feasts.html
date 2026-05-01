@@ -1430,7 +1430,7 @@ var FEASTS = {
     full_greek_name: "Κυριακὴ Πάντων τῶν Ἁγίων",
     greek_terms: ["theosis","hagios","hagiosyne"],
     primary_topic: "theosis",
-    description: "All Saints Sunday manifests the fruit of Pentecost in the sanctification of human persons and the glory of divine communion. The feast celebrates all those who have been transfigured by the Holy Spirit — known and unknown, glorified and unglori­fied — as the living witness that theosis is not a theory but a historical reality accomplished in flesh.",
+    description: "All Saints Sunday manifests the fruit of Pentecost in the sanctification of human persons and the glory of divine communion. The feast celebrates all those who have been transfigured by the Holy Spirit — known and unknown, glorified and unglorified — as the living witness that theosis is not a theory but a historical reality accomplished in flesh.",
     tags: ["paschal_cycle"]
   },
   "sunday_of_the_publican_and_pharisee": {
@@ -1587,13 +1587,6 @@ var TAG_CLASS = {
 };
 
 /* ── Helpers ──────────────────────────────────────── */
-var STOP_WORDS = {"of":1,"the":1,"and":1,"in":1,"at":1,"to":1,"by":1,"for":1,"a":1,"an":1,"from":1,"into":1,"upon":1,"with":1};
-
-function fmtName(k) {
-  return k.replace(/_/g,' ').replace(/\b\w+/g,function(w){
-    return STOP_WORDS[w.toLowerCase()] ? w.toLowerCase() : w.charAt(0).toUpperCase()+w.slice(1);
-  }).replace(/^\w/,function(c){return c.toUpperCase();});
-}
 
 function buildCard(key, f, isPascha) {
   var cardClass = isPascha ? 'feast-card pascha-card' : 'feast-card';
