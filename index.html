@@ -273,7 +273,7 @@ nav{
   background:rgba(15,32,53,0.55);
   border:1px solid rgba(201,168,76,0.22);
   border-left:3px solid var(--gold-dim);
-  padding:24px 30px;min-height:120px;
+  padding:24px 30px;min-height:17rem;
   display:flex;flex-direction:column;justify-content:center;
 }
 .quote-text{
@@ -903,7 +903,7 @@ nav{
   .hero{padding:46px 18px 40px;min-height:52vh;}
   .page-title{font-size:1.65rem;letter-spacing:0.08em;}
   .hero-subtitle{font-size:1rem;}
-  .quote-carousel{padding:18px 22px;}
+  .quote-carousel{padding:18px 22px;min-height:17rem;}
   .ql-grid{grid-template-columns:1fr;}
   .lday-body{grid-template-columns:1fr;}
   .lday-col{border-right:none;border-bottom:1px solid var(--rule);}
@@ -1273,13 +1273,21 @@ function renderQuote(){
     btn.type = 'button';
     btn.className = 'quote-dot' + (i === qIdx ? ' active' : '');
     btn.setAttribute('aria-label', 'Quote ' + (i+1));
-    btn.onclick = function(){ qIdx = i; renderQuote(); resetQTimer(); };
+    btn.onclick = function(){ qIdx = i; renderQuote(); };
     dots.appendChild(btn);
   });
 }
 function resetQTimer(){
   clearInterval(qTimer);
+  qTimer = null;
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   qTimer = setInterval(function(){ qIdx = (qIdx+1) % QUOTES.length; renderQuote(); }, 8000);
+}
+function pauseQTimer(){
+  if(qTimer){ clearInterval(qTimer); qTimer = null; }
+}
+function resumeQTimer(){
+  if(!qTimer) resetQTimer();
 }
 
 /* ── Liturgical day (driven by calendar engine) ─────── */
@@ -1482,6 +1490,18 @@ document.addEventListener('DOMContentLoaded', function(){
   renderQuote();
   resetQTimer();
   loadLiturgicalDay();
+
+  // Pause carousel auto-rotation on hover/focus (WCAG 2.2.2 Pause, Stop, Hide).
+  var carousel = document.querySelector('.quote-carousel');
+  if(carousel){
+    carousel.addEventListener('mouseenter', pauseQTimer);
+    carousel.addEventListener('mouseleave', resumeQTimer);
+    carousel.addEventListener('focusin', pauseQTimer);
+    // focusout bubbles; relatedTarget check distinguishes inter-dot tab from genuine focus exit
+    carousel.addEventListener('focusout', function(e){
+      if(!carousel.contains(e.relatedTarget)) resumeQTimer();
+    });
+  }
 
   // Event delegation for reading buttons inside the lday-card
   var ldayCard = document.getElementById('ldayCard');
