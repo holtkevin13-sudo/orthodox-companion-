@@ -172,7 +172,6 @@ nav{
 }
 .nav-dropdown a:hover{color:var(--gold-on-dark);background:rgba(201,168,76,0.08);}
 .nav-dropdown-divider{border:none;border-top:1px solid rgba(138,106,40,0.20);margin:4px 0;}
-.nav-right{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
 
 /* ── Hamburger & Drawer ──────────────────────────────── */
 .nav-hamburger{display:none;background:transparent;border:none;
@@ -256,7 +255,7 @@ nav{
   margin-bottom:22px;
 }
 .hero-cross svg{width:46px;height:auto;fill:currentColor;}
-.hero-title{
+.page-title{
   font-family:'Cinzel',serif;font-size:clamp(1.9rem,5vw,3rem);
   font-weight:700;color:var(--logotype);
   letter-spacing:0.10em;margin-bottom:14px;line-height:1.1;
@@ -354,10 +353,12 @@ nav{
   color:var(--text-muted);margin-bottom:6px;
 }
 .section-title{
-  font-family:'Cinzel',serif;
-  font-size:1.7rem;font-weight:700;
-  color:var(--text);
-  letter-spacing:0.04em;margin-bottom:8px;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:1.5rem;font-weight:600;
+  color:var(--gold-light);
+  letter-spacing:0.10em;text-transform:lowercase;
+  margin-bottom:8px;
 }
 .section-desc{
   font-family:'EB Garamond',Georgia,serif;
@@ -429,6 +430,16 @@ nav{
   transition:color 0.18s;
 }
 .come-tile:hover .come-cue{color:var(--gold);}
+.come-pdf-note{
+  font-family:'EB Garamond',Georgia,serif;
+  font-style:italic;
+  font-size:0.95rem;
+  color:var(--text-muted);
+  text-align:center;
+  margin:24px auto 0;
+  max-width:640px;
+  line-height:1.65;
+}
 
 /* ── Today in the Church (lday-card on parchment) ───── */
 .lday-card{
@@ -451,9 +462,10 @@ nav{
   margin-bottom:5px;
 }
 .lday-feast{
-  font-family:'Cinzel',serif;
-  font-size:1.15rem;color:var(--text);
-  font-weight:600;letter-spacing:0.03em;line-height:1.3;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"onum";
+  font-size:1.20rem;color:var(--text);
+  font-weight:600;letter-spacing:0.02em;line-height:1.3;
 }
 .lday-chips{
   padding:10px 22px;
@@ -627,9 +639,10 @@ nav{
   background:var(--surface-deep);
 }
 .rm-title{
-  font-family:'Cinzel',serif;
-  font-size:0.95rem;color:var(--text);
-  letter-spacing:0.08em;
+  font-family:'EB Garamond',Georgia,serif;
+  font-feature-settings:"smcp","onum";
+  font-size:0.92rem;color:var(--gold-light);
+  letter-spacing:0.12em;text-transform:lowercase;
 }
 .rm-close{
   background:transparent;border:none;
@@ -888,7 +901,7 @@ nav{
 }
 @media(max-width:600px){
   .hero{padding:46px 18px 40px;min-height:52vh;}
-  .hero-title{font-size:1.65rem;letter-spacing:0.08em;}
+  .page-title{font-size:1.65rem;letter-spacing:0.08em;}
   .hero-subtitle{font-size:1rem;}
   .quote-carousel{padding:18px 22px;}
   .ql-grid{grid-template-columns:1fr;}
@@ -967,7 +980,6 @@ nav{
       </div>
     </li>
   </ul>
-  <div class="nav-right"></div>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -1013,7 +1025,7 @@ nav{
        width="1920" height="1280"
        fetchpriority="high" decoding="async">
   <span class="hero-cross" aria-hidden="true"><svg class="cross-orth" viewBox="0 0 32 48" aria-hidden="true"><rect x="14" y="4" width="4" height="40"/><rect x="10" y="8" width="12" height="3"/><rect x="4" y="14" width="24" height="4"/><rect x="8" y="30" width="16" height="3" transform="rotate(15 16 31.5)"/></svg></span>
-  <h1 class="hero-title">Orthodox Companion</h1>
+  <h1 class="page-title">Orthodox Companion</h1>
   <p class="hero-subtitle">A doorway to the Orthodox Christian faith &mdash; for those exploring, those preparing for reception, and those who have walked this path for years.</p>
 
   <div class="quote-carousel">
@@ -1052,6 +1064,7 @@ nav{
         <div class="come-cue">find &rarr;</div>
       </a>
     </div>
+    <p class="come-pdf-note">Read each plan in your browser, or download a printable PDF for the prayer corner.</p>
   </div>
 </section>
 
@@ -1280,7 +1293,7 @@ async function loadLiturgicalDay(){
       await OrthodoxCalendar.init();
       var day = OrthodoxCalendar.getDay(today);
       if(day){ renderLiturgicalDay(day, displayDate); return; }
-    }catch(e){}
+    }catch(e){ console.warn('OrthodoxCalendar engine call failed:', e); }
   }
 
   // Engine unavailable — render a graceful pointer to the full calendar.
@@ -1302,7 +1315,8 @@ function renderLiturgicalDay(day, displayDate){
     var s = day.liturgical_season;
     var strip = document.getElementById('seasonStrip');
     if(strip){
-      strip.textContent = /Season|Pre-Lenten/.test(s) ? ('We are in the ' + s) : s;
+      var clean = String(s||'').replace(/Season of (.+) Season$/i, 'Season of $1').replace(/^(.+?) Season Season$/i, '$1 Season').trim();
+      strip.textContent = /Season|Pre-Lenten/i.test(clean) ? ('We are in the ' + clean) : clean;
       strip.classList.add('visible');
     }
   }
