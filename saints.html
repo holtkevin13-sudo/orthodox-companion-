@@ -2902,7 +2902,7 @@ async function loadSaintOfTheDay(){
         calSummary = day.summary || '';
         calSeason  = day.liturgical_season || '';
       }
-    } catch(e) {}
+    } catch(e) { console.warn('OrthodoxCalendar engine call failed:', e); }
   }
 
   // ── Filter to actual saint names (drop liturgical day markers) ──
